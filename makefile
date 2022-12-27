@@ -1,22 +1,22 @@
 CC = gcc
 CFLAGS = -std=c89 -Wpedantic -O2
-DEVFLAGS = -std=c89 -Wpedantic -O0 -g -D DEBUG
+DEVFLAGS = -std=c89 -pedantic
+# la definizione di GDBFLAGS serve a permettere l'avvio di gdb
+GDBFLAGS = -std=c89 -pedantic -O0 -g
 TARGET = application
-DEBUG = debugging_app
+DEBUG = Dapplication
 OBJS = *.o
 SOURCES = *.c
 #var = [parametro da inserire su cmd: "make run var=[args]"]
+all: $(TARGET)
 
 $(TARGET): $(SOURCES)
 	$(CC) $(CFLAGS) $(SOURCES) -c
 	$(CC) $(OBJS) -o $(TARGET)
 
-# con la definizione di WIP posso eseguire porzioni di codice particolari
 $(DEBUG): $(SOURCES)
-	$(CC) $(DEVFLAGS) $(SOURCES) -c
-	$(CC) $(OBJS) -o $(TARGET)
-
-all: $(TARGET)
+	$(CC) $(DEVFLAGS) $(SOURCES) -D DEBUG -c
+	$(CC) $(OBJS) -o $(DEBUG)
 
 run: $(TARGET)
 	./$(TARGET) $(var)
@@ -24,5 +24,5 @@ run: $(TARGET)
 debug: $(DEBUG)
 	./$(DEBUG) $(var)
 
-clear: *.o
-	rm -f *.o $(TARGET)
+clear: $(OBJS)
+	rm -f $(OBJS) $(TARGET) $(DEBUG)

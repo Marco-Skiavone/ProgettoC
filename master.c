@@ -90,5 +90,8 @@ int main(int argc, char *argv[]){
 			printf("|");
 	}
 	
+	#ifdef DEBUG
+		printf("\nInizializzato progetto con flag di debug...\n");
+	#endif
 		
 }
