@@ -3,14 +3,14 @@
 #include <stdlib.h>
 #include <string.h>
 #include <sys/ipc.h>
+#include <sys/sem.h>
+#include <sys/shm.h>
 #include <sys/types.h>
 #include <stdio.h>
 #include <errno.h>
 #include <unistd.h>
-/* Quanti byte può occupare una riga di parametri del file di configurazione. */
-#define MAX_FILE_STR_LEN 60
-/* Indica quanti parametri vanno inseriti a tempo di esecuzione. */
-#define QNT_PARAMETRI 13
+#include "my_sem_lib.h"
+#include "definitions.h"
 
 #define ERROR(str)											\
 	fprintf(stderr, "\nErrore %s a linea %d!\n", str, __LINE__);
@@ -27,27 +27,16 @@
 	}
 
 /* contiene tutti i parametri */
-int PARAMETRO[QNT_PARAMETRI];	
+int PARAMETRO[QNT_PARAMETRI];
 
-/* parametri */
-#define SO_NAVI 0
-#define SO_PORTI 1
-#define SO_MERCI 2
-#define SO_SIZE 3
-#define SO_MIN_VITA 4
-#define SO_MAX_VITA 5
-#define SO_LATO 6
-#define SO_SPEED 7
-#define SO_CAPACITY 8
-#define SO_BANCHINE 9
-#define SO_FILL 10
-#define SO_LOADSPEED 11
-#define SO_DAYS 12
 
 int main(int argc, char *argv[]){
 	int NUM_RIGA_FILE, i, file_config_char;
+	int dump_id, porti_id, sem_banchine_id;
 	FILE *file_config;
 	char *str = (char *) malloc(MAX_FILE_STR_LEN);
+	char *dump_p = (char *) malloc(SIZE_DUMP);
+	char *porti_p = (char *) malloc(SIZE_MEM_PORTI);
 	/* fine definizioni di tipi */
 	if(argc != 2){
 		fprintf(stderr, "Ri-eseguire con il parametro: var=[NUM_RIGA_FILE]\n");
@@ -90,8 +79,31 @@ int main(int argc, char *argv[]){
 			printf("|");
 	}
 	
+	/* creazione della shm di dump */
+	dump_id = shmget(DUMP_KEY, SIZE_DUMP, IPC_CREAT | IPC_EXCL);
+	TEST_ERROR
+	dump_p = shmat(dump_id, NULL, SHM_RDONLY);
+	TEST_ERROR
 	#ifdef DEBUG
-		printf("\nInizializzato progetto con flag di debug...\n");
+		printf("Dump creato con id = %d\n", dump_id);
 	#endif
-		
+
+	/* creazione della shm "registro dei porti" */
+	porti_id = shmget(PORTI_MEM_KEY, SIZE_MEM_PORTI, IPC_CREAT | IPC_EXCL);
+	TEST_ERROR
+	porti_p = shmat(dump_id, NULL, SHM_RDONLY);
+	TEST_ERROR
+	#ifdef DEBUG
+		printf("Registro porti creato con id = %d\n", porti_id);
+	#endif
+
+	/* creazione del set di semafori "banchine dei porti" */
+	sem_banchine_id = semget(BANCHINE_SEM_KEY, PARAMETRO[SO_PORTI], IPC_CREAT | IPC_EXCL);
+	TEST_ERROR
+	sem_setall(PARAMETRO[SO_PORTI], PARAMETRO[SO_BANCHINE], sem_banchine_id);
+	#ifdef DEBUG
+		printf("Set di semafori delle banchine creato con id = %d\n", sem_banchine_id);
+	#endif
+
+
 }

@@ -3,7 +3,6 @@
 #include <errno.h>
 #include <unistd.h>
 
-
 #define TEST_ERROR if (errno) {								\
 						fprintf(stderr,						\
 				       "%s:%d: PID=%5d: Error %d (%s)\n", 	\
@@ -59,4 +58,21 @@ int sem_getall(char * my_string, int sem_id) {
 		sprintf(cur_str, "%d ", sem_vals[i]);
 		strcat(my_string, cur_str);
 	}
+}
+
+/* Set all n_sems semaphore values to value */
+int sem_setall(int n_sems, int value, int sem_id) {
+	union semun arg;   /* man semctl per vedere def della union  */ 
+	short unsigned int *buf_valori = (short unsigned int *) malloc(n_sems*sizeof(int));
+	int i;
+
+	/* Set all values to value */
+	for(i = 0; i < n_sems; i++)
+		buf_valori[i] = value;
+	
+	/* Get the values of all semaphores */
+	arg.array = buf_valori;
+	semctl(sem_id, 0, SETALL, arg);
+	TEST_ERROR
+	return errno;
 }

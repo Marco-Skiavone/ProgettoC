@@ -1,6 +1,6 @@
 CC = gcc
 CFLAGS = -std=c89 -Wpedantic -O2
-DEVFLAGS = -std=c89 -pedantic
+DEVFLAGS = -std=c89 -Wpedantic
 # la definizione di GDBFLAGS serve a permettere l'avvio di gdb
 GDBFLAGS = -std=c89 -pedantic -O0 -g
 TARGET = application
@@ -22,7 +22,6 @@ run: $(TARGET)
 	./$(TARGET) $(var)
 
 debug: $(DEBUG)
-	./$(DEBUG) $(var)
 
 clear: $(OBJS)
 	rm -f $(OBJS) $(TARGET) $(DEBUG)
