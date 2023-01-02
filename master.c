@@ -52,6 +52,7 @@ int main(int argc, char *argv[]){
 	file_config = fopen("config.txt", "r");
 	TEST_ERROR
 	
+	/* mangia -con fgetc()- tutti i caratteri fino a quello da cui iniziare */
 	for(i = 0; i < NUM_RIGA_FILE;){
 		if(file_config_char = fgetc(file_config) == '\n')
 			i++;
@@ -77,10 +78,11 @@ int main(int argc, char *argv[]){
 		printf(" %d ", PARAMETRO[i]);
 		if(i != QNT_PARAMETRI-1)
 			printf("|");
+		else printf("\n");
 	}
 	
 	/* creazione della shm di dump */
-	dump_id = shmget(DUMP_KEY, SIZE_DUMP, IPC_CREAT | IPC_EXCL);
+	dump_id = shmget(DUMP_KEY, SIZE_DUMP, IPC_CREAT | IPC_EXCL | 0666);
 	TEST_ERROR
 	dump_p = shmat(dump_id, NULL, SHM_RDONLY);
 	TEST_ERROR
@@ -89,7 +91,7 @@ int main(int argc, char *argv[]){
 	#endif
 
 	/* creazione della shm "registro dei porti" */
-	porti_id = shmget(PORTI_MEM_KEY, SIZE_MEM_PORTI, IPC_CREAT | IPC_EXCL);
+	porti_id = shmget(PORTI_MEM_KEY, SIZE_MEM_PORTI, IPC_CREAT | IPC_EXCL | 0666);
 	TEST_ERROR
 	porti_p = shmat(dump_id, NULL, SHM_RDONLY);
 	TEST_ERROR
@@ -98,12 +100,34 @@ int main(int argc, char *argv[]){
 	#endif
 
 	/* creazione del set di semafori "banchine dei porti" */
-	sem_banchine_id = semget(BANCHINE_SEM_KEY, PARAMETRO[SO_PORTI], IPC_CREAT | IPC_EXCL);
+	sem_banchine_id = semget(BANCHINE_SEM_KEY, PARAMETRO[SO_PORTI], IPC_CREAT | IPC_EXCL | 0666);
 	TEST_ERROR
 	sem_setall(PARAMETRO[SO_PORTI], PARAMETRO[SO_BANCHINE], sem_banchine_id);
 	#ifdef DEBUG
 		printf("Set di semafori delle banchine creato con id = %d\n", sem_banchine_id);
 	#endif
 
+	/* creazione porti e navi... */
 
+
+
+	/* de-allocazione risorse IPC */
+	if(semctl(sem_banchine_id, 0, IPC_RMID) == 0)
+		printf("Array banchine disallocato.\n");
+	else{
+		ERROR("nella deallocazione dell'array di banchine")
+	}
+
+	if(shmctl(dump_id, 0, IPC_RMID) == 0)
+		printf("Memoria di dump disallocata.\n");
+	else{
+		ERROR("nella deallocazione della memoria di dump")
+	}
+
+	if(shmctl(porti_id, 0, IPC_RMID) == 0)
+		printf("Memoria di stato dei porti disallocata.\n");
+	else{
+		ERROR("nella deallocazione della memoria di stato dei porti")
+	}
+	exit(EXIT_SUCCESS);
 }

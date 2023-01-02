@@ -4,24 +4,41 @@ DEVFLAGS = -std=c89 -Wpedantic
 # la definizione di GDBFLAGS serve a permettere l'avvio di gdb
 GDBFLAGS = -std=c89 -pedantic -O0 -g
 TARGET = application
+PORTO = porto
+NAVE = nave
 DEBUG = Dapplication
-OBJS = *.o
+#possiamo aggiungere altre librerie qua sotto
+OBJS = my_sem_lib.o
 SOURCES = *.c
 #var = [parametro da inserire su cmd: "make run var=[args]"]
-all: $(TARGET)
+all: $(SOURCES)
+	gcc $(CFLAGS) $(SOURCES) -c
+	gcc $(OBJS) master.o -o $(TARGET)
+	$(PORTO)
+	$(NAVE)
 
-$(TARGET): $(SOURCES)
-	$(CC) $(CFLAGS) $(SOURCES) -c
-	$(CC) $(OBJS) -o $(TARGET)
+$(OBJS): $(SOURCES)
+	gcc $(CFLAGS) $(SOURCES) -c
+
+$(TARGET): $(OBJS)
+	gcc $(OBJS) master.o -o $(TARGET)
+
+$(PORTO): $(OBJS)
+	gcc $(OBJS) porto.o -o $(PORTO)
+
+$(NAVE): $(OBJS)
+	gcc $(OBJS) nave.o -o $(NAVE)
 
 $(DEBUG): $(SOURCES)
-	$(CC) $(DEVFLAGS) $(SOURCES) -D DEBUG -c
-	$(CC) $(OBJS) -o $(DEBUG)
+	gcc $(DEVFLAGS) $(SOURCES) -D DEBUG -c
+	gcc $(OBJS) master.o -o $(DEBUG)
+	$(PORTO)
+	$(NAVE)
 
-run: $(TARGET)
+run: $(TARGET) $(PORTO) $(NAVE)
 	./$(TARGET) $(var)
-
 debug: $(DEBUG)
+	./$(DEBUG) $(var)
 
-clear: $(OBJS)
-	rm -f $(OBJS) $(TARGET) $(DEBUG)
+clear:
+	rm -f *.o $(TARGET) $(DEBUG) $(NAVE) $(PORTO)
