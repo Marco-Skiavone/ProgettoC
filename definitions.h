@@ -36,3 +36,8 @@
 
 /* key del set di semafori per gestire le banchine*/
 #define BANCHINE_SEM_KEY 21
+
+typedef struct _position{
+	double x;
+	double y;
+} point;

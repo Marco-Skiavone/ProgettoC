@@ -38,12 +38,15 @@ int main(int argc, char *argv[]){
 	}
 	i_banchine_array = atoi(argv[1]);
 	TEST_ERROR
-	
 	for(i = 2; i < argc; i++){
 		PARAMETRO[i] = atoi(argv[i]);
 		TEST_ERROR
 	}
-
 	printf("PORTO %d: parametri letti.\n", getpid());
+	srand(getpid());
+	
 
+
+
+	exit(EXIT_SUCCESS);
 }
