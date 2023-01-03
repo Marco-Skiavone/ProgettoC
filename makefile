@@ -8,7 +8,7 @@ PORTO = porto
 NAVE = nave
 DEBUG = Dapplication
 #possiamo aggiungere altre librerie qua sotto
-OBJS = my_sem_lib.o
+OBJS = *lib.o
 SOURCES = *.c
 #var = [parametro da inserire su cmd: "make run var=[args]"]
 all: $(SOURCES)

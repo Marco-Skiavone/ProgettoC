@@ -30,7 +30,7 @@ int PARAMETRO[QNT_PARAMETRI];
 
 int main(int argc, char *argv[]){
 	point position;
-	if(argc != (1 + QNT_PARAMETRI)){
+	if(argc != (QNT_PARAMETRI)){
 		ERROR("nel passaggio dei parametri alla nave")
 		exit(EXIT_FAILURE);
 	}

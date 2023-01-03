@@ -33,10 +33,12 @@ int PARAMETRO[QNT_PARAMETRI];
 int main(int argc, char *argv[]){
 	int NUM_RIGA_FILE, i, file_config_char;
 	int dump_id, porti_id, sem_banchine_id;
+	int childs[PARAMETRO[SO_NAVI]+PARAMETRO[SO_PORTI]];
 	FILE *file_config;
 	char *str = (char *) malloc(MAX_FILE_STR_LEN);
 	char *dump_p = (char *) malloc(SIZE_DUMP);
 	char *porti_p = (char *) malloc(SIZE_MEM_PORTI);
+	char *argv_porti[QNT_PARAMETRI+2], *argv_navi[QNT_PARAMETRI+1]; /* null terminated */
 	/* fine definizioni di tipi */
 	if(argc != 2){
 		fprintf(stderr, "Ri-eseguire con il parametro: var=[NUM_RIGA_FILE]\n");
@@ -107,9 +109,47 @@ int main(int argc, char *argv[]){
 		printf("Set di semafori delle banchine creato con id = %d\n", sem_banchine_id);
 	#endif
 
+	/* definizione dell'argv dei porti */
+	*argv_porti = (char *) malloc(MAX_STR_LEN*(QNT_PARAMETRI+1));
+	for(i = 1; i < QNT_PARAMETRI+1; i++){
+		argv_porti[i] = (char *) malloc(MAX_STR_LEN); 
+		sprintf(argv_porti[i], "%d", PARAMETRO[i]);
+	}
+	argv_porti[QNT_PARAMETRI+1] = NULL;
+
+	/*definizione dell'argv delle navi */
+	*argv_navi = (char *) malloc(MAX_STR_LEN*(QNT_PARAMETRI));
+	for(i = 0; i < QNT_PARAMETRI; i++){
+		argv_navi[i] = (char *) malloc(MAX_STR_LEN); 
+		sprintf(argv_navi[i], "%d", PARAMETRO[i]);
+	}
+	argv_navi[QNT_PARAMETRI] = NULL;
+
 	/* creazione porti e navi... */
+	for(i = 0; i < (PARAMETRO[SO_PORTI]+PARAMETRO[SO_NAVI]); i++){
+		switch(childs[i] = fork()){
+			case -1:
+				TEST_ERROR
+				break;
+			case 0:	/* proc figlio */
+				if(i < PARAMETRO[SO_PORTI]){
+					sprintf(argv_porti[0], "%d", i);
+					execl("porto", argv_porti);
+				} else {
+					sprintf(argv_navi[0], "%d", i);
+					execl("porto", argv_navi);
+				}
+				break;
+			default:
+				break;
+		}
+	}
+	/* avvio del timer della simulazione (+ sincronizzazione) */
 
+	
+	/* DUMP */
 
+	/* WAIT di terminazione dei figli */
 
 	/* de-allocazione risorse IPC */
 	if(semctl(sem_banchine_id, 0, IPC_RMID) == 0)

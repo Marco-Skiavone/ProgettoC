@@ -19,6 +19,10 @@
 /* Indica quanti parametri vanno inseriti a tempo di esecuzione. */
 #define QNT_PARAMETRI 13
 
+/* Indica il massimo di byte (cifre) per rappresentare
+ *  un parametro in input ai processi figlio */
+#define MAX_STR_LEN 15
+
 /* i byte necessari per il dump (shm) */
 #define SIZE_DUMP 100
 
