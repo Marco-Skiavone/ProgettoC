@@ -1,44 +1,21 @@
-#define _GNU_SOURCE
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <sys/ipc.h>
-#include <sys/sem.h>
-#include <sys/shm.h>
-#include <sys/types.h>
-#include <stdio.h>
-#include <errno.h>
-#include <unistd.h>
-#include "my_sem_lib.h"
-#include "definitions.h"
-
-#define ERROR(str)											\
-	fprintf(stderr, "\nErrore %s a linea %d!\n", str, __LINE__);
-
-#define TEST_ERROR 							\
-	if (errno) {							\
-		fprintf(stderr,						\
-		"%s:%d: PID=%5d: Error %d (%s)\n", 	\
-		__FILE__,							\
-		__LINE__,							\
-		getpid(),							\
-		errno,								\
-		strerror(errno));					\
-	}
+#include "definitions.h"	/* contiene le altre #include */
+#include "my_lib.h"
 
 /* contiene tutti i parametri */
 int PARAMETRO[QNT_PARAMETRI];
 
 
 int main(int argc, char *argv[]){
-	int NUM_RIGA_FILE, i, file_config_char;
-	int dump_id, porti_id, sem_banchine_id;
-	int childs[PARAMETRO[SO_NAVI]+PARAMETRO[SO_PORTI]];
+	int NUM_RIGA_FILE, i, file_config_char, status = 0;
+	/* id delle risorse ipc create */
+	int dump_id, mercato_id, posizioni_id, coda_richieste_id, sem_banchine_id;
+	int child_pid;
 	FILE *file_config;
 	char *str = (char *) malloc(MAX_FILE_STR_LEN);
 	char *dump_p = (char *) malloc(SIZE_DUMP);
-	char *porti_p = (char *) malloc(SIZE_MEM_PORTI);
-	char *argv_porti[QNT_PARAMETRI+2], *argv_navi[QNT_PARAMETRI+1]; /* null terminated */
+	char *mercato_p = (char *) malloc(SIZE_MERCATO);
+	char *posizioni_p = (char *) malloc(SIZE_POSIZIONI);
+	char *argv_figli[QNT_PARAMETRI+2]; /* null terminated */
 	/* fine definizioni di tipi */
 	if(argc != 2){
 		fprintf(stderr, "Ri-eseguire con il parametro: var=[NUM_RIGA_FILE]\n");
@@ -65,6 +42,7 @@ int main(int argc, char *argv[]){
 		}
 	}
 	
+	/* inserisce su parametro[i] i valori del file */
 	for(i = 0; i < QNT_PARAMETRI; i++){
 		if(fscanf(file_config, "%d", &PARAMETRO[i]) != 1){
 			ERROR("nella lettura di un parametro da file")
@@ -84,7 +62,7 @@ int main(int argc, char *argv[]){
 	}
 	
 	/* creazione della shm di dump */
-	dump_id = shmget(DUMP_KEY, SIZE_DUMP, IPC_CREAT | IPC_EXCL | 0666);
+	dump_id = shmget(KEY_DUMP, SIZE_DUMP, IPC_CREAT | IPC_EXCL | 0666);
 	TEST_ERROR
 	dump_p = shmat(dump_id, NULL, SHM_RDONLY);
 	TEST_ERROR
@@ -92,52 +70,61 @@ int main(int argc, char *argv[]){
 		printf("Dump creato con id = %d\n", dump_id);
 	#endif
 
-	/* creazione della shm "registro dei porti" */
-	porti_id = shmget(PORTI_MEM_KEY, SIZE_MEM_PORTI, IPC_CREAT | IPC_EXCL | 0666);
+	/* creazione della shm "mercato" */
+	mercato_id = shmget(KEY_MERCATO, SIZE_MERCATO, IPC_CREAT | IPC_EXCL | 0666);
 	TEST_ERROR
-	porti_p = shmat(dump_id, NULL, SHM_RDONLY);
+	mercato_p = shmat(mercato_id, NULL, SHM_RDONLY);
 	TEST_ERROR
 	#ifdef DEBUG
-		printf("Registro porti creato con id = %d\n", porti_id);
+		printf("Memoria mercato creata con id = %d\n", porti_id);
+	#endif
+
+	/* creazione della shm "posizioni" */
+	posizioni_id = shmget(KEY_POSIZIONI, SIZE_POSIZIONI, IPC_CREAT | IPC_EXCL | 0666);
+	TEST_ERROR
+	posizioni_p = shmat(posizioni_id, NULL, 0);
+	#ifdef DEBUG
+		printf("Memoria posizioni creata con id = %d\n", posizioni_id);
+	#endif
+
+	/* creazione coda richieste */
+	coda_richieste_id = msgget(KEY_CODA_RICHIESTE, IPC_CREAT | IPC_EXCL | 0666);
+	TEST_ERROR
+	#ifdef DEBUG
+		printf("Coda di richieste (MSG_Q) creata con id = %d\n", coda_richieste_id);
 	#endif
 
 	/* creazione del set di semafori "banchine dei porti" */
-	sem_banchine_id = semget(BANCHINE_SEM_KEY, PARAMETRO[SO_PORTI], IPC_CREAT | IPC_EXCL | 0666);
+	sem_banchine_id = semget(KEY_BANCHINE_SEM, PARAMETRO[SO_PORTI], IPC_CREAT | IPC_EXCL | 0666);
 	TEST_ERROR
-	sem_setall(PARAMETRO[SO_PORTI], PARAMETRO[SO_BANCHINE], sem_banchine_id);
 	#ifdef DEBUG
 		printf("Set di semafori delle banchine creato con id = %d\n", sem_banchine_id);
 	#endif
 
-	/* definizione dell'argv dei porti */
-	*argv_porti = (char *) malloc(MAX_STR_LEN*(QNT_PARAMETRI+1));
-	for(i = 1; i < QNT_PARAMETRI+1; i++){
-		argv_porti[i] = (char *) malloc(MAX_STR_LEN); 
-		sprintf(argv_porti[i], "%d", PARAMETRO[i]);
-	}
-	argv_porti[QNT_PARAMETRI+1] = NULL;
+	/* creazione delle posizioni e aggiunta alla memoria dedicata */
 
-	/*definizione dell'argv delle navi */
-	*argv_navi = (char *) malloc(MAX_STR_LEN*(QNT_PARAMETRI));
-	for(i = 0; i < QNT_PARAMETRI; i++){
-		argv_navi[i] = (char *) malloc(MAX_STR_LEN); 
-		sprintf(argv_navi[i], "%d", PARAMETRO[i]);
+
+	/* definizione dell'argv dei figli */
+	*argv_figli = (char *) malloc(MAX_STR_LEN*(QNT_PARAMETRI+1));
+	for(i = 1; i < QNT_PARAMETRI+1; i++){
+		argv_figli[i] = (char *) malloc(MAX_STR_LEN); 
+		sprintf(argv_figli[i], "%d", PARAMETRO[i]);
 	}
-	argv_navi[QNT_PARAMETRI] = NULL;
+	argv_figli[QNT_PARAMETRI+1] = NULL;
 
 	/* creazione porti e navi... */
 	for(i = 0; i < (PARAMETRO[SO_PORTI]+PARAMETRO[SO_NAVI]); i++){
-		switch(childs[i] = fork()){
+		switch(fork()){
 			case -1:
 				TEST_ERROR
 				break;
 			case 0:	/* proc figlio */
 				if(i < PARAMETRO[SO_PORTI]){
-					sprintf(argv_porti[0], "%d", i);
-					execl("porto", argv_porti);
+					sprintf(argv_figli[0], "%d", i);
+					execl("porto", argv_figli);
 				} else {
-					sprintf(argv_navi[0], "%d", i);
-					execl("porto", argv_navi);
+					sprintf(argv_figli[0], "%d", (i-PARAMETRO[SO_PORTI]));
+					execl("nave", argv_figli);
 				}
 				break;
 			default:
@@ -150,24 +137,41 @@ int main(int argc, char *argv[]){
 	/* DUMP */
 
 	/* WAIT di terminazione dei figli */
+	while ((child_pid = wait(&status)) != -1) {
+		printf("PARENT: PID=%d. Got info of child with PID=%d, status=%d\n", getpid(), child_pid, WEXITSTATUS(status));
+	}
+	/* in questo caso deve segnalare errno = ECHILD */
+	if(errno != ECHILD){
+		ERROR("nell'attesa della terminazione dei processi figli.\nerrno != ECHILD")
+		TEST_ERROR
+	} else 
+		printf("Chiusura di tutti i processi effettuata.\nInizio deallocazione risorse IPC.\n");
 
 	/* de-allocazione risorse IPC */
 	if(semctl(sem_banchine_id, 0, IPC_RMID) == 0)
-		printf("Array banchine disallocato.\n");
-	else{
-		ERROR("nella deallocazione dell'array di banchine")
+		printf("Array banchine deallocato.\n");
+	else {
+		ERROR("nella deallocazione dell'array banchine")
 	}
-
 	if(shmctl(dump_id, 0, IPC_RMID) == 0)
-		printf("Memoria di dump disallocata.\n");
-	else{
-		ERROR("nella deallocazione della memoria di dump")
+		printf("Memoria dump deallocata.\n");
+	else {
+		ERROR("nella deallocazione della memoria dump")
 	}
-
-	if(shmctl(porti_id, 0, IPC_RMID) == 0)
-		printf("Memoria di stato dei porti disallocata.\n");
-	else{
-		ERROR("nella deallocazione della memoria di stato dei porti")
+	if(shmctl(mercato_id, 0, IPC_RMID) == 0)
+		printf("Memoria mercato deallocata.\n");
+	else {
+		ERROR("nella deallocazione della memoria mercato")
+	}
+	if(shmctl(posizioni_id, 0, IPC_RMID) == 0)
+		printf("Memoria delle posizioni deallocata.\n");
+	else {
+		ERROR("nella deallocazione della memoria delle posizioni")
+	}
+	if(shmctl(coda_richieste_id, 0, IPC_RMID) == 0)
+		printf("Coda delle richieste deallocata.\n");
+	else {
+		ERROR("nella deallocazione della coda delle richieste")
 	}
 	exit(EXIT_SUCCESS);
 }

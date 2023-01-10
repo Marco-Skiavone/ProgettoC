@@ -1,3 +1,32 @@
+#define _GNU_SOURCE
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <sys/ipc.h>
+#include <sys/sem.h>
+#include <sys/shm.h>
+#include <sys/msg.h>
+#include <sys/types.h>
+#include <errno.h>
+#include <unistd.h>
+#include <wait.h>
+
+/* stampa un messaggio di errore dove str è una stringa personalizzabile */
+#define ERROR(str)											\
+	fprintf(stderr, "\nErrore %s a linea %d!\n", str, __LINE__);
+
+/* controlla il valore di errno e nel caso lo segnala */
+#define TEST_ERROR 							\
+	if (errno) {							\
+		fprintf(stderr,						\
+		"%s:%d: PID=%5d: Error %d (%s)\n", 	\
+		__FILE__,							\
+		__LINE__,							\
+		getpid(),							\
+		errno,								\
+		strerror(errno));					\
+	}
+
 /* indice dei parametri */
 #define SO_NAVI 0
 #define SO_PORTI 1
@@ -26,22 +55,35 @@
 /* i byte necessari per il dump (shm) */
 #define SIZE_DUMP 100
 
-/* key del dump (shm) */
-#define DUMP_KEY 11
+/* key della memoria di dump (shm) */
+#define KEY_DUMP 11
 
 /* n. di byte usati da ogni porto nella shm "registro porti" */
-#define PORTO_REGISTER_SIZE 100
+#define SIZE_PORTO_IN_MERCATO 100
 
-/* i byte necessari per il registro dei porti (shm) */
-#define SIZE_MEM_PORTI (PARAMETRO[SO_PORTI]*PORTO_REGISTER_SIZE)
+/* i byte necessari per la memoria mercato (shm) */
+#define SIZE_MERCATO (PARAMETRO[SO_PORTI]*SIZE_PORTO_IN_MERCATO)
 
-/* key del registro dei porti (shm) */
-#define PORTI_MEM_KEY 12
+/* key della memoria del mercato (shm) */
+#define KEY_MERCATO 12
 
-/* key del set di semafori per gestire le banchine*/
-#define BANCHINE_SEM_KEY 21
+/* key della memoria posizioni */
+#define KEY_POSIZIONI 13
+
+/* i byte necessari per la memoria posizioni (shm) */
+#define SIZE_POSIZIONI sizeof(point)*PARAMETRO[SO_PORTI]
+
+/* key della coda di richieste */
+#define KEY_CODA_RICHIESTE 21
+
+/* key del set di semafori per gestire le banchine */
+#define KEY_BANCHINE_SEM 31
 
 typedef struct _position{
 	double x;
 	double y;
 } point;
+
+/* abbiamo definito qui il seed delle generazioni
+ randomiche che possiamo usare nelle varie simulazioni */
+#define SEED getpid()
