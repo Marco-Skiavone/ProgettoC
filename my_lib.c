@@ -49,7 +49,7 @@ int sem_getall(char * my_string, int sem_id) {
 	}
 }
 
-/* Set all n_sems semaphore values to value */
+/* Setta tutti i n_sems semafori ai valori */
 int sem_setall(int n_sems, int value, int sem_id) {
 	union semun arg;   /* man semctl per vedere def della union  */ 
 	short unsigned int *buf_valori = (short unsigned int *) malloc(n_sems*sizeof(int));
@@ -64,4 +64,20 @@ int sem_setall(int n_sems, int value, int sem_id) {
 	semctl(sem_id, 0, SETALL, arg);
 	TEST_ERROR
 	return errno;
+}
+
+point generate_rand_point(int LATO){
+	/*valori ausiliari generazione punto casuale*/
+	int p_intera, mantissa;
+	point p;
+	/*coordinata x*/
+	srand(SEED);
+	mantissa = p_intera = rand()%LATO;
+	/*parte decimale + parte intera*/
+	p.x = ((double)p_intera/LATO) + (mantissa*getppid()%LATO);
+	/*coordinata y*/
+	srand(p_intera);
+	mantissa = p_intera = rand()%LATO;
+	p.y = ((double)p_intera/LATO) + ((mantissa*getppid()%LATO));
+
 }

@@ -2,8 +2,7 @@
 #include "my_lib.h"
 
 /* contiene tutti i parametri */
-int PARAMETRO[QNT_PARAMETRI];
-
+extern int PARAMETRO[QNT_PARAMETRI];
 
 int main(int argc, char *argv[]){
 	int NUM_RIGA_FILE, i, file_config_char, status = 0;
@@ -12,11 +11,9 @@ int main(int argc, char *argv[]){
 	int child_pid;
 	FILE *file_config;
 	char *str = (char *) malloc(MAX_FILE_STR_LEN);
-	char *dump_p = (char *) malloc(SIZE_DUMP);
-	char *mercato_p = (char *) malloc(SIZE_MERCATO);
-	char *posizioni_p = (char *) malloc(SIZE_POSIZIONI);
+	char *dump_p, *mercato_p, *posizioni_p;
 	char *argv_figli[QNT_PARAMETRI+2]; /* null terminated */
-	/* fine definizioni di tipi */
+	/* fine definizioni */
 	if(argc != 2){
 		fprintf(stderr, "Ri-eseguire con il parametro: var=[NUM_RIGA_FILE]\n");
 		exit(EXIT_FAILURE);
@@ -102,7 +99,7 @@ int main(int argc, char *argv[]){
 	#endif
 
 	/* creazione delle posizioni e aggiunta alla memoria dedicata */
-
+	generate_rand_point();
 
 	/* definizione dell'argv dei figli */
 	*argv_figli = (char *) malloc(MAX_STR_LEN*(QNT_PARAMETRI+1));

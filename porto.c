@@ -21,7 +21,5 @@ int main(int argc, char *argv[]){
 	srand(SEED);
 	
 
-
-
 	exit(EXIT_SUCCESS);
 }
