@@ -1,16 +1,8 @@
 #include "definitions.h"
+/*
+    DA FIXARE I PARAMETRI ZIOPERONE E RIGUARDARE SETUP
 
-#define TEST_ERROR 							\
-	if (errno) {							\
-		fprintf(stderr,						\
-		"%s:%d: PID=%5d: Error %d (%s)\n", 	\
-		__FILE__,							\
-		__LINE__,							\
-		getpid(),							\
-		errno,								\
-		strerror(errno));					\
-	}
-
+*/
 //agomenti della ftok
 #define ftok_arg1 "/master.c"
 #define ftok_arg2 1
@@ -25,6 +17,7 @@
 #define noscadenza 50
 
 
+
 typedef struct{
     int val;
     int exp;
@@ -32,18 +25,18 @@ typedef struct{
 
 /*
     definizione puntatore a vettori di merci
-    merce (*ptr)[SO_MERCI];
+    merce (*ptr)[parametro[SO_MERCI]];
 */
 
-merce dettagliLotti[SO_MERCI];
+
 
 //id shared memori mercato
 int shmid;
 
-int shm_mercato(){
+int shm_mercato(int par_SO_PORTI, int par_SO_MERCI){
 
     key_t chiave;
-    int shm_size = SO_PORTI * SO_MERCI * sizeof(merce);
+    int shm_size = par_SO_PORTI * par_SO_MERCI * sizeof(merce);
 
     chiave = ftok(ftok_arg1, ftok_arg2);
 
@@ -60,38 +53,36 @@ int getIdMercato(){
     return shmid;
 }
 
-int setUpLotti(){
+merce setUpLotto(int nmerci, int par_SO_SIZE, int par_SO_MIN_VITA, int par_SO_MAX_VITA){
     srand(time(NULL));
-    int lottoDaUno = 0;
-
-    //setuppa il vettore delle merci con le informazioni sul peso dei lotti e sulla scadenza
-    for(int i=0;i<SO_MERCI;i++){
-        dettagliLotti[i].val = rand() % SO_SIZE + 1;
-        dettagliLotti[i].exp = SO_MIN_VITA + rand() % (SO_MAX_VITA - SO_MIN_VITA + 1);
-        //controlla se esiste un lotto da 1 tonnellata
-        if(dettagliLotti[i].val == 0){  lottoDaUno = 1; }
+    static int lottoDaUno = 0;
+    static int mlette = 0;
+    merce tmp;
+    tmp.val = rand() % par_SO_SIZE + 1;
+    tmp.exp = par_SO_MIN_VITA+ rand() % (par_SO_MAX_VITA - par_SO_MAX_VITA + 1);
+    if(tmp.val == 1){
+        lottoDaUno = 1;
     }
-    //setta lotto da 1 tonnellata se non esiste
-    if(!lottoDaUno){
-        dettagliLotti[rand()% SO_MERCI + 0].val = 1;
+    if(mlette == (nmerci-1) && lottoDaUno == 0){
+        tmp.val = 1;
     }
-
+    return tmp;
 }
 
 
-int spawnMerciPorti(merce (*ptr)[SO_PORTI], int i){
-    int toFill = SO_FILL;
+int spawnMerciPorti(int par_SO_FILL, int par_SO_PORTI, int par_SO_MERCI, merce (*ptr)[par_SO_MERCI], int i, merce (*dettagliLotti)[par_SO_MERCI]){
+    int toFill = par_SO_FILL;
     int r, tmp;
 
     //per ogni merce, aggiungi in offerta o domanda un random r lotti
-    for(int j=0;j<SO_MERCI;j++){
+    for(int j=0;j<par_SO_MERCI;j++){
         r = rand() % max_merci_spawn_random + 0;
-        tmp = dettagliLotti[j].val * r;
+        tmp = dettagliLotti[j]->val * r;
 
         //se il peso generato supera il valore di toFill, cicla fino ad un valore inferiore
         while(tmp>toFill){
             r = r-riducirandom;
-            tmp = dettagliLotti[j].val *r;
+            tmp = dettagliLotti[j]->val * r;
         }
         //se la riduzione del peso scende sotto lo zero, si imposta la merce a 0
         if(tmp < 0){
@@ -103,14 +94,14 @@ int spawnMerciPorti(merce (*ptr)[SO_PORTI], int i){
             (*(ptr+i)+j)->exp = noscadenza;
         }else{         //altrimenti si imposta in offerta
             (*(ptr+i)+j)->val = r;
-            (*(ptr+i)+j)->exp = dettagliLotti[j].exp;
+            (*(ptr+i)+j)->exp = dettagliLotti[j]->exp;
         }
 
         toFill-=tmp;
 
         //se sono state generate domande e offerte pari a toFill, tutte le altre merci si impostano a 0
         if(toFill == 0){
-            for(int k=j;k<SO_MERCI;k++){
+            for(int k=j;k<par_SO_MERCI;k++){
                 (*(ptr+i)+k)->val = 0;
                 (*(ptr+i)+k)->exp = noscadenza;
             }
@@ -122,21 +113,21 @@ int spawnMerciPorti(merce (*ptr)[SO_PORTI], int i){
     //fino a raggiungere toFill
     while(toFill>0){
         
-        for(int j=0;j<SO_MERCI;j++){
+        for(int j=0;j<par_SO_MERCI;j++){
             
             //aumenta offerta
             if((*(ptr+i)+j)->val > 0){
-                if(toFill > dettagliLotti[j].val){
+                if(toFill > dettagliLotti[j]->val){
                     (*(ptr+i)+j)->val++;
-                    toFill-=dettagliLotti[j].val;
+                    toFill-=dettagliLotti[j]->val;
                 }
             }
 
             //aumenta domanda
             if((*(ptr+i)+j)->val < 0){
-                if(toFill > dettagliLotti[j].val){
+                if(toFill > dettagliLotti[j]->val ){
                     (*(ptr+i)+j)->val--;
-                    toFill-=dettagliLotti[j].val;
+                    toFill-= dettaglioLotti[j]->val;
                 }
             }
         }
