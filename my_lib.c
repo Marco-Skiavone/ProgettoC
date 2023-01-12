@@ -66,18 +66,27 @@ int sem_setall(int n_sems, int value, int sem_id) {
 	return errno;
 }
 
+/* genera e restituisce un punto in maniera randomica, dato SO_LATO */
 point generate_rand_point(int LATO){
 	/*valori ausiliari generazione punto casuale*/
-	int p_intera, mantissa;
+	int mant, p_intera;
 	point p;
 	/*coordinata x*/
-	srand(SEED);
-	mantissa = p_intera = rand()%LATO;
+	
+	p_intera = mant = rand()%LATO;
 	/*parte decimale + parte intera*/
-	p.x = ((double)p_intera/LATO) + (mantissa*getppid()%LATO);
+	p.x = ((double)mant/LATO) + (p_intera*getppid()%LATO);
 	/*coordinata y*/
-	srand(p_intera);
-	mantissa = p_intera = rand()%LATO;
-	p.y = ((double)p_intera/LATO) + ((mantissa*getppid()%LATO));
+	/*srand(mant);*/
+	p_intera = mant = rand()%LATO;
+	p.y = ((double)mant/LATO) + ((p_intera*getppid()%LATO));
+	return p;
+}
 
+/* metodo per vedere se 2 double sono accettabilmente distanti (TOLLERANZA) s*/
+int equals(double x, double y){
+	if(x > y)
+		return (x-y) < TOLLERANZA ? 1: 0;
+	else 
+		return (y-x) < TOLLERANZA ? 1 : 0;
 }
