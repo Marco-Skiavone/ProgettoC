@@ -1,6 +1,7 @@
 #include "definitions.h"	/* contiene le altre #include */
 #include "my_lib.h"
 #include <sys/stat.h>
+#include "merci_lib.h"
 
 /* contiene tutti i parametri */
 int PARAMETRO[QNT_PARAMETRI];
@@ -169,6 +170,12 @@ int main(int argc, char *argv[]){
 		printf("Porto %d: x = %f, y = %f\n", i, (posizioni_p)->x, (posizioni_p)->y);
 		posizioni_p++;
 	}
+	
+
+	shm_mercato(SO_PORTI, SO_MERCI);
+	
+
+	printf("\nesito: %d",  coda_richieste());
 	
 
 	exit(0);
