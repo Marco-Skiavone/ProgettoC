@@ -16,12 +16,18 @@
 //valore per merci che sono a 0 o in domanda (quindi, che non scadono)
 #define noscadenza 50
 
+#define chiavecoda 77
 
 
 typedef struct{
     int val;
     int exp;
 } merce;
+
+struct msgbuff{
+    long mtype;
+    char testo[100];
+};
 
 /*
     definizione puntatore a vettori di merci
@@ -32,6 +38,7 @@ typedef struct{
 
 //id shared memori mercato
 int shmid;
+int qid;
 
 int shm_mercato(int par_SO_PORTI, int par_SO_MERCI){
 
@@ -52,6 +59,17 @@ int shm_mercato(int par_SO_PORTI, int par_SO_MERCI){
 int getIdMercato(){
     return shmid;
 }
+
+int* agganciaMercato(){
+    return shmat(shmid, NULL, 0);
+}
+
+int sganciaMercato(){
+    return shmdt(agganciaMercato());
+}
+
+
+
 
 merce setUpLotto(int nmerci, int par_SO_SIZE, int par_SO_MIN_VITA, int par_SO_MAX_VITA){
     srand(time(NULL));
@@ -127,13 +145,75 @@ int spawnMerciPorti(int par_SO_FILL, int par_SO_PORTI, int par_SO_MERCI, merce (
             if((*(ptr+i)+j)->val < 0){
                 if(toFill > dettagliLotti[j]->val ){
                     (*(ptr+i)+j)->val--;
-                    toFill-= dettaglioLotti[j]->val;
+                    toFill-= dettagliLotti[j]->val;
                 }
             }
         }
     }
 }
 
+/*
+int caricamerci(int indiceporto, int indicemerce, int nlotti, int par_SO_MERCI){
+    merce (*ptr)[par_SO_MERCI] = agganciaMercato();
+    int exp;
+    (*(ptr+indicemerce)+indicemerce)->val -= nlotti;
+    if((*(ptr+indicemerce)+indicemerce)->val == 0){
+        
+    }
+}
+*/
 
+merce caricamerci(int indiceporto, int indicemerce, int nlotti, int pesolotto, int spaziolibero, int scadenza, int par_SO_MERCI){
+    merce (*ptr)[par_SO_MERCI] = agganciaMercato();
+    merce ritorno;
 
+    while(nlotti * pesolotto > spaziolibero){
+        nlotti--;
+    }
 
+    if((*(ptr+indiceporto)+indicemerce)->exp<scadenza){
+        ritorno.val = -1;
+        ritorno.exp = -1;
+        return ritorno;
+    }
+
+    if((*(ptr+indiceporto)+indicemerce)->val > nlotti){
+        ritorno.val -= nlotti;
+        ritorno.exp = (*(ptr+indiceporto)+indicemerce)->val;
+
+    }else if((*(ptr+indiceporto)+indicemerce)->val == nlotti){
+        ritorno.val = nlotti;
+        ritorno.exp = (*(ptr+indiceporto)+indicemerce)->exp;
+        (*(ptr+indiceporto)+indicemerce)->val = 0;
+        (*(ptr+indiceporto)+indicemerce)->exp = noscadenza;
+
+    }else{
+        ritorno.val = (*(ptr+indiceporto)+indicemerce)->val;
+        ritorno.exp = (*(ptr+indiceporto)+indicemerce)->exp;
+        (*(ptr+indiceporto)+indicemerce)->val = 0;
+        (*(ptr+indiceporto)+indicemerce)->exp = noscadenza;
+    }
+
+    return ritorno;
+}
+
+int scaricamerce(merce scarico, int indiceporto, int indicemerce, int data, int par_SO_MERCI){
+    merce (*ptr)[par_SO_MERCI] = agganciaMercato();
+    if(scarico.exp >= data){
+        
+        (*(ptr+indiceporto)+indicemerce)->val += scarico.val;
+        (*(ptr+indiceporto)+indicemerce)->exp = scarico.exp;
+
+        /*
+            aggiorna consegnata al porto
+        */
+        
+        return 1;
+    }else{
+
+        /*
+            aggiorna scaduta in mare;
+        */
+       return 0;
+    }
+}
