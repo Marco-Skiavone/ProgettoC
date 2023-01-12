@@ -16,7 +16,10 @@
 /* valore per merci che sono a 0 o in domanda (quindi, che non scadono) */
 #define noscadenza 50
 
+/* chiave per la creazione della coda */
 #define chiavecoda 77
+
+#define msgsize sizeof(int)*2
 
 
 typedef struct{
@@ -24,10 +27,11 @@ typedef struct{
     int exp;
 } merce;
 
-struct msgbuff{
+typedef struct {
     long mtype;
-    char testo[100];
-};
+    int indicemerce;
+    int nlotti;
+}richiesta;
 
 /*
     definizione puntatore a vettori di merci
@@ -40,6 +44,8 @@ struct msgbuff{
 int shmid;
 int qid;
 
+merce(*puntatore)[];
+
 int shm_mercato(int par_SO_PORTI, int par_SO_MERCI){
 
     key_t chiave;
@@ -49,26 +55,54 @@ int shm_mercato(int par_SO_PORTI, int par_SO_MERCI){
 
     TEST_ERROR
 
-    int smid = shmget(chiave, shm_size, IPC_CREAT | IPC_EXCL | 0666);
+    shmid = shmget(chiave, shm_size, IPC_CREAT | IPC_EXCL | 0666);
+
+    TEST_ERROR
+    
+    puntatore = shmat(shmid, NULL, 0);
 
     TEST_ERROR
 
-    return shmid;
+    return 1;
 }
 
-int getIdMercato(){
-    return shmid;
-}
-
-int* agganciaMercato(){
-    return shmat(shmid, NULL, 0);
+void* indirizzoMercato(){
+    return puntatore;
 }
 
 int sganciaMercato(){
-    return shmdt(agganciaMercato());
+    return shmdt(puntatore);
 }
 
 
+int coda_richieste(){
+
+    msgget(qid, IPC_CREAT | IPC_EXCL | 0666);
+
+    TEST_ERROR;
+    
+    return 1;
+    
+}
+
+int inviaRichiesta(richiesta rich){
+
+    msgsnd(qid, &rich, msgsize, 0);
+    TEST_ERROR
+
+    return 1;
+}
+
+richiesta accettaRichiesta(int nporto){
+    richiesta ritorno;
+
+    if(msgrcv(qid, &ritorno, msgsize, nporto, IPC_NOWAIT)<0){
+        ritorno.indicemerce-1;
+    }
+    TEST_ERROR
+
+    return ritorno;
+}
 
 
 merce setUpLotto(int nmerci, int par_SO_SIZE, int par_SO_MIN_VITA, int par_SO_MAX_VITA){
@@ -164,7 +198,7 @@ int caricamerci(int indiceporto, int indicemerce, int nlotti, int par_SO_MERCI){
 */
 
 merce caricamerci(int indiceporto, int indicemerce, int nlotti, int pesolotto, int spaziolibero, int scadenza, int par_SO_MERCI){
-    merce (*ptr)[par_SO_MERCI] = agganciaMercato();
+    merce (*ptr)[par_SO_MERCI] = indirizzoMercato();
     merce ritorno;
 
     while(nlotti * pesolotto > spaziolibero){
@@ -198,11 +232,11 @@ merce caricamerci(int indiceporto, int indicemerce, int nlotti, int pesolotto, i
 }
 
 int scaricamerce(merce scarico, int indiceporto, int indicemerce, int data, int par_SO_MERCI){
-    merce (*ptr)[par_SO_MERCI] = agganciaMercato();
+    merce (*ptr)[par_SO_MERCI] = indirizzoMercato();
     if(scarico.exp >= data){
         
         (*(ptr+indiceporto)+indicemerce)->val += scarico.val;
-        (*(ptr+indiceporto)+indicemerce)->exp = scarico.exp;
+        (*(ptr+indiceporto)+indicemerce)->exp = noscadenza;
 
         /*
             aggiorna consegnata al porto
