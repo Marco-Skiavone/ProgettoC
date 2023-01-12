@@ -16,13 +16,12 @@
 /* valore per merci che sono a 0 o in domanda (quindi, che non scadono) */
 #define noscadenza 50
 
-/* chiave per la creazione della coda */
-#define chiavecoda 77
+
 
 #define msgsize sizeof(int)*2
 
 
-typedef struct{
+typedef struct {
     int val;
     int exp;
 } merce;
@@ -51,8 +50,7 @@ int shm_mercato(int par_SO_PORTI, int par_SO_MERCI){
     key_t chiave;
     int shm_size = par_SO_PORTI * par_SO_MERCI * sizeof(merce);
 
-    chiave = ftok(ftok_arg1, ftok_arg2);
-
+    chiave = KEY_MERCATO;
     TEST_ERROR
 
     shmid = shmget(chiave, shm_size, IPC_CREAT | IPC_EXCL | 0666);
@@ -76,12 +74,13 @@ int sganciaMercato(){
 
 
 int coda_richieste(){
-
-    msgget(qid, IPC_CREAT | IPC_EXCL | 0666);
+    int esito;
+    qid = KEY_CODA_RICHIESTE;
+    esito = msgget(qid, IPC_CREAT | IPC_EXCL | 0666);
 
     TEST_ERROR;
     
-    return 1;
+    return esito;
     
 }
 
