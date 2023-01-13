@@ -1,14 +1,6 @@
-typedef struct{
-    int val;
-    int exp;
-} merce;
-
-typedef struct {
-    long mtype;
-    int indicemerce;
-    int nlotti;
-}richiesta;
-
+#ifndef _DEFINITIONS_H
+    #include "definitions.h"
+#endif
 
 int shm_mercato(int par_SO_PORTI, int par_SO_MERCI);
 
