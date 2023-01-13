@@ -1,44 +1,24 @@
-#include "definitions.h"
-/*
-    DA FIXARE I PARAMETRI ZIOPERONE E RIGUARDARE SETUP
+#ifndef _DEFINITIONS_H
+	#include "definitions.h"
+#endif
 
-*/
 /* agomenti della ftok */
 #define ftok_arg1 "/master.c"
 #define ftok_arg2 1
 
 /* range alto del random */
-#define max_merci_spawn_random 10
+#define MAX_MERCI_SPAWN_RANDOM 10
 
 /* parametro per abbassare il random se troppo alto */
-#define riducirandom 3
+#define RIDUCI_RANDOM 3
 
 /* valore per merci che sono a 0 o in domanda (quindi, che non scadono) */
-#define noscadenza 50
-
-#define chiaveShmLotti 66
-
-
-#define msgsize sizeof(int)*2
-
-
-typedef struct {
-    int val;
-    int exp;
-} merce;
-
-typedef struct {
-    long mtype;
-    int indicemerce;
-    int nlotti;
-}richiesta;
+#define NO_SCADENZA 50
 
 /*
     definizione puntatore a vettori di merci
     merce (*ptr)[parametro[SO_MERCI]];
 */
-
-
 
 /* id shared memori mercato */
 int shmmercato;
@@ -49,8 +29,8 @@ int shmlotti;
 merce(*puntatore)[];
 merce* dettagliLotti;
 
+/* Crea memoria mercato */
 int shm_mercato(int par_SO_PORTI, int par_SO_MERCI){
-
     key_t chiave;
     int shm_size = par_SO_PORTI * par_SO_MERCI * sizeof(merce);
 
@@ -68,15 +48,14 @@ int shm_mercato(int par_SO_PORTI, int par_SO_MERCI){
     return 1;
 }
 
-int shm_lotti(int par_SO_MERCI){
-    
-    shmlotti = shmget(chiaveShmLotti, (sizeof(merce)*par_SO_MERCI), IPC_CREAT | IPC_EXCL | 0666);
+/* crea la memoria lotti*/
+int shm_lotti(int par_SO_MERCI){  
+    shmlotti = shmget(KEY_LOTTI, (sizeof(merce)*par_SO_MERCI), IPC_CREAT | IPC_EXCL | 0666);
     TEST_ERROR
 
     dettagliLotti = shmat(shmlotti, NULL, 0);
 
     TEST_ERROR
-
 
     return 1;
 }
@@ -86,7 +65,7 @@ void* indirizzoDettagliLotti(){
 }
 
 int sganciaDettagliLotti(){
-    shmdt(dettagliLotti);
+    return shmdt(dettagliLotti);
 }
 
 void* indirizzoMercato(){
@@ -97,7 +76,7 @@ int sganciaMercato(){
     return shmdt(puntatore);
 }
 
-
+/* crea la coda richieste */
 int coda_richieste(){
     
     qid = msgget(KEY_CODA_RICHIESTE, IPC_CREAT | IPC_EXCL | 0666);
@@ -110,7 +89,7 @@ int coda_richieste(){
 
 int inviaRichiesta(richiesta rich){
 
-    msgsnd(qid, &rich, msgsize, 0);
+    msgsnd(qid, &rich, SIZE_MSG, 0);
     TEST_ERROR
 
     return 1;
@@ -119,7 +98,7 @@ int inviaRichiesta(richiesta rich){
 richiesta accettaRichiesta(int nporto){
     richiesta ritorno;
 
-    if(msgrcv(qid, &ritorno, msgsize, nporto, IPC_NOWAIT)<0){
+    if(msgrcv(qid, &ritorno, SIZE_MSG, nporto, IPC_NOWAIT)<0){
         ritorno.indicemerce-1;
     }
     TEST_ERROR
@@ -151,7 +130,7 @@ int distruggiShmDettagliLotti(){
     return 1;
 }
 
-
+/* Il chiamante deve settare un random */
 merce setUpLotto(int nmerci, int par_SO_SIZE, int par_SO_MIN_VITA, int par_SO_MAX_VITA){
     /* il chiamante deve settare un random */
     static int lottoDaUno = 0;
@@ -175,22 +154,22 @@ int spawnMerciPorti(int par_SO_FILL, int par_SO_MERCI, merce (*ptr)[par_SO_MERCI
 
     /* per ogni merce, aggiungi in offerta o domanda un random r lotti */
     for(j=0;j<par_SO_MERCI;j++){
-        r = rand() % max_merci_spawn_random + 0;
+        r = rand() % MAX_MERCI_SPAWN_RANDOM + 0;
         tmp = dettagliLotti[j].val * r;
 
         /* se il peso generato supera il valore di toFill, cicla fino ad un valore inferiore */
         while(tmp>toFill){
-            r = r-riducirandom;
+            r = r-RIDUCI_RANDOM;
             tmp = dettagliLotti[j].val * r;
         }
         /* se la riduzione del peso scende sotto lo zero, si imposta la merce a 0 */
         if(tmp < 0){
             (*(ptr+i)+j)->val = 0;
-            (*(ptr+i)+j)->val = noscadenza;
+            (*(ptr+i)+j)->val = NO_SCADENZA;
             tmp = 0;
         }else if(r&1){ /* se il random generato è pari, si imposta la merce in domanda */
             (*(ptr+i)+j)->val = -r;
-            (*(ptr+i)+j)->exp = noscadenza;
+            (*(ptr+i)+j)->exp = NO_SCADENZA;
         }else{         /* altrimenti si imposta in offerta */
             (*(ptr+i)+j)->val = r;
             (*(ptr+i)+j)->exp = dettagliLotti[j].exp;
@@ -202,7 +181,7 @@ int spawnMerciPorti(int par_SO_FILL, int par_SO_MERCI, merce (*ptr)[par_SO_MERCI
         if(toFill == 0){
             for(k=j;k<par_SO_MERCI;k++){
                 (*(ptr+i)+k)->val = 0;
-                (*(ptr+i)+k)->exp = noscadenza;
+                (*(ptr+i)+k)->exp = NO_SCADENZA;
             }
         }
     
@@ -266,13 +245,13 @@ merce caricamerci(int indiceporto, int indicemerce, int nlotti, int pesolotto, i
         ritorno.val = nlotti;
         ritorno.exp = (*(ptr+indiceporto)+indicemerce)->exp;
         (*(ptr+indiceporto)+indicemerce)->val = 0;
-        (*(ptr+indiceporto)+indicemerce)->exp = noscadenza;
+        (*(ptr+indiceporto)+indicemerce)->exp = NO_SCADENZA;
 
     }else{
         ritorno.val = (*(ptr+indiceporto)+indicemerce)->val;
         ritorno.exp = (*(ptr+indiceporto)+indicemerce)->exp;
         (*(ptr+indiceporto)+indicemerce)->val = 0;
-        (*(ptr+indiceporto)+indicemerce)->exp = noscadenza;
+        (*(ptr+indiceporto)+indicemerce)->exp = NO_SCADENZA;
     }
 
     return ritorno;
@@ -283,7 +262,7 @@ int scaricamerce(merce scarico, int indiceporto, int indicemerce, int data, int 
     if(scarico.exp >= data){
         
         (*(ptr+indiceporto)+indicemerce)->val += scarico.val;
-        (*(ptr+indiceporto)+indicemerce)->exp = noscadenza;
+        (*(ptr+indiceporto)+indicemerce)->exp = NO_SCADENZA;
 
         /*
             aggiorna consegnata al porto

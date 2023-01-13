@@ -11,11 +11,6 @@ DEBUG = Dapplication
 OBJS = *lib.o
 SOURCES = *.c
 #var = [parametro da inserire su cmd: "make run var=[args]"]
-all: $(SOURCES)
-	gcc $(CFLAGS) $(SOURCES) -c
-	gcc $(OBJS) master.o -o $(TARGET) -lm
-	$(PORTO)
-	$(NAVE)
 
 $(OBJS): $(SOURCES)
 	gcc $(CFLAGS) $(SOURCES) -c
@@ -23,20 +18,21 @@ $(OBJS): $(SOURCES)
 $(TARGET): $(OBJS)
 	gcc $(OBJS) master.o -o $(TARGET)
 
-$(PORTO): $(OBJS)
-	gcc $(OBJS) porto.o -o $(PORTO) -lm
-
-$(NAVE): $(OBJS)
-	gcc $(OBJS) nave.o -o $(NAVE) -lm
-
 $(DEBUG): $(SOURCES)
 	gcc $(DEVFLAGS) $(SOURCES) -D DEBUG -c
 	gcc $(OBJS) master.o -o $(DEBUG)
 	$(PORTO)
 	$(NAVE)
 
+all: $(SOURCES)
+	gcc $(CFLAGS) $(SOURCES) -c
+	gcc $(OBJS) master.o -o $(TARGET) -lm
+	gcc $(OBJS) porto.o -o $(PORTO) -lm
+	gcc $(OBJS) nave.o -o $(NAVE) -lm
+
 run: $(TARGET) $(PORTO) $(NAVE)
 	./$(TARGET) $(var)
+
 debug: $(DEBUG)
 	./$(DEBUG) $(var)
 

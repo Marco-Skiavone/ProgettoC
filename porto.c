@@ -7,7 +7,8 @@ int PARAMETRO[QNT_PARAMETRI];
 
 int main(int argc, char *argv[]){
 	int i, index;
-
+	freopen("text.txt", "w+", stdout);
+	printf("porto di merda!\n");
 
 	/*1 = # porto (per array banchine), #[QNT_PARAMETRI] parametri */
 	if(argc != (1+QNT_PARAMETRI)){

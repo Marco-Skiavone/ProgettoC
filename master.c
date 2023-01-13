@@ -1,12 +1,12 @@
 #include "definitions.h"	/* contiene le altre #include */
 #include "my_lib.h"
-#include <sys/stat.h>
 #include "merci_lib.h"
 
 /* contiene tutti i parametri */
 int PARAMETRO[QNT_PARAMETRI];
 
 int main(int argc, char *argv[]){
+	int fd;
 	int NUM_RIGA_FILE, i, j, file_config_char, status = 0;
 	/* id delle risorse ipc create */
 	int dump_id, mercato_id, posizioni_id, coda_richieste_id, sem_banchine_id;
@@ -204,7 +204,7 @@ int main(int argc, char *argv[]){
 
 
 	/* definizione dell'argv dei figli */
-	*argv_figli = (char *) malloc(MAX_STR_LEN*(QNT_PARAMETRI+1));
+	*argv_figli = (char *) malloc(MAX_STR_LEN*(QNT_PARAMETRI+3));
 	for(i = 2; i < QNT_PARAMETRI+2; i++){
 		argv_figli[i] = (char *) malloc(MAX_STR_LEN); 
 		sprintf(argv_figli[i], "%d", PARAMETRO[i]);
@@ -218,17 +218,22 @@ int main(int argc, char *argv[]){
 				TEST_ERROR
 				break;
 			case 0:	/* proc figlio */
+				printf("prova");
 				if(i < SO_PORTI){
+					
 					argv_figli[0] = "porto";
 					sprintf(argv_figli[1], "%d", i);
-					execv("porto", argv_figli);
+					execv("./porto", argv_figli);
 				} else {
 					argv_figli[0] = "nave";
 					sprintf(argv_figli[1], "%d", (i-SO_PORTI));
-					execv("nave", argv_figli);
+					execv("./nave", argv_figli);
 				}
+				
 				break;
 			default:
+				if(i == 0)
+					close(fd);
 				break;
 		}
 	}

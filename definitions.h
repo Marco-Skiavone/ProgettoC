@@ -1,6 +1,8 @@
 #define _GNU_SOURCE
+#define _DEFINITIONS_H
 #include <stdio.h>
 #include <stdlib.h>
+#include <fcntl.h>
 #include <string.h>
 #include <sys/ipc.h>
 #include <sys/sem.h>
@@ -11,6 +13,9 @@
 #include <unistd.h>
 #include <wait.h>
 #include <sys/stat.h>
+#include <time.h>
+#include <math.h>
+
 
 /* stampa un messaggio di errore dove str è una stringa personalizzabile */
 #define ERROR(str)											\
@@ -101,6 +106,14 @@ S_IWUSR | S_IRUSR /* | S_IRGRP | S_IWGRP| S_IROTH | S_IWOTH */
 /* key della coda di richieste */
 #define KEY_CODA_RICHIESTE 21
 
+/* chiave per definire la shm dei lotti */
+#define KEY_LOTTI 66
+
+#define SIZE_LOTTI 
+
+/* size di ogni messaggio in coda richieste */
+#define SIZE_MSG sizeof(int)*2
+
 /* key del set di semafori per gestire le banchine */
 #define KEY_BANCHINE_SEM 31
 
@@ -112,14 +125,7 @@ typedef struct _position {
 	double y;
 } point;
 
-/* struct di composizione del dump 
-typedef struct _shm_dump {
-	info_merce merce[PARAMETRO[I_MERCI]];
-	info_porto porti[PARAMETRO[I_PORTI]];
-	info_nave nave;
-} shm_dump;*/
-
-/* struct di composizione di ogni tipo di merce */
+/* struct di composizione di ogni tipo di merce, porto e info delle navi
 typedef struct _info_merce {
 	int in_nave;
 	int in_porto;
@@ -138,7 +144,29 @@ typedef struct _info_nave {
 	int in_mare_con_carico;
 	int in_mare_vuota;
 	int in_porto;
-} info_nave;
+} info_nave;*/
+
+typedef struct { /*struct ritornata da porto_piu_vicino*/
+	int indice_porto; /*i del ciclo*/
+	int nanosec_nano;
+	/*restituisco anche le coordinate del porto dove si troverà la nave dopo*/
+	double x;
+	double y;
+} viaggio;
+
+/* Rappresenta un lotto di merce */
+typedef struct {
+    int val;
+    int exp;
+} merce;
+
+/* richiesta da inserire in CODA MSG*/
+typedef struct {
+    long mtype;
+    int indicemerce;
+    int nlotti;
+} richiesta;
+
 
 
 /* abbiamo definito qui il seed delle generazioni
