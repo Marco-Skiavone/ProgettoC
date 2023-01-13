@@ -84,9 +84,9 @@ int main(int argc, char *argv[]){
 	/* creazione della shm "posizioni" */
 	posizioni_id = shmget(KEY_POSIZIONI, SIZE_POSIZIONI, IPC_CREAT | IPC_EXCL | PERMESSI);
 	TEST_ERROR
-	printf("posizioni id: %d\n", posizioni_id);
+	
 	posizioni_p = shmat(posizioni_id, NULL, 0);
-	printf("posizioni p: %p\n", posizioni_p);
+	
 	TEST_ERROR
 	#ifdef DEBUG
 		printf("Memoria posizioni creata con id = %d\n", posizioni_id);
@@ -198,7 +198,9 @@ int main(int argc, char *argv[]){
 
 	shmctl(posizioni_id, IPC_RMID, 0);
 
+	/*
 	exit(0);
+	*/
 
 
 	/* definizione dell'argv dei figli */
@@ -236,15 +238,17 @@ int main(int argc, char *argv[]){
 	/* DUMP */
 
 	/* WAIT di terminazione dei figli */
+	i = 0;
 	while ((child_pid = wait(&status)) != -1) {
 		printf("PARENT: PID=%d. Got info of child with PID=%d, status=%d\n", getpid(), child_pid, WEXITSTATUS(status));
+		i++;
 	}
 	/* in questo caso deve segnalare errno = ECHILD */
 	if(errno != ECHILD){
 		ERROR("nell'attesa della terminazione dei processi figli.\nerrno != ECHILD")
 		TEST_ERROR
 	} else 
-		printf("Chiusura di tutti i processi effettuata.\nInizio deallocazione risorse IPC.\n");
+		printf("Chiusura di tutti i %d processi effettuata.\nInizio deallocazione risorse IPC.\n", i);
 
 	
 

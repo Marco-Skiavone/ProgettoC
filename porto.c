@@ -8,6 +8,7 @@ int PARAMETRO[QNT_PARAMETRI];
 int main(int argc, char *argv[]){
 	int i, index;
 
+
 	/*1 = # porto (per array banchine), #[QNT_PARAMETRI] parametri */
 	if(argc != (1+QNT_PARAMETRI)){
 		ERROR("nel passaggio dei parametri al porto")
@@ -19,6 +20,12 @@ int main(int argc, char *argv[]){
 		TEST_ERROR
 	}
 	printf("PORTO %d: parametri letti.\n", getpid());
+
+	/*
+		debug
+	*/
+	exit(0);
+
 	srand(time(NULL));
 
 	merce (*deposito)[SO_MERCI] = indirizzoMercato();

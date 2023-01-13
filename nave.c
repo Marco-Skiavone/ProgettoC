@@ -89,6 +89,10 @@ int main(int argc, char *argv[]){
 	}
 
 	printf("NAVE %d: parametri letti.\n", getpid());
+	/*
+		debug
+	*/
+	exit(0);
 	srand(SEED);
 	/*generazione punto casuale (random lib.c)*/
 	/*agganciamento risorse
