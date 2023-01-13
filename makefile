@@ -13,7 +13,7 @@ SOURCES = *.c
 #var = [parametro da inserire su cmd: "make run var=[args]"]
 all: $(SOURCES)
 	gcc $(CFLAGS) $(SOURCES) -c
-	gcc $(OBJS) master.o -o $(TARGET)
+	gcc $(OBJS) master.o -o $(TARGET) -lm
 	$(PORTO)
 	$(NAVE)
 
@@ -24,10 +24,10 @@ $(TARGET): $(OBJS)
 	gcc $(OBJS) master.o -o $(TARGET)
 
 $(PORTO): $(OBJS)
-	gcc $(OBJS) porto.o -o $(PORTO)
+	gcc $(OBJS) porto.o -o $(PORTO) -lm
 
 $(NAVE): $(OBJS)
-	gcc $(OBJS) nave.o -o $(NAVE)
+	gcc $(OBJS) nave.o -o $(NAVE) -lm
 
 $(DEBUG): $(SOURCES)
 	gcc $(DEVFLAGS) $(SOURCES) -D DEBUG -c

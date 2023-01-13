@@ -172,17 +172,34 @@ int main(int argc, char *argv[]){
 	}
 	
 
-	shm_mercato(SO_PORTI, SO_MERCI);
+	printf("SHM MERCATO: %d\n", shm_mercato(SO_PORTI, SO_MERCI));
+	
+	printf("SHM LOTTI: %d\n", shm_lotti(SO_MERCI));
+
+	printf("QUEUE (-1 fail): %d\n",  coda_richieste());
 	
 
-	printf("\nesito: %d",  coda_richieste());
-	
+	merce* dettagliLotti = indirizzoDettagliLotti();
+	for(i=0;i<SO_MERCI;i++){
+		*(dettagliLotti+i) = setUpLotto(SO_MERCI, SO_SIZE, SO_MIN_VITA, SO_MAX_VITA);
+
+		/*debug 
+		*/
+		printf("\n");
+		printf("Merce %d: val = %d, exp = %d\n", i, (dettagliLotti+i)->val, (dettagliLotti+i)->exp); 
+	}	
+
+	sganciaMercato();
+	sganciaDettagliLotti();
+
+	distruggiMercato();
+	distruggiShmDettagliLotti();
+	distruggiCoda();
+
+	shmctl(posizioni_id, IPC_RMID, 0);
 
 	exit(0);
 
-	for(i = 0; i < SO_PORTI*sizeof(point); i += sizeof(point))
-		printf("(%f,%f)\n", posizioni_p[i].x, posizioni_p[i].y);
-	
 
 	/* definizione dell'argv dei figli */
 	*argv_figli = (char *) malloc(MAX_STR_LEN*(QNT_PARAMETRI+1));

@@ -16,6 +16,7 @@
 /* valore per merci che sono a 0 o in domanda (quindi, che non scadono) */
 #define noscadenza 50
 
+#define chiaveShmLotti 66
 
 
 #define msgsize sizeof(int)*2
@@ -40,10 +41,13 @@ typedef struct {
 
 
 /* id shared memori mercato */
-int shmid;
+int shmmercato;
 int qid;
-
+int shmlotti;
+ 
+ /*puntatore al mercato*/
 merce(*puntatore)[];
+merce* dettagliLotti;
 
 int shm_mercato(int par_SO_PORTI, int par_SO_MERCI){
 
@@ -53,15 +57,36 @@ int shm_mercato(int par_SO_PORTI, int par_SO_MERCI){
     chiave = KEY_MERCATO;
     TEST_ERROR
 
-    shmid = shmget(chiave, shm_size, IPC_CREAT | IPC_EXCL | 0666);
+    shmmercato = shmget(chiave, shm_size, IPC_CREAT | IPC_EXCL | 0666);
 
     TEST_ERROR
     
-    puntatore = shmat(shmid, NULL, 0);
+    puntatore = shmat(shmmercato, NULL, 0);
 
     TEST_ERROR
 
     return 1;
+}
+
+int shm_lotti(int par_SO_MERCI){
+    
+    shmlotti = shmget(chiaveShmLotti, (sizeof(merce)*par_SO_MERCI), IPC_CREAT | IPC_EXCL | 0666);
+    TEST_ERROR
+
+    dettagliLotti = shmat(shmlotti, NULL, 0);
+
+    TEST_ERROR
+
+
+    return 1;
+}
+
+void* indirizzoDettagliLotti(){
+    return dettagliLotti;
+}
+
+int sganciaDettagliLotti(){
+    shmdt(dettagliLotti);
 }
 
 void* indirizzoMercato(){
@@ -74,13 +99,12 @@ int sganciaMercato(){
 
 
 int coda_richieste(){
-    int esito;
-    qid = KEY_CODA_RICHIESTE;
-    esito = msgget(qid, IPC_CREAT | IPC_EXCL | 0666);
+    
+    qid = msgget(KEY_CODA_RICHIESTE, IPC_CREAT | IPC_EXCL | 0666);
 
     TEST_ERROR;
     
-    return esito;
+    return qid;
     
 }
 
@@ -103,6 +127,30 @@ richiesta accettaRichiesta(int nporto){
     return ritorno;
 }
 
+int distruggiCoda(){
+    msgctl(qid, IPC_RMID, 0);
+
+    TEST_ERROR
+
+    return 1;
+}
+
+int distruggiMercato(){
+    shmctl(shmmercato, IPC_RMID, 0);
+
+    TEST_ERROR
+
+    return 1;
+}
+
+int distruggiShmDettagliLotti(){
+    shmctl(shmlotti, IPC_RMID, 0);
+
+    TEST_ERROR
+
+    return 1;
+}
+
 
 merce setUpLotto(int nmerci, int par_SO_SIZE, int par_SO_MIN_VITA, int par_SO_MAX_VITA){
     /* il chiamante deve settare un random */
@@ -110,7 +158,7 @@ merce setUpLotto(int nmerci, int par_SO_SIZE, int par_SO_MIN_VITA, int par_SO_MA
     static int mlette = 0;
     merce tmp;
     tmp.val = rand() % par_SO_SIZE + 1;
-    tmp.exp = par_SO_MIN_VITA+ rand() % (par_SO_MAX_VITA - par_SO_MAX_VITA + 1);
+    tmp.exp = par_SO_MIN_VITA + rand() % (par_SO_MAX_VITA - par_SO_MIN_VITA + 1);
     if(tmp.val == 1){
         lottoDaUno = 1;
     }
@@ -121,19 +169,19 @@ merce setUpLotto(int nmerci, int par_SO_SIZE, int par_SO_MIN_VITA, int par_SO_MA
 }
 
 
-int spawnMerciPorti(int par_SO_FILL, int par_SO_PORTI, int par_SO_MERCI, merce (*ptr)[par_SO_MERCI], int i, merce (*dettagliLotti)[par_SO_MERCI]){
+int spawnMerciPorti(int par_SO_FILL, int par_SO_MERCI, merce (*ptr)[par_SO_MERCI], int i){
     int toFill = par_SO_FILL;
     int j, k, r, tmp;
 
     /* per ogni merce, aggiungi in offerta o domanda un random r lotti */
     for(j=0;j<par_SO_MERCI;j++){
         r = rand() % max_merci_spawn_random + 0;
-        tmp = dettagliLotti[j]->val * r;
+        tmp = dettagliLotti[j].val * r;
 
         /* se il peso generato supera il valore di toFill, cicla fino ad un valore inferiore */
         while(tmp>toFill){
             r = r-riducirandom;
-            tmp = dettagliLotti[j]->val * r;
+            tmp = dettagliLotti[j].val * r;
         }
         /* se la riduzione del peso scende sotto lo zero, si imposta la merce a 0 */
         if(tmp < 0){
@@ -145,7 +193,7 @@ int spawnMerciPorti(int par_SO_FILL, int par_SO_PORTI, int par_SO_MERCI, merce (
             (*(ptr+i)+j)->exp = noscadenza;
         }else{         /* altrimenti si imposta in offerta */
             (*(ptr+i)+j)->val = r;
-            (*(ptr+i)+j)->exp = dettagliLotti[j]->exp;
+            (*(ptr+i)+j)->exp = dettagliLotti[j].exp;
         }
 
         toFill-=tmp;
@@ -168,17 +216,17 @@ int spawnMerciPorti(int par_SO_FILL, int par_SO_PORTI, int par_SO_MERCI, merce (
             
             /* aumenta offerta */
             if((*(ptr+i)+j)->val > 0){
-                if(toFill > dettagliLotti[j]->val){
+                if(toFill > dettagliLotti[j].val){
                     (*(ptr+i)+j)->val++;
-                    toFill-=dettagliLotti[j]->val;
+                    toFill-=dettagliLotti[j].val;
                 }
             }
 
             /* aumenta domanda */
             if((*(ptr+i)+j)->val < 0){
-                if(toFill > dettagliLotti[j]->val ){
+                if(toFill > dettagliLotti[j].val ){
                     (*(ptr+i)+j)->val--;
-                    toFill-= dettagliLotti[j]->val;
+                    toFill-= dettagliLotti[j].val;
                 }
             }
         }
