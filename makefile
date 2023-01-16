@@ -1,8 +1,8 @@
 CC = gcc
-CFLAGS = -O2 #-std=c89 -pedantic
-DEVFLAGS = -std=c89 -pedantic
+CFLAGS = -O2 #-std=c89 -Wpedantic
+DEVFLAGS = -std=c89 -Wpedantic
 # la definizione di GDBFLAGS serve a permettere l'avvio di gdb
-GDBFLAGS = -std=c89 -pedantic -O0 -g
+GDBFLAGS = -std=c89 -Wpedantic -O0 -g
 TARGET = application
 PORTO = porto
 NAVE = nave
@@ -20,9 +20,9 @@ $(TARGET): $(OBJS)
 
 $(DEBUG): $(SOURCES)
 	gcc $(DEVFLAGS) $(SOURCES) -D DEBUG -c
-	gcc $(OBJS) master.o -o $(DEBUG)
-	$(PORTO)
-	$(NAVE)
+	gcc $(OBJS) master.o -o $(DEBUG) -lm
+	gcc $(OBJS) porto.o -o $(PORTO) -lm
+	gcc $(OBJS) nave.o -o $(NAVE) -lm
 
 all: $(SOURCES)
 	gcc $(CFLAGS) $(SOURCES) -c
@@ -30,7 +30,11 @@ all: $(SOURCES)
 	gcc $(OBJS) porto.o -o $(PORTO) -lm
 	gcc $(OBJS) nave.o -o $(NAVE) -lm
 
-run: $(TARGET) $(PORTO) $(NAVE)
+run: $(SOURCES)
+	gcc $(CFLAGS) $(SOURCES) -c
+	gcc $(OBJS) master.o -o $(TARGET) -lm
+	gcc $(OBJS) porto.o -o $(PORTO) -lm
+	gcc $(OBJS) nave.o -o $(NAVE) -lm
 	./$(TARGET) $(var)
 
 debug: $(DEBUG)

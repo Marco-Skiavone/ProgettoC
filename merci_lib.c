@@ -3,17 +3,13 @@
 #endif
 #include "merci_lib.h"
 
-/* agomenti della ftok */
-#define ftok_arg1 "/master.c"
-#define ftok_arg2 1
-
-/* range alto del random */
+/* Range alto del random */
 #define MAX_MERCI_SPAWN_RANDOM 10
 
-/* parametro per abbassare il random se troppo alto */
+/* Parametro per abbassare il random, se troppo alto */
 #define RIDUCI_RANDOM 3
 
-/* valore per merci che sono a 0 o in domanda (quindi, che non scadono) */
+/* Valore per merci che sono a 0 o in domanda (quindi, che non scadono) */
 #define NO_SCADENZA 50
 
 /*
@@ -21,47 +17,57 @@
     merce (*ptr)[parametro[SO_MERCI]];
 */
 
-/* id shared memori mercato */
+
+/* id shared memory mercato */
 int shmmercato;
+/* id queue richieste */
 int qid;
+/* id shared memory lotti */
 int shmlotti;
- 
- /*puntatore al mercato*/
-merce(*puntatore)[];
-merce* dettagliLotti;
+/* id shared memory posizioni */
+int posizioni_id;
 
-/* Crea memoria mercato */
+/* Puntatore alla memoria mercato */
+merce *puntatore;
+/* Puntatore alla memoria lotti */
+merce *dettagliLotti;
+/* Puntatore alla memoria posizioni */
+point *posizioni_ptr;
+
 int shm_mercato(int par_SO_PORTI, int par_SO_MERCI){
-    key_t chiave;
+    key_t chiave = KEY_MERCATO;
     int shm_size = par_SO_PORTI * par_SO_MERCI * sizeof(merce);
-
-    chiave = KEY_MERCATO;
     TEST_ERROR
 
-    shmmercato = shmget(chiave, shm_size, IPC_CREAT | IPC_EXCL | 0666);
-
+    shmmercato = shmget(chiave, shm_size, IPC_CREAT | IPC_EXCL | PERMESSI);
     TEST_ERROR
     
     puntatore = shmat(shmmercato, NULL, 0);
-
     TEST_ERROR
-
-    return 1;
+    return errno;
 }
 
-/* crea la memoria lotti*/
 int shm_lotti(int par_SO_MERCI){  
-    shmlotti = shmget(KEY_LOTTI, (sizeof(merce)*par_SO_MERCI), IPC_CREAT | IPC_EXCL | 0666);
+    shmlotti = shmget(KEY_LOTTI, (sizeof(merce)*par_SO_MERCI), IPC_CREAT | IPC_EXCL | PERMESSI);
     TEST_ERROR
-
     dettagliLotti = shmat(shmlotti, NULL, 0);
-
     TEST_ERROR
-
-    return 1;
+    return errno;
 }
 
-void* indirizzoDettagliLotti(){
+int shm_posizioni(int PORTI){
+    int size_posizioni = sizeof(point)*PORTI;
+    posizioni_id = shmget(KEY_POSIZIONI, size_posizioni, IPC_CREAT | IPC_EXCL | PERMESSI);
+    TEST_ERROR
+    posizioni_ptr = shmat(posizioni_id, NULL, 0);
+    return errno;
+}   
+
+void *indirizzoPosizioni(){
+    return posizioni_ptr;
+}
+
+void *indirizzoDettagliLotti(){
     return dettagliLotti;
 }
 
@@ -69,66 +75,66 @@ int sganciaDettagliLotti(){
     return shmdt(dettagliLotti);
 }
 
-void* indirizzoMercato(){
+void *indirizzoMercato(){
     return puntatore;
 }
 
 int sganciaMercato(){
-    return shmdt(puntatore);
+    int ret_val = shmdt(puntatore);
+    TEST_ERROR
+    return ret_val;
 }
 
-/* crea la coda richieste */
-int coda_richieste(){
-    
-    qid = msgget(KEY_CODA_RICHIESTE, IPC_CREAT | IPC_EXCL | 0666);
+int sganciaPosizioni(){
+    int ret_val = shmdt(posizioni_ptr);
+    TEST_ERROR
+    return ret_val;
+}
 
+int coda_richieste(){
+    qid = msgget(KEY_CODA_RICHIESTE, IPC_CREAT | IPC_EXCL | PERMESSI);
     TEST_ERROR;
     
     return qid;
-    
 }
 
 int inviaRichiesta(richiesta rich){
-
     msgsnd(qid, &rich, SIZE_MSG, 0);
     TEST_ERROR
-
     return 1;
 }
 
 richiesta accettaRichiesta(int nporto){
     richiesta ritorno;
-
-    if(msgrcv(qid, &ritorno, SIZE_MSG, nporto, IPC_NOWAIT)<0){
+    if(msgrcv(qid, &ritorno, SIZE_MSG, nporto, IPC_NOWAIT) < 0){
         ritorno.indicemerce-1;
     }
     TEST_ERROR
-
     return ritorno;
 }
 
 int distruggiCoda(){
-    msgctl(qid, IPC_RMID, 0);
-
+    int return_val = msgctl(qid, IPC_RMID, NULL);
     TEST_ERROR
+    return return_val;
+}
 
-    return 1;
+int distruggiPosizioni(){
+    int return_val = shmctl(posizioni_id, IPC_RMID, NULL);
+    TEST_ERROR
+    return return_val;
 }
 
 int distruggiMercato(){
-    shmctl(shmmercato, IPC_RMID, 0);
-
+    int return_val = shmctl(shmmercato, IPC_RMID, NULL);
     TEST_ERROR
-
-    return 1;
+    return return_val;
 }
 
 int distruggiShmDettagliLotti(){
-    shmctl(shmlotti, IPC_RMID, 0);
-
+    int return_val = shmctl(shmlotti, IPC_RMID, NULL);
     TEST_ERROR
-
-    return 1;
+    return return_val;
 }
 
 /* Il chiamante deve settare un random */
@@ -137,8 +143,8 @@ merce setUpLotto(int nmerci, int par_SO_SIZE, int par_SO_MIN_VITA, int par_SO_MA
     static int lottoDaUno = 0;
     static int mlette = 0;
     merce tmp;
-    tmp.val = rand() % par_SO_SIZE + 1;
-    tmp.exp = par_SO_MIN_VITA + rand() % (par_SO_MAX_VITA - par_SO_MIN_VITA + 1);
+    tmp.val = (rand() % par_SO_SIZE) + 1;
+    tmp.exp = par_SO_MIN_VITA + (rand() % (par_SO_MAX_VITA - par_SO_MIN_VITA));
     if(tmp.val == 1){
         lottoDaUno = 1;
     }
