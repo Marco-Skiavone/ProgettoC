@@ -1,6 +1,7 @@
 #ifndef _DEFINITIONS_H
 	#include "definitions.h"
 #endif
+#include "merci_lib.h"
 
 /* agomenti della ftok */
 #define ftok_arg1 "/master.c"

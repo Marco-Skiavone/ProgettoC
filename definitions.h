@@ -16,7 +16,6 @@
 #include <time.h>
 #include <math.h>
 
-
 /* stampa un messaggio di errore dove str è una stringa personalizzabile */
 #define ERROR(str)											\
 	fprintf(stderr, "\nErrore %s a linea %d!\n", str, __LINE__);
@@ -32,6 +31,18 @@
 		errno,								\
 		strerror(errno));					\
 	}
+
+/* Stampa i parametri */
+#define STAMPA_PARAMETRI 				\
+	printf("Parametri:\nSO_NAVI | SO_PORTI | SO_MERCI | SO_SIZE | SO_MIN_VITA | SO_MAX_VITA | "); 	\
+	printf("SO_LATO | SO_SPEED | SO_CAPACITY | SO_BANCHINE | SO_FILL | SO_LOADSPEED | SO_DAYS\n"); 	\
+	for (i = 0; i < QNT_PARAMETRI; i++) {			\
+		printf(" %d ", PARAMETRO[i]);		\
+		if (i != QNT_PARAMETRI - 1)			\
+			printf("|");					\
+		else								\
+			printf("\n");					\
+	}										
 
 /* indice dei parametri */
 #define I_NAVI 0
@@ -166,8 +177,6 @@ typedef struct {
     int indicemerce;
     int nlotti;
 } richiesta;
-
-
 
 /* abbiamo definito qui il seed delle generazioni
  randomiche che possiamo usare nelle varie simulazioni */

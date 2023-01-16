@@ -1,5 +1,5 @@
 CC = gcc
-CFLAGS = -std=c89 -pedantic -O2
+CFLAGS = -O2 #-std=c89 -pedantic
 DEVFLAGS = -std=c89 -pedantic
 # la definizione di GDBFLAGS serve a permettere l'avvio di gdb
 GDBFLAGS = -std=c89 -pedantic -O0 -g

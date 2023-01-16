@@ -1,24 +1,7 @@
-#ifndef _GNU_SOURCE
-	#define _GNU_SOURCE
+#ifndef _DEFINITIONS_H
+	#include "definitions.h"
 #endif
-#ifndef _STDIO_H
-	#include <stdio.h>
-#endif
-#ifndef _STDLIB_H
-	#include <stdlib.h>
-#endif
-#ifndef _SYS_TYPES_H
-	#include <sys/types.h>
-#endif
-#ifndef _SYS_IPC_H
-	#include <sys/ipc.h>
-#endif
-#ifndef _SYS_SEM_H
-	#include <sys/sem.h>
-#endif
-#ifndef _STRING_H
-	#include <string.h>
-#endif
+
 
 /*
  * The following union must be defined as required by the semctl man

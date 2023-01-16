@@ -1,4 +1,6 @@
-#include "definitions.h"
+#ifndef _DEFINITIONS_H
+	#include "definitions.h"
+#endif
 #include "my_lib.h"
 
 /* Set a semaphore to a user defined value */
@@ -82,7 +84,7 @@ point generate_rand_point(int LATO){
 	return p;
 }
 
-/* metodo per vedere se 2 double sono accettabilmente distanti (TOLLERANZA) s*/
+/* Metodo per vedere se 2 double sono accettabilmente distanti (TOLLERANZA) s*/
 int equals(double x, double y){
 	if(x > y)
 		return (x-y) < TOLLERANZA ? 1: 0;

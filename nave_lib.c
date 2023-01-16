@@ -6,16 +6,17 @@
 /* Esegue le nanosleep di spostamento, mascherando i segnali
  e settando lo stato sul dump, finita la nanosleep aggiorna la posizione */
 void spostamento(viaggio v, point *p){
+	struct timespec time;
+	time.tv_sec = (__time_t)v.nanosec_nano;
 	/* DA FINIRE */
-	nanosleep(v.nanosec_nano, NULL);
+	nanosleep(&time, NULL);
 	p->x = v.x;
 	p->y = v.y;
 }
 
 /* Funzione spostamento nave*/
 double distanza (double x, double y, point *p){
-	return sqrt(((p->x - x)*(p->x - x))+((p->y - y)*(p->y -y)));
-	/* alternativa a sqrt()
+	/* alternativa a sqrt() */
 	double val, sqrt, temp;
 	val = x*x + y*y;
 	sqrt = val / 2;
@@ -25,7 +26,6 @@ double distanza (double x, double y, point *p){
 		sqrt = ((val / temp) + temp) / 2;
 	}
 	return sqrt;
-	*/
 }
 
 /*viaggio verso porto generico*/

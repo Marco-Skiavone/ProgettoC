@@ -7,11 +7,8 @@ int PARAMETRO[QNT_PARAMETRI];
 
 int main(int argc, char *argv[]){
 	int i, index;
-	freopen("text.txt", "w+", stdout);
-	printf("porto di merda!\n");
-
 	/*1 = # porto (per array banchine), #[QNT_PARAMETRI] parametri */
-	if(argc != (1+QNT_PARAMETRI)){
+	if(argc != (3+QNT_PARAMETRI)){
 		ERROR("nel passaggio dei parametri al porto")
 	}
 	index = atoi(argv[0]);
@@ -21,16 +18,12 @@ int main(int argc, char *argv[]){
 		TEST_ERROR
 	}
 	printf("PORTO %d: parametri letti.\n", getpid());
-
-	/*
-		debug
-	*/
-	exit(0);
+	STAMPA_PARAMETRI
 
 	srand(time(NULL));
 
-	merce (*deposito)[SO_MERCI] = indirizzoMercato();
+	/* merce (*deposito)[SO_MERCI] = indirizzoMercato();*/
 	
-	 /* spawnMerciPorti((SO_FILL/SO_PORTI), SO_MERCI, deposito, index, ); */
+	/* spawnMerciPorti((SO_FILL/SO_PORTI), SO_MERCI, deposito, index, ); */
 	exit(EXIT_SUCCESS);
 }
