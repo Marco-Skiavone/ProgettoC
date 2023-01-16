@@ -15,6 +15,17 @@ void spostamento(viaggio v, point *p){
 /* Funzione spostamento nave*/
 double distanza (double x, double y, point *p){
 	return sqrt(((p->x - x)*(p->x - x))+((p->y - y)*(p->y -y)));
+	/* alternativa a sqrt()
+	double val, sqrt, temp;
+	val = x*x + y*y;
+	sqrt = val / 2;
+	temp = 0;
+	while(sqrt != temp){
+		temp = sqrt;
+		sqrt = ((val / temp) + temp) / 2;
+	}
+	return sqrt;
+	*/
 }
 
 /*viaggio verso porto generico*/
