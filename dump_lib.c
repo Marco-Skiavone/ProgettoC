@@ -18,7 +18,7 @@ int calcola_spazio_necessario(int par_SO_MERCI, int par_SO_PORTI){
 }
 
 /* Crea il dump e ne ritorna il puntatore */
-int allocaMemoriaDump(int par_SO_MERCI, int par_SO_PORTI){
+int alloca_shm_dump(int par_SO_MERCI, int par_SO_PORTI){
     int spazio = calcola_spazio_necessario(par_SO_MERCI, par_SO_PORTI);
     shm_dump = shmget(KEY_DUMP, spazio, IPC_CREAT | IPC_EXCL | PERMESSI);
     TEST_ERROR
@@ -32,19 +32,19 @@ void* indirizzoMemoriaDump(){
     return dump_ptr;
 }
 
-void* agganciaMemoriaDump(){
+void* aggancia_shm_dump(){
     void* ret_val = shmat(shm_dump, NULL, 0);
     TEST_ERROR
     return ret_val;
 }
 
-int sganciaMemoriaDump(){
+int sgancia_shm_dump(){
     int ret_val = shmdt(dump_ptr);
     TEST_ERROR
     return ret_val;
 }
 
-int distruggiMemoriaDump(){
+int distruggi_shm_dump(){
     int return_val = shmctl(shm_dump, IPC_RMID, NULL);
     TEST_ERROR
     return return_val;
