@@ -51,8 +51,8 @@ void *indirizzoPosizioni(){
     return posizioni_ptr;
 }
  /* Aggiungi la shm di POSIZIONI alla memoria del processo*/
-int agganciaPosizioni(){
-    int ret_val = shmat(posizioni_id, NULL, 0);
+void* agganciaPosizioni(){
+    void* ret_val = shmat(posizioni_id, NULL, 0);
     TEST_ERROR
     return ret_val;
 }
@@ -86,7 +86,7 @@ int shm_lotti(int par_SO_MERCI){
     TEST_ERROR
     dettagliLotti = shmat(shmlotti, NULL, 0);
     TEST_ERROR
-    return errno;
+    return shmlotti;
 }
 
 /* Ritorna l'indirizzo di LOTTI */
@@ -95,8 +95,8 @@ void *indirizzoDettagliLotti(){
 }
 
  /* Aggancia lo spazio dei LOTTI alla memoria del processo*/
-int agganciaDettaglioLott(){
-    int ret_val = shmat(shm_lotti, NULL, 0);
+void* agganciaDettaglioLott(){
+    void* ret_val = shmat(shm_lotti, NULL, 0);
     TEST_ERROR
     return ret_val;
 } 
@@ -151,9 +151,9 @@ int distruggiCoda(){
 
 /* Invia una richiesta alla coda */
 int inviaRichiesta(richiesta rich){
-    msgsnd(qid, &rich, SIZE_MSG, 0);
+    int ret_val = msgsnd(qid, &rich, SIZE_MSG, 0);
     TEST_ERROR
-    return 1;
+    return ret_val;
 }
 
 /* Accetta una richiesta alla coda */
@@ -168,7 +168,7 @@ richiesta accettaRichiesta(int nporto){
 
 /* MERCATO -------------------------------------------------- */
 
-/* Crea memoria MERCATO, ritorna errno */
+/* Crea memoria MERCATO, ritorna shmmercato */
 int shm_mercato(int par_SO_PORTI, int par_SO_MERCI){
     key_t chiave = KEY_MERCATO;
     int shm_size = par_SO_PORTI * par_SO_MERCI * sizeof(merce);
@@ -179,12 +179,19 @@ int shm_mercato(int par_SO_PORTI, int par_SO_MERCI){
     
     puntatore = shmat(shmmercato, NULL, 0);
     TEST_ERROR
-    return errno;
+    return shmmercato;
 }
 
 /* Ritorna l'indirizzo di MERCATO */
 void *indirizzoMercato(){
     return puntatore;
+}
+
+/* Aggancia MERCATO*/
+void* agganciaMercat(){
+    void* ret_val = shmat(shm_mercato, NULL, 0);
+    TEST_ERROR
+    return ret_val;
 }
 
 /* Sgancia MERCATO */

@@ -47,7 +47,7 @@ int distruggiShmDettagliLotti();
 merce setUpLotto(int nmerci, int par_SO_SIZE, int par_SO_MIN_VITA, int par_SO_MAX_VITA);
 
 /* SET-UP DI MERCATO */
-int spawnMerciPorti(int par_SO_FILL, int par_SO_MERCI, merce *ptr[], int i);
+int spawnMerciPorti(int par_SO_FILL, int par_SO_MERCI, merce (*ptr)[par_SO_MERCI], int i);
 
 /* CODA RICHIESTE ----------------------------------------*/
 
