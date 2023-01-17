@@ -1,4 +1,4 @@
-#define _GNU_SOURCE
+/*#define _GNU_SOURCE*/
 #define _DEFINITIONS_H
 #include <stdio.h>
 #include <stdlib.h>
@@ -18,7 +18,7 @@
 
 /* stampa un messaggio di errore dove str è una stringa personalizzabile */
 #define ERROR(str)											\
-	fprintf(stderr, "\nErrore %s a linea %d!\n", str, __LINE__);
+	fprintf(stderr, "\nErrore %s a linea %d! PID:%d\n", str, __LINE__, getpid());
 
 /* controlla il valore di errno e nel caso lo segnala */
 #define TEST_ERROR 							\
@@ -159,7 +159,7 @@ typedef struct _info_nave {
 
 typedef struct { /*struct ritornata da porto_piu_vicino*/
 	int indice_porto; /*i del ciclo*/
-	int nanosec_nano;
+	long nanosec_nano;
 	/*restituisco anche le coordinate del porto dove si troverà la nave dopo*/
 	double x;
 	double y;
@@ -181,37 +181,3 @@ typedef struct {
 /* abbiamo definito qui il seed delle generazioni
  randomiche che possiamo usare nelle varie simulazioni */
 #define SEED getpid()
-
-/* SERIE DI STRUCT NECESSARIE PER I DATI RIGUARDANTI I DUMP*/
-struct merce_nave{
-    int indice;
-    struct merce;
-};
-
-struct nave_dump{
-    int naviporto;
-    int naviscariche;
-    int navicariche;
-};
-
-struct porto_dump{
-    int mercespedita;
-    int mercericevuta;
-    int mercepresente;
-    int banchineoccupate;
-    int banchinetotali;
-};
-
-struct merce_dump{
-    merce presente_in_porto;
-    merce presente_in_nave;
-    merce consegnata;
-    merce scaduta_in_porto;
-    merce scaduta_in_nave;
-};
-
-struct dump{
-    struct merce_dump *merce_dump_ptr;
-    struct porto_dump *porto_dump_ptr;
-    struct nave_dump nd;
-};
