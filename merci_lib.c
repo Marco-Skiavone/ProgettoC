@@ -19,20 +19,20 @@
 
 
 /* id shared memory mercato */
-int shmmercato;
+static int shmmercato;
 /* id queue richieste */
-int qid;
+static int qid;
 /* id shared memory lotti */
-int shmlotti;
+static int shmlotti;
 /* id shared memory posizioni */
-int posizioni_id;
+static int posizioni_id;
 
 /* Puntatore alla memoria mercato */
-merce *puntatore;
+static merce *puntatore;
 /* Puntatore alla memoria lotti */
-merce *dettagliLotti;
+static merce *dettagliLotti;
 /* Puntatore alla memoria posizioni */
-point *posizioni_ptr;
+static point *posizioni_ptr;
 
 
 /* POSIZIONI ------------------------- */
@@ -49,6 +49,12 @@ int shm_posizioni(int PORTI){
 /* Ritorna l'indirizzo di POSIZIONI */
 void *indirizzoPosizioni(){
     return posizioni_ptr;
+}
+ /* Aggiungi la shm di POSIZIONI alla memoria del processo*/
+int agganciaPosizioni(){
+    int ret_val = shmat(posizioni_id, NULL, 0);
+    TEST_ERROR
+    return ret_val;
 }
 
 /* Sgancia POSIZIONI */
@@ -88,9 +94,18 @@ void *indirizzoDettagliLotti(){
     return dettagliLotti;
 }
 
+ /* Aggancia lo spazio dei LOTTI alla memoria del processo*/
+int agganciaDettaglioLott(){
+    int ret_val = shmat(shm_lotti, NULL, 0);
+    TEST_ERROR
+    return ret_val;
+} 
+
 /* Sgancia LOTTI */
 int sganciaDettagliLotti(){
-    return shmdt(dettagliLotti);
+    int return_val = shmdt(dettagliLotti);
+    TEST_ERROR
+    return return_val;
 }
 
 /* Distrugge LOTTI */
