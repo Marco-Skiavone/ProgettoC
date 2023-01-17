@@ -10,13 +10,13 @@ int main(int argc, char *argv[]){
 	char *dump, *str;/*per fare shmat()*/
 	int i,index;
 	point position;
-	if(argc != (3+QNT_PARAMETRI)){
+	if(argc != (2+QNT_PARAMETRI)){
 		ERROR("nel passaggio dei parametri alla nave")
-		exit(EXIT_FAILURE);
+		exit(99);
 	}
 	index = atoi(argv[1]);
 	TEST_ERROR
-	for(i = 1; i < argc; i++){
+	for(i = 2; i < argc; i++){
 		PARAMETRO[i] = atoi(argv[i]);
 		TEST_ERROR
 	}
@@ -36,6 +36,6 @@ int main(int argc, char *argv[]){
 	
 
 	spostamento(v, &position);
-	/*shmdt() a fine programma*/	
+	shmdt(dump);
 	exit(EXIT_SUCCESS);
 }

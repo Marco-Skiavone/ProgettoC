@@ -110,8 +110,6 @@ int main(int argc, char *argv[]) {
 		printf("\n");
 		printf("Merce %d: val = %d, exp = %d\n", i, (dettagliLotti + i)->val, (dettagliLotti + i)->exp);
 	}
-	printf("sganciaMercato() = %d\n", sgancia_shm_mercato());
-	printf("sganciaDettagliLotti() = %d\n", sgancia_shm_dettagliLotti());
 
 	/* definizione dell'argv dei figli */
 	argv_figli[0] = (char *)malloc(MAX_STR_LEN);
@@ -163,13 +161,25 @@ int main(int argc, char *argv[]) {
 		ERROR("nell'attesa della terminazione dei processi figli.\nerrno != ECHILD")
 		TEST_ERROR
 	}
-	else
+	else{
 		printf("Chiusura di tutti i %d processi effettuata.\nInizio deallocazione risorse IPC.\n", i);
-	printf("sganciaPosizioni() = %d\n", sgancia_shm_posizioni());
+		
+	}
+	/* A fine while la wait resituirà -1 e setterà errno a 10 (No child processes)*/
+
+	if(errno == 10) errno = 0;
+	
+	
 	/* rimozione risorse IPC */
+	printf("sganciaMercato() = %d\n", sgancia_shm_mercato());
 	printf("distruggiMercato() = %d\n", distruggi_shm_mercato());
-	printf("distruggiShmDettagliLotti() = %d\n", distruggi_shm_dettagliLotti());
-	printf("distruggiCoda() = %d\n", distruggi_coda_richieste());
+
+	printf("sganciaPosizioni() = %d\n", sgancia_shm_posizioni());
 	printf("distruggiPosizioni() = %d\n", distruggi_shm_posizioni());
+
+	printf("sganciaDettagliLotti() = %d\n", sgancia_shm_dettagliLotti());
+	printf("distruggiShmDettagliLotti() = %d\n", distruggi_shm_dettagliLotti());
+	
+	printf("distruggiCoda() = %d\n", distruggi_coda_richieste());
 	exit(EXIT_SUCCESS);
 }

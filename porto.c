@@ -8,12 +8,13 @@ int PARAMETRO[QNT_PARAMETRI];
 int main(int argc, char *argv[]){
 	int i, index;
 	/*1 = # porto (per array banchine), #[QNT_PARAMETRI] parametri */
-	if(argc != (3+QNT_PARAMETRI)){
+	if(argc != (2+QNT_PARAMETRI)){
 		ERROR("nel passaggio dei parametri al porto")
+		exit(99);
 	}
 	index = atoi(argv[0]);
 	TEST_ERROR
-	for(i = 1; i < argc; i++){
+	for(i = 2; i < argc; i++){
 		PARAMETRO[i] = atoi(argv[i]);
 		TEST_ERROR
 	}

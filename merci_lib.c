@@ -23,7 +23,7 @@ static int id_shm_mercato;
 /* id queue richieste */
 static int id_coda_richieste;
 /* id shared memory lotti */
-static int id_shm_mercato;
+static int id_shm_dettagliLotti;
 /* id shared memory posizioni */
 static int id_shm_posizioni;
 
@@ -82,11 +82,11 @@ int distruggi_shm_posizioni(){
 
 /* Crea la memoria LOTTI, ritorna errno */
 int alloca_shm_lotti(int par_SO_MERCI){  
-    id_shm_mercato = shmget(KEY_LOTTI, (sizeof(merce)*par_SO_MERCI), IPC_CREAT | IPC_EXCL | PERMESSI);
+    id_shm_dettagliLotti = shmget(KEY_LOTTI, (sizeof(merce)*par_SO_MERCI), IPC_CREAT | IPC_EXCL | PERMESSI);
     TEST_ERROR
-    ptr_shm_lotti = shmat(id_shm_mercato, NULL, 0);
+    ptr_shm_lotti = shmat(id_shm_dettagliLotti, NULL, 0);
     TEST_ERROR
-    return id_shm_mercato;
+    return id_shm_dettagliLotti;
 }
 
 /* Ritorna l'indirizzo di LOTTI */
@@ -96,7 +96,7 @@ void *indirizzoDettagliLotti(){
 
  /* Aggancia lo spazio dei LOTTI alla memoria del processo*/
 void* aggancia_shm_dettaglioLotti(){
-    void* ret_val = shmat(id_shm_mercato, NULL, 0);
+    void* ret_val = shmat(id_shm_dettagliLotti, NULL, 0);
     TEST_ERROR
     return ret_val;
 } 
@@ -110,7 +110,7 @@ int sgancia_shm_dettagliLotti(){
 
 /* Distrugge LOTTI */
 int distruggi_shm_dettagliLotti(){
-    int return_val = shmctl(id_shm_mercato, IPC_RMID, NULL);
+    int return_val = shmctl(id_shm_dettagliLotti, IPC_RMID, NULL);
     TEST_ERROR
     return return_val;
 }
