@@ -20,7 +20,7 @@ int calcola_spazio_necessario(int par_SO_MERCI, int par_SO_PORTI){
 /* Crea il dump e ne ritorna il puntatore */
 int allocaMemoriaDump(int par_SO_MERCI, int par_SO_PORTI){
     int spazio = calcola_spazio_necessario(par_SO_MERCI, par_SO_PORTI);
-    shm_dump = semget(KEY_DUMP, spazio, IPC_CREAT | IPC_EXCL | PERMESSI);
+    shm_dump = shmget(KEY_DUMP, spazio, IPC_CREAT | IPC_EXCL | PERMESSI);
     TEST_ERROR
     dump_ptr = shmat(shm_dump, NULL, 0);
     TEST_ERROR

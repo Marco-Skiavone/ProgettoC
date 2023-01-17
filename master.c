@@ -181,5 +181,6 @@ int main(int argc, char *argv[]) {
 	printf("distruggiShmDettagliLotti() = %d\n", distruggi_shm_dettagliLotti());
 	
 	printf("distruggiCoda() = %d\n", distruggi_coda_richieste());
+	printf("distruggiMemoriaDump() =%d\n", distruggiMemoriaDump());
 	exit(EXIT_SUCCESS);
 }
