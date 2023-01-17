@@ -4,66 +4,66 @@
 #include "sem_lib.h"
 
 /* id del set di semafori BANCHINE */
-static int banchine_id;
+static int id_semaforo_banchine;
 /* id del set di semafori DUMP */
-static int dump_id;
+static int id_semaforo_dump;
 /* id del set di semafori GESTIONE */
-static int gestione_id;
+static int id_semaforo_gestione;
 /* id del set di semafori MERCATO */
-static int mercato_id;
+static int id_semaforo_mercato;
 
 /* Crea il semaforo BANCHINE, ritorna il valore di semget */
-int crea_semaforo_anchine(int PORTI, int BANCHINE){
-	banchine_id = semget(KEY_SEM_BANCHINE, PORTI, IPC_CREAT | IPC_EXCL | PERMESSI);
+int crea_semaforo_banchine(int PORTI, int BANCHINE){
+	id_semaforo_banchine = semget(KEY_SEM_BANCHINE, PORTI, IPC_CREAT | IPC_EXCL | PERMESSI);
 	TEST_ERROR
-	return banchine_id;
+	return id_semaforo_banchine;
 }
 
 /* distrugge il set BANCHINE */
 int distruggi_semaforo_banchine(){
-	int ctl_val = semctl(banchine_id, 0, IPC_RMID);
+	int ctl_val = semctl(id_semaforo_banchine, 0, IPC_RMID);
 	TEST_ERROR
 	return ctl_val;
 }
 
 /* Crea il semaforo DUMP, ritorna il valore di semget */
 int crea_semaforo_dump(int MERCI){
-	dump_id = semget(KEY_SEM_DUMP, MERCI+3, IPC_CREAT | IPC_EXCL | PERMESSI);
+	id_semaforo_dump = semget(KEY_SEM_DUMP, MERCI+3, IPC_CREAT | IPC_EXCL | PERMESSI);
 	TEST_ERROR
-	return dump_id;
+	return id_semaforo_dump;
 }
 
 /* distrugge il set DUMP */
 int distruggi_semaforo_dump(){
-	int ctl_val = semctl(dump_id, 0, IPC_RMID);
+	int ctl_val = semctl(id_semaforo_dump, 0, IPC_RMID);
 	TEST_ERROR
 	return ctl_val;
 }
 
 /* Crea il semaforo GESTIONE, ritorna il valore di semget */
 int crea_semaforo_gestione(int MERCI){
-	gestione_id = semget(KEY_SEM_GESTIONE, MERCI+3, IPC_CREAT | IPC_EXCL | PERMESSI);
+	id_semaforo_gestione = semget(KEY_SEM_GESTIONE, MERCI+3, IPC_CREAT | IPC_EXCL | PERMESSI);
 	TEST_ERROR
-	return gestione_id;
+	return id_semaforo_gestione;
 }
 
 /* distrugge il set GESTIONE */
 int distruggi_semaforo_gestione(){
-	int ctl_val = semctl(gestione_id, 0, IPC_RMID);
+	int ctl_val = semctl(id_semaforo_gestione, 0, IPC_RMID);
 	TEST_ERROR
 	return ctl_val;
 }
 
 /* Crea il semaforo MERCATO, ritorna il valore di semget */
 int crea_semaforo_mercato(int PORTI){
-	gestione_id = semget(KEY_SEM_MERCATO, PORTI, IPC_CREAT | IPC_EXCL | PERMESSI);
+	id_semaforo_mercato = semget(KEY_SEM_MERCATO, PORTI, IPC_CREAT | IPC_EXCL | PERMESSI);
 	TEST_ERROR
-	return gestione_id;
+	return id_semaforo_mercato;
 }
 
 /* distrugge il set MERCATO */
 int distruggi_semaforo_mercato(){
-	int ctl_val = semctl(gestione_id, 0, IPC_RMID);
+	int ctl_val = semctl(id_semaforo_mercato, 0, IPC_RMID);
 	TEST_ERROR
 	return ctl_val;
 }
