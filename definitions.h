@@ -120,42 +120,30 @@ S_IWUSR | S_IRUSR /* | S_IRGRP | S_IWGRP| S_IROTH | S_IWOTH */
 /* chiave per definire la shm dei lotti */
 #define KEY_LOTTI 66
 
-#define SIZE_LOTTI 
+/* key del semaforo BANCHINE */
+#define KEY_SEM_BANCHINE 31
+
+/* key del semaforo DUMP */
+#define KEY_SEM_DUMP 32
+
+/* key del semaforo GESTIONE */
+#define KEY_SEM_GESTIONE 33
+
+/* key del semaforo MERCATO */
+#define KEY_SEM_MERCATO 34
 
 /* size di ogni messaggio in coda richieste */
 #define SIZE_MSG sizeof(int)*2
 
-/* key del set di semafori per gestire le banchine */
-#define KEY_BANCHINE_SEM 31
-
 /* tolleranza per vedere se due porti sono accettabilmente distanti fra loro */
 #define TOLLERANZA 0.05
+
+#define SEED getpid()
 
 typedef struct _position {
 	double x;
 	double y;
 } point;
-
-/* struct di composizione di ogni tipo di merce, porto e info delle navi
-typedef struct _info_merce {
-	int in_nave;
-	int in_porto;
-	int m_consegnata;
-	int m_scaduta_porto;
-	int m_scaduta_nave;
-} info_merce;
-
-typedef struct _info_porto {
-	int m_spedita;
-	int m_ricevuta;
-	int m_scaduta;
-} info_porto;
-
-typedef struct _info_nave {
-	int in_mare_con_carico;
-	int in_mare_vuota;
-	int in_porto;
-} info_nave;*/
 
 typedef struct { /*struct ritornata da porto_piu_vicino*/
 	int indice_porto; /*i del ciclo*/
@@ -178,41 +166,37 @@ typedef struct {
     int nlotti;
 } richiesta;
 
-/* abbiamo definito qui il seed delle generazioni
- randomiche che possiamo usare nelle varie simulazioni */
-#define SEED getpid()
-
-
-/* SERIE DI STRUCT NECESSARIE PER I DATI RIGUARDANTI I DUMP*/
-struct merce_nave{
+typedef struct {
     int indice;
     struct merce;
-};
+} merce_nave;
 
-struct nave_dump{
+/* SERIE DI STRUCT NECESSARIE PER I DATI RIGUARDANTI I DUMP*/
+
+typedef struct {
     int naviporto;
     int naviscariche;
     int navicariche;
-};
+} nave_dump;
 
-struct porto_dump{
+typedef struct {
     int mercespedita;
     int mercericevuta;
     int mercepresente;
     int banchineoccupate;
     int banchinetotali;
-};
+} porto_dump ;
 
-struct merce_dump{
-    merce presente_in_porto;
-    merce presente_in_nave;
-    merce consegnata;
-    merce scaduta_in_porto;
-    merce scaduta_in_nave;
-};
+typedef struct {
+    int presente_in_porto;
+    int presente_in_nave;
+    int consegnata;
+    int scaduta_in_porto;
+    int scaduta_in_nave;
+} merce_dump;
 
-struct dump{
-    struct merce_dump *merce_dump_ptr;
-    struct porto_dump *porto_dump_ptr;
-    struct nave_dump nd;
-};
+typedef struct {
+    merce_dump *merce_dump_ptr;
+    porto_dump *porto_dump_ptr;
+    nave_dump nd;
+} dump;

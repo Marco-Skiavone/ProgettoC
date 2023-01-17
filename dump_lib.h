@@ -10,7 +10,7 @@ int calcola_spazio_necessario(int par_SO_MERCI, int par_SO_PORTI);
 int allocaMemoriaDump(int par_SO_MERCI, int par_SO_PORTI);
 
 /* Ritorna l'indirizzo della memoria allocata */
-void* indirizzoMemoriaDum();
+void* indirizzoMemoriaDump();
 
 /* Aggancia la memoria del dump */
 void* agganciaMemoriaDump();

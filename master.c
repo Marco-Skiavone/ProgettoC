@@ -1,6 +1,8 @@
 #include "definitions.h" /* contiene le altre #include */
 #include "my_lib.h"
 #include "merci_lib.h"
+#include "dump_lib.h"
+#include "sem_lib.h"
 
 /* contiene tutti i parametri */
 int PARAMETRO[QNT_PARAMETRI];
@@ -13,7 +15,8 @@ int main(int argc, char *argv[]) {
 	int child_pid;
 	FILE *file_config;
 	char *str = (char *)malloc(MAX_FILE_STR_LEN);
-	char *dump_p, *mercato_p;
+	dump *dump_p;
+	merce *mercato_p;
 	/* Vi ci si riferirà come "posizioni_p+i", dove i definito in [0,SO_PORTI-1] */
 	point *posizioni_p;
 	char *argv_figli[QNT_PARAMETRI + 3]; /* null terminated */
@@ -29,7 +32,6 @@ int main(int argc, char *argv[]) {
 		fprintf(stderr, "NUM_RIGA_FILE: %d\n", NUM_RIGA_FILE);
 		exit(EXIT_FAILURE);
 	}
-
 	file_config = fopen("config.txt", "r");
 	TEST_ERROR
 
@@ -54,7 +56,7 @@ int main(int argc, char *argv[]) {
 		}
 	}
 	STAMPA_PARAMETRI
-
+	
 	childs = (int *)malloc((SO_NAVI + SO_PORTI) * sizeof(int));
 	
 	#ifdef DEBUG
@@ -96,6 +98,8 @@ int main(int argc, char *argv[]) {
 	printf("SHM mercato: %d\n", shm_mercato(SO_PORTI, SO_MERCI));
 	printf("SHM LOTTI: %d\n", shm_lotti(SO_MERCI));
 	printf("QUEUE (-1 == fail): %d\n", coda_richieste());
+	printf("SHM DUMP: %d\n", allocaMemoriaDump(SO_MERCI, SO_PORTI));
+	dump_p = indirizzoMemoriaDump();
 
 	merce *dettagliLotti = indirizzoDettagliLotti();
 	for (i = 0; i < SO_MERCI; i++){

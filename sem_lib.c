@@ -3,6 +3,71 @@
 #endif
 #include "sem_lib.h"
 
+/* id del set di semafori BANCHINE */
+static int banchine_id;
+/* id del set di semafori DUMP */
+static int dump_id;
+/* id del set di semafori GESTIONE */
+static int gestione_id;
+/* id del set di semafori MERCATO */
+static int mercato_id;
+
+/* Crea il semaforo BANCHINE, ritorna il valore di semget */
+int creaBanchine(int PORTI, int BANCHINE){
+	banchine_id = semget(KEY_SEM_BANCHINE, PORTI, IPC_CREAT | IPC_EXCL | PERMESSI);
+	TEST_ERROR
+	return banchine_id;
+}
+
+/* distrugge il set BANCHINE */
+int distruggiBanchine(){
+	int ctl_val = semctl(banchine_id, 0, IPC_RMID);
+	TEST_ERROR
+	return ctl_val;
+}
+
+/* Crea il semaforo DUMP, ritorna il valore di semget */
+int creaDump(int MERCI){
+	dump_id = semget(KEY_SEM_DUMP, MERCI+3, IPC_CREAT | IPC_EXCL | PERMESSI);
+	TEST_ERROR
+	return dump_id;
+}
+
+/* distrugge il set DUMP */
+int distruggiDump(){
+	int ctl_val = semctl(dump_id, 0, IPC_RMID);
+	TEST_ERROR
+	return ctl_val;
+}
+
+/* Crea il semaforo GESTIONE, ritorna il valore di semget */
+int creaGestione(int MERCI){
+	gestione_id = semget(KEY_SEM_GESTIONE, MERCI+3, IPC_CREAT | IPC_EXCL | PERMESSI);
+	TEST_ERROR
+	return gestione_id;
+}
+
+/* distrugge il set GESTIONE */
+int distruggiGestione(){
+	int ctl_val = semctl(gestione_id, 0, IPC_RMID);
+	TEST_ERROR
+	return ctl_val;
+}
+
+/* Crea il semaforo MERCATO, ritorna il valore di semget */
+int creaMercato(int PORTI){
+	gestione_id = semget(KEY_SEM_MERCATO, PORTI, IPC_CREAT | IPC_EXCL | PERMESSI);
+	TEST_ERROR
+	return gestione_id;
+}
+
+/* distrugge il set MERCATO */
+int distruggiMercato(){
+	int ctl_val = semctl(gestione_id, 0, IPC_RMID);
+	TEST_ERROR
+	return ctl_val;
+}
+
 /* Setta il semaforo all'indice sem_num col valore sem_val.
  * Ritorna il valore di semctl. */
 int sem_set_val(int sem_id, int sem_num, int sem_val) {
