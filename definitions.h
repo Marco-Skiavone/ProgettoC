@@ -181,3 +181,38 @@ typedef struct {
 /* abbiamo definito qui il seed delle generazioni
  randomiche che possiamo usare nelle varie simulazioni */
 #define SEED getpid()
+
+
+/* SERIE DI STRUCT NECESSARIE PER I DATI RIGUARDANTI I DUMP*/
+struct merce_nave{
+    int indice;
+    struct merce;
+};
+
+struct nave_dump{
+    int naviporto;
+    int naviscariche;
+    int navicariche;
+};
+
+struct porto_dump{
+    int mercespedita;
+    int mercericevuta;
+    int mercepresente;
+    int banchineoccupate;
+    int banchinetotali;
+};
+
+struct merce_dump{
+    merce presente_in_porto;
+    merce presente_in_nave;
+    merce consegnata;
+    merce scaduta_in_porto;
+    merce scaduta_in_nave;
+};
+
+struct dump{
+    struct merce_dump *merce_dump_ptr;
+    struct porto_dump *porto_dump_ptr;
+    struct nave_dump nd;
+};
