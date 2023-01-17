@@ -68,7 +68,7 @@ int main(int argc, char *argv[]) {
 	#endif
 
 	/* creazione della shm "posizioni" */
-	printf("SHM POSIZIONI: %d\n", shm_posizioni(SO_PORTI));
+	printf("SHM POSIZIONI: %d\n", alloca_shm_posizioni(SO_PORTI));
 	TEST_ERROR
 	posizioni_p = indirizzoPosizioni();
 	TEST_ERROR
@@ -95,9 +95,9 @@ int main(int argc, char *argv[]) {
 		}
 	}
 	printf("-------------------------------------------------\n");
-	printf("SHM mercato: %d\n", shm_mercato(SO_PORTI, SO_MERCI));
-	printf("SHM LOTTI: %d\n", shm_lotti(SO_MERCI));
-	printf("QUEUE (-1 == fail): %d\n", coda_richieste());
+	printf("SHM mercato: %d\n", alloca_shm_mercato(SO_PORTI, SO_MERCI));
+	printf("SHM LOTTI: %d\n", alloca_shm_lotti(SO_MERCI));
+	printf("QUEUE (-1 == fail): %d\n", crea_coda_richieste());
 	printf("SHM DUMP: %d\n", allocaMemoriaDump(SO_MERCI, SO_PORTI));
 	dump_p = indirizzoMemoriaDump();
 
@@ -110,8 +110,8 @@ int main(int argc, char *argv[]) {
 		printf("\n");
 		printf("Merce %d: val = %d, exp = %d\n", i, (dettagliLotti + i)->val, (dettagliLotti + i)->exp);
 	}
-	printf("sganciaMercato() = %d\n", sganciaMercato());
-	printf("sganciaDettagliLotti() = %d\n", sganciaDettagliLotti());
+	printf("sganciaMercato() = %d\n", sgancia_shm_mercato());
+	printf("sganciaDettagliLotti() = %d\n", sgancia_shm_dettagliLotti());
 
 	/* definizione dell'argv dei figli */
 	argv_figli[0] = (char *)malloc(MAX_STR_LEN);
@@ -165,11 +165,11 @@ int main(int argc, char *argv[]) {
 	}
 	else
 		printf("Chiusura di tutti i %d processi effettuata.\nInizio deallocazione risorse IPC.\n", i);
-	printf("sganciaPosizioni() = %d\n", sganciaPosizioni());
+	printf("sganciaPosizioni() = %d\n", sgancia_shm_posizioni());
 	/* rimozione risorse IPC */
-	printf("distruggiMercato() = %d\n", distruggiMercato());
-	printf("distruggiShmDettagliLotti() = %d\n", distruggiShmDettagliLotti());
-	printf("distruggiCoda() = %d\n", distruggiCoda());
-	printf("distruggiPosizioni() = %d\n", distruggiPosizioni());
+	printf("distruggiMercato() = %d\n", distruggi_shm_mercato());
+	printf("distruggiShmDettagliLotti() = %d\n", distruggi_shm_dettagliLotti());
+	printf("distruggiCoda() = %d\n", distruggi_coda_richieste());
+	printf("distruggiPosizioni() = %d\n", distruggi_shm_posizioni());
 	exit(EXIT_SUCCESS);
 }

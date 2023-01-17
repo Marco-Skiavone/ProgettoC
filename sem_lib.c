@@ -13,56 +13,56 @@ static int gestione_id;
 static int mercato_id;
 
 /* Crea il semaforo BANCHINE, ritorna il valore di semget */
-int creaBanchine(int PORTI, int BANCHINE){
+int crea_semaforo_anchine(int PORTI, int BANCHINE){
 	banchine_id = semget(KEY_SEM_BANCHINE, PORTI, IPC_CREAT | IPC_EXCL | PERMESSI);
 	TEST_ERROR
 	return banchine_id;
 }
 
 /* distrugge il set BANCHINE */
-int distruggiBanchine(){
+int distruggi_semaforo_banchine(){
 	int ctl_val = semctl(banchine_id, 0, IPC_RMID);
 	TEST_ERROR
 	return ctl_val;
 }
 
 /* Crea il semaforo DUMP, ritorna il valore di semget */
-int creaDump(int MERCI){
+int crea_semaforo_dump(int MERCI){
 	dump_id = semget(KEY_SEM_DUMP, MERCI+3, IPC_CREAT | IPC_EXCL | PERMESSI);
 	TEST_ERROR
 	return dump_id;
 }
 
 /* distrugge il set DUMP */
-int distruggiDump(){
+int distruggi_semaforo_dump(){
 	int ctl_val = semctl(dump_id, 0, IPC_RMID);
 	TEST_ERROR
 	return ctl_val;
 }
 
 /* Crea il semaforo GESTIONE, ritorna il valore di semget */
-int creaGestione(int MERCI){
+int crea_semaforo_gestione(int MERCI){
 	gestione_id = semget(KEY_SEM_GESTIONE, MERCI+3, IPC_CREAT | IPC_EXCL | PERMESSI);
 	TEST_ERROR
 	return gestione_id;
 }
 
 /* distrugge il set GESTIONE */
-int distruggiGestione(){
+int distruggi_semaforo_gestione(){
 	int ctl_val = semctl(gestione_id, 0, IPC_RMID);
 	TEST_ERROR
 	return ctl_val;
 }
 
 /* Crea il semaforo MERCATO, ritorna il valore di semget */
-int creaMercato(int PORTI){
+int crea_semaforo_mercato(int PORTI){
 	gestione_id = semget(KEY_SEM_MERCATO, PORTI, IPC_CREAT | IPC_EXCL | PERMESSI);
 	TEST_ERROR
 	return gestione_id;
 }
 
 /* distrugge il set MERCATO */
-int distruggiMercato(){
+int distruggi_semaforo_mercato(){
 	int ctl_val = semctl(gestione_id, 0, IPC_RMID);
 	TEST_ERROR
 	return ctl_val;

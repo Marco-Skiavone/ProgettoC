@@ -13,60 +13,60 @@
 #define NO_SCADENZA 50
 
 /*
-    definizione puntatore a vettori di merci
+    definizione ptr_shm_mercato a vettori di merci
     merce (*ptr)[parametro[SO_MERCI]];
 */
 
 
 /* id shared memory mercato */
-static int shmmercato;
+static int id_shm_mercato;
 /* id queue richieste */
-static int qid;
+static int id_coda_richieste;
 /* id shared memory lotti */
-static int shmlotti;
+static int id_shm_mercato;
 /* id shared memory posizioni */
-static int posizioni_id;
+static int id_shm_posizioni;
 
 /* Puntatore alla memoria mercato */
-static merce *puntatore;
+static merce *ptr_shm_mercato;
 /* Puntatore alla memoria lotti */
-static merce *dettagliLotti;
+static merce *ptr_shm_lotti;
 /* Puntatore alla memoria posizioni */
-static point *posizioni_ptr;
+static point *ptr_shm_posizioni;
 
 
 /* POSIZIONI ------------------------- */
 
 /* crea la memoria POSIZIONI, ritorna errno */
-int shm_posizioni(int PORTI){
+int alloca_shm_posizioni(int PORTI){
     int size_posizioni = sizeof(point)*PORTI;
-    posizioni_id = shmget(KEY_POSIZIONI, size_posizioni, IPC_CREAT | IPC_EXCL | PERMESSI);
+    id_shm_posizioni = shmget(KEY_POSIZIONI, size_posizioni, IPC_CREAT | IPC_EXCL | PERMESSI);
     TEST_ERROR
-    posizioni_ptr = shmat(posizioni_id, NULL, 0);
+    ptr_shm_posizioni = shmat(id_shm_posizioni, NULL, 0);
     return errno;
 }   
 
 /* Ritorna l'indirizzo di POSIZIONI */
 void *indirizzoPosizioni(){
-    return posizioni_ptr;
+    return ptr_shm_posizioni;
 }
  /* Aggiungi la shm di POSIZIONI alla memoria del processo*/
-void* agganciaPosizioni(){
-    void* ret_val = shmat(posizioni_id, NULL, 0);
+void* aggancia_shm_posizioni(){
+    void* ret_val = shmat(id_shm_posizioni, NULL, 0);
     TEST_ERROR
     return ret_val;
 }
 
 /* Sgancia POSIZIONI */
-int sganciaPosizioni(){
-    int ret_val = shmdt(posizioni_ptr);
+int sgancia_shm_posizioni(){
+    int ret_val = shmdt(ptr_shm_posizioni);
     TEST_ERROR
     return ret_val;
 }
 
 /* Distrugge POSIZIONI */
-int distruggiPosizioni(){
-    int return_val = shmctl(posizioni_id, IPC_RMID, NULL);
+int distruggi_shm_posizioni(){
+    int return_val = shmctl(id_shm_posizioni, IPC_RMID, NULL);
     TEST_ERROR
     return return_val;
 }
@@ -81,36 +81,36 @@ int distruggiPosizioni(){
 /* LOTTI ----------------------------------------------- */
 
 /* Crea la memoria LOTTI, ritorna errno */
-int shm_lotti(int par_SO_MERCI){  
-    shmlotti = shmget(KEY_LOTTI, (sizeof(merce)*par_SO_MERCI), IPC_CREAT | IPC_EXCL | PERMESSI);
+int alloca_shm_lotti(int par_SO_MERCI){  
+    id_shm_mercato = shmget(KEY_LOTTI, (sizeof(merce)*par_SO_MERCI), IPC_CREAT | IPC_EXCL | PERMESSI);
     TEST_ERROR
-    dettagliLotti = shmat(shmlotti, NULL, 0);
+    ptr_shm_lotti = shmat(id_shm_mercato, NULL, 0);
     TEST_ERROR
-    return shmlotti;
+    return id_shm_mercato;
 }
 
 /* Ritorna l'indirizzo di LOTTI */
 void *indirizzoDettagliLotti(){
-    return dettagliLotti;
+    return ptr_shm_lotti;
 }
 
  /* Aggancia lo spazio dei LOTTI alla memoria del processo*/
-void* agganciaDettaglioLott(){
-    void* ret_val = shmat(shm_lotti, NULL, 0);
+void* aggancia_shm_dettaglioLotti(){
+    void* ret_val = shmat(id_shm_mercato, NULL, 0);
     TEST_ERROR
     return ret_val;
 } 
 
 /* Sgancia LOTTI */
-int sganciaDettagliLotti(){
-    int return_val = shmdt(dettagliLotti);
+int sgancia_shm_dettagliLotti(){
+    int return_val = shmdt(ptr_shm_lotti);
     TEST_ERROR
     return return_val;
 }
 
 /* Distrugge LOTTI */
-int distruggiShmDettagliLotti(){
-    int return_val = shmctl(shmlotti, IPC_RMID, NULL);
+int distruggi_shm_dettagliLotti(){
+    int return_val = shmctl(id_shm_mercato, IPC_RMID, NULL);
     TEST_ERROR
     return return_val;
 }
@@ -135,23 +135,23 @@ merce setUpLotto(int nmerci, int par_SO_SIZE, int par_SO_MIN_VITA, int par_SO_MA
 /* CODA RICHIESTE ----------------------------------------*/
 
 /* Crea la coda RICHIESTE, ne ritorna l'id */
-int coda_richieste(){
-    qid = msgget(KEY_CODA_RICHIESTE, IPC_CREAT | IPC_EXCL | PERMESSI);
+int crea_coda_richieste(){
+    id_coda_richieste = msgget(KEY_CODA_RICHIESTE, IPC_CREAT | IPC_EXCL | PERMESSI);
     TEST_ERROR;
     
-    return qid;
+    return id_coda_richieste;
 }
 
 /* Distrugge coda RICHIESTE */
-int distruggiCoda(){
-    int return_val = msgctl(qid, IPC_RMID, NULL);
+int distruggi_coda_richieste(){
+    int return_val = msgctl(id_coda_richieste, IPC_RMID, NULL);
     TEST_ERROR
     return return_val;
 }
 
 /* Invia una richiesta alla coda */
 int inviaRichiesta(richiesta rich){
-    int ret_val = msgsnd(qid, &rich, SIZE_MSG, 0);
+    int ret_val = msgsnd(id_coda_richieste, &rich, SIZE_MSG, 0);
     TEST_ERROR
     return ret_val;
 }
@@ -159,7 +159,7 @@ int inviaRichiesta(richiesta rich){
 /* Accetta una richiesta alla coda */
 richiesta accettaRichiesta(int nporto){
     richiesta ritorno;
-    if(msgrcv(qid, &ritorno, SIZE_MSG, nporto, IPC_NOWAIT) < 0){
+    if(msgrcv(id_coda_richieste, &ritorno, SIZE_MSG, nporto, IPC_NOWAIT) < 0){
         ritorno.indicemerce-1;
     }
     TEST_ERROR
@@ -168,42 +168,42 @@ richiesta accettaRichiesta(int nporto){
 
 /* MERCATO -------------------------------------------------- */
 
-/* Crea memoria MERCATO, ritorna shmmercato */
-int shm_mercato(int par_SO_PORTI, int par_SO_MERCI){
+/* Crea memoria MERCATO, ritorna id_shm_mercato */
+int alloca_shm_mercato(int par_SO_PORTI, int par_SO_MERCI){
     key_t chiave = KEY_MERCATO;
     int shm_size = par_SO_PORTI * par_SO_MERCI * sizeof(merce);
     TEST_ERROR
 
-    shmmercato = shmget(chiave, shm_size, IPC_CREAT | IPC_EXCL | PERMESSI);
+    id_shm_mercato = shmget(chiave, shm_size, IPC_CREAT | IPC_EXCL | PERMESSI);
     TEST_ERROR
     
-    puntatore = shmat(shmmercato, NULL, 0);
+    ptr_shm_mercato = shmat(id_shm_mercato, NULL, 0);
     TEST_ERROR
-    return shmmercato;
+    return id_shm_mercato;
 }
 
 /* Ritorna l'indirizzo di MERCATO */
 void *indirizzoMercato(){
-    return puntatore;
+    return ptr_shm_mercato;
 }
 
 /* Aggancia MERCATO*/
-void* agganciaMercat(){
-    void* ret_val = shmat(shm_mercato, NULL, 0);
+void* aggancia_shm_mercato(){
+    void* ret_val = shmat(id_shm_mercato, NULL, 0);
     TEST_ERROR
     return ret_val;
 }
 
 /* Sgancia MERCATO */
-int sganciaMercato(){
-    int ret_val = shmdt(puntatore);
+int sgancia_shm_mercato(){
+    int ret_val = shmdt(ptr_shm_mercato);
     TEST_ERROR
     return ret_val;
 }
 
 /* Distrugge MERCATO */
-int distruggiMercato(){
-    int return_val = shmctl(shmmercato, IPC_RMID, NULL);
+int distruggi_shm_mercato(){
+    int return_val = shmctl(id_shm_mercato, IPC_RMID, NULL);
     TEST_ERROR
     return return_val;
 }
@@ -216,12 +216,12 @@ int spawnMerciPorti(int par_SO_FILL, int par_SO_MERCI, merce (*ptr)[par_SO_MERCI
     /* per ogni merce, aggiungi in offerta o domanda un random r lotti */
     for(j=0;j<par_SO_MERCI;j++){
         r = rand() % MAX_MERCI_SPAWN_RANDOM + 0;
-        tmp = dettagliLotti[j].val * r;
+        tmp = ptr_shm_lotti[j].val * r;
 
         /* se il peso generato supera il valore di toFill, cicla fino ad un valore inferiore */
         while(tmp>toFill){
             r = r-RIDUCI_RANDOM;
-            tmp = dettagliLotti[j].val * r;
+            tmp = ptr_shm_lotti[j].val * r;
         }
         /* se la riduzione del peso scende sotto lo zero, si imposta la merce a 0 */
         if(tmp < 0){
@@ -233,7 +233,7 @@ int spawnMerciPorti(int par_SO_FILL, int par_SO_MERCI, merce (*ptr)[par_SO_MERCI
             (*(ptr+i)+j)->exp = NO_SCADENZA;
         }else{         /* altrimenti si imposta in offerta */
             (*(ptr+i)+j)->val = r;
-            (*(ptr+i)+j)->exp = dettagliLotti[j].exp;
+            (*(ptr+i)+j)->exp = ptr_shm_lotti[j].exp;
         }
 
         toFill-=tmp;
@@ -256,17 +256,17 @@ int spawnMerciPorti(int par_SO_FILL, int par_SO_MERCI, merce (*ptr)[par_SO_MERCI
             
             /* aumenta offerta */
             if((*(ptr+i)+j)->val > 0){
-                if(toFill > dettagliLotti[j].val){
+                if(toFill > ptr_shm_lotti[j].val){
                     (*(ptr+i)+j)->val++;
-                    toFill-=dettagliLotti[j].val;
+                    toFill-=ptr_shm_lotti[j].val;
                 }
             }
 
             /* aumenta domanda */
             if((*(ptr+i)+j)->val < 0){
-                if(toFill > dettagliLotti[j].val ){
+                if(toFill > ptr_shm_lotti[j].val ){
                     (*(ptr+i)+j)->val--;
-                    toFill-= dettagliLotti[j].val;
+                    toFill-= ptr_shm_lotti[j].val;
                 }
             }
         }
@@ -320,7 +320,7 @@ merce caricamerci(int indiceporto, int indicemerce, int nlotti, int pesolotto, i
 }
 
 /* MERCATO: */
-int scaricamerce(merce scarico, int indiceporto, int indicemerce, int data, int par_SO_MERCI){
+int scaricamerci(merce scarico, int indiceporto, int indicemerce, int data, int par_SO_MERCI){
     merce (*ptr)[par_SO_MERCI] = indirizzoMercato();
     if(scarico.exp >= data){
         

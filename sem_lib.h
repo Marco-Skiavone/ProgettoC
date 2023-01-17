@@ -13,32 +13,28 @@ union semun {
 };
 
 /* Crea il semaforo BANCHINE, ritorna il valore di semget */
-int creaBanchine(int PORTI, int BANCHINE){
-	banchine_id = semget(KEY_SEM_BANCHINE, PORTI, IPC_CREAT | IPC_EXCL | PERMESSI);
-	TEST_ERROR
-	return banchine_id;
-}
+int crea_semaforo_banchine(int PORTI, int BANCHINE);
 
 /* distrugge il set BANCHINE */
-int distruggiBanchine();
+int distruggi_semaforo_banchine();
 
 /* Crea il semaforo DUMP, ritorna il valore di semget */
-int creaDump(int MERCI);
+int crea_semaforo_dump(int MERCI);
 
 /* distrugge il set DUMP */
-int distruggiDump();
+int distruggi_semaforo_dump();
 
 /* Crea il semaforo GESTIONE, ritorna il valore di semget */
-int creaGestione(int MERCI);
+int crea_semaforo_gestione(int MERCI);
 
 /* distrugge il set GESTIONE */
-int distruggiGestione();
+int distruggi_semaforo_gestione();
 
 /* Crea il semaforo MERCATO, ritorna il valore di semget */
-int creaMercato(int PORTI);
+int crea_semaforo_mercato(int PORTI);
 
 /* distrugge il set MERCATO */
-int distruggiMercato();
+int distruggi_semaforo_mercato();
 
 /* Setta il semaforo all'indice sem_num col valore sem_val.
  * Ritorna il valore di semctl. */

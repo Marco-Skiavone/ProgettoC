@@ -5,16 +5,16 @@
 /* POSIZIONI ----------------------------------------- */
 
 /* crea la memoria POSIZIONI, ritorna errno */
-int shm_posizioni(int PORTI);
+int alloca_shm_posizioni(int PORTI);
 
 /* Ritorna l'indirizzo di POSIZIONI */
 void *indirizzoPosizioni();
 
 /* Sgancia POSIZIONI */
-int sganciaPosizioni();
+int sgancia_shm_posizioni();
 
 /* Distrugge POSIZIONI */
-int distruggiPosizioni();
+int distruggi_shm_posizioni();
 
 /* DUMP -------------------------------------------------- */
 
@@ -32,16 +32,16 @@ int distruggiPosizioni();
 /* LOTTI ----------------------------------------------- */
 
 /* Crea la memoria LOTTI, ritorna errno */
-int shm_lotti(int par_SO_MERCI);
+int alloca_shm_lotti(int par_SO_MERCI);
 
 /* Ritorna l'indirizzo di LOTTI */
 void *indirizzoDettagliLotti();
 
 /* Sgancia LOTTI */
-int sganciaDettagliLotti();
+int sgancia_shm_dettagliLotti();
 
 /* Distrugge LOTTI */
-int distruggiShmDettagliLotti();
+int distruggi_shm_dettagliLotti();
 
 /* LOTTI: Il chiamante deve settare un random */
 merce setUpLotto(int nmerci, int par_SO_SIZE, int par_SO_MIN_VITA, int par_SO_MAX_VITA);
@@ -52,10 +52,10 @@ int spawnMerciPorti(int par_SO_FILL, int par_SO_MERCI, merce (*ptr)[par_SO_MERCI
 /* CODA RICHIESTE ----------------------------------------*/
 
 /* Crea la coda RICHIESTE, ne ritorna l'id */
-int coda_richieste();
+int crea_coda_richieste();
 
 /* Distrugge coda RICHIESTE */
-int distruggiCoda();
+int distruggi_coda_richieste();
 
 /* Invia una richiesta alla coda */
 int inviaRichiesta(richiesta rich);
@@ -66,22 +66,22 @@ richiesta accettaRichiesta(int nporto);
 /* MERCATO --------------------------------------------- */
 
 /* Crea memoria MERCATO, ritorna errno */
-int shm_mercato(int par_SO_PORTI, int par_SO_MERCI);
+int alloca_shm_mercato(int par_SO_PORTI, int par_SO_MERCI);
 
 /* Ritorna l'indirizzo di MERCATO */
 void *indirizzoMercato();
 
 /* Sgancia MERCATO */
-int sganciaMercato();
+int sgancia_shm_mercato();
 
 /* Distrugge MERCATO */
-int distruggiMercato();
+int distruggi_shm_mercato();
 
 /* MERCATO: */
 merce caricamerci(int indiceporto, int indicemerce, int nlotti, int pesolotto, int spaziolibero, int scadenza, int par_SO_MERCI);
 
 /* MERCATO: */
-int scaricamerce(merce scarico, int indiceporto, int indicemerce, int data, int par_SO_MERCI);
+int scaricamerci(merce scarico, int indiceporto, int indicemerce, int data, int par_SO_MERCI);
 
 
 

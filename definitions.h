@@ -30,6 +30,7 @@
 		getpid(),							\
 		errno,								\
 		strerror(errno));					\
+		errno=0;							\
 	}
 
 /* Stampa i parametri */
@@ -168,7 +169,7 @@ typedef struct {
 
 typedef struct {
     int indice;
-    struct merce;
+    merce mer;
 } merce_nave;
 
 /* SERIE DI STRUCT NECESSARIE PER I DATI RIGUARDANTI I DUMP*/
