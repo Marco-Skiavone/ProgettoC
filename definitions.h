@@ -13,6 +13,7 @@
 #include <unistd.h>
 #include <wait.h>
 #include <sys/stat.h>
+#include <signal.h>
 #include <time.h>
 #include <math.h>
 
@@ -88,8 +89,8 @@ S_IWUSR | S_IRUSR /* | S_IRGRP | S_IWGRP| S_IROTH | S_IWOTH */
  *  un parametro in input ai processi figlio */
 #define MAX_STR_LEN 15
 
-/* key della memoria contenente i parametri */
-#define KEY_PARAMETRI 01
+/* massimo di richieste che ogni nave tenta di fare */
+#define MAX_RICHIESTE 3
 
 /* i byte necessari per la memoria parametri */
 #define SIZE_PARAMETRI (QNT_PARAMETRI*sizeof(int))
@@ -98,16 +99,16 @@ S_IWUSR | S_IRUSR /* | S_IRGRP | S_IWGRP| S_IROTH | S_IWOTH */
 #define KEY_DUMP 11
 
 /* i byte necessari per il dump (shm) */
-#define SIZE_DUMP 100
-
-/* n. di byte usati da ogni porto nella shm "registro porti" */
-#define SIZE_PORTO_IN_MERCATO 100
+#define SIZE_DUMP (	(sizeof(porto_dump) * SO_PORTI) + (sizeof(merce_dump) * SO_MERCI) + sizeof(dump))
 
 /* key della memoria del mercato (shm) */
 #define KEY_MERCATO 12
 
 /* i byte necessari per la memoria mercato (shm) */
-#define SIZE_MERCATO (SO_PORTI*SIZE_PORTO_IN_MERCATO)
+#define SIZE_MERCATO ((SO_PORTI * SO_MERCI)*sizeof(merce))
+
+
+#define SIZE_DETTAGLI_LOTTI (SO_MERCI * sizeof(merce))
 
 /* key della memoria posizioni */
 #define KEY_POSIZIONI 13
@@ -160,15 +161,19 @@ typedef struct {
     int exp;
 } merce;
 
+typedef struct {
+	int indicemerce;
+    int nlotti;
+} m_text;
+
 /* richiesta da inserire in CODA MSG*/
 typedef struct {
     long mtype;
-    int indicemerce;
-    int nlotti;
+    m_text mtext;
 } richiesta;
 
 typedef struct {
-    int indice;
+    int indice; /* indice merce */
     merce mer;
 } merce_nave;
 

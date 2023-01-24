@@ -3,11 +3,6 @@
 #endif
 #include "dump_lib.h"
 
-/* Puntatore del DUMP*/
-static struct dump *dump_ptr;
-/* id del DUMP*/
-static int shm_dump;
-
 /* funzione interna per calcolare lo spazio necessario per il dump */
 int calcola_spazio_necessario(int par_SO_MERCI, int par_SO_PORTI){
     int spazio;
@@ -20,32 +15,15 @@ int calcola_spazio_necessario(int par_SO_MERCI, int par_SO_PORTI){
 /* Crea il dump e ne ritorna il puntatore */
 int alloca_shm_dump(int par_SO_MERCI, int par_SO_PORTI){
     int spazio = calcola_spazio_necessario(par_SO_MERCI, par_SO_PORTI);
-    shm_dump = shmget(KEY_DUMP, spazio, IPC_CREAT | IPC_EXCL | PERMESSI);
+    int id_dump = shmget(KEY_DUMP, spazio, IPC_CREAT | IPC_EXCL | PERMESSI);
     TEST_ERROR
-    dump_ptr = shmat(shm_dump, NULL, 0);
-    TEST_ERROR
-    return shm_dump;
+    return id_dump;
 }
 
-/* Ritorna il puntatore del dump */
-void* indirizzoMemoriaDump(){
-    return dump_ptr;
-}
 
-void* aggancia_shm_dump(){
-    void* ret_val = shmat(shm_dump, NULL, 0);
+/* fa la get del dump senza crearlo */
+int set_shm_dump(int MERCI, int PORTI){
+    int id_dump = shmget(KEY_DUMP, calcola_spazio_necessario(MERCI, PORTI), PERMESSI);
     TEST_ERROR
-    return ret_val;
-}
-
-int sgancia_shm_dump(){
-    int ret_val = shmdt(dump_ptr);
-    TEST_ERROR
-    return ret_val;
-}
-
-int distruggi_shm_dump(){
-    int return_val = shmctl(shm_dump, IPC_RMID, NULL);
-    TEST_ERROR
-    return return_val;
+    return id_dump;
 }

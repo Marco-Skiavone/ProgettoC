@@ -14,66 +14,81 @@ void spostamento(viaggio v, point *p){
 	p->y = v.y;
 }
 
-/* Funzione spostamento nave*/
-double distanza (double x, double y, point *p){
-	/* alternativa a sqrt() */
-	double val, sqrt, temp;
-	val = x*x + y*y;
-	sqrt = val / 2;
-	temp = 0;
-	while(sqrt != temp){
-		temp = sqrt;
-		sqrt = ((val / temp) + temp) / 2;
-	}
-	return sqrt;
+/* ritorna il valore della nanosleep, 
+ * "divisore" definisce il divisore per trovare i secondi */
+int attesa(double to_wait, int divisore){
+	int val_ritorno;
+	struct timespec tempo;
+	tempo.tv_sec = to_wait / divisore;
+	tempo.tv_nsec = (long)to_wait % tempo.tv_sec; 
+	if((tempo.tv_sec & 0) && (tempo.tv_nsec & 0))
+		fprintf(stderr, "NAVE %d, linea %d: nanosleep chiamata con argomenti 0\n", getpid(), __LINE__);
+	val_ritorno = nanosleep(&tempo, NULL);
+
+	return val_ritorno;
 }
 
-/*viaggio verso porto generico*/
-viaggio porto_generico(int i_porto, point *p_n, int SZ_POSIZIONI, int SPEED){ 
+double calcola_distanza(double x1, double y1, double x2, double y2 ){
+	double a;
+	double b;
+	a = (x2-x1);
+	b = (y2-y1);
+	a = a*a;
+	b = b*b;
+	return (a+b);
+}
+
+int calcola_porto_piu_vicino(point p, point *ptr_shm_porti, int par_SO_PORTI){
+	int i, indicemin;
+	double distmin;
+	indicemin = 0;
+	distmin = calcola_distanza(p.x, p.y, ptr_shm_porti[0].x, ptr_shm_porti[0].y);
+	for(i=0;i<par_SO_PORTI;i++){
+		if(distmin>calcola_distanza(p.x,p.y, ptr_shm_porti[i].x, ptr_shm_porti[i].y)){
+			indicemin = i;
+			distmin = calcola_distanza(p.x,p.y, ptr_shm_porti[i].x, ptr_shm_porti[i].y);
+		}
+	}
+	return indicemin;
+}
+
+
+/*restituisce un viaggio verso porto generico*/
+viaggio porto_generico(int i_porto, point p_n, int SZ_POSIZIONI, int SPEED, point *ptr_posizioni){ 
 	viaggio porto;
-	int id_porti;
-	point *p;
 	int i = 0;
 	int pp;
-	id_porti = shmget(KEY_POSIZIONI, SZ_POSIZIONI, 0666);
-	p = shmat(id_porti, NULL, SHM_RDONLY);
 	while(i < i_porto){
 		pp = pp + sizeof(point);
 		i++;
 	}
-	porto.nanosec_nano = (distanza((p+pp)->x, (p+pp)->y, p_n)/SPEED)*1000000;
-
+	porto.nanosec_nano = (calcola_distanza((ptr_posizioni+pp)->x, (ptr_posizioni+pp)->y, p_n.x, p_n.y)/SPEED)*1000000;
 	return porto;
-	shmdt(p);
 }
 
 /*restituisce struct con info per il porto più vicino alla nave*/
-viaggio porto_piu_vicino(point *p_n, int SZ_POSIZIONI, int PORTI, int SPEED){
+viaggio porto_piu_vicino(point p_n, int SZ_POSIZIONI, int PORTI, int SPEED, point *ptr_posizioni){
 	viaggio porto;
 	int v = 0;
 	int i = 0;
 	int id_porti; 
-	point *p;
 	int pp;
 	double a, b, d; 	
-	id_porti = shmget(KEY_POSIZIONI, SZ_POSIZIONI, 0666);
-	p = shmat(id_porti, NULL, SHM_RDONLY);
-	a = p_n->x;
-	b = p_n->y;
-	d = distanza(a, b, p_n);
+	a = p_n.x;
+	b = p_n.y;
+	d = calcola_distanza(a, b, p_n.x, p_n.y);
 	/*scansiona i porti senza perdere il puntatore p = shmat()*/
 	while (i < PORTI){
 		pp = pp + sizeof(point);
-		if (d - distanza((p + pp)->x, (p + pp)->y, p_n) > 0){
+		if (d - calcola_distanza((ptr_posizioni + pp)->x, (ptr_posizioni + pp)->y, p_n.x, p_n.y) > 0){
 			v = i; 
-			d = distanza((p + pp)->x, (p + pp)->y, p_n);
-			a = (p + pp)->x; b = (p + pp)->y;
+			d = calcola_distanza((ptr_posizioni + pp)->x, (ptr_posizioni + pp)->y, p_n.x, p_n.y);
+			a = (ptr_posizioni + pp)->x; b = (ptr_posizioni + pp)->y;
 		}
 		i++;
 	}
-	shmdt(p);
 	porto.indice_porto = v;
-	porto.nanosec_nano = (distanza(a, b, p_n)/SPEED)*1000000;
+	porto.nanosec_nano = (calcola_distanza(a, b, p_n.x, p_n.y)/SPEED)*1000000;
 	porto.x = a;
 	porto.y = b;
 	return porto;

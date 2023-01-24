@@ -5,7 +5,6 @@
 
 /* genera e restituisce un punto in maniera randomica, dato SO_LATO */
 point generate_rand_point(int LATO){
-	/*valori ausiliari generazione punto casuale*/
 	int mant, p_intera;
 	point p;
 	/*coordinata x*/
@@ -13,7 +12,6 @@ point generate_rand_point(int LATO){
 	/*parte decimale + parte intera*/
 	p.x = ((double)mant/LATO) + (p_intera*getppid()%LATO);
 	/*coordinata y*/
-	/*srand(mant);*/
 	p_intera = mant = rand()%LATO;
 	p.y = ((double)mant/LATO) + ((p_intera*getppid()%LATO));
 	return p;

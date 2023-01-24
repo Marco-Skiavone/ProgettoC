@@ -12,29 +12,34 @@ union semun {
 				    (Linux-specific) */
 };
 
-/* Crea il semaforo BANCHINE, ritorna il valore di semget */
-int crea_semaforo_banchine(int PORTI, int BANCHINE);
 
-/* distrugge il set BANCHINE */
-int distruggi_semaforo_banchine();
+/* Crea il semaforo BANCHINE, ritorna il valore di semget */
+int crea_semaforo_banchine(int PORTI);
+
+/* esegue solo l'aggancio salvandosi l'id staticamente */
+int trova_semaforo_banchine(int PORTI);
 
 /* Crea il semaforo DUMP, ritorna il valore di semget */
 int crea_semaforo_dump(int MERCI);
 
-/* distrugge il set DUMP */
-int distruggi_semaforo_dump();
+/* esegue solo l'aggancio salvandosi l'id staticamente */
+int trova_semaforo_dump(int MERCI);
 
 /* Crea il semaforo GESTIONE, ritorna il valore di semget */
-int crea_semaforo_gestione(int MERCI);
+int crea_semaforo_gestione(int PORTI, int NAVI);
 
-/* distrugge il set GESTIONE */
-int distruggi_semaforo_gestione();
+/* esegue solo l'aggancio salvandosi l'id staticamente */
+int trova_semaforo_gestione(int PORTI, int NAVI);
 
 /* Crea il semaforo MERCATO, ritorna il valore di semget */
 int crea_semaforo_mercato(int PORTI);
 
+/* esegue solo l'aggancio salvandosi l'id staticamente */
+int trova_semaforo_mercato(int PORTI);
+
 /* distrugge il set MERCATO */
-int distruggi_semaforo_mercato();
+int distruggi_semaforo(int id_semaforo);
+
 
 /* Setta il semaforo all'indice sem_num col valore sem_val.
  * Ritorna il valore di semctl. */
