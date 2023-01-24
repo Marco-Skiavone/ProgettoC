@@ -77,7 +77,7 @@ int main(int argc, char *argv[]){
 	ptr_lotti = aggancia_shm(id_lotti);
 	id_semaforo_banchine = trova_semaforo_banchine(SO_PORTI);
 	id_semaforo_dump = trova_semaforo_dump(SO_MERCI);
-	id_semaforo_gestione = trova_semaforo_gestione(SO_PORTI, SO_NAVI);
+	id_semaforo_gestione = trova_semaforo_gestione();
 	id_semaforo_mercato = trova_semaforo_mercato(SO_PORTI);
 
 	spawnMerciPorti((SO_FILL/SO_PORTI),SO_MERCI,indice, ptr_mercato, ptr_lotti);
@@ -98,8 +98,16 @@ int main(int argc, char *argv[]){
 			vecchioDump[i] = ((merce(*)[SO_MERCI])ptr_mercato)[indice][i];
 		}
 	}
-	sleep(10);
 
+	if(sem_reserve(id_semaforo_gestione, 0) == -1){
+		ERROR("nel PORTO causato dal sem_reserve()")
+		TEST_ERROR
+	}
+	if(sem_waitforzero(id_semaforo_gestione, 0) == -1){
+		ERROR("nel PORTO causato dal sem_waitforzero()")
+		TEST_ERROR
+	}
+	sleep(10);
 	free(vecchioDump);
 	exit(10+indice);
 }

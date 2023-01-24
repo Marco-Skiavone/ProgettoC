@@ -26,10 +26,10 @@ int crea_semaforo_dump(int MERCI);
 int trova_semaforo_dump(int MERCI);
 
 /* Crea il semaforo GESTIONE, ritorna il valore di semget */
-int crea_semaforo_gestione(int PORTI, int NAVI);
+int crea_semaforo_gestione();
 
 /* esegue solo l'aggancio salvandosi l'id staticamente */
-int trova_semaforo_gestione(int PORTI, int NAVI);
+int trova_semaforo_gestione();
 
 /* Crea il semaforo MERCATO, ritorna il valore di semget */
 int crea_semaforo_mercato(int PORTI);
@@ -49,6 +49,10 @@ int sem_set_val(int sem_id, int sem_num, int sem_val);
  * Ritorna il valore dell semop. */
 int sem_reserve(int sem_id, int sem_num);
 
+/* fa la waitforzero.
+ * Ritorna il valore dell semop. */
+int sem_waitforzero(int sem_id, int sem_num);
+
 /* Rilascia la risorsa: INCREMENTA DI 1:
  * Ritorna il valore della semop. */
 int sem_release(int sem_id, int sem_num);
@@ -58,4 +62,4 @@ int sem_release(int sem_id, int sem_num);
 int sem_getall(char * my_string, int sem_id);
 
 /* Setta a tutti i valori di n_sems il valore value */
-int sem_setall(int n_sems, int value, int sem_id);
+int sem_setall(int sem_id, int n_sems, int value);

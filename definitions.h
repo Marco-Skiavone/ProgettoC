@@ -205,4 +205,5 @@ typedef struct {
     merce_dump *merce_dump_ptr;
     porto_dump *porto_dump_ptr;
     nave_dump nd;
+	int data;
 } dump;

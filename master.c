@@ -99,7 +99,7 @@ int main(int argc, char *argv[]) {
 	TEST_ERROR
 	printf("SET SEM DUMP (-1 == fail): %d\n", id_semaforo_dump = crea_semaforo_dump(SO_MERCI));
 	TEST_ERROR
-	printf("SET SEM GESTIONE (-1 == fail): %d\n", id_semaforo_gestione = crea_semaforo_gestione(SO_PORTI, SO_NAVI));
+	printf("SET SEM GESTIONE (-1 == fail): %d\n", id_semaforo_gestione = crea_semaforo_gestione());
 	TEST_ERROR
 	printf("SET SEM MERCATO (-1 == fail): %d\n", id_semaforo_mercato = crea_semaforo_mercato(SO_PORTI));
 	TEST_ERROR
@@ -134,7 +134,6 @@ int main(int argc, char *argv[]) {
 	
 	for (i = 0; i < SO_MERCI; i++){
 		*(ptr_lotti + i) = setUpLotto(SO_MERCI, SO_SIZE, SO_MIN_VITA, SO_MAX_VITA);
-
 		/*debug
 			printf("Merce %d: val = %d, exp = %d\n", i, (dettagliLotti + i)->val, (dettagliLotti + i)->exp);
 		 */
@@ -177,7 +176,24 @@ int main(int argc, char *argv[]) {
 	}
 	/* avvio del timer della simulazione (+ sincronizzazione) */
 
-	/* DUMP 
+	/* settare il semaforo di preparazione iniziale (gestione: SO_NAVI + SO_PORTI)*/
+	if(sem_set_val(id_semaforo_gestione, 0, SO_NAVI+SO_PORTI) == -1){
+		ERROR("nel MASTER causato dal sem_set_val()")
+		TEST_ERROR
+	}
+	/*deve aspettare il semaforo di preparazione (gestione), che passi da X a zero */
+	if(sem_waitforzero(id_semaforo_gestione, 0) == -1){
+		ERROR("nel MASTER causato dal sem_waitforzero()")
+		TEST_ERROR
+	}
+	
+	/* dopodiché crea il tempo (salviamo su dump un campo int, 
+				aggiornato dal mastere visibile anhe alle navi,
+		 		dopo la nanosleep)
+		si entra in un ciclo che termina:
+		- dopo SO_DAYS
+		- se finiscono le richieste
+		- se finiscono le offerte
 	*/
 	sleep(4);
 	
@@ -201,13 +217,11 @@ int main(int argc, char *argv[]) {
 		ERROR("nell'attesa della terminazione dei processi figli.\nerrno != ECHILD")
 		TEST_ERROR
 	}
-	else{
+	else {
 		printf("Chiusura di tutti i %d processi effettuata.\nInizio deallocazione risorse IPC.\n", i);
-		
 	}
 	/* A fine while la wait resituirà -1 e setterà errno a 10 (No child processes)*/
-
-	if(errno == 10) errno = 0;
+	if(errno == ECHILD) errno = 0;
 	
 
 

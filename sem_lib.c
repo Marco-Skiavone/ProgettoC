@@ -34,13 +34,13 @@ int trova_semaforo_dump(int MERCI){
 }
 
 /* Crea il semaforo GESTIONE, ritorna il valore di semget */
-int crea_semaforo_gestione(int PORTI, int NAVI){
-	int id_semaforo_gestione = semget(KEY_SEM_GESTIONE, PORTI+NAVI, IPC_CREAT | IPC_EXCL | PERMESSI);
+int crea_semaforo_gestione(){
+	int id_semaforo_gestione = semget(KEY_SEM_GESTIONE, 1, IPC_CREAT | IPC_EXCL | PERMESSI);
 	TEST_ERROR
 	return id_semaforo_gestione;
 }
-int trova_semaforo_gestione(int PORTI, int NAVI){
-	int id_semaforo_gestione = semget(KEY_SEM_GESTIONE, PORTI+NAVI, PERMESSI);
+int trova_semaforo_gestione(){
+	int id_semaforo_gestione = semget(KEY_SEM_GESTIONE, 1, PERMESSI);
 	TEST_ERROR
 	return id_semaforo_gestione;
 }
@@ -78,6 +78,14 @@ int sem_reserve(int sem_id, int sem_num) {
 	struct sembuf sops;
 	sops.sem_num = sem_num;
 	sops.sem_op = -1;
+	sops.sem_flg = 0;
+	return semop(sem_id, &sops, 1);
+}
+
+int sem_waitforzero(int sem_id, int sem_num) {
+	struct sembuf sops;
+	sops.sem_num = sem_num;
+	sops.sem_op = 0;
 	sops.sem_flg = 0;
 	return semop(sem_id, &sops, 1);
 }
@@ -120,7 +128,7 @@ int sem_getall(char * my_string, int sem_id) {
 }
 
 /* Setta a tutti i valori di n_sems il valore value */
-int sem_setall(int n_sems, int value, int sem_id) {
+int sem_setall(int sem_id, int n_sems, int value) {
 	union semun arg;   /* man semctl per vedere def della union  */ 
 	short unsigned buf_valori[n_sems];
 	int i;

@@ -69,7 +69,6 @@ int main(int argc, char *argv[]){
 	
 	/* AGGANCIO RISORSE IPC */
 	id_dump = set_shm_dump(SO_MERCI, SO_PORTI);
-	ptr_dump = aggancia_shm(id_dump);
 	TEST_ERROR
 	id_posizioni = set_shm_posizioni(SO_PORTI);
 	id_mercato = set_shm_mercato(SO_PORTI, SO_MERCI);
@@ -83,7 +82,7 @@ int main(int argc, char *argv[]){
 	/* aggancio ai semafori */
 	id_semaforo_banchine = trova_semaforo_banchine(SO_PORTI);
 	id_semaforo_dump = trova_semaforo_dump(SO_MERCI);
-	id_semaforo_gestione = trova_semaforo_gestione(SO_PORTI, SO_NAVI);
+	id_semaforo_gestione = trova_semaforo_gestione();
 	id_semaforo_mercato = trova_semaforo_mercato(SO_PORTI);	
 	ptr_posizioni = aggancia_shm(id_posizioni);
 	ptr_lotti = aggancia_shm(id_lotti);
@@ -114,11 +113,20 @@ int main(int argc, char *argv[]){
 		j++;
 	} while(j < 10);
 
+	if(sem_reserve(id_semaforo_gestione, 0) == -1){
+		ERROR("nella NAVE causato dal sem_reserve()")
+		TEST_ERROR
+	}
+	if(sem_waitforzero(id_semaforo_gestione, 0) == -1){
+		ERROR("nella NAVE causato dal sem_waitforzero()")
+		TEST_ERROR
+	}
 	sleep(10);
-	
+
 }
 
 void sigusr1_handler(int signum){
+	printf("NAVE %d: RICEVUTO SIGUSR1\n", getpid());
 	DATA++;
 }
 
