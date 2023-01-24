@@ -130,9 +130,9 @@ void sigusr1_handler(int signum){
 			ptr_dump->porto_dump_ptr[indice].mercespedita += (vecchioDump[i].val - ptr[indice][i].val); 
 		}
 		
-		exit(193);
 		if(ptr[indice][i].exp > DATA){/*va messo < al posto di > */
-			if(sem_reserve(id_semaforo_dump, i)==0){
+			if(sem_reserve(id_semaforo_dump, i)==0){	
+				exit(193);
 				ptr_dump->merce_dump_ptr[i].scaduta_in_porto += ptr[indice][i].val;
 				sem_release(id_semaforo_dump, i);
 			}

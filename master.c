@@ -22,6 +22,8 @@
 /* contiene tutti i parametri */
 int PARAMETRO[QNT_PARAMETRI];
 
+int inizializzaSemaforoDump();
+
 int main(int argc, char *argv[]) {
 	int *childs;
 	int NUM_RIGA_FILE, i, j, file_config_char, status = 0;
@@ -101,6 +103,7 @@ int main(int argc, char *argv[]) {
 	TEST_ERROR
 	printf("SET SEM MERCATO (-1 == fail): %d\n", id_semaforo_mercato = crea_semaforo_mercato(SO_PORTI));
 	TEST_ERROR
+	printf("SET SEM DUMP (-1 == fail): %d\n", inizializzaSemaforoDump());
 	ptr_posizioni = aggancia_shm(id_posizioni);
 	ptr_mercato = aggancia_shm(id_mercato);
 	ptr_lotti = aggancia_shm(id_lotti);
@@ -242,4 +245,8 @@ int main(int argc, char *argv[]) {
 	printf("distruggiSemaforoMercato()= %d\n", distruggi_semaforo(id_semaforo_mercato));
 
 	exit(EXIT_SUCCESS);
+}
+
+int inizializzaSemaforoDump(){
+	return sem_setall(SO_MERCI+1,1,id_semaforo_dump);
 }
