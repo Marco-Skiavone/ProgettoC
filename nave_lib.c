@@ -35,7 +35,7 @@ double calcola_distanza(double x1, double y1, double x2, double y2 ){
 	b = (y2-y1);
 	a = a*a;
 	b = b*b;
-	return (a+b);
+	return sqrt(a+b);
 }
 
 int calcola_porto_piu_vicino(point p, point *ptr_shm_porti, int par_SO_PORTI){

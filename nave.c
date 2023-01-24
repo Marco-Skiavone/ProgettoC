@@ -82,6 +82,10 @@ int main(int argc, char *argv[]){
 	id_semaforo_dump = trova_semaforo_dump(SO_MERCI);
 	id_semaforo_gestione = trova_semaforo_gestione(SO_PORTI, SO_NAVI);
 	id_semaforo_mercato = trova_semaforo_mercato(SO_PORTI);	
+	ptr_posizioni = aggancia_shm(id_posizioni);
+	ptr_lotti = aggancia_shm(id_lotti);
+	ptr_mercato = aggancia_shm(id_mercato);
+	ptr_dump = aggancia_shm(id_dump);
 	
 	/*printf("nave el-8\n");*/
 	srand(getpid());
