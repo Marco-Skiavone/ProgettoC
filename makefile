@@ -43,5 +43,5 @@ debug: $(DEBUG)
 clear:
 
 	rm -f *.o $(TARGET) $(DEBUG) $(NAVE) $(PORTO)
-remove:	#var = {Q, M o S} mentre var2 = {key associata}
-	#ipcrm -$(var) $(var2)
+ipc:
+	ipcrm --all
