@@ -131,7 +131,7 @@ void sigusr1_handler(int signum){
 		}
 		
 		exit(193);
-		if(ptr[indice][i].exp > DATA){
+		if(ptr[indice][i].exp > DATA){/*va messo < al posto di > */
 			if(sem_reserve(id_semaforo_dump, i)==0){
 				ptr_dump->merce_dump_ptr[i].scaduta_in_porto += ptr[indice][i].val;
 				sem_release(id_semaforo_dump, i);
