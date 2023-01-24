@@ -122,7 +122,7 @@ int sem_getall(char * my_string, int sem_id) {
 /* Setta a tutti i valori di n_sems il valore value */
 int sem_setall(int n_sems, int value, int sem_id) {
 	union semun arg;   /* man semctl per vedere def della union  */ 
-	short unsigned int *buf_valori = (short unsigned int *) malloc(n_sems*sizeof(int));
+	short unsigned buf_valori[n_sems];
 	int i;
 
 	/* Set all values to value */

@@ -108,6 +108,8 @@ int main(int argc, char *argv[]) {
 	ptr_mercato = aggancia_shm(id_mercato);
 	ptr_lotti = aggancia_shm(id_lotti);
 	ptr_dump = aggancia_shm(id_dump);
+	ptr_dump->merce_dump_ptr = (merce_dump*)ptr_dump;
+	ptr_dump->porto_dump_ptr = (porto_dump*)(((merce_dump*)ptr_dump)+SO_MERCI);
 
 	/* creazione delle posizioni e aggiunta alla memoria dedicata */
 	/* I primi quattro porti creati agli angoli */
@@ -178,8 +180,13 @@ int main(int argc, char *argv[]) {
 	/* DUMP 
 	*/
 	sleep(4);
+	
 	for(i=0;i<(SO_PORTI+SO_NAVI);i++){
 		kill(childs[i], SIGUSR1);
+	}
+	sleep(5);
+	for(i=0;i<(SO_PORTI+SO_NAVI);i++){
+		kill(childs[i], SIGUSR2);
 	}
 
 

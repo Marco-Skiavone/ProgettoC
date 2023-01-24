@@ -100,13 +100,6 @@ int main(int argc, char *argv[]){
 	}
 	sleep(10);
 
-	/*printf("porto 1:\n");*/
-	sgancia_shm(ptr_dump);
-	/*printf("porto 2:\n");*/
-	sgancia_shm(ptr_mercato);
-	/*printf("porto 3:\n");*/
-	sgancia_shm(ptr_lotti);
-	/*printf("porto 4:\n");*/
 	free(vecchioDump);
 	exit(10+indice);
 }
@@ -121,20 +114,21 @@ void sigusr1_handler(int signum){
 	int i;
 	merce(*ptr)[SO_MERCI] =(merce(*)[SO_MERCI]) ptr_mercato;
 	
-	printf("dumb pointer: %p\n", ptr);
+	/*printf("dumb pointer: %p\n", ptr);*/
 	for(i = 0;i<SO_MERCI;i++){
 		if(vecchioDump[i].val < ptr[indice][i].val ){
-			ptr_dump->porto_dump_ptr[indice].mercericevuta += (ptr[indice][i].val - vecchioDump[i].val);
+			((porto_dump*)ptr_dump)[indice].mercericevuta += (ptr[indice][i].val - vecchioDump[i].val);
 		}
-		if(vecchioDump[i].val > ptr[indice][i].val){
-			ptr_dump->porto_dump_ptr[indice].mercespedita += (vecchioDump[i].val - ptr[indice][i].val); 
+		if(vecchioDump[i].val > ptr[indice][i].val){/* forse da errore */
+			((porto_dump*)ptr_dump)[indice].mercespedita += (vecchioDump[i].val - ptr[indice][i].val); 
 		}
 		
-		if(ptr[indice][i].exp > DATA){/*va messo < al posto di > */
+		if(ptr[indice][i].exp < DATA){/*va messo < al posto di > */
 			if(sem_reserve(id_semaforo_dump, i)==0){	
-				exit(193);
-				ptr_dump->merce_dump_ptr[i].scaduta_in_porto += ptr[indice][i].val;
+				TEST_ERROR
+				((merce_dump*)ptr_dump)[i].scaduta_in_porto += ptr[indice][i].val;
 				sem_release(id_semaforo_dump, i);
+				TEST_ERROR
 			}
 		}
 	}
@@ -143,5 +137,12 @@ void sigusr1_handler(int signum){
 }
 
 void sigusr2_handler(int signum){
-
+	/*printf("porto 1:\n");*/
+	sgancia_shm(ptr_dump);
+	/*printf("porto 2:\n");*/
+	sgancia_shm(ptr_mercato);
+	/*printf("porto 3:\n");*/
+	sgancia_shm(ptr_lotti);
+	/*printf("porto 4:\n");*/
+	exit(10+indice);
 }

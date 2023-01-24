@@ -27,6 +27,10 @@ void *aggancia_shm(int id){
 int sgancia_shm(void *ptr){
     int ret_val = shmdt(ptr);
     TEST_ERROR
+    /*if(i){
+        printf("PORTO\n");
+    } else printf("NAVE\n");*/
+    
     return ret_val;
 }
 
@@ -39,7 +43,7 @@ int distruggi_shm(int id){
 
 /* POSIZIONI ------------------------- */
 
-/* crea la memoria POSIZIONI, ritorna errno */
+/* cInterruptedrea la memoria POSIZIONI, ritorna errno */
 int alloca_shm_posizioni(int PORTI){
     int id = shmget(KEY_POSIZIONI, sizeof(point)*PORTI, IPC_CREAT | IPC_EXCL | PERMESSI);
     TEST_ERROR

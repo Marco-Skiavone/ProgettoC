@@ -15,23 +15,27 @@
 /* id del set di semafori MERCATO */
  int id_semaforo_mercato;
 
+ int id_mercato, id_posizioni, id_lotti;
+
 /* Puntatore del DUMP*/
  dump *ptr_dump;
 /* id del DUMP*/
  int id_dump;
 
+ point *ptr_posizioni;
+ merce *ptr_mercato, *ptr_lotti;
+
 int PARAMETRO[QNT_PARAMETRI];
-int DATA = 0;
+int DATA = 0, indice;
 void sigusr1_handler(int signum);
+void sigusr2_handler(int signum);
 
 int main(int argc, char *argv[]){
 	viaggio v;
-	int id_mercato, id_posizioni, id_lotti, indice;
 	int i, j, k;
 	double distanza;
 	point position;
-	point *ptr_posizioni;
-	merce *ptr_mercato, *ptr_lotti;
+	
 	struct timespec tempo;
 	/* capacità di carico in ton della nave */
 	long capacita;
@@ -41,7 +45,7 @@ int main(int argc, char *argv[]){
 
 	struct sigaction sigusr1_sa;
 	sigusr1_sa.sa_handler = sigusr1_handler;
-
+	sigusr1_sa.sa_handler = sigusr2_handler;
 	sigemptyset(&sigusr1_sa.sa_mask);
 	sigaction(SIGUSR1, &sigusr1_sa, NULL);
 	TEST_ERROR
@@ -75,8 +79,7 @@ int main(int argc, char *argv[]){
 	printf("set mercato effettuata: %d\n", id_mercato);
 	printf("set lotti effettuata: %d\n", id_lotti);
 	/*printf("nave el-7\n");*/
-	printf("set dump effettuata: %d\n", id_dump);
-	printf("set CODA effettuata: %d\n", getIdCoda());
+	/*printf("set CODA effettuata: %d\n", getIdCoda());*/
 	/* aggancio ai semafori */
 	id_semaforo_banchine = trova_semaforo_banchine(SO_PORTI);
 	id_semaforo_dump = trova_semaforo_dump(SO_MERCI);
@@ -91,19 +94,15 @@ int main(int argc, char *argv[]){
 	srand(getpid());
 	/* calcolo primo viaggio*/
 	position = generate_rand_point(SO_LATO);
-	printf("nave - 6\n");
 	i = calcola_porto_piu_vicino(position, ptr_posizioni, SO_PORTI);
 	TEST_ERROR
-	printf("nave - 7\n");
 	distanza = calcola_distanza(position.x, position.y, ptr_posizioni[i].x, ptr_posizioni[i].y);  
 	TEST_ERROR
-	printf("nave - 8\n");
 	tempo.tv_sec = distanza / SO_SPEED; 
 	tempo.tv_nsec = tempo.tv_sec % SO_SPEED;
 	if(nanosleep(&tempo, NULL) != 0){
 		printf("ERRORE NANOSLEEP: NAVE %d\n", getpid());
 	} 
-	printf("nave - 9\n");
 	position.x = ptr_posizioni[i].x;
 	position.y = ptr_posizioni[i].y;
 	printf("NAVE %d: giunta al porto piu' vicino.\n", indice);
@@ -115,6 +114,15 @@ int main(int argc, char *argv[]){
 		j++;
 	} while(j < 10);
 
+	sleep(10);
+	
+}
+
+void sigusr1_handler(int signum){
+	DATA++;
+}
+
+void sigusr2_handler(int signum){
 	/* sgancio e uscita*/
 	/*printf("nave 1:\n");*/
 	sgancia_shm(ptr_lotti);
@@ -127,9 +135,4 @@ int main(int argc, char *argv[]){
 	/*printf("nave 5:\n");*/
 	/*printf("NAVE %d:", getpid());*/
 	exit(10+indice);
-	exit(EXIT_SUCCESS);
-}
-
-void sigusr1_handler(int signum){
-	DATA++;
 }
