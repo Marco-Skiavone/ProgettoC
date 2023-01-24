@@ -173,10 +173,11 @@ int main(int argc, char *argv[]) {
 	/* avvio del timer della simulazione (+ sincronizzazione) */
 
 	/* DUMP 
-	sleep(20);
+	*/
+	sleep(4);
 	for(i=0;i<(SO_PORTI+SO_NAVI);i++){
 		kill(childs[i], SIGUSR1);
-	}*/
+	}
 
 
 	/* WAIT di terminazione dei figli */
