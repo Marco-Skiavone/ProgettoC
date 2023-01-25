@@ -24,3 +24,30 @@ int equals(double x, double y){
 	else 
 		return (y-x) < TOLLERANZA ? 1 : 0;
 }
+
+int fine_richieste(int id){
+	if(msgrcv(id, NULL, SIZE_MSG, 0, IPC_NOWAIT) == -1)
+		if(errno == ENOMSG)
+			return 1; /*coda finita*/
+	
+	return 0;
+}
+
+int fine_offerte(merce *ptr_mercato, int PORTI, int MERCI, int data){
+	int i, j, continua;
+	merce (*ptr)[MERCI] = (merce (*)[MERCI])ptr_mercato;
+	for(i = 0, continua = 1; i < PORTI && continua; i++){
+		for(j = 0; j < PORTI && continua; j++){
+			continua = (ptr[i][j].val > 0);
+			/* ^^ c'è ancora qualche offerta ^^ */
+				/*continua = (ptr_mercato[i][j].exp > data) ? 0 : 1; */	
+		}
+	}
+	return continua;
+}
+
+void alarm_handler(int signal){
+	if(signal == SIGALRM){
+		printf("MASTER: Partenza dump...\n");
+	}
+}

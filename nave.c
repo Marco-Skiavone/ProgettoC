@@ -41,12 +41,14 @@ int main(int argc, char *argv[]){
 	long capacita;
 	int nRichieste;
 	merce_nave carico[MAX_RICHIESTE];
+	richiesta rkst;
 	sigset_t maschera;
-
 	struct sigaction sigusr1_sa;
 	sigusr1_sa.sa_handler = sigusr1_handler;
 	sigusr1_sa.sa_handler = sigusr2_handler;
 	sigemptyset(&sigusr1_sa.sa_mask);
+	sigemptyset(&maschera);
+	sigaddset(&maschera, SIGUSR1);
 	sigaction(SIGUSR1, &sigusr1_sa, NULL);
 	TEST_ERROR
 	/* CODICE PER ATTIVARE LA MASCHERA 
@@ -55,7 +57,7 @@ int main(int argc, char *argv[]){
 	/* CODICE PER DISATTIVARE LA MASCHERA*
 		sigprocmask(SIG_UNBLOCK, &maschera, NULL);
 	*/
-	richiesta rkst;
+	
 	if(argc != (2+QNT_PARAMETRI)){
 		ERROR("nel passaggio dei parametri alla nave")
 		exit(99);
@@ -75,10 +77,6 @@ int main(int argc, char *argv[]){
 	id_lotti = set_shm_lotti(SO_MERCI);
 	set_coda_richieste();
 	/*printf("set posizioni effettuata: %d\n", id_posizioni);
-	printf("set mercato effettuata: %d\n", id_mercato);
-	printf("set lotti effettuata: %d\n", id_lotti);
-	/*printf("nave el-7\n");*/
-	/*printf("set CODA effettuata: %d\n", getIdCoda());*/
 	/* aggancio ai semafori */
 	id_semaforo_banchine = trova_semaforo_banchine(SO_PORTI);
 	id_semaforo_dump = trova_semaforo_dump(SO_MERCI);

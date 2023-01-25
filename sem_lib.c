@@ -128,15 +128,14 @@ int sem_getall(char * my_string, int sem_id) {
 }
 
 /* Setta a tutti i valori di n_sems il valore value */
-int sem_setall(int sem_id, int n_sems, int value) {
+int sem_setall(int sem_id, int n_sems, unsigned short value) {
 	union semun arg;   /* man semctl per vedere def della union  */ 
-	short unsigned buf_valori[n_sems];
-	int i;
+	unsigned short buf_valori[n_sems];
+	unsigned short *sem_vals, i;
 
 	/* Set all values to value */
 	for(i = 0; i < n_sems; i++)
 		buf_valori[i] = value;
-	
 	/* Get the values of all semaphores */
 	arg.array = buf_valori;
 	semctl(sem_id, 0, SETALL, arg);

@@ -76,6 +76,8 @@
 #define SO_LOADSPEED PARAMETRO[I_LOADSPEED]
 #define SO_DAYS PARAMETRO[I_DAYS]
 
+#define FINE_RISORSE_SIMULAZIONE !fine_offerte(ptr_mercato, SO_PORTI, SO_MERCI, current_time) && !fine_richieste(id_coda_richieste)
+
 #define PERMESSI 		\
 S_IWUSR | S_IRUSR /* | S_IRGRP | S_IWGRP| S_IROTH | S_IWOTH */
 

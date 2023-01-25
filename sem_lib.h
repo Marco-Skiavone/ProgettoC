@@ -62,4 +62,4 @@ int sem_release(int sem_id, int sem_num);
 int sem_getall(char * my_string, int sem_id);
 
 /* Setta a tutti i valori di n_sems il valore value */
-int sem_setall(int sem_id, int n_sems, int value);
+int sem_setall(int sem_id, int n_sems, unsigned short value);

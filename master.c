@@ -19,6 +19,9 @@
 /* id del DUMP*/
  int id_dump;
 
+int current_time;
+
+
 /* contiene tutti i parametri */
 int PARAMETRO[QNT_PARAMETRI];
 
@@ -36,7 +39,7 @@ int main(int argc, char *argv[]) {
 	/* Vi ci si riferirà come "posizioni_p+i", dove i definito in [0,SO_PORTI-1] */
 	point *ptr_posizioni;
 	char *argv_figli[QNT_PARAMETRI + 3]; /* null terminated */
-
+	struct sigaction sa;
 	/* fine definizioni */
 	if (argc != 2){
 		fprintf(stderr, "Ri-eseguire il makefile con il parametro: var=[NUM_RIGA_FILE-1]\n");
@@ -139,6 +142,12 @@ int main(int argc, char *argv[]) {
 		 */
 	}
 
+	/* settare il semaforo di preparazione iniziale (gestione: SO_NAVI + SO_PORTI)*/
+	if(sem_set_val(id_semaforo_gestione, 0, SO_NAVI+SO_PORTI) == -1){
+		ERROR("nel MASTER causato dal sem_set_val()")
+		TEST_ERROR
+	}
+
 	/* definizione dell'argv dei figli */
 	argv_figli[0] = (char *)malloc(MAX_STR_LEN);
 	argv_figli[1] = (char *)malloc(MAX_STR_LEN);
@@ -176,11 +185,7 @@ int main(int argc, char *argv[]) {
 	}
 	/* avvio del timer della simulazione (+ sincronizzazione) */
 
-	/* settare il semaforo di preparazione iniziale (gestione: SO_NAVI + SO_PORTI)*/
-	if(sem_set_val(id_semaforo_gestione, 0, SO_NAVI+SO_PORTI) == -1){
-		ERROR("nel MASTER causato dal sem_set_val()")
-		TEST_ERROR
-	}
+	
 	/*deve aspettare il semaforo di preparazione (gestione), che passi da X a zero */
 	if(sem_waitforzero(id_semaforo_gestione, 0) == -1){
 		ERROR("nel MASTER causato dal sem_waitforzero()")
@@ -188,15 +193,28 @@ int main(int argc, char *argv[]) {
 	}
 	
 	/* dopodiché crea il tempo (salviamo su dump un campo int, 
-				aggiornato dal mastere visibile anhe alle navi,
+				aggiornato dal master e visibile anche alle navi,
 		 		dopo la nanosleep)
 		si entra in un ciclo che termina:
 		- dopo SO_DAYS
 		- se finiscono le richieste
 		- se finiscono le offerte
 	*/
+	/*imposta l'allarme per SO_DAYS*/
+	sa.sa_handler = alarm_handler;
+	sa.sa_flags = 0;
+	sigemptyset(&(sa.sa_mask));
+	sigaction(SIGALRM, &sa, NULL);/*imposta l'allarme di un secondo*/
+	do {
+		/* dump e varie */
+		
+		alarm(1);
+		pause();
+		current_time++;
+	} while(current_time < SO_DAYS && FINE_RISORSE_SIMULAZIONE);
+
+
 	sleep(4);
-	
 	for(i=0;i<(SO_PORTI+SO_NAVI);i++){
 		kill(childs[i], SIGUSR1);
 	}
@@ -269,5 +287,5 @@ int main(int argc, char *argv[]) {
 }
 
 int inizializzaSemaforoDump(){
-	return sem_setall(SO_MERCI+1,1,id_semaforo_dump);
+	return sem_setall(id_semaforo_dump, SO_MERCI+1, 1);
 }
