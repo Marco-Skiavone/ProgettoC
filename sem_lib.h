@@ -1,3 +1,4 @@
+#define _SEM_LIB_H
 #ifndef _DEFINITIONS_H
 	#include "definitions.h"
 #endif

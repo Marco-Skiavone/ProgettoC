@@ -1,10 +1,9 @@
 #include "definitions.h"
 #include "my_lib.h"
-#include "nave_lib.h"
 #include "sem_lib.h"
-#include "merci_lib.h"
+#include "nave_lib.h"
 #include "dump_lib.h"
-
+#include "merci_lib.h"
 
 /* id del set di semafori BANCHINE */
  int id_semaforo_banchine;

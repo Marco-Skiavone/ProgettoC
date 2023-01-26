@@ -66,6 +66,9 @@ int main(int argc, char *argv[]){
 	printf("indice: %d\n", indice);
 	*/
 
+#ifndef _DEFINITIONS_H
+	#include "sem_lib.h"
+#endif
 	srand(getpid());
 	set_coda_richieste();
 	id_dump = set_shm_dump(SO_MERCI, SO_PORTI);
@@ -98,12 +101,12 @@ int main(int argc, char *argv[]){
 			vecchioDump[i] = ((merce(*)[SO_MERCI])ptr_mercato)[indice][i];
 		}
 	}
+	if (sem_reserve(id_semaforo_gestione, 0) == -1) {
+		ERROR("nel PORTO causato dal sem_reserve()")
+		TEST_ERROR
+	}
 	/* INIZIO CICLO DI DUMP */
 	do {
-		if (sem_reserve(id_semaforo_gestione, 0) == -1) {
-			ERROR("nel PORTO causato dal sem_reserve()")
-			TEST_ERROR
-		}
 		if (sem_waitforzero(id_semaforo_gestione, 0) == -1) {
 			ERROR("nel PORTO causato dal sem_waitforzero()")
 			TEST_ERROR
