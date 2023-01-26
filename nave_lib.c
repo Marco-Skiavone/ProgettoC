@@ -29,20 +29,26 @@ void spostamento(viaggio v, point *p){
 
 /* ritorna il valore della nanosleep, 
  * "divisore" definisce il divisore per trovare i secondi */
-int attesa(double to_wait, int divisore){
+int attesa(double dist_or_peso, int divisore){
+	printf("ATTESA: to-wait = %f, divisore: %d\n", dist_or_peso, divisore);
 	int val_ritorno;
+	double attesa_nanosleep;/* calcola il tempo di nanosleep totale e preciso */
 	struct timespec tempo;
 	/* MASCHERA */
 	sigset_t mask;
+
+	attesa_nanosleep = (dist_or_peso / divisore);	
 	sigemptyset(&mask);
 	sigaddset(&mask, SIGUSR1);
 	sigprocmask(SIG_BLOCK, &mask, NULL);
-
-	tempo.tv_sec = (long)(to_wait / divisore);
-	tempo.tv_nsec = ((long)to_wait % tempo.tv_sec)*1E9; 
+	
+	tempo.tv_sec = (__time_t)attesa_nanosleep;
+	tempo.tv_nsec = (__time_t)((attesa_nanosleep - ((__time_t)attesa_nanosleep))*1000000000); 
+	printf("ATTESA: attesa = %f, tempo:\n sec = %ld,nsec = %ld\n", attesa_nanosleep,tempo.tv_sec,tempo.tv_nsec);
 	if((tempo.tv_sec & 0) && (tempo.tv_nsec & 0))
 		fprintf(stderr, "NAVE %d, linea %d: nanosleep chiamata con argomenti 0\n", getpid(), __LINE__);
 	val_ritorno = nanosleep(&tempo, NULL);
+	TEST_ERROR
 	/* ripristino maschera */
 	sigprocmask(SIG_UNBLOCK, &mask, NULL);
 	return val_ritorno;
