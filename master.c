@@ -1,8 +1,8 @@
 #include "definitions.h" /* contiene le altre #include */
 #include "my_lib.h"
 #include "merci_lib.h"
-#include "dump_lib.h"
 #include "sem_lib.h"
+#include "dump_lib.h"
 
 
 /* id del set di semafori BANCHINE */

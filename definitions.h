@@ -61,6 +61,23 @@
 #define I_LOADSPEED 11
 #define I_DAYS 12
 
+/* in porto (carico/scarico) */
+#define D_N_PORTO 0
+/* in mare con carico */
+#define D_N_CARICA 1
+/* in mare senza carico */
+#define D_N_SCARICA 2
+/*presente in porto*/
+#define D_M_PRES_PORTO 0
+/*presente in nave*/
+#define D_M_PRES_NAVE 1
+/*consegnata*/
+#define D_M_CONSEGNATA 2
+/*scaduta in porto*/
+#define D_M_SCADUTA_PORTO 3
+/*scaduta in nave*/
+#define D_M_SCADUTA_NAVE 4
+
 /* MACRO per riferirsi ai parametri */
 #define SO_NAVI PARAMETRO[I_NAVI]
 #define SO_PORTI PARAMETRO[I_PORTI]

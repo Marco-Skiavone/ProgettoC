@@ -11,3 +11,6 @@ int alloca_shm_dump(int par_SO_MERCI, int par_SO_PORTI);
 
 /* fa la get del dump senza crearlo */
 int set_shm_dump(int MERCI, int PORTI);
+
+/*stampa il contenuto del dump */
+void stampa_dump(dump *ptr_dump, int MERCI, int PORTI, int data);

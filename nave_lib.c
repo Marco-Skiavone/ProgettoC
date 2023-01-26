@@ -1,17 +1,30 @@
 #ifndef _DEFINITIONS_H
 	#include "definitions.h"
 #endif
+#ifndef _SEM_LIB_H
+	#include "sem_lib.h"
+#endif
+
+
 #include "nave_lib.h"
 
 /* Esegue le nanosleep di spostamento, mascherando i segnali
  e settando lo stato sul dump, finita la nanosleep aggiorna la posizione */
 void spostamento(viaggio v, point *p){
 	struct timespec time;
-	time.tv_sec = (__time_t)v.nanosec_nano;
-	/* DA FINIRE */
+	/* maschera segnale */
+	sigset_t mask;
+	sigemptyset(&mask);
+	sigaddset(&mask, SIGUSR1);
+	sigprocmask(SIG_BLOCK, &mask, NULL);
+	/* ---- */
+	time.tv_sec = (__time_t)v.nanosec_nano/1E9;
+	time.tv_nsec = ((__time_t)v.nanosec_nano) % time.tv_sec;
 	nanosleep(&time, NULL);
 	p->x = v.x;
 	p->y = v.y;
+	/* ripresa maschera precedente */
+	sigprocmask(SIG_UNBLOCK, &mask, NULL);
 }
 
 /* ritorna il valore della nanosleep, 
@@ -19,12 +32,19 @@ void spostamento(viaggio v, point *p){
 int attesa(double to_wait, int divisore){
 	int val_ritorno;
 	struct timespec tempo;
-	tempo.tv_sec = to_wait / divisore;
-	tempo.tv_nsec = (long)to_wait % tempo.tv_sec; 
+	/* MASCHERA */
+	sigset_t mask;
+	sigemptyset(&mask);
+	sigaddset(&mask, SIGUSR1);
+	sigprocmask(SIG_BLOCK, &mask, NULL);
+
+	tempo.tv_sec = (long)(to_wait / divisore);
+	tempo.tv_nsec = ((long)to_wait % tempo.tv_sec)*1E9; 
 	if((tempo.tv_sec & 0) && (tempo.tv_nsec & 0))
 		fprintf(stderr, "NAVE %d, linea %d: nanosleep chiamata con argomenti 0\n", getpid(), __LINE__);
 	val_ritorno = nanosleep(&tempo, NULL);
-
+	/* ripristino maschera */
+	sigprocmask(SIG_UNBLOCK, &mask, NULL);
 	return val_ritorno;
 }
 
@@ -92,4 +112,57 @@ viaggio porto_piu_vicino(point p_n, int SZ_POSIZIONI, int PORTI, int SPEED, poin
 	porto.x = a;
 	porto.y = b;
 	return porto;
+}
+
+void aggiorna_dump_merce(dump *ptr_dump, int id_sem_dump, int indice_merce, int stato){
+	if(sem_reserve(id_sem_dump, indice_merce) == -1) {
+		TEST_ERROR
+	} else {
+        switch(stato){
+            case D_M_PRES_PORTO:
+                ptr_dump->merce_dump_ptr[indice_merce].presente_in_porto++;
+                break;
+            case D_M_PRES_NAVE:
+                ptr_dump->merce_dump_ptr[indice_merce].presente_in_nave++;
+                break;
+            case D_M_CONSEGNATA:
+                ptr_dump->merce_dump_ptr[indice_merce].consegnata++;
+                break;
+            case D_M_SCADUTA_PORTO:
+                ptr_dump->merce_dump_ptr[indice_merce].scaduta_in_porto++;
+                break;
+            case D_M_SCADUTA_NAVE:
+                ptr_dump->merce_dump_ptr[indice_merce].scaduta_in_nave++;
+                break;
+            default:
+                ERROR("Errore in aggiorna_nave_dump: caso default")
+        }
+    }
+    if(sem_release(id_sem_dump, indice_merce) == -1){ TEST_ERROR}
+}
+
+
+void aggiorna_dump_nave(dump *ptr_dump, int id_sem_dump, int MERCI, int stato){
+	int i;
+	if (sem_reserve(id_sem_dump, MERCI) == -1) {
+		TEST_ERROR
+	} else {
+		switch(stato){
+			case D_N_PORTO: 
+				ptr_dump->nd.naviporto++;
+				break;
+			case D_N_CARICA:
+				ptr_dump->nd.navicariche++;
+				break;
+			case D_N_SCARICA:
+				ptr_dump->nd.naviscariche++;
+				break;
+			default:
+				ERROR("in \"aggiorna_nave_dump()\": caso default!")
+				break;
+		}
+	}
+	if (sem_release(id_sem_dump, MERCI) == -1) {
+		TEST_ERROR
+	}
 }

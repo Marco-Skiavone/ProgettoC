@@ -27,3 +27,32 @@ int set_shm_dump(int MERCI, int PORTI){
     TEST_ERROR
     return id_dump;
 }
+
+void stampa_dump(dump *ptr_dump, int MERCI, int PORTI, int data){
+    int i, j;
+    printf("*** Inizio stampa del dump: giorno %d ***\n", data);
+    for(i = 0; i < MERCI+PORTI; i++){
+        if(i < MERCI){  /* stampo merci per tipologia */
+            printf("Merce %d\n", i);
+            printf("- consegnata: %d\n", ptr_dump->merce_dump_ptr[i].consegnata);
+            TEST_ERROR
+            printf("- presente in nave: %d\n", ptr_dump->merce_dump_ptr[i].presente_in_nave);
+            printf("- presente in porto: %d\n", ptr_dump->merce_dump_ptr[i].presente_in_porto);
+            printf("- scaduta in nave: %d\n", ptr_dump->merce_dump_ptr[i].scaduta_in_nave);
+            printf("- scaduta in porto: %d\n", ptr_dump->merce_dump_ptr[i].scaduta_in_porto);
+        } else if(i < PORTI) {
+            j = i - MERCI;
+            printf("Porto %d\n", i);
+            printf("- merce presente: %d\n", ptr_dump->porto_dump_ptr[j].mercepresente);
+            TEST_ERROR
+            printf("- merce ricevuta: %d\n", ptr_dump->porto_dump_ptr[j].mercericevuta);
+            printf("- merce spedita: %d\n", ptr_dump->porto_dump_ptr[j].mercespedita);
+            printf("- banchine occupate/totali: %d/%d\n", ptr_dump->porto_dump_ptr[j].banchineoccupate, ptr_dump->porto_dump_ptr->banchinetotali);
+        }
+    }
+    printf("Navi:\n");
+    printf("- navi in mare con carico: %d\n", ptr_dump->nd.navicariche);
+    printf("- navi in mare senza carico: %d\n", ptr_dump->nd.naviscariche);
+    printf("- navi in porto (carico/scarico): %d\n", ptr_dump->nd.naviporto);
+    printf("\n--- Fine stato dump attuale (giorno %d). ---\n", data);
+}
