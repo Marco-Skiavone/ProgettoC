@@ -7,11 +7,19 @@
  e settando lo stato sul dump, finita la nanosleep aggiorna la posizione */
 void spostamento(viaggio v, point *p){
 	struct timespec time;
-	time.tv_sec = (__time_t)v.nanosec_nano;
-	/* DA FINIRE */
+	/* maschera segnale */
+	sigset_t mask;
+	sigemptyset(&mask);
+	sigaddset(&mask, SIGUSR1);
+	sigprocmask(SIG_BLOCK, &mask, NULL);
+	/* ---- */
+	time.tv_sec = (__time_t)v.nanosec_nano/1E9;
+	time.tv_nsec = ((__time_t)v.nanosec_nano) % time.tv_sec;
 	nanosleep(&time, NULL);
 	p->x = v.x;
 	p->y = v.y;
+	/* ripresa maschera precedente */
+	sigprocmask(SIG_UNBLOCK, &mask, NULL);
 }
 
 /* ritorna il valore della nanosleep, 
@@ -19,12 +27,19 @@ void spostamento(viaggio v, point *p){
 int attesa(double to_wait, int divisore){
 	int val_ritorno;
 	struct timespec tempo;
-	tempo.tv_sec = to_wait / divisore;
+	/* MASCHERA */
+	sigset_t mask;
+	sigemptyset(&mask);
+	sigaddset(&mask, SIGUSR1);
+	sigprocmask(SIG_BLOCK, &mask, NULL);
+
+	tempo.tv_sec = (long)(to_wait / divisore);
 	tempo.tv_nsec = (long)to_wait % tempo.tv_sec; 
 	if((tempo.tv_sec & 0) && (tempo.tv_nsec & 0))
 		fprintf(stderr, "NAVE %d, linea %d: nanosleep chiamata con argomenti 0\n", getpid(), __LINE__);
 	val_ritorno = nanosleep(&tempo, NULL);
-
+	/* ripristino maschera */
+	sigprocmask(SIG_UNBLOCK, &mask, NULL);
 	return val_ritorno;
 }
 
@@ -92,4 +107,11 @@ viaggio porto_piu_vicino(point p_n, int SZ_POSIZIONI, int PORTI, int SPEED, poin
 	porto.x = a;
 	porto.y = b;
 	return porto;
+}
+
+/* se stato = 0: nave in porto */
+void aggiorna_dump_nave(int indice_nave, int stato){
+	int i;
+
+
 }

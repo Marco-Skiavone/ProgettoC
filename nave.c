@@ -105,22 +105,18 @@ int main(int argc, char *argv[]){
 	printf("NAVE %d: giunta al porto piu' vicino.\n", indice);
 
 	capacita = SO_CAPACITY;
-	j = 0;
-	do{	
-		
-		j++;
-	} while(j < 10);
-
-	if(sem_reserve(id_semaforo_gestione, 0) == -1){
-		ERROR("nella NAVE causato dal sem_reserve()")
-		TEST_ERROR
-	}
-	if(sem_waitforzero(id_semaforo_gestione, 0) == -1){
-		ERROR("nella NAVE causato dal sem_waitforzero()")
-		TEST_ERROR
-	}
-	sleep(10);
-
+	do {	
+		if(sem_reserve(id_semaforo_gestione, 0) == -1){
+			ERROR("nella NAVE causato dal sem_reserve()")
+			TEST_ERROR
+		}
+		if(sem_waitforzero(id_semaforo_gestione, 0) == -1){
+			ERROR("nella NAVE causato dal sem_waitforzero()")
+			TEST_ERROR
+		}
+		pause();
+	} while(DATA < SO_DAYS+1);
+	exit(199);
 }
 
 void sigusr1_handler(int signum){
