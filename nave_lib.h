@@ -26,8 +26,7 @@ viaggio porto_piu_vicino(point p_n, int SZ_POSIZIONI, int PORTI, int SPEED, poin
  * stato = 2: consegnata (D_M_CONSEGNATA)
  * stato = 3: scaduta in porto (D_M_SCADUTA_PORTO)
  * stato = 4: scaduta in nave (D_M_SCADUTA_NAVE) */
-void aggiorna_dump_merce(dump *ptr_dump, int id_sem_dump, int indice_merce, int MERCI, int stato){
-
+void aggiorna_dump_merce(dump *ptr_dump, int id_sem_dump, int indice_merce, int stato);
 
 /* stato = 0: nave in porto (D_N_PORTO)
  * stato = 1: nave in mare con carico (D_N_CARICA)

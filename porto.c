@@ -38,8 +38,8 @@ int main(int argc, char *argv[]){
 	richiesta rich;
 	struct sigaction sigusr1_sa, sigusr2_sa;
 
-	sigusr1_sa.sa_handler = sigusr1_handler_porto;
-	sigusr2_sa.sa_handler = sigusr2_handler_porto;
+	sigusr1_sa.sa_handler = sigusr1_handler;
+	sigusr2_sa.sa_handler = sigusr2_handler;
 
 	sigemptyset(&sigusr1_sa.sa_mask);
 	sigaction(SIGUSR1, &sigusr1_sa, NULL);
@@ -123,7 +123,7 @@ void inizializza_banchine(int i){
 	sem_set_val(id_semaforo_banchine, i, nbanchine);
 }
 
-void sigusr1_handler_porto(int signum){
+void sigusr1_handler(int signum){
 
 	int i;
 	merce(*ptr)[SO_MERCI] = (merce(*)[SO_MERCI])ptr_mercato;
@@ -149,7 +149,7 @@ void sigusr1_handler_porto(int signum){
 	DATA++;
 }
 
-void sigusr2_handler_porto(int signum){
+void sigusr2_handler(int signum){
 	/*printf("porto 1:\n");*/
 	sgancia_shm(ptr_dump);
 	/*printf("porto 2:\n");*/
