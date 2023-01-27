@@ -219,7 +219,7 @@ int main(int argc, char *argv[]) {
 		current_time++;
 	} while(current_time < SO_DAYS && FINE_RISORSE_SIMULAZIONE);
 
-	sleep(5);
+	sleep(10);
 	//sleep(4);
 	for(i=0;i<(SO_PORTI+SO_NAVI);i++){
 		kill(childs[i], SIGUSR1);

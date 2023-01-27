@@ -112,7 +112,7 @@ int main(int argc, char *argv[]){
 	lottiscartati=0;
 	noncaricare = 0;
 	int skip = 0;
-	indicedestinazione = calcola_porto_piu_vicino(position, ptr_posizioni, SO_PORTI);
+	indicedestinazione = calcola_porto_piu_vicino(position, ptr_posizioni, SO_PORTI, SO_LATO);
 	TEST_ERROR
 	distanza = calcola_distanza(position.x, position.y, ptr_posizioni[indicedestinazione].x, ptr_posizioni[indicedestinazione].y);
 	TEST_ERROR
@@ -138,9 +138,10 @@ int main(int argc, char *argv[]){
 		}
 		printf("sono attraccata alla banchina\n");
 		skip = 1;
-		for(k=0;k<SO_MERCI;k++){
+		for(k=0;k<SO_MERCI && skip;k++){
 			if(((merce (*)[SO_MERCI])ptr_mercato)[indiceportoattraccato][k].val>0){
 				skip=0;
+				printf("porto da skippare, no merci\n");
 			}
 		}
 
@@ -148,7 +149,8 @@ int main(int argc, char *argv[]){
 		do{
 			if(skip){
 				printf("Devo skippare il porto %d\n", indiceportoattraccato);
-				indicedestinazione = calcola_porto_piu_vicino(position, ptr_posizioni, SO_PORTI);
+				indicedestinazione = calcola_porto_piu_vicino(position, ptr_posizioni, SO_PORTI, SO_LATO);
+				
 				distanza = calcola_distanza(position.x, position.y, ptr_posizioni[indicedestinazione].x, ptr_posizioni[indicedestinazione].y);
 				capacita = SO_CAPACITY;
 				tempocarico = 0;
@@ -165,7 +167,7 @@ int main(int argc, char *argv[]){
 			distanza = calcola_distanza(position.x, position.y, ptr_posizioni[rkst.mtype].x, ptr_posizioni[rkst.mtype].y) / SO_SPEED;
 
 			/* CONTROLLA QUANTI LOTTI DELLA RICHIESTA PUOI CARICARE */
-			while(rkst.mtext.nlotti * ptr_lotti[rkst.mtext.indicemerce].val > capacita){
+			while(rkst.mtext.nlotti * ptr_lotti[rkst.mtext.indicemerce].val < capacita){
         		rkst.mtext.nlotti--;
 				lottiscartati++;
     		}
@@ -187,7 +189,9 @@ int main(int argc, char *argv[]){
 
 
 			/* CARICA DISPONIBILITA */
-			if((ptr_lotti[rkst.mtext.indicemerce].exp > ( distanza + tempocarico + DATA)) && rkst.mtext.nlotti>0){
+			/* distanza viene diviso per SO_SPEED e passato 
+			 * come int approssimato per eccesso */
+			if((ptr_lotti[rkst.mtext.indicemerce].exp > ( ((distanza/SO_SPEED)) + tempocarico + DATA)) && rkst.mtext.nlotti>0){
 
 				capacita -= ptr_lotti[rkst.mtext.indicemerce].val * rkst.mtext.nlotti;
 
@@ -213,7 +217,7 @@ int main(int argc, char *argv[]){
 				rkst.mtext.nlotti += lottiscartati;
 				inviaRichiesta(rkst);
 
-				printf("ho scartato la richiesta\n");
+				//printf("ho scartato la richiesta\n");
 				lottiscartati = 0;
 				pass=0;
 				reqlette++;
@@ -233,7 +237,7 @@ int main(int argc, char *argv[]){
 			}else{
 
 				/* CONTROLLA QUANTI LOTTI DELLA RICHIESTA PUOI CARICARE */
-				while(rkst.mtext.nlotti * ptr_lotti[rkst.mtext.indicemerce].val > capacita){
+				while(rkst.mtext.nlotti * ptr_lotti[rkst.mtext.indicemerce].val < capacita){
     	    		rkst.mtext.nlotti--;
 					lottiscartati++;
     			}
@@ -282,18 +286,19 @@ int main(int argc, char *argv[]){
 			reqlette++;
 		}while(!pass && reqlette<(SO_MERCI/2) && i<MAX_RICHIESTE);
 		sem_release(id_semaforo_mercato, indiceportoattraccato);
-
+		TEST_ERROR
 		/* CALCOLO TEMPO CARICO EFFETTIVO */
 		/* capacita/SO_LOADSPEED */
 		/* NANOSLEEP PER CARICARE */
 		attesa((SO_CAPACITY-capacita), SO_LOADSPEED);
 		/* LIBERA IL SEMAFORO */
 		sem_release(id_semaforo_banchine, indiceportoattraccato);
-
+		TEST_ERROR
 		/* AGGIORNA IL DUMP*/
 
 		/* NANOSLEEP PER ANDARE AL PORTO DI DESTINAZIONE */
 		attesa(distanza, SO_SPEED);
+		TEST_ERROR
 		/* CHIEDI IL SEMAFORO PER LE BANCHINE */
 		position.x = ptr_posizioni[indicedestinazione].x;
 		position.y = ptr_posizioni[indicedestinazione].y;
@@ -306,8 +311,9 @@ int main(int argc, char *argv[]){
 
 		/* CODICE PER SCARICARE LA MERCE A DESTINAZIONE */
 		attesa((SO_CAPACITY-capacita), SO_LOADSPEED);
+		/*data_scarico = DATA;*/
 		if(sem_reserve(id_semaforo_mercato, indicedestinazione) != -1){
-
+			/* uso data_scarico per vedere la scadenza */
 			for(j=0;j<i;i++){
 				scaricamerci(carico[i].mer, indicedestinazione, carico[i].indice, DATA, SO_MERCI, ptr_mercato);
 			}
