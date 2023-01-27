@@ -160,6 +160,7 @@ int main(int argc, char *argv[]) {
 
 	/* creazione porti e navi... */
 	for (i = 0; i < (SO_PORTI + SO_NAVI); i++) {
+		
 		switch (childs[i] = fork()){
 		case -1:
 			TEST_ERROR
@@ -250,7 +251,7 @@ int main(int argc, char *argv[]) {
 	for(i=0;i<SO_PORTI;i++){
 		printf("Porto %d\n", i);
 		for(j=0;j<SO_MERCI;j++){
-			printf("Merce %d nlotti: %d | scadenza: %d\n", j, (*(ptr_mercato+i+j)).val , ((*(ptr_mercato+i+j)).exp));
+			printf("Merce %d nlotti: %d | scadenza: %d\n", j, ((merce(*)[SO_MERCI])ptr_mercato)[i][j].val, ((merce(*)[SO_MERCI])ptr_mercato)[i][j].exp);
 		}
 	}
 	richiesta rich;

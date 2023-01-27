@@ -183,7 +183,6 @@ int spawnMerciPorti(int par_SO_FILL, int par_SO_MERCI, int i, void* ptr_shm_merc
         
         /* se la riduzione del peso scende sotto lo zero, si imposta la merce a 0 */
         if(tmp < 0 || tmp == 0){
-            ptr[i][j].exp;
             (*(ptr+i)+j)->val = 0;
             (*(ptr+i)+j)->exp = NO_SCADENZA;
             tmp = 0;
@@ -194,7 +193,7 @@ int spawnMerciPorti(int par_SO_FILL, int par_SO_MERCI, int i, void* ptr_shm_merc
             (*(ptr+i)+j)->val = r;
             (*(ptr+i)+j)->exp = ptr_shm_lotti[j].exp;
         }
-
+        
         toFill-=tmp;
         /* se sono state generate domande e offerte pari a toFill, tutte le altre merci si impostano a 0 */
         if(toFill == 0){
@@ -205,7 +204,6 @@ int spawnMerciPorti(int par_SO_FILL, int par_SO_MERCI, int i, void* ptr_shm_merc
             }
             
         }
-    
     }
 
     /* se è stato assegnato un valore per ogni merce, viene incrementato di 1 la domanda o l'offerta per ogni merce
@@ -231,6 +229,11 @@ int spawnMerciPorti(int par_SO_FILL, int par_SO_MERCI, int i, void* ptr_shm_merc
             }
         }
     }
+    /*
+    for(int j=0;j<par_SO_MERCI;j++){
+        printf("porto %d merce %d val %d\n", i, j, (*(ptr+i)+j)->val);
+    }
+    */
 }
 
 /* MERCATO: */
@@ -263,7 +266,7 @@ merce caricamerci(richiesta rkst, int spaziolibero, int scadenza, int par_SO_MER
         (*(ptr+rkst.mtype)+rkst.mtext.indicemerce)->val = 0;
         (*(ptr+rkst.mtype)+rkst.mtext.indicemerce)->exp = NO_SCADENZA;
     }
-
+    
     return ritorno;
 }
 
