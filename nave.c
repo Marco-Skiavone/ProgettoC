@@ -84,6 +84,7 @@ int main(int argc, char *argv[]){
 	id_semaforo_dump = trova_semaforo_dump(SO_MERCI);
 	id_semaforo_gestione = trova_semaforo_gestione();
 	id_semaforo_mercato = trova_semaforo_mercato(SO_PORTI);
+	TEST_ERROR;
 	ptr_posizioni = aggancia_shm(id_posizioni);
 	ptr_lotti = aggancia_shm(id_lotti);
 	ptr_mercato = aggancia_shm(id_mercato);
@@ -110,7 +111,7 @@ int main(int argc, char *argv[]){
 	reqlette = 0;
 	lottiscartati=0;
 	noncaricare = 0;
-
+	int skip = 0;
 	indicedestinazione = calcola_porto_piu_vicino(position, ptr_posizioni, SO_PORTI);
 	TEST_ERROR
 	distanza = calcola_distanza(position.x, position.y, ptr_posizioni[indicedestinazione].x, ptr_posizioni[indicedestinazione].y);
@@ -126,16 +127,34 @@ int main(int argc, char *argv[]){
 	indiceportoattraccato = indicedestinazione;
 	position.x = ptr_posizioni[indicedestinazione].x;
 	position.y = ptr_posizioni[indicedestinazione].y;
-	printf("NAVE %d: giunta al porto piu' vicino.\n", indice);
+	printf("NAVE %d: giunta al porto piu' vicino %d.\n", indice, indicedestinazione);
 	while (1){
 
 		/* USEREMO L'INT i PER TENERE CONTO DEL NUMERO DI MERCI CARICATE
 			OVVERO L'INDICE DEL VETTORE carico */
-
+		
 		if(sem_reserve(id_semaforo_mercato, indiceportoattraccato)==-1){
 			ERROR("FAIL RESERVE")
 		}
+		printf("sono attraccata alla banchina\n");
+		skip = 1;
+		for(k=0;k<SO_MERCI;k++){
+			if(((merce (*)[SO_MERCI])ptr_mercato)[indiceportoattraccato][k].val>0){
+				skip=0;
+			}
+		}
+
+
 		do{
+			if(skip){
+				printf("Devo skippare il porto %d\n", indiceportoattraccato);
+				indicedestinazione = calcola_porto_piu_vicino(position, ptr_posizioni, SO_PORTI);
+				distanza = calcola_distanza(position.x, position.y, ptr_posizioni[indicedestinazione].x, ptr_posizioni[indicedestinazione].y);
+				capacita = SO_CAPACITY;
+				tempocarico = 0;
+				break;
+			}
+
 			/* ACCETTA LA PRIMA RICHIESTA DALLA CODA*/
 			rkst = accettaRichiesta(-1);
 			if(rkst.mtext.indicemerce == -1){
@@ -178,27 +197,35 @@ int main(int argc, char *argv[]){
 
 				((merce (*)[SO_MERCI])ptr_mercato)[indiceportoattraccato][rkst.mtext.indicemerce].val -= rkst.mtext.nlotti;
 
-
+				printf("ho caricato %d lotti di %d merce\n", carico[i].mer.val, carico[i].indice);
 				i++;
 				/* CONTROLLO SE NON SI È STATI IN GRADO DI SCARTARE TUTTO */
 				if(lottiscartati!=0){
 					rkst.mtext.nlotti = lottiscartati;
 					inviaRichiesta(rkst);
 				}
-
 				indicedestinazione = rkst.mtype;
 				pass=1;
+				printf("la mia destinazione: %d\n", indicedestinazione);
 			}else{
 				/* NON STO CARICANDO LA DISPONIBILITÀ */
 				tempocarico -= (((rkst.mtext.nlotti * ptr_lotti[rkst.mtext.indicemerce].val) / SO_LOADSPEED)*2);
 				rkst.mtext.nlotti += lottiscartati;
 				inviaRichiesta(rkst);
-				pass=0;
-			}
-		}while(!pass);
 
+				printf("ho scartato la richiesta\n");
+				lottiscartati = 0;
+				pass=0;
+				reqlette++;
+			}
+		}while(!pass && (reqlette < (SO_MERCI/2)));
+		lottiscartati = 0;
 		pass = 0;
+		reqlette = 0;
 		do{
+			if(skip){
+				break;
+			}
 			/* TROVA RICHIESTE PER IL PORTO DI DESTINAZIONE */
 			rkst = accettaRichiesta(indicedestinazione);
 			if(rkst.mtext.indicemerce = -1){
@@ -259,7 +286,7 @@ int main(int argc, char *argv[]){
 		/* CALCOLO TEMPO CARICO EFFETTIVO */
 		/* capacita/SO_LOADSPEED */
 		/* NANOSLEEP PER CARICARE */
-		attesa(capacita, SO_LOADSPEED);
+		attesa((SO_CAPACITY-capacita), SO_LOADSPEED);
 		/* LIBERA IL SEMAFORO */
 		sem_release(id_semaforo_banchine, indiceportoattraccato);
 
@@ -268,16 +295,25 @@ int main(int argc, char *argv[]){
 		/* NANOSLEEP PER ANDARE AL PORTO DI DESTINAZIONE */
 		attesa(distanza, SO_SPEED);
 		/* CHIEDI IL SEMAFORO PER LE BANCHINE */
+		position.x = ptr_posizioni[indicedestinazione].x;
+		position.y = ptr_posizioni[indicedestinazione].y;
 		if(sem_reserve(id_semaforo_banchine, indicedestinazione) == -1){
 			ERROR("FAIL SEM RESERVE")
 		}
+		indiceportoattraccato = indicedestinazione;
+		printf("sono attraccata alla banchina porto %d\n", indiceportoattraccato);
 		/*AGGIORNARE DUMP */
 
 		/* CODICE PER SCARICARE LA MERCE A DESTINAZIONE */
-		attesa(capacita, SO_LOADSPEED);
-		for(j=0;j<i;i++){
-			scaricamerci(carico[i].mer, indicedestinazione, carico[i].indice, DATA, SO_MERCI, ptr_mercato);
+		attesa((SO_CAPACITY-capacita), SO_LOADSPEED);
+		if(sem_reserve(id_semaforo_mercato, indicedestinazione) != -1){
+
+			for(j=0;j<i;i++){
+				scaricamerci(carico[i].mer, indicedestinazione, carico[i].indice, DATA, SO_MERCI, ptr_mercato);
+			}
+			sem_release(id_semaforo_mercato, indicedestinazione);
 		}
+
 		capacita = SO_CAPACITY;
 		tempocarico = 1;
 		lottiscartati = 0;

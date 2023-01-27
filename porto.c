@@ -121,6 +121,7 @@ void inizializza_banchine(int i){
 	nbanchine = rand() % SO_BANCHINE + 1;
 	/*printf("PORTO %d: id_sem_banchine = %d\n", i, get_id_sem_banchine());*/
 	sem_set_val(id_semaforo_banchine, i, nbanchine);
+	printf("porto %d inizializzato %d banchine\n", indice, nbanchine);
 }
 
 void sigusr1_handler(int signum){

@@ -142,6 +142,11 @@ int main(int argc, char *argv[]) {
 		 */
 	}
 
+	/* SETTO IL SEMAFORO MERCATO */
+	if(sem_setall(id_semaforo_mercato, SO_PORTI, 1)==-1){
+		ERROR("master set sem mercato")
+		TEST_ERROR
+	}
 	/* settare il semaforo di preparazione iniziale (gestione: SO_NAVI + SO_PORTI)*/
 	if(sem_set_val(id_semaforo_gestione, 0, SO_NAVI+SO_PORTI) == -1){
 		ERROR("nel MASTER causato dal sem_set_val()")
@@ -214,8 +219,8 @@ int main(int argc, char *argv[]) {
 		current_time++;
 	} while(current_time < SO_DAYS && FINE_RISORSE_SIMULAZIONE);
 
-
-	sleep(4);
+	sleep(5);
+	//sleep(4);
 	for(i=0;i<(SO_PORTI+SO_NAVI);i++){
 		kill(childs[i], SIGUSR1);
 	}

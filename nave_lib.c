@@ -69,8 +69,11 @@ int calcola_porto_piu_vicino(point p, point *ptr_shm_porti, int par_SO_PORTI){
 	double distmin;
 	indicemin = 0;
 	distmin = calcola_distanza(p.x, p.y, ptr_shm_porti[0].x, ptr_shm_porti[0].y);
+	if(distmin < TOLLERANZA){
+		distmin = calcola_distanza(p.x, p.y, ptr_shm_porti[1].x, ptr_shm_porti[1].y);
+	}
 	for(i=0;i<par_SO_PORTI;i++){
-		if(distmin>calcola_distanza(p.x,p.y, ptr_shm_porti[i].x, ptr_shm_porti[i].y)){
+		if(distmin>calcola_distanza(p.x,p.y, ptr_shm_porti[i].x, ptr_shm_porti[i].y) && distmin > TOLLERANZA){
 			indicemin = i;
 			distmin = calcola_distanza(p.x,p.y, ptr_shm_porti[i].x, ptr_shm_porti[i].y);
 		}
