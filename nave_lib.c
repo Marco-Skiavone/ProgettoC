@@ -84,13 +84,17 @@ int calcola_porto_piu_vicino(point p, point *ptr_shm_porti, int par_SO_PORTI){
 }*/
 
 int calcola_porto_piu_vicino(point p, point *ptr_shm_porti, int par_SO_PORTI, int LATO){
-	int i, indicemin;
+	int i, indicemin, salta_indice = -1;
 	double distmin, distanza;
 	indicemin = 0;
 	distmin = LATO+1;
-	for(i=0;i<par_SO_PORTI;i++){
+	for(i=0;i<par_SO_PORTI; i++){
 		distanza = calcola_distanza(p.x,p.y, ptr_shm_porti[i].x, ptr_shm_porti[i].y);
-		if(distmin > TOLLERANZA && distmin > distanza){
+		if(distmin < TOLLERANZA){
+			salta_indice = i;
+		}
+		printf("porto[%d], distanza %f\n", i, distanza);
+		if(salta_indice != i && distmin > TOLLERANZA && distmin > distanza){
 			indicemin = i;
 			distmin = distanza;
 		}

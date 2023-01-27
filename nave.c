@@ -136,22 +136,24 @@ int main(int argc, char *argv[]){
 		if(sem_reserve(id_semaforo_mercato, indiceportoattraccato)==-1){
 			ERROR("FAIL RESERVE")
 		}
-		printf("sono attraccata alla banchina\n");
+		printf("sono attraccata al mercato\n");
 		skip = 1;
 		for(k=0;k<SO_MERCI && skip;k++){
 			if(((merce (*)[SO_MERCI])ptr_mercato)[indiceportoattraccato][k].val>0){
 				skip=0;
-				printf("porto da skippare, no merci\n");
+				printf("porto da NON skippare, no merci\n");
 			}
 		}
 
 
 		do{
+			printf("skip = %d\n", skip);
 			if(skip){
 				printf("Devo skippare il porto %d\n", indiceportoattraccato);
 				indicedestinazione = calcola_porto_piu_vicino(position, ptr_posizioni, SO_PORTI, SO_LATO);
-				
+				printf("indice attracco: %d, indice destinazione (dopo): %d.\n", indiceportoattraccato, indicedestinazione);
 				distanza = calcola_distanza(position.x, position.y, ptr_posizioni[indicedestinazione].x, ptr_posizioni[indicedestinazione].y);
+				printf("distanza al prossimo porto: %g", distanza);
 				capacita = SO_CAPACITY;
 				tempocarico = 0;
 				break;
@@ -223,9 +225,13 @@ int main(int argc, char *argv[]){
 				reqlette++;
 			}
 		}while(!pass && (reqlette < (SO_MERCI/2)));
+		if(reqlette >= SO_MERCI/2){
+			skip = 1;
+		}
+
 		lottiscartati = 0;
 		pass = 0;
-		reqlette = 0;
+		// reqlette = 0;
 		do{
 			if(skip){
 				break;
@@ -285,6 +291,16 @@ int main(int argc, char *argv[]){
 			}
 			reqlette++;
 		}while(!pass && reqlette<(SO_MERCI/2) && i<MAX_RICHIESTE);
+		if(reqlette>= SO_MERCI/2){
+			printf("Devo skippare il porto %d per reqlette\n", indiceportoattraccato);
+			indicedestinazione = calcola_porto_piu_vicino(position, ptr_posizioni, SO_PORTI, SO_LATO);
+			printf("indice attracco: %d, indice destinazione (dopo): %d.\n", indiceportoattraccato, indicedestinazione);
+			distanza = calcola_distanza(position.x, position.y, ptr_posizioni[indicedestinazione].x, ptr_posizioni[indicedestinazione].y);
+			printf("distanza al prossimo porto: %g", distanza);
+			capacita = SO_CAPACITY;
+			tempocarico = 0;
+			break;
+		}
 		sem_release(id_semaforo_mercato, indiceportoattraccato);
 		TEST_ERROR
 		/* CALCOLO TEMPO CARICO EFFETTIVO */
