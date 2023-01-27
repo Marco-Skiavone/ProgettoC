@@ -30,7 +30,7 @@ void spostamento(viaggio v, point *p){
 /* ritorna il valore della nanosleep, 
  * "divisore" definisce il divisore per trovare i secondi */
 int attesa(double dist_or_peso, int divisore){
-	printf("ATTESA: to-wait = %f, divisore: %d\n", dist_or_peso, divisore);
+	// printf("ATTESA: to-wait = %f, divisore: %d\n", dist_or_peso, divisore);
 	int val_ritorno;
 	double attesa_nanosleep;/* calcola il tempo di nanosleep totale e preciso */
 	struct timespec tempo;
@@ -44,7 +44,7 @@ int attesa(double dist_or_peso, int divisore){
 	
 	tempo.tv_sec = (__time_t)attesa_nanosleep;
 	tempo.tv_nsec = (__time_t)((attesa_nanosleep - ((__time_t)attesa_nanosleep))*1000000000); 
-	printf("ATTESA: attesa = %f, tempo:\n sec = %ld,nsec = %ld\n", attesa_nanosleep,tempo.tv_sec,tempo.tv_nsec);
+	//printf("ATTESA: attesa = %f, tempo:\n sec = %ld,nsec = %ld\n", attesa_nanosleep,tempo.tv_sec,tempo.tv_nsec);
 	if((tempo.tv_sec & 0) && (tempo.tv_nsec & 0))
 		fprintf(stderr, "NAVE %d, linea %d: nanosleep chiamata con argomenti 0\n", getpid(), __LINE__);
 	val_ritorno = nanosleep(&tempo, NULL);
@@ -64,6 +64,7 @@ double calcola_distanza(double x1, double y1, double x2, double y2 ){
 	return sqrt(a+b);
 }
 
+/*
 int calcola_porto_piu_vicino(point p, point *ptr_shm_porti, int par_SO_PORTI){
 	int i, indicemin;
 	double distmin;
@@ -71,15 +72,33 @@ int calcola_porto_piu_vicino(point p, point *ptr_shm_porti, int par_SO_PORTI){
 	distmin = calcola_distanza(p.x, p.y, ptr_shm_porti[0].x, ptr_shm_porti[0].y);
 	if(distmin < TOLLERANZA){
 		distmin = calcola_distanza(p.x, p.y, ptr_shm_porti[1].x, ptr_shm_porti[1].y);
+		indicemin = 1;
 	}
 	for(i=0;i<par_SO_PORTI;i++){
-		if(distmin>calcola_distanza(p.x,p.y, ptr_shm_porti[i].x, ptr_shm_porti[i].y) && distmin > TOLLERANZA){
+		if(distmin > TOLLERANZA && distmin>calcola_distanza(p.x,p.y, ptr_shm_porti[i].x, ptr_shm_porti[i].y)){
 			indicemin = i;
 			distmin = calcola_distanza(p.x,p.y, ptr_shm_porti[i].x, ptr_shm_porti[i].y);
 		}
 	}
 	return indicemin;
+}*/
+
+int calcola_porto_piu_vicino(point p, point *ptr_shm_porti, int par_SO_PORTI, int LATO){
+	int i, indicemin;
+	double distmin, distanza;
+	indicemin = 0;
+	distmin = LATO+1;
+	for(i=0;i<par_SO_PORTI;i++){
+		distanza = calcola_distanza(p.x,p.y, ptr_shm_porti[i].x, ptr_shm_porti[i].y);
+		if(distmin > TOLLERANZA && distmin > distanza){
+			indicemin = i;
+			distmin = distanza;
+		}
+	}
+	return indicemin;
 }
+
+
 
 
 /*restituisce un viaggio verso porto generico*/

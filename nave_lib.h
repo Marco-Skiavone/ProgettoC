@@ -12,7 +12,9 @@ int attesa(double to_wait, int divisore);
 
 double calcola_distanza(double x1, double y1, double x2, double y2 );
 
-int calcola_porto_piu_vicino(point p, point *ptr_shm_porti, int par_SO_PORTI);
+/*int calcola_porto_piu_vicino(point p, point *ptr_shm_porti, int par_SO_PORTI);*/
+
+int calcola_porto_piu_vicino(point p, point *ptr_shm_porti, int par_SO_PORTI, int LATO);
 
 /* restituisce un viaggio verso porto generico */
 viaggio porto_generico(int i_porto, point p_n, int SZ_POSIZIONI, int SPEED, point *ptr_posizioni);
