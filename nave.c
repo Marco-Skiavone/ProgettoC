@@ -22,25 +22,41 @@ int id_semaforo_dump;
 
 int id_coda_richieste;
 
-int DATA;
+// int /*DATA*/CAST_DUMP(vptr_shm_dump)->data;
 int indice;
 int PARAMETRO[QNT_PARAMETRI];
 
 void inizializza_risorse();
 void sgancia_risorse();
+void signal_handler(int signo);
 
 point generate_random_point(int lato);
 double calcola_distanza(point p1, point p2);
 int calcola_porto_piu_vicino(point p, point* ptr_shm_posizioni_porti, int so_porti, int so_lato);
+void naveinmare();
+void naveinporto();
 
 void attesa(double val, int divisore);
 
 void codice_simulazione();
 
+void scaricamerci(merce scarico, int indiceporto, int indicemerce, int data, int so_merci, void* vptr_shm_mercato, void* vptr_shm_dump_porto);
+
 int main(int argc, char *argv[]){
 
     int i, j, k;
-    DATA = 0;
+    struct sigaction sa;
+    sa.sa_flags = 0/*SA_RESTART*/;
+    sa.sa_handler = signal_handler;
+    sigemptyset(&(sa.sa_mask));
+    sigaction(SIGUSR1, &sa, NULL);
+    sigaction(SIGUSR2, &sa, NULL);
+    sigset_t mask1;
+    sigemptyset(&mask1);
+    sigaddset(&mask1, SIGUSR1);
+    sigprocmask(SIG_UNBLOCK, &mask1, NULL);
+
+    // /*DATA*/CAST_DUMP(vptr_shm_dump)->data = 0;
     if(argc !=(2 + QNT_PARAMETRI)){
         perror("argc != 2");
         exit(EXIT_FAILURE);
@@ -65,6 +81,40 @@ int main(int argc, char *argv[]){
     //printf("Nave %d sto uscendo con gestione = %d\n", indice, sem_get_val(id_semaforo_gestione, 0));
     sgancia_risorse();
     exit(EXIT_SUCCESS);
+
+}
+
+
+void scaricamerci(merce scarico, int indiceporto, int indicemerce, int data, int so_merci, void* vptr_shm_mercato_porto, void* vptr_shm_dump_porto){
+    
+    merce(*ptr_shm_mercato_porto)[so_merci] = CAST_MERCATO(vptr_shm_mercato_porto);
+    //printf("___1\n");
+    dump* ptr_shm_dump = CAST_DUMP(vptr_shm_dump_porto);
+    //printf("___2\n");
+    ptr_shm_dump->merce_dump_ptr = CAST_MERCE_DUMP(ptr_shm_dump);
+    //printf("___3\n");
+    ptr_shm_dump->porto_dump_ptr = CAST_PORTO_DUMP(ptr_shm_dump);
+    //printf("___4\n");
+    
+    if(scarico.exp >= data){
+        //printf("___5\n");
+        ptr_shm_mercato_porto[indiceporto][indicemerce].val += scarico.val;
+        //printf("___6\n");
+        ptr_shm_mercato_porto[indiceporto][indicemerce].exp = SO_DAYS+1;
+        //printf("___7\n");
+        ptr_shm_dump->merce_dump_ptr[indicemerce].consegnata += scarico.val;
+        //printf("___8\n");
+        ptr_shm_dump->merce_dump_ptr[indicemerce].presente_in_nave -= scarico.val;
+        //printf("___9\n");
+        ptr_shm_dump->porto_dump_ptr[indiceporto].mercericevuta += scarico.val;
+        //printf("___10\n");
+    }else{
+        //printf("___11\n");
+        ptr_shm_dump->merce_dump_ptr[indicemerce].scaduta_in_nave += scarico.val;
+        //printf("___12\n");
+        ptr_shm_dump->merce_dump_ptr[indicemerce].presente_in_nave -= scarico.val;
+        //printf("___13\n");
+    }
 
 }
 
@@ -116,7 +166,6 @@ void attesa(double val, int divisore) {
     tempo.tv_sec = (__time_t)((attesa_nanosleep));
 	tempo.tv_nsec = (__time_t)((attesa_nanosleep - ((__time_t)attesa_nanosleep))*1000000000); 
 
-
     ret = nanosleep(&tempo, NULL);
     if (ret != 0) {
         if (errno == EINTR){
@@ -124,14 +173,16 @@ void attesa(double val, int divisore) {
         }else{
             perror("nanosleep fallita");
         }
-
-    sigprocmask(SIG_SETMASK, &oldmask, NULL);
     }
+    sigprocmask(SIG_UNBLOCK, &mask, NULL);
+    sigprocmask(SIG_SETMASK, &oldmask, NULL);
 }
+
 
 void codice_simulazione(){
     int i, j, k, indicedestinazione, indiceportoattraccato, i_carico=0, skip=0;
     int reqlett=0, spaziolibero = SO_CAPACITY, lottiscartati = 0, noncaricare = 0;
+    int datascarico;
     double distanza, tempocarico = 0;
     point posizione;
     richiesta r;
@@ -176,7 +227,7 @@ void codice_simulazione(){
                 }
                 tempocarico += ((r.mtext.nlotti * CAST_DETTAGLI_LOTTI(vptr_shm_dettagli_lotti)[r.mtext.indicemerce].val) / SO_LOADSPEED) *2;
 
-                if((CAST_DETTAGLI_LOTTI(vptr_shm_dettagli_lotti)[r.mtext.indicemerce].exp > (DATA + tempocarico + (distanza/SO_SPEED))) && r.mtext.nlotti > 0){
+                if((CAST_DETTAGLI_LOTTI(vptr_shm_dettagli_lotti)[r.mtext.indicemerce].exp > (/*DATA*/CAST_DUMP(vptr_shm_dump)->data + tempocarico + (distanza/SO_SPEED))) && r.mtext.nlotti > 0){
                     //STAMPA_DEBUG
                     carico[i_carico].indice = r.mtext.indicemerce;
                     carico[i_carico].mer.val = r.mtext.nlotti;
@@ -246,11 +297,11 @@ void codice_simulazione(){
                     lottiscartati++;
                 }
                 tempocarico += ((r.mtext.nlotti * CAST_DETTAGLI_LOTTI(vptr_shm_dettagli_lotti)[r.mtext.indicemerce].val) / SO_LOADSPEED) *2;
-                if((CAST_DETTAGLI_LOTTI(vptr_shm_dettagli_lotti)[r.mtext.indicemerce].exp > (tempocarico + (distanza/SO_SPEED) + DATA)) && r.mtext.nlotti > 0){
+                if((CAST_DETTAGLI_LOTTI(vptr_shm_dettagli_lotti)[r.mtext.indicemerce].exp > (tempocarico + (distanza/SO_SPEED) + /*DATA*/CAST_DUMP(vptr_shm_dump)->data)) && r.mtext.nlotti > 0){
                     //STAMPA_DEBUG
                     noncaricare = 0;
                     for(j=0;j<i_carico;j++){
-                        if(CAST_DETTAGLI_LOTTI(vptr_shm_dettagli_lotti)[carico[j].indice].exp < ((distanza/SO_SPEED) + tempocarico + DATA)){
+                        if(CAST_DETTAGLI_LOTTI(vptr_shm_dettagli_lotti)[carico[j].indice].exp < ((distanza/SO_SPEED) + tempocarico + /*DATA*/CAST_DUMP(vptr_shm_dump)->data)){
                             noncaricare = 1;
                             break;
                         }
@@ -307,14 +358,20 @@ void codice_simulazione(){
         sem_reserve(id_semaforo_banchine, indiceportoattraccato);
         printf("Nave %d attraccata al porto %d\n", indice, indiceportoattraccato);
         attesa((SO_CAPACITY-spaziolibero), SO_LOADSPEED);
+        datascarico = /*DATA*/CAST_DUMP(vptr_shm_dump)->data;
 
+        sem_release(id_semaforo_dump, 0);
         sem_reserve(id_semaforo_mercato,indiceportoattraccato);
+
         printf("Nave %d scarica al porto %d\n", indice, indiceportoattraccato);
         for(j=0;j<i_carico;j++){
-            /* SCARICAMERCI */
+            scaricamerci(carico[j].mer, indiceportoattraccato, carico[j].indice, datascarico, SO_MERCI, vptr_shm_mercato, vptr_shm_dump);
         }
-        sem_release(id_semaforo_mercato, indiceportoattraccato);
 
+        sem_release(id_semaforo_mercato, indiceportoattraccato);
+        sem_reserve(id_semaforo_dump, 0);
+
+        
         spaziolibero = SO_CAPACITY;
         tempocarico = 0;
         i_carico = 0;
@@ -324,7 +381,33 @@ void codice_simulazione(){
 
 }
 
+void statoNave(int stato){
 
+    switch(stato){
+        case 0:
+
+            break;
+        case 1:
+
+            break;
+        case 2:
+
+            break;
+        case 3:
+
+            break;
+        case 4:
+
+            break;
+        case 5:
+
+            break;
+        default:
+
+            break;
+    }
+
+}
 
 void inizializza_risorse(){
     id_shm_mercato = find_shm(CHIAVE_SHAREDM_MERCATO, SIZE_SHAREDM_MERCATO);
@@ -338,7 +421,7 @@ void inizializza_risorse(){
     id_semaforo_mercato = sem_find(CHIAVE_SEM_MERCATO,SO_PORTI);
     id_semaforo_gestione = sem_find(CHIAVE_SEM_GESTIONE, 2);
     id_semaforo_banchine = sem_find(CHIAVE_SEM_BANCHINE, SO_PORTI);
-    id_semaforo_dump = sem_find(CHIAVE_SEM_DUMP,SO_MERCI+1);
+    id_semaforo_dump = sem_find(CHIAVE_SEM_DUMP,2);
     id_coda_richieste = get_coda_id(CHIAVE_CODA);
 }
 
@@ -347,4 +430,20 @@ void sgancia_risorse(){
     sgancia_shm(vptr_shm_dettagli_lotti);
     sgancia_shm(vptr_shm_posizioni_porti);
     sgancia_shm(vptr_shm_dump);
+}
+
+void signal_handler(int signo){
+
+    switch(signo){
+        case SIGUSR1:
+            printf("*** NAVE %d: ricevuto SIGUSR1: data = %d ***\n", indice, (int)CAST_DUMP(vptr_shm_dump)->data);
+            break;
+        case SIGUSR2:
+            printf("NAVE %d: ricevuto SIGUSR2. data: %d\n", indice, /*DATA*/CAST_DUMP(vptr_shm_dump)->data);
+            exit(EXIT_SUCCESS);
+            break;
+        default: 
+            perror("NAVE: giunto segnale non contemplato!");
+            exit(254);
+    }
 }

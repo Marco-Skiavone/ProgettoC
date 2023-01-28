@@ -23,10 +23,11 @@ int id_semaforo_dump;
 
 int id_coda_richieste;
 
-int DATA;
+// int DATA;
 int indice;
 int PARAMETRO[QNT_PARAMETRI];
 void inizializza_risorse();
+void signal_handler(int signo);
 void sgancia_risorse();
 void spawnMerciPorti(int nmerci, void* vptr_shm_mercato, merce* ptr_dettagli_lotti, int Fill, int indice);
 void manda_richieste(int nmerci, void* vptr_shm_mercato, int indice, int coda_id);
@@ -34,6 +35,13 @@ void inizializza_banchine(int sem_id, int indice, int so_banchine);
 int main(int argc, char *argv[]){
 
     int i, j, k;
+    struct sigaction sa;
+    sa.sa_flags = 0;
+    sa.sa_handler = signal_handler;
+    sigemptyset(&(sa.sa_mask));
+    sigaction(SIGUSR1, &sa, NULL);
+    sigaction(SIGUSR2, &sa, NULL);
+
 
     if(argc !=(2 + QNT_PARAMETRI)){
         perror("argc != 2");
@@ -49,6 +57,7 @@ int main(int argc, char *argv[]){
 
     inizializza_risorse();
 
+
     //printf("Porto %d - x: %f y: %f\n", indice, CAST_POSIZIONI_PORTI(vptr_shm_posizioni_porti)[indice].x, CAST_POSIZIONI_PORTI(vptr_shm_posizioni_porti)[indice].y);
 
     spawnMerciPorti(SO_MERCI, vptr_shm_mercato, CAST_DETTAGLI_LOTTI(vptr_shm_dettagli_lotti),(SO_FILL/SO_PORTI), indice);
@@ -60,11 +69,12 @@ int main(int argc, char *argv[]){
     
     sgancia_risorse();
 
-
-
     sem_reserve(id_semaforo_gestione, 0);
     sem_wait_zero(id_semaforo_gestione, 0);
-    //printf("Porto %d sto uscendo con gestione = %d\n", indice, sem_get_val(id_semaforo_gestione, 0));
+    // printf("Porto %d sto uscendo con gestione = %d\n", indice, sem_get_val(id_semaforo_gestione, 0));
+    do {
+        pause();
+    } while(1);
     exit(EXIT_SUCCESS);
 }
 
@@ -124,7 +134,7 @@ void spawnMerciPorti(int nmerci, void* vptr_shm_mercato, merce* ptr_dettagli_lot
     /*
     */
     sem_reserve(id_semaforo_gestione, 1);
-    sleep(indice);
+    // sleep(indice);
     printf("Porto %d\n", indice);
     for(j=0;j<SO_MERCI;j++){
         printf("Merce %d nlotti %d scadenza %d\n", j, ptr_shm_mercato_porto[indice][j].val, ptr_shm_mercato_porto[indice][j].exp);
@@ -144,7 +154,7 @@ void inizializza_risorse(){
     id_semaforo_mercato = sem_find(CHIAVE_SEM_MERCATO,SO_PORTI);
     id_semaforo_gestione = sem_find(CHIAVE_SEM_GESTIONE, 2);
     id_semaforo_banchine = sem_find(CHIAVE_SEM_BANCHINE, SO_PORTI);
-    id_semaforo_dump = sem_find(CHIAVE_SEM_DUMP,SO_MERCI+1);
+    id_semaforo_dump = sem_find(CHIAVE_SEM_DUMP,2);
     id_coda_richieste = get_coda_id(CHIAVE_CODA);
 }
 
@@ -160,4 +170,19 @@ void inizializza_banchine(int sem_id, int indice, int so_banchine){
     int nbanchine;
 	nbanchine = rand() % SO_BANCHINE + 1;
     sem_set_val(sem_id, indice, nbanchine);
+}
+
+void signal_handler(int signo){
+    switch(signo){
+        case SIGUSR1:
+            printf("*** PORTO %d: ricevuto SIGUSR1: data = %d ***\n", indice, /*DATA*/CAST_DUMP(vptr_shm_dump)->data);
+            break;
+        case SIGUSR2:
+            printf("\nPORTO %d: ricevuto SIGUSR2.\n", indice);
+            exit(EXIT_SUCCESS);
+            break;
+        default: 
+            perror("PORTO: giunto segnale non contemplato!");
+            exit(254);
+    }
 }

@@ -1,3 +1,4 @@
+/*#define _GNU_SOURCE*/
 #define _DEFINITIONS_H
 #include <stdio.h>
 #include <stdlib.h>
@@ -17,7 +18,7 @@
 #include <math.h>
 
 
-#define STAMPA_DEBUG printf("%s: linea %d\n",__FILE__, __LINE__);
+#define STAMPA_DEBUG printf("%s: data = %d, linea %d\n", __FILE__, CAST_DUMP(vptr_shm_dump)->data, __LINE__);
 
 /* stampa un messaggio di errore dove str è una stringa personalizzabile */
 #define ERROR(str)											\
@@ -106,6 +107,15 @@
 #define CAST_DETTAGLI_LOTTI(ptr) \
 	((merce *)ptr)
 
+#define CAST_DUMP(ptr) \
+	((dump *) ptr)
+
+#define CAST_MERCE_DUMP(ptr) \
+	((merce_dump *) ptr+sizeof(int))
+
+#define CAST_PORTO_DUMP(ptr) \
+	(porto_dump*)(((merce_dump*) ptr+sizeof(int))+SO_MERCI);
+
 #define CHIAVE_CODA 50
 #define MSG_SIZE (sizeof(int)*2)
 
@@ -120,6 +130,8 @@
 #define TOLLERANZA 0.05
 #define MAX_REQ_LETTE 20
 #define MAX_CARICO 10
+
+
 
 typedef struct {
 	double x;
@@ -181,8 +193,8 @@ typedef struct {
 } merce_dump;
 
 typedef struct {
+	int data;
     merce_dump *merce_dump_ptr;
     porto_dump *porto_dump_ptr;
     nave_dump nd;
-	int data;
 } dump;

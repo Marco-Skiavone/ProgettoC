@@ -23,7 +23,8 @@ int id_semaforo_dump;
 
 int id_coda_richieste;
 
-int DATA;
+// int DATA;
+int *child_pids;
 
 int PARAMETRO[QNT_PARAMETRI];
 int equals(double x, double y);
@@ -35,15 +36,17 @@ void sgancia_e_distruggi_risorse();
 
 void setUpLotto(merce* ptr_dettagli_lotti, int nmerci, int so_size, int so_min_vita, int so_max_vita);
 
+void signal_handler(int signo);
+
 int main(int argc, char* argv[]){
     int i, j, k;
     int n_righe_file, file_config_char;
-    int *child_pids;
+    
     int child_pid, status;
     FILE *file_config;
     richiesta r;
     char *argv_figli[QNT_PARAMETRI + 3];
-
+    
     srand(time(NULL));
     if(argc !=2){
         perror("argc != 2");
@@ -85,7 +88,7 @@ int main(int argc, char* argv[]){
     child_pids = (int *) malloc((SO_NAVI*SO_PORTI) * sizeof(int));
 
     alloca_risorse();
-
+    CAST_DUMP(vptr_shm_dump)->data = 0;
     generate_positions(SO_LATO, CAST_POSIZIONI_PORTI(vptr_shm_posizioni_porti));
     
     /*
@@ -116,7 +119,7 @@ int main(int argc, char* argv[]){
 		sprintf(argv_figli[i+2], "%d", PARAMETRO[i]);
 	}
     argv_figli[QNT_PARAMETRI + 2] = NULL;
-
+    setbuf(stdout, NULL); /* unbufferizza stdout */
     for(i=0;i<SO_PORTI;i++){
         
         switch(child_pids[i] = fork()){
@@ -157,6 +160,25 @@ int main(int argc, char* argv[]){
     
     sem_wait_zero(id_semaforo_gestione, 0);
 
+    struct sigaction sa_alrm;
+    sa_alrm.sa_handler = signal_handler;
+    sa_alrm.sa_flags = 0;
+    sigemptyset(&(sa_alrm.sa_mask));
+    sigaction(SIGALRM, &sa_alrm, NULL);
+    // DATA = 0;
+    
+    do{
+        alarm(1);
+        if(errno && errno != EINTR)
+            printf("\nErrno = %d dopo alarm: %s\n", errno, strerror(errno));
+        pause();
+    } while((int)(CAST_DUMP(vptr_shm_dump)->data) < SO_DAYS);
+
+    for(i = 0; i < SO_NAVI+SO_PORTI; i++){
+        printf("MASTER: ammazzo il figlio %d\n", child_pids[i]);
+        kill(child_pids[i], SIGUSR2);
+    }
+    
     i=0;
     while((child_pid = wait(&status)) != -1){
         printf("Terminato figlio %d status %d\n", child_pid, WEXITSTATUS(status));
@@ -273,7 +295,7 @@ void alloca_risorse(){
 
     printf("SEM_CREATE_BANCHINE: %d\n", id_semaforo_banchine = sem_create(CHIAVE_SEM_BANCHINE, SO_PORTI));
 
-    printf("SEM_CREATE_DUMP: %d\n", id_semaforo_dump = sem_create(CHIAVE_SEM_DUMP, SO_MERCI+1));
+    printf("SEM_CREATE_DUMP: %d\n", id_semaforo_dump = sem_create(CHIAVE_SEM_DUMP, 2));
 
     printf("CODA RICHIESTE: %d\n", id_coda_richieste = set_coda_richieste(CHIAVE_CODA));
 
@@ -300,4 +322,23 @@ void sgancia_e_distruggi_risorse(){
     printf("DISTRUGGI_CODA_RICHIESTE\n"); destroy_coda(id_coda_richieste);
 
     printf("\n__________________________ \n\n");
+}
+
+
+void signal_handler(int signo){
+    int i;
+    switch(signo){
+        case SIGALRM:
+            if(CAST_DUMP(vptr_shm_dump)->data < SO_DAYS)
+                CAST_DUMP(vptr_shm_dump)->data++;
+            printf("\nMASTER: Passato giorno %d su %d.\n", CAST_DUMP(vptr_shm_dump)->data, SO_DAYS);
+            /*if(CAST_DUMP(vptr_shm_dump)->data < SO_DAYS){
+                for(i = 0; i < SO_NAVI+SO_PORTI; i++)
+                    { kill(child_pids[i], SIGUSR1);}
+            }*/
+            break;
+        default: 
+            perror("MASTER: giunto segnale diverso da SIGALRM!");
+            exit(254);
+    }
 }
