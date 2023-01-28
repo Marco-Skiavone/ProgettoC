@@ -28,11 +28,11 @@ int PARAMETRO[QNT_PARAMETRI];
 
 void inizializza_risorse();
 void sgancia_risorse();
+void signal_handler(int signo);
 
 point generate_random_point(int lato);
 double calcola_distanza(point p1, point p2);
 int calcola_porto_piu_vicino(point p, point* ptr_shm_posizioni_porti, int so_porti, int so_lato);
-
 void naveinmare();
 void naveinporto();
 
@@ -401,8 +401,6 @@ void statoNave(int stato){
 
 }
 
-
-
 void inizializza_risorse(){
     id_shm_mercato = find_shm(CHIAVE_SHAREDM_MERCATO, SIZE_SHAREDM_MERCATO);
     vptr_shm_mercato = aggancia_shm(id_shm_mercato);
@@ -413,7 +411,7 @@ void inizializza_risorse(){
     id_shm_dump = find_shm(CHIAVE_SHAREDM_DUMP, SIZE_SHAREDM_DUMP);
     vptr_shm_dump = aggancia_shm(id_shm_dump);
     id_semaforo_mercato = sem_find(CHIAVE_SEM_MERCATO,SO_PORTI);
-    id_semaforo_gestione = sem_find(CHIAVE_SEM_GESTIONE, 1);
+    id_semaforo_gestione = sem_find(CHIAVE_SEM_GESTIONE, 2);
     id_semaforo_banchine = sem_find(CHIAVE_SEM_BANCHINE, SO_PORTI);
     id_semaforo_dump = sem_find(CHIAVE_SEM_DUMP,2);
     id_coda_richieste = get_coda_id(CHIAVE_CODA);
@@ -424,4 +422,17 @@ void sgancia_risorse(){
     sgancia_shm(vptr_shm_dettagli_lotti);
     sgancia_shm(vptr_shm_posizioni_porti);
     sgancia_shm(vptr_shm_dump);
+}
+
+void signal_handler(int signo){
+    switch(signo){
+        case SIGUSR2:
+            // DATA++;
+            printf("\nNAVE %d: ricevuto SIGUSR2.\n", indice);
+            exit(EXIT_SUCCESS);
+            break;
+        default: 
+            perror("NAVE: giunto segnale non contemplato!");
+            exit(254);
+    }
 }

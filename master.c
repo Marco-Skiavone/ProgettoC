@@ -35,6 +35,8 @@ void sgancia_e_distruggi_risorse();
 
 void setUpLotto(merce* ptr_dettagli_lotti, int nmerci, int so_size, int so_min_vita, int so_max_vita);
 
+void signal_handler(int signo);
+
 int main(int argc, char* argv[]){
     int i, j, k;
     int n_righe_file, file_config_char;
@@ -43,7 +45,7 @@ int main(int argc, char* argv[]){
     FILE *file_config;
     richiesta r;
     char *argv_figli[QNT_PARAMETRI + 3];
-
+    
     srand(time(NULL));
     if(argc !=2){
         perror("argc != 2");
@@ -105,7 +107,7 @@ int main(int argc, char* argv[]){
     
 
     sem_set_val(id_semaforo_gestione,0,SO_PORTI+SO_NAVI);
-
+    sem_set_val(id_semaforo_gestione,1,1);
     printf("Set id_semaforo_gestione a %d + %d = %d\n", SO_PORTI, SO_NAVI, sem_get_val(id_semaforo_gestione, 0));
 
     argv_figli[0] = (char *)malloc(MAX_STR_LEN);
@@ -157,6 +159,25 @@ int main(int argc, char* argv[]){
     
     sem_wait_zero(id_semaforo_gestione, 0);
 
+    struct sigaction sa_alrm;
+    sa_alrm.sa_handler = signal_handler;
+    sa_alrm.sa_flags = 0;
+    sigemptyset(&(sa_alrm.sa_mask));
+    sigaction(SIGALRM, &sa_alrm, NULL);
+    DATA = 0;
+    
+    do{
+        alarm(1);
+        if(errno != EINTR)
+            printf("\nErrno = %d dopo alarm: %s\n", errno, strerror(errno));
+        pause();
+    } while(DATA < SO_DAYS);
+
+    for(i = 0; i < SO_NAVI+SO_PORTI; i++){
+        printf("MASTER: ammazzo il figlio %d\n", child_pids[i]);
+        kill(child_pids[i], SIGUSR2);
+    }
+    
     i=0;
     while((child_pid = wait(&status)) != -1){
         printf("Terminato figlio %d status %d\n", child_pid, WEXITSTATUS(status));
@@ -269,11 +290,11 @@ void alloca_risorse(){
         sem_set_val(id_semaforo_mercato, i, 1);
     }
 
-    printf("SEM_CREATE_GESTIONE: %d\n", id_semaforo_gestione = sem_create(CHIAVE_SEM_GESTIONE, 1));
+    printf("SEM_CREATE_GESTIONE: %d\n", id_semaforo_gestione = sem_create(CHIAVE_SEM_GESTIONE, 2));
 
     printf("SEM_CREATE_BANCHINE: %d\n", id_semaforo_banchine = sem_create(CHIAVE_SEM_BANCHINE, SO_PORTI));
 
-    printf("SEM_CREATE_DUMP: %d\n", id_semaforo_dump = sem_create(CHIAVE_SEM_DUMP, SO_MERCI+1));
+    printf("SEM_CREATE_DUMP: %d\n", id_semaforo_dump = sem_create(CHIAVE_SEM_DUMP, 2));
 
     printf("CODA RICHIESTE: %d\n", id_coda_richieste = set_coda_richieste(CHIAVE_CODA));
 
@@ -300,4 +321,17 @@ void sgancia_e_distruggi_risorse(){
     printf("DISTRUGGI_CODA_RICHIESTE\n"); destroy_coda(id_coda_richieste);
 
     printf("\n__________________________ \n\n");
+}
+
+
+void signal_handler(int signo){
+    switch(signo){
+        case SIGALRM:
+            DATA++;
+            printf("\nMASTER: Passato giorno %d su %d.\n", DATA, SO_DAYS);
+            break;
+        default: 
+            perror("MASTER: giunto segnale diverso da SIGALRM!");
+            exit(254);
+    }
 }
