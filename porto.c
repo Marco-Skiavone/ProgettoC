@@ -123,13 +123,11 @@ void spawnMerciPorti(int nmerci, void* vptr_shm_mercato, merce* ptr_dettagli_lot
     }
     /*
     */
-    sem_reserve(id_semaforo_gestione, 1);
     sleep(indice);
     printf("Porto %d\n", indice);
     for(j=0;j<SO_MERCI;j++){
-        printf("Merce %d nlotti %d scadenza %d\n", j, ptr_shm_mercato_porto[indice][j].val, ptr_shm_mercato_porto[indice][j].exp);
+        printf("Merce %d nlotti %d scadenza %d\n", j, ((merce(*)[SO_MERCI])ptr_shm_mercato_porto)[indice][j].val, ((merce(*)[SO_MERCI])ptr_shm_mercato_porto)[indice][j].exp);
     }
-    sem_release(id_semaforo_gestione, 1);
 }
 
 void inizializza_risorse(){
@@ -142,7 +140,7 @@ void inizializza_risorse(){
     id_shm_dump = find_shm(CHIAVE_SHAREDM_DUMP, SIZE_SHAREDM_DUMP);
     vptr_shm_dump = aggancia_shm(id_shm_dump);
     id_semaforo_mercato = sem_find(CHIAVE_SEM_MERCATO,SO_PORTI);
-    id_semaforo_gestione = sem_find(CHIAVE_SEM_GESTIONE, 2);
+    id_semaforo_gestione = sem_find(CHIAVE_SEM_GESTIONE, 1);
     id_semaforo_banchine = sem_find(CHIAVE_SEM_BANCHINE, SO_PORTI);
     id_semaforo_dump = sem_find(CHIAVE_SEM_DUMP,SO_MERCI+1);
     id_coda_richieste = get_coda_id(CHIAVE_CODA);

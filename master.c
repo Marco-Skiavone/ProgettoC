@@ -105,7 +105,7 @@ int main(int argc, char* argv[]){
     
 
     sem_set_val(id_semaforo_gestione,0,SO_PORTI+SO_NAVI);
-    sem_set_val(id_semaforo_gestione,1,1);
+
     printf("Set id_semaforo_gestione a %d + %d = %d\n", SO_PORTI, SO_NAVI, sem_get_val(id_semaforo_gestione, 0));
 
     argv_figli[0] = (char *)malloc(MAX_STR_LEN);
@@ -269,7 +269,7 @@ void alloca_risorse(){
         sem_set_val(id_semaforo_mercato, i, 1);
     }
 
-    printf("SEM_CREATE_GESTIONE: %d\n", id_semaforo_gestione = sem_create(CHIAVE_SEM_GESTIONE, 2));
+    printf("SEM_CREATE_GESTIONE: %d\n", id_semaforo_gestione = sem_create(CHIAVE_SEM_GESTIONE, 1));
 
     printf("SEM_CREATE_BANCHINE: %d\n", id_semaforo_banchine = sem_create(CHIAVE_SEM_BANCHINE, SO_PORTI));
 

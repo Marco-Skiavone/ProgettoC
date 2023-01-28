@@ -106,6 +106,15 @@
 #define CAST_DETTAGLI_LOTTI(ptr) \
 	((merce *)ptr)
 
+#define CAST_DUMP(ptr) \
+	((dump *) ptr)
+
+#define CAST_MERCE_DUMP(ptr) \
+	((merce_dump *) ptr)
+
+#define CAST_PORTO_DUMP(ptr) \
+	(porto_dump*)(((merce_dump*) ptr )+SO_MERCI);
+
 #define CHIAVE_CODA 50
 #define MSG_SIZE (sizeof(int)*2)
 
@@ -120,6 +129,8 @@
 #define TOLLERANZA 0.05
 #define MAX_REQ_LETTE 20
 #define MAX_CARICO 10
+
+
 
 typedef struct {
 	double x;
