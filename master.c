@@ -23,7 +23,8 @@ int id_semaforo_dump;
 
 int id_coda_richieste;
 
-int DATA;
+// int DATA;
+int *child_pids;
 
 int PARAMETRO[QNT_PARAMETRI];
 int equals(double x, double y);
@@ -40,7 +41,7 @@ void signal_handler(int signo);
 int main(int argc, char* argv[]){
     int i, j, k;
     int n_righe_file, file_config_char;
-    int *child_pids;
+    
     int child_pid, status;
     FILE *file_config;
     richiesta r;
@@ -87,7 +88,7 @@ int main(int argc, char* argv[]){
     child_pids = (int *) malloc((SO_NAVI*SO_PORTI) * sizeof(int));
 
     alloca_risorse();
-
+    CAST_DUMP(vptr_shm_dump)->data = 0;
     generate_positions(SO_LATO, CAST_POSIZIONI_PORTI(vptr_shm_posizioni_porti));
     
     /*
@@ -104,7 +105,16 @@ int main(int argc, char* argv[]){
             CAST_DETTAGLI_LOTTI(vptr_shm_dettagli_lotti)[i].exp);
     }
     */
-    
+
+
+    /* ---------------------------------------- */
+    /*operazioni preliminari su dump e sem_dump */
+    ((dump*)vptr_shm_dump)->nd.naviscariche = SO_NAVI;
+    ((dump*)vptr_shm_dump)->nd.navicariche = 0;
+    ((dump*)vptr_shm_dump)->nd.naviporto = 0;
+    /* semaforo numero 1 su 2 che fa 1-0 per far scrivere le navi in m.e.*/
+    sem_set_val(id_semaforo_dump,1,1);  
+    /* ---------------------------------------- */
 
     sem_set_val(id_semaforo_gestione,0,SO_PORTI+SO_NAVI);
     sem_set_val(id_semaforo_gestione,1,1);
@@ -118,7 +128,7 @@ int main(int argc, char* argv[]){
 		sprintf(argv_figli[i+2], "%d", PARAMETRO[i]);
 	}
     argv_figli[QNT_PARAMETRI + 2] = NULL;
-
+    setbuf(stdout, NULL); /* unbufferizza stdout */
     for(i=0;i<SO_PORTI;i++){
         
         switch(child_pids[i] = fork()){
@@ -164,14 +174,14 @@ int main(int argc, char* argv[]){
     sa_alrm.sa_flags = 0;
     sigemptyset(&(sa_alrm.sa_mask));
     sigaction(SIGALRM, &sa_alrm, NULL);
-    DATA = 0;
+    // DATA = 0;
     
     do{
         alarm(1);
-        if(errno != EINTR)
+        if(errno && errno != EINTR)
             printf("\nErrno = %d dopo alarm: %s\n", errno, strerror(errno));
         pause();
-    } while(DATA < SO_DAYS);
+    } while((int)(CAST_DUMP(vptr_shm_dump)->data) < SO_DAYS);
 
     for(i = 0; i < SO_NAVI+SO_PORTI; i++){
         printf("MASTER: ammazzo il figlio %d\n", child_pids[i]);
@@ -196,12 +206,14 @@ int main(int argc, char* argv[]){
     }
     printf("\n__________________________ \n\n");
 
-
-    r = accetta_richiesta(-1, id_coda_richieste);
-    while(r.mtext.indicemerce != -1){
-        printf("Porto %ld merce %d nlotti %d\n", r.mtype, r.mtext.indicemerce, r.mtext.nlotti);
-        r = accetta_richiesta(-1, id_coda_richieste);
-    }
+    i = 0;
+    do {
+        r = accetta_richiesta(i, id_coda_richieste);
+        if(r.mtext.indicemerce != -1)
+            printf("Porto %ld merce %d nlotti %d\n", r.mtype, r.mtext.indicemerce, r.mtext.nlotti);
+        else if(i < SO_PORTI)
+            i++;
+    } while (r.mtext.indicemerce != -1 || i < SO_PORTI);
     printf("\n__________________________ \n\n");
 
 
@@ -323,12 +335,47 @@ void sgancia_e_distruggi_risorse(){
     printf("\n__________________________ \n\n");
 }
 
+void stampa_dump(int MERCI, int PORTI){
+    int i, j;
+    printf("*** Inizio stampa del dump: giorno %d ***\n", ((dump*)vptr_shm_dump)->data);
+    for(i = 0; i < MERCI+PORTI; i++){
+        if(i < MERCI){  /* stampo merci per tipologia */
+            printf("Merce %d\n", i);
+            printf("- consegnata: %d\n", CAST_MERCE_DUMP(vptr_shm_dump)[i].consegnata);
+            TEST_ERROR
+            printf("- presente in nave: %d\n", CAST_MERCE_DUMP(vptr_shm_dump)[i].presente_in_nave);
+            printf("- presente in porto: %d\n", CAST_MERCE_DUMP(vptr_shm_dump)[i].presente_in_porto);
+            printf("- scaduta in nave: %d\n", CAST_MERCE_DUMP(vptr_shm_dump)[i].scaduta_in_nave);
+            printf("- scaduta in porto: %d\n", CAST_MERCE_DUMP(vptr_shm_dump)[i].scaduta_in_porto);
+        } else if(i < PORTI) {
+            j = i - MERCI;
+            printf("Porto %d\n", i);
+            printf("- merce presente: %d\n",  (CAST_PORTO_DUMP(vptr_shm_dump))[j].mercepresente);
+            TEST_ERROR
+            printf("- merce ricevuta: %d\n", (CAST_PORTO_DUMP(vptr_shm_dump))[j].mercericevuta);
+            printf("- merce spedita: %d\n", (CAST_PORTO_DUMP(vptr_shm_dump))[j].mercespedita);
+            printf("- banchine occupate/totali: %d/%d\n", (CAST_PORTO_DUMP(vptr_shm_dump))[j].banchineoccupate, (CAST_PORTO_DUMP(vptr_shm_dump))[j].banchinetotali);
+        }
+    }
+    printf("Navi:\n");
+    printf("- navi in mare con carico: %d\n", CAST_DUMP(vptr_shm_dump)->nd.navicariche);
+    printf("- navi in mare senza carico: %d\n", CAST_DUMP(vptr_shm_dump)->nd.naviscariche);
+    printf("- navi in porto (carico/scarico): %d\n", CAST_DUMP(vptr_shm_dump)->nd.naviporto);
+    printf("\n--- Fine stato dump attuale (giorno %d). ---\n", CAST_DUMP(vptr_shm_dump)->data);
+}
 
 void signal_handler(int signo){
+    int i;
     switch(signo){
         case SIGALRM:
-            DATA++;
-            printf("\nMASTER: Passato giorno %d su %d.\n", DATA, SO_DAYS);
+            if(CAST_DUMP(vptr_shm_dump)->data < SO_DAYS)
+                CAST_DUMP(vptr_shm_dump)->data++;
+            printf("\nMASTER: Passato giorno %d su %d.\n", CAST_DUMP(vptr_shm_dump)->data, SO_DAYS);
+            stampa_dump(SO_MERCI, SO_PORTI);
+            if(CAST_DUMP(vptr_shm_dump)->data < SO_DAYS){
+                for(i = 0; i < SO_NAVI+SO_PORTI; i++)
+                    { kill(child_pids[i], SIGUSR1);}
+            }
             break;
         default: 
             perror("MASTER: giunto segnale diverso da SIGALRM!");

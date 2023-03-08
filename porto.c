@@ -23,7 +23,7 @@ int id_semaforo_dump;
 
 int id_coda_richieste;
 
-int DATA;
+// int DATA;
 int indice;
 int PARAMETRO[QNT_PARAMETRI];
 void inizializza_risorse();
@@ -39,6 +39,7 @@ int main(int argc, char *argv[]){
     sa.sa_flags = 0;
     sa.sa_handler = signal_handler;
     sigemptyset(&(sa.sa_mask));
+    sigaction(SIGUSR1, &sa, NULL);
     sigaction(SIGUSR2, &sa, NULL);
 
 
@@ -71,7 +72,9 @@ int main(int argc, char *argv[]){
     sem_reserve(id_semaforo_gestione, 0);
     sem_wait_zero(id_semaforo_gestione, 0);
     // printf("Porto %d sto uscendo con gestione = %d\n", indice, sem_get_val(id_semaforo_gestione, 0));
-    pause();
+    do {
+        pause();
+    } while(1);
     exit(EXIT_SUCCESS);
 }
 
@@ -171,6 +174,9 @@ void inizializza_banchine(int sem_id, int indice, int so_banchine){
 
 void signal_handler(int signo){
     switch(signo){
+        case SIGUSR1:
+            printf("*** PORTO %d: ricevuto SIGUSR1: data = %d ***\n", indice, /*DATA*/CAST_DUMP(vptr_shm_dump)->data);
+            break;
         case SIGUSR2:
             printf("\nPORTO %d: ricevuto SIGUSR2.\n", indice);
             exit(EXIT_SUCCESS);

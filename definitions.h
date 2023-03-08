@@ -18,7 +18,7 @@
 #include <math.h>
 
 
-#define STAMPA_DEBUG printf("%s: linea %d\n",__FILE__, __LINE__);
+#define STAMPA_DEBUG printf("%s: data = %d, linea %d\n", __FILE__, CAST_DUMP(vptr_shm_dump)->data, __LINE__);
 
 /* stampa un messaggio di errore dove str è una stringa personalizzabile */
 #define ERROR(str)											\
@@ -51,7 +51,11 @@
 
 
 
-
+/* stati nave */
+#define DN_MV_PORTO 0	/* da "in mare vuota" a "in porto" */
+#define DN_MC_PORTO 1	/* da "in mare carica" a "in porto" */
+#define DN_PORTO_MV 2	/* da "in porto" a "in mare vuota" */
+#define DN_PORTO_MC 3	/* da "in porto" a "in mare carica" */
 
 /* indice dei parametri */
 #define I_NAVI 0
@@ -111,10 +115,10 @@
 	((dump *) ptr)
 
 #define CAST_MERCE_DUMP(ptr) \
-	((merce_dump *) ptr)
+	((merce_dump *) ptr+sizeof(int))
 
 #define CAST_PORTO_DUMP(ptr) \
-	(porto_dump*)(((merce_dump*) ptr )+SO_MERCI);
+	((porto_dump*)(((merce_dump*) ptr+sizeof(int))+SO_MERCI))
 
 #define CHIAVE_CODA 50
 #define MSG_SIZE (sizeof(int)*2)
@@ -193,8 +197,8 @@ typedef struct {
 } merce_dump;
 
 typedef struct {
+	int data;
     merce_dump *merce_dump_ptr;
     porto_dump *porto_dump_ptr;
     nave_dump nd;
-	int data;
 } dump;
