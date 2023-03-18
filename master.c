@@ -3,7 +3,6 @@
 #include "sem_lib.h"
 #include "shm_lib.h"
 
-
 void* vptr_shm_mercato;
 int id_shm_mercato;
 
@@ -33,6 +32,9 @@ void generate_positions(double lato, point* posizioni_porti);
 
 void alloca_risorse();
 void sgancia_e_distruggi_risorse();
+
+/* inizializza i valori del dump, tra cui i puntatori, chiamato dal master a inizio simulazione */
+void inizializza_dump();
 
 void setUpLotto(merce* ptr_dettagli_lotti, int nmerci, int so_size, int so_min_vita, int so_max_vita);
 
@@ -88,6 +90,7 @@ int main(int argc, char* argv[]){
     child_pids = (int *) malloc((SO_NAVI*SO_PORTI) * sizeof(int));
 
     alloca_risorse();
+    inizializza_dump();
     CAST_DUMP(vptr_shm_dump)->data = 0;
     generate_positions(SO_LATO, CAST_POSIZIONI_PORTI(vptr_shm_posizioni_porti));
     
@@ -221,7 +224,6 @@ int main(int argc, char* argv[]){
 
 }
 
-
 void setUpLotto(merce* ptr_dettagli_lotti, int nmerci, int so_size, int so_min_vita, int so_max_vita){
     int i;
     ptr_dettagli_lotti[0].val = 1;
@@ -231,7 +233,6 @@ void setUpLotto(merce* ptr_dettagli_lotti, int nmerci, int so_size, int so_min_v
         ptr_dettagli_lotti[i].exp = so_min_vita + (rand() % (so_max_vita - so_min_vita));
     }
 }
-
 
 int equals(double x, double y){
 	if(x > y)
@@ -335,10 +336,33 @@ void sgancia_e_distruggi_risorse(){
     printf("\n__________________________ \n\n");
 }
 
+void inizializza_dump(){
+    int i;
+    CAST_DUMP(vptr_shm_dump)->data = 0;
+    CAST_DUMP(vptr_shm_dump)->merce_dump_ptr = (merce_dump*)(vptr_shm_dump+sizeof(int));
+    CAST_DUMP(vptr_shm_dump)->porto_dump_ptr = (porto_dump*)(((merce_dump*) vptr_shm_dump+sizeof(int))+SO_MERCI);
+    CAST_DUMP(vptr_shm_dump)->nd.navicariche = 0;
+    CAST_DUMP(vptr_shm_dump)->nd.naviscariche = SO_NAVI;
+    CAST_DUMP(vptr_shm_dump)->nd.naviporto = 0;
+    
+    for(i = 0; i < SO_MERCI; i++){
+        CAST_MERCE_DUMP(vptr_shm_dump)[i].consegnata = 0;
+        CAST_MERCE_DUMP(vptr_shm_dump)[i].presente_in_nave = 0;
+        CAST_MERCE_DUMP(vptr_shm_dump)[i].presente_in_porto = 0;
+        CAST_MERCE_DUMP(vptr_shm_dump)[i].scaduta_in_nave = 0;
+        CAST_MERCE_DUMP(vptr_shm_dump)[i].scaduta_in_porto = 0;
+    }
+    for(i = 0; i < SO_PORTI; i++){
+        CAST_PORTO_DUMP(vptr_shm_dump)[i].mercepresente = 0;
+        CAST_PORTO_DUMP(vptr_shm_dump)[i].mercericevuta = 0;
+        CAST_PORTO_DUMP(vptr_shm_dump)[i].mercespedita = 0;
+    }
+}
+
 void stampa_dump(int MERCI, int PORTI){
     int i, j;
     printf("*** Inizio stampa del dump: giorno %d ***\n", ((dump*)vptr_shm_dump)->data);
-    for(i = 0; i < MERCI+PORTI; i++){
+    for(i = 0; i < (MERCI+PORTI); i++){
         if(i < MERCI){  /* stampo merci per tipologia */
             printf("Merce %d\n", i);
             printf("- consegnata: %d\n", CAST_MERCE_DUMP(vptr_shm_dump)[i].consegnata);
@@ -347,13 +371,14 @@ void stampa_dump(int MERCI, int PORTI){
             printf("- presente in porto: %d\n", CAST_MERCE_DUMP(vptr_shm_dump)[i].presente_in_porto);
             printf("- scaduta in nave: %d\n", CAST_MERCE_DUMP(vptr_shm_dump)[i].scaduta_in_nave);
             printf("- scaduta in porto: %d\n", CAST_MERCE_DUMP(vptr_shm_dump)[i].scaduta_in_porto);
-        } else if(i < PORTI) {
+        } else {
             j = i - MERCI;
-            printf("Porto %d\n", i);
+            printf("Porto %d\n", j);
             printf("- merce presente: %d\n",  (CAST_PORTO_DUMP(vptr_shm_dump))[j].mercepresente);
             TEST_ERROR
             printf("- merce ricevuta: %d\n", (CAST_PORTO_DUMP(vptr_shm_dump))[j].mercericevuta);
             printf("- merce spedita: %d\n", (CAST_PORTO_DUMP(vptr_shm_dump))[j].mercespedita);
+            (CAST_PORTO_DUMP(vptr_shm_dump))[j].banchineoccupate = (CAST_PORTO_DUMP(vptr_shm_dump))[j].banchinetotali - sem_get_val(id_semaforo_banchine, j);
             printf("- banchine occupate/totali: %d/%d\n", (CAST_PORTO_DUMP(vptr_shm_dump))[j].banchineoccupate, (CAST_PORTO_DUMP(vptr_shm_dump))[j].banchinetotali);
         }
     }

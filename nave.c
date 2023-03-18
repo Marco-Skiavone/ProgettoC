@@ -93,6 +93,7 @@ void scaricamerci(merce scarico, int indiceporto, int indicemerce, int data, int
     dump* ptr_shm_dump = CAST_DUMP(vptr_shm_dump_porto);
     //printf("___2\n");
     ptr_shm_dump->merce_dump_ptr = CAST_MERCE_DUMP(ptr_shm_dump);
+    printf("!!! PTR_DUMP = %p, MERCE_PTR_DUMP[0]= %p\n", vptr_shm_dump_porto, ptr_shm_dump->merce_dump_ptr);
     //printf("___3\n");
     ptr_shm_dump->porto_dump_ptr = CAST_PORTO_DUMP(ptr_shm_dump);
     //printf("___4\n");
@@ -455,10 +456,10 @@ void signal_handler(int signo){
 
     switch(signo){
         case SIGUSR1:
-            printf("*** NAVE %d: ricevuto SIGUSR1: data = %d ***\n", indice, (int)CAST_DUMP(vptr_shm_dump)->data);
+            printf("*** NAVE %d: ricevuto SIGUSR1: data = %d ***\n", indice, CAST_DUMP(vptr_shm_dump)->data);
             break;
         case SIGUSR2:
-            printf("NAVE %d: ricevuto SIGUSR2. data: %d\n", indice, /*DATA*/CAST_DUMP(vptr_shm_dump)->data);
+            printf("NAVE %d: ricevuto SIGUSR2. data: %d\n", indice, CAST_DUMP(vptr_shm_dump)->data);
             exit(EXIT_SUCCESS);
             break;
         default: 

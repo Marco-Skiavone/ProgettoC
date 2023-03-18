@@ -138,6 +138,8 @@ void spawnMerciPorti(int nmerci, void* vptr_shm_mercato, merce* ptr_dettagli_lot
     printf("Porto %d\n", indice);
     for(j=0;j<SO_MERCI;j++){
         printf("Merce %d nlotti %d scadenza %d\n", j, ptr_shm_mercato_porto[indice][j].val, ptr_shm_mercato_porto[indice][j].exp);
+        /* aggiungo la merce al dump */
+        CAST_MERCE_DUMP(vptr_shm_dump)->presente_in_porto += ptr_shm_mercato_porto[indice][j].val;
     }
     sem_release(id_semaforo_gestione, 1);
 }
@@ -169,6 +171,9 @@ void inizializza_banchine(int sem_id, int indice, int so_banchine){
     srand(getpid());
     int nbanchine;
 	nbanchine = rand() % SO_BANCHINE + 1;
+    CAST_PORTO_DUMP(vptr_shm_dump)[indice].banchineoccupate = 0;
+    printf("$$$ banchine di porto %d: %d\n", indice, nbanchine);
+    CAST_PORTO_DUMP(vptr_shm_dump)[indice].banchinetotali = nbanchine;
     sem_set_val(sem_id, indice, nbanchine);
 }
 
