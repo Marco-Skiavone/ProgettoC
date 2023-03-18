@@ -41,6 +41,9 @@ void statoNave(int stato);
 
 void codice_simulazione();
 
+/* aggiorna il dump sulle merci e sul porto che hanno subito modifiche !!!! */
+void aggiorna_dump_carico(int indiceporto, merce_nave* carico, int spazio_libero);
+
 void scaricamerci(merce scarico, int indiceporto, int indicemerce, int data, int so_merci, void* vptr_shm_mercato, void* vptr_shm_dump_porto);
 
 int main(int argc, char *argv[]){
@@ -83,6 +86,18 @@ int main(int argc, char *argv[]){
     sgancia_risorse();
     exit(EXIT_SUCCESS);
 
+}
+
+void aggiorna_dump_carico(int indiceporto, merce_nave* carico, int spazio_libero){
+    int i;
+
+    CAST_PORTO_DUMP(vptr_shm_dump)[indiceporto].mercespedita += SO_CAPACITY - spazio_libero;
+    CAST_PORTO_DUMP(vptr_shm_dump)[indiceporto].mercepresente -= SO_CAPACITY - spazio_libero;
+
+    for(i = 0; i < MAX_CARICO; i++){
+        CAST_MERCE_DUMP(vptr_shm_dump)[carico[i].indice].presente_in_nave += carico[i].mer.val;
+        CAST_MERCE_DUMP(vptr_shm_dump)[carico[i].indice].presente_in_porto -= carico[i].mer.val;
+    }
 }
 
 
@@ -189,6 +204,8 @@ void codice_simulazione(){
     point posizione;
     richiesta r;
     merce_nave carico[MAX_CARICO];
+    bzero(carico, MAX_CARICO*sizeof(merce_nave));
+
     posizione = generate_random_point(SO_LATO);
 
     indicedestinazione = calcola_porto_piu_vicino(posizione, CAST_POSIZIONI_PORTI(vptr_shm_posizioni_porti), SO_PORTI, SO_LATO);
@@ -352,6 +369,8 @@ void codice_simulazione(){
 
         attesa((SO_CAPACITY - spaziolibero), SO_LOADSPEED);
 
+        aggiorna_dump_carico(indiceportoattraccato, carico, spaziolibero);
+
         sem_release(id_semaforo_banchine, indiceportoattraccato);
         if(spaziolibero == SO_CAPACITY){
             statoNave(DN_PORTO_MV);
@@ -372,8 +391,14 @@ void codice_simulazione(){
         attesa((SO_CAPACITY-spaziolibero), SO_LOADSPEED);
         datascarico = /*DATA*/CAST_DUMP(vptr_shm_dump)->data;
 
-        sem_release(id_semaforo_dump, 0);
+
+        /* invertendo sem_release e sem_reserve del dump, ho forse creato capacità potenziale di deadlock ???? */
+        /* se non l'avessi fatto, avremmo modifiche al dump in zone critiche senza mutua esclusione !!!! */
+        int data1 = CAST_DUMP(vptr_shm_dump)->data;
         sem_reserve(id_semaforo_mercato,indiceportoattraccato);
+        sem_reserve(id_semaforo_dump, 0);
+        printf("nave %d in attesa dal giorno %d: giorno attuale: %d\n", indice, data1, CAST_DUMP(vptr_shm_dump)->data);
+
 
         printf("Nave %d scarica al porto %d\n", indice, indiceportoattraccato);
         for(j=0;j<i_carico;j++){
@@ -381,7 +406,7 @@ void codice_simulazione(){
         }
 
         sem_release(id_semaforo_mercato, indiceportoattraccato);
-        sem_reserve(id_semaforo_dump, 0);
+        sem_release(id_semaforo_dump, 0);
 
         
         spaziolibero = SO_CAPACITY;

@@ -101,13 +101,13 @@ int main(int argc, char* argv[]){
     */
     
     setUpLotto(CAST_DETTAGLI_LOTTI(vptr_shm_dettagli_lotti), SO_MERCI, SO_SIZE, SO_MIN_VITA, SO_MAX_VITA);
-    /*
+    
     for(i=0;i<SO_MERCI;i++){
         printf("Merce %d val %d exp %d\n", i,
             CAST_DETTAGLI_LOTTI(vptr_shm_dettagli_lotti)[i].val,
             CAST_DETTAGLI_LOTTI(vptr_shm_dettagli_lotti)[i].exp);
     }
-    */
+    
 
 
     /* ---------------------------------------- */
