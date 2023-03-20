@@ -94,10 +94,12 @@ void aggiorna_dump_carico(int indiceporto, merce_nave* carico, int spazio_libero
     CAST_PORTO_DUMP(vptr_shm_dump)[indiceporto].mercespedita += SO_CAPACITY - spazio_libero;
     CAST_PORTO_DUMP(vptr_shm_dump)[indiceporto].mercepresente -= SO_CAPACITY - spazio_libero;
 
+    sem_reserve(id_semaforo_dump, 0);
     for(i = 0; i < MAX_CARICO; i++){
         CAST_MERCE_DUMP(vptr_shm_dump)[carico[i].indice].presente_in_nave += carico[i].mer.val;
         CAST_MERCE_DUMP(vptr_shm_dump)[carico[i].indice].presente_in_porto -= carico[i].mer.val;
     }
+    sem_release(id_semaforo_dump, 0);
 }
 
 
@@ -107,32 +109,31 @@ void scaricamerci(merce scarico, int indiceporto, int indicemerce, int data, int
     //printf("___1\n");
     dump* ptr_shm_dump = CAST_DUMP(vptr_shm_dump_porto);
     //printf("___2\n");
-    ptr_shm_dump->merce_dump_ptr = CAST_MERCE_DUMP(ptr_shm_dump);
-    printf("!!! PTR_DUMP = %p, MERCE_PTR_DUMP[0]= %p\n", vptr_shm_dump_porto, ptr_shm_dump->merce_dump_ptr);
     //printf("___3\n");
     ptr_shm_dump->porto_dump_ptr = CAST_PORTO_DUMP(ptr_shm_dump);
     //printf("___4\n");
     
+    sem_reserve(id_semaforo_dump, 0);
     if(scarico.exp >= data){
         //printf("___5\n");
         ptr_shm_mercato_porto[indiceporto][indicemerce].val += scarico.val;
         //printf("___6\n");
         ptr_shm_mercato_porto[indiceporto][indicemerce].exp = SO_DAYS+1;
         //printf("___7\n");
-        ptr_shm_dump->merce_dump_ptr[indicemerce].consegnata += scarico.val;
+        CAST_MERCE_DUMP(vptr_shm_dump)[indicemerce].consegnata += scarico.val;
         //printf("___8\n");
-        ptr_shm_dump->merce_dump_ptr[indicemerce].presente_in_nave -= scarico.val;
+        CAST_MERCE_DUMP(vptr_shm_dump)[indicemerce].presente_in_nave -= scarico.val;
         //printf("___9\n");
-        ptr_shm_dump->porto_dump_ptr[indiceporto].mercericevuta += scarico.val;
+        CAST_PORTO_DUMP(vptr_shm_dump)[indiceporto].mercericevuta += scarico.val;
         //printf("___10\n");
     }else{
         //printf("___11\n");
-        ptr_shm_dump->merce_dump_ptr[indicemerce].scaduta_in_nave += scarico.val;
+        CAST_MERCE_DUMP(vptr_shm_dump)[indicemerce].scaduta_in_nave += scarico.val;
         //printf("___12\n");
-        ptr_shm_dump->merce_dump_ptr[indicemerce].presente_in_nave -= scarico.val;
+        CAST_MERCE_DUMP(vptr_shm_dump)[indicemerce].presente_in_nave -= scarico.val;
         //printf("___13\n");
     }
-
+    sem_release(id_semaforo_dump, 0);
 }
 
 point generate_random_point(int lato) {
@@ -391,7 +392,6 @@ void codice_simulazione(){
         attesa((SO_CAPACITY-spaziolibero), SO_LOADSPEED);
         datascarico = /*DATA*/CAST_DUMP(vptr_shm_dump)->data;
 
-
         /* invertendo sem_release e sem_reserve del dump, ho forse creato capacità potenziale di deadlock ???? */
         /* se non l'avessi fatto, avremmo modifiche al dump in zone critiche senza mutua esclusione !!!! */
         int data1 = CAST_DUMP(vptr_shm_dump)->data;
@@ -404,6 +404,7 @@ void codice_simulazione(){
         for(j=0;j<i_carico;j++){
             scaricamerci(carico[j].mer, indiceportoattraccato, carico[j].indice, datascarico, SO_MERCI, vptr_shm_mercato, vptr_shm_dump);
         }
+
 
         sem_release(id_semaforo_mercato, indiceportoattraccato);
         sem_release(id_semaforo_dump, 0);
