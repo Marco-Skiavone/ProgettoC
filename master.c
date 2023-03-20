@@ -321,7 +321,6 @@ void sgancia_e_distruggi_risorse(){
     printf("SGANCIA_SHAREDM_POSIZIONI_PORTI\n"); sgancia_shm(vptr_shm_posizioni_porti);
     printf("SGANCIA_SHAREDM_DUMP\n"); sgancia_shm(vptr_shm_dump);
 
-
     printf("DISTRUGGI_SHAREDM_MERCATO\n"); distruggi_shm(id_shm_mercato);
     printf("DISTRUGGI_SHAREDM_DETTAGLI_LOTTI\n"); distruggi_shm(id_shm_dettagli_lotti);
     printf("DISTRUGGI_SHAREDM_POSIZIONI_PORTI\n"); distruggi_shm(id_shm_posizioni_porti);
@@ -339,7 +338,7 @@ void sgancia_e_distruggi_risorse(){
 void inizializza_dump(){
     int i;
     CAST_DUMP(vptr_shm_dump)->data = 0;
-    CAST_DUMP(vptr_shm_dump)->merce_dump_ptr = (merce_dump*)(vptr_shm_dump+sizeof(int));
+    CAST_DUMP(vptr_shm_dump)->merce_dump_ptr = (merce_dump*)(vptr_shm_dump+sizeof(int));/* probabilmente non funziona! ( ma andrebbe davvero inizializzato! )*/
     CAST_DUMP(vptr_shm_dump)->porto_dump_ptr = (porto_dump*)(((merce_dump*) vptr_shm_dump+sizeof(int))+SO_MERCI);
     CAST_DUMP(vptr_shm_dump)->nd.navicariche = 0;
     CAST_DUMP(vptr_shm_dump)->nd.naviscariche = SO_NAVI;
@@ -357,6 +356,7 @@ void inizializza_dump(){
         CAST_PORTO_DUMP(vptr_shm_dump)[i].mercericevuta = 0;
         CAST_PORTO_DUMP(vptr_shm_dump)[i].mercespedita = 0;
     }
+    /* bzero(CAST_DUMP(vptr_shm_dump)->merce_dump_ptr, sizeof(merce_dump)*SO_MERCI) */
 }
 
 void stampa_dump(int MERCI, int PORTI){

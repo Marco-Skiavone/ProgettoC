@@ -135,11 +135,13 @@ void spawnMerciPorti(int nmerci, void* vptr_shm_mercato, merce* ptr_dettagli_lot
     */
     sem_reserve(id_semaforo_gestione, 1);
     // sleep(indice);
-    printf("Porto %d\n", indice);
+    printf("P-Porto %d\n", indice);
     for(j=0;j<SO_MERCI;j++){
-        printf("Merce %d nlotti %d scadenza %d\n", j, ptr_shm_mercato_porto[indice][j].val, ptr_shm_mercato_porto[indice][j].exp);
+        printf("P-Merce %d nlotti %d scadenza %d\n", j, ptr_shm_mercato_porto[indice][j].val, ptr_shm_mercato_porto[indice][j].exp);
         /* aggiungo la merce al dump */
-        CAST_MERCE_DUMP(vptr_shm_dump)->presente_in_porto += ptr_shm_mercato_porto[indice][j].val;
+        if(ptr_shm_mercato_porto[indice][j].val > 0)
+            CAST_MERCE_DUMP(vptr_shm_dump)[j].presente_in_porto += ptr_shm_mercato_porto[indice][j].val;
+        printf("Merce del porto %d aggiunta\n", indice);    
     }
     sem_release(id_semaforo_gestione, 1);
 }
