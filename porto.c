@@ -2,7 +2,6 @@
 #include "queue_lib.h"
 #include "sem_lib.h"
 #include "shm_lib.h"
-#include "queue_lib.h"
 
 void* vptr_shm_mercato;
 int id_shm_mercato;
@@ -23,7 +22,6 @@ int id_semaforo_dump;
 
 int id_coda_richieste;
 
-// int DATA;
 int indice;
 int PARAMETRO[QNT_PARAMETRI];
 void inizializza_risorse();
@@ -64,14 +62,13 @@ int main(int argc, char *argv[]){
     manda_richieste(SO_MERCI, vptr_shm_mercato, indice, id_coda_richieste);
 
     inizializza_banchine(id_semaforo_banchine, indice, SO_BANCHINE);
-    //printf("Porto %d nbanchine %d\n", indice, sem_get_val(id_semaforo_banchine, indice));
 
-    
+    /* si sgancia dalle memorie condivise. */
     sgancia_risorse();
-
+    /* si dichiara pronto e aspetta. (wait for zero) */
     sem_reserve(id_semaforo_gestione, 0);
     sem_wait_zero(id_semaforo_gestione, 0);
-    // printf("Porto %d sto uscendo con gestione = %d\n", indice, sem_get_val(id_semaforo_gestione, 0));
+    
     do {
         pause();
     } while(1);
@@ -131,10 +128,9 @@ void spawnMerciPorti(int nmerci, void* vptr_shm_mercato, merce* ptr_dettagli_lot
             }
         }
     }
-    /*
-    */
+    
     sem_reserve(id_semaforo_gestione, 1);
-    // sleep(indice);
+    
     printf("P-Porto %d\n", indice);
     for(j=0;j<SO_MERCI;j++){
         printf("P-Merce %d nlotti %d scadenza %d\n", j, ptr_shm_mercato_porto[indice][j].val, ptr_shm_mercato_porto[indice][j].exp);
@@ -156,10 +152,7 @@ void inizializza_risorse(){
     vptr_shm_posizioni_porti = aggancia_shm(id_shm_posizioni_porti);
     id_shm_dump = find_shm(CHIAVE_SHAREDM_DUMP, SIZE_SHAREDM_DUMP);
     vptr_shm_dump = aggancia_shm(id_shm_dump);
-    id_semaforo_mercato = sem_find(CHIAVE_SEM_MERCATO,SO_PORTI);
-    id_semaforo_gestione = sem_find(CHIAVE_SEM_GESTIONE, 2);
-    id_semaforo_banchine = sem_find(CHIAVE_SEM_BANCHINE, SO_PORTI);
-    id_semaforo_dump = sem_find(CHIAVE_SEM_DUMP,2);
+    inizializza_semafori(&id_semaforo_mercato, &id_semaforo_gestione, &id_semaforo_banchine, &id_semaforo_dump, SO_PORTI);
     id_coda_richieste = get_coda_id(CHIAVE_CODA);
 }
 
@@ -187,6 +180,7 @@ void signal_handler(int signo){
             break;
         case SIGUSR2:
             printf("\nPORTO %d: ricevuto SIGUSR2.\n", indice);
+            sgancia_risorse();
             exit(EXIT_SUCCESS);
             break;
         default: 

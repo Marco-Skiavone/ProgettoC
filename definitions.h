@@ -18,7 +18,6 @@
 #include <time.h>
 #include <math.h>
 
-
 #define STAMPA_DEBUG printf("%s: data = %d, linea %d\n", __FILE__, CAST_DUMP(vptr_shm_dump)->data, __LINE__);
 
 /* stampa un messaggio di errore dove str è una stringa personalizzabile */
@@ -88,6 +87,9 @@
 #define SO_LOADSPEED PARAMETRO[I_LOADSPEED]
 #define SO_DAYS PARAMETRO[I_DAYS]
 
+/* Numero di parametri: 
+ * - 13 versione da 24
+ * - 16 versione da 30 */
 #define QNT_PARAMETRI 13
 
 
@@ -102,6 +104,17 @@
 
 #define CHIAVE_SHAREDM_DUMP 40
 #define SIZE_SHAREDM_DUMP ((sizeof(porto_dump) * SO_PORTI) + (sizeof(merce_dump) * SO_MERCI) + sizeof(dump))
+
+#define MSG_SIZE (sizeof(int)*2)
+#define CHIAVE_CODA 50
+
+#define CHIAVE_SEM_MERCATO 11
+#define CHIAVE_SEM_DUMP 41
+#define CHIAVE_SEM_BANCHINE 51
+#define CHIAVE_SEM_GESTIONE 61
+
+/* --- casting delle shm --- */
+
 
 #define CAST_MERCATO(ptr) \
 	((merce(*)[SO_PORTI])ptr)
@@ -121,66 +134,68 @@
 #define CAST_PORTO_DUMP(ptr) \
 	((porto_dump*)(((merce_dump*) ptr+sizeof(int))+SO_MERCI))
 
-#define CHIAVE_CODA 50
-#define MSG_SIZE (sizeof(int)*2)
+/* ------------------------- */
 
-#define CHIAVE_SEM_MERCATO 11
-#define CHIAVE_SEM_DUMP 41
-
-#define CHIAVE_SEM_BANCHINE 50
-#define CHIAVE_SEM_GESTIONE 55
- 
 #define MAX_STR_LEN 15
 
+/* Tolleranza della uguaglianza tra punti nella mappa */
 #define TOLLERANZA 0.05
+/* Massimo di richieste da poter leggere. (arbitrario) */
 #define MAX_REQ_LETTE 20
+/* Massima lunghezza dell'array di carico merci delle navi. */
 #define MAX_CARICO 10
 
 
-
+/* Punto generico di posizione con coordinate x e y. */
 typedef struct {
 	double x;
 	double y;
 } point;
 
-typedef struct { /*struct ritornata da porto_piu_vicino*/
-	int indice_porto; /*i del ciclo*/
+/*
+typedef struct { /*struct ritornata da porto_piu_vicino*
+	int indice_porto;
 	long nanosec_nano;
-	/*restituisco anche le coordinate del porto dove si troverà la nave dopo*/
+	/*restituisco anche le coordinate del porto dove si troverà la nave dopo*
 	double x;
 	double y;
-} viaggio;
+} viaggio;*/
 
-/* Rappresenta un lotto di merce */
+/* Rappresenta un lotto di merce. */
 typedef struct {
     int val;
     int exp;
 } merce;
 
+/* Tipo del corpo del messaggio. */
 typedef struct {
 	int indicemerce;
     int nlotti;
 } m_text;
 
-/* richiesta da inserire in CODA MSG*/
+/* Tipo base di richiesta da inserire in CODA MSG*/
 typedef struct {
     long mtype;
     m_text mtext;
 } richiesta;
 
+/* Tipo specifico per il carico in nave, possiede un indice che è l'indice della merce. */
 typedef struct {
-    int indice; /* indice merce */
+	/* indice della merce */
+    int indice; 
     merce mer;
 } merce_nave;
 
 /* SERIE DI STRUCT NECESSARIE PER I DATI RIGUARDANTI I DUMP*/
 
+/* Tipo usato per contare lo stato delle navi nel dump. */
 typedef struct {
     int naviporto;
     int naviscariche;
     int navicariche;
 } nave_dump;
 
+/* Tipo usato per la struttura del vettore di porti del dump. */
 typedef struct {
     int mercespedita;
     int mercericevuta;
@@ -189,6 +204,8 @@ typedef struct {
     int banchinetotali;
 } porto_dump ;
 
+
+/* Tipo usato per la struttura del vettore di merci del dump. */
 typedef struct {
     int presente_in_porto;
     int presente_in_nave;
@@ -197,6 +214,7 @@ typedef struct {
     int scaduta_in_nave;
 } merce_dump;
 
+/* Tipo usato per la struttura generica del dump. */
 typedef struct {
 	int data;
     merce_dump *merce_dump_ptr;

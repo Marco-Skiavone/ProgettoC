@@ -107,35 +107,20 @@ void aggiorna_dump_carico(int indiceporto, merce_nave* carico, int spazio_libero
 }
 
 
-void scaricamerci(merce scarico, int indiceporto, int indicemerce, int data, int so_merci, void* vptr_shm_mercato_porto, void* vptr_shm_dump_porto){
-    
-    merce(*ptr_shm_mercato_porto)[so_merci] = CAST_MERCATO(vptr_shm_mercato_porto);
-    //printf("___1\n");
-    dump* ptr_shm_dump = CAST_DUMP(vptr_shm_dump_porto);
-    //printf("___2\n");
-    //printf("___3\n");
-    ptr_shm_dump->porto_dump_ptr = CAST_PORTO_DUMP(ptr_shm_dump);
-    //printf("___4\n");
-    
+void scaricamerci(merce scarico, int indiceporto, int indicemerce, int data, int so_merci, void* vptr_shm_mercato_porto, void* vptr_shm_dump_porto){    
     sem_reserve(id_semaforo_dump, 0);
-    if(scarico.exp >= data){
-        //printf("___5\n");
-        ptr_shm_mercato_porto[indiceporto][indicemerce].val += scarico.val;
-        //printf("___6\n");
-        ptr_shm_mercato_porto[indiceporto][indicemerce].exp = SO_DAYS+1;
-        //printf("___7\n");
-        CAST_MERCE_DUMP(vptr_shm_dump)[indicemerce].consegnata += scarico.val;
-        //printf("___8\n");
-        CAST_MERCE_DUMP(vptr_shm_dump)[indicemerce].presente_in_nave -= scarico.val;
-        //printf("___9\n");
-        CAST_PORTO_DUMP(vptr_shm_dump)[indiceporto].mercericevuta += scarico.val;
-        //printf("___10\n");
+    if(scarico.exp >= data){ 
+        /* si presuppone che il risultato sia <= 0*/
+        CAST_MERCATO(vptr_shm_mercato_porto)[indiceporto][indicemerce].val += scarico.val;
+        CAST_MERCATO(vptr_shm_mercato_porto)[indiceporto][indicemerce].exp = SO_DAYS+1;
+        
+        CAST_MERCE_DUMP(vptr_shm_dump)[indicemerce].consegnata += scarico.val * CAST_DETTAGLI_LOTTI(vptr_shm_dettagli_lotti)[indicemerce].val;
+        CAST_MERCE_DUMP(vptr_shm_dump)[indicemerce].presente_in_nave -= scarico.val * CAST_DETTAGLI_LOTTI(vptr_shm_dettagli_lotti)[indicemerce].val;
+        
+        CAST_PORTO_DUMP(vptr_shm_dump)[indiceporto].mercericevuta += scarico.val * CAST_DETTAGLI_LOTTI(vptr_shm_dettagli_lotti)[indicemerce].val;
     }else{
-        //printf("___11\n");
-        CAST_MERCE_DUMP(vptr_shm_dump)[indicemerce].scaduta_in_nave += scarico.val;
-        //printf("___12\n");
-        CAST_MERCE_DUMP(vptr_shm_dump)[indicemerce].presente_in_nave -= scarico.val;
-        //printf("___13\n");
+        CAST_MERCE_DUMP(vptr_shm_dump)[indicemerce].scaduta_in_nave += scarico.val * CAST_DETTAGLI_LOTTI(vptr_shm_dettagli_lotti)[indicemerce].val;
+        CAST_MERCE_DUMP(vptr_shm_dump)[indicemerce].presente_in_nave -= scarico.val * CAST_DETTAGLI_LOTTI(vptr_shm_dettagli_lotti)[indicemerce].val;
     }
     sem_release(id_semaforo_dump, 0);
 }
