@@ -4,6 +4,7 @@
 #include <stdlib.h>
 #include <fcntl.h>
 #include <string.h>
+#include <strings.h>
 #include <sys/ipc.h>
 #include <sys/sem.h>
 #include <sys/shm.h>
