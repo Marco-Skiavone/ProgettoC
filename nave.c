@@ -228,9 +228,9 @@ void codice_simulazione(){
 
     
     while(1){
-        /* Il primo do-while esegue la ricerca di richieste da accettare,
+        /* Il primo do-while esegue la ricerca della prima richiesta da accettare,
          * in base alle risorse del porto di attracco. 
-         * Prima di esso inserisco una funzione che mi controlla direttamente il mercato! */
+         * Prima di esso inserisco una funzione (controlla_offerte(int)) che mi controlla direttamente il mercato corrispondente! */
         sem_reserve(id_semaforo_mercato, indiceportoattraccato);
 
         if(controlla_offerte(indiceportoattraccato)){
@@ -299,7 +299,10 @@ void codice_simulazione(){
                 skip=1;
                 //STAMPA_DEBUG
             }
+        } else {
+            skip = 1;
         }
+        
 
         
         do{
@@ -376,6 +379,8 @@ void codice_simulazione(){
         }while(reqlett < MAX_REQ_LETTE);
         //STAMPA_DEBUG
 
+        /* a questo punto rilascia mercato shm e carica le risorse,
+         * dopodiché aggiorna il dump sul carico e salpa per il porto di destinazione */
         sem_release(id_semaforo_mercato, indiceportoattraccato);
 
         attesa((SO_CAPACITY - spaziolibero), SO_LOADSPEED);
@@ -400,7 +405,8 @@ void codice_simulazione(){
             statoNave(DN_MC_PORTO);
         }
         attesa((SO_CAPACITY-spaziolibero), SO_LOADSPEED);
-        datascarico = /*DATA*/CAST_DUMP(vptr_shm_dump)->data;
+        /* salva la data di scarico della merce */
+        datascarico = CAST_DUMP(vptr_shm_dump)->data;
 
         /* invertendo sem_release e sem_reserve del dump, ho forse creato capacità potenziale di deadlock ???? */
         /* se non l'avessi fatto, avremmo modifiche al dump in zone critiche senza mutua esclusione !!!! */
@@ -415,11 +421,9 @@ void codice_simulazione(){
             scaricamerci(carico[j].mer, indiceportoattraccato, carico[j].indice, datascarico, SO_MERCI, vptr_shm_mercato, vptr_shm_dump);
         }
 
-
         sem_release(id_semaforo_mercato, indiceportoattraccato);
         sem_release(id_semaforo_dump, 0);
-
-        
+        /* resetto i valori dei parametri necessari all'iterazione successiva */
         spaziolibero = SO_CAPACITY;
         tempocarico = 0;
         i_carico = 0;
