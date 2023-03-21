@@ -26,14 +26,12 @@ int id_coda_richieste;
 int *child_pids;
 
 int PARAMETRO[QNT_PARAMETRI];
-int equals(double x, double y);
-point generate_random_point(int lato);
-void generate_positions(double lato, point* posizioni_porti);
 
 void alloca_risorse();
 void sgancia_e_distruggi_risorse();
 
-/* inizializza i valori del dump, tra cui i puntatori, chiamato dal master a inizio simulazione */
+/* Inizializza i valori del dump, tra cui i puntatori.
+ * Chiamato dal master a inizio simulazione. */
 void inizializza_dump();
 
 void setUpLotto(merce* ptr_dettagli_lotti, int nmerci, int so_size, int so_min_vita, int so_max_vita);
@@ -90,9 +88,10 @@ int main(int argc, char* argv[]){
     child_pids = (int *) malloc((SO_NAVI*SO_PORTI) * sizeof(int));
 
     alloca_risorse();
+    /*operazioni preliminari su dump e sem_dump */
     inizializza_dump();
     CAST_DUMP(vptr_shm_dump)->data = 0;
-    generate_positions(SO_LATO, CAST_POSIZIONI_PORTI(vptr_shm_posizioni_porti));
+    generate_positions(SO_LATO, CAST_POSIZIONI_PORTI(vptr_shm_posizioni_porti), SO_PORTI);
     
     /*
     for(i=0;i<SO_PORTI;i++){
@@ -111,10 +110,7 @@ int main(int argc, char* argv[]){
 
 
     /* ---------------------------------------- */
-    /*operazioni preliminari su dump e sem_dump */
-    ((dump*)vptr_shm_dump)->nd.naviscariche = SO_NAVI;
-    ((dump*)vptr_shm_dump)->nd.navicariche = 0;
-    ((dump*)vptr_shm_dump)->nd.naviporto = 0;
+    
     /* semaforo numero 1 su 2 che fa 1-0 per far scrivere le navi in m.e.*/
     sem_set_val(id_semaforo_dump,1,1);  
     /* ---------------------------------------- */
@@ -199,8 +195,7 @@ int main(int argc, char* argv[]){
     printf("Master sto uscendo con gestione = %d\n", sem_get_val(id_semaforo_gestione,0));
     printf("\n__________________________ \n\n");
     
-    /*
-    */
+    
     for(i=0;i<SO_PORTI;i++){
         printf("Porto %d\n", i);
         for(j=0;j<SO_MERCI;j++){
@@ -224,62 +219,6 @@ int main(int argc, char* argv[]){
 
 }
 
-void setUpLotto(merce* ptr_dettagli_lotti, int nmerci, int so_size, int so_min_vita, int so_max_vita){
-    int i;
-    ptr_dettagli_lotti[0].val = 1;
-    ptr_dettagli_lotti[0].exp = so_min_vita + (rand() % (so_max_vita - so_min_vita));
-    for(i=1;i<nmerci;i++){
-        ptr_dettagli_lotti[i].val = (rand() & so_size) + 1;
-        ptr_dettagli_lotti[i].exp = so_min_vita + (rand() % (so_max_vita - so_min_vita));
-    }
-}
-
-int equals(double x, double y){
-	if(x > y)
-		return (x-y) < TOLLERANZA ? 1: 0;
-	else 
-		return (y-x) < TOLLERANZA ? 1 : 0;
-}
-
-point generate_random_point(int lato) {
-    int mant, p_intera;
-    point p;
-    p_intera = mant = rand()%lato;
-
-	p.x = ((double)mant/lato) + (p_intera*getppid()%lato);
-	p_intera = mant = rand()%lato;
-	p.y = ((double)mant/lato) + ((p_intera*getppid()%lato));
-    return p;
-}
-
-void generate_positions(double lato, point* posizioni_porti) {
-    int i;
-    int j;
-    point p;
-    int found;
-    posizioni_porti[0].x = 0;       posizioni_porti[0].y = 0;
-    posizioni_porti[1].x = lato;    posizioni_porti[1].y = 0;
-    posizioni_porti[2].x = lato;    posizioni_porti[2].y = lato;
-    posizioni_porti[3].x = 0;       posizioni_porti[3].y = lato;
-
-    for (i = 4; i < SO_PORTI; i++) {
-        p = generate_random_point(lato);
-        found = 0;
-        for (j = 0; j < i && !found; j++) {
-			if (equals(p.x, posizioni_porti[j].x) && (equals(p.y, posizioni_porti[j].y))) {
-				found = 1;
-			}
-		}
-		if (found) {
-			i--;
-		} else {
-			posizioni_porti[i].x = p.x;
-            posizioni_porti[i].y = p.y;
-		}
-    }
-}
-
-
 
 void alloca_risorse(){
     int i;
@@ -287,7 +226,6 @@ void alloca_risorse(){
     printf("SHAREDM_MERCATO: %d\n", id_shm_mercato = alloca_shm(CHIAVE_SHAREDM_MERCATO, SIZE_SHAREDM_MERCATO));
     vptr_shm_mercato = aggancia_shm(id_shm_mercato);
 
-    
     printf("SHAREDM_DETTAGLI_LOTTI: %d\n", id_shm_dettagli_lotti = alloca_shm(CHIAVE_SHAREDM_DETTAGLI_LOTTI, SIZE_SHAREDM_DETTAGLI_LOTTI));
     vptr_shm_dettagli_lotti = aggancia_shm(id_shm_dettagli_lotti);
 
