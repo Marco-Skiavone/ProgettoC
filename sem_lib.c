@@ -90,8 +90,8 @@ void sem_destroy(int semid) {
 }
 
 void inizializza_semafori(int *id_mercato, int *id_gestione, int *id_banchine, int *id_dump,int PORTI){
-    id_mercato = sem_find(CHIAVE_SEM_MERCATO, PORTI);
-    id_gestione = sem_find(CHIAVE_SEM_GESTIONE, 2);
-    id_banchine = sem_find(CHIAVE_SEM_BANCHINE, PORTI);
-    id_dump = sem_find(CHIAVE_SEM_DUMP,2);
+    *id_mercato = sem_find(CHIAVE_SEM_MERCATO, PORTI);
+    *id_gestione = sem_find(CHIAVE_SEM_GESTIONE, 2);
+    *id_banchine = sem_find(CHIAVE_SEM_BANCHINE, PORTI);
+    *id_dump = sem_find(CHIAVE_SEM_DUMP,2);
 }
