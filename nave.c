@@ -46,7 +46,7 @@ void codice_simulazione();
 int controlla_offerte(int indiceporto);
 
 /* aggiorna il dump sulle merci e sul porto che hanno subito modifiche !!!! */
-void aggiorna_dump_carico(int indiceporto, merce_nave* carico, int spazio_libero);
+void aggiorna_dump_carico(int indiceporto, merce_nave* carico, int caricato, int spazio_libero);
 
 void scaricamerci(merce scarico, int indiceporto, int indicemerce, int data, int so_merci, void* vptr_shm_mercato, void* vptr_shm_dump_porto);
 
@@ -92,18 +92,19 @@ int main(int argc, char *argv[]){
 
 }
 
-void aggiorna_dump_carico(int indiceporto, merce_nave* carico, int spazio_libero){
+void aggiorna_dump_carico(int indiceporto, merce_nave* carico, int caricati, int spazio_libero){
     int i;
 
     CAST_PORTO_DUMP(vptr_shm_dump)[indiceporto].mercespedita += SO_CAPACITY - spazio_libero;
     CAST_PORTO_DUMP(vptr_shm_dump)[indiceporto].mercepresente -= SO_CAPACITY - spazio_libero;
-
+    printf("Entro aggiorna dump sem reserve \n");
     sem_reserve(id_semaforo_dump, 0);
-    for(i = 0; i < MAX_CARICO; i++){
+    for(i = 0; i < caricati; i++){
         CAST_MERCE_DUMP(vptr_shm_dump)[carico[i].indice].presente_in_nave += carico[i].mer.val;
         CAST_MERCE_DUMP(vptr_shm_dump)[carico[i].indice].presente_in_porto -= carico[i].mer.val;
     }
     sem_release(id_semaforo_dump, 0);
+    printf("Esco aggiorna dump sem reserve \n");
 }
 
 
@@ -370,16 +371,18 @@ void codice_simulazione(){
         sem_release(id_semaforo_mercato, indiceportoattraccato);
 
         attesa((SO_CAPACITY - spaziolibero), SO_LOADSPEED);
-
-        aggiorna_dump_carico(indiceportoattraccato, carico, spaziolibero);
-
+        printf("Nave %d inizia a caricare\n", indice);
+        aggiorna_dump_carico(indiceportoattraccato, carico, i_carico, spaziolibero);
+        printf("Nave %d ha caricato\n", indice);
         sem_release(id_semaforo_banchine, indiceportoattraccato);
         if(spaziolibero == SO_CAPACITY){
             statoNave(DN_PORTO_MV);
         }else{
             statoNave(DN_PORTO_MC);
         }
+        printf("Nave %d parte\n", indice);
         attesa(distanza,SO_SPEED);
+        printf("Nave %d arriva\n", indice);
         posizione = CAST_POSIZIONI_PORTI(vptr_shm_posizioni_porti)[indicedestinazione];
         indiceportoattraccato = indicedestinazione;
 
