@@ -108,15 +108,16 @@ void aggiorna_dump_carico(int indiceporto, merce_nave* carico, int spazio_libero
 
 
 void scaricamerci(merce scarico, int indiceporto, int indicemerce, int data, int so_merci, void* vptr_shm_mercato_porto, void* vptr_shm_dump_porto){    
-    sem_reserve(id_semaforo_dump, 0);
+    
     if(scarico.exp >= data){ 
         /* si presuppone che il risultato sia <= 0*/
         CAST_MERCATO(vptr_shm_mercato_porto)[indiceporto][indicemerce].val += scarico.val;
         CAST_MERCATO(vptr_shm_mercato_porto)[indiceporto][indicemerce].exp = SO_DAYS+1;
-        
+    }
+    sem_reserve(id_semaforo_dump, 0);
+    if(scarico.exp >= data){ 
         CAST_MERCE_DUMP(vptr_shm_dump)[indicemerce].consegnata += scarico.val * CAST_DETTAGLI_LOTTI(vptr_shm_dettagli_lotti)[indicemerce].val;
         CAST_MERCE_DUMP(vptr_shm_dump)[indicemerce].presente_in_nave -= scarico.val * CAST_DETTAGLI_LOTTI(vptr_shm_dettagli_lotti)[indicemerce].val;
-        
         CAST_PORTO_DUMP(vptr_shm_dump)[indiceporto].mercericevuta += scarico.val * CAST_DETTAGLI_LOTTI(vptr_shm_dettagli_lotti)[indicemerce].val;
     }else{
         CAST_MERCE_DUMP(vptr_shm_dump)[indicemerce].scaduta_in_nave += scarico.val * CAST_DETTAGLI_LOTTI(vptr_shm_dettagli_lotti)[indicemerce].val;
@@ -397,7 +398,7 @@ void codice_simulazione(){
         /* se non l'avessi fatto, avremmo modifiche al dump in zone critiche senza mutua esclusione !!!! */
         int data1 = CAST_DUMP(vptr_shm_dump)->data;
         sem_reserve(id_semaforo_mercato,indiceportoattraccato);
-        sem_reserve(id_semaforo_dump, 0);
+
         printf("nave %d in attesa dal giorno %d: giorno attuale: %d\n", indice, data1, CAST_DUMP(vptr_shm_dump)->data);
 
 
@@ -407,7 +408,7 @@ void codice_simulazione(){
         }
 
         sem_release(id_semaforo_mercato, indiceportoattraccato);
-        sem_release(id_semaforo_dump, 0);
+        
         /* resetto i valori dei parametri necessari all'iterazione successiva */
         spaziolibero = SO_CAPACITY;
         tempocarico = 0;
