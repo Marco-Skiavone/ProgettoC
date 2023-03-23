@@ -94,15 +94,23 @@ int main(int argc, char *argv[]){
 
 void aggiorna_dump_carico(int indiceporto, merce_nave* carico, int caricati, int spazio_libero){
     int i;
-
-    CAST_PORTO_DUMP(vptr_shm_dump)[indiceporto].mercespedita += SO_CAPACITY - spazio_libero;
-    CAST_PORTO_DUMP(vptr_shm_dump)[indiceporto].mercepresente -= SO_CAPACITY - spazio_libero;
     printf("Entro aggiorna dump sem reserve \n");
     sem_reserve(id_semaforo_dump, 0);
-    for(i = 0; i < caricati; i++){
-        CAST_MERCE_DUMP(vptr_shm_dump)[carico[i].indice].presente_in_nave += carico[i].mer.val;
-        CAST_MERCE_DUMP(vptr_shm_dump)[carico[i].indice].presente_in_porto -= carico[i].mer.val;
+
+    if(spazio_libero != SO_CAPACITY){ /* spazio libero va in ton, ergo il dump dei porti deve essere in ton. */
+        /*CAST_PORTO_DUMP(vptr_shm_dump)[indiceporto].mercespedita += SO_CAPACITY - spazio_libero;
+        printf("PORTO %d, MERCE PRESENTE = %d, SPAZIO_LIBERO = %d\n",indiceporto, CAST_PORTO_DUMP(vptr_shm_dump)[indiceporto].mercepresente, spazio_libero);
+        CAST_PORTO_DUMP(vptr_shm_dump)[indiceporto].mercepresente -= SO_CAPACITY - spazio_libero;*/
+        for(i = 0; i < caricati; i++){
+            CAST_PORTO_DUMP(vptr_shm_dump)[indiceporto].mercespedita += carico[i].mer.val;
+            CAST_PORTO_DUMP(vptr_shm_dump)[indiceporto].mercepresente -= carico[i].mer.val;
+        
+            CAST_MERCE_DUMP(vptr_shm_dump)[carico[i].indice].presente_in_nave += carico[i].mer.val;
+            CAST_MERCE_DUMP(vptr_shm_dump)[carico[i].indice].presente_in_porto -= carico[i].mer.val;
+        }
     }
+    
+    
     sem_release(id_semaforo_dump, 0);
     printf("Esco aggiorna dump sem reserve \n");
 }
@@ -117,12 +125,12 @@ void scaricamerci(merce scarico, int indiceporto, int indicemerce, int data, int
     }
     sem_reserve(id_semaforo_dump, 0);
     if(scarico.exp >= data){ 
-        CAST_MERCE_DUMP(vptr_shm_dump)[indicemerce].consegnata += scarico.val * CAST_DETTAGLI_LOTTI(vptr_shm_dettagli_lotti)[indicemerce].val;
-        CAST_MERCE_DUMP(vptr_shm_dump)[indicemerce].presente_in_nave -= scarico.val * CAST_DETTAGLI_LOTTI(vptr_shm_dettagli_lotti)[indicemerce].val;
-        CAST_PORTO_DUMP(vptr_shm_dump)[indiceporto].mercericevuta += scarico.val * CAST_DETTAGLI_LOTTI(vptr_shm_dettagli_lotti)[indicemerce].val;
+        CAST_MERCE_DUMP(vptr_shm_dump)[indicemerce].consegnata += scarico.val /* * CAST_DETTAGLI_LOTTI(vptr_shm_dettagli_lotti)[indicemerce].val*/;
+        CAST_MERCE_DUMP(vptr_shm_dump)[indicemerce].presente_in_nave -= scarico.val /* * CAST_DETTAGLI_LOTTI(vptr_shm_dettagli_lotti)[indicemerce].val*/;
+        CAST_PORTO_DUMP(vptr_shm_dump)[indiceporto].mercericevuta += scarico.val /* * CAST_DETTAGLI_LOTTI(vptr_shm_dettagli_lotti)[indicemerce].val*/;
     }else{
-        CAST_MERCE_DUMP(vptr_shm_dump)[indicemerce].scaduta_in_nave += scarico.val * CAST_DETTAGLI_LOTTI(vptr_shm_dettagli_lotti)[indicemerce].val;
-        CAST_MERCE_DUMP(vptr_shm_dump)[indicemerce].presente_in_nave -= scarico.val * CAST_DETTAGLI_LOTTI(vptr_shm_dettagli_lotti)[indicemerce].val;
+        CAST_MERCE_DUMP(vptr_shm_dump)[indicemerce].scaduta_in_nave += scarico.val /* * CAST_DETTAGLI_LOTTI(vptr_shm_dettagli_lotti)[indicemerce].val*/;
+        CAST_MERCE_DUMP(vptr_shm_dump)[indicemerce].presente_in_nave -= scarico.val /* * CAST_DETTAGLI_LOTTI(vptr_shm_dettagli_lotti)[indicemerce].val*/;
     }
     sem_release(id_semaforo_dump, 0);
 }

@@ -111,10 +111,6 @@ int main(int argc, char* argv[]){
 
 
     /* ---------------------------------------- */
-    /*operazioni preliminari su dump e sem_dump */
-    ((dump*)vptr_shm_dump)->nd.naviscariche = SO_NAVI;
-    ((dump*)vptr_shm_dump)->nd.navicariche = 0;
-    ((dump*)vptr_shm_dump)->nd.naviporto = 0;
     /* semaforo numero 1 su 2 che fa 1-0 per far scrivere le navi in m.e.*/
     sem_set_val(id_semaforo_dump,1,1);
     sem_set_val(id_semaforo_dump,0,1); 
