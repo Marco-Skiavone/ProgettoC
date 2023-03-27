@@ -25,7 +25,7 @@ void stampa_mercato_dump(void *vptr_shm_dump, void *vptr_shm_mercato, int PARAME
 	printf("MERCATO, giorno %d\n", CAST_DUMP(vptr_shm_dump)->data);
 	printf("PORTO %d:\n", indice_porto);
 	for(j = 0; j < SO_MERCI; j++){
-		printf("[%d, %d] ", j, CAST_MERCATO(vptr_shm_mercato)[indice_porto][j].val);
+		printf("[%d, %d] ", j, (CAST_MERCATO(vptr_shm_mercato))[indice_porto][j].val);
 	}
 	printf("\n");
 }

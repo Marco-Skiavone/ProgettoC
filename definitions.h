@@ -117,7 +117,7 @@
 
 
 #define CAST_MERCATO(ptr) \
-	((merce(*)[SO_PORTI])ptr)
+	((merce(*)[SO_MERCI])ptr)
 
 #define CAST_POSIZIONI_PORTI(ptr) \
 	((point *)ptr)

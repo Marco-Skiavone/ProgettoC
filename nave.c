@@ -26,6 +26,13 @@ int id_coda_richieste;
 int indice;
 int PARAMETRO[QNT_PARAMETRI];
 
+
+/* elementi di debug per la nave */
+int DEB_porti_attraccati;
+int DEB_porti_lasciati;
+int DEB_porto_ultima_destinazione;
+/*-------------------------------*/
+
 void inizializza_risorse();
 void sgancia_risorse();
 void signal_handler(int signo);
@@ -205,6 +212,9 @@ void codice_simulazione(){
     merce_nave carico[MAX_CARICO];
     bzero(carico, MAX_CARICO*sizeof(merce_nave));
 
+    DEB_porti_attraccati = DEB_porti_lasciati = 0;
+    DEB_porto_ultima_destinazione = -1;
+
     /* Genera la posizione della nave, 
      * trova il porto più vicino e ci va. */
     posizione = generate_random_point(SO_LATO);
@@ -215,6 +225,8 @@ void codice_simulazione(){
     attesa(distanza, SO_SPEED);
     /* richiede la banchina e una volta dentro aggiorna il dump */
     sem_reserve(id_semaforo_banchine, indicedestinazione);
+    DEB_porti_attraccati++;
+    DEB_porto_ultima_destinazione = indicedestinazione; 
     statoNave(DN_MV_PORTO);
     indiceportoattraccato = indicedestinazione;
     posizione = CAST_POSIZIONI_PORTI(vptr_shm_posizioni_porti)[indiceportoattraccato];
@@ -383,12 +395,15 @@ void codice_simulazione(){
             statoNave(DN_PORTO_MC);
         }
         printf("Nave %d parte\n", indice);
+        DEB_porti_lasciati += 1;
         attesa(distanza,SO_SPEED);
         printf("Nave %d arriva\n", indice);
         posizione = CAST_POSIZIONI_PORTI(vptr_shm_posizioni_porti)[indicedestinazione];
         indiceportoattraccato = indicedestinazione;
 
         sem_reserve(id_semaforo_banchine, indiceportoattraccato);
+        DEB_porti_attraccati += 1;
+        DEB_porto_ultima_destinazione = indiceportoattraccato;
         printf("Nave %d attraccata al porto %d\n", indice, indiceportoattraccato);
         if(spaziolibero == SO_CAPACITY){
             statoNave(DN_MV_PORTO);
@@ -407,10 +422,11 @@ void codice_simulazione(){
         printf("nave %d in attesa dal giorno %d: giorno attuale: %d\n", indice, data1, CAST_DUMP(vptr_shm_dump)->data);
 
 
-        printf("Nave %d scarica al porto %d\n", indice, indiceportoattraccato);
+        printf("Nave %d inizia a scaricare al porto %d. giorno %d\n", indice, indiceportoattraccato, CAST_DUMP(vptr_shm_dump)->data);
         for(j=0;j<i_carico;j++){
             scaricamerci(carico[j].mer, indiceportoattraccato, carico[j].indice, datascarico, SO_MERCI, vptr_shm_mercato, vptr_shm_dump);
         }
+        printf("Nave %d ha scaricato al porto %d. giorno %d\n", indice, indiceportoattraccato, CAST_DUMP(vptr_shm_dump)->data);
 
         sem_release(id_semaforo_mercato, indiceportoattraccato);
         
@@ -488,6 +504,7 @@ void signal_handler(int signo){
             break;
         case SIGUSR2:
             printf("NAVE %d: ricevuto SIGUSR2. data: %d\n", indice, CAST_DUMP(vptr_shm_dump)->data);
+            printf("#DEB - Nave %d:\n-porti_attraccati: %d\n-porti_lasciati: %d\n-ultimo_indice: %d\n", indice, DEB_porti_attraccati, DEB_porti_lasciati, DEB_porto_ultima_destinazione);
             exit(EXIT_SUCCESS);
             break;
         default: 
