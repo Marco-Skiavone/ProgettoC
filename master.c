@@ -2,6 +2,7 @@
 #include "queue_lib.h"
 #include "sem_lib.h"
 #include "shm_lib.h"
+#include "master_lib.h"
 
 void* vptr_shm_mercato;
 int id_shm_mercato;
@@ -377,6 +378,7 @@ void stampa_dump(int MERCI, int PORTI){
             printf("- merce spedita: %d\n", (CAST_PORTO_DUMP(vptr_shm_dump))[j].mercespedita);
             (CAST_PORTO_DUMP(vptr_shm_dump))[j].banchineoccupate = (CAST_PORTO_DUMP(vptr_shm_dump))[j].banchinetotali - sem_get_val(id_semaforo_banchine, j);
             printf("- banchine occupate/totali: %d/%d\n", (CAST_PORTO_DUMP(vptr_shm_dump))[j].banchineoccupate, (CAST_PORTO_DUMP(vptr_shm_dump))[j].banchinetotali);
+            stampa_mercato_dump(vptr_shm_dump, vptr_shm_mercato, PARAMETRO, j);
         }
     }
     printf("Navi:\n");
