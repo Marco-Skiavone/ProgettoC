@@ -1,0 +1,4789 @@
+gcc -O2  *.c -c
+gcc *lib.o master.o -o application -lm
+gcc *lib.o porto.o -o porto -lm
+gcc *lib.o nave.o -o nave -lm
+./application 9
+Parametri:
+SO_NAVI | SO_PORTI | SO_MERCI | SO_SIZE | SO_MIN_VITA | SO_MAX_VITA | SO_LATO | SO_SPEED | SO_CAPACITY | SO_BANCHINE | SO_FILL | SO_LOADSPEED | SO_DAYS
+ 20 | 10 | 5 | 500 | 40 | 50 | 500 | 50000 | 1000 | 10 | 500000 | 500 | 20 
+SHAREDM_MERCATO: 229430
+SHAREDM_DETTAGLI_LOTTI: 229431
+SHAREDM_POSIZIONI_PORTI: 229432
+SHAREDM_DUMP: 229433
+SEM_CREATE_MERCATO: 21
+SEM_CREATE_GESTIONE: 22
+SEM_CREATE_BANCHINE: 23
+SEM_CREATE_DUMP: 24
+CODA RICHIESTE: 5
+
+__________________________ 
+
+Merce 0 val 1 exp 40
+Merce 1 val 433 exp 45
+Merce 2 val 337 exp 41
+Merce 3 val 133 exp 46
+Merce 4 val 53 exp 45
+Set id_semaforo_gestione a 10 + 20 = 30
+
+MASTER: Passato giorno 1 su 20.
+*** Inizio stampa del dump: giorno 1 ***
+Merce 0
+- consegnata: 97
+- presente in nave: 0
+- presente in porto: 374
+- scaduta in nave: 0
+- scaduta in porto: 0
+Merce 1
+- consegnata: 0
+- presente in nave: 0
+- presente in porto: 277
+- scaduta in nave: 0
+- scaduta in porto: 0
+Merce 2
+- consegnata: 0
+- presente in nave: 0
+- presente in porto: 93
+- scaduta in nave: 0
+- scaduta in porto: 0
+Merce 3
+- consegnata: 0
+- presente in nave: 0
+- presente in porto: 166
+- scaduta in nave: 0
+- scaduta in porto: 0
+Merce 4
+- consegnata: 0
+- presente in nave: 7
+- presente in porto: 323
+- scaduta in nave: 0
+- scaduta in porto: 0
+Porto 0
+- merce presente: 125
+- merce ricevuta: 0
+- merce spedita: 0
+- banchine occupate/totali: 0/4
+MERCATO, giorno 1
+PORTO 0:
+[0, 83] [1, -57] [2, 42] [3, -63] [4, -51] 
+Porto 1
+- merce presente: 104
+- merce ricevuta: 0
+- merce spedita: 0
+- banchine occupate/totali: 2/5
+MERCATO, giorno 1
+PORTO 1:
+[0, -119] [1, 59] [2, -48] [3, 38] [4, -41] 
+Porto 2
+- merce presente: 0
+- merce ricevuta: 0
+- merce spedita: 0
+- banchine occupate/totali: 0/3
+MERCATO, giorno 1
+PORTO 2:
+[0, -63] [1, -61] [2, -43] [3, -46] [4, -55] 
+Porto 3
+- merce presente: 163
+- merce ricevuta: 36
+- merce spedita: 0
+- banchine occupate/totali: 2/5
+MERCATO, giorno 1
+PORTO 3:
+[0, -117] [1, 50] [2, -52] [3, 50] [4, 40] 
+Porto 4
+- merce presente: 234
+- merce ricevuta: 0
+- merce spedita: 0
+- banchine occupate/totali: 4/4
+MERCATO, giorno 1
+PORTO 4:
+[0, 14] [1, 50] [2, -50] [3, -48] [4, 25] 
+Porto 5
+- merce presente: 55
+- merce ricevuta: 61
+- merce spedita: 7
+- banchine occupate/totali: 3/3
+MERCATO, giorno 1
+PORTO 5:
+[0, -61] [1, -53] [2, -51] [3, -49] [4, 1] 
+Porto 6
+- merce presente: 62
+- merce ricevuta: 0
+- merce spedita: 0
+- banchine occupate/totali: 1/1
+MERCATO, giorno 1
+PORTO 6:
+[0, -98] [1, -35] [2, -67] [3, 55] [4, -74] 
+Porto 7
+- merce presente: 125
+- merce ricevuta: 0
+- merce spedita: 0
+- banchine occupate/totali: 1/1
+MERCATO, giorno 1
+PORTO 7:
+[0, -53] [1, 50] [2, -49] [3, -53] [4, 71] 
+Porto 8
+- merce presente: 98
+- merce ricevuta: 0
+- merce spedita: 97
+- banchine occupate/totali: 2/4
+MERCATO, giorno 1
+PORTO 8:
+[0, 0] [1, -50] [2, -55] [3, -52] [4, 16] 
+Porto 9
+- merce presente: 267
+- merce ricevuta: 0
+- merce spedita: 0
+- banchine occupate/totali: 2/8
+MERCATO, giorno 1
+PORTO 9:
+[0, 49] [1, 56] [2, 51] [3, -33] [4, 41] 
+Navi:
+- navi in mare con carico: 0
+- navi in mare senza carico: 3
+- navi in porto (carico/scarico): 17
+
+--- Fine stato dump attuale (giorno 1). ---
+
+MASTER: Passato giorno 2 su 20.
+*** Inizio stampa del dump: giorno 2 ***
+Merce 0
+- consegnata: 97
+- presente in nave: 182
+- presente in porto: 192
+- scaduta in nave: 0
+- scaduta in porto: 0
+Merce 1
+- consegnata: 0
+- presente in nave: 12
+- presente in porto: 265
+- scaduta in nave: 0
+- scaduta in porto: 0
+Merce 2
+- consegnata: 0
+- presente in nave: 0
+- presente in porto: 93
+- scaduta in nave: 0
+- scaduta in porto: 0
+Merce 3
+- consegnata: 0
+- presente in nave: 21
+- presente in porto: 145
+- scaduta in nave: 0
+- scaduta in porto: 0
+Merce 4
+- consegnata: 7
+- presente in nave: 80
+- presente in porto: 243
+- scaduta in nave: 0
+- scaduta in porto: 0
+Porto 0
+- merce presente: 125
+- merce ricevuta: 0
+- merce spedita: 0
+- banchine occupate/totali: 3/4
+MERCATO, giorno 2
+PORTO 0:
+[0, 83] [1, -57] [2, 42] [3, -63] [4, -51] 
+Porto 1
+- merce presente: 97
+- merce ricevuta: 7
+- merce spedita: 7
+- banchine occupate/totali: 3/5
+MERCATO, giorno 2
+PORTO 1:
+[0, -119] [1, 59] [2, -48] [3, 31] [4, -41] 
+Porto 2
+- merce presente: 0
+- merce ricevuta: 0
+- merce spedita: 0
+- banchine occupate/totali: 3/3
+MERCATO, giorno 2
+PORTO 2:
+[0, -63] [1, -61] [2, -43] [3, -46] [4, -55] 
+Porto 3
+- merce presente: 155
+- merce ricevuta: 36
+- merce spedita: 8
+- banchine occupate/totali: 1/5
+MERCATO, giorno 2
+PORTO 3:
+[0, -117] [1, 50] [2, -52] [3, 50] [4, 40] 
+Porto 4
+- merce presente: 89
+- merce ricevuta: 0
+- merce spedita: 145
+- banchine occupate/totali: 3/4
+MERCATO, giorno 2
+PORTO 4:
+[0, 14] [1, 48] [2, -50] [3, -48] [4, 25] 
+Porto 5
+- merce presente: 19
+- merce ricevuta: 61
+- merce spedita: 43
+- banchine occupate/totali: 1/3
+MERCATO, giorno 2
+PORTO 5:
+[0, -61] [1, -53] [2, -51] [3, -49] [4, 1] 
+Porto 6
+- merce presente: 55
+- merce ricevuta: 0
+- merce spedita: 7
+- banchine occupate/totali: 1/1
+MERCATO, giorno 2
+PORTO 6:
+[0, -98] [1, -35] [2, -67] [3, 48] [4, -74] 
+Porto 7
+- merce presente: 121
+- merce ricevuta: 0
+- merce spedita: 4
+- banchine occupate/totali: 0/1
+MERCATO, giorno 2
+PORTO 7:
+[0, -53] [1, 50] [2, -49] [3, -53] [4, 71] 
+Porto 8
+- merce presente: 80
+- merce ricevuta: 0
+- merce spedita: 115
+- banchine occupate/totali: 2/4
+MERCATO, giorno 2
+PORTO 8:
+[0, 0] [1, -50] [2, -55] [3, -52] [4, 16] 
+Porto 9
+- merce presente: 197
+- merce ricevuta: 0
+- merce spedita: 70
+- banchine occupate/totali: 0/8
+MERCATO, giorno 2
+PORTO 9:
+[0, 49] [1, 56] [2, 51] [3, -33] [4, 41] 
+Navi:
+- navi in mare con carico: 2
+- navi in mare senza carico: 1
+- navi in porto (carico/scarico): 17
+
+--- Fine stato dump attuale (giorno 2). ---
+
+MASTER: Passato giorno 3 su 20.
+*** Inizio stampa del dump: giorno 3 ***
+Merce 0
+- consegnata: 97
+- presente in nave: 228
+- presente in porto: 146
+- scaduta in nave: 0
+- scaduta in porto: 0
+Merce 1
+- consegnata: 0
+- presente in nave: 12
+- presente in porto: 265
+- scaduta in nave: 0
+- scaduta in porto: 0
+Merce 2
+- consegnata: 0
+- presente in nave: 0
+- presente in porto: 93
+- scaduta in nave: 0
+- scaduta in porto: 0
+Merce 3
+- consegnata: 0
+- presente in nave: 23
+- presente in porto: 143
+- scaduta in nave: 0
+- scaduta in porto: 0
+Merce 4
+- consegnata: 7
+- presente in nave: 129
+- presente in porto: 194
+- scaduta in nave: 0
+- scaduta in porto: 0
+Porto 0
+- merce presente: 125
+- merce ricevuta: 0
+- merce spedita: 0
+- banchine occupate/totali: 4/4
+MERCATO, giorno 3
+PORTO 0:
+[0, 83] [1, -57] [2, 42] [3, -63] [4, -51] 
+Porto 1
+- merce presente: 97
+- merce ricevuta: 7
+- merce spedita: 7
+- banchine occupate/totali: 3/5
+MERCATO, giorno 3
+PORTO 1:
+[0, -119] [1, 59] [2, -48] [3, 31] [4, -41] 
+Porto 2
+- merce presente: 0
+- merce ricevuta: 0
+- merce spedita: 0
+- banchine occupate/totali: 3/3
+MERCATO, giorno 3
+PORTO 2:
+[0, -63] [1, -61] [2, -43] [3, -46] [4, -55] 
+Porto 3
+- merce presente: 140
+- merce ricevuta: 36
+- merce spedita: 23
+- banchine occupate/totali: 0/5
+MERCATO, giorno 3
+PORTO 3:
+[0, -117] [1, 50] [2, -52] [3, 50] [4, 40] 
+Porto 4
+- merce presente: 89
+- merce ricevuta: 0
+- merce spedita: 145
+- banchine occupate/totali: 3/4
+MERCATO, giorno 3
+PORTO 4:
+[0, 14] [1, 48] [2, -50] [3, -48] [4, 25] 
+Porto 5
+- merce presente: 1
+- merce ricevuta: 61
+- merce spedita: 61
+- banchine occupate/totali: 0/3
+MERCATO, giorno 3
+PORTO 5:
+[0, -61] [1, -53] [2, -51] [3, -49] [4, 1] 
+Porto 6
+- merce presente: 55
+- merce ricevuta: 0
+- merce spedita: 7
+- banchine occupate/totali: 1/1
+MERCATO, giorno 3
+PORTO 6:
+[0, -98] [1, -35] [2, -67] [3, 48] [4, -74] 
+Porto 7
+- merce presente: 121
+- merce ricevuta: 0
+- merce spedita: 4
+- banchine occupate/totali: 0/1
+MERCATO, giorno 3
+PORTO 7:
+[0, -53] [1, 50] [2, -49] [3, -53] [4, 71] 
+Porto 8
+- merce presente: 16
+- merce ricevuta: 0
+- merce spedita: 179
+- banchine occupate/totali: 1/4
+MERCATO, giorno 3
+PORTO 8:
+[0, 0] [1, -50] [2, -55] [3, -52] [4, 16] 
+Porto 9
+- merce presente: 197
+- merce ricevuta: 0
+- merce spedita: 70
+- banchine occupate/totali: 0/8
+MERCATO, giorno 3
+PORTO 9:
+[0, 49] [1, 56] [2, 51] [3, -33] [4, 41] 
+Navi:
+- navi in mare con carico: 4
+- navi in mare senza carico: 1
+- navi in porto (carico/scarico): 15
+
+--- Fine stato dump attuale (giorno 3). ---
+
+MASTER: Passato giorno 4 su 20.
+*** Inizio stampa del dump: giorno 4 ***
+Merce 0
+- consegnata: 279
+- presente in nave: 46
+- presente in porto: 146
+- scaduta in nave: 0
+- scaduta in porto: 0
+Merce 1
+- consegnata: 10
+- presente in nave: 4
+- presente in porto: 263
+- scaduta in nave: 0
+- scaduta in porto: 0
+Merce 2
+- consegnata: 0
+- presente in nave: 0
+- presente in porto: 93
+- scaduta in nave: 0
+- scaduta in porto: 0
+Merce 3
+- consegnata: 16
+- presente in nave: 21
+- presente in porto: 129
+- scaduta in nave: 0
+- scaduta in porto: 0
+Merce 4
+- consegnata: 97
+- presente in nave: 39
+- presente in porto: 194
+- scaduta in nave: 0
+- scaduta in porto: 0
+Porto 0
+- merce presente: 125
+- merce ricevuta: 55
+- merce spedita: 0
+- banchine occupate/totali: 4/4
+MERCATO, giorno 4
+PORTO 0:
+[0, 83] [1, -57] [2, 34] [3, -63] [4, -51] 
+Porto 1
+- merce presente: 90
+- merce ricevuta: 160
+- merce spedita: 14
+- banchine occupate/totali: 2/5
+MERCATO, giorno 4
+PORTO 1:
+[0, -119] [1, 59] [2, -48] [3, 17] [4, -41] 
+Porto 2
+- merce presente: 0
+- merce ricevuta: 74
+- merce spedita: 0
+- banchine occupate/totali: 1/3
+MERCATO, giorno 4
+PORTO 2:
+[0, -63] [1, -61] [2, -43] [3, -46] [4, -55] 
+Porto 3
+- merce presente: 140
+- merce ricevuta: 36
+- merce spedita: 23
+- banchine occupate/totali: 1/5
+MERCATO, giorno 4
+PORTO 3:
+[0, -117] [1, 50] [2, -52] [3, 50] [4, 22] 
+Porto 4
+- merce presente: 87
+- merce ricevuta: 14
+- merce spedita: 147
+- banchine occupate/totali: 2/4
+MERCATO, giorno 4
+PORTO 4:
+[0, 0] [1, 46] [2, -50] [3, -48] [4, 7] 
+Porto 5
+- merce presente: 1
+- merce ricevuta: 61
+- merce spedita: 61
+- banchine occupate/totali: 1/3
+MERCATO, giorno 4
+PORTO 5:
+[0, -61] [1, -53] [2, -51] [3, -49] [4, 1] 
+Porto 6
+- merce presente: 48
+- merce ricevuta: 0
+- merce spedita: 14
+- banchine occupate/totali: 1/1
+MERCATO, giorno 4
+PORTO 6:
+[0, -98] [1, -35] [2, -67] [3, 48] [4, -74] 
+Porto 7
+- merce presente: 121
+- merce ricevuta: 0
+- merce spedita: 4
+- banchine occupate/totali: 1/1
+MERCATO, giorno 4
+PORTO 7:
+[0, -53] [1, 48] [2, -49] [3, -53] [4, 69] 
+Porto 8
+- merce presente: 16
+- merce ricevuta: 2
+- merce spedita: 179
+- banchine occupate/totali: 2/4
+MERCATO, giorno 4
+PORTO 8:
+[0, 0] [1, -50] [2, -55] [3, -52] [4, 0] 
+Porto 9
+- merce presente: 197
+- merce ricevuta: 0
+- merce spedita: 70
+- banchine occupate/totali: 1/8
+MERCATO, giorno 4
+PORTO 9:
+[0, 49] [1, 56] [2, 51] [3, -33] [4, 41] 
+Navi:
+- navi in mare con carico: 2
+- navi in mare senza carico: 2
+- navi in porto (carico/scarico): 16
+
+--- Fine stato dump attuale (giorno 4). ---
+
+MASTER: Passato giorno 5 su 20.
+*** Inizio stampa del dump: giorno 5 ***
+Merce 0
+- consegnata: 279
+- presente in nave: 46
+- presente in porto: 146
+- scaduta in nave: 0
+- scaduta in porto: 0
+Merce 1
+- consegnata: 10
+- presente in nave: 4
+- presente in porto: 263
+- scaduta in nave: 0
+- scaduta in porto: 0
+Merce 2
+- consegnata: 0
+- presente in nave: 0
+- presente in porto: 93
+- scaduta in nave: 0
+- scaduta in porto: 0
+Merce 3
+- consegnata: 16
+- presente in nave: 21
+- presente in porto: 129
+- scaduta in nave: 0
+- scaduta in porto: 0
+Merce 4
+- consegnata: 97
+- presente in nave: 39
+- presente in porto: 194
+- scaduta in nave: 0
+- scaduta in porto: 0
+Porto 0
+- merce presente: 125
+- merce ricevuta: 55
+- merce spedita: 0
+- banchine occupate/totali: 4/4
+MERCATO, giorno 5
+PORTO 0:
+[0, 83] [1, -57] [2, 34] [3, -63] [4, -51] 
+Porto 1
+- merce presente: 90
+- merce ricevuta: 160
+- merce spedita: 14
+- banchine occupate/totali: 2/5
+MERCATO, giorno 5
+PORTO 1:
+[0, -119] [1, 59] [2, -48] [3, 17] [4, -41] 
+Porto 2
+- merce presente: 0
+- merce ricevuta: 74
+- merce spedita: 0
+- banchine occupate/totali: 1/3
+MERCATO, giorno 5
+PORTO 2:
+[0, -63] [1, -61] [2, -43] [3, -46] [4, -55] 
+Porto 3
+- merce presente: 140
+- merce ricevuta: 36
+- merce spedita: 23
+- banchine occupate/totali: 1/5
+MERCATO, giorno 5
+PORTO 3:
+[0, -117] [1, 50] [2, -52] [3, 50] [4, 22] 
+Porto 4
+- merce presente: 87
+- merce ricevuta: 14
+- merce spedita: 147
+- banchine occupate/totali: 2/4
+MERCATO, giorno 5
+PORTO 4:
+[0, 0] [1, 46] [2, -50] [3, -48] [4, 7] 
+Porto 5
+- merce presente: 1
+- merce ricevuta: 61
+- merce spedita: 61
+- banchine occupate/totali: 1/3
+MERCATO, giorno 5
+PORTO 5:
+[0, -61] [1, -53] [2, -51] [3, -49] [4, 1] 
+Porto 6
+- merce presente: 48
+- merce ricevuta: 0
+- merce spedita: 14
+- banchine occupate/totali: 1/1
+MERCATO, giorno 5
+PORTO 6:
+[0, -98] [1, -35] [2, -67] [3, 48] [4, -74] 
+Porto 7
+- merce presente: 121
+- merce ricevuta: 0
+- merce spedita: 4
+- banchine occupate/totali: 1/1
+MERCATO, giorno 5
+PORTO 7:
+[0, -53] [1, 48] [2, -49] [3, -53] [4, 69] 
+Porto 8
+- merce presente: 16
+- merce ricevuta: 2
+- merce spedita: 179
+- banchine occupate/totali: 2/4
+MERCATO, giorno 5
+PORTO 8:
+[0, 0] [1, -50] [2, -55] [3, -52] [4, 0] 
+Porto 9
+- merce presente: 197
+- merce ricevuta: 0
+- merce spedita: 70
+- banchine occupate/totali: 1/8
+MERCATO, giorno 5
+PORTO 9:
+[0, 49] [1, 56] [2, 51] [3, -33] [4, 41] 
+Navi:
+- navi in mare con carico: 2
+- navi in mare senza carico: 2
+- navi in porto (carico/scarico): 16
+
+--- Fine stato dump attuale (giorno 5). ---
+
+MASTER: Passato giorno 6 su 20.
+*** Inizio stampa del dump: giorno 6 ***
+Merce 0
+- consegnata: 279
+- presente in nave: 60
+- presente in porto: 132
+- scaduta in nave: 0
+- scaduta in porto: 0
+Merce 1
+- consegnata: 12
+- presente in nave: 6
+- presente in porto: 259
+- scaduta in nave: 0
+- scaduta in porto: 0
+Merce 2
+- consegnata: 0
+- presente in nave: 8
+- presente in porto: 85
+- scaduta in nave: 0
+- scaduta in porto: 0
+Merce 3
+- consegnata: 37
+- presente in nave: 14
+- presente in porto: 115
+- scaduta in nave: 0
+- scaduta in porto: 0
+Merce 4
+- consegnata: 117
+- presente in nave: 74
+- presente in porto: 139
+- scaduta in nave: 0
+- scaduta in porto: 0
+Porto 0
+- merce presente: 117
+- merce ricevuta: 55
+- merce spedita: 8
+- banchine occupate/totali: 2/4
+MERCATO, giorno 6
+PORTO 0:
+[0, 45] [1, -57] [2, 32] [3, -63] [4, -51] 
+Porto 1
+- merce presente: 76
+- merce ricevuta: 160
+- merce spedita: 28
+- banchine occupate/totali: 2/5
+MERCATO, giorno 6
+PORTO 1:
+[0, -119] [1, 57] [2, -48] [3, 16] [4, -41] 
+Porto 2
+- merce presente: 0
+- merce ricevuta: 83
+- merce spedita: 0
+- banchine occupate/totali: 2/3
+MERCATO, giorno 6
+PORTO 2:
+[0, -63] [1, -61] [2, -43] [3, -46] [4, -55] 
+Porto 3
+- merce presente: 122
+- merce ricevuta: 36
+- merce spedita: 41
+- banchine occupate/totali: 0/5
+MERCATO, giorno 6
+PORTO 3:
+[0, -117] [1, 50] [2, -52] [3, 50] [4, 22] 
+Porto 4
+- merce presente: 53
+- merce ricevuta: 14
+- merce spedita: 181
+- banchine occupate/totali: 1/4
+MERCATO, giorno 6
+PORTO 4:
+[0, 0] [1, 46] [2, -50] [3, -48] [4, 7] 
+Porto 5
+- merce presente: 0
+- merce ricevuta: 68
+- merce spedita: 62
+- banchine occupate/totali: 1/3
+MERCATO, giorno 6
+PORTO 5:
+[0, -61] [1, -53] [2, -51] [3, -49] [4, 0] 
+Porto 6
+- merce presente: 48
+- merce ricevuta: 18
+- merce spedita: 14
+- banchine occupate/totali: 1/1
+MERCATO, giorno 6
+PORTO 6:
+[0, -98] [1, -35] [2, -67] [3, 41] [4, -74] 
+Porto 7
+- merce presente: 117
+- merce ricevuta: 0
+- merce spedita: 8
+- banchine occupate/totali: 1/1
+MERCATO, giorno 6
+PORTO 7:
+[0, -53] [1, 48] [2, -49] [3, -53] [4, 69] 
+Porto 8
+- merce presente: 0
+- merce ricevuta: 4
+- merce spedita: 195
+- banchine occupate/totali: 1/4
+MERCATO, giorno 6
+PORTO 8:
+[0, 0] [1, -50] [2, -55] [3, -52] [4, 0] 
+Porto 9
+- merce presente: 197
+- merce ricevuta: 7
+- merce spedita: 70
+- banchine occupate/totali: 2/8
+MERCATO, giorno 6
+PORTO 9:
+[0, 49] [1, 56] [2, 49] [3, -33] [4, 35] 
+Navi:
+- navi in mare con carico: 4
+- navi in mare senza carico: 3
+- navi in porto (carico/scarico): 13
+
+--- Fine stato dump attuale (giorno 6). ---
+
+MASTER: Passato giorno 7 su 20.
+*** Inizio stampa del dump: giorno 7 ***
+Merce 0
+- consegnata: 279
+- presente in nave: 98
+- presente in porto: 94
+- scaduta in nave: 0
+- scaduta in porto: 0
+Merce 1
+- consegnata: 12
+- presente in nave: 6
+- presente in porto: 259
+- scaduta in nave: 0
+- scaduta in porto: 0
+Merce 2
+- consegnata: 8
+- presente in nave: 2
+- presente in porto: 83
+- scaduta in nave: 0
+- scaduta in porto: 0
+Merce 3
+- consegnata: 37
+- presente in nave: 14
+- presente in porto: 115
+- scaduta in nave: 0
+- scaduta in porto: 0
+Merce 4
+- consegnata: 133
+- presente in nave: 58
+- presente in porto: 139
+- scaduta in nave: 0
+- scaduta in porto: 0
+Porto 0
+- merce presente: 77
+- merce ricevuta: 55
+- merce spedita: 48
+- banchine occupate/totali: 1/4
+MERCATO, giorno 7
+PORTO 0:
+[0, 45] [1, -57] [2, 32] [3, -63] [4, -51] 
+Porto 1
+- merce presente: 76
+- merce ricevuta: 162
+- merce spedita: 28
+- banchine occupate/totali: 2/5
+MERCATO, giorno 7
+PORTO 1:
+[0, -119] [1, 57] [2, -48] [3, 9] [4, -41] 
+Porto 2
+- merce presente: 0
+- merce ricevuta: 99
+- merce spedita: 0
+- banchine occupate/totali: 1/3
+MERCATO, giorno 7
+PORTO 2:
+[0, -63] [1, -61] [2, -43] [3, -46] [4, -55] 
+Porto 3
+- merce presente: 122
+- merce ricevuta: 36
+- merce spedita: 41
+- banchine occupate/totali: 1/5
+MERCATO, giorno 7
+PORTO 3:
+[0, -117] [1, 48] [2, -52] [3, 49] [4, 22] 
+Porto 4
+- merce presente: 53
+- merce ricevuta: 16
+- merce spedita: 181
+- banchine occupate/totali: 2/4
+MERCATO, giorno 7
+PORTO 4:
+[0, 0] [1, 43] [2, -50] [3, -48] [4, 0] 
+Porto 5
+- merce presente: 0
+- merce ricevuta: 70
+- merce spedita: 62
+- banchine occupate/totali: 0/3
+MERCATO, giorno 7
+PORTO 5:
+[0, -61] [1, -53] [2, -51] [3, -49] [4, 0] 
+Porto 6
+- merce presente: 48
+- merce ricevuta: 18
+- merce spedita: 14
+- banchine occupate/totali: 1/1
+MERCATO, giorno 7
+PORTO 6:
+[0, -98] [1, -35] [2, -67] [3, 41] [4, -74] 
+Porto 7
+- merce presente: 117
+- merce ricevuta: 0
+- merce spedita: 8
+- banchine occupate/totali: 1/1
+MERCATO, giorno 7
+PORTO 7:
+[0, -53] [1, 48] [2, -49] [3, -53] [4, 69] 
+Porto 8
+- merce presente: 0
+- merce ricevuta: 6
+- merce spedita: 195
+- banchine occupate/totali: 0/4
+MERCATO, giorno 7
+PORTO 8:
+[0, 0] [1, -50] [2, -55] [3, -52] [4, 0] 
+Porto 9
+- merce presente: 197
+- merce ricevuta: 7
+- merce spedita: 70
+- banchine occupate/totali: 2/8
+MERCATO, giorno 7
+PORTO 9:
+[0, 49] [1, 56] [2, 49] [3, -33] [4, 35] 
+Navi:
+- navi in mare con carico: 5
+- navi in mare senza carico: 4
+- navi in porto (carico/scarico): 11
+
+--- Fine stato dump attuale (giorno 7). ---
+
+MASTER: Passato giorno 8 su 20.
+*** Inizio stampa del dump: giorno 8 ***
+Merce 0
+- consegnata: 279
+- presente in nave: 98
+- presente in porto: 94
+- scaduta in nave: 0
+- scaduta in porto: 0
+Merce 1
+- consegnata: 16
+- presente in nave: 4
+- presente in porto: 257
+- scaduta in nave: 0
+- scaduta in porto: 0
+Merce 2
+- consegnata: 8
+- presente in nave: 4
+- presente in porto: 81
+- scaduta in nave: 0
+- scaduta in porto: 0
+Merce 3
+- consegnata: 51
+- presente in nave: 8
+- presente in porto: 107
+- scaduta in nave: 0
+- scaduta in porto: 0
+Merce 4
+- consegnata: 135
+- presente in nave: 62
+- presente in porto: 133
+- scaduta in nave: 0
+- scaduta in porto: 0
+Porto 0
+- merce presente: 77
+- merce ricevuta: 57
+- merce spedita: 48
+- banchine occupate/totali: 2/4
+MERCATO, giorno 8
+PORTO 0:
+[0, 45] [1, -57] [2, 30] [3, -63] [4, -51] 
+Porto 1
+- merce presente: 73
+- merce ricevuta: 162
+- merce spedita: 31
+- banchine occupate/totali: 1/5
+MERCATO, giorno 8
+PORTO 1:
+[0, -119] [1, 57] [2, -48] [3, 9] [4, -41] 
+Porto 2
+- merce presente: 0
+- merce ricevuta: 103
+- merce spedita: 0
+- banchine occupate/totali: 2/3
+MERCATO, giorno 8
+PORTO 2:
+[0, -63] [1, -61] [2, -43] [3, -46] [4, -55] 
+Porto 3
+- merce presente: 122
+- merce ricevuta: 36
+- merce spedita: 41
+- banchine occupate/totali: 1/5
+MERCATO, giorno 8
+PORTO 3:
+[0, -117] [1, 48] [2, -52] [3, 49] [4, 22] 
+Porto 4
+- merce presente: 53
+- merce ricevuta: 16
+- merce spedita: 181
+- banchine occupate/totali: 3/4
+MERCATO, giorno 8
+PORTO 4:
+[0, 0] [1, 41] [2, -50] [3, -48] [4, 0] 
+Porto 5
+- merce presente: 0
+- merce ricevuta: 70
+- merce spedita: 62
+- banchine occupate/totali: 0/3
+MERCATO, giorno 8
+PORTO 5:
+[0, -61] [1, -53] [2, -51] [3, -49] [4, 0] 
+Porto 6
+- merce presente: 41
+- merce ricevuta: 18
+- merce spedita: 21
+- banchine occupate/totali: 1/1
+MERCATO, giorno 8
+PORTO 6:
+[0, -98] [1, -35] [2, -67] [3, 41] [4, -74] 
+Porto 7
+- merce presente: 117
+- merce ricevuta: 7
+- merce spedita: 8
+- banchine occupate/totali: 1/1
+MERCATO, giorno 8
+PORTO 7:
+[0, -53] [1, 46] [2, -49] [3, -53] [4, 69] 
+Porto 8
+- merce presente: 0
+- merce ricevuta: 6
+- merce spedita: 195
+- banchine occupate/totali: 0/4
+MERCATO, giorno 8
+PORTO 8:
+[0, 0] [1, -50] [2, -55] [3, -52] [4, 0] 
+Porto 9
+- merce presente: 189
+- merce ricevuta: 14
+- merce spedita: 78
+- banchine occupate/totali: 1/8
+MERCATO, giorno 8
+PORTO 9:
+[0, 49] [1, 54] [2, 49] [3, -33] [4, 35] 
+Navi:
+- navi in mare con carico: 4
+- navi in mare senza carico: 4
+- navi in porto (carico/scarico): 12
+
+--- Fine stato dump attuale (giorno 8). ---
+
+MASTER: Passato giorno 9 su 20.
+*** Inizio stampa del dump: giorno 9 ***
+Merce 0
+- consegnata: 279
+- presente in nave: 98
+- presente in porto: 94
+- scaduta in nave: 0
+- scaduta in porto: 0
+Merce 1
+- consegnata: 16
+- presente in nave: 9
+- presente in porto: 252
+- scaduta in nave: 0
+- scaduta in porto: 0
+Merce 2
+- consegnata: 8
+- presente in nave: 6
+- presente in porto: 79
+- scaduta in nave: 0
+- scaduta in porto: 0
+Merce 3
+- consegnata: 51
+- presente in nave: 16
+- presente in porto: 99
+- scaduta in nave: 0
+- scaduta in porto: 0
+Merce 4
+- consegnata: 135
+- presente in nave: 69
+- presente in porto: 126
+- scaduta in nave: 0
+- scaduta in porto: 0
+Porto 0
+- merce presente: 75
+- merce ricevuta: 57
+- merce spedita: 50
+- banchine occupate/totali: 3/4
+MERCATO, giorno 9
+PORTO 0:
+[0, 45] [1, -57] [2, 30] [3, -63] [4, -51] 
+Porto 1
+- merce presente: 66
+- merce ricevuta: 162
+- merce spedita: 38
+- banchine occupate/totali: 0/5
+MERCATO, giorno 9
+PORTO 1:
+[0, -119] [1, 57] [2, -48] [3, 9] [4, -41] 
+Porto 2
+- merce presente: 0
+- merce ricevuta: 103
+- merce spedita: 0
+- banchine occupate/totali: 3/3
+MERCATO, giorno 9
+PORTO 2:
+[0, -63] [1, -61] [2, -43] [3, -46] [4, -55] 
+Porto 3
+- merce presente: 119
+- merce ricevuta: 36
+- merce spedita: 44
+- banchine occupate/totali: 0/5
+MERCATO, giorno 9
+PORTO 3:
+[0, -117] [1, 48] [2, -52] [3, 49] [4, 22] 
+Porto 4
+- merce presente: 43
+- merce ricevuta: 16
+- merce spedita: 191
+- banchine occupate/totali: 2/4
+MERCATO, giorno 9
+PORTO 4:
+[0, 0] [1, 41] [2, -50] [3, -48] [4, 0] 
+Porto 5
+- merce presente: 0
+- merce ricevuta: 70
+- merce spedita: 62
+- banchine occupate/totali: 0/3
+MERCATO, giorno 9
+PORTO 5:
+[0, -61] [1, -53] [2, -51] [3, -49] [4, 0] 
+Porto 6
+- merce presente: 41
+- merce ricevuta: 18
+- merce spedita: 21
+- banchine occupate/totali: 1/1
+MERCATO, giorno 9
+PORTO 6:
+[0, -98] [1, -35] [2, -67] [3, 41] [4, -74] 
+Porto 7
+- merce presente: 117
+- merce ricevuta: 7
+- merce spedita: 8
+- banchine occupate/totali: 1/1
+MERCATO, giorno 9
+PORTO 7:
+[0, -53] [1, 46] [2, -49] [3, -53] [4, 69] 
+Porto 8
+- merce presente: 0
+- merce ricevuta: 6
+- merce spedita: 195
+- banchine occupate/totali: 0/4
+MERCATO, giorno 9
+PORTO 8:
+[0, 0] [1, -50] [2, -55] [3, -52] [4, 0] 
+Porto 9
+- merce presente: 189
+- merce ricevuta: 14
+- merce spedita: 78
+- banchine occupate/totali: 1/8
+MERCATO, giorno 9
+PORTO 9:
+[0, 49] [1, 54] [2, 49] [3, -33] [4, 35] 
+Navi:
+- navi in mare con carico: 5
+- navi in mare senza carico: 4
+- navi in porto (carico/scarico): 11
+
+--- Fine stato dump attuale (giorno 9). ---
+
+MASTER: Passato giorno 10 su 20.
+*** Inizio stampa del dump: giorno 10 ***
+Merce 0
+- consegnata: 279
+- presente in nave: 98
+- presente in porto: 94
+- scaduta in nave: 0
+- scaduta in porto: 0
+Merce 1
+- consegnata: 19
+- presente in nave: 12
+- presente in porto: 246
+- scaduta in nave: 0
+- scaduta in porto: 0
+Merce 2
+- consegnata: 12
+- presente in nave: 2
+- presente in porto: 79
+- scaduta in nave: 0
+- scaduta in porto: 0
+Merce 3
+- consegnata: 59
+- presente in nave: 8
+- presente in porto: 99
+- scaduta in nave: 0
+- scaduta in porto: 0
+Merce 4
+- consegnata: 166
+- presente in nave: 38
+- presente in porto: 126
+- scaduta in nave: 0
+- scaduta in porto: 0
+Porto 0
+- merce presente: 75
+- merce ricevuta: 64
+- merce spedita: 50
+- banchine occupate/totali: 3/4
+MERCATO, giorno 10
+PORTO 0:
+[0, 45] [1, -57] [2, 28] [3, -63] [4, -51] 
+Porto 1
+- merce presente: 66
+- merce ricevuta: 162
+- merce spedita: 38
+- banchine occupate/totali: 0/5
+MERCATO, giorno 10
+PORTO 1:
+[0, -119] [1, 57] [2, -48] [3, 9] [4, -41] 
+Porto 2
+- merce presente: 0
+- merce ricevuta: 122
+- merce spedita: 0
+- banchine occupate/totali: 1/3
+MERCATO, giorno 10
+PORTO 2:
+[0, -63] [1, -61] [2, -43] [3, -46] [4, -55] 
+Porto 3
+- merce presente: 119
+- merce ricevuta: 36
+- merce spedita: 44
+- banchine occupate/totali: 1/5
+MERCATO, giorno 10
+PORTO 3:
+[0, -117] [1, 46] [2, -52] [3, 48] [4, 22] 
+Porto 4
+- merce presente: 41
+- merce ricevuta: 18
+- merce spedita: 193
+- banchine occupate/totali: 1/4
+MERCATO, giorno 10
+PORTO 4:
+[0, 0] [1, 39] [2, -50] [3, -48] [4, 0] 
+Porto 5
+- merce presente: 0
+- merce ricevuta: 70
+- merce spedita: 62
+- banchine occupate/totali: 2/3
+MERCATO, giorno 10
+PORTO 5:
+[0, -61] [1, -53] [2, -51] [3, -49] [4, 0] 
+Porto 6
+- merce presente: 41
+- merce ricevuta: 36
+- merce spedita: 21
+- banchine occupate/totali: 1/1
+MERCATO, giorno 10
+PORTO 6:
+[0, -98] [1, -35] [2, -67] [3, 34] [4, -74] 
+Porto 7
+- merce presente: 115
+- merce ricevuta: 7
+- merce spedita: 10
+- banchine occupate/totali: 1/1
+MERCATO, giorno 10
+PORTO 7:
+[0, -53] [1, 46] [2, -49] [3, -53] [4, 52] 
+Porto 8
+- merce presente: 0
+- merce ricevuta: 6
+- merce spedita: 195
+- banchine occupate/totali: 0/4
+MERCATO, giorno 10
+PORTO 8:
+[0, 0] [1, -50] [2, -55] [3, -52] [4, 0] 
+Porto 9
+- merce presente: 187
+- merce ricevuta: 14
+- merce spedita: 80
+- banchine occupate/totali: 0/8
+MERCATO, giorno 10
+PORTO 9:
+[0, 49] [1, 54] [2, 49] [3, -33] [4, 35] 
+Navi:
+- navi in mare con carico: 5
+- navi in mare senza carico: 5
+- navi in porto (carico/scarico): 10
+
+--- Fine stato dump attuale (giorno 10). ---
+
+MASTER: Passato giorno 11 su 20.
+*** Inizio stampa del dump: giorno 11 ***
+Merce 0
+- consegnata: 279
+- presente in nave: 98
+- presente in porto: 94
+- scaduta in nave: 0
+- scaduta in porto: 0
+Merce 1
+- consegnata: 23
+- presente in nave: 8
+- presente in porto: 246
+- scaduta in nave: 0
+- scaduta in porto: 0
+Merce 2
+- consegnata: 12
+- presente in nave: 4
+- presente in porto: 77
+- scaduta in nave: 0
+- scaduta in porto: 0
+Merce 3
+- consegnata: 60
+- presente in nave: 7
+- presente in porto: 99
+- scaduta in nave: 0
+- scaduta in porto: 0
+Merce 4
+- consegnata: 166
+- presente in nave: 38
+- presente in porto: 126
+- scaduta in nave: 0
+- scaduta in porto: 0
+Porto 0
+- merce presente: 73
+- merce ricevuta: 69
+- merce spedita: 52
+- banchine occupate/totali: 2/4
+MERCATO, giorno 11
+PORTO 0:
+[0, 45] [1, -57] [2, 24] [3, -63] [4, -51] 
+Porto 1
+- merce presente: 66
+- merce ricevuta: 162
+- merce spedita: 38
+- banchine occupate/totali: 0/5
+MERCATO, giorno 11
+PORTO 1:
+[0, -119] [1, 57] [2, -48] [3, 9] [4, -41] 
+Porto 2
+- merce presente: 0
+- merce ricevuta: 122
+- merce spedita: 0
+- banchine occupate/totali: 1/3
+MERCATO, giorno 11
+PORTO 2:
+[0, -63] [1, -61] [2, -43] [3, -46] [4, -55] 
+Porto 3
+- merce presente: 119
+- merce ricevuta: 36
+- merce spedita: 44
+- banchine occupate/totali: 1/5
+MERCATO, giorno 11
+PORTO 3:
+[0, -117] [1, 46] [2, -52] [3, 48] [4, 22] 
+Porto 4
+- merce presente: 41
+- merce ricevuta: 18
+- merce spedita: 193
+- banchine occupate/totali: 1/4
+MERCATO, giorno 11
+PORTO 4:
+[0, 0] [1, 39] [2, -50] [3, -48] [4, 0] 
+Porto 5
+- merce presente: 0
+- merce ricevuta: 70
+- merce spedita: 62
+- banchine occupate/totali: 3/3
+MERCATO, giorno 11
+PORTO 5:
+[0, -61] [1, -53] [2, -51] [3, -49] [4, 0] 
+Porto 6
+- merce presente: 41
+- merce ricevuta: 36
+- merce spedita: 21
+- banchine occupate/totali: 1/1
+MERCATO, giorno 11
+PORTO 6:
+[0, -98] [1, -35] [2, -67] [3, 34] [4, -74] 
+Porto 7
+- merce presente: 115
+- merce ricevuta: 7
+- merce spedita: 10
+- banchine occupate/totali: 1/1
+MERCATO, giorno 11
+PORTO 7:
+[0, -53] [1, 46] [2, -49] [3, -53] [4, 52] 
+Porto 8
+- merce presente: 0
+- merce ricevuta: 6
+- merce spedita: 195
+- banchine occupate/totali: 0/4
+MERCATO, giorno 11
+PORTO 8:
+[0, 0] [1, -50] [2, -55] [3, -52] [4, 0] 
+Porto 9
+- merce presente: 187
+- merce ricevuta: 14
+- merce spedita: 80
+- banchine occupate/totali: 0/8
+MERCATO, giorno 11
+PORTO 9:
+[0, 49] [1, 54] [2, 49] [3, -33] [4, 35] 
+Navi:
+- navi in mare con carico: 5
+- navi in mare senza carico: 5
+- navi in porto (carico/scarico): 10
+
+--- Fine stato dump attuale (giorno 11). ---
+
+MASTER: Passato giorno 12 su 20.
+*** Inizio stampa del dump: giorno 12 ***
+Merce 0
+- consegnata: 279
+- presente in nave: 98
+- presente in porto: 94
+- scaduta in nave: 0
+- scaduta in porto: 0
+Merce 1
+- consegnata: 27
+- presente in nave: 8
+- presente in porto: 242
+- scaduta in nave: 0
+- scaduta in porto: 0
+Merce 2
+- consegnata: 12
+- presente in nave: 6
+- presente in porto: 75
+- scaduta in nave: 0
+- scaduta in porto: 0
+Merce 3
+- consegnata: 67
+- presente in nave: 8
+- presente in porto: 91
+- scaduta in nave: 0
+- scaduta in porto: 0
+Merce 4
+- consegnata: 166
+- presente in nave: 55
+- presente in porto: 109
+- scaduta in nave: 0
+- scaduta in porto: 0
+Porto 0
+- merce presente: 71
+- merce ricevuta: 69
+- merce spedita: 54
+- banchine occupate/totali: 3/4
+MERCATO, giorno 12
+PORTO 0:
+[0, 45] [1, -57] [2, 22] [3, -63] [4, -51] 
+Porto 1
+- merce presente: 66
+- merce ricevuta: 162
+- merce spedita: 38
+- banchine occupate/totali: 0/5
+MERCATO, giorno 12
+PORTO 1:
+[0, -119] [1, 57] [2, -48] [3, 9] [4, -41] 
+Porto 2
+- merce presente: 0
+- merce ricevuta: 129
+- merce spedita: 0
+- banchine occupate/totali: 2/3
+MERCATO, giorno 12
+PORTO 2:
+[0, -63] [1, -61] [2, -43] [3, -46] [4, -55] 
+Porto 3
+- merce presente: 116
+- merce ricevuta: 36
+- merce spedita: 47
+- banchine occupate/totali: 0/5
+MERCATO, giorno 12
+PORTO 3:
+[0, -117] [1, 46] [2, -52] [3, 48] [4, 22] 
+Porto 4
+- merce presente: 39
+- merce ricevuta: 18
+- merce spedita: 195
+- banchine occupate/totali: 2/4
+MERCATO, giorno 12
+PORTO 4:
+[0, 0] [1, 37] [2, -50] [3, -48] [4, 0] 
+Porto 5
+- merce presente: 0
+- merce ricevuta: 74
+- merce spedita: 62
+- banchine occupate/totali: 1/3
+MERCATO, giorno 12
+PORTO 5:
+[0, -61] [1, -53] [2, -51] [3, -49] [4, 0] 
+Porto 6
+- merce presente: 34
+- merce ricevuta: 36
+- merce spedita: 28
+- banchine occupate/totali: 1/1
+MERCATO, giorno 12
+PORTO 6:
+[0, -98] [1, -35] [2, -67] [3, 27] [4, -74] 
+Porto 7
+- merce presente: 98
+- merce ricevuta: 7
+- merce spedita: 27
+- banchine occupate/totali: 1/1
+MERCATO, giorno 12
+PORTO 7:
+[0, -53] [1, 44] [2, -49] [3, -53] [4, 52] 
+Porto 8
+- merce presente: 0
+- merce ricevuta: 6
+- merce spedita: 195
+- banchine occupate/totali: 1/4
+MERCATO, giorno 12
+PORTO 8:
+[0, 0] [1, -50] [2, -55] [3, -52] [4, 0] 
+Porto 9
+- merce presente: 187
+- merce ricevuta: 14
+- merce spedita: 80
+- banchine occupate/totali: 0/8
+MERCATO, giorno 12
+PORTO 9:
+[0, 49] [1, 54] [2, 49] [3, -33] [4, 35] 
+Navi:
+- navi in mare con carico: 5
+- navi in mare senza carico: 4
+- navi in porto (carico/scarico): 11
+
+--- Fine stato dump attuale (giorno 12). ---
+Nave 6 in posizione x:155.730000 y:199.434000 indice porto piu vicino 9 x:144.516000 y;232.748000
+Nave 6 inizia il viaggio
+0. stato nave 6 aggiornato
+Nave 6 ha ricevuto una banchina al porto 9
+Richiesta da porto 2 merce 0 lotti 63 al porto 9 con val 112
+nave 6 ha caricato 63 lotti di merce 0 spaziolibero: 937
+nave 6 ha caricato 2 lotti di merce 1 spaziolibero: 71
+nave 6 ha caricato 1 lotti di merce 4 spaziolibero: 18
+*** NAVE 6: ricevuto SIGUSR1: data = 1 ***
+Nave 6 inizia a caricare
+Entro aggiorna dump sem reserve 
+Esco aggiorna dump sem reserve 
+Nave 6 ha caricato
+3. stato nave 6 aggiornato
+Nave 6 parte
+Nave 6 arriva
+Nave 6 attraccata al porto 2
+1. stato nave 6 aggiornato
+*** NAVE 6: ricevuto SIGUSR1: data = 3 ***
+nave 6 in attesa dal giorno 3: giorno attuale: 3
+Nave 6 inizia a scaricare al porto 2. giorno 3
+Nave 6 ha scaricato al porto 2. giorno 3
+Nave 6 deve skippare porto 2
+Nave 6 inizia a caricare
+Entro aggiorna dump sem reserve 
+Esco aggiorna dump sem reserve 
+Nave 6 ha caricato
+2. stato nave 6 aggiornato
+Nave 6 parte
+Nave 6 arriva
+Nave 6 attraccata al porto 2
+0. stato nave 6 aggiornato
+nave 6 in attesa dal giorno 3: giorno attuale: 3
+Nave 6 inizia a scaricare al porto 2. giorno 3
+Nave 6 ha scaricato al porto 2. giorno 3
+Nave 6 deve skippare porto 2
+Nave 6 inizia a caricare
+Entro aggiorna dump sem reserve 
+Esco aggiorna dump sem reserve 
+Nave 6 ha caricato
+2. stato nave 6 aggiornato
+Nave 6 parte
+Nave 6 arriva
+Nave 6 attraccata al porto 7
+0. stato nave 6 aggiornato
+nave 6 in attesa dal giorno 3: giorno attuale: 3
+Nave 6 inizia a scaricare al porto 7. giorno 3
+Nave 6 ha scaricato al porto 7. giorno 3
+Richiesta da porto 2 merce 1 lotti 55 al porto 7 con val 50
+nave 6 ha caricato 2 lotti di merce 1 spaziolibero: 134
+nave 6 ha caricato 2 lotti di merce 4 spaziolibero: 28
+*** NAVE 6: ricevuto SIGUSR1: data = 5 ***
+Nave 6 inizia a caricare
+Entro aggiorna dump sem reserve 
+Esco aggiorna dump sem reserve 
+Nave 6 ha caricato
+3. stato nave 6 aggiornato
+Nave 6 parte
+Nave 6 arriva
+Nave 6 attraccata al porto 2
+1. stato nave 6 aggiornato
+*** NAVE 6: ricevuto SIGUSR1: data = 7 ***
+nave 6 in attesa dal giorno 7: giorno attuale: 7
+Nave 6 inizia a scaricare al porto 2. giorno 7
+Nave 6 ha scaricato al porto 2. giorno 7
+Nave 6 deve skippare porto 2
+Nave 6 inizia a caricare
+Entro aggiorna dump sem reserve 
+Esco aggiorna dump sem reserve 
+Nave 6 ha caricato
+2. stato nave 6 aggiornato
+Nave 6 parte
+Nave 6 arriva
+Nave 6 attraccata al porto 4
+0. stato nave 6 aggiornato
+nave 6 in attesa dal giorno 7: giorno attuale: 7
+Nave 6 inizia a scaricare al porto 4. giorno 7
+Nave 6 ha scaricato al porto 4. giorno 7
+Richiesta da porto 5 merce 1 lotti 51 al porto 4 con val 43
+nave 6 ha caricato 2 lotti di merce 1 spaziolibero: 134
+*** NAVE 6: ricevuto SIGUSR1: data = 9 ***
+Nave 6 inizia a caricare
+Entro aggiorna dump sem reserve 
+Esco aggiorna dump sem reserve 
+Nave 6 ha caricato
+3. stato nave 6 aggiornato
+Nave 6 parte
+Nave 6 arriva
+Nave 6 attraccata al porto 5
+1. stato nave 6 aggiornato
+*** NAVE 6: ricevuto SIGUSR1: data = 11 ***
+nave 6 in attesa dal giorno 11: giorno attuale: 11
+Nave 6 inizia a scaricare al porto 5. giorno 11
+Nave 6 ha scaricato al porto 5. giorno 11
+Nave 6 deve skippare porto 5
+Nave 6 inizia a caricare
+Entro aggiorna dump sem reserve 
+Esco aggiorna dump sem reserve 
+Nave 6 ha caricato
+2. stato nave 6 aggiornato
+Nave 6 parte
+Nave 6 arriva
+Nave 6 attraccata al porto 2
+0. stato nave 6 aggiornato
+nave 6 in attesa dal giorno 11: giorno attuale: 11
+Nave 6 inizia a scaricare al porto 2. giorno 11
+Nave 6 ha scaricato al porto 2. giorno 11
+Nave 6 deve skippare porto 2
+Nave 6 inizia a caricare
+Entro aggiorna dump sem reserve 
+Esco aggiorna dump sem reserve 
+Nave 6 ha caricato
+2. stato nave 6 aggiornato
+Nave 6 parte
+Nave 6 arriva
+Nave 6 attraccata al porto 0
+0. stato nave 6 aggiornato
+nave 6 in attesa dal giorno 11: giorno attuale: 11
+Nave 6 inizia a scaricare al porto 0. giorno 11
+Nave 6 ha scaricato al porto 0. giorno 11
+Richiesta da porto 4 merce 2 lotti 44 al porto 0 con val 24
+nave 6 ha caricato 2 lotti di merce 2 spaziolibero: 326
+*** NAVE
+MASTER: Passato giorno 13 su 20.
+*** Inizio stampa del dump: giorno 13 ***
+Merce 0
+- consegnata: 279
+- presente in nave: 98
+- presente in porto: 94
+- scaduta in nave: 0
+- scaduta in porto: 0
+Merce 1
+- consegnata: 27
+- presente in nave: 10
+- presente in porto: 240
+- scaduta in nave: 0
+- scaduta in porto: 0
+Merce 2
+- consegnata: 16
+- presente in nave: 6
+- presente in porto: 71
+- scaduta in nave: 0
+- scaduta in porto: 0
+Merce 3
+- consegnata: 67
+- presente in nave: 8
+- presente in porto: 91
+- scaduta in nave: 0
+- scaduta in porto: 0
+Merce 4
+- consegnata: 166
+- presente in nave: 55
+- presente in porto: 109
+- scaduta in nave: 0
+- scaduta in porto: 0
+Porto 0
+- merce presente: 67
+- merce ricevuta: 69
+- merce spedita: 58
+- banchine occupate/totali: 2/4
+MERCATO, giorno 13
+PORTO 0:
+[0, 45] [1, -57] [2, 22] [3, -63] [4, -51] 
+Porto 1
+- merce presente: 66
+- merce ricevuta: 162
+- merce spedita: 38
+- banchine occupate/totali: 0/5
+MERCATO, giorno 13
+PORTO 1:
+[0, -119] [1, 57] [2, -48] [3, 9] [4, -41] 
+Porto 2
+- merce presente: 0
+- merce ricevuta: 129
+- merce spedita: 0
+- banchine occupate/totali: 2/3
+MERCATO, giorno 13
+PORTO 2:
+[0, -63] [1, -61] [2, -43] [3, -46] [4, -55] 
+Porto 3
+- merce presente: 116
+- merce ricevuta: 36
+- merce spedita: 47
+- banchine occupate/totali: 1/5
+MERCATO, giorno 13
+PORTO 3:
+[0, -117] [1, 46] [2, -52] [3, 41] [4, 22] 
+Porto 4
+- merce presente: 37
+- merce ricevuta: 20
+- merce spedita: 197
+- banchine occupate/totali: 2/4
+MERCATO, giorno 13
+PORTO 4:
+[0, 0] [1, 35] [2, -50] [3, -48] [4, 0] 
+Porto 5
+- merce presente: 0
+- merce ricevuta: 76
+- merce spedita: 62
+- banchine occupate/totali: 0/3
+MERCATO, giorno 13
+PORTO 5:
+[0, -61] [1, -53] [2, -51] [3, -49] [4, 0] 
+Porto 6
+- merce presente: 34
+- merce ricevuta: 36
+- merce spedita: 28
+- banchine occupate/totali: 1/1
+MERCATO, giorno 13
+PORTO 6:
+[0, -98] [1, -35] [2, -67] [3, 27] [4, -74] 
+Porto 7
+- merce presente: 98
+- merce ricevuta: 7
+- merce spedita: 27
+- banchine occupate/totali: 1/1
+MERCATO, giorno 13
+PORTO 7:
+[0, -53] [1, 44] [2, -49] [3, -53] [4, 52] 
+Porto 8
+- merce presente: 0
+- merce ricevuta: 6
+- merce spedita: 195
+- banchine occupate/totali: 1/4
+MERCATO, giorno 13
+PORTO 8:
+[0, 0] [1, -50] [2, -55] [3, -52] [4, 0] 
+Porto 9
+- merce presente: 187
+- merce ricevuta: 14
+- merce spedita: 80
+- banchine occupate/totali: 0/8
+MERCATO, giorno 13
+PORTO 9:
+[0, 49] [1, 54] [2, 49] [3, -33] [4, 35] 
+Navi:
+- navi in mare con carico: 6
+- navi in mare senza carico: 4
+- navi in porto (carico/scarico): 10
+
+--- Fine stato dump attuale (giorno 13). ---
+
+MASTER: Passato giorno 14 su 20.
+*** Inizio stampa del dump: giorno 14 ***
+Merce 0
+- consegnata: 279
+- presente in nave: 98
+- presente in porto: 94
+- scaduta in nave: 0
+- scaduta in porto: 0
+Merce 1
+- consegnata: 31
+- presente in nave: 8
+- presente in porto: 238
+- scaduta in nave: 0
+- scaduta in porto: 0
+Merce 2
+- consegnata: 16
+- presente in nave: 6
+- presente in porto: 71
+- scaduta in nave: 0
+- scaduta in porto: 0
+Merce 3
+- consegnata: 75
+- presente in nave: 14
+- presente in porto: 77
+- scaduta in nave: 0
+- scaduta in porto: 0
+Merce 4
+- consegnata: 183
+- presente in nave: 38
+- presente in porto: 109
+- scaduta in nave: 0
+- scaduta in porto: 0
+Porto 0
+- merce presente: 67
+- merce ricevuta: 71
+- merce spedita: 58
+- banchine occupate/totali: 3/4
+MERCATO, giorno 14
+PORTO 0:
+[0, 45] [1, -57] [2, 18] [3, -63] [4, -51] 
+Porto 1
+- merce presente: 66
+- merce ricevuta: 162
+- merce spedita: 38
+- banchine occupate/totali: 0/5
+MERCATO, giorno 14
+PORTO 1:
+[0, -119] [1, 57] [2, -48] [3, 9] [4, -41] 
+Porto 2
+- merce presente: 0
+- merce ricevuta: 149
+- merce spedita: 0
+- banchine occupate/totali: 0/3
+MERCATO, giorno 14
+PORTO 2:
+[0, -63] [1, -61] [2, -43] [3, -46] [4, -55] 
+Porto 3
+- merce presente: 109
+- merce ricevuta: 36
+- merce spedita: 54
+- banchine occupate/totali: 0/5
+MERCATO, giorno 14
+PORTO 3:
+[0, -117] [1, 46] [2, -52] [3, 41] [4, 22] 
+Porto 4
+- merce presente: 37
+- merce ricevuta: 20
+- merce spedita: 197
+- banchine occupate/totali: 4/4
+MERCATO, giorno 14
+PORTO 4:
+[0, 0] [1, 33] [2, -50] [3, -48] [4, 0] 
+Porto 5
+- merce presente: 0
+- merce ricevuta: 76
+- merce spedita: 62
+- banchine occupate/totali: 0/3
+MERCATO, giorno 14
+PORTO 5:
+[0, -61] [1, -53] [2, -51] [3, -49] [4, 0] 
+Porto 6
+- merce presente: 27
+- merce ricevuta: 36
+- merce spedita: 35
+- banchine occupate/totali: 1/1
+MERCATO, giorno 14
+PORTO 6:
+[0, -98] [1, -35] [2, -67] [3, 20] [4, -74] 
+Porto 7
+- merce presente: 96
+- merce ricevuta: 7
+- merce spedita: 29
+- banchine occupate/totali: 1/1
+MERCATO, giorno 14
+PORTO 7:
+[0, -53] [1, 42] [2, -49] [3, -53] [4, 52] 
+Porto 8
+- merce presente: 0
+- merce ricevuta: 13
+- merce spedita: 195
+- banchine occupate/totali: 0/4
+MERCATO, giorno 14
+PORTO 8:
+[0, 0] [1, -50] [2, -55] [3, -52] [4, 0] 
+Porto 9
+- merce presente: 187
+- merce ricevuta: 14
+- merce spedita: 80
+- banchine occupate/totali: 0/8
+MERCATO, giorno 14
+PORTO 9:
+[0, 49] [1, 54] [2, 49] [3, -33] [4, 35] 
+Navi:
+- navi in mare con carico: 8
+- navi in mare senza carico: 3
+- navi in porto (carico/scarico): 9
+
+--- Fine stato dump attuale (giorno 14). ---
+
+MASTER: Passato giorno 15 su 20.
+*** Inizio stampa del dump: giorno 15 ***
+Merce 0
+- consegnata: 279
+- presente in nave: 98
+- presente in porto: 94
+- scaduta in nave: 0
+- scaduta in porto: 0
+Merce 1
+- consegnata: 33
+- presente in nave: 12
+- presente in porto: 232
+- scaduta in nave: 0
+- scaduta in porto: 0
+Merce 2
+- consegnata: 18
+- presente in nave: 6
+- presente in porto: 69
+- scaduta in nave: 0
+- scaduta in porto: 0
+Merce 3
+- consegnata: 82
+- presente in nave: 14
+- presente in porto: 70
+- scaduta in nave: 0
+- scaduta in porto: 0
+Merce 4
+- consegnata: 183
+- presente in nave: 38
+- presente in porto: 109
+- scaduta in nave: 0
+- scaduta in porto: 0
+Porto 0
+- merce presente: 65
+- merce ricevuta: 73
+- merce spedita: 60
+- banchine occupate/totali: 2/4
+MERCATO, giorno 15
+PORTO 0:
+[0, 45] [1, -57] [2, 16] [3, -63] [4, -51] 
+Porto 1
+- merce presente: 66
+- merce ricevuta: 162
+- merce spedita: 38
+- banchine occupate/totali: 0/5
+MERCATO, giorno 15
+PORTO 1:
+[0, -119] [1, 57] [2, -48] [3, 9] [4, -41] 
+Porto 2
+- merce presente: 0
+- merce ricevuta: 149
+- merce spedita: 0
+- banchine occupate/totali: 0/3
+MERCATO, giorno 15
+PORTO 2:
+[0, -63] [1, -61] [2, -43] [3, -46] [4, -55] 
+Porto 3
+- merce presente: 109
+- merce ricevuta: 36
+- merce spedita: 54
+- banchine occupate/totali: 0/5
+MERCATO, giorno 15
+PORTO 3:
+[0, -117] [1, 46] [2, -52] [3, 41] [4, 22] 
+Porto 4
+- merce presente: 33
+- merce ricevuta: 29
+- merce spedita: 201
+- banchine occupate/totali: 3/4
+MERCATO, giorno 15
+PORTO 4:
+[0, 0] [1, 29] [2, -50] [3, -48] [4, 0] 
+Porto 5
+- merce presente: 0
+- merce ricevuta: 76
+- merce spedita: 62
+- banchine occupate/totali: 3/3
+MERCATO, giorno 15
+PORTO 5:
+[0, -61] [1, -53] [2, -51] [3, -49] [4, 0] 
+Porto 6
+- merce presente: 20
+- merce ricevuta: 36
+- merce spedita: 42
+- banchine occupate/totali: 1/1
+MERCATO, giorno 15
+PORTO 6:
+[0, -98] [1, -35] [2, -67] [3, 13] [4, -74] 
+Porto 7
+- merce presente: 94
+- merce ricevuta: 7
+- merce spedita: 31
+- banchine occupate/totali: 1/1
+MERCATO, giorno 15
+PORTO 7:
+[0, -53] [1, 40] [2, -49] [3, -53] [4, 52] 
+Porto 8
+- merce presente: 0
+- merce ricevuta: 13
+- merce spedita: 195
+- banchine occupate/totali: 1/4
+MERCATO, giorno 15
+PORTO 8:
+[0, 0] [1, -50] [2, -55] [3, -52] [4, 0] 
+Porto 9
+- merce presente: 187
+- merce ricevuta: 14
+- merce spedita: 80
+- banchine occupate/totali: 0/8
+MERCATO, giorno 15
+PORTO 9:
+[0, 49] [1, 54] [2, 49] [3, -33] [4, 35] 
+Navi:
+- navi in mare con carico: 8
+- navi in mare senza carico: 1
+- navi in porto (carico/scarico): 11
+
+--- Fine stato dump attuale (giorno 15). ---
+Nave 12 in posizione x:115.090000 y:445.870000 indice porto piu vicino 5 x:160.240000 y;476.664000
+Nave 12 inizia il viaggio
+0. stato nave 12 aggiornato
+Nave 12 ha ricevuto una banchina al porto 5
+Richiesta da porto 0 merce 4 lotti 51 al porto 5 con val 62
+nave 12 ha caricato 18 lotti di merce 4 spaziolibero: 46
+*** NAVE 12: ricevuto SIGUSR1: data = 1 ***
+Nave 12 inizia a caricare
+Entro aggiorna dump sem reserve 
+Esco aggiorna dump sem reserve 
+Nave 12 ha caricato
+3. stato nave 12 aggiornato
+Nave 12 parte
+Nave 12 arriva
+Nave 12 attraccata al porto 0
+1. stato nave 12 aggiornato
+*** NAVE 12: ricevuto SIGUSR1: data = 3 ***
+nave 12 in attesa dal giorno 3: giorno attuale: 3
+Nave 12 inizia a scaricare al porto 0. giorno 3
+Nave 12 ha scaricato al porto 0. giorno 3
+Richiesta da porto 8 merce 2 lotti 55 al porto 0 con val 40
+nave 12 ha caricato 2 lotti di merce 2 spaziolibero: 326
+*** NAVE 12: ricevuto SIGUSR1: data = 5 ***
+Nave 12 inizia a caricare
+Entro aggiorna dump sem reserve 
+Esco aggiorna dump sem reserve 
+Nave 12 ha caricato
+3. stato nave 12 aggiornato
+Nave 12 parte
+Nave 12 arriva
+Nave 12 attraccata al porto 8
+1. stato nave 12 aggiornato
+*** NAVE 12: ricevuto SIGUSR1: data = 6 ***
+nave 12 in attesa dal giorno 6: giorno attuale: 6
+Nave 12 inizia a scaricare al porto 8. giorno 6
+Nave 12 ha scaricato al porto 8. giorno 6
+Nave 12 deve skippare porto 8
+Nave 12 inizia a caricare
+Entro aggiorna dump sem reserve 
+Esco aggiorna dump sem reserve 
+Nave 12 ha caricato
+2. stato nave 12 aggiornato
+Nave 12 parte
+Nave 12 arriva
+Nave 12 attraccata al porto 4
+0. stato nave 12 aggiornato
+nave 12 in attesa dal giorno 6: giorno attuale: 6
+Nave 12 inizia a scaricare al porto 4. giorno 6
+Nave 12 ha scaricato al porto 4. giorno 6
+Richiesta da porto 2 merce 4 lotti 24 al porto 4 con val 7
+nave 12 ha caricato 7 lotti di merce 4 spaziolibero: 629
+nave 12 ha caricato 1 lotti di merce 1 spaziolibero: 196
+*** NAVE 12: ricevuto SIGUSR1: data = 8 ***
+Nave 12 inizia a caricare
+Entro aggiorna dump sem reserve 
+Esco aggiorna dump sem reserve 
+Nave 12 ha caricato
+3. stato nave 12 aggiornato
+Nave 12 parte
+Nave 12 arriva
+Nave 12 attraccata al porto 2
+1. stato nave 12 aggiornato
+*** NAVE 12: ricevuto SIGUSR1: data = 9 ***
+nave 12 in attesa dal giorno 9: giorno attuale: 9
+Nave 12 inizia a scaricare al porto 2. giorno 9
+Nave 12 ha scaricato al porto 2. giorno 9
+Nave 12 deve skippare porto 2
+Nave 12 inizia a caricare
+Entro aggiorna dump sem reserve 
+Esco aggiorna dump sem reserve 
+Nave 12 ha caricato
+2. stato nave 12 aggiornato
+Nave 12 parte
+Nave 12 arriva
+Nave 12 attraccata al porto 3
+0. stato nave 12 aggiornato
+nave 12 in attesa dal giorno 9: giorno attuale: 9
+Nave 12 inizia a scaricare al porto 3. giorno 9
+Nave 12 ha scaricato al porto 3. giorno 9
+Richiesta da porto 2 merce 1 lotti 50 al porto 3 con val 48
+nave 12 ha caricato 2 lotti di merce 1 spaziolibero: 134
+nave 12 ha caricato 1 lotti di merce 3 spaziolibero: 1
+*** NAVE 12: ricevuto SIGUSR1: data = 11 ***
+Nave 12 inizia a caricare
+Entro aggiorna dump sem reserve 
+Esco aggiorna dump sem reserve 
+Nave 12 ha caricato
+3. stato nave 12 aggiornato
+Nave 12 parte
+Nave 12 arriva
+Nave 12 attraccata al porto 2
+1. stato nave 12 aggiornato
+*** NAVE 12: ricevuto SIGUSR1: data = 13 ***
+nave 12 in attesa dal giorno 13: giorno attuale: 13
+Nave 12 inizia a scaricare al porto 2. giorno 13
+Nave 12 ha scaricato al porto 2. giorno 13
+Nave 12 deve skippare porto 2
+Nave 12 inizia a caricare
+Entro aggiorna dump sem reserve 
+Esco aggiorna dump sem reserve 
+Nave 12 ha caricato
+2. stato nave 12 aggiornato
+Nave 12 parte
+Nave 12 arriva
+Nave 12 attraccata al porto 0
+0. stato nave 12 aggiornato
+nave 12 in attesa dal giorno 13: giorno attuale: 13
+Nave 12 inizia a scaricare al porto 0. giorno 13
+Nave 12 ha scaricato al porto 0. giorno 13
+Richiesta da porto 8 merce 2 lotti 51 al porto 0 con val 20
+nave 12 ha caricato 2 lotti di merce 2 spaziolibero: 326
+*** NAVE 12: ricevuto SIGUSR1: data = 15 ***
+Nave 12 inizia a caricare
+Entro aggiorna dump sem reserve 
+Esco aggiorna dump sem reserve 
+Nave 12 ha caricato
+3. stato nave 12 aggiornato
+Nave 
+MASTER: Passato giorno 16 su 20.
+*** Inizio stampa del dump: giorno 16 ***
+Merce 0
+- consegnata: 279
+- presente in nave: 98
+- presente in porto: 94
+- scaduta in nave: 0
+- scaduta in porto: 0
+Merce 1
+- consegnata: 33
+- presente in nave: 14
+- presente in porto: 230
+- scaduta in nave: 0
+- scaduta in porto: 0
+Merce 2
+- consegnata: 18
+- presente in nave: 8
+- presente in porto: 67
+- scaduta in nave: 0
+- scaduta in porto: 0
+Merce 3
+- consegnata: 82
+- presente in nave: 14
+- presente in porto: 70
+- scaduta in nave: 0
+- scaduta in porto: 0
+Merce 4
+- consegnata: 183
+- presente in nave: 38
+- presente in porto: 109
+- scaduta in nave: 0
+- scaduta in porto: 0
+Porto 0
+- merce presente: 63
+- merce ricevuta: 73
+- merce spedita: 62
+- banchine occupate/totali: 1/4
+MERCATO, giorno 16
+PORTO 0:
+[0, 45] [1, -57] [2, 16] [3, -63] [4, -51] 
+Porto 1
+- merce presente: 66
+- merce ricevuta: 162
+- merce spedita: 38
+- banchine occupate/totali: 0/5
+MERCATO, giorno 16
+PORTO 1:
+[0, -119] [1, 57] [2, -48] [3, 9] [4, -41] 
+Porto 2
+- merce presente: 0
+- merce ricevuta: 149
+- merce spedita: 0
+- banchine occupate/totali: 1/3
+MERCATO, giorno 16
+PORTO 2:
+[0, -63] [1, -61] [2, -43] [3, -46] [4, -55] 
+Porto 3
+- merce presente: 109
+- merce ricevuta: 36
+- merce spedita: 54
+- banchine occupate/totali: 0/5
+MERCATO, giorno 16
+PORTO 3:
+[0, -117] [1, 46] [2, -52] [3, 41] [4, 22] 
+Porto 4
+- merce presente: 31
+- merce ricevuta: 29
+- merce spedita: 203
+- banchine occupate/totali: 2/4
+MERCATO, giorno 16
+PORTO 4:
+[0, 0] [1, 29] [2, -50] [3, -48] [4, 0] 
+Porto 5
+- merce presente: 0
+- merce ricevuta: 76
+- merce spedita: 62
+- banchine occupate/totali: 3/3
+MERCATO, giorno 16
+PORTO 5:
+[0, -61] [1, -53] [2, -51] [3, -49] [4, 0] 
+Porto 6
+- merce presente: 20
+- merce ricevuta: 36
+- merce spedita: 42
+- banchine occupate/totali: 1/1
+MERCATO, giorno 16
+PORTO 6:
+[0, -98] [1, -35] [2, -67] [3, 13] [4, -74] 
+Porto 7
+- merce presente: 94
+- merce ricevuta: 7
+- merce spedita: 31
+- banchine occupate/totali: 1/1
+MERCATO, giorno 16
+PORTO 7:
+[0, -53] [1, 40] [2, -49] [3, -53] [4, 52] 
+Porto 8
+- merce presente: 0
+- merce ricevuta: 13
+- merce spedita: 195
+- banchine occupate/totali: 2/4
+MERCATO, giorno 16
+PORTO 8:
+[0, 0] [1, -50] [2, -55] [3, -52] [4, 0] 
+Porto 9
+- merce presente: 187
+- merce ricevuta: 14
+- merce spedita: 80
+- banchine occupate/totali: 0/8
+MERCATO, giorno 16
+PORTO 9:
+[0, 49] [1, 54] [2, 49] [3, -33] [4, 35] 
+Navi:
+- navi in mare con carico: 8
+- navi in mare senza carico: 1
+- navi in porto (carico/scarico): 11
+
+--- Fine stato dump attuale (giorno 16). ---
+Nave 11 in posizione x:6.596000 y:325.950000 indice porto piu vicino 4 x:94.066000 y;278.642000
+Nave 11 inizia il viaggio
+0. stato nave 11 aggiornato
+Nave 11 ha ricevuto una banchina al porto 4
+Richiesta da porto 2 merce 1 lotti 57 al porto 4 con val 52
+nave 11 ha caricato 2 lotti di merce 1 spaziolibero: 134
+nave 11 ha caricato 2 lotti di merce 4 spaziolibero: 28
+*** NAVE 11: ricevuto SIGUSR1: data = 1 ***
+Nave 11 inizia a caricare
+Entro aggiorna dump sem reserve 
+Esco aggiorna dump sem reserve 
+Nave 11 ha caricato
+3. stato nave 11 aggiornato
+Nave 11 parte
+Nave 11 arriva
+Nave 11 attraccata al porto 2
+1. stato nave 11 aggiornato
+*** NAVE 11: ricevuto SIGUSR1: data = 3 ***
+nave 11 in attesa dal giorno 3: giorno attuale: 3
+Nave 11 inizia a scaricare al porto 2. giorno 3
+Nave 11 ha scaricato al porto 2. giorno 3
+Nave 11 deve skippare porto 2
+Nave 11 inizia a caricare
+Entro aggiorna dump sem reserve 
+Esco aggiorna dump sem reserve 
+Nave 11 ha caricato
+2. stato nave 11 aggiornato
+Nave 11 parte
+Nave 11 arriva
+Nave 11 attraccata al porto 3
+0. stato nave 11 aggiornato
+nave 11 in attesa dal giorno 3: giorno attuale: 3
+Nave 11 inizia a scaricare al porto 3. giorno 3
+Nave 11 ha scaricato al porto 3. giorno 3
+Richiesta da porto 6 merce 4 lotti 18 al porto 3 con val 40
+nave 11 ha caricato 18 lotti di merce 4 spaziolibero: 46
+*** NAVE 11: ricevuto SIGUSR1: data = 5 ***
+Nave 11 inizia a caricare
+Entro aggiorna dump sem reserve 
+Esco aggiorna dump sem reserve 
+Nave 11 ha caricato
+3. stato nave 11 aggiornato
+Nave 11 parte
+Nave 11 arriva
+*** NAVE 11: ricevuto SIGUSR1: data = 6 ***
+apro un nuovo sem_reserve
+*** NAVE 11: ricevuto SIGUSR1: data = 7 ***
+apro un nuovo sem_reserve
+Nave 11 attraccata al porto 6
+1. stato nave 11 aggiornato
+*** NAVE 11: ricevuto SIGUSR1: data = 9 ***
+nave 11 in attesa dal giorno 9: giorno attuale: 9
+Nave 11 inizia a scaricare al porto 6. giorno 9
+Nave 11 ha scaricato al porto 6. giorno 9
+Richiesta da porto 8 merce 3 lotti 52 al porto 6 con val 41
+nave 11 ha caricato 7 lotti di merce 3 spaziolibero: 69
+*** NAVE 11: ricevuto SIGUSR1: data = 11 ***
+Nave 11 inizia a caricare
+Entro aggiorna dump sem reserve 
+Esco aggiorna dump sem reserve 
+Nave 11 ha caricato
+3. stato nave 11 aggiornato
+Nave 11 parte
+Nave 11 arriva
+Nave 11 attraccata al porto 8
+1. stato nave 11 aggiornato
+*** NAVE 11: ricevuto SIGUSR1: data = 13 ***
+nave 11 in attesa dal giorno 13: giorno attuale: 13
+Nave 11 inizia a scaricare al porto 8. giorno 13
+Nave 11 ha scaricato al porto 8. giorno 13
+Nave 11 deve skippare porto 8
+Nave 11 inizia a caricare
+Entro aggiorna dump sem reserve 
+Esco aggiorna dump sem reserve 
+Nave 11 ha caricato
+2. stato nave 11 aggiornato
+Nave 11 parte
+Nave 11 arriva
+Nave 11 attraccata al porto 4
+0. stato nave 11 aggiornato
+nave 11 in attesa dal giorno 13: giorno attuale: 13
+Nave 11 inizia a scaricare al porto 4. giorno 13
+Nave 11 ha scaricato al porto 4. giorno 13
+Richiesta da porto 5 merce 1 lotti 47 al porto 4 con val 35
+nave 11 ha caricato 2 lotti di merce 1 spaziolibero: 134
+*** NAVE 11: ricevuto SIGUSR1: data = 14 ***
+Nave 11 inizia a caricare
+Entro aggiorna dump sem reserve 
+Esco aggiorna dump sem reserve 
+Nave 11 ha caricato
+3. stato nave 11 aggiornato
+Nave 11 parte
+Nave 11 arriva
+Nave 11 attraccata al porto 5
+1. stato nave 11 aggiornato
+*** NAVE 11: ricevuto SIGUSR1: data = 16 ***
+nave 11 in attesa dal giorno 16: giorno attuale: 16
+Nave 11 inizia a scaricare al porto 5. giorno 16
+Nave 11 ha scaricato al porto 5. giorno 16
+Nave 11 deve skippare porto 5
+Nave 11 inizia a caricare
+Entro aggiorna dump sem reserve 
+Esco aggiorna dump sem reserve 
+Nave 11 ha caricato
+2. stato nave 11 aggiornato
+Nave 11 parte
+Nave 11 arriva
+Nave 11 attraccata al porto 5
+0. stato nave 11 aggiornato
+nave 11 in attesa dal giorno 16: giorno attuale: 16
+Nave 11 inizia a scaricare al porto 5. giorno 16
+Nave 11 ha scaricato al porto 5. giorno 16
+Nave 11 deve skippare porto 5
+Nave 11 inizia a caricare
+Entro aggiorna dump sem reserve 
+Esco aggiorna dump sem reserve 
+Nave 11 ha caricato
+2. stato nave 11 aggiornato
+Nave 11 parte
+Nave 11 arriva
+Nave 11 attraccat
+MASTER: Passato giorno 17 su 20.
+*** Inizio stampa del dump: giorno 17 ***
+Merce 0
+- consegnata: 279
+- presente in nave: 98
+- presente in porto: 94
+- scaduta in nave: 0
+- scaduta in porto: 0
+Merce 1
+- consegnata: 37
+- presente in nave: 14
+- presente in porto: 226
+- scaduta in nave: 0
+- scaduta in porto: 0
+Merce 2
+- consegnata: 22
+- presente in nave: 6
+- presente in porto: 65
+- scaduta in nave: 0
+- scaduta in porto: 0
+Merce 3
+- consegnata: 96
+- presente in nave: 7
+- presente in porto: 63
+- scaduta in nave: 0
+- scaduta in porto: 0
+Merce 4
+- consegnata: 183
+- presente in nave: 38
+- presente in porto: 109
+- scaduta in nave: 0
+- scaduta in porto: 0
+Porto 0
+- merce presente: 61
+- merce ricevuta: 73
+- merce spedita: 64
+- banchine occupate/totali: 0/4
+MERCATO, giorno 17
+PORTO 0:
+[0, 45] [1, -57] [2, 16] [3, -63] [4, -51] 
+Porto 1
+- merce presente: 66
+- merce ricevuta: 162
+- merce spedita: 38
+- banchine occupate/totali: 1/5
+MERCATO, giorno 17
+PORTO 1:
+[0, -119] [1, 57] [2, -48] [3, 2] [4, -41] 
+Porto 2
+- merce presente: 0
+- merce ricevuta: 149
+- merce spedita: 0
+- banchine occupate/totali: 1/3
+MERCATO, giorno 17
+PORTO 2:
+[0, -63] [1, -61] [2, -43] [3, -46] [4, -55] 
+Porto 3
+- merce presente: 109
+- merce ricevuta: 36
+- merce spedita: 54
+- banchine occupate/totali: 3/5
+MERCATO, giorno 17
+PORTO 3:
+[0, -117] [1, 44] [2, -52] [3, 26] [4, 22] 
+Porto 4
+- merce presente: 29
+- merce ricevuta: 36
+- merce spedita: 205
+- banchine occupate/totali: 2/4
+MERCATO, giorno 17
+PORTO 4:
+[0, 0] [1, 27] [2, -50] [3, -48] [4, 0] 
+Porto 5
+- merce presente: 0
+- merce ricevuta: 87
+- merce spedita: 62
+- banchine occupate/totali: 1/3
+MERCATO, giorno 17
+PORTO 5:
+[0, -61] [1, -53] [2, -51] [3, -49] [4, 0] 
+Porto 6
+- merce presente: 13
+- merce ricevuta: 36
+- merce spedita: 49
+- banchine occupate/totali: 1/1
+MERCATO, giorno 17
+PORTO 6:
+[0, -98] [1, -35] [2, -67] [3, 13] [4, -74] 
+Porto 7
+- merce presente: 92
+- merce ricevuta: 7
+- merce spedita: 33
+- banchine occupate/totali: 1/1
+MERCATO, giorno 17
+PORTO 7:
+[0, -53] [1, 38] [2, -49] [3, -53] [4, 52] 
+Porto 8
+- merce presente: 0
+- merce ricevuta: 17
+- merce spedita: 195
+- banchine occupate/totali: 1/4
+MERCATO, giorno 17
+PORTO 8:
+[0, 0] [1, -50] [2, -55] [3, -52] [4, 0] 
+Porto 9
+- merce presente: 187
+- merce ricevuta: 14
+- merce spedita: 80
+- banchine occupate/totali: 0/8
+MERCATO, giorno 17
+PORTO 9:
+[0, 49] [1, 54] [2, 49] [3, -33] [4, 35] 
+Navi:
+- navi in mare con carico: 8
+- navi in mare senza carico: 1
+- navi in porto (carico/scarico): 11
+
+--- Fine stato dump attuale (giorno 17). ---
+
+MASTER: Passato giorno 18 su 20.
+*** Inizio stampa del dump: giorno 18 ***
+Merce 0
+- consegnata: 279
+- presente in nave: 98
+- presente in porto: 94
+- scaduta in nave: 0
+- scaduta in porto: 0
+Merce 1
+- consegnata: 39
+- presente in nave: 12
+- presente in porto: 226
+- scaduta in nave: 0
+- scaduta in porto: 0
+Merce 2
+- consegnata: 24
+- presente in nave: 4
+- presente in porto: 65
+- scaduta in nave: 0
+- scaduta in porto: 0
+Merce 3
+- consegnata: 96
+- presente in nave: 7
+- presente in porto: 63
+- scaduta in nave: 0
+- scaduta in porto: 0
+Merce 4
+- consegnata: 183
+- presente in nave: 38
+- presente in porto: 109
+- scaduta in nave: 0
+- scaduta in porto: 0
+Porto 0
+- merce presente: 61
+- merce ricevuta: 73
+- merce spedita: 64
+- banchine occupate/totali: 0/4
+MERCATO, giorno 18
+PORTO 0:
+[0, 45] [1, -57] [2, 16] [3, -63] [4, -51] 
+Porto 1
+- merce presente: 66
+- merce ricevuta: 162
+- merce spedita: 38
+- banchine occupate/totali: 1/5
+MERCATO, giorno 18
+PORTO 1:
+[0, -119] [1, 57] [2, -48] [3, 2] [4, -41] 
+Porto 2
+- merce presente: 0
+- merce ricevuta: 151
+- merce spedita: 0
+- banchine occupate/totali: 0/3
+MERCATO, giorno 18
+PORTO 2:
+[0, -63] [1, -61] [2, -43] [3, -46] [4, -55] 
+Porto 3
+- merce presente: 109
+- merce ricevuta: 36
+- merce spedita: 54
+- banchine occupate/totali: 3/5
+MERCATO, giorno 18
+PORTO 3:
+[0, -117] [1, 44] [2, -52] [3, 26] [4, 22] 
+Porto 4
+- merce presente: 29
+- merce ricevuta: 38
+- merce spedita: 205
+- banchine occupate/totali: 2/4
+MERCATO, giorno 18
+PORTO 4:
+[0, 0] [1, 25] [2, -50] [3, -48] [4, 0] 
+Porto 5
+- merce presente: 0
+- merce ricevuta: 87
+- merce spedita: 62
+- banchine occupate/totali: 1/3
+MERCATO, giorno 18
+PORTO 5:
+[0, -61] [1, -53] [2, -51] [3, -49] [4, 0] 
+Porto 6
+- merce presente: 13
+- merce ricevuta: 36
+- merce spedita: 49
+- banchine occupate/totali: 1/1
+MERCATO, giorno 18
+PORTO 6:
+[0, -98] [1, -35] [2, -67] [3, 13] [4, -74] 
+Porto 7
+- merce presente: 92
+- merce ricevuta: 7
+- merce spedita: 33
+- banchine occupate/totali: 1/1
+MERCATO, giorno 18
+PORTO 7:
+[0, -53] [1, 38] [2, -49] [3, -53] [4, 52] 
+Porto 8
+- merce presente: 0
+- merce ricevuta: 17
+- merce spedita: 195
+- banchine occupate/totali: 1/4
+MERCATO, giorno 18
+PORTO 8:
+[0, 0] [1, -50] [2, -55] [3, -52] [4, 0] 
+Porto 9
+- merce presente: 187
+- merce ricevuta: 14
+- merce spedita: 80
+- banchine occupate/totali: 0/8
+MERCATO, giorno 18
+PORTO 9:
+[0, 49] [1, 54] [2, 49] [3, -33] [4, 35] 
+Navi:
+- navi in mare con carico: 8
+- navi in mare senza carico: 2
+- navi in porto (carico/scarico): 10
+
+--- Fine stato dump attuale (giorno 18). ---
+Nave 9 in posizione x:314.524000 y:240.840000 indice porto piu vicino 6 x:404.656000 y;208.412000
+Nave 9 inizia il viaggio
+0. stato nave 9 aggiornato
+Nave 9 ha ricevuto una banchina al porto 6
+Richiesta da porto 4 merce 3 lotti 41 al porto 6 con val 62
+nave 9 ha caricato 7 lotti di merce 3 spaziolibero: 69
+*** NAVE 9: ricevuto SIGUSR1: data = 1 ***
+Nave 9 inizia a caricare
+Entro aggiorna dump sem reserve 
+Esco aggiorna dump sem reserve 
+Nave 9 ha caricato
+3. stato nave 9 aggiornato
+Nave 9 parte
+Nave 9 arriva
+Nave 9 attraccata al porto 4
+1. stato nave 9 aggiornato
+*** NAVE 9: ricevuto SIGUSR1: data = 3 ***
+nave 9 in attesa dal giorno 3: giorno attuale: 3
+Nave 9 inizia a scaricare al porto 4. giorno 3
+Nave 9 ha scaricato al porto 4. giorno 3
+Richiesta da porto 0 merce 1 lotti 55 al porto 4 con val 48
+nave 9 ha caricato 2 lotti di merce 1 spaziolibero: 134
+*** NAVE 9: ricevuto SIGUSR1: data = 5 ***
+Nave 9 inizia a caricare
+Entro aggiorna dump sem reserve 
+Esco aggiorna dump sem reserve 
+Nave 9 ha caricato
+3. stato nave 9 aggiornato
+Nave 9 parte
+Nave 9 arriva
+Nave 9 attraccata al porto 0
+1. stato nave 9 aggiornato
+*** NAVE 9: ricevuto SIGUSR1: data = 7 ***
+nave 9 in attesa dal giorno 7: giorno attuale: 7
+Nave 9 inizia a scaricare al porto 0. giorno 7
+Nave 9 ha scaricato al porto 0. giorno 7
+Richiesta da porto 4 merce 2 lotti 48 al porto 0 con val 32
+nave 9 ha caricato 2 lotti di merce 2 spaziolibero: 326
+*** NAVE 9: ricevuto SIGUSR1: data = 8 ***
+Nave 9 inizia a caricare
+Entro aggiorna dump sem reserve 
+Esco aggiorna dump sem reserve 
+Nave 9 ha caricato
+3. stato nave 9 aggiornato
+Nave 9 parte
+Nave 9 arriva
+Nave 9 attraccata al porto 4
+1. stato nave 9 aggiornato
+*** NAVE 9: ricevuto SIGUSR1: data = 9 ***
+nave 9 in attesa dal giorno 9: giorno attuale: 9
+Nave 9 inizia a scaricare al porto 4. giorno 9
+Nave 9 ha scaricato al porto 4. giorno 9
+Richiesta da porto 0 merce 1 lotti 49 al porto 4 con val 41
+nave 9 ha caricato 2 lotti di merce 1 spaziolibero: 134
+*** NAVE 9: ricevuto SIGUSR1: data = 11 ***
+Nave 9 inizia a caricare
+Entro aggiorna dump sem reserve 
+Esco aggiorna dump sem reserve 
+Nave 9 ha caricato
+3. stato nave 9 aggiornato
+Nave 9 parte
+Nave 9 arriva
+Nave 9 attraccata al porto 0
+1. stato nave 9 aggiornato
+*** NAVE 9: ricevuto SIGUSR1: data = 13 ***
+nave 9 in attesa dal giorno 13: giorno attuale: 13
+Nave 9 inizia a scaricare al porto 0. giorno 13
+Nave 9 ha scaricato al porto 0. giorno 13
+Richiesta da porto 8 merce 2 lotti 53 al porto 0 con val 22
+nave 9 ha caricato 2 lotti di merce 2 spaziolibero: 326
+*** NAVE 9: ricevuto SIGUSR1: data = 14 ***
+Nave 9 inizia a caricare
+Entro aggiorna dump sem reserve 
+Esco aggiorna dump sem reserve 
+Nave 9 ha caricato
+3. stato nave 9 aggiornato
+Nave 9 parte
+Nave 9 arriva
+Nave 9 attraccata al porto 8
+1. stato nave 9 aggiornato
+*** NAVE 9: ricevuto SIGUSR1: data = 16 ***
+nave 9 in attesa dal giorno 16: giorno attuale: 16
+Nave 9 inizia a scaricare al porto 8. giorno 16
+Nave 9 ha scaricato al porto 8. giorno 16
+Nave 9 deve skippare porto 8
+Nave 9 inizia a caricare
+Entro aggiorna dump sem reserve 
+Esco aggiorna dump sem reserve 
+Nave 9 ha caricato
+2. stato nave 9 aggiornato
+Nave 9 parte
+Nave 9 arriva
+Nave 9 attraccata al porto 2
+0. stato nave 9 aggiornato
+nave 9 in attesa dal giorno 16: giorno attuale: 16
+Nave 9 inizia a scaricare al porto 2. giorno 16
+Nave 9 ha scaricato al porto 2. giorno 16
+Nave 9 deve skippare porto 2
+Nave 9 inizia a caricare
+Entro aggiorna dump sem reserve 
+Esco aggiorna dump sem reserve 
+Nave 9 ha caricato
+2. stato nave 9 aggiornato
+Nave 9 parte
+Nave 9 arriva
+Nave 9 attraccata al porto 3
+0. stato nave 9 aggiornato
+nave 9 in attesa dal giorno 16: giorno attuale: 16
+Nave 9 inizia a scaricare al porto 3. giorno 16
+Nave 9 ha scaricato al porto 3. giorno 16
+Richiesta da porto 8 merce 3 lotti 45 al porto 3 con val 41
+nave 9 ha caricato 7 lotti di merce 3 spaziolibero: 69
+*** NAVE 9: ricevuto SIGUSR1: data = 18 ***
+Nave 9 inizia a caricare
+Entro aggiorna dump sem reserve 
+Esco aggiorna dump sem reserve 
+Nave 9 ha caricato
+3. stato nave 9 aggiornato
+Nave 9 parte
+Nave 9 arriva
+NaNave 1 in posizione x:75.450000 y:393.038000 indice porto piu vicino 4 x:94.066000 y;278.642000
+Nave 1 inizia il viaggio
+*** NAVE 1: ricevuto SIGUSR1: data = 1 ***
+apro un nuovo sem_reserve
+0. stato nave 1 aggiornato
+Nave 1 ha ricevuto una banchina al porto 4
+Richiesta da porto 8 merce 1 lotti 48 al porto 4 con val 50
+nave 1 ha caricato 2 lotti di merce 1 spaziolibero: 134
+*** NAVE 1: ricevuto SIGUSR1: data = 3 ***
+Nave 1 inizia a caricare
+Entro aggiorna dump sem reserve 
+Esco aggiorna dump sem reserve 
+Nave 1 ha caricato
+3. stato nave 1 aggiornato
+Nave 1 parte
+Nave 1 arriva
+Nave 1 attraccata al porto 8
+1. stato nave 1 aggiornato
+*** NAVE 1: ricevuto SIGUSR1: data = 5 ***
+nave 1 in attesa dal giorno 5: giorno attuale: 5
+Nave 1 inizia a scaricare al porto 8. giorno 5
+Nave 1 ha scaricato al porto 8. giorno 5
+Nave 1 deve skippare porto 8
+Nave 1 inizia a caricare
+Entro aggiorna dump sem reserve 
+Esco aggiorna dump sem reserve 
+Nave 1 ha caricato
+2. stato nave 1 aggiornato
+Nave 1 parte
+Nave 1 arriva
+Nave 1 attraccata al porto 5
+0. stato nave 1 aggiornato
+nave 1 in attesa dal giorno 5: giorno attuale: 5
+Nave 1 inizia a scaricare al porto 5. giorno 5
+Nave 1 ha scaricato al porto 5. giorno 5
+Richiesta da porto 2 merce 4 lotti 31 al porto 5 con val 1
+nave 1 ha caricato 1 lotti di merce 4 spaziolibero: 947
+Nave 1 inizia a caricare
+Entro aggiorna dump sem reserve 
+Esco aggiorna dump sem reserve 
+Nave 1 ha caricato
+3. stato nave 1 aggiornato
+Nave 1 parte
+Nave 1 arriva
+Nave 1 attraccata al porto 2
+1. stato nave 1 aggiornato
+nave 1 in attesa dal giorno 5: giorno attuale: 5
+Nave 1 inizia a scaricare al porto 2. giorno 5
+Nave 1 ha scaricato al porto 2. giorno 5
+Nave 1 deve skippare porto 2
+Nave 1 inizia a caricare
+Entro aggiorna dump sem reserve 
+Esco aggiorna dump sem reserve 
+Nave 1 ha caricato
+2. stato nave 1 aggiornato
+Nave 1 parte
+Nave 1 arriva
+*** NAVE 1: ricevuto SIGUSR1: data = 6 ***
+apro un nuovo sem_reserve
+*** NAVE 1: ricevuto SIGUSR1: data = 7 ***
+apro un nuovo sem_reserve
+*** NAVE 1: ricevuto SIGUSR1: data = 8 ***
+apro un nuovo sem_reserve
+*** NAVE 1: ricevuto SIGUSR1: data = 9 ***
+apro un nuovo sem_reserve
+*** NAVE 1: ricevuto SIGUSR1: data = 10 ***
+apro un nuovo sem_reserve
+*** NAVE 1: ricevuto SIGUSR1: data = 11 ***
+apro un nuovo sem_reserve
+Nave 1 attraccata al porto 6
+0. stato nave 1 aggiornato
+nave 1 in attesa dal giorno 11: giorno attuale: 11
+Nave 1 inizia a scaricare al porto 6. giorno 11
+Nave 1 ha scaricato al porto 6. giorno 11
+Richiesta da porto 4 merce 3 lotti 34 al porto 6 con val 34
+nave 1 ha caricato 7 lotti di merce 3 spaziolibero: 69
+*** NAVE 1: ricevuto SIGUSR1: data = 13 ***
+Nave 1 inizia a caricare
+Entro aggiorna dump sem reserve 
+Esco aggiorna dump sem reserve 
+Nave 1 ha caricato
+3. stato nave 1 aggiornato
+Nave 1 parte
+Nave 1 arriva
+Nave 1 attraccata al porto 4
+1. stato nave 1 aggiornato
+*** NAVE 1: ricevuto SIGUSR1: data = 14 ***
+nave 1 in attesa dal giorno 14: giorno attuale: 14
+Nave 1 inizia a scaricare al porto 4. giorno 14
+Nave 1 ha scaricato al porto 4. giorno 14
+Richiesta da porto 8 merce 1 lotti 46 al porto 4 con val 31
+nave 1 ha caricato 2 lotti di merce 1 spaziolibero: 134
+*** NAVE 1: ricevuto SIGUSR1: data = 16 ***
+Nave 1 inizia a caricare
+Entro aggiorna dump sem reserve 
+Esco aggiorna dump sem reserve 
+Nave 1 ha caricato
+3. stato nave 1 aggiornato
+Nave 1 parte
+Nave 1 arriva
+Nave 1 attraccata al porto 8
+1. stato nave 1 aggiornato
+*** NAVE 1: ricevuto SIGUSR1: data = 18 ***
+nave 1 in attesa dal giorno 18: giorno attuale: 18
+Nave 1 inizia a scaricare al porto 8. giorno 18
+Nave 1 ha scaricato al porto 8. giorno 18
+Nave 1 deve skippare porto 8
+Nave 1 inizia a caricare
+Entro aggiorna dump sem reserve 
+Esco aggiorna dump sem reserve 
+Nave 1 ha caricato
+2. stato nave 1 aggiornato
+Nave 1 parte
+Nave 1 arriva
+Nave 1 attraccata al porto 5
+0. stato nave 1 aggiornato
+nave 1 in attesa dal giorno 18: giorno attuale: 18
+Nave 1 inizia a scaricare al porto 5. giorno 18
+Nave 1 ha scaricato al porto 5. giorno 18
+Nave 1 deve skippare porto 5
+Nave 1 inizia a caricare
+Entro aggiorna dump sem reserve 
+Esco aggiorna Nave 5 in posizione x:442.572000 y:418.188000 indice porto piu vicino 2 x:500.000000 y;500.000000
+Nave 5 inizia il viaggio
+0. stato nave 5 aggiornato
+Nave 5 ha ricevuto una banchina al porto 2
+Nave 5 deve skippare porto 2
+Nave 5 inizia a caricare
+Entro aggiorna dump sem reserve 
+Esco aggiorna dump sem reserve 
+Nave 5 ha caricato
+2. stato nave 5 aggiornato
+Nave 5 parte
+Nave 5 arriva
+Nave 5 attraccata al porto 3
+0. stato nave 5 aggiornato
+nave 5 in attesa dal giorno 0: giorno attuale: 0
+Nave 5 inizia a scaricare al porto 3. giorno 0
+Nave 5 ha scaricato al porto 3. giorno 0
+Richiesta da porto 2 merce 3 lotti 46 al porto 3 con val 59
+nave 5 ha caricato 7 lotti di merce 3 spaziolibero: 69
+nave 5 ha caricato 1 lotti di merce 4 spaziolibero: 16
+*** NAVE 5: ricevuto SIGUSR1: data = 1 ***
+Nave 5 inizia a caricare
+Entro aggiorna dump sem reserve 
+Esco aggiorna dump sem reserve 
+Nave 5 ha caricato
+3. stato nave 5 aggiornato
+Nave 5 parte
+Nave 5 arriva
+*** NAVE 5: ricevuto SIGUSR1: data = 2 ***
+apro un nuovo sem_reserve
+*** NAVE 5: ricevuto SIGUSR1: data = 3 ***
+apro un nuovo sem_reserve
+Nave 5 attraccata al porto 2
+1. stato nave 5 aggiornato
+*** NAVE 5: ricevuto SIGUSR1: data = 5 ***
+nave 5 in attesa dal giorno 5: giorno attuale: 5
+Nave 5 inizia a scaricare al porto 2. giorno 5
+Nave 5 ha scaricato al porto 2. giorno 5
+Nave 5 deve skippare porto 2
+Nave 5 inizia a caricare
+Entro aggiorna dump sem reserve 
+Esco aggiorna dump sem reserve 
+Nave 5 ha caricato
+2. stato nave 5 aggiornato
+Nave 5 parte
+Nave 5 arriva
+*** NAVE 5: ricevuto SIGUSR1: data = 6 ***
+apro un nuovo sem_reserve
+*** NAVE 5: ricevuto SIGUSR1: data = 7 ***
+apro un nuovo sem_reserve
+*** NAVE 5: ricevuto SIGUSR1: data = 8 ***
+apro un nuovo sem_reserve
+*** NAVE 5: ricevuto SIGUSR1: data = 9 ***
+apro un nuovo sem_reserve
+Nave 5 attraccata al porto 7
+0. stato nave 5 aggiornato
+nave 5 in attesa dal giorno 9: giorno attuale: 9
+Nave 5 inizia a scaricare al porto 7. giorno 9
+Nave 5 ha scaricato al porto 7. giorno 9
+Richiesta da porto 2 merce 4 lotti 17 al porto 7 con val 69
+nave 5 ha caricato 17 lotti di merce 4 spaziolibero: 99
+*** NAVE 5: ricevuto SIGUSR1: data = 11 ***
+Nave 5 inizia a caricare
+Entro aggiorna dump sem reserve 
+Esco aggiorna dump sem reserve 
+Nave 5 ha caricato
+3. stato nave 5 aggiornato
+Nave 5 parte
+Nave 5 arriva
+Nave 5 attraccata al porto 2
+1. stato nave 5 aggiornato
+*** NAVE 5: ricevuto SIGUSR1: data = 13 ***
+nave 5 in attesa dal giorno 13: giorno attuale: 13
+Nave 5 inizia a scaricare al porto 2. giorno 13
+Nave 5 ha scaricato al porto 2. giorno 13
+Nave 5 deve skippare porto 2
+Nave 5 inizia a caricare
+Entro aggiorna dump sem reserve 
+Esco aggiorna dump sem reserve 
+Nave 5 ha caricato
+2. stato nave 5 aggiornato
+Nave 5 parte
+Nave 5 arriva
+Nave 5 attraccata al porto 8
+0. stato nave 5 aggiornato
+nave 5 in attesa dal giorno 13: giorno attuale: 13
+Nave 5 inizia a scaricare al porto 8. giorno 13
+Nave 5 ha scaricato al porto 8. giorno 13
+Nave 5 deve skippare porto 8
+Nave 5 inizia a caricare
+Entro aggiorna dump sem reserve 
+Esco aggiorna dump sem reserve 
+Nave 5 ha caricato
+2. stato nave 5 aggiornato
+Nave 5 parte
+Nave 5 arriva
+*** NAVE 5: ricevuto SIGUSR1: data = 14 ***
+apro un nuovo sem_reserve
+Nave 5 attraccata al porto 6
+0. stato nave 5 aggiornato
+nave 5 in attesa dal giorno 14: giorno attuale: 14
+Nave 5 inizia a scaricare al porto 6. giorno 14
+Nave 5 ha scaricato al porto 6. giorno 14
+Richiesta da porto 5 merce 3 lotti 35 al porto 6 con val 20
+nave 5 ha caricato 7 lotti di merce 3 spaziolibero: 69
+*** NAVE 5: ricevuto SIGUSR1: data = 16 ***
+Nave 5 inizia a caricare
+Entro aggiorna dump sem reserve 
+Esco aggiorna dump sem reserve 
+Nave 5 ha caricato
+3. stato nave 5 aggiornato
+Nave 5 parte
+Nave 5 arriva
+Nave 5 attraccata al porto 5
+1. stato nave 5 aggiornato
+*** NAVE 5: ricevuto SIGUSR1: data = 18 ***
+nave 5 in attesa dal giorno 18: giorno attuale: 18
+Nave 5 inizia a scaricare al porto 5. giorno 18
+Nave 5 ha scaricato al porto 5. giorno 18
+Nave 5 deve skippare porto 5
+Nave 5 inizia a caricare
+Entro aggiorna dump sem reserve 
+Esco aggiorna dump sem reserve 
+Nave 5 ha car
+MASTER: Passato giorno 19 su 20.
+*** Inizio stampa del dump: giorno 19 ***
+Merce 0
+- consegnata: 279
+- presente in nave: 98
+- presente in porto: 94
+- scaduta in nave: 0
+- scaduta in porto: 0
+Merce 1
+- consegnata: 43
+- presente in nave: 14
+- presente in porto: 220
+- scaduta in nave: 0
+- scaduta in porto: 0
+Merce 2
+- consegnata: 24
+- presente in nave: 4
+- presente in porto: 65
+- scaduta in nave: 0
+- scaduta in porto: 0
+Merce 3
+- consegnata: 103
+- presente in nave: 22
+- presente in porto: 41
+- scaduta in nave: 0
+- scaduta in porto: 0
+Merce 4
+- consegnata: 183
+- presente in nave: 38
+- presente in porto: 109
+- scaduta in nave: 0
+- scaduta in porto: 0
+Porto 0
+- merce presente: 61
+- merce ricevuta: 73
+- merce spedita: 64
+- banchine occupate/totali: 1/4
+MERCATO, giorno 19
+PORTO 0:
+[0, 45] [1, -57] [2, 16] [3, -63] [4, -51] 
+Porto 1
+- merce presente: 59
+- merce ricevuta: 162
+- merce spedita: 45
+- banchine occupate/totali: 0/5
+MERCATO, giorno 19
+PORTO 1:
+[0, -119] [1, 57] [2, -48] [3, 2] [4, -41] 
+Porto 2
+- merce presente: 0
+- merce ricevuta: 151
+- merce spedita: 0
+- banchine occupate/totali: 3/3
+MERCATO, giorno 19
+PORTO 2:
+[0, -63] [1, -61] [2, -43] [3, -46] [4, -55] 
+Porto 3
+- merce presente: 92
+- merce ricevuta: 36
+- merce spedita: 71
+- banchine occupate/totali: 2/5
+MERCATO, giorno 19
+PORTO 3:
+[0, -117] [1, 40] [2, -52] [3, 24] [4, 22] 
+Porto 4
+- merce presente: 27
+- merce ricevuta: 38
+- merce spedita: 207
+- banchine occupate/totali: 1/4
+MERCATO, giorno 19
+PORTO 4:
+[0, 0] [1, 25] [2, -50] [3, -48] [4, 0] 
+Porto 5
+- merce presente: 0
+- merce ricevuta: 94
+- merce spedita: 62
+- banchine occupate/totali: 0/3
+MERCATO, giorno 19
+PORTO 5:
+[0, -61] [1, -53] [2, -51] [3, -49] [4, 0] 
+Porto 6
+- merce presente: 13
+- merce ricevuta: 38
+- merce spedita: 49
+- banchine occupate/totali: 1/1
+MERCATO, giorno 19
+PORTO 6:
+[0, -98] [1, -35] [2, -67] [3, 6] [4, -74] 
+Porto 7
+- merce presente: 90
+- merce ricevuta: 7
+- merce spedita: 35
+- banchine occupate/totali: 1/1
+MERCATO, giorno 19
+PORTO 7:
+[0, -53] [1, 36] [2, -49] [3, -53] [4, 52] 
+Porto 8
+- merce presente: 0
+- merce ricevuta: 19
+- merce spedita: 195
+- banchine occupate/totali: 1/4
+MERCATO, giorno 19
+PORTO 8:
+[0, 0] [1, -50] [2, -55] [3, -52] [4, 0] 
+Porto 9
+- merce presente: 187
+- merce ricevuta: 14
+- merce spedita: 80
+- banchine occupate/totali: 0/8
+MERCATO, giorno 19
+PORTO 9:
+[0, 49] [1, 54] [2, 49] [3, -33] [4, 35] 
+Navi:
+- navi in mare con carico: 9
+- navi in mare senza carico: 1
+- navi in porto (carico/scarico): 10
+
+--- Fine stato dump attuale (giorno 19). ---
+Nave 14 in posizione x:244.904000 y:151.666000 indice porto piu vicino 8 x:196.244000 y;194.966000
+Nave 14 inizia il viaggio
+0. stato nave 14 aggiornato
+Nave 14 ha ricevuto una banchina al porto 8
+Richiesta da porto 5 merce 0 lotti 61 al porto 8 con val 143
+nave 14 ha caricato 61 lotti di merce 0 spaziolibero: 939
+Nave 14 inizia a caricare
+Entro aggiorna dump sem reserve 
+Esco aggiorna dump sem reserve 
+Nave 14 ha caricato
+3. stato nave 14 aggiornato
+Nave 14 parte
+Nave 14 arriva
+Nave 14 attraccata al porto 5
+1. stato nave 14 aggiornato
+nave 14 in attesa dal giorno 0: giorno attuale: 0
+Nave 14 inizia a scaricare al porto 5. giorno 0
+Nave 14 ha scaricato al porto 5. giorno 0
+Richiesta da porto 6 merce 4 lotti 54 al porto 5 con val 19
+nave 14 ha caricato 18 lotti di merce 4 spaziolibero: 46
+*** NAVE 14: ricevuto SIGUSR1: data = 2 ***
+Nave 14 inizia a caricare
+Entro aggiorna dump sem reserve 
+Esco aggiorna dump sem reserve 
+Nave 14 ha caricato
+3. stato nave 14 aggiornato
+Nave 14 parte
+Nave 14 arriva
+*** NAVE 14: ricevuto SIGUSR1: data = 3 ***
+apro un nuovo sem_reserve
+Nave 14 attraccata al porto 6
+1. stato nave 14 aggiornato
+*** NAVE 14: ricevuto SIGUSR1: data = 5 ***
+nave 14 in attesa dal giorno 5: giorno attuale: 5
+Nave 14 inizia a scaricare al porto 6. giorno 5
+Nave 14 ha scaricato al porto 6. giorno 5
+Richiesta da porto 0 merce 3 lotti 61 al porto 6 con val 48
+nave 14 ha caricato 7 lotti di merce 3 spaziolibero: 69
+*** NAVE 14: ricevuto SIGUSR1: data = 7 ***
+Nave 14 inizia a caricare
+Entro aggiorna dump sem reserve 
+Esco aggiorna dump sem reserve 
+Nave 14 ha caricato
+3. stato nave 14 aggiornato
+Nave 14 parte
+Nave 14 arriva
+Nave 14 attraccata al porto 0
+1. stato nave 14 aggiornato
+*** NAVE 14: ricevuto SIGUSR1: data = 9 ***
+nave 14 in attesa dal giorno 9: giorno attuale: 9
+Nave 14 inizia a scaricare al porto 0. giorno 9
+Nave 14 ha scaricato al porto 0. giorno 9
+Richiesta da porto 5 merce 2 lotti 49 al porto 0 con val 30
+nave 14 ha caricato 2 lotti di merce 2 spaziolibero: 326
+*** NAVE 14: ricevuto SIGUSR1: data = 10 ***
+Nave 14 inizia a caricare
+Entro aggiorna dump sem reserve 
+Esco aggiorna dump sem reserve 
+Nave 14 ha caricato
+3. stato nave 14 aggiornato
+Nave 14 parte
+Nave 14 arriva
+Nave 14 attraccata al porto 5
+1. stato nave 14 aggiornato
+*** NAVE 14: ricevuto SIGUSR1: data = 12 ***
+nave 14 in attesa dal giorno 12: giorno attuale: 12
+Nave 14 inizia a scaricare al porto 5. giorno 12
+Nave 14 ha scaricato al porto 5. giorno 12
+Nave 14 deve skippare porto 5
+Nave 14 inizia a caricare
+Entro aggiorna dump sem reserve 
+Esco aggiorna dump sem reserve 
+Nave 14 ha caricato
+2. stato nave 14 aggiornato
+Nave 14 parte
+Nave 14 arriva
+Nave 14 attraccata al porto 3
+0. stato nave 14 aggiornato
+nave 14 in attesa dal giorno 12: giorno attuale: 12
+Nave 14 inizia a scaricare al porto 3. giorno 12
+Nave 14 ha scaricato al porto 3. giorno 12
+Richiesta da porto 4 merce 3 lotti 27 al porto 3 con val 48
+nave 14 ha caricato 7 lotti di merce 3 spaziolibero: 69
+*** NAVE 14: ricevuto SIGUSR1: data = 13 ***
+Nave 14 inizia a caricare
+Entro aggiorna dump sem reserve 
+Esco aggiorna dump sem reserve 
+Nave 14 ha caricato
+3. stato nave 14 aggiornato
+Nave 14 parte
+Nave 14 arriva
+*** NAVE 14: ricevuto SIGUSR1: data = 14 ***
+apro un nuovo sem_reserve
+Nave 14 attraccata al porto 4
+1. stato nave 14 aggiornato
+*** NAVE 14: ricevuto SIGUSR1: data = 16 ***
+nave 14 in attesa dal giorno 16: giorno attuale: 16
+Nave 14 inizia a scaricare al porto 4. giorno 16
+Nave 14 ha scaricato al porto 4. giorno 16
+Richiesta da porto 2 merce 1 lotti 46 al porto 4 con val 29
+nave 14 ha caricato 2 lotti di merce 1 spaziolibero: 134
+*** NAVE 14: ricevuto SIGUSR1: data = 18 ***
+Nave 14 inizia a caricare
+Entro aggiorna dump sem reserve 
+Esco aggiorna dump sem reserve 
+Nave 14 ha caricato
+3. stato nave 14 aggiornato
+Nave 14 parte
+Nave 14 arriva
+Nave 14 attraccata al porto 2
+1. stato nave 14 aggiornato
+*** NAVE 14: ricevuto SIGUSR1: data = 19 ***
+nave 14 in attesa dal giorno 19: giorno attuale: 19
+Nave 14 inizia a scaricare al porto 2. giorno 19
+Nave 14 ha scaricato al porto 2. giorno 19
+NaNave 17 in posizione x:496.936000 y:265.990000 indice porto piu vicino 6 x:404.656000 y;208.412000
+Nave 17 inizia il viaggio
+*** NAVE 17: ricevuto SIGUSR1: data = 1 ***
+apro un nuovo sem_reserve
+0. stato nave 17 aggiornato
+Nave 17 ha ricevuto una banchina al porto 6
+Richiesta da porto 9 merce 3 lotti 33 al porto 6 con val 55
+nave 17 ha caricato 7 lotti di merce 3 spaziolibero: 69
+*** NAVE 17: ricevuto SIGUSR1: data = 3 ***
+Nave 17 inizia a caricare
+Entro aggiorna dump sem reserve 
+Esco aggiorna dump sem reserve 
+Nave 17 ha caricato
+3. stato nave 17 aggiornato
+Nave 17 parte
+Nave 17 arriva
+Nave 17 attraccata al porto 9
+1. stato nave 17 aggiornato
+*** NAVE 17: ricevuto SIGUSR1: data = 5 ***
+nave 17 in attesa dal giorno 5: giorno attuale: 5
+Nave 17 inizia a scaricare al porto 9. giorno 5
+Nave 17 ha scaricato al porto 9. giorno 5
+Richiesta da porto 2 merce 2 lotti 43 al porto 9 con val 51
+nave 17 ha caricato 2 lotti di merce 2 spaziolibero: 326
+nave 17 ha caricato 6 lotti di merce 4 spaziolibero: 8
+*** NAVE 17: ricevuto SIGUSR1: data = 7 ***
+Nave 17 inizia a caricare
+Entro aggiorna dump sem reserve 
+Esco aggiorna dump sem reserve 
+Nave 17 ha caricato
+3. stato nave 17 aggiornato
+Nave 17 parte
+Nave 17 arriva
+Nave 17 attraccata al porto 2
+1. stato nave 17 aggiornato
+*** NAVE 17: ricevuto SIGUSR1: data = 9 ***
+nave 17 in attesa dal giorno 9: giorno attuale: 9
+Nave 17 inizia a scaricare al porto 2. giorno 9
+Nave 17 ha scaricato al porto 2. giorno 9
+Nave 17 deve skippare porto 2
+Nave 17 inizia a caricare
+Entro aggiorna dump sem reserve 
+Esco aggiorna dump sem reserve 
+Nave 17 ha caricato
+2. stato nave 17 aggiornato
+Nave 17 parte
+Nave 17 arriva
+*** NAVE 17: ricevuto SIGUSR1: data = 10 ***
+apro un nuovo sem_reserve
+*** NAVE 17: ricevuto SIGUSR1: data = 11 ***
+apro un nuovo sem_reserve
+*** NAVE 17: ricevuto SIGUSR1: data = 12 ***
+apro un nuovo sem_reserve
+*** NAVE 17: ricevuto SIGUSR1: data = 13 ***
+apro un nuovo sem_reserve
+Nave 17 attraccata al porto 7
+0. stato nave 17 aggiornato
+nave 17 in attesa dal giorno 13: giorno attuale: 13
+Nave 17 inizia a scaricare al porto 7. giorno 13
+Nave 17 ha scaricato al porto 7. giorno 13
+Richiesta da porto 5 merce 1 lotti 49 al porto 7 con val 44
+nave 17 ha caricato 2 lotti di merce 1 spaziolibero: 134
+*** NAVE 17: ricevuto SIGUSR1: data = 14 ***
+Nave 17 inizia a caricare
+Entro aggiorna dump sem reserve 
+Esco aggiorna dump sem reserve 
+Nave 17 ha caricato
+3. stato nave 17 aggiornato
+Nave 17 parte
+Nave 17 arriva
+Nave 17 attraccata al porto 5
+1. stato nave 17 aggiornato
+*** NAVE 17: ricevuto SIGUSR1: data = 16 ***
+nave 17 in attesa dal giorno 16: giorno attuale: 16
+Nave 17 inizia a scaricare al porto 5. giorno 16
+Nave 17 ha scaricato al porto 5. giorno 16
+Nave 17 deve skippare porto 5
+Nave 17 inizia a caricare
+Entro aggiorna dump sem reserve 
+Esco aggiorna dump sem reserve 
+Nave 17 ha caricato
+2. stato nave 17 aggiornato
+Nave 17 parte
+Nave 17 arriva
+Nave 17 attraccata al porto 8
+0. stato nave 17 aggiornato
+nave 17 in attesa dal giorno 16: giorno attuale: 16
+Nave 17 inizia a scaricare al porto 8. giorno 16
+Nave 17 ha scaricato al porto 8. giorno 16
+Nave 17 deve skippare porto 8
+Nave 17 inizia a caricare
+Entro aggiorna dump sem reserve 
+Esco aggiorna dump sem reserve 
+Nave 17 ha caricato
+2. stato nave 17 aggiornato
+Nave 17 parte
+Nave 17 arriva
+Nave 17 attraccata al porto 7
+0. stato nave 17 aggiornato
+nave 17 in attesa dal giorno 16: giorno attuale: 16
+Nave 17 inizia a scaricare al porto 7. giorno 16
+Nave 17 ha scaricato al porto 7. giorno 16
+Richiesta da porto 0 merce 1 lotti 45 al porto 7 con val 40
+nave 17 ha caricato 2 lotti di merce 1 spaziolibero: 134
+*** NAVE 17: ricevuto SIGUSR1: data = 18 ***
+Nave 17 inizia a caricare
+Entro aggiorna dump sem reserve 
+Esco aggiorna dump sem reserve 
+Nave 17 ha caricato
+3. stato nave 17 aggiornato
+Nave 17 parte
+Nave 17 arriva
+Nave 17 attraccata al porto 0
+1. stato nave 17 aggiornato
+*** NAVE 17: ricevuto SIGUSR1: data = 19 ***
+nave 17 in attesa dal giorno 19: giorno attuale: 19
+Nave 17 inizia a scaricare al porto 0. giorno 19
+Nave 17 ha scaricato al porto 0. giorn
+MASTER: Passato giorno 20 su 20.
+*** Inizio stampa del dump: giorno 20 ***
+Merce 0
+- consegnata: 279
+- presente in nave: 98
+- presente in porto: 94
+- scaduta in nave: 0
+- scaduta in porto: 0
+Merce 1
+- consegnata: 47
+- presente in nave: 14
+- presente in porto: 216
+- scaduta in nave: 0
+- scaduta in porto: 0
+Merce 2
+- consegnata: 24
+- presente in nave: 4
+- presente in porto: 65
+- scaduta in nave: 0
+- scaduta in porto: 0
+Merce 3
+- consegnata: 110
+- presente in nave: 15
+- presente in porto: 41
+- scaduta in nave: 0
+- scaduta in porto: 0
+Merce 4
+- consegnata: 183
+- presente in nave: 38
+- presente in porto: 109
+- scaduta in nave: 0
+- scaduta in porto: 0
+Porto 0
+- merce presente: 61
+- merce ricevuta: 75
+- merce spedita: 64
+- banchine occupate/totali: 3/4
+MERCATO, giorno 20
+PORTO 0:
+[0, 45] [1, -57] [2, 14] [3, -63] [4, -51] 
+Porto 1
+- merce presente: 59
+- merce ricevuta: 162
+- merce spedita: 45
+- banchine occupate/totali: 0/5
+MERCATO, giorno 20
+PORTO 1:
+[0, -119] [1, 57] [2, -48] [3, 2] [4, -41] 
+Porto 2
+- merce presente: 0
+- merce ricevuta: 153
+- merce spedita: 0
+- banchine occupate/totali: 3/3
+MERCATO, giorno 20
+PORTO 2:
+[0, -63] [1, -61] [2, -43] [3, -46] [4, -55] 
+Porto 3
+- merce presente: 92
+- merce ricevuta: 36
+- merce spedita: 71
+- banchine occupate/totali: 3/5
+MERCATO, giorno 20
+PORTO 3:
+[0, -117] [1, 40] [2, -52] [3, 17] [4, 22] 
+Porto 4
+- merce presente: 25
+- merce ricevuta: 38
+- merce spedita: 209
+- banchine occupate/totali: 0/4
+MERCATO, giorno 20
+PORTO 4:
+[0, 0] [1, 25] [2, -50] [3, -48] [4, 0] 
+Porto 5
+- merce presente: 0
+- merce ricevuta: 94
+- merce spedita: 62
+- banchine occupate/totali: 0/3
+MERCATO, giorno 20
+PORTO 5:
+[0, -61] [1, -53] [2, -51] [3, -49] [4, 0] 
+Porto 6
+- merce presente: 13
+- merce ricevuta: 38
+- merce spedita: 49
+- banchine occupate/totali: 1/1
+MERCATO, giorno 20
+PORTO 6:
+[0, -98] [1, -35] [2, -67] [3, 6] [4, -74] 
+Porto 7
+- merce presente: 88
+- merce ricevuta: 7
+- merce spedita: 37
+- banchine occupate/totali: 0/1
+MERCATO, giorno 20
+PORTO 7:
+[0, -53] [1, 36] [2, -49] [3, -53] [4, 52] 
+Porto 8
+- merce presente: 0
+- merce ricevuta: 26
+- merce spedita: 195
+- banchine occupate/totali: 0/4
+MERCATO, giorno 20
+PORTO 8:
+[0, 0] [1, -50] [2, -55] [3, -52] [4, 0] 
+Porto 9
+- merce presente: 187
+- merce ricevuta: 14
+- merce spedita: 80
+- banchine occupate/totali: 0/8
+MERCATO, giorno 20
+PORTO 9:
+[0, 49] [1, 54] [2, 49] [3, -33] [4, 35] 
+Navi:
+- navi in mare con carico: 8
+- navi in mare senza carico: 2
+- navi in porto (carico/scarico): 10
+
+--- Fine stato dump attuale (giorno 20). ---
+MASTER: ammazzo il figlio 7048
+MASTER: ammazzo il figlio 7049
+MASTER: ammazzo il figlio 7050
+MASTER: ammazzo il figlio 7051
+MASTER: ammazzo il figlio 7052
+MASTER: ammazzo il figlio 7053
+MASTER: ammazzo il figlio 7054
+MASTER: ammazzo il figlio 7055
+MASTER: ammazzo il figlio 7056
+MASTER: ammazzo il figlio 7057
+MASTER: ammazzo il figlio 7058
+MASTER: ammazzo il figlio 7059
+MASTER: ammazzo il figlio 7060
+MASTER: ammazzo il figlio 7061
+MASTER: ammazzo il figlio 7062
+MASTER: ammazzo il figlio 7063
+MASTER: ammazzo il figlio 7064
+MASTER: ammazzo il figlio 7065
+Nave 3 in posizione x:128.048000 y:98.068000 indice porto piu vicino 8 x:196.244000 y;194.966000
+Nave 3 inizia il viaggio
+0. stato nave 3 aggiornato
+Nave 3 ha ricevuto una banchina al porto 8
+Richiesta da porto 0 merce 4 lotti 31 al porto 8 con val 52
+nave 3 ha caricato 18 lotti di merce 4 spaziolibero: 46
+*** NAVE 3: ricevuto SIGUSR1: data = 1 ***
+Nave 3 inizia a caricare
+Entro aggiorna dump sem reserve 
+Esco aggiorna dump sem reserve 
+Nave 3 ha caricato
+3. stato nave 3 aggiornato
+Nave 3 parte
+Nave 3 arriva
+Nave 3 attraccata al porto 0
+1. stato nave 3 aggiornato
+*** NAVE 3: ricevuto SIGUSR1: data = 3 ***
+nave 3 in attesa dal giorno 3: giorno attuale: 3
+Nave 3 inizia a scaricare al porto 0. giorno 3
+Nave 3 ha scaricato al porto 0. giorno 3
+Richiesta da porto 5 merce 2 lotti 51 al porto 0 con val 42
+nave 3 ha caricato 2 lotti di merce 2 spaziolibero: 326
+*** NAVE 3: ricevuto SIGUSR1: data = 5 ***
+Nave 3 inizia a caricare
+Entro aggiorna dump sem reserve 
+Esco aggiorna dump sem reserve 
+Nave 3 ha caricato
+3. stato nave 3 aggiornato
+Nave 3 parte
+Nave 3 arriva
+Nave 3 attraccata al porto 5
+1. stato nave 3 aggiornato
+*** NAVE 3: ricevuto SIGUSR1: data = 6 ***
+nave 3 in attesa dal giorno 6: giorno attuale: 6
+Nave 3 inizia a scaricare al porto 5. giorno 6
+Nave 3 ha scaricato al porto 5. giorno 6
+Nave 3 deve skippare porto 5
+Nave 3 inizia a caricare
+Entro aggiorna dump sem reserve 
+Esco aggiorna dump sem reserve 
+Nave 3 ha caricato
+2. stato nave 3 aggiornato
+Nave 3 parte
+Nave 3 arriva
+Nave 3 attraccata al porto 2
+0. stato nave 3 aggiornato
+nave 3 in attesa dal giorno 6: giorno attuale: 6
+Nave 3 inizia a scaricare al porto 2. giorno 6
+Nave 3 ha scaricato al porto 2. giorno 6
+Nave 3 deve skippare porto 2
+Nave 3 inizia a caricare
+Entro aggiorna dump sem reserve 
+Esco aggiorna dump sem reserve 
+Nave 3 ha caricato
+2. stato nave 3 aggiornato
+Nave 3 parte
+Nave 3 arriva
+*** NAVE 3: ricevuto SIGUSR1: data = 7 ***
+apro un nuovo sem_reserve
+*** NAVE 3: ricevuto SIGUSR1: data = 8 ***
+apro un nuovo sem_reserve
+*** NAVE 3: ricevuto SIGUSR1: data = 9 ***
+apro un nuovo sem_reserve
+*** NAVE 3: ricevuto SIGUSR1: data = 10 ***
+apro un nuovo sem_reserve
+*** NAVE 3: ricevuto SIGUSR1: data = 11 ***
+apro un nuovo sem_reserve
+Nave 3 attraccata al porto 7
+0. stato nave 3 aggiornato
+nave 3 in attesa dal giorno 11: giorno attuale: 11
+Nave 3 inizia a scaricare al porto 7. giorno 11
+Nave 3 ha scaricato al porto 7. giorno 11
+Richiesta da porto 6 merce 1 lotti 31 al porto 7 con val 46
+nave 3 ha caricato 2 lotti di merce 1 spaziolibero: 134
+*** NAVE 3: ricevuto SIGUSR1: data = 13 ***
+Nave 3 inizia a caricare
+Entro aggiorna dump sem reserve 
+Esco aggiorna dump sem reserve 
+Nave 3 ha caricato
+3. stato nave 3 aggiornato
+Nave 3 parte
+Nave 3 arriva
+*** NAVE 3: ricevuto SIGUSR1: data = 14 ***
+apro un nuovo sem_reserve
+*** NAVE 3: ricevuto SIGUSR1: data = 15 ***
+apro un nuovo sem_reserve
+*** NAVE 3: ricevuto SIGUSR1: data = 16 ***
+apro un nuovo sem_reserve
+*** NAVE 3: ricevuto SIGUSR1: data = 17 ***
+apro un nuovo sem_reserve
+*** NAVE 3: ricevuto SIGUSR1: data = 18 ***
+apro un nuovo sem_reserve
+*** NAVE 3: ricevuto SIGUSR1: data = 19 ***
+apro un nuovo sem_reserve
+NAVE 3: ricevuto SIGUSR2. data: 20
+#DEB - Nave 3:
+-porti_attraccati: 5
+-porti_lasciati: 5
+-ultimo_indice: 7
+MASTER: ammazzo il figlio 7066
+Nave 2 in posizione x:246.436000 y:8.128000 indice porto piu vicino 8 x:196.244000 y;194.966000
+Nave 2 inizia il viaggio
+0. stato nave 2 aggiornato
+Nave 2 ha ricevuto una banchina al porto 8
+Richiesta da porto 3 merce 0 lotti 117 al porto 8 con val 36
+nave 2 ha caricato 36 lotti di merce 0 spaziolibero: 964
+Nave 2 inizia a caricare
+Entro aggiorna dump sem reserve 
+Esco aggiorna dump sem reserve 
+Nave 2 ha caricato
+3. stato nave 2 aggiornato
+Nave 2 parte
+Nave 2 arriva
+Nave 2 attraccata al porto 3
+1. stato nave 2 aggiornato
+nave 2 in attesa dal giorno 0: giorno attuale: 0
+Nave 2 inizia a scaricare al porto 3. giorno 0
+Nave 2 ha scaricato al porto 3. giorno 0
+Richiesta da porto 0 merce 4 lotti 13 al porto 3 con val 53
+nave 2 ha caricato 13 lotti di merce 4 spaziolibero: 311
+nave 2 ha caricato 2 lotti di merce 3 spaziolibero: 45
+*** NAVE 2: ricevuto SIGUSR1: data = 2 ***
+Nave 2 inizia a caricare
+Entro aggiorna dump sem reserve 
+Esco aggiorna dump sem reserve 
+Nave 2 ha caricato
+3. stato nave 2 aggiornato
+Nave 2 parte
+Nave 2 arriva
+Nave 2 attraccata al porto 0
+1. stato nave 2 aggiornato
+*** NAVE 2: ricevuto SIGUSR1: data = 3 ***
+nave 2 in attesa dal giorno 3: giorno attuale: 3
+Nave 2 inizia a scaricare al porto 0. giorno 3
+Nave 2 ha scaricato al porto 0. giorno 3
+Richiesta da porto 4 merce 2 lotti 50 al porto 0 con val 36
+nave 2 ha caricato 2 lotti di merce 2 spaziolibero: 326
+*** NAVE 2: ricevuto SIGUSR1: data = 5 ***
+Nave 2 inizia a caricare
+Entro aggiorna dump sem reserve 
+Esco aggiorna dump sem reserve 
+Nave 2 ha caricato
+3. stato nave 2 aggiornato
+Nave 2 parte
+Nave 2 arriva
+Nave 2 attraccata al porto 4
+1. stato nave 2 aggiornato
+*** NAVE 2: ricevuto SIGUSR1: data = 6 ***
+nave 2 in attesa dal giorno 6: giorno attuale: 6
+Nave 2 inizia a scaricare al porto 4. giorno 6
+Nave 2 ha scaricato al porto 4. giorno 6
+Richiesta da porto 0 merce 1 lotti 53 al porto 4 con val 45
+nave 2 ha caricato 2 lotti di merce 1 spaziolibero: 134
+*** NAVE 2: ricevuto SIGUSR1: data = 8 ***
+Nave 2 inizia a caricare
+Entro aggiorna dump sem reserve 
+Esco aggiorna dump sem reserve 
+Nave 2 ha caricato
+3. stato nave 2 aggiornato
+Nave 2 parte
+Nave 2 arriva
+Nave 2 attraccata al porto 0
+1. stato nave 2 aggiornato
+*** NAVE 2: ricevuto SIGUSR1: data = 10 ***
+nave 2 in attesa dal giorno 10: giorno attuale: 10
+Nave 2 inizia a scaricare al porto 0. giorno 10
+Nave 2 ha scaricato al porto 0. giorno 10
+Richiesta da porto 4 merce 2 lotti 46 al porto 0 con val 28
+nave 2 ha caricato 2 lotti di merce 2 spaziolibero: 326
+*** NAVE 2: ricevuto SIGUSR1: data = 11 ***
+Nave 2 inizia a caricare
+Entro aggiorna dump sem reserve 
+Esco aggiorna dump sem reserve 
+Nave 2 ha caricato
+3. stato nave 2 aggiornato
+Nave 2 parte
+Nave 2 arriva
+Nave 2 attraccata al porto 4
+1. stato nave 2 aggiornato
+*** NAVE 2: ricevuto SIGUSR1: data = 12 ***
+nave 2 in attesa dal giorno 12: giorno attuale: 12
+Nave 2 inizia a scaricare al porto 4. giorno 12
+Nave 2 ha scaricato al porto 4. giorno 12
+Richiesta da porto 6 merce 1 lotti 29 al porto 4 con val 37
+nave 2 ha caricato 2 lotti di merce 1 spaziolibero: 134
+*** NAVE 2: ricevuto SIGUSR1: data = 14 ***
+Nave 2 inizia a caricare
+Entro aggiorna dump sem reserve 
+Esco aggiorna dump sem reserve 
+Nave 2 ha caricato
+3. stato nave 2 aggiornato
+Nave 2 parte
+Nave 2 arriva
+*** NAVE 2: ricevuto SIGUSR1: data = 15 ***
+apro un nuovo sem_reserve
+*** NAVE 2: ricevuto SIGUSR1: data = 16 ***
+apro un nuovo sem_reserve
+Nave 2 attraccata al porto 6
+1. stato nave 2 aggiornato
+*** NAVE 2: ricevuto SIGUSR1: data = 18 ***
+nave 2 in attesa dal giorno 18: giorno attuale: 18
+Nave 2 inizia a scaricare al porto 6. giorno 18
+Nave 2 ha scaricato al porto 6. giorno 18
+Richiesta da porto 0 merce 3 lotti 53 al porto 6 con val 13
+nave 2 ha caricato 7 lotti di merce 3 spaziolibero: 69
+NAVE 2: ricevuto SIGUSR2. data: 20
+#DEB - Nave 2:
+-porti_attraccati: 7
+-porti_lasciati: 6
+-ultimo_indice: 6
+MASTER: ammazzo il figlio 7067
+ 6: ricevuto SIGUSR1: data = 12 ***
+Nave 6 inizia a caricare
+Entro aggiorna dump sem reserve 
+Esco aggiorna dump sem reserve 
+Nave 6 ha caricato
+3. stato nave 6 aggiornato
+Nave 6 parte
+Nave 6 arriva
+Nave 6 attraccata al porto 4
+1. stato nave 6 aggiornato
+*** NAVE 6: ricevuto SIGUSR1: data = 14 ***
+nave 6 in attesa dal giorno 14: giorno attuale: 14
+Nave 6 inizia a scaricare al porto 4. giorno 14
+Nave 6 ha scaricato al porto 4. giorno 14
+Richiesta da porto 2 merce 1 lotti 48 al porto 4 con val 33
+nave 6 ha caricato 2 lotti di merce 1 spaziolibero: 134
+*** NAVE 6: ricevuto SIGUSR1: data = 15 ***
+Nave 6 inizia a caricare
+Entro aggiorna dump sem reserve 
+Esco aggiorna dump sem reserve 
+Nave 6 ha caricato
+3. stato nave 6 aggiornato
+Nave 6 parte
+Nave 6 arriva
+Nave 6 attraccata al porto 2
+1. stato nave 6 aggiornato
+*** NAVE 6: ricevuto SIGUSR1: data = 17 ***
+nave 6 in attesa dal giorno 17: giorno attuale: 17
+Nave 6 inizia a scaricare al porto 2. giorno 17
+Nave 6 ha scaricato al porto 2. giorno 17
+Nave 6 deve skippare porto 2
+Nave 6 inizia a caricare
+Entro aggiorna dump sem reserve 
+Esco aggiorna dump sem reserve 
+Nave 6 ha caricato
+2. stato nave 6 aggiornato
+Nave 6 parte
+Nave 6 arriva
+*** NAVE 6: ricevuto SIGUSR1: data = 18 ***
+apro un nuovo sem_reserve
+Nave 6 attraccata al porto 7
+0. stato nave 6 aggiornato
+nave 6 in attesa dal giorno 18: giorno attuale: 18
+Nave 6 inizia a scaricare al porto 7. giorno 18
+Nave 6 ha scaricato al porto 7. giorno 18
+Richiesta da porto 0 merce 1 lotti 41 al porto 7 con val 38
+nave 6 ha caricato 2 lotti di merce 1 spaziolibero: 134
+*** NAVE 6: ricevuto SIGUSR1: data = 19 ***
+Nave 6 inizia a caricare
+Entro aggiorna dump sem reserve 
+Esco aggiorna dump sem reserve 
+Nave 6 ha caricato
+3. stato nave 6 aggiornato
+Nave 6 parte
+Nave 6 arriva
+Nave 6 attraccata al porto 0
+1. stato nave 6 aggiornato
+NAVE 6: ricevuto SIGUSR2. data: 20
+#DEB - Nave 6:
+-porti_attraccati: 13
+-porti_lasciati: 12
+-ultimo_indice: 0
+Nave 4 in posizione x:105.430000 y:311.226000 indice porto piu vicino 4 x:94.066000 y;278.642000
+Nave 4 inizia il viaggio
+0. stato nave 4 aggiornato
+Nave 4 ha ricevuto una banchina al porto 4
+Richiesta da porto 1 merce 0 lotti 119 al porto 4 con val 133
+nave 4 ha caricato 119 lotti di merce 0 spaziolibero: 881
+nave 4 ha caricato 16 lotti di merce 4 spaziolibero: 33
+*** NAVE 4: ricevuto SIGUSR1: data = 1 ***
+Nave 4 inizia a caricare
+Entro aggiorna dump sem reserve 
+Esco aggiorna dump sem reserve 
+Nave 4 ha caricato
+3. stato nave 4 aggiornato
+Nave 4 parte
+Nave 4 arriva
+Nave 4 attraccata al porto 1
+1. stato nave 4 aggiornato
+*** NAVE 4: ricevuto SIGUSR1: data = 3 ***
+nave 4 in attesa dal giorno 3: giorno attuale: 3
+Nave 4 inizia a scaricare al porto 1. giorno 3
+Nave 4 ha scaricato al porto 1. giorno 3
+Richiesta da porto 7 merce 3 lotti 53 al porto 1 con val 24
+nave 4 ha caricato 7 lotti di merce 3 spaziolibero: 69
+*** NAVE 4: ricevuto SIGUSR1: data = 5 ***
+Nave 4 inizia a caricare
+Entro aggiorna dump sem reserve 
+Esco aggiorna dump sem reserve 
+Nave 4 ha caricato
+3. stato nave 4 aggiornato
+Nave 4 parte
+Nave 4 arriva
+Nave 4 attraccata al porto 7
+1. stato nave 4 aggiornato
+*** NAVE 4: ricevuto SIGUSR1: data = 7 ***
+nave 4 in attesa dal giorno 7: giorno attuale: 7
+Nave 4 inizia a scaricare al porto 7. giorno 7
+Nave 4 ha scaricato al porto 7. giorno 7
+Richiesta da porto 5 merce 1 lotti 53 al porto 7 con val 48
+nave 4 ha caricato 2 lotti di merce 1 spaziolibero: 134
+*** NAVE 4: ricevuto SIGUSR1: data = 9 ***
+Nave 4 inizia a caricare
+Entro aggiorna dump sem reserve 
+Esco aggiorna dump sem reserve 
+Nave 4 ha caricato
+3. stato nave 4 aggiornato
+Nave 4 parte
+Nave 4 arriva
+Nave 4 attraccata al porto 5
+1. stato nave 4 aggiornato
+*** NAVE 4: ricevuto SIGUSR1: data = 11 ***
+nave 4 in attesa dal giorno 11: giorno attuale: 11
+Nave 4 inizia a scaricare al porto 5. giorno 11
+Nave 4 ha scaricato al porto 5. giorno 11
+Nave 4 deve skippare porto 5
+Nave 4 inizia a caricare
+Entro aggiorna dump sem reserve 
+Esco aggiorna dump sem reserve 
+Nave 4 ha caricato
+2. stato nave 4 aggiornato
+Nave 4 parte
+Nave 4 arriva
+Nave 4 attraccata al porto 4
+0. stato nave 4 aggiornato
+nave 4 in attesa dal giorno 11: giorno attuale: 11
+Nave 4 inizia a scaricare al porto 4. giorno 11
+Nave 4 ha scaricato al porto 4. giorno 11
+Richiesta da porto 0 merce 1 lotti 47 al porto 4 con val 39
+nave 4 ha caricato 2 lotti di merce 1 spaziolibero: 134
+*** NAVE 4: ricevuto SIGUSR1: data = 12 ***
+Nave 4 inizia a caricare
+Entro aggiorna dump sem reserve 
+Esco aggiorna dump sem reserve 
+Nave 4 ha caricato
+3. stato nave 4 aggiornato
+Nave 4 parte
+Nave 4 arriva
+Nave 4 attraccata al porto 0
+1. stato nave 4 aggiornato
+*** NAVE 4: ricevuto SIGUSR1: data = 14 ***
+nave 4 in attesa dal giorno 14: giorno attuale: 14
+Nave 4 inizia a scaricare al porto 0. giorno 14
+Nave 4 ha scaricato al porto 0. giorno 14
+Richiesta da porto 4 merce 2 lotti 42 al porto 0 con val 18
+nave 4 ha caricato 2 lotti di merce 2 spaziolibero: 326
+*** NAVE 4: ricevuto SIGUSR1: data = 16 ***
+Nave 4 inizia a caricare
+Entro aggiorna dump sem reserve 
+Esco aggiorna dump sem reserve 
+Nave 4 ha caricato
+3. stato nave 4 aggiornato
+Nave 4 parte
+Nave 4 arriva
+Nave 4 attraccata al porto 4
+1. stato nave 4 aggiornato
+*** NAVE 4: ricevuto SIGUSR1: data = 17 ***
+nave 4 in attesa dal giorno 17: giorno attuale: 17
+Nave 4 inizia a scaricare al porto 4. giorno 17
+Nave 4 ha scaricato al porto 4. giorno 17
+Richiesta da porto 0 merce 1 lotti 43 al porto 4 con val 27
+nave 4 ha caricato 2 lotti di merce 1 spaziolibero: 134
+*** NAVE 4: ricevuto SIGUSR1: data = 19 ***
+Nave 4 inizia a caricare
+Entro aggiorna dump sem reserve 
+Esco aggiorna dump sem reserve 
+Nave 4 ha caricato
+3. stato nave 4 aggiornato
+Nave 4 parte
+Nave 4 arriva
+Nave 4 attraccata al porto 0
+1. stato nave 4 aggiornato
+NAVE 4: ricevuto SIGUSR2. data: 20
+#DEB - Nave 4:
+-porti_attraccati: 8
+-porti_lasciati: 7
+-ultimo_indice: 0
+Nave 0 in posizione x:21.086000 y:344.504000 indice porto piu vicino 4 x:94.066000 y;278.642000
+Nave 0 inizia il viaggio
+0. stato nave 0 aggiornato
+Nave 0 ha ricevuto una banchina al porto 4
+Richiesta da porto 0 merce 1 lotti 57 al porto 4 con val 54
+nave 0 ha caricato 2 lotti di merce 1 spaziolibero: 134
+nave 0 ha caricato 2 lotti di merce 4 spaziolibero: 28
+*** NAVE 0: ricevuto SIGUSR1: data = 1 ***
+Nave 0 inizia a caricare
+Entro aggiorna dump sem reserve 
+Esco aggiorna dump sem reserve 
+Nave 0 ha caricato
+3. stato nave 0 aggiornato
+Nave 0 parte
+Nave 0 arriva
+Nave 0 attraccata al porto 0
+1. stato nave 0 aggiornato
+*** NAVE 0: ricevuto SIGUSR1: data = 3 ***
+nave 0 in attesa dal giorno 3: giorno attuale: 3
+Nave 0 inizia a scaricare al porto 0. giorno 3
+Nave 0 ha scaricato al porto 0. giorno 3
+Richiesta da porto 1 merce 2 lotti 48 al porto 0 con val 38
+nave 0 ha caricato 2 lotti di merce 2 spaziolibero: 326
+*** NAVE 0: ricevuto SIGUSR1: data = 5 ***
+Nave 0 inizia a caricare
+Entro aggiorna dump sem reserve 
+Esco aggiorna dump sem reserve 
+Nave 0 ha caricato
+3. stato nave 0 aggiornato
+Nave 0 parte
+Nave 0 arriva
+Nave 0 attraccata al porto 1
+1. stato nave 0 aggiornato
+*** NAVE 0: ricevuto SIGUSR1: data = 6 ***
+nave 0 in attesa dal giorno 6: giorno attuale: 6
+Nave 0 inizia a scaricare al porto 1. giorno 6
+Nave 0 ha scaricato al porto 1. giorno 6
+Richiesta da porto 2 merce 3 lotti 38 al porto 1 con val 16
+nave 0 ha caricato 7 lotti di merce 3 spaziolibero: 69
+*** NAVE 0: ricevuto SIGUSR1: data = 8 ***
+Nave 0 inizia a caricare
+Entro aggiorna dump sem reserve 
+Esco aggiorna dump sem reserve 
+Nave 0 ha caricato
+3. stato nave 0 aggiornato
+Nave 0 parte
+Nave 0 arriva
+*** NAVE 0: ricevuto SIGUSR1: data = 9 ***
+apro un nuovo sem_reserve
+Nave 0 attraccata al porto 2
+1. stato nave 0 aggiornato
+*** NAVE 0: ricevuto SIGUSR1: data = 11 ***
+nave 0 in attesa dal giorno 11: giorno attuale: 11
+Nave 0 inizia a scaricare al porto 2. giorno 11
+Nave 0 ha scaricato al porto 2. giorno 11
+Nave 0 deve skippare porto 2
+Nave 0 inizia a caricare
+Entro aggiorna dump sem reserve 
+Esco aggiorna dump sem reserve 
+Nave 0 ha caricato
+2. stato nave 0 aggiornato
+Nave 0 parte
+Nave 0 arriva
+Nave 0 attraccata al porto 5
+0. stato nave 0 aggiornato
+nave 0 in attesa dal giorno 11: giorno attuale: 11
+Nave 0 inizia a scaricare al porto 5. giorno 11
+Nave 0 ha scaricato al porto 5. giorno 11
+Nave 0 deve skippare porto 5
+Nave 0 inizia a caricare
+Entro aggiorna dump sem reserve 
+Esco aggiorna dump sem reserve 
+Nave 0 ha caricato
+2. stato nave 0 aggiornato
+Nave 0 parte
+Nave 0 arriva
+*** NAVE 0: ricevuto SIGUSR1: data = 12 ***
+apro un nuovo sem_reserve
+*** NAVE 0: ricevuto SIGUSR1: data = 13 ***
+apro un nuovo sem_reserve
+*** NAVE 0: ricevuto SIGUSR1: data = 14 ***
+apro un nuovo sem_reserve
+Nave 0 attraccata al porto 7
+0. stato nave 0 aggiornato
+nave 0 in attesa dal giorno 14: giorno attuale: 14
+Nave 0 inizia a scaricare al porto 7. giorno 14
+Nave 0 ha scaricato al porto 7. giorno 14
+Richiesta da porto 6 merce 1 lotti 27 al porto 7 con val 42
+nave 0 ha caricato 2 lotti di merce 1 spaziolibero: 134
+*** NAVE 0: ricevuto SIGUSR1: data = 16 ***
+Nave 0 inizia a caricare
+Entro aggiorna dump sem reserve 
+Esco aggiorna dump sem reserve 
+Nave 0 ha caricato
+3. stato nave 0 aggiornato
+Nave 0 parte
+Nave 0 arriva
+*** NAVE 0: ricevuto SIGUSR1: data = 17 ***
+apro un nuovo sem_reserve
+*** NAVE 0: ricevuto SIGUSR1: data = 18 ***
+apro un nuovo sem_reserve
+*** NAVE 0: ricevuto SIGUSR1: data = 19 ***
+apro un nuovo sem_reserve
+NAVE 0: ricevuto SIGUSR2. data: 20
+#DEB - Nave 0:
+-porti_attraccati: 6
+-porti_lasciati: 6
+-ultimo_indice: 7
+MASTER: ammazzo il figlio 7068
+MASTER: ammazzo il figlio 7069
+a al porto 3
+0. stato nave 11 aggiornato
+nave 11 in attesa dal giorno 16: giorno attuale: 16
+Nave 11 inizia a scaricare al porto 3. giorno 16
+Nave 11 ha scaricato al porto 3. giorno 16
+Richiesta da porto 2 merce 3 lotti 29 al porto 3 con val 33
+nave 11 ha caricato 7 lotti di merce 3 spaziolibero: 69
+*** NAVE 11: ricevuto SIGUSR1: data = 18 ***
+Nave 11 inizia a caricare
+Entro aggiorna dump sem reserve 
+Esco aggiorna dump sem reserve 
+Nave 11 ha caricato
+3. stato nave 11 aggiornato
+Nave 11 parte
+Nave 11 arriva
+Nave 11 attraccata al porto 2
+1. stato nave 11 aggiornato
+NAVE 11: ricevuto SIGUSR2. data: 20
+#DEB - Nave 11:
+-porti_attraccati: 10
+-porti_lasciati: 9
+-ultimo_indice: 2
+MASTER: ammazzo il figlio 7070
+MASTER: ammazzo il figlio 7071
+MASTER: ammazzo il figlio 7072
+MASTER: ammazzo il figlio 7073
+MASTER: ammazzo il figlio 7074
+MASTER: ammazzo il figlio 7075
+ve 14 deve skippare porto 2
+Nave 14 inizia a caricare
+Entro aggiorna dump sem reserve 
+Esco aggiorna dump sem reserve 
+Nave 14 ha caricato
+2. stato nave 14 aggiornato
+Nave 14 parte
+Nave 14 arriva
+NAVE 14: ricevuto SIGUSR2. data: 20
+#DEB - Nave 14:
+-porti_attraccati: 8
+-porti_lasciati: 8
+-ultimo_indice: 2
+MASTER: ammazzo il figlio 7076
+dump sem reserve 
+Nave 1 ha caricato
+2. stato nave 1 aggiornato
+Nave 1 parte
+Nave 1 arriva
+Nave 1 attraccata al porto 3
+0. stato nave 1 aggiornato
+nave 1 in attesa dal giorno 18: giorno attuale: 18
+Nave 1 inizia a scaricare al porto 3. giorno 18
+Nave 1 ha scaricato al porto 3. giorno 18
+Richiesta da porto 2 merce 1 lotti 42 al porto 3 con val 44
+nave 1 ha caricato 2 lotti di merce 1 spaziolibero: 134
+nave 1 ha caricato 1 lotti di merce 3 spaziolibero: 1
+NAVE 1: ricevuto SIGUSR2. data: 20
+#DEB - Nave 1:
+-porti_attraccati: 9
+-porti_lasciati: 8
+-ultimo_indice: 3
+MASTER: ammazzo il figlio 7077
+icato
+2. stato nave 5 aggiornato
+Nave 5 parte
+Nave 5 arriva
+Nave 5 attraccata al porto 3
+0. stato nave 5 aggiornato
+nave 5 in attesa dal giorno 18: giorno attuale: 18
+Nave 5 inizia a scaricare al porto 3. giorno 18
+Nave 5 ha scaricato al porto 3. giorno 18
+Richiesta da porto 0 merce 1 lotti 39 al porto 3 con val 42
+nave 5 ha caricato 2 lotti di merce 1 spaziolibero: 134
+nave 5 ha caricato 1 lotti di merce 3 spaziolibero: 1
+NAVE 5: ricevuto SIGUSR2. data: 20
+#DEB - Nave 5:
+-porti_attraccati: 9
+-porti_lasciati: 8
+-ultimo_indice: 3
+Nave 7 in posizione x:41.406000 y:319.354000 indice porto piu vicino 4 x:94.066000 y;278.642000
+Nave 7 inizia il viaggio
+0. stato nave 7 aggiornato
+Nave 7 ha ricevuto una banchina al porto 4
+Richiesta da porto 8 merce 1 lotti 50 al porto 4 con val 56
+nave 7 ha caricato 2 lotti di merce 1 spaziolibero: 134
+*** NAVE 7: ricevuto SIGUSR1: data = 1 ***
+Nave 7 inizia a caricare
+Entro aggiorna dump sem reserve 
+Esco aggiorna dump sem reserve 
+Nave 7 ha caricato
+3. stato nave 7 aggiornato
+Nave 7 parte
+Nave 7 arriva
+Nave 7 attraccata al porto 8
+1. stato nave 7 aggiornato
+*** NAVE 7: ricevuto SIGUSR1: data = 3 ***
+nave 7 in attesa dal giorno 3: giorno attuale: 3
+Nave 7 inizia a scaricare al porto 8. giorno 3
+Nave 7 ha scaricato al porto 8. giorno 3
+Richiesta da porto 2 merce 4 lotti 49 al porto 8 con val 16
+nave 7 ha caricato 16 lotti di merce 4 spaziolibero: 152
+*** NAVE 7: ricevuto SIGUSR1: data = 5 ***
+Nave 7 inizia a caricare
+Entro aggiorna dump sem reserve 
+Esco aggiorna dump sem reserve 
+Nave 7 ha caricato
+3. stato nave 7 aggiornato
+Nave 7 parte
+Nave 7 arriva
+Nave 7 attraccata al porto 2
+1. stato nave 7 aggiornato
+*** NAVE 7: ricevuto SIGUSR1: data = 6 ***
+nave 7 in attesa dal giorno 6: giorno attuale: 6
+Nave 7 inizia a scaricare al porto 2. giorno 6
+Nave 7 ha scaricato al porto 2. giorno 6
+Nave 7 deve skippare porto 2
+Nave 7 inizia a caricare
+Entro aggiorna dump sem reserve 
+Esco aggiorna dump sem reserve 
+Nave 7 ha caricato
+2. stato nave 7 aggiornato
+Nave 7 parte
+Nave 7 arriva
+Nave 7 attraccata al porto 3
+0. stato nave 7 aggiornato
+nave 7 in attesa dal giorno 6: giorno attuale: 6
+Nave 7 inizia a scaricare al porto 3. giorno 6
+Nave 7 ha scaricato al porto 3. giorno 6
+Richiesta da porto 0 merce 1 lotti 51 al porto 3 con val 50
+nave 7 ha caricato 2 lotti di merce 1 spaziolibero: 134
+nave 7 ha caricato 1 lotti di merce 3 spaziolibero: 1
+*** NAVE 7: ricevuto SIGUSR1: data = 8 ***
+Nave 7 inizia a caricare
+Entro aggiorna dump sem reserve 
+Esco aggiorna dump sem reserve 
+Nave 7 ha caricato
+3. stato nave 7 aggiornato
+Nave 7 parte
+Nave 7 arriva
+Nave 7 attraccata al porto 0
+1. stato nave 7 aggiornato
+*** NAVE 7: ricevuto SIGUSR1: data = 10 ***
+nave 7 in attesa dal giorno 10: giorno attuale: 10
+Nave 7 inizia a scaricare al porto 0. giorno 10
+Nave 7 ha scaricato al porto 0. giorno 10
+Richiesta da porto 6 merce 2 lotti 65 al porto 0 con val 26
+nave 7 ha caricato 2 lotti di merce 2 spaziolibero: 326
+*** NAVE 7: ricevuto SIGUSR1: data = 12 ***
+Nave 7 inizia a caricare
+Entro aggiorna dump sem reserve 
+Esco aggiorna dump sem reserve 
+Nave 7 ha caricato
+3. stato nave 7 aggiornato
+Nave 7 parte
+Nave 7 arriva
+*** NAVE 7: ricevuto SIGUSR1: data = 13 ***
+apro un nuovo sem_reserve
+*** NAVE 7: ricevuto SIGUSR1: data = 14 ***
+apro un nuovo sem_reserve
+*** NAVE 7: ricevuto SIGUSR1: data = 15 ***
+apro un nuovo sem_reserve
+*** NAVE 7: ricevuto SIGUSR1: data = 16 ***
+apro un nuovo sem_reserve
+*** NAVE 7: ricevuto SIGUSR1: data = 17 ***
+apro un nuovo sem_reserve
+*** NAVE 7: ricevuto SIGUSR1: data = 18 ***
+apro un nuovo sem_reserve
+*** NAVE 7: ricevuto SIGUSR1: data = 19 ***
+apro un nuovo sem_reserve
+NAVE 7: ricevuto SIGUSR2. data: 20
+#DEB - Nave 7:
+-porti_attraccati: 5
+-porti_lasciati: 5
+-ultimo_indice: 0
+ve 9 attraccata al porto 8
+1. stato nave 9 aggiornato
+*** NAVE 9: ricevuto SIGUSR1: data = 19 ***
+nave 9 in attesa dal giorno 19: giorno attuale: 19
+Nave 9 inizia a scaricare al porto 8. giorno 19
+Nave 9 ha scaricato al porto 8. giorno 19
+Nave 9 deve skippare porto 8
+Nave 9 inizia a caricare
+Entro aggiorna dump sem reserve 
+Esco aggiorna dump sem reserve 
+Nave 9 ha caricato
+2. stato nave 9 aggiornato
+Nave 9 parte
+Nave 9 arriva
+Nave 9 attraccata al porto 5
+0. stato nave 9 aggiornato
+nave 9 in attesa dal giorno 19: giorno attuale: 19
+Nave 9 inizia a scaricare al porto 5. giorno 19
+Nave 9 ha scaricato al porto 5. giorno 19
+Nave 9 deve skippare porto 5
+Nave 9 inizia a caricare
+Entro aggiorna dump sem reserve 
+Esco aggiorna dump sem reserve 
+Nave 9 ha caricato
+2. stato nave 9 aggiornato
+Nave 9 parte
+Nave 9 arriva
+Nave 9 attraccata al porto 3
+0. stato nave 9 aggiornato
+nave 9 in attesa dal giorno 19: giorno attuale: 19
+Nave 9 inizia a scaricare al porto 3. giorno 19
+Nave 9 ha scaricato al porto 3. giorno 19
+Richiesta da porto 2 merce 3 lotti 14 al porto 3 con val 24
+nave 9 ha caricato 7 lotti di merce 3 spaziolibero: 69
+NAVE 9: ricevuto SIGUSR2. data: 20
+#DEB - Nave 9:
+-porti_attraccati: 11
+-porti_lasciati: 10
+-ultimo_indice: 3
+Terminato figlio 7048 status 0
+12 parte
+Nave 12 arriva
+Nave 12 attraccata al porto 8
+1. stato nave 12 aggiornato
+*** NAVE 12: ricevuto SIGUSR1: data = 16 ***
+nave 12 in attesa dal giorno 16: giorno attuale: 16
+Nave 12 inizia a scaricare al porto 8. giorno 16
+Nave 12 ha scaricato al porto 8. giorno 16
+Nave 12 deve skippare porto 8
+Nave 12 inizia a caricare
+Entro aggiorna dump sem reserve 
+Esco aggiorna dump sem reserve 
+Nave 12 ha caricato
+2. stato nave 12 aggiornato
+Nave 12 parte
+Nave 12 arriva
+Nave 12 attraccata al porto 3
+0. stato nave 12 aggiornato
+nave 12 in attesa dal giorno 16: giorno attuale: 16
+Nave 12 inizia a scaricare al porto 3. giorno 16
+Nave 12 ha scaricato al porto 3. giorno 16
+Richiesta da porto 2 merce 1 lotti 44 al porto 3 con val 46
+nave 12 ha caricato 2 lotti di merce 1 spaziolibero: 134
+nave 12 ha caricato 1 lotti di merce 3 spaziolibero: 1
+*** NAVE 12: ricevuto SIGUSR1: data = 18 ***
+Nave 12 inizia a caricare
+Entro aggiorna dump sem reserve 
+Esco aggiorna dump sem reserve 
+Nave 12 ha caricato
+3. stato nave 12 aggiornato
+Nave 12 parte
+Nave 12 arriva
+Nave 12 attraccata al porto 2
+1. stato nave 12 aggiornato
+NAVE 12: ricevuto SIGUSR2. data: 20
+#DEB - Nave 12:
+-porti_attraccati: 11
+-porti_lasciati: 10
+-ultimo_indice: 2
+Terminato figlio 7049 status 0
+Terminato figlio 7050 status 0
+Terminato figlio 7051 status 0
+Terminato figlio 7052 status 0
+Nave 15 in posizione x:115.090000 y:112.792000 indice porto piu vicino 8 x:196.244000 y;194.966000
+Nave 15 inizia il viaggio
+0. stato nave 15 aggiornato
+Nave 15 ha ricevuto una banchina al porto 8
+Richiesta da porto 6 merce 4 lotti 72 al porto 8 con val 34
+nave 15 ha caricato 18 lotti di merce 4 spaziolibero: 46
+nave 15 ha caricato 46 lotti di merce 0 spaziolibero: 0
+*** NAVE 15: ricevuto SIGUSR1: data = 2 ***
+Nave 15 inizia a caricare
+Entro aggiorna dump sem reserve 
+Esco aggiorna dump sem reserve 
+Nave 15 ha caricato
+3. stato nave 15 aggiornato
+Nave 15 parte
+Nave 15 arriva
+*** NAVE 15: ricevuto SIGUSR1: data = 3 ***
+apro un nuovo sem_reserve
+*** NAVE 15: ricevuto SIGUSR1: data = 4 ***
+apro un nuovo sem_reserve
+*** NAVE 15: ricevuto SIGUSR1: data = 5 ***
+apro un nuovo sem_reserve
+*** NAVE 15: ricevuto SIGUSR1: data = 6 ***
+apro un nuovo sem_reserve
+*** NAVE 15: ricevuto SIGUSR1: data = 7 ***
+apro un nuovo sem_reserve
+*** NAVE 15: ricevuto SIGUSR1: data = 8 ***
+apro un nuovo sem_reserve
+*** NAVE 15: ricevuto SIGUSR1: data = 9 ***
+apro un nuovo sem_reserve
+*** NAVE 15: ricevuto SIGUSR1: data = 10 ***
+apro un nuovo sem_reserve
+*** NAVE 15: ricevuto SIGUSR1: data = 11 ***
+apro un nuovo sem_reserve
+*** NAVE 15: ricevuto SIGUSR1: data = 12 ***
+apro un nuovo sem_reserve
+*** NAVE 15: ricevuto SIGUSR1: data = 13 ***
+apro un nuovo sem_reserve
+*** NAVE 15: ricevuto SIGUSR1: data = 14 ***
+apro un nuovo sem_reserve
+*** NAVE 15: ricevuto SIGUSR1: data = 15 ***
+apro un nuovo sem_reserve
+*** NAVE 15: ricevuto SIGUSR1: data = 16 ***
+apro un nuovo sem_reserve
+*** NAVE 15: ricevuto SIGUSR1: data = 17 ***
+apro un nuovo sem_reserve
+*** NAVE 15: ricevuto SIGUSR1: data = 18 ***
+apro un nuovo sem_reserve
+*** NAVE 15: ricevuto SIGUSR1: data = 19 ***
+apro un nuovo sem_reserve
+NAVE 15: ricevuto SIGUSR2. data: 20
+#DEB - Nave 15:
+-porti_attraccati: 1
+-porti_lasciati: 1
+-ultimo_indice: 8
+Terminato figlio 7053 status 0
+Nave 13 in posizione x:344.504000 y:182.412000 indice porto piu vicino 7 x:398.822000 y;174.686000
+Nave 13 inizia il viaggio
+0. stato nave 13 aggiornato
+Nave 13 ha ricevuto una banchina al porto 7
+Richiesta da porto 6 merce 1 lotti 35 al porto 7 con val 52
+nave 13 ha caricato 2 lotti di merce 1 spaziolibero: 134
+nave 13 ha caricato 2 lotti di merce 4 spaziolibero: 28
+*** NAVE 13: ricevuto SIGUSR1: data = 1 ***
+Nave 13 inizia a caricare
+Entro aggiorna dump sem reserve 
+Esco aggiorna dump sem reserve 
+Nave 13 ha caricato
+3. stato nave 13 aggiornato
+Nave 13 parte
+Nave 13 arriva
+*** NAVE 13: ricevuto SIGUSR1: data = 2 ***
+apro un nuovo sem_reserve
+*** NAVE 13: ricevuto SIGUSR1: data = 3 ***
+apro un nuovo sem_reserve
+*** NAVE 13: ricevuto SIGUSR1: data = 4 ***
+apro un nuovo sem_reserve
+*** NAVE 13: ricevuto SIGUSR1: data = 5 ***
+apro un nuovo sem_reserve
+*** NAVE 13: ricevuto SIGUSR1: data = 6 ***
+apro un nuovo sem_reserve
+*** NAVE 13: ricevuto SIGUSR1: data = 7 ***
+apro un nuovo sem_reserve
+*** NAVE 13: ricevuto SIGUSR1: data = 8 ***
+apro un nuovo sem_reserve
+*** NAVE 13: ricevuto SIGUSR1: data = 9 ***
+apro un nuovo sem_reserve
+*** NAVE 13: ricevuto SIGUSR1: data = 10 ***
+apro un nuovo sem_reserve
+*** NAVE 13: ricevuto SIGUSR1: data = 11 ***
+apro un nuovo sem_reserve
+*** NAVE 13: ricevuto SIGUSR1: data = 12 ***
+apro un nuovo sem_reserve
+*** NAVE 13: ricevuto SIGUSR1: data = 13 ***
+apro un nuovo sem_reserve
+*** NAVE 13: ricevuto SIGUSR1: data = 14 ***
+apro un nuovo sem_reserve
+*** NAVE 13: ricevuto SIGUSR1: data = 15 ***
+apro un nuovo sem_reserve
+*** NAVE 13: ricevuto SIGUSR1: data = 16 ***
+apro un nuovo sem_reserve
+*** NAVE 13: ricevuto SIGUSR1: data = 17 ***
+apro un nuovo sem_reserve
+*** NAVE 13: ricevuto SIGUSR1: data = 18 ***
+apro un nuovo sem_reserve
+*** NAVE 13: ricevuto SIGUSR1: data = 19 ***
+apro un nuovo sem_reserve
+NAVE 13: ricevuto SIGUSR2. data: 20
+#DEB - Nave 13:
+-porti_attraccati: 1
+-porti_lasciati: 1
+-ultimo_indice: 7
+Terminato figlio 7054 status 0
+Nave 8 in posizione x:432.912000 y:307.162000 indice porto piu vicino 6 x:404.656000 y;208.412000
+Nave 8 inizia il viaggio
+*** NAVE 8: ricevuto SIGUSR1: data = 1 ***
+apro un nuovo sem_reserve
+*** NAVE 8: ricevuto SIGUSR1: data = 2 ***
+apro un nuovo sem_reserve
+*** NAVE 8: ricevuto SIGUSR1: data = 3 ***
+apro un nuovo sem_reserve
+*** NAVE 8: ricevuto SIGUSR1: data = 4 ***
+apro un nuovo sem_reserve
+*** NAVE 8: ricevuto SIGUSR1: data = 5 ***
+apro un nuovo sem_reserve
+*** NAVE 8: ricevuto SIGUSR1: data = 6 ***
+apro un nuovo sem_reserve
+*** NAVE 8: ricevuto SIGUSR1: data = 7 ***
+apro un nuovo sem_reserve
+*** NAVE 8: ricevuto SIGUSR1: data = 8 ***
+apro un nuovo sem_reserve
+*** NAVE 8: ricevuto SIGUSR1: data = 9 ***
+apro un nuovo sem_reserve
+*** NAVE 8: ricevuto SIGUSR1: data = 10 ***
+apro un nuovo sem_reserve
+*** NAVE 8: ricevuto SIGUSR1: data = 11 ***
+apro un nuovo sem_reserve
+*** NAVE 8: ricevuto SIGUSR1: data = 12 ***
+apro un nuovo sem_reserve
+*** NAVE 8: ricevuto SIGUSR1: data = 13 ***
+apro un nuovo sem_reserve
+0. stato nave 8 aggiornato
+Nave 8 ha ricevuto una banchina al porto 6
+Richiesta da porto 5 merce 3 lotti 42 al porto 6 con val 27
+nave 8 ha caricato 7 lotti di merce 3 spaziolibero: 69
+*** NAVE 8: ricevuto SIGUSR1: data = 14 ***
+Nave 8 inizia a caricare
+Entro aggiorna dump sem reserve 
+Esco aggiorna dump sem reserve 
+Nave 8 ha caricato
+3. stato nave 8 aggiornato
+Nave 8 parte
+Nave 8 arriva
+Nave 8 attraccata al porto 5
+1. stato nave 8 aggiornato
+*** NAVE 8: ricevuto SIGUSR1: data = 16 ***
+nave 8 in attesa dal giorno 16: giorno attuale: 16
+Nave 8 inizia a scaricare al porto 5. giorno 16
+Nave 8 ha scaricato al porto 5. giorno 16
+Nave 8 deve skippare porto 5
+Nave 8 inizia a caricare
+Entro aggiorna dump sem reserve 
+Esco aggiorna dump sem reserve 
+Nave 8 ha caricato
+2. stato nave 8 aggiornato
+Nave 8 parte
+Nave 8 arriva
+Nave 8 attraccata al porto 1
+0. stato nave 8 aggiornato
+nave 8 in attesa dal giorno 16: giorno attuale: 16
+Nave 8 inizia a scaricare al porto 1. giorno 16
+Nave 8 ha scaricato al porto 1. giorno 16
+Richiesta da porto 2 merce 3 lotti 22 al porto 1 con val 9
+nave 8 ha caricato 7 lotti di merce 3 spaziolibero: 69
+*** NAVE 8: ricevuto SIGUSR1: data = 18 ***
+Nave 8 inizia a caricare
+Entro aggiorna dump sem reserve 
+Esco aggiorna dump sem reserve 
+Nave 8 ha caricato
+3. stato nave 8 aggiornato
+Nave 8 parte
+Nave 8 arriva
+*** NAVE 8: ricevuto SIGUSR1: data = 19 ***
+apro un nuovo sem_reserve
+Nave 8 attraccata al porto 2
+1. stato nave 8 aggiornato
+NAVE 8: ricevuto SIGUSR2. data: 20
+#DEB - Nave 8:
+-porti_attraccati: 4
+-porti_lasciati: 3
+-ultimo_indice: 2
+Terminato figlio 7055 status 0
+o 19
+Richiesta da porto 4 merce 2 lotti 40 al porto 0 con val 16
+nave 17 ha caricato 2 lotti di merce 2 spaziolibero: 326
+NAVE 17: ricevuto SIGUSR2. data: 20
+#DEB - Nave 17:
+-porti_attraccati: 8
+-porti_lasciati: 7
+-ultimo_indice: 0
+Nave 16 in posizione x:58.428000 y:188.008000 indice porto piu vicino 9 x:144.516000 y;232.748000
+Nave 16 inizia il viaggio
+0. stato nave 16 aggiornato
+Nave 16 ha ricevuto una banchina al porto 9
+Richiesta da porto 2 merce 1 lotti 59 al porto 9 con val 58
+nave 16 ha caricato 2 lotti di merce 1 spaziolibero: 134
+nave 16 ha caricato 2 lotti di merce 4 spaziolibero: 28
+*** NAVE 16: ricevuto SIGUSR1: data = 1 ***
+Nave 16 inizia a caricare
+Entro aggiorna dump sem reserve 
+Esco aggiorna dump sem reserve 
+Nave 16 ha caricato
+3. stato nave 16 aggiornato
+Nave 16 parte
+Nave 16 arriva
+Nave 16 attraccata al porto 2
+1. stato nave 16 aggiornato
+*** NAVE 16: ricevuto SIGUSR1: data = 3 ***
+nave 16 in attesa dal giorno 3: giorno attuale: 3
+Nave 16 inizia a scaricare al porto 2. giorno 3
+Nave 16 ha scaricato al porto 2. giorno 3
+Nave 16 deve skippare porto 2
+Nave 16 inizia a caricare
+Entro aggiorna dump sem reserve 
+Esco aggiorna dump sem reserve 
+Nave 16 ha caricato
+2. stato nave 16 aggiornato
+Nave 16 parte
+Nave 16 arriva
+Nave 16 attraccata al porto 2
+0. stato nave 16 aggiornato
+nave 16 in attesa dal giorno 3: giorno attuale: 3
+Nave 16 inizia a scaricare al porto 2. giorno 3
+Nave 16 ha scaricato al porto 2. giorno 3
+Nave 16 deve skippare porto 2
+Nave 16 inizia a caricare
+Entro aggiorna dump sem reserve 
+Esco aggiorna dump sem reserve 
+Nave 16 ha caricato
+2. stato nave 16 aggiornato
+Nave 16 parte
+Nave 16 arriva
+*** NAVE 16: ricevuto SIGUSR1: data = 4 ***
+apro un nuovo sem_reserve
+*** NAVE 16: ricevuto SIGUSR1: data = 5 ***
+apro un nuovo sem_reserve
+Nave 16 attraccata al porto 0
+0. stato nave 16 aggiornato
+nave 16 in attesa dal giorno 5: giorno attuale: 5
+Nave 16 inizia a scaricare al porto 0. giorno 5
+Nave 16 ha scaricato al porto 0. giorno 5
+Richiesta da porto 6 merce 2 lotti 67 al porto 0 con val 34
+nave 16 ha caricato 2 lotti di merce 2 spaziolibero: 326
+nave 16 ha caricato 38 lotti di merce 0 spaziolibero: 288
+*** NAVE 16: ricevuto SIGUSR1: data = 6 ***
+Nave 16 inizia a caricare
+Entro aggiorna dump sem reserve 
+Esco aggiorna dump sem reserve 
+Nave 16 ha caricato
+3. stato nave 16 aggiornato
+Nave 16 parte
+Nave 16 arriva
+*** NAVE 16: ricevuto SIGUSR1: data = 7 ***
+apro un nuovo sem_reserve
+*** NAVE 16: ricevuto SIGUSR1: data = 8 ***
+apro un nuovo sem_reserve
+*** NAVE 16: ricevuto SIGUSR1: data = 9 ***
+apro un nuovo sem_reserve
+*** NAVE 16: ricevuto SIGUSR1: data = 10 ***
+apro un nuovo sem_reserve
+*** NAVE 16: ricevuto SIGUSR1: data = 11 ***
+apro un nuovo sem_reserve
+*** NAVE 16: ricevuto SIGUSR1: data = 12 ***
+apro un nuovo sem_reserve
+*** NAVE 16: ricevuto SIGUSR1: data = 13 ***
+apro un nuovo sem_reserve
+*** NAVE 16: ricevuto SIGUSR1: data = 14 ***
+apro un nuovo sem_reserve
+*** NAVE 16: ricevuto SIGUSR1: data = 15 ***
+apro un nuovo sem_reserve
+*** NAVE 16: ricevuto SIGUSR1: data = 16 ***
+apro un nuovo sem_reserve
+*** NAVE 16: ricevuto SIGUSR1: data = 17 ***
+apro un nuovo sem_reserve
+*** NAVE 16: ricevuto SIGUSR1: data = 18 ***
+apro un nuovo sem_reserve
+*** NAVE 16: ricevuto SIGUSR1: data = 19 ***
+apro un nuovo sem_reserve
+NAVE 16: ricevuto SIGUSR2. data: 20
+#DEB - Nave 16:
+-porti_attraccati: 4
+-porti_lasciati: 4
+-ultimo_indice: 0
+Nave 19 in posizione x:462.892000 y:46.236000 indice porto piu vicino 1 x:500.000000 y;0.000000
+Nave 19 inizia il viaggio
+0. stato nave 19 aggiornato
+Nave 19 ha ricevuto una banchina al porto 1
+Richiesta da porto 4 merce 3 lotti 48 al porto 1 con val 45
+nave 19 ha caricato 7 lotti di merce 3 spaziolibero: 69
+*** NAVE 19: ricevuto SIGUSR1: data = 1 ***
+Nave 19 inizia a caricare
+Entro aggiorna dump sem reserve 
+Esco aggiorna dump sem reserve 
+Nave 19 ha caricato
+3. stato nave 19 aggiornato
+Nave 19 parte
+Nave 19 arriva
+Nave 19 attraccata al porto 4
+1. stato nave 19 aggiornato
+*** NAVE 19: ricevuto SIGUSR1: data = 3 ***
+nave 19 in attesa dal giorno 3: giorno attuale: 3
+Nave 19 inizia a scaricare al porto 4. giorno 3
+Nave 19 ha scaricato al porto 4. giorno 3
+Richiesta da porto 6 merce 4 lotti 36 al porto 4 con val 25
+nave 19 ha caricato 18 lotti di merce 4 spaziolibero: 46
+nave 19 ha caricato 14 lotti di merce 0 spaziolibero: 32
+*** NAVE 19: ricevuto SIGUSR1: data = 5 ***
+Nave 19 inizia a caricare
+Entro aggiorna dump sem reserve 
+Esco aggiorna dump sem reserve 
+Nave 19 ha caricato
+3. stato nave 19 aggiornato
+Nave 19 parte
+Nave 19 arriva
+*** NAVE 19: ricevuto SIGUSR1: data = 6 ***
+apro un nuovo sem_reserve
+*** NAVE 19: ricevuto SIGUSR1: data = 7 ***
+apro un nuovo sem_reserve
+*** NAVE 19: ricevuto SIGUSR1: data = 8 ***
+apro un nuovo sem_reserve
+*** NAVE 19: ricevuto SIGUSR1: data = 9 ***
+apro un nuovo sem_reserve
+*** NAVE 19: ricevuto SIGUSR1: data = 10 ***
+apro un nuovo sem_reserve
+*** NAVE 19: ricevuto SIGUSR1: data = 11 ***
+apro un nuovo sem_reserve
+*** NAVE 19: ricevuto SIGUSR1: data = 12 ***
+apro un nuovo sem_reserve
+*** NAVE 19: ricevuto SIGUSR1: data = 13 ***
+apro un nuovo sem_reserve
+*** NAVE 19: ricevuto SIGUSR1: data = 14 ***
+apro un nuovo sem_reserve
+*** NAVE 19: ricevuto SIGUSR1: data = 15 ***
+apro un nuovo sem_reserve
+*** NAVE 19: ricevuto SIGUSR1: data = 16 ***
+apro un nuovo sem_reserve
+*** NAVE 19: ricevuto SIGUSR1: data = 17 ***
+apro un nuovo sem_reserve
+*** NAVE 19: ricevuto SIGUSR1: data = 18 ***
+apro un nuovo sem_reserve
+*** NAVE 19: ricevuto SIGUSR1: data = 19 ***
+apro un nuovo sem_reserve
+NAVE 19: ricevuto SIGUSR2. data: 20
+#DEB - Nave 19:
+-porti_attraccati: 2
+-porti_lasciati: 2
+-ultimo_indice: 4
+Terminato figlio 7056 status 0
+Terminato figlio 7057 status 0
+Terminato figlio 7058 status 0
+Terminato figlio 7059 status 0
+Terminato figlio 7060 status 0
+Terminato figlio 7061 status 0
+Terminato figlio 7062 status 0
+Terminato figlio 7063 status 0
+Terminato figlio 7064 status 0
+Terminato figlio 7065 status 0
+Terminato figlio 7067 status 0
+Terminato figlio 7069 status 0
+Terminato figlio 7070 status 0
+Nave 10 in posizione x:321.886000 y:434.444000 indice porto piu vicino 5 x:160.240000 y;476.664000
+Nave 10 inizia il viaggio
+0. stato nave 10 aggiornato
+Nave 10 ha ricevuto una banchina al porto 5
+Richiesta da porto 1 merce 4 lotti 7 al porto 5 con val 26
+nave 10 ha caricato 7 lotti di merce 4 spaziolibero: 629
+Nave 10 inizia a caricare
+Entro aggiorna dump sem reserve 
+Esco aggiorna dump sem reserve 
+Nave 10 ha caricato
+3. stato nave 10 aggiornato
+Nave 10 parte
+Nave 10 arriva
+Nave 10 attraccata al porto 1
+1. stato nave 10 aggiornato
+*** NAVE 10: ricevuto SIGUSR1: data = 1 ***
+nave 10 in attesa dal giorno 1: giorno attuale: 1
+Nave 10 inizia a scaricare al porto 1. giorno 1
+Nave 10 ha scaricato al porto 1. giorno 1
+Richiesta da porto 5 merce 3 lotti 49 al porto 1 con val 38
+nave 10 ha caricato 7 lotti di merce 3 spaziolibero: 69
+*** NAVE 10: ricevuto SIGUSR1: data = 3 ***
+Nave 10 inizia a caricare
+Entro aggiorna dump sem reserve 
+Esco aggiorna dump sem reserve 
+Nave 10 ha caricato
+3. stato nave 10 aggiornato
+Nave 10 parte
+Nave 10 arriva
+Nave 10 attraccata al porto 5
+1. stato nave 10 aggiornato
+*** NAVE 10: ricevuto SIGUSR1: data = 5 ***
+nave 10 in attesa dal giorno 5: giorno attuale: 5
+Nave 10 inizia a scaricare al porto 5. giorno 5
+Nave 10 ha scaricato al porto 5. giorno 5
+Nave 10 deve skippare porto 5
+Nave 10 inizia a caricare
+Entro aggiorna dump sem reserve 
+Esco aggiorna dump sem reserve 
+Nave 10 ha caricato
+2. stato nave 10 aggiornato
+Nave 10 parte
+Nave 10 arriva
+Nave 10 attraccata al porto 1
+0. stato nave 10 aggiornato
+nave 10 in attesa dal giorno 5: giorno attuale: 5
+Nave 10 inizia a scaricare al porto 1. giorno 5
+Nave 10 ha scaricato al porto 1. giorno 5
+Richiesta da porto 2 merce 1 lotti 53 al porto 1 con val 59
+nave 10 ha caricato 2 lotti di merce 1 spaziolibero: 134
+nave 10 ha caricato 1 lotti di merce 3 spaziolibero: 1
+*** NAVE 10: ricevuto SIGUSR1: data = 7 ***
+Nave 10 inizia a caricare
+Entro aggiorna dump sem reserve 
+Esco aggiorna dump sem reserve 
+Nave 10 ha caricato
+3. stato nave 10 aggiornato
+Nave 10 parte
+Nave 10 arriva
+Nave 10 attraccata al porto 2
+1. stato nave 10 aggiornato
+*** NAVE 10: ricevuto SIGUSR1: data = 9 ***
+nave 10 in attesa dal giorno 9: giorno attuale: 9
+Nave 10 inizia a scaricare al porto 2. giorno 9
+Nave 10 ha scaricato al porto 2. giorno 9
+Nave 10 deve skippare porto 2
+Nave 10 inizia a caricare
+Entro aggiorna dump sem reserve 
+Esco aggiorna dump sem reserve 
+Nave 10 ha caricato
+2. stato nave 10 aggiornato
+Nave 10 parte
+Nave 10 arriva
+*** NAVE 10: ricevuto SIGUSR1: data = 10 ***
+apro un nuovo sem_reserve
+*** NAVE 10: ricevuto SIGUSR1: data = 11 ***
+apro un nuovo sem_reserve
+*** NAVE 10: ricevuto SIGUSR1: data = 12 ***
+apro un nuovo sem_reserve
+*** NAVE 10: ricevuto SIGUSR1: data = 13 ***
+apro un nuovo sem_reserve
+*** NAVE 10: ricevuto SIGUSR1: data = 14 ***
+apro un nuovo sem_reserve
+*** NAVE 10: ricevuto SIGUSR1: data = 15 ***
+apro un nuovo sem_reserve
+*** NAVE 10: ricevuto SIGUSR1: data = 16 ***
+apro un nuovo sem_reserve
+*** NAVE 10: ricevuto SIGUSR1: data = 17 ***
+apro un nuovo sem_reserve
+*** NAVE 10: ricevuto SIGUSR1: data = 18 ***
+apro un nuovo sem_reserve
+*** NAVE 10: ricevuto SIGUSR1: data = 19 ***
+apro un nuovo sem_reserve
+NAVE 10: ricevuto SIGUSR2. data: 20
+#DEB - Nave 10:
+-porti_attraccati: 5
+-porti_lasciati: 5
+-ultimo_indice: 2
+Terminato figlio 7071 status 0
+Terminato figlio 7066 status 0
+Terminato figlio 7072 status 0
+Terminato figlio 7073 status 0
+Nave 18 in posizione x:82.812000 y:473.318000 indice porto piu vicino 5 x:160.240000 y;476.664000
+Nave 18 inizia il viaggio
+0. stato nave 18 aggiornato
+Nave 18 ha ricevuto una banchina al porto 5
+Richiesta da porto 1 merce 4 lotti 25 al porto 5 con val 44
+nave 18 ha caricato 18 lotti di merce 4 spaziolibero: 46
+*** NAVE 18: ricevuto SIGUSR1: data = 1 ***
+Nave 18 inizia a caricare
+Entro aggiorna dump sem reserve 
+Esco aggiorna dump sem reserve 
+Nave 18 ha caricato
+3. stato nave 18 aggiornato
+Nave 18 parte
+Nave 18 arriva
+Nave 18 attraccata al porto 1
+1. stato nave 18 aggiornato
+*** NAVE 18: ricevuto SIGUSR1: data = 3 ***
+nave 18 in attesa dal giorno 3: giorno attuale: 3
+Nave 18 inizia a scaricare al porto 1. giorno 3
+Nave 18 ha scaricato al porto 1. giorno 3
+Richiesta da porto 9 merce 3 lotti 26 al porto 1 con val 31
+nave 18 ha caricato 7 lotti di merce 3 spaziolibero: 69
+*** NAVE 18: ricevuto SIGUSR1: data = 5 ***
+Nave 18 inizia a caricare
+Entro aggiorna dump sem reserve 
+Esco aggiorna dump sem reserve 
+Nave 18 ha caricato
+3. stato nave 18 aggiornato
+Nave 18 parte
+Nave 18 arriva
+Nave 18 attraccata al porto 9
+1. stato nave 18 aggiornato
+*** NAVE 18: ricevuto SIGUSR1: data = 7 ***
+nave 18 in attesa dal giorno 7: giorno attuale: 7
+Nave 18 inizia a scaricare al porto 9. giorno 7
+Nave 18 ha scaricato al porto 9. giorno 7
+Richiesta da porto 6 merce 1 lotti 33 al porto 9 con val 56
+nave 18 ha caricato 2 lotti di merce 1 spaziolibero: 134
+*** NAVE 18: ricevuto SIGUSR1: data = 9 ***
+Nave 18 inizia a caricare
+Entro aggiorna dump sem reserve 
+Esco aggiorna dump sem reserve 
+Nave 18 ha caricato
+3. stato nave 18 aggiornato
+Nave 18 parte
+Nave 18 arriva
+*** NAVE 18: ricevuto SIGUSR1: data = 10 ***
+apro un nuovo sem_reserve
+*** NAVE 18: ricevuto SIGUSR1: data = 11 ***
+apro un nuovo sem_reserve
+*** NAVE 18: ricevuto SIGUSR1: data = 12 ***
+apro un nuovo sem_reserve
+*** NAVE 18: ricevuto SIGUSR1: data = 13 ***
+apro un nuovo sem_reserve
+*** NAVE 18: ricevuto SIGUSR1: data = 14 ***
+apro un nuovo sem_reserve
+*** NAVE 18: ricevuto SIGUSR1: data = 15 ***
+apro un nuovo sem_reserve
+*** NAVE 18: ricevuto SIGUSR1: data = 16 ***
+apro un nuovo sem_reserve
+*** NAVE 18: ricevuto SIGUSR1: data = 17 ***
+apro un nuovo sem_reserve
+*** NAVE 18: ricevuto SIGUSR1: data = 18 ***
+apro un nuovo sem_reserve
+*** NAVE 18: ricevuto SIGUSR1: data = 19 ***
+apro un nuovo sem_reserve
+NAVE 18: ricevuto SIGUSR2. data: 20
+#DEB - Nave 18:
+-porti_attraccati: 3
+-porti_lasciati: 3
+-ultimo_indice: 9
+Terminato figlio 7074 status 0
+Terminato figlio 7075 status 0
+Terminato figlio 7077 status 0
+Terminato figlio 7068 status 0
+Terminato figlio 7076 status 0
+Master sto uscendo con gestione = 0
+
+__________________________ 
+
+Porto 0
+Merce 0 nlotti 45 scadenza 40
+Merce 1 nlotti -57 scadenza 21
+Merce 2 nlotti 14 scadenza 41
+Merce 3 nlotti -63 scadenza 21
+Merce 4 nlotti -51 scadenza 21
+Porto 1
+Merce 0 nlotti -119 scadenza 21
+Merce 1 nlotti 57 scadenza 45
+Merce 2 nlotti -48 scadenza 21
+Merce 3 nlotti 2 scadenza 46
+Merce 4 nlotti -41 scadenza 21
+Porto 2
+Merce 0 nlotti -63 scadenza 21
+Merce 1 nlotti -61 scadenza 21
+Merce 2 nlotti -43 scadenza 21
+Merce 3 nlotti -46 scadenza 21
+Merce 4 nlotti -55 scadenza 21
+Porto 3
+Merce 0 nlotti -117 scadenza 21
+Merce 1 nlotti 40 scadenza 45
+Merce 2 nlotti -52 scadenza 21
+Merce 3 nlotti 17 scadenza 46
+Merce 4 nlotti 22 scadenza 45
+Porto 4
+Merce 0 nlotti 0 scadenza 40
+Merce 1 nlotti 25 scadenza 45
+Merce 2 nlotti -50 scadenza 21
+Merce 3 nlotti -48 scadenza 21
+Merce 4 nlotti 0 scadenza 45
+Porto 5
+Merce 0 nlotti -61 scadenza 21
+Merce 1 nlotti -53 scadenza 21
+Merce 2 nlotti -51 scadenza 21
+Merce 3 nlotti -49 scadenza 21
+Merce 4 nlotti 0 scadenza 45
+Porto 6
+Merce 0 nlotti -98 scadenza 21
+Merce 1 nlotti -35 scadenza 21
+Merce 2 nlotti -67 scadenza 21
+Merce 3 nlotti 6 scadenza 46
+Merce 4 nlotti -74 scadenza 21
+Porto 7
+Merce 0 nlotti -53 scadenza 21
+Merce 1 nlotti 36 scadenza 45
+Merce 2 nlotti -49 scadenza 21
+Merce 3 nlotti -53 scadenza 21
+Merce 4 nlotti 52 scadenza 45
+Porto 8
+Merce 0 nlotti 0 scadenza 40
+Merce 1 nlotti -50 scadenza 21
+Merce 2 nlotti -55 scadenza 21
+Merce 3 nlotti -52 scadenza 21
+Merce 4 nlotti 0 scadenza 45
+Porto 9
+Merce 0 nlotti 49 scadenza 40
+Merce 1 nlotti 54 scadenza 45
+Merce 2 nlotti 49 scadenza 41
+Merce 3 nlotti -33 scadenza 21
+Merce 4 nlotti 35 scadenza 45
+
+__________________________ 
+
+Porto 0 merce 3 nlotti 45
+Porto 0 merce 1 nlotti 37
+Porto 1 merce 2 nlotti 46
+Porto 2 merce 2 nlotti 41
+Porto 2 merce 3 nlotti 7
+Porto 2 merce 1 nlotti 40
+Porto 3 merce 2 nlotti 52
+Porto 3 merce 0 nlotti 81
+Porto 4 merce 3 nlotti 20
+Porto 4 merce 2 nlotti 38
+Porto 5 merce 3 nlotti 28
+Porto 5 merce 1 nlotti 45
+Porto 5 merce 2 nlotti 47
+Porto 6 merce 2 nlotti 63
+Porto 6 merce 1 nlotti 25
+Porto 7 merce 0 nlotti 53
+Porto 7 merce 2 nlotti 49
+Porto 7 merce 3 nlotti 46
+Porto 8 merce 1 nlotti 44
+Porto 8 merce 2 nlotti 49
+Porto 8 merce 3 nlotti 38
+Porto 9 merce 3 nlotti 19
+
+__________________________ 
+
+SGANCIA_SHAREDM_MERCATO
+SGANCIA_SHAREDM_DETTAGLI_LOTTI
+SGANCIA_SHAREDM_POSIZIONI_PORTI
+SGANCIA_SHAREDM_DUMP
+DISTRUGGI_SHAREDM_MERCATO
+DISTRUGGI_SHAREDM_DETTAGLI_LOTTI
+DISTRUGGI_SHAREDM_POSIZIONI_PORTI
+DISTRUGGI_SHAREDM_DUMP
+DISTRUGGI_SEM_MERCATO
+DISTRUGGI_SEM_DUMP
+DISTRUGGI_SEM_BANCHINE
+DISTRUGGI_SEM_GESTIONE
+DISTRUGGI_CODA_RICHIESTE
+
+__________________________ 
+
