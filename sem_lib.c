@@ -25,28 +25,30 @@ void sem_reserve(int semid, int sem_num) {
     struct sembuf sops;
     sops.sem_num = sem_num;
     sops.sem_op = -1;
-    sops.sem_flg = 0;/*
+    sops.sem_flg = 0;
     while (semop(semid, &sops, 1) == -1 && errno == EINTR) {
+        printf("reitero su un nuovo sem_reserve\n");
         perror("semop reserve");
-    }*/
+    }/*
     if(semop(semid, &sops, 1) == -1 && errno == EINTR){
         printf("apro un nuovo sem_reserve\n");
         sem_reserve(semid, sem_num);
-    }
+    }*/
 }
 
 void sem_release(int semid, int sem_num) {
     struct sembuf sops;
     sops.sem_num = sem_num;
     sops.sem_op = 1;
-    sops.sem_flg = 0;/*
+    sops.sem_flg = 0;
     while (semop(semid, &sops, 1) == -1 && errno == EINTR) {
+        printf("reitero su un nuovo sem_release\n");
         perror("semop release");
-    }*/
+    }/*
     if(semop(semid, &sops, 1) == -1 && errno == EINTR){
         printf("apro un nuovo sem_release\n");
         sem_release(semid, sem_num);
-    }
+    }*/
 }
 
 void sem_wait_zero(int semid, int sem_num) {

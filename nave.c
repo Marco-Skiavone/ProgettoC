@@ -44,6 +44,12 @@ void naveinmare();
 void naveinporto();
 
 void attesa(double val, int divisore);
+
+/* Esegue la sem_reserve sulla banchina di indice 'indice_porto', BLOCCANDO SIGUSR1.
+ * una volta eseguita la semop, un eventuale segnale vengono consegnato. */
+void richiedi_banchina(int indice_porto);
+
+/* Modifica lo stato delle navi nel dump in base all'argomento (int) passato. */
 void statoNave(int stato);
 
 void codice_simulazione();
@@ -124,11 +130,6 @@ void aggiorna_dump_carico(int indiceporto, merce_nave* carico, int caricati, int
 
 
 void scaricamerci(merce scarico, int indiceporto, int indicemerce, int data, int so_merci, void* vptr_shm_mercato_porto, void* vptr_shm_dump_porto){    
-    
-    if(scarico.exp >= data){ 
-        /* si presuppone che il risultato sia <= 0*/
-        
-    }
     sem_reserve(id_semaforo_dump, 0);
     if(scarico.exp >= data){ 
         CAST_MERCE_DUMP(vptr_shm_dump)[indicemerce].consegnata += scarico.val /* * CAST_DETTAGLI_LOTTI(vptr_shm_dettagli_lotti)[indicemerce].val*/;
@@ -224,7 +225,8 @@ void codice_simulazione(){
     printf("Nave %d inizia il viaggio\n", indice);
     attesa(distanza, SO_SPEED);
     /* richiede la banchina e una volta dentro aggiorna il dump */
-    sem_reserve(id_semaforo_banchine, indicedestinazione);
+    //sem_reserve(id_semaforo_banchine, indicedestinazione);
+    richiedi_banchina(indicedestinazione);
     DEB_porti_attraccati++;
     DEB_porto_ultima_destinazione = indicedestinazione; 
     statoNave(DN_MV_PORTO);
@@ -401,7 +403,8 @@ void codice_simulazione(){
         posizione = CAST_POSIZIONI_PORTI(vptr_shm_posizioni_porti)[indicedestinazione];
         indiceportoattraccato = indicedestinazione;
 
-        sem_reserve(id_semaforo_banchine, indiceportoattraccato);
+        //sem_reserve(id_semaforo_banchine, indiceportoattraccato);
+        richiedi_banchina(indiceportoattraccato);
         DEB_porti_attraccati += 1;
         DEB_porto_ultima_destinazione = indiceportoattraccato;
         printf("Nave %d attraccata al porto %d\n", indice, indiceportoattraccato);
@@ -439,6 +442,19 @@ void codice_simulazione(){
     }   
 
 }
+
+void richiedi_banchina(int indice_porto){
+    sigset_t mask, oldmask;
+    sigemptyset(&mask);
+    sigaddset(&mask, SIGUSR1);
+    sigprocmask(SIG_BLOCK, &mask, &oldmask);
+
+    sem_reserve(id_semaforo_banchine, indice_porto);
+
+    sigprocmask(SIG_UNBLOCK, &mask, NULL);
+    sigprocmask(SIG_SETMASK, &oldmask, NULL);
+}   
+
 
 void statoNave(int stato){
     switch(stato){

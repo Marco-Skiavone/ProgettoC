@@ -34,7 +34,7 @@ int main(int argc, char *argv[]){
 
     int i, j, k;
     struct sigaction sa;
-    sa.sa_flags = 0;
+    sa.sa_flags = SA_RESTART;
     sa.sa_handler = signal_handler;
     sigemptyset(&(sa.sa_mask));
     sigaction(SIGUSR1, &sa, NULL);
