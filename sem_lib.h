@@ -1,7 +1,9 @@
 #ifndef _DEFINITIONS_H
 	#include "definitions.h"
 #endif
-
+#ifndef _SEM_LIB_H
+	#define _SEM_LIB_H
+#endif
 /* Crea un set di semafori date la chiave e il numero di semafori. */
 int sem_create(key_t key, int nsems);
 

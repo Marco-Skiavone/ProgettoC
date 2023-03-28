@@ -2,6 +2,9 @@
 	#include "definitions.h"
 #endif
 
+#ifndef _SHM_LIB_H
+#define _SHM_LIB_H
+#endif
 /* Crea la SHM e ne ritorna l'id. */
 int alloca_shm(key_t key, size_t size);
 
