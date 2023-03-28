@@ -29,3 +29,20 @@ void stampa_mercato_dump(void *vptr_shm_dump, void *vptr_shm_mercato, int PARAME
 	}
 	printf("\n");
 }
+
+int controlla_mercato(void *vptr_shm_mercato, void *vptr_shm_dump, int PARAMETRO[]){
+	int i, j;
+	int offerte, richieste;
+	offerte = richieste = 0;
+	for(i = 0; i < SO_PORTI && (!richieste || !offerte); i++){
+		for(j = 0; j < SO_MERCI && (!richieste || !offerte); j++){
+			if(!offerte && CAST_MERCATO(vptr_shm_mercato)[i][j].val > 0 && CAST_MERCATO(vptr_shm_mercato)[i][j].exp > CAST_DUMP(vptr_shm_dump)->data){
+				offerte = 1;
+			}
+			if(!richieste && CAST_MERCATO(vptr_shm_mercato)[i][j].val < 0){
+				richieste = 1;
+			}
+		}
+	}
+	return offerte || richieste;
+}

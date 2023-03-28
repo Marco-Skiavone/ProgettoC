@@ -10,3 +10,7 @@ int confronto_mercato_dump(void *vptr_shm_dump, void *vptr_shm_mercato, int PARA
 /* stampa l'istantanea del mercato.
  * Usato in fase di debug ora da stampa_dump(). */
 void stampa_mercato_dump(void *vptr_shm_dump, void *vptr_shm_mercato, int PARAMETRO[], int indice_porto);
+
+/* Controlla l'effettiva presenza di altre merci in richiesta o in offerta.
+ * Qualora entrambe siano assenti, terminerà la simulazione. */
+int controlla_mercato(void *vptr_shm_mercato, void *vptr_shm_dump, int PARAMETRO[]);

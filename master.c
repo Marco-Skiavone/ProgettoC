@@ -45,6 +45,8 @@ int main(int argc, char* argv[]){
     int i, j, k;
     int n_righe_file, file_config_char;
     
+    int continua_simulazione;
+
     int child_pid, status;
     FILE *file_config;
     richiesta r;
@@ -177,12 +179,16 @@ int main(int argc, char* argv[]){
     sigaction(SIGALRM, &sa_alrm, NULL);
     // DATA = 0;
     
+    continua_simulazione = 1;
     do{
         alarm(1);
         if(errno && errno != EINTR)
             printf("\nErrno = %d dopo alarm: %s\n", errno, strerror(errno));
+        if(!(continua_simulazione = controlla_mercato(vptr_shm_mercato, vptr_shm_dump, PARAMETRO))){
+            printf("\nMASTER: Termino la simulazione per mancanza di offerte e/o di richieste!\n");
+        }
         pause();
-    } while((int)(CAST_DUMP(vptr_shm_dump)->data) < SO_DAYS);
+    } while(((int)(CAST_DUMP(vptr_shm_dump)->data) < SO_DAYS) && continua_simulazione);
 
     for(i = 0; i < SO_NAVI+SO_PORTI; i++){
         printf("MASTER: ammazzo il figlio %d\n", child_pids[i]);
