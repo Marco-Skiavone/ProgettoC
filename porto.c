@@ -34,7 +34,7 @@ int main(int argc, char *argv[]){
 
     int i, j, k;
     struct sigaction sa;
-    sa.sa_flags = SA_RESTART;
+    sa.sa_flags = 0/*SA_RESTART*/;
     sa.sa_handler = signal_handler;
     sigemptyset(&(sa.sa_mask));
     sigaction(SIGUSR1, &sa, NULL);
@@ -57,10 +57,10 @@ int main(int argc, char *argv[]){
 
 
     //printf("Porto %d - x: %f y: %f\n", indice, CAST_POSIZIONI_PORTI(vptr_shm_posizioni_porti)[indice].x, CAST_POSIZIONI_PORTI(vptr_shm_posizioni_porti)[indice].y);
-
+    printf("test 53550\n");
     spawnMerciPorti(SO_MERCI, vptr_shm_mercato, CAST_DETTAGLI_LOTTI(vptr_shm_dettagli_lotti),(SO_FILL/SO_PORTI), indice);
     manda_richieste(SO_MERCI, vptr_shm_mercato, indice, id_coda_richieste);
-
+    printf("test 69\n");
     inizializza_banchine(id_semaforo_banchine, indice, SO_BANCHINE);
 
     /* si sgancia dalle memorie condivise. */
@@ -128,10 +128,10 @@ void spawnMerciPorti(int nmerci, void* vptr_shm_mercato, merce* ptr_dettagli_lot
             }
         }
     }
-    
-    sem_reserve(id_semaforo_dump, 0);
-
     printf("P-Porto %d\n", indice);
+    sem_reserve(id_semaforo_gestione, 1);
+
+    
     for(j=0;j<SO_MERCI;j++){
         printf("P-Merce %d nlotti %d scadenza %d\n", j, ptr_shm_mercato_porto[indice][j].val, ptr_shm_mercato_porto[indice][j].exp);
         /* aggiungo la merce al dump */
@@ -140,7 +140,7 @@ void spawnMerciPorti(int nmerci, void* vptr_shm_mercato, merce* ptr_dettagli_lot
             CAST_PORTO_DUMP(vptr_shm_dump)[indice].mercepresente += ptr_shm_mercato_porto[indice][j].val /* * CAST_DETTAGLI_LOTTI(vptr_shm_dettagli_lotti)[j].val*/;
         }  
     }
-    sem_release(id_semaforo_dump, 0);
+    sem_release(id_semaforo_gestione, 1);
 }
 
 void inizializza_risorse(){

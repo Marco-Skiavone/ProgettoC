@@ -344,7 +344,6 @@ void inizializza_dump(){
     CAST_DUMP(vptr_shm_dump)->data = 0;
     CAST_DUMP(vptr_shm_dump)->merce_dump_ptr = (merce_dump*)(vptr_shm_dump+sizeof(int));/* probabilmente non funziona! ( ma andrebbe davvero inizializzato! )*/
     CAST_DUMP(vptr_shm_dump)->porto_dump_ptr = (porto_dump*)(((merce_dump*) vptr_shm_dump+sizeof(int))+SO_MERCI);
-    CAST_TERM_DUMP(vptr_shm_dump).merce_stat_fine_ptr = ((merce_stat_fine*)((porto_dump*)(((merce_dump*) vptr_shm_dump+sizeof(int))+SO_MERCI)+SO_PORTI));
 
     CAST_TERM_DUMP(vptr_shm_dump).porto_ricevute = 0;
     CAST_TERM_DUMP(vptr_shm_dump).porto_spedite = 0;
@@ -365,13 +364,6 @@ void inizializza_dump(){
         CAST_PORTO_DUMP(vptr_shm_dump)[i].mercericevuta = 0;
         CAST_PORTO_DUMP(vptr_shm_dump)[i].mercespedita = 0;
     }
-    for(i = 0; i < SO_MERCI; i++){
-        CAST_M_TERM_DUMP(vptr_shm_dump)[i].consegnata = 0;
-        CAST_M_TERM_DUMP(vptr_shm_dump)[i].r_porto = 0;
-        CAST_M_TERM_DUMP(vptr_shm_dump)[i].scaduta_nave = 0;
-        CAST_M_TERM_DUMP(vptr_shm_dump)[i].scaduta_porto = 0;           
-    }
-
     /* bzero(CAST_DUMP(vptr_shm_dump)->merce_dump_ptr, sizeof(merce_dump)*SO_MERCI) */
 }
 

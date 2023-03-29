@@ -130,6 +130,12 @@ void aggiorna_dump_carico(int indiceporto, merce_nave* carico, int caricati, int
 
 
 void scaricamerci(merce scarico, int indiceporto, int indicemerce, int data, int so_merci, void* vptr_shm_mercato_porto, void* vptr_shm_dump_porto){    
+    /* aggiorno mercato shm se possibile */
+    if(scarico.exp >= data && CAST_MERCATO(vptr_shm_mercato_porto)[indiceporto][indicemerce].val <= -scarico.val){
+        CAST_MERCATO(vptr_shm_mercato_porto)[indiceporto][indicemerce].val += scarico.val;
+    } else {
+        perror("scarica_merci()");
+    }
     sem_reserve(id_semaforo_dump, 0);
     if(scarico.exp >= data){ 
         CAST_MERCE_DUMP(vptr_shm_dump)[indicemerce].consegnata += scarico.val /* * CAST_DETTAGLI_LOTTI(vptr_shm_dettagli_lotti)[indicemerce].val*/;

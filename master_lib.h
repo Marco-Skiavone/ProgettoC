@@ -18,6 +18,13 @@ void stampa_mercato_dump(void *vptr_shm_dump, void *vptr_shm_mercato, int PARAME
  * Qualora entrambe siano assenti, terminerà la simulazione. */
 int controlla_mercato(void *vptr_shm_mercato, void *vptr_shm_dump, int PARAMETRO[]);
 
+/* Stampa in ordine:
+ * - le merci, coi 5 parametri richiesti
+ * - i porti, coi 3 parametri richiesti + le banchine [occupate/presenti]
+ * - le navi, coi 3 parametri richiesti
+ * CHIAMATO da stampa_dump() e stampa_terminazione(). */
+void stampa_merci_porti_navi(int PARAMETRO[], void * vptr_shm_dump, void *vptr_shm_mercato, int id_semaforo_banchine);
+
 /* Stampa il dump in quel determinato momento. */
 void stampa_dump(int PARAMETRO[], void * vptr_shm_dump, void * vptr_shm_mercato, int id_semaforo_banchine);
 

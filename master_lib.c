@@ -46,15 +46,13 @@ int controlla_mercato(void *vptr_shm_mercato, void *vptr_shm_dump, int PARAMETRO
 	return offerte || richieste;
 }
 
-void stampa_dump(int PARAMETRO[], void * vptr_shm_dump, void *vptr_shm_mercato, int id_semaforo_banchine){
+void stampa_merci_porti_navi(int PARAMETRO[], void * vptr_shm_dump, void *vptr_shm_mercato, int id_semaforo_banchine){
+	int i, j;
 	/*da togliere in futuro --> vptr_shm_mercato e stampa_mercato_dump()*/
-    int i, j;
-    printf("*** Inizio stampa del dump: giorno %d ***\n", ((dump*)vptr_shm_dump)->data);
-    for(i = 0; i < (SO_MERCI+SO_PORTI); i++){
+	for(i = 0; i < (SO_MERCI+SO_PORTI); i++){
         if(i < SO_MERCI){  /* stampo merci per tipologia */
             printf("Merce %d\n", i);
             printf("- consegnata: %d\n", CAST_MERCE_DUMP(vptr_shm_dump)[i].consegnata);
-            TEST_ERROR
             printf("- presente in nave: %d\n", CAST_MERCE_DUMP(vptr_shm_dump)[i].presente_in_nave);
             printf("- presente in porto: %d\n", CAST_MERCE_DUMP(vptr_shm_dump)[i].presente_in_porto);
             printf("- scaduta in nave: %d\n", CAST_MERCE_DUMP(vptr_shm_dump)[i].scaduta_in_nave);
@@ -63,7 +61,6 @@ void stampa_dump(int PARAMETRO[], void * vptr_shm_dump, void *vptr_shm_mercato, 
             j = i - SO_MERCI;
             printf("Porto %d\n", j);
             printf("- merce presente: %d\n",  (CAST_PORTO_DUMP(vptr_shm_dump))[j].mercepresente);
-            TEST_ERROR
             printf("- merce ricevuta: %d\n", (CAST_PORTO_DUMP(vptr_shm_dump))[j].mercericevuta);
             printf("- merce spedita: %d\n", (CAST_PORTO_DUMP(vptr_shm_dump))[j].mercespedita);
             (CAST_PORTO_DUMP(vptr_shm_dump))[j].banchineoccupate = (CAST_PORTO_DUMP(vptr_shm_dump))[j].banchinetotali - sem_get_val(id_semaforo_banchine, j);
@@ -75,6 +72,12 @@ void stampa_dump(int PARAMETRO[], void * vptr_shm_dump, void *vptr_shm_mercato, 
     printf("- navi in mare con carico: %d\n", CAST_DUMP(vptr_shm_dump)->nd.navicariche);
     printf("- navi in mare senza carico: %d\n", CAST_DUMP(vptr_shm_dump)->nd.naviscariche);
     printf("- navi in porto (carico/scarico): %d\n", CAST_DUMP(vptr_shm_dump)->nd.naviporto);
+}
+
+void stampa_dump(int PARAMETRO[], void * vptr_shm_dump, void *vptr_shm_mercato, int id_semaforo_banchine){
+	/*da togliere in futuro --> vptr_shm_mercato e stampa_mercato_dump()*/
+    printf("*** Inizio stampa del dump: giorno %d ***\n", ((dump*)vptr_shm_dump)->data);
+	stampa_merci_porti_navi(PARAMETRO, vptr_shm_dump,vptr_shm_mercato, id_semaforo_banchine);
     printf("\n--- Fine stato dump attuale (giorno %d). ---\n", CAST_DUMP(vptr_shm_dump)->data);
 }
 
@@ -98,34 +101,9 @@ void stampa_terminazione(int PARAMETRO[], void * vptr_shm_dump, void * vptr_shm_
 	/*da togliere in futuro --> vptr_shm_mercato e stampa_mercato_dump()*/
 	printf("\n----------------------------------\n");
 	printf(" *** STAMPA DI TERMINAZIONE DELLA SIMULAZIONE! giorno %d ***\n", CAST_DUMP(vptr_shm_dump)->data);
-	for(i = 0; i < (SO_MERCI+SO_PORTI); i++){
-        if(i < SO_MERCI){  /* stampo merci per tipologia */
-            printf("Merce %d\n", i);
-            printf("- consegnata: %d\n", CAST_MERCE_DUMP(vptr_shm_dump)[i].consegnata);
-            printf("- presente in nave: %d\n", CAST_MERCE_DUMP(vptr_shm_dump)[i].presente_in_nave);
-            printf("- presente in porto: %d\n", CAST_MERCE_DUMP(vptr_shm_dump)[i].presente_in_porto);
-            printf("- scaduta in nave: %d\n", CAST_MERCE_DUMP(vptr_shm_dump)[i].scaduta_in_nave);
-            printf("- scaduta in porto: %d\n", CAST_MERCE_DUMP(vptr_shm_dump)[i].scaduta_in_porto);
-        } else {
-            j = i - SO_MERCI;
-            printf("Porto %d\n", j);
-            printf("- merce presente: %d\n",  (CAST_PORTO_DUMP(vptr_shm_dump))[j].mercepresente);
-            printf("- merce ricevuta: %d\n", (CAST_PORTO_DUMP(vptr_shm_dump))[j].mercericevuta);
-            printf("- merce spedita: %d\n", (CAST_PORTO_DUMP(vptr_shm_dump))[j].mercespedita);
-            (CAST_PORTO_DUMP(vptr_shm_dump))[j].banchineoccupate = (CAST_PORTO_DUMP(vptr_shm_dump))[j].banchinetotali - sem_get_val(id_semaforo_banchine, j);
-            printf("- banchine occupate/totali: %d/%d\n", (CAST_PORTO_DUMP(vptr_shm_dump))[j].banchineoccupate, (CAST_PORTO_DUMP(vptr_shm_dump))[j].banchinetotali);
-            stampa_mercato_dump(vptr_shm_dump, vptr_shm_mercato, PARAMETRO, j);
-        }
-    }
+	stampa_merci_porti_navi(PARAMETRO, vptr_shm_dump,vptr_shm_mercato, id_semaforo_banchine);
 	/* extra */
 	printf("Report speciale di terminazione:\n");
-	for(i = 0; i < SO_MERCI; i++){
-		printf("Merce %d\n", i);
-		printf("- consegnata: %d\n", CAST_M_TERM_DUMP(vptr_shm_dump)[i].consegnata);
-		printf("- rimasta in porto: %d\n", CAST_M_TERM_DUMP(vptr_shm_dump)[i].r_porto);
-		printf("- scaduta in porto: %d\n", CAST_M_TERM_DUMP(vptr_shm_dump)[i].scaduta_porto);
-		printf("- scaduta in nave: %d\n", CAST_M_TERM_DUMP(vptr_shm_dump)[i].scaduta_nave);
-	}
 	calcola_porti_term(PARAMETRO, vptr_shm_dump);
 	printf("Porto che ha ricevuto più lotti di merce: %d\n", CAST_TERM_DUMP(vptr_shm_dump).porto_ricevute);
 	printf("Porto che ha spedito più lotti di merce: %d\n", CAST_TERM_DUMP(vptr_shm_dump).porto_spedite);
