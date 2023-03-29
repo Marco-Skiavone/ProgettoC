@@ -18,4 +18,11 @@ void stampa_mercato_dump(void *vptr_shm_dump, void *vptr_shm_mercato, int PARAME
  * Qualora entrambe siano assenti, terminerà la simulazione. */
 int controlla_mercato(void *vptr_shm_mercato, void *vptr_shm_dump, int PARAMETRO[]);
 
-void stampa_dump(int PARAMETRO[], void * vptr_shm_dump,void * vptr_shm_mercato,  int id_semaforo_banchine);
+/* Stampa il dump in quel determinato momento. */
+void stampa_dump(int PARAMETRO[], void * vptr_shm_dump, void * vptr_shm_mercato, int id_semaforo_banchine);
+
+/* Calcola il porto con più spedizioni e quello con più ricezioni. */
+void calcola_porti_term(int PARAMETRO[], void* vptr_shm_dump);
+
+/* Stampa il dump alla terminazione della simulazione. */
+void stampa_terminazione(int PARAMETRO[], void * vptr_shm_dump, void * vptr_shm_mercato, int id_semaforo_banchine);

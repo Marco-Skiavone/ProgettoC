@@ -103,7 +103,7 @@
 #define SIZE_SHAREDM_DETTAGLI_LOTTI (sizeof(merce) * SO_MERCI)
 
 #define CHIAVE_SHAREDM_DUMP 40
-#define SIZE_SHAREDM_DUMP ((sizeof(porto_dump) * SO_PORTI) + (sizeof(merce_dump) * SO_MERCI) + sizeof(dump))
+#define SIZE_SHAREDM_DUMP ((sizeof(porto_dump) * SO_PORTI) + (sizeof(merce_dump) * SO_MERCI) + (sizeof(merce_stat_fine) * SO_MERCI) + sizeof(dump))
 
 #define MSG_SIZE (sizeof(int)*2)
 #define CHIAVE_CODA 50
@@ -133,6 +133,12 @@
 
 #define CAST_PORTO_DUMP(ptr) \
 	((porto_dump*)(((merce_dump*) ptr+sizeof(int))+SO_MERCI))
+
+#define CAST_TERM_DUMP(ptr)	\
+	(((dump*)ptr)->term_dump)
+
+#define CAST_M_TERM_DUMP(ptr)	\
+	((merce_stat_fine*)((porto_dump*)(((merce_dump*) ptr+sizeof(int))+SO_MERCI)+SO_PORTI))
 
 /* ------------------------- */
 
@@ -214,10 +220,26 @@ typedef struct {
     int scaduta_in_nave;
 } merce_dump;
 
-/* Tipo usato per la struttura generica del dump. */
+/* Tipo usato per la struttura di term_dump */
+typedef struct {
+	int r_porto; 		/* lotti rimasti in porto */
+	int scaduta_porto;		/* scaduta in porto */
+	int scaduta_nave;	/* scaduta in nave */
+	int consegnata;		/* consegnata */
+} merce_stat_fine;
+
+/* Tipo usato per la struttura del vettore nel dump, usato in fase di terminazione della simulazione. */
+typedef struct {
+	merce_stat_fine *merce_stat_fine_ptr;	/* puntatore ad area dove le */
+	int porto_spedite;	/* Indica il porto che a fine simulazione ha spedito più merci. */
+	int porto_ricevute;	/* Indica il porto che a fine simulazione ha ricevuto più merci. */
+} term_dump;
+
+/* Tipo usato per la struttura del dump. */
 typedef struct {
 	int data;
     merce_dump *merce_dump_ptr;
     porto_dump *porto_dump_ptr;
+	term_dump term_dump;
     nave_dump nd;
 } dump;

@@ -344,6 +344,11 @@ void inizializza_dump(){
     CAST_DUMP(vptr_shm_dump)->data = 0;
     CAST_DUMP(vptr_shm_dump)->merce_dump_ptr = (merce_dump*)(vptr_shm_dump+sizeof(int));/* probabilmente non funziona! ( ma andrebbe davvero inizializzato! )*/
     CAST_DUMP(vptr_shm_dump)->porto_dump_ptr = (porto_dump*)(((merce_dump*) vptr_shm_dump+sizeof(int))+SO_MERCI);
+    CAST_TERM_DUMP(vptr_shm_dump).merce_stat_fine_ptr = ((merce_stat_fine*)((porto_dump*)(((merce_dump*) vptr_shm_dump+sizeof(int))+SO_MERCI)+SO_PORTI));
+
+    CAST_TERM_DUMP(vptr_shm_dump).porto_ricevute = 0;
+    CAST_TERM_DUMP(vptr_shm_dump).porto_spedite = 0;
+
     CAST_DUMP(vptr_shm_dump)->nd.navicariche = 0;
     CAST_DUMP(vptr_shm_dump)->nd.naviscariche = SO_NAVI;
     CAST_DUMP(vptr_shm_dump)->nd.naviporto = 0;
@@ -360,6 +365,13 @@ void inizializza_dump(){
         CAST_PORTO_DUMP(vptr_shm_dump)[i].mercericevuta = 0;
         CAST_PORTO_DUMP(vptr_shm_dump)[i].mercespedita = 0;
     }
+    for(i = 0; i < SO_MERCI; i++){
+        CAST_M_TERM_DUMP(vptr_shm_dump)[i].consegnata = 0;
+        CAST_M_TERM_DUMP(vptr_shm_dump)[i].r_porto = 0;
+        CAST_M_TERM_DUMP(vptr_shm_dump)[i].scaduta_nave = 0;
+        CAST_M_TERM_DUMP(vptr_shm_dump)[i].scaduta_porto = 0;           
+    }
+
     /* bzero(CAST_DUMP(vptr_shm_dump)->merce_dump_ptr, sizeof(merce_dump)*SO_MERCI) */
 }
 
@@ -368,13 +380,15 @@ void signal_handler(int signo){
     int i;
     switch(signo){
         case SIGALRM:
-            if(CAST_DUMP(vptr_shm_dump)->data < SO_DAYS)
+            if(CAST_DUMP(vptr_shm_dump)->data < SO_DAYS-1){
                 CAST_DUMP(vptr_shm_dump)->data++;
-            printf("\nMASTER: Passato giorno %d su %d.\n", CAST_DUMP(vptr_shm_dump)->data, SO_DAYS);
-            stampa_dump(PARAMETRO, vptr_shm_dump, vptr_shm_mercato, id_semaforo_banchine);
-            if(CAST_DUMP(vptr_shm_dump)->data < SO_DAYS){
+                printf("\nMASTER: Passato giorno %d su %d.\n", CAST_DUMP(vptr_shm_dump)->data, SO_DAYS);
+                stampa_dump(PARAMETRO, vptr_shm_dump, vptr_shm_mercato, id_semaforo_banchine);
                 for(i = 0; i < SO_NAVI+SO_PORTI; i++)
                     { kill(child_pids[i], SIGUSR1);}
+            } else {
+                CAST_DUMP(vptr_shm_dump)->data++;
+                stampa_terminazione(PARAMETRO, vptr_shm_dump, vptr_shm_mercato, id_semaforo_banchine);
             }
             break;
         default: 
