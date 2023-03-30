@@ -4,6 +4,7 @@
 #include "shm_lib.h"
 #include "master_lib.h"
 
+
 void* vptr_shm_mercato;
 int id_shm_mercato;
 
@@ -54,6 +55,7 @@ int main(int argc, char* argv[]){
     setbuf(stdout, NULL); /* unbufferizza stdout */
     clearLog();
     srand(time(NULL));
+    freopen("out.txt", "a", stdout);
     if(argc !=2){
         perror("argc != 2");
         exit(EXIT_FAILURE);
@@ -171,7 +173,7 @@ int main(int argc, char* argv[]){
 
     
     sem_wait_zero(id_semaforo_gestione, 0);
-
+    stampa_dump(PARAMETRO, vptr_shm_dump, vptr_shm_mercato, id_semaforo_banchine);
     struct sigaction sa_alrm;
     sa_alrm.sa_handler = signal_handler;
     sa_alrm.sa_flags = 0;
@@ -189,7 +191,8 @@ int main(int argc, char* argv[]){
         }
         pause();
     } while(((int)(CAST_DUMP(vptr_shm_dump)->data) < SO_DAYS) && continua_simulazione);
-
+    
+    freopen("out.txt", "a", stdout);
     for(i = 0; i < SO_NAVI+SO_PORTI; i++){
         printf("MASTER: ammazzo il figlio %d\n", child_pids[i]);
         kill(child_pids[i], SIGUSR2);
@@ -373,14 +376,18 @@ void signal_handler(int signo){
     switch(signo){
         case SIGALRM:
             if(CAST_DUMP(vptr_shm_dump)->data < SO_DAYS-1){
+                fprintf(stderr, "\x1b[2J\x1b[H");
                 CAST_DUMP(vptr_shm_dump)->data++;
                 printf("\nMASTER: Passato giorno %d su %d.\n", CAST_DUMP(vptr_shm_dump)->data, SO_DAYS);
                 stampa_dump(PARAMETRO, vptr_shm_dump, vptr_shm_mercato, id_semaforo_banchine);
                 for(i = 0; i < SO_NAVI+SO_PORTI; i++)
                     { kill(child_pids[i], SIGUSR1);}
+                fprintf(stderr, "La simulazione è in corso :) attendi ancora altri %d secondi...\n", (SO_DAYS - CAST_DUMP(vptr_shm_dump)->data));
             } else {
                 CAST_DUMP(vptr_shm_dump)->data++;
                 stampa_terminazione(PARAMETRO, vptr_shm_dump, vptr_shm_mercato, id_semaforo_banchine);
+                fprintf(stderr, "\x1b[2J\x1b[H");
+                fprintf(stderr, "Simulazione completata ^_^\n");
             }
             break;
         default: 

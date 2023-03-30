@@ -96,8 +96,10 @@ int main(int argc, char *argv[]){
     sem_reserve(id_semaforo_gestione, 0);
     sem_wait_zero(id_semaforo_gestione, 0);
     
+    FILE *fp;
+    fp = freopen("log_navi.txt", "a", stdout);
     codice_simulazione();
-
+    fclose(fp);
 
     //printf("Nave %d sto uscendo con gestione = %d\n", indice, sem_get_val(id_semaforo_gestione, 0));
     sgancia_risorse();
@@ -107,7 +109,7 @@ int main(int argc, char *argv[]){
 
 void aggiorna_dump_carico(int indiceporto, merce_nave* carico, int caricati, int spazio_libero){
     int i;
-    printf("Entro aggiorna dump sem reserve \n");
+    //printf("Entro aggiorna dump sem reserve \n");
     sem_reserve(id_semaforo_dump, 0);
 
     if(spazio_libero != SO_CAPACITY){ /* spazio libero va in ton, ergo il dump dei porti deve essere in ton. */
@@ -125,7 +127,7 @@ void aggiorna_dump_carico(int indiceporto, merce_nave* carico, int caricati, int
     
     
     sem_release(id_semaforo_dump, 0);
-    printf("Esco aggiorna dump sem reserve \n");
+    //printf("Esco aggiorna dump sem reserve \n");
 }
 
 
@@ -392,9 +394,9 @@ void codice_simulazione(){
          * dopodiché aggiorna il dump sul carico e salpa per il porto di destinazione */
         sem_release(id_semaforo_mercato, indiceportoattraccato);
 
-        attesa((SO_CAPACITY - spaziolibero), SO_LOADSPEED);
         printf("Nave %d inizia a caricare\n", indice);
         aggiorna_dump_carico(indiceportoattraccato, carico, i_carico, spaziolibero);
+        attesa((SO_CAPACITY - spaziolibero), SO_LOADSPEED);
         printf("Nave %d ha caricato\n", indice);
         sem_release(id_semaforo_banchine, indiceportoattraccato);
         if(spaziolibero == SO_CAPACITY){

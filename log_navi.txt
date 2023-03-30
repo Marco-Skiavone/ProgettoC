@@ -1,0 +1,1631 @@
+Nave 0 in posizione x:226.452000 y:480.960000 indice porto piu vicino 7 x:160.968000 y;300.440000
+Nave 0 inizia il viaggio
+0. stato nave 0 aggiornato
+Nave 0 ha ricevuto una banchina al porto 7
+Richiesta da porto 6 merce 3 lotti 89 al porto 7 con val 102
+nave 0 ha caricato 2 lotti di merce 3 spaziolibero: 326
+Nave 0 inizia a caricare
+*** NAVE 0: ricevuto SIGUSR1: data = 1 ***
+Nave 0 ha caricato
+3. stato nave 0 aggiornato
+Nave 0 parte
+Nave 0 arriva
+Nave 0 attraccata al porto 6
+1. stato nave 0 aggiornato
+*** NAVE 0: ricevuto SIGUSR1: data = 2 ***
+nave 0 in attesa dal giorno 2: giorno attuale: 2
+Nave 0 inizia a scaricare al porto 6. giorno 2
+Nave 0 ha scaricato al porto 6. giorno 2
+Richiesta da porto 5 merce 2 lotti 102 al porto 6 con val 136
+nave 0 ha caricato 15 lotti di merce 2 spaziolibero: 25
+Nave 0 inizia a caricare
+*** NAVE 0: ricevuto SIGUSR1: data = 4 ***
+Nave 0 ha caricato
+3. stato nave 0 aggiornato
+Nave 0 parte
+Nave 0 arriva
+Nave 0 attraccata al porto 5
+1. stato nave 0 aggiornato
+*** NAVE 0: ricevuto SIGUSR1: data = 6 ***
+nave 0 in attesa dal giorno 6: giorno attuale: 6
+Nave 0 inizia a scaricare al porto 5. giorno 6
+Nave 0 ha scaricato al porto 5. giorno 6
+Richiesta da porto 7 merce 4 lotti 88 al porto 5 con val 28
+nave 0 ha caricato 20 lotti di merce 4 spaziolibero: 20
+Nave 0 inizia a caricare
+*** NAVE 0: ricevuto SIGUSR1: data = 8 ***
+Nave 0 ha caricato
+3. stato nave 0 aggiornato
+Nave 0 parte
+Nave 0 arriva
+*** NAVE 0: ricevuto SIGUSR1: data = 9 ***
+Nave 0 attraccata al porto 7
+1. stato nave 0 aggiornato
+*** NAVE 0: ricevuto SIGUSR1: data = 11 ***
+nave 0 in attesa dal giorno 11: giorno attuale: 11
+Nave 0 inizia a scaricare al porto 7. giorno 11
+Nave 0 ha scaricato al porto 7. giorno 11
+Richiesta da porto 8 merce 3 lotti 90 al porto 7 con val 88
+nave 0 ha caricato 2 lotti di merce 3 spaziolibero: 326
+Nave 0 inizia a caricare
+*** NAVE 0: ricevuto SIGUSR1: data = 12 ***
+Nave 0 ha caricato
+3. stato nave 0 aggiornato
+Nave 0 parte
+Nave 0 arriva
+Nave 0 attraccata al porto 8
+1. stato nave 0 aggiornato
+*** NAVE 0: ricevuto SIGUSR1: data = 13 ***
+nave 0 in attesa dal giorno 13: giorno attuale: 13
+Nave 0 inizia a scaricare al porto 8. giorno 13
+Nave 0 ha scaricato al porto 8. giorno 13
+Richiesta da porto 5 merce 2 lotti 12 al porto 8 con val 34
+nave 0 ha caricato 12 lotti di merce 2 spaziolibero: 220
+Nave 0 inizia a caricare
+*** NAVE 0: ricevuto SIGUSR1: data = 15 ***
+Nave 0 ha caricato
+3. stato nave 0 aggiornato
+Nave 0 parte
+Nave 0 arriva
+Nave 0 attraccata al porto 5
+1. stato nave 0 aggiornato
+*** NAVE 0: ricevuto SIGUSR1: data = 17 ***
+nave 0 in attesa dal giorno 17: giorno attuale: 17
+Nave 0 inizia a scaricare al porto 5. giorno 17
+Nave 0 ha scaricato al porto 5. giorno 17
+Nave 0 deve skippare porto 5
+Nave 0 inizia a caricare
+Nave 0 ha caricato
+2. stato nave 0 aggiornato
+Nave 0 parte
+Nave 0 arriva
+NAVE 0: ricevuto SIGUSR2. data: 20
+#DEB - Nave 0:
+-porti_attraccati: 6
+-porti_lasciati: 6
+-ultimo_indice: 5
+Nave 2 in posizione x:397.794000 y:36.072000 indice porto piu vicino 1 x:500.000000 y;0.000000
+Nave 2 inizia il viaggio
+0. stato nave 2 aggiornato
+Nave 2 ha ricevuto una banchina al porto 1
+Richiesta da porto 4 merce 0 lotti 125 al porto 1 con val 184
+nave 2 ha caricato 125 lotti di merce 0 spaziolibero: 875
+nave 2 ha caricato 26 lotti di merce 1 spaziolibero: 17
+Nave 2 inizia a caricare
+*** NAVE 2: ricevuto SIGUSR1: data = 1 ***
+Nave 2 ha caricato
+3. stato nave 2 aggiornato
+Nave 2 parte
+Nave 2 arriva
+*** NAVE 2: ricevuto SIGUSR1: data = 5 ***
+Nave 2 attraccata al porto 4
+1. stato nave 2 aggiornato
+*** NAVE 2: ricevuto SIGUSR1: data = 7 ***
+nave 2 in attesa dal giorno 7: giorno attuale: 7
+Nave 2 inizia a scaricare al porto 4. giorno 7
+Nave 2 ha scaricato al porto 4. giorno 7
+Richiesta da porto 7 merce 2 lotti 60 al porto 4 con val 48
+nave 2 ha caricato 15 lotti di merce 2 spaziolibero: 25
+Nave 2 inizia a caricare
+*** NAVE 2: ricevuto SIGUSR1: data = 9 ***
+Nave 2 ha caricato
+3. stato nave 2 aggiornato
+Nave 2 parte
+Nave 2 arriva
+*** NAVE 2: ricevuto SIGUSR1: data = 12 ***
+Nave 2 attraccata al porto 7
+1. stato nave 2 aggiornato
+*** NAVE 2: ricevuto SIGUSR1: data = 14 ***
+nave 2 in attesa dal giorno 14: giorno attuale: 14
+Nave 2 inizia a scaricare al porto 7. giorno 14
+Nave 2 ha scaricato al porto 7. giorno 14
+Richiesta da porto 6 merce 3 lotti 67 al porto 7 con val 84
+nave 2 ha caricato 2 lotti di merce 3 spaziolibero: 326
+Nave 2 inizia a caricare
+*** NAVE 2: ricevuto SIGUSR1: data = 15 ***
+Nave 2 ha caricato
+3. stato nave 2 aggiornato
+Nave 2 parte
+Nave 2 arriva
+*** NAVE 2: ricevuto SIGUSR1: data = 19 ***
+Nave 2 attraccata al porto 6
+1. stato nave 2 aggiornato
+NAVE 2: ricevuto SIGUSR2. data: 20
+#DEB - Nave 2:
+-porti_attraccati: 4
+-porti_lasciati: 3
+-ultimo_indice: 6
+Nave 4 in posizione x:8.016000 y:368.736000 indice porto piu vicino 4 x:55.214000 y;250.500000
+Nave 4 inizia il viaggio
+*** NAVE 4: ricevuto SIGUSR1: data = 3 ***
+0. stato nave 4 aggiornato
+Nave 4 ha ricevuto una banchina al porto 4
+Richiesta da porto 5 merce 2 lotti 87 al porto 4 con val 63
+nave 4 ha caricato 15 lotti di merce 2 spaziolibero: 25
+Nave 4 inizia a caricare
+*** NAVE 4: ricevuto SIGUSR1: data = 5 ***
+Nave 4 ha caricato
+3. stato nave 4 aggiornato
+Nave 4 parte
+Nave 4 arriva
+Nave 4 attraccata al porto 5
+1. stato nave 4 aggiornato
+*** NAVE 4: ricevuto SIGUSR1: data = 7 ***
+nave 4 in attesa dal giorno 7: giorno attuale: 7
+Nave 4 inizia a scaricare al porto 5. giorno 7
+Nave 4 ha scaricato al porto 5. giorno 7
+Richiesta da porto 9 merce 4 lotti 63 al porto 5 con val 8
+nave 4 ha caricato 8 lotti di merce 4 spaziolibero: 608
+Nave 4 inizia a caricare
+*** NAVE 4: ricevuto SIGUSR1: data = 8 ***
+Nave 4 ha caricato
+3. stato nave 4 aggiornato
+Nave 4 parte
+Nave 4 arriva
+Nave 4 attraccata al porto 9
+1. stato nave 4 aggiornato
+*** NAVE 4: ricevuto SIGUSR1: data = 9 ***
+nave 4 in attesa dal giorno 9: giorno attuale: 9
+Nave 4 inizia a scaricare al porto 9. giorno 9
+Nave 4 ha scaricato al porto 9. giorno 9
+Richiesta da porto 8 merce 3 lotti 92 al porto 9 con val 88
+nave 4 ha caricato 2 lotti di merce 3 spaziolibero: 326
+Nave 4 inizia a caricare
+*** NAVE 4: ricevuto SIGUSR1: data = 10 ***
+Nave 4 ha caricato
+3. stato nave 4 aggiornato
+Nave 4 parte
+Nave 4 arriva
+Nave 4 attraccata al porto 8
+1. stato nave 4 aggiornato
+*** NAVE 4: ricevuto SIGUSR1: data = 12 ***
+nave 4 in attesa dal giorno 12: giorno attuale: 12
+Nave 4 inizia a scaricare al porto 8. giorno 12
+Nave 4 ha scaricato al porto 8. giorno 12
+Richiesta da porto 5 merce 2 lotti 27 al porto 8 con val 49
+nave 4 ha caricato 15 lotti di merce 2 spaziolibero: 25
+Nave 4 inizia a caricare
+*** NAVE 4: ricevuto SIGUSR1: data = 14 ***
+Nave 4 ha caricato
+3. stato nave 4 aggiornato
+Nave 4 parte
+Nave 4 arriva
+Nave 4 attraccata al porto 5
+1. stato nave 4 aggiornato
+*** NAVE 4: ricevuto SIGUSR1: data = 15 ***
+nave 4 in attesa dal giorno 15: giorno attuale: 15
+Nave 4 inizia a scaricare al porto 5. giorno 15
+Nave 4 ha scaricato al porto 5. giorno 15
+Nave 4 deve skippare porto 5
+Nave 4 inizia a caricare
+Nave 4 ha caricato
+2. stato nave 4 aggiornato
+Nave 4 parte
+Nave 4 arriva
+Nave 4 attraccata al porto 0
+0. stato nave 4 aggiornato
+nave 4 in attesa dal giorno 15: giorno attuale: 15
+Nave 4 inizia a scaricare al porto 0. giorno 15
+Nave 4 ha scaricato al porto 0. giorno 15
+Richiesta da porto 6 merce 4 lotti 110 al porto 0 con val 114
+nave 4 ha caricato 20 lotti di merce 4 spaziolibero: 20
+Nave 4 inizia a caricare
+*** NAVE 4: ricevuto SIGUSR1: data = 17 ***
+Nave 4 ha caricato
+3. stato nave 4 aggiornato
+Nave 4 parte
+Nave 4 arriva
+NAVE 4: ricevuto SIGUSR2. data: 20
+#DEB - Nave 4:
+-porti_attraccati: 6
+-porti_lasciati: 6
+-ultimo_indice: 0
+Nave 3 in posizione x:459.918000 y:258.516000 indice porto piu vicino 8 x:325.410000 y;280.944000
+Nave 3 inizia il viaggio
+0. stato nave 3 aggiornato
+Nave 3 ha ricevuto una banchina al porto 8
+Richiesta da porto 9 merce 0 lotti 45 al porto 8 con val 69
+nave 3 ha caricato 45 lotti di merce 0 spaziolibero: 955
+nave 3 ha caricato 14 lotti di merce 2 spaziolibero: 45
+Nave 3 inizia a caricare
+*** NAVE 3: ricevuto SIGUSR1: data = 1 ***
+Nave 3 ha caricato
+3. stato nave 3 aggiornato
+Nave 3 parte
+Nave 3 arriva
+Nave 3 attraccata al porto 9
+1. stato nave 3 aggiornato
+*** NAVE 3: ricevuto SIGUSR1: data = 3 ***
+nave 3 in attesa dal giorno 3: giorno attuale: 3
+Nave 3 inizia a scaricare al porto 9. giorno 3
+Nave 3 ha scaricato al porto 9. giorno 3
+Richiesta da porto 7 merce 1 lotti 82 al porto 9 con val 43
+nave 3 ha caricato 30 lotti di merce 1 spaziolibero: 10
+Nave 3 inizia a caricare
+*** NAVE 3: ricevuto SIGUSR1: data = 5 ***
+Nave 3 ha caricato
+3. stato nave 3 aggiornato
+Nave 3 parte
+Nave 3 arriva
+Nave 3 attraccata al porto 7
+1. stato nave 3 aggiornato
+*** NAVE 3: ricevuto SIGUSR1: data = 7 ***
+nave 3 in attesa dal giorno 7: giorno attuale: 7
+Nave 3 inizia a scaricare al porto 7. giorno 7
+Nave 3 ha scaricato al porto 7. giorno 7
+Richiesta da porto 6 merce 3 lotti 81 al porto 7 con val 94
+nave 3 ha caricato 2 lotti di merce 3 spaziolibero: 326
+Nave 3 inizia a caricare
+*** NAVE 3: ricevuto SIGUSR1: data = 9 ***
+Nave 3 ha caricato
+3. stato nave 3 aggiornato
+Nave 3 parte
+Nave 3 arriva
+*** NAVE 3: ricevuto SIGUSR1: data = 11 ***
+Nave 3 attraccata al porto 6
+1. stato nave 3 aggiornato
+*** NAVE 3: ricevuto SIGUSR1: data = 13 ***
+nave 3 in attesa dal giorno 13: giorno attuale: 13
+Nave 3 inizia a scaricare al porto 6. giorno 13
+Nave 3 ha scaricato al porto 6. giorno 13
+Richiesta da porto 3 merce 2 lotti 25 al porto 6 con val 31
+nave 3 ha caricato 15 lotti di merce 2 spaziolibero: 25
+Nave 3 inizia a caricare
+*** NAVE 3: ricevuto SIGUSR1: data = 15 ***
+Nave 3 ha caricato
+3. stato nave 3 aggiornato
+Nave 3 parte
+Nave 3 arriva
+Nave 3 attraccata al porto 3
+1. stato nave 3 aggiornato
+*** NAVE 3: ricevuto SIGUSR1: data = 17 ***
+nave 3 in attesa dal giorno 17: giorno attuale: 17
+Nave 3 inizia a scaricare al porto 3. giorno 17
+Nave 3 ha scaricato al porto 3. giorno 17
+Nave 3 deve skippare porto 3
+Nave 3 inizia a caricare
+Nave 3 ha caricato
+2. stato nave 3 aggiornato
+Nave 3 parte
+Nave 3 arriva
+Nave 3 attraccata al porto 1
+0. stato nave 3 aggiornato
+nave 3 in attesa dal giorno 17: giorno attuale: 17
+Nave 3 inizia a scaricare al porto 1. giorno 17
+Nave 3 ha scaricato al porto 1. giorno 17
+Richiesta da porto 8 merce 3 lotti 84 al porto 1 con val 104
+nave 3 ha caricato 2 lotti di merce 3 spaziolibero: 326
+Nave 3 inizia a caricare
+*** NAVE 3: ricevuto SIGUSR1: data = 18 ***
+Nave 3 ha caricato
+3. stato nave 3 aggiornato
+Nave 3 parte
+Nave 3 arriva
+Nave 3 attraccata al porto 8
+1. stato nave 3 aggiornato
+*** NAVE 3: ricevuto SIGUSR1: data = 19 ***
+nave 3 in attesa dal giorno 19: giorno attuale: 19
+Nave 3 inizia a scaricare al porto 8. giorno 19
+Nave 3 ha scaricato al porto 8. giorno 19
+Richiesta da porto 9 merce 4 lotti 5 al porto 8 con val 122
+nave 3 ha caricato 5 lotti di merce 4 spaziolibero: 755
+Nave 3 inizia a caricare
+NAVE 3: ricevuto SIGUSR2. data: 20
+#DEB - Nave 3:
+-porti_attraccati: 7
+-porti_lasciati: 6
+-ultimo_indice: 8
+Nave 10 in posizione x:224.448000 y:480.960000 indice porto piu vicino 7 x:160.968000 y;300.440000
+Nave 10 inizia il viaggio
+*** NAVE 10: ricevuto SIGUSR1: data = 1 ***
+0. stato nave 10 aggiornato
+Nave 10 ha ricevuto una banchina al porto 7
+Richiesta da porto 6 merce 3 lotti 87 al porto 7 con val 100
+nave 10 ha caricato 2 lotti di merce 3 spaziolibero: 326
+Nave 10 inizia a caricare
+*** NAVE 10: ricevuto SIGUSR1: data = 2 ***
+Nave 10 ha caricato
+3. stato nave 10 aggiornato
+Nave 10 parte
+Nave 10 arriva
+*** NAVE 10: ricevuto SIGUSR1: data = 5 ***
+Nave 10 attraccata al porto 6
+1. stato nave 10 aggiornato
+*** NAVE 10: ricevuto SIGUSR1: data = 7 ***
+nave 10 in attesa dal giorno 7: giorno attuale: 7
+Nave 10 inizia a scaricare al porto 6. giorno 7
+Nave 10 ha scaricato al porto 6. giorno 7
+Richiesta da porto 5 merce 2 lotti 72 al porto 6 con val 91
+nave 10 ha caricato 15 lotti di merce 2 spaziolibero: 25
+Nave 10 inizia a caricare
+*** NAVE 10: ricevuto SIGUSR1: data = 9 ***
+Nave 10 ha caricato
+3. stato nave 10 aggiornato
+Nave 10 parte
+Nave 10 arriva
+Nave 10 attraccata al porto 5
+1. stato nave 10 aggiornato
+*** NAVE 10: ricevuto SIGUSR1: data = 11 ***
+nave 10 in attesa dal giorno 11: giorno attuale: 11
+Nave 10 inizia a scaricare al porto 5. giorno 11
+Nave 10 ha scaricato al porto 5. giorno 11
+Nave 10 deve skippare porto 5
+Nave 10 inizia a caricare
+Nave 10 ha caricato
+2. stato nave 10 aggiornato
+Nave 10 parte
+Nave 10 arriva
+Nave 10 attraccata al porto 1
+0. stato nave 10 aggiornato
+nave 10 in attesa dal giorno 11: giorno attuale: 11
+Nave 10 inizia a scaricare al porto 1. giorno 11
+Nave 10 ha scaricato al porto 1. giorno 11
+Richiesta da porto 3 merce 1 lotti 41 al porto 1 con val 89
+nave 10 ha caricato 30 lotti di merce 1 spaziolibero: 10
+Nave 10 inizia a caricare
+*** NAVE 10: ricevuto SIGUSR1: data = 13 ***
+Nave 10 ha caricato
+3. stato nave 10 aggiornato
+Nave 10 parte
+Nave 10 arriva
+Nave 10 attraccata al porto 3
+1. stato nave 10 aggiornato
+*** NAVE 10: ricevuto SIGUSR1: data = 15 ***
+nave 10 in attesa dal giorno 15: giorno attuale: 15
+Nave 10 inizia a scaricare al porto 3. giorno 15
+Nave 10 ha scaricato al porto 3. giorno 15
+Nave 10 deve skippare porto 3
+Nave 10 inizia a caricare
+Nave 10 ha caricato
+2. stato nave 10 aggiornato
+Nave 10 parte
+Nave 10 arriva
+*** NAVE 10: ricevuto SIGUSR1: data = 19 ***
+Nave 10 attraccata al porto 6
+0. stato nave 10 aggiornato
+nave 10 in attesa dal giorno 19: giorno attuale: 19
+Nave 10 inizia a scaricare al porto 6. giorno 19
+Nave 10 ha scaricato al porto 6. giorno 19
+Nave 10 deve skippare porto 6
+Nave 10 inizia a caricare
+Nave 10 ha caricato
+2. stato nave 10 aggiornato
+Nave 10 parte
+Nave 10 arriva
+NAVE 10: ricevuto SIGUSR2. data: 20
+#DEB - Nave 10:
+-porti_attraccati: 6
+-porti_lasciati: 6
+-ultimo_indice: 6
+Nave 6 in posizione x:263.526000 y:456.912000 indice porto piu vicino 8 x:325.410000 y;280.944000
+Nave 6 inizia il viaggio
+0. stato nave 6 aggiornato
+Nave 6 ha ricevuto una banchina al porto 8
+Richiesta da porto 3 merce 1 lotti 92 al porto 8 con val 51
+nave 6 ha caricato 30 lotti di merce 1 spaziolibero: 10
+Nave 6 inizia a caricare
+*** NAVE 6: ricevuto SIGUSR1: data = 1 ***
+Nave 6 ha caricato
+3. stato nave 6 aggiornato
+Nave 6 parte
+Nave 6 arriva
+Nave 6 attraccata al porto 3
+1. stato nave 6 aggiornato
+*** NAVE 6: ricevuto SIGUSR1: data = 3 ***
+nave 6 in attesa dal giorno 3: giorno attuale: 3
+Nave 6 inizia a scaricare al porto 3. giorno 3
+Nave 6 ha scaricato al porto 3. giorno 3
+Richiesta da porto 2 merce 4 lotti 53 al porto 3 con val 70
+nave 6 ha caricato 20 lotti di merce 4 spaziolibero: 20
+Nave 6 inizia a caricare
+*** NAVE 6: ricevuto SIGUSR1: data = 5 ***
+Nave 6 ha caricato
+3. stato nave 6 aggiornato
+Nave 6 parte
+Nave 6 arriva
+Nave 6 attraccata al porto 2
+1. stato nave 6 aggiornato
+*** NAVE 6: ricevuto SIGUSR1: data = 7 ***
+nave 6 in attesa dal giorno 7: giorno attuale: 7
+Nave 6 inizia a scaricare al porto 2. giorno 7
+Nave 6 ha scaricato al porto 2. giorno 7
+Richiesta da porto 3 merce 2 lotti 59 al porto 2 con val 35
+nave 6 ha caricato 15 lotti di merce 2 spaziolibero: 25
+Nave 6 inizia a caricare
+*** NAVE 6: ricevuto SIGUSR1: data = 9 ***
+Nave 6 ha caricato
+3. stato nave 6 aggiornato
+Nave 6 parte
+Nave 6 arriva
+Nave 6 attraccata al porto 3
+1. stato nave 6 aggiornato
+*** NAVE 6: ricevuto SIGUSR1: data = 11 ***
+nave 6 in attesa dal giorno 11: giorno attuale: 11
+Nave 6 inizia a scaricare al porto 3. giorno 11
+Nave 6 ha scaricato al porto 3. giorno 11
+Nave 6 deve skippare porto 3
+Nave 6 inizia a caricare
+Nave 6 ha caricato
+2. stato nave 6 aggiornato
+Nave 6 parte
+Nave 6 arriva
+*** NAVE 6: ricevuto SIGUSR1: data = 12 ***
+Nave 6 attraccata al porto 7
+0. stato nave 6 aggiornato
+nave 6 in attesa dal giorno 12: giorno attuale: 12
+Nave 6 inizia a scaricare al porto 7. giorno 12
+Nave 6 ha scaricato al porto 7. giorno 12
+Richiesta da porto 6 merce 3 lotti 69 al porto 7 con val 86
+nave 6 ha caricato 2 lotti di merce 3 spaziolibero: 326
+Nave 6 inizia a caricare
+*** NAVE 6: ricevuto SIGUSR1: data = 13 ***
+Nave 6 ha caricato
+3. stato nave 6 aggiornato
+Nave 6 parte
+Nave 6 arriva
+*** NAVE 6: ricevuto SIGUSR1: data = 19 ***
+Nave 6 attraccata al porto 6
+1. stato nave 6 aggiornato
+NAVE 6: ricevuto SIGUSR2. data: 20
+#DEB - Nave 6:
+-porti_attraccati: 6
+-porti_lasciati: 5
+-ultimo_indice: 6
+Nave 5 in posizione x:353.706000 y:199.398000 indice porto piu vicino 9 x:310.588000 y;155.294000
+Nave 5 inizia il viaggio
+0. stato nave 5 aggiornato
+Nave 5 ha ricevuto una banchina al porto 9
+Richiesta da porto 6 merce 3 lotti 91 al porto 9 con val 98
+nave 5 ha caricato 2 lotti di merce 3 spaziolibero: 326
+nave 5 ha caricato 9 lotti di merce 1 spaziolibero: 29
+Nave 5 inizia a caricare
+*** NAVE 5: ricevuto SIGUSR1: data = 1 ***
+Nave 5 ha caricato
+3. stato nave 5 aggiornato
+Nave 5 parte
+Nave 5 arriva
+Nave 5 attraccata al porto 6
+1. stato nave 5 aggiornato
+*** NAVE 5: ricevuto SIGUSR1: data = 3 ***
+nave 5 in attesa dal giorno 3: giorno attuale: 3
+Nave 5 inizia a scaricare al porto 6. giorno 3
+Nave 5 ha scaricato al porto 6. giorno 3
+Richiesta da porto 3 merce 2 lotti 94 al porto 6 con val 121
+nave 5 ha caricato 15 lotti di merce 2 spaziolibero: 25
+Nave 5 inizia a caricare
+*** NAVE 5: ricevuto SIGUSR1: data = 5 ***
+Nave 5 ha caricato
+3. stato nave 5 aggiornato
+Nave 5 parte
+Nave 5 arriva
+Nave 5 attraccata al porto 3
+1. stato nave 5 aggiornato
+*** NAVE 5: ricevuto SIGUSR1: data = 7 ***
+nave 5 in attesa dal giorno 7: giorno attuale: 7
+Nave 5 inizia a scaricare al porto 3. giorno 7
+Nave 5 ha scaricato al porto 3. giorno 7
+Richiesta da porto 9 merce 4 lotti 55 al porto 3 con val 30
+nave 5 ha caricato 20 lotti di merce 4 spaziolibero: 20
+Nave 5 inizia a caricare
+*** NAVE 5: ricevuto SIGUSR1: data = 9 ***
+Nave 5 ha caricato
+3. stato nave 5 aggiornato
+Nave 5 parte
+Nave 5 arriva
+Nave 5 attraccata al porto 9
+1. stato nave 5 aggiornato
+*** NAVE 5: ricevuto SIGUSR1: data = 11 ***
+nave 5 in attesa dal giorno 11: giorno attuale: 11
+Nave 5 inizia a scaricare al porto 9. giorno 11
+Nave 5 ha scaricato al porto 9. giorno 11
+Richiesta da porto 4 merce 3 lotti 97 al porto 9 con val 82
+nave 5 ha caricato 2 lotti di merce 3 spaziolibero: 326
+Nave 5 inizia a caricare
+*** NAVE 5: ricevuto SIGUSR1: data = 13 ***
+Nave 5 ha caricato
+3. stato nave 5 aggiornato
+Nave 5 parte
+Nave 5 arriva
+*** NAVE 5: ricevuto SIGUSR1: data = 18 ***
+Nave 5 attraccata al porto 4
+1. stato nave 5 aggiornato
+*** NAVE 5: ricevuto SIGUSR1: data = 19 ***
+nave 5 in attesa dal giorno 19: giorno attuale: 19
+Nave 5 inizia a scaricare al porto 4. giorno 19
+Nave 5 ha scaricato al porto 4. giorno 19
+Richiesta da porto 7 merce 4 lotti 68 al porto 4 con val 100
+nave 5 ha caricato 20 lotti di merce 4 spaziolibero: 20
+Nave 5 inizia a caricare
+NAVE 5: ricevuto SIGUSR2. data: 20
+#DEB - Nave 5:
+-porti_attraccati: 5
+-porti_lasciati: 4
+-ultimo_indice: 4
+Nave 11 in posizione x:3.006000 y:142.284000 indice porto piu vicino 4 x:55.214000 y;250.500000
+Nave 11 inizia il viaggio
+*** NAVE 11: ricevuto SIGUSR1: data = 1 ***
+0. stato nave 11 aggiornato
+Nave 11 ha ricevuto una banchina al porto 4
+Richiesta da porto 3 merce 2 lotti 109 al porto 4 con val 78
+nave 11 ha caricato 15 lotti di merce 2 spaziolibero: 25
+Nave 11 inizia a caricare
+*** NAVE 11: ricevuto SIGUSR1: data = 3 ***
+Nave 11 ha caricato
+3. stato nave 11 aggiornato
+Nave 11 parte
+Nave 11 arriva
+Nave 11 attraccata al porto 3
+1. stato nave 11 aggiornato
+*** NAVE 11: ricevuto SIGUSR1: data = 5 ***
+nave 11 in attesa dal giorno 5: giorno attuale: 5
+Nave 11 inizia a scaricare al porto 3. giorno 5
+Nave 11 ha scaricato al porto 3. giorno 5
+Richiesta da porto 9 merce 4 lotti 83 al porto 3 con val 50
+nave 11 ha caricato 20 lotti di merce 4 spaziolibero: 20
+Nave 11 inizia a caricare
+*** NAVE 11: ricevuto SIGUSR1: data = 7 ***
+Nave 11 ha caricato
+3. stato nave 11 aggiornato
+Nave 11 parte
+Nave 11 arriva
+Nave 11 attraccata al porto 9
+1. stato nave 11 aggiornato
+*** NAVE 11: ricevuto SIGUSR1: data = 9 ***
+nave 11 in attesa dal giorno 9: giorno attuale: 9
+Nave 11 inizia a scaricare al porto 9. giorno 9
+Nave 11 ha scaricato al porto 9. giorno 9
+Richiesta da porto 4 merce 3 lotti 99 al porto 9 con val 86
+nave 11 ha caricato 2 lotti di merce 3 spaziolibero: 326
+Nave 11 inizia a caricare
+*** NAVE 11: ricevuto SIGUSR1: data = 11 ***
+Nave 11 ha caricato
+3. stato nave 11 aggiornato
+Nave 11 parte
+Nave 11 arriva
+*** NAVE 11: ricevuto SIGUSR1: data = 14 ***
+Nave 11 attraccata al porto 4
+1. stato nave 11 aggiornato
+*** NAVE 11: ricevuto SIGUSR1: data = 15 ***
+nave 11 in attesa dal giorno 15: giorno attuale: 15
+Nave 11 inizia a scaricare al porto 4. giorno 15
+Nave 11 ha scaricato al porto 4. giorno 15
+Richiesta da porto 7 merce 2 lotti 30 al porto 4 con val 18
+nave 11 ha caricato 15 lotti di merce 2 spaziolibero: 25
+Nave 11 inizia a caricare
+*** NAVE 11: ricevuto SIGUSR1: data = 17 ***
+Nave 11 ha caricato
+3. stato nave 11 aggiornato
+Nave 11 parte
+Nave 11 arriva
+Nave 11 attraccata al porto 7
+1. stato nave 11 aggiornato
+*** NAVE 11: ricevuto SIGUSR1: data = 19 ***
+nave 11 in attesa dal giorno 19: giorno attuale: 19
+Nave 11 inizia a scaricare al porto 7. giorno 19
+Nave 11 ha scaricato al porto 7. giorno 19
+Richiesta da porto 3 merce 3 lotti 89 al porto 7 con val 78
+nave 11 ha caricato 2 lotti di merce 3 spaziolibero: 326
+Nave 11 inizia a caricare
+NAVE 11: ricevuto SIGUSR2. data: 20
+#DEB - Nave 11:
+-porti_attraccati: 5
+-porti_lasciati: 4
+-ultimo_indice: 7
+Nave 8 in posizione x:471.942000 y:182.364000 indice porto piu vicino 9 x:310.588000 y;155.294000
+Nave 8 inizia il viaggio
+0. stato nave 8 aggiornato
+Nave 8 ha ricevuto una banchina al porto 9
+Richiesta da porto 2 merce 1 lotti 67 al porto 9 con val 73
+nave 8 ha caricato 30 lotti di merce 1 spaziolibero: 10
+Nave 8 inizia a caricare
+*** NAVE 8: ricevuto SIGUSR1: data = 1 ***
+Nave 8 ha caricato
+3. stato nave 8 aggiornato
+Nave 8 parte
+Nave 8 arriva
+Nave 8 attraccata al porto 2
+1. stato nave 8 aggiornato
+*** NAVE 8: ricevuto SIGUSR1: data = 3 ***
+nave 8 in attesa dal giorno 3: giorno attuale: 3
+Nave 8 inizia a scaricare al porto 2. giorno 3
+Nave 8 ha scaricato al porto 2. giorno 3
+Richiesta da porto 7 merce 2 lotti 75 al porto 2 con val 50
+nave 8 ha caricato 15 lotti di merce 2 spaziolibero: 25
+Nave 8 inizia a caricare
+*** NAVE 8: ricevuto SIGUSR1: data = 5 ***
+Nave 8 ha caricato
+3. stato nave 8 aggiornato
+Nave 8 parte
+Nave 8 arriva
+*** NAVE 8: ricevuto SIGUSR1: data = 9 ***
+Nave 8 attraccata al porto 7
+1. stato nave 8 aggiornato
+*** NAVE 8: ricevuto SIGUSR1: data = 11 ***
+nave 8 in attesa dal giorno 11: giorno attuale: 11
+Nave 8 inizia a scaricare al porto 7. giorno 11
+Nave 8 ha scaricato al porto 7. giorno 11
+Richiesta da porto 6 merce 3 lotti 71 al porto 7 con val 90
+nave 8 ha caricato 2 lotti di merce 3 spaziolibero: 326
+Nave 8 inizia a caricare
+*** NAVE 8: ricevuto SIGUSR1: data = 12 ***
+Nave 8 ha caricato
+3. stato nave 8 aggiornato
+Nave 8 parte
+Nave 8 arriva
+*** NAVE 8: ricevuto SIGUSR1: data = 17 ***
+Nave 8 attraccata al porto 6
+1. stato nave 8 aggiornato
+*** NAVE 8: ricevuto SIGUSR1: data = 19 ***
+nave 8 in attesa dal giorno 19: giorno attuale: 19
+Nave 8 inizia a scaricare al porto 6. giorno 19
+Nave 8 ha scaricato al porto 6. giorno 19
+Nave 8 deve skippare porto 6
+Nave 8 inizia a caricare
+Nave 8 ha caricato
+2. stato nave 8 aggiornato
+Nave 8 parte
+Nave 8 arriva
+NAVE 8: ricevuto SIGUSR2. data: 20
+#DEB - Nave 8:
+-porti_attraccati: 4
+-porti_lasciati: 4
+-ultimo_indice: 6
+Nave 1 in posizione x:218.436000 y:256.512000 indice porto piu vicino 5 x:285.218000 y;235.078000
+Nave 1 inizia il viaggio
+0. stato nave 1 aggiornato
+Nave 1 ha ricevuto una banchina al porto 5
+Richiesta da porto 2 merce 4 lotti 93 al porto 5 con val 88
+nave 1 ha caricato 20 lotti di merce 4 spaziolibero: 20
+Nave 1 inizia a caricare
+*** NAVE 1: ricevuto SIGUSR1: data = 1 ***
+Nave 1 ha caricato
+3. stato nave 1 aggiornato
+Nave 1 parte
+Nave 1 arriva
+Nave 1 attraccata al porto 2
+1. stato nave 1 aggiornato
+*** NAVE 1: ricevuto SIGUSR1: data = 3 ***
+nave 1 in attesa dal giorno 3: giorno attuale: 3
+Nave 1 inizia a scaricare al porto 2. giorno 3
+Nave 1 ha scaricato al porto 2. giorno 3
+Richiesta da porto 3 merce 3 lotti 99 al porto 2 con val 109
+nave 1 ha caricato 2 lotti di merce 3 spaziolibero: 326
+nave 1 ha caricato 5 lotti di merce 2 spaziolibero: 1
+Nave 1 inizia a caricare
+*** NAVE 1: ricevuto SIGUSR1: data = 5 ***
+Nave 1 ha caricato
+3. stato nave 1 aggiornato
+Nave 1 parte
+Nave 1 arriva
+Nave 1 attraccata al porto 3
+1. stato nave 1 aggiornato
+*** NAVE 1: ricevuto SIGUSR1: data = 7 ***
+nave 1 in attesa dal giorno 7: giorno attuale: 7
+Nave 1 inizia a scaricare al porto 3. giorno 7
+Nave 1 ha scaricato al porto 3. giorno 7
+Richiesta da porto 9 merce 4 lotti 35 al porto 3 con val 10
+nave 1 ha caricato 10 lotti di merce 4 spaziolibero: 510
+Nave 1 inizia a caricare
+*** NAVE 1: ricevuto SIGUSR1: data = 8 ***
+Nave 1 ha caricato
+3. stato nave 1 aggiornato
+Nave 1 parte
+Nave 1 arriva
+Nave 1 attraccata al porto 9
+1. stato nave 1 aggiornato
+*** NAVE 1: ricevuto SIGUSR1: data = 9 ***
+nave 1 in attesa dal giorno 9: giorno attuale: 9
+Nave 1 inizia a scaricare al porto 9. giorno 9
+Nave 1 ha scaricato al porto 9. giorno 9
+Richiesta da porto 6 merce 3 lotti 73 al porto 9 con val 84
+nave 1 ha caricato 2 lotti di merce 3 spaziolibero: 326
+Nave 1 inizia a caricare
+*** NAVE 1: ricevuto SIGUSR1: data = 11 ***
+Nave 1 ha caricato
+3. stato nave 1 aggiornato
+Nave 1 parte
+Nave 1 arriva
+*** NAVE 1: ricevuto SIGUSR1: data = 17 ***
+Nave 1 attraccata al porto 6
+1. stato nave 1 aggiornato
+*** NAVE 1: ricevuto SIGUSR1: data = 19 ***
+nave 1 in attesa dal giorno 19: giorno attuale: 19
+Nave 1 inizia a scaricare al porto 6. giorno 19
+Nave 1 ha scaricato al porto 6. giorno 19
+Nave 1 deve skippare porto 6
+Nave 1 inizia a caricare
+Nave 1 ha caricato
+2. stato nave 1 aggiornato
+Nave 1 parte
+Nave 1 arriva
+Nave 1 attraccata al porto 5
+0. stato nave 1 aggiornato
+nave 1 in attesa dal giorno 19: giorno attuale: 19
+Nave 1 inizia a scaricare al porto 5. giorno 19
+Nave 1 ha scaricato al porto 5. giorno 19
+Nave 1 deve skippare porto 5
+Nave 1 inizia a caricare
+Nave 1 ha caricato
+2. stato nave 1 aggiornato
+Nave 1 parte
+Nave 1 arriva
+NAVE 1: ricevuto SIGUSR2. data: 20
+#DEB - Nave 1:
+-porti_attraccati: 6
+-porti_lasciati: 6
+-ultimo_indice: 5
+Nave 9 in posizione x:33.066000 y:31.062000 indice porto piu vicino 0 x:0.000000 y;0.000000
+Nave 9 inizia il viaggio
+0. stato nave 9 aggiornato
+Nave 9 ha ricevuto una banchina al porto 0
+Richiesta da porto 9 merce 0 lotti 166 al porto 0 con val 121
+nave 9 ha caricato 121 lotti di merce 0 spaziolibero: 879
+nave 9 ha caricato 13 lotti di merce 2 spaziolibero: 34
+Nave 9 inizia a caricare
+*** NAVE 9: ricevuto SIGUSR1: data = 1 ***
+Nave 9 ha caricato
+3. stato nave 9 aggiornato
+Nave 9 parte
+Nave 9 arriva
+Nave 9 attraccata al porto 9
+1. stato nave 9 aggiornato
+*** NAVE 9: ricevuto SIGUSR1: data = 3 ***
+nave 9 in attesa dal giorno 3: giorno attuale: 3
+Nave 9 inizia a scaricare al porto 9. giorno 3
+Nave 9 ha scaricato al porto 9. giorno 3
+Richiesta da porto 2 merce 1 lotti 37 al porto 9 con val 13
+nave 9 ha caricato 13 lotti di merce 1 spaziolibero: 571
+Nave 9 inizia a caricare
+*** NAVE 9: ricevuto SIGUSR1: data = 4 ***
+Nave 9 ha caricato
+3. stato nave 9 aggiornato
+Nave 9 parte
+Nave 9 arriva
+Nave 9 attraccata al porto 2
+1. stato nave 9 aggiornato
+*** NAVE 9: ricevuto SIGUSR1: data = 5 ***
+nave 9 in attesa dal giorno 5: giorno attuale: 5
+Nave 9 inizia a scaricare al porto 2. giorno 5
+Nave 9 ha scaricato al porto 2. giorno 5
+Richiesta da porto 8 merce 3 lotti 96 al porto 2 con val 107
+nave 9 ha caricato 2 lotti di merce 3 spaziolibero: 326
+Nave 9 inizia a caricare
+*** NAVE 9: ricevuto SIGUSR1: data = 6 ***
+Nave 9 ha caricato
+3. stato nave 9 aggiornato
+Nave 9 parte
+Nave 9 arriva
+Nave 9 attraccata al porto 8
+1. stato nave 9 aggiornato
+*** NAVE 9: ricevuto SIGUSR1: data = 8 ***
+nave 9 in attesa dal giorno 8: giorno attuale: 8
+Nave 9 inizia a scaricare al porto 8. giorno 8
+Nave 9 ha scaricato al porto 8. giorno 8
+Richiesta da porto 3 merce 1 lotti 62 al porto 8 con val 21
+nave 9 ha caricato 21 lotti di merce 1 spaziolibero: 307
+nave 9 ha caricato 4 lotti di merce 2 spaziolibero: 47
+Nave 9 inizia a caricare
+*** NAVE 9: ricevuto SIGUSR1: data = 10 ***
+Nave 9 ha caricato
+3. stato nave 9 aggiornato
+Nave 9 parte
+Nave 9 arriva
+Nave 9 attraccata al porto 3
+1. stato nave 9 aggiornato
+*** NAVE 9: ricevuto SIGUSR1: data = 12 ***
+nave 9 in attesa dal giorno 12: giorno attuale: 12
+Nave 9 inizia a scaricare al porto 3. giorno 12
+Nave 9 ha scaricato al porto 3. giorno 12
+Nave 9 deve skippare porto 3
+Nave 9 inizia a caricare
+Nave 9 ha caricato
+2. stato nave 9 aggiornato
+Nave 9 parte
+Nave 9 arriva
+*** NAVE 9: ricevuto SIGUSR1: data = 17 ***
+Nave 9 attraccata al porto 4
+0. stato nave 9 aggiornato
+nave 9 in attesa dal giorno 17: giorno attuale: 17
+Nave 9 inizia a scaricare al porto 4. giorno 17
+Nave 9 ha scaricato al porto 4. giorno 17
+Richiesta da porto 3 merce 2 lotti 10 al porto 4 con val 3
+nave 9 ha caricato 3 lotti di merce 2 spaziolibero: 805
+Nave 9 inizia a caricare
+*** NAVE 9: ricevuto SIGUSR1: data = 18 ***
+Nave 9 ha caricato
+3. stato nave 9 aggiornato
+Nave 9 parte
+Nave 9 arriva
+Nave 9 attraccata al porto 3
+1. stato nave 9 aggiornato
+nave 9 in attesa dal giorno 18: giorno attuale: 18
+Nave 9 inizia a scaricare al porto 3. giorno 18
+Nave 9 ha scaricato al porto 3. giorno 18
+Nave 9 deve skippare porto 3
+Nave 9 inizia a caricare
+Nave 9 ha caricato
+2. stato nave 9 aggiornato
+Nave 9 parte
+Nave 9 arriva
+Nave 9 attraccata al porto 5
+0. stato nave 9 aggiornato
+nave 9 in attesa dal giorno 18: giorno attuale: 18
+Nave 9 inizia a scaricare al porto 5. giorno 18
+Nave 9 ha scaricato al porto 5. giorno 18
+Nave 9 deve skippare porto 5
+Nave 9 inizia a caricare
+Nave 9 ha caricato
+2. stato nave 9 aggiornato
+Nave 9 parte
+Nave 9 arriva
+NAVE 9: ricevuto SIGUSR2. data: 20
+#DEB - Nave 9:
+-porti_attraccati: 8
+-porti_lasciati: 8
+-ultimo_indice: 5
+Nave 14 in posizione x:420.840000 y:332.664000 indice porto piu vicino 8 x:325.410000 y;280.944000
+Nave 14 inizia il viaggio
+0. stato nave 14 aggiornato
+Nave 14 ha ricevuto una banchina al porto 8
+Richiesta da porto 5 merce 2 lotti 117 al porto 8 con val 112
+nave 14 ha caricato 15 lotti di merce 2 spaziolibero: 25
+Nave 14 inizia a caricare
+*** NAVE 14: ricevuto SIGUSR1: data = 1 ***
+Nave 14 ha caricato
+3. stato nave 14 aggiornato
+Nave 14 parte
+Nave 14 arriva
+Nave 14 attraccata al porto 5
+1. stato nave 14 aggiornato
+*** NAVE 14: ricevuto SIGUSR1: data = 3 ***
+nave 14 in attesa dal giorno 3: giorno attuale: 3
+Nave 14 inizia a scaricare al porto 5. giorno 3
+Nave 14 ha scaricato al porto 5. giorno 3
+Richiesta da porto 7 merce 4 lotti 108 al porto 5 con val 68
+nave 14 ha caricato 20 lotti di merce 4 spaziolibero: 20
+Nave 14 inizia a caricare
+*** NAVE 14: ricevuto SIGUSR1: data = 5 ***
+Nave 14 ha caricato
+3. stato nave 14 aggiornato
+Nave 14 parte
+Nave 14 arriva
+*** NAVE 14: ricevuto SIGUSR1: data = 6 ***
+Nave 14 attraccata al porto 7
+1. stato nave 14 aggiornato
+*** NAVE 14: ricevuto SIGUSR1: data = 7 ***
+nave 14 in attesa dal giorno 7: giorno attuale: 7
+Nave 14 inizia a scaricare al porto 7. giorno 7
+Nave 14 ha scaricato al porto 7. giorno 7
+Richiesta da porto 6 merce 3 lotti 75 al porto 7 con val 92
+nave 14 ha caricato 2 lotti di merce 3 spaziolibero: 326
+Nave 14 inizia a caricare
+*** NAVE 14: ricevuto SIGUSR1: data = 9 ***
+Nave 14 ha caricato
+3. stato nave 14 aggiornato
+Nave 14 parte
+Nave 14 arriva
+*** NAVE 14: ricevuto SIGUSR1: data = 16 ***
+Nave 14 attraccata al porto 6
+1. stato nave 14 aggiornato
+*** NAVE 14: ricevuto SIGUSR1: data = 17 ***
+nave 14 in attesa dal giorno 17: giorno attuale: 17
+Nave 14 inizia a scaricare al porto 6. giorno 17
+Nave 14 ha scaricato al porto 6. giorno 17
+Nave 14 deve skippare porto 6
+Nave 14 inizia a caricare
+Nave 14 ha caricato
+2. stato nave 14 aggiornato
+Nave 14 parte
+Nave 14 arriva
+NAVE 14: ricevuto SIGUSR2. data: 20
+#DEB - Nave 14:
+-porti_attraccati: 4
+-porti_lasciati: 4
+-ultimo_indice: 6
+Nave 15 in posizione x:359.718000 y:295.590000 indice porto piu vicino 8 x:325.410000 y;280.944000
+Nave 15 inizia il viaggio
+0. stato nave 15 aggiornato
+Nave 15 ha ricevuto una banchina al porto 8
+Richiesta da porto 2 merce 0 lotti 116 al porto 8 con val 185
+nave 15 ha caricato 116 lotti di merce 0 spaziolibero: 884
+nave 15 ha caricato 26 lotti di merce 1 spaziolibero: 26
+Nave 15 inizia a caricare
+*** NAVE 15: ricevuto SIGUSR1: data = 1 ***
+Nave 15 ha caricato
+3. stato nave 15 aggiornato
+Nave 15 parte
+Nave 15 arriva
+Nave 15 attraccata al porto 2
+1. stato nave 15 aggiornato
+*** NAVE 15: ricevuto SIGUSR1: data = 3 ***
+nave 15 in attesa dal giorno 3: giorno attuale: 3
+Nave 15 inizia a scaricare al porto 2. giorno 3
+Nave 15 ha scaricato al porto 2. giorno 3
+Richiesta da porto 9 merce 2 lotti 67 al porto 2 con val 70
+nave 15 ha caricato 15 lotti di merce 2 spaziolibero: 25
+Nave 15 inizia a caricare
+*** NAVE 15: ricevuto SIGUSR1: data = 5 ***
+Nave 15 ha caricato
+3. stato nave 15 aggiornato
+Nave 15 parte
+Nave 15 arriva
+Nave 15 attraccata al porto 9
+1. stato nave 15 aggiornato
+*** NAVE 15: ricevuto SIGUSR1: data = 7 ***
+nave 15 in attesa dal giorno 7: giorno attuale: 7
+Nave 15 inizia a scaricare al porto 9. giorno 7
+Nave 15 ha scaricato al porto 9. giorno 7
+Richiesta da porto 3 merce 3 lotti 95 al porto 9 con val 92
+nave 15 ha caricato 2 lotti di merce 3 spaziolibero: 326
+Nave 15 inizia a caricare
+*** NAVE 15: ricevuto SIGUSR1: data = 9 ***
+Nave 15 ha caricato
+3. stato nave 15 aggiornato
+Nave 15 parte
+Nave 15 arriva
+Nave 15 attraccata al porto 3
+1. stato nave 15 aggiornato
+*** NAVE 15: ricevuto SIGUSR1: data = 10 ***
+nave 15 in attesa dal giorno 10: giorno attuale: 10
+Nave 15 inizia a scaricare al porto 3. giorno 10
+Nave 15 ha scaricato al porto 3. giorno 10
+Nave 15 deve skippare porto 3
+Nave 15 inizia a caricare
+Nave 15 ha caricato
+2. stato nave 15 aggiornato
+Nave 15 parte
+Nave 15 arriva
+Nave 15 attraccata al porto 4
+0. stato nave 15 aggiornato
+nave 15 in attesa dal giorno 10: giorno attuale: 10
+Nave 15 inizia a scaricare al porto 4. giorno 10
+Nave 15 ha scaricato al porto 4. giorno 10
+Richiesta da porto 9 merce 4 lotti 25 al porto 4 con val 120
+nave 15 ha caricato 20 lotti di merce 4 spaziolibero: 20
+Nave 15 inizia a caricare
+*** NAVE 15: ricevuto SIGUSR1: data = 12 ***
+Nave 15 ha caricato
+3. stato nave 15 aggiornato
+Nave 15 parte
+Nave 15 arriva
+Nave 15 attraccata al porto 9
+1. stato nave 15 aggiornato
+*** NAVE 15: ricevuto SIGUSR1: data = 14 ***
+nave 15 in attesa dal giorno 14: giorno attuale: 14
+Nave 15 inizia a scaricare al porto 9. giorno 14
+Nave 15 ha scaricato al porto 9. giorno 14
+Richiesta da porto 3 merce 3 lotti 93 al porto 9 con val 80
+nave 15 ha caricato 2 lotti di merce 3 spaziolibero: 326
+Nave 15 inizia a caricare
+*** NAVE 15: ricevuto SIGUSR1: data = 15 ***
+Nave 15 ha caricato
+3. stato nave 15 aggiornato
+Nave 15 parte
+Nave 15 arriva
+Nave 15 attraccata al porto 3
+1. stato nave 15 aggiornato
+*** NAVE 15: ricevuto SIGUSR1: data = 17 ***
+nave 15 in attesa dal giorno 17: giorno attuale: 17
+Nave 15 inizia a scaricare al porto 3. giorno 17
+Nave 15 ha scaricato al porto 3. giorno 17
+Nave 15 deve skippare porto 3
+Nave 15 inizia a caricare
+Nave 15 ha caricato
+2. stato nave 15 aggiornato
+Nave 15 parte
+Nave 15 arriva
+Nave 15 attraccata al porto 3
+0. stato nave 15 aggiornato
+nave 15 in attesa dal giorno 17: giorno attuale: 17
+Nave 15 inizia a scaricare al porto 3. giorno 17
+Nave 15 ha scaricato al porto 3. giorno 17
+Nave 15 deve skippare porto 3
+Nave 15 inizia a caricare
+Nave 15 ha caricato
+2. stato nave 15 aggiornato
+Nave 15 parte
+Nave 15 arriva
+Nave 15 attraccata al porto 7
+0. stato nave 15 aggiornato
+nave 15 in attesa dal giorno 17: giorno attuale: 17
+Nave 15 inizia a scaricare al porto 7. giorno 17
+Nave 15 ha scaricato al porto 7. giorno 17
+Richiesta da porto 6 merce 3 lotti 63 al porto 7 con val 80
+nave 15 ha caricato 2 lotti di merce 3 spaziolibero: 326
+Nave 15 inizia a caricare
+*** NAVE 15: ricevuto SIGUSR1: data = 18 ***
+Nave 15 ha caricato
+3. stato nave 15 aggiornato
+Nave 15 parte
+Nave 15 arriva
+NAVE 15: ricevuto SINave 13 in posizione x:373.746000 y:238.476000 indice porto piu vicino 8 x:325.410000 y;280.944000
+Nave 13 inizia il viaggio
+0. stato nave 13 aggiornato
+Nave 13 ha ricevuto una banchina al porto 8
+Richiesta da porto 3 merce 1 lotti 122 al porto 8 con val 81
+nave 13 ha caricato 30 lotti di merce 1 spaziolibero: 10
+Nave 13 inizia a caricare
+*** NAVE 13: ricevuto SIGUSR1: data = 1 ***
+Nave 13 ha caricato
+3. stato nave 13 aggiornato
+Nave 13 parte
+Nave 13 arriva
+Nave 13 attraccata al porto 3
+1. stato nave 13 aggiornato
+*** NAVE 13: ricevuto SIGUSR1: data = 3 ***
+nave 13 in attesa dal giorno 3: giorno attuale: 3
+Nave 13 inizia a scaricare al porto 3. giorno 3
+Nave 13 ha scaricato al porto 3. giorno 3
+Richiesta da porto 9 merce 4 lotti 103 al porto 3 con val 90
+nave 13 ha caricato 20 lotti di merce 4 spaziolibero: 20
+Nave 13 inizia a caricare
+*** NAVE 13: ricevuto SIGUSR1: data = 5 ***
+Nave 13 ha caricato
+3. stato nave 13 aggiornato
+Nave 13 parte
+Nave 13 arriva
+Nave 13 attraccata al porto 9
+1. stato nave 13 aggiornato
+*** NAVE 13: ricevuto SIGUSR1: data = 7 ***
+nave 13 in attesa dal giorno 7: giorno attuale: 7
+Nave 13 inizia a scaricare al porto 9. giorno 7
+Nave 13 ha scaricato al porto 9. giorno 7
+Richiesta da porto 6 merce 3 lotti 77 al porto 9 con val 90
+nave 13 ha caricato 2 lotti di merce 3 spaziolibero: 326
+Nave 13 inizia a caricare
+*** NAVE 13: ricevuto SIGUSR1: data = 9 ***
+Nave 13 ha caricato
+3. stato nave 13 aggiornato
+Nave 13 parte
+Nave 13 arriva
+*** NAVE 13: ricevuto SIGUSR1: data = 15 ***
+Nave 13 attraccata al porto 6
+1. stato nave 13 aggiornato
+*** NAVE 13: ricevuto SIGUSR1: data = 16 ***
+nave 13 in attesa dal giorno 16: giorno attuale: 16
+Nave 13 inizia a scaricare al porto 6. giorno 16
+Nave 13 ha scaricato al porto 6. giorno 16
+Richiesta da porto 9 merce 2 lotti 22 al porto 6 con val 1
+nave 13 ha caricato 1 lotti di merce 2 spaziolibero: 935
+Nave 13 inizia a caricare
+Nave 13 ha caricato
+3. stato nave 13 aggiornato
+Nave 13 parte
+Nave 13 arriva
+Nave 13 attraccata al porto 9
+1. stato nave 13 aggiornato
+nave 13 in attesa dal giorno 16: giorno attuale: 16
+Nave 13 inizia a scaricare al porto 9. giorno 16
+Nave 13 ha scaricato al porto 9. giorno 16
+Richiesta da porto 6 merce 3 lotti 65 al porto 9 con val 76
+nave 13 ha caricato 2 lotti di merce 3 spaziolibero: 326
+Nave 13 inizia a caricare
+*** NAVE 13: ricevuto SIGUSR1: data = 18 ***
+Nave 13 ha caricato
+3. stato nave 13 aggiornato
+Nave 13 parte
+Nave 13 arriva
+NAVE 13: ricevuto SIGUSR2. data: 20
+#DEB - Nave 13:
+-porti_attraccati: 5
+-porti_lasciati: 5
+-ultimo_indice: 9
+Nave 19 in posizione x:266.532000 y:178.356000 indice porto piu vicino 9 x:310.588000 y;155.294000
+Nave 19 inizia il viaggio
+0. stato nave 19 aggiornato
+Nave 19 ha ricevuto una banchina al porto 9
+Richiesta da porto 7 merce 1 lotti 112 al porto 9 con val 112
+nave 19 ha caricato 30 lotti di merce 1 spaziolibero: 10
+Nave 19 inizia a caricare
+*** NAVE 19: ricevuto SIGUSR1: data = 1 ***
+Nave 19 ha caricato
+3. stato nave 19 aggiornato
+Nave 19 parte
+Nave 19 arriva
+*** NAVE 19: ricevuto SIGUSR1: data = 2 ***
+Nave 19 attraccata al porto 7
+1. stato nave 19 aggiornato
+*** NAVE 19: ricevuto SIGUSR1: data = 4 ***
+nave 19 in attesa dal giorno 4: giorno attuale: 4
+Nave 19 inizia a scaricare al porto 7. giorno 4
+Nave 19 ha scaricato al porto 7. giorno 4
+Richiesta da porto 3 merce 3 lotti 97 al porto 7 con val 96
+nave 19 ha caricato 2 lotti di merce 3 spaziolibero: 326
+Nave 19 inizia a caricare
+*** NAVE 19: ricevuto SIGUSR1: data = 6 ***
+Nave 19 ha caricato
+3. stato nave 19 aggiornato
+Nave 19 parte
+Nave 19 arriva
+*** NAVE 19: ricevuto SIGUSR1: data = 7 ***
+Nave 19 attraccata al porto 3
+1. stato nave 19 aggiornato
+*** NAVE 19: ricevuto SIGUSR1: data = 9 ***
+nave 19 in attesa dal giorno 9: giorno attuale: 9
+Nave 19 inizia a scaricare al porto 3. giorno 9
+Nave 19 ha scaricato al porto 3. giorno 9
+Nave 19 deve skippare porto 3
+Nave 19 inizia a caricare
+Nave 19 ha caricato
+2. stato nave 19 aggiornato
+Nave 19 parte
+Nave 19 arriva
+*** NAVE 19: ricevuto SIGUSR1: data = 12 ***
+Nave 19 attraccata al porto 6
+0. stato nave 19 aggiornato
+nave 19 in attesa dal giorno 12: giorno attuale: 12
+Nave 19 inizia a scaricare al porto 6. giorno 12
+Nave 19 ha scaricato al porto 6. giorno 12
+Richiesta da porto 9 merce 2 lotti 52 al porto 6 con val 46
+nave 19 ha caricato 15 lotti di merce 2 spaziolibero: 25
+Nave 19 inizia a caricare
+*** NAVE 19: ricevuto SIGUSR1: data = 14 ***
+Nave 19 ha caricato
+3. stato nave 19 aggiornato
+Nave 19 parte
+Nave 19 arriva
+Nave 19 attraccata al porto 9
+1. stato nave 19 aggiornato
+*** NAVE 19: ricevuto SIGUSR1: data = 16 ***
+nave 19 in attesa dal giorno 16: giorno attuale: 16
+Nave 19 inizia a scaricare al porto 9. giorno 16
+Nave 19 ha scaricato al porto 9. giorno 16
+Richiesta da porto 3 merce 3 lotti 91 al porto 9 con val 78
+nave 19 ha caricato 2 lotti di merce 3 spaziolibero: 326
+Nave 19 inizia a caricare
+*** NAVE 19: ricevuto SIGUSR1: data = 17 ***
+Nave 19 ha caricato
+3. stato nave 19 aggiornato
+Nave 19 parte
+Nave 19 arriva
+Nave 19 attraccata al porto 3
+1. stato nave 19 aggiornato
+*** NAVE 19: ricevuto SIGUSR1: data = 19 ***
+nave 19 in attesa dal giorno 19: giorno attuale: 19
+Nave 19 inizia a scaricare al porto 3. giorno 19
+Nave 19 ha scaricato al porto 3. giorno 19
+Nave 19 deve skippare porto 3
+Nave 19 inizia a caricare
+Nave 19 ha caricato
+2. stato nave 19 aggiornato
+Nave 19 parte
+Nave 19 arriva
+Nave 19 attraccata al porto 5
+0. stato nave 19 aggiornato
+nave 19 in attesa dal giorno 19: giorno attuale: 19
+Nave 19 inizia a scaricare al porto 5. giorno 19
+Nave 19 ha scaricato al porto 5. giorno 19
+Nave 19 deve skippare porto 5
+Nave 19 inizia a caricare
+Nave 19 ha caricato
+2. stato nave 19 aggiornato
+Nave 19 parte
+Nave 19 arriva
+Nave 19 attraccata al porto 5
+0. stato nave 19 aggiornato
+nave 19 in attesa dal giorno 19: giorno attuale: 19
+Nave 19 inizia a scaricare al porto 5. giorno 19
+Nave 19 ha scaricato al porto 5. giorno 19
+Nave 19 deve skippare porto 5
+Nave 19 inizia a caricare
+Nave 19 ha caricato
+2. stato nave 19 aggiornato
+Nave 19 parte
+Nave 19 arriva
+NAVE 19: ricevuto SIGUSR2. data: 20
+#DEB - Nave 19:
+-porti_attraccati: 8
+-porti_lasciati: 8
+-ultimo_indice: 5
+GUSR2. data: 20
+#DEB - Nave 15:
+-porti_attraccati: 9
+-porti_lasciati: 9
+-ultimo_indice: 7
+Nave 7 in posizione x:379.758000 y:444.888000 indice porto piu vicino 2 x:500.000000 y;500.000000
+Nave 7 inizia il viaggio
+0. stato nave 7 aggiornato
+Nave 7 ha ricevuto una banchina al porto 2
+Richiesta da porto 7 merce 2 lotti 90 al porto 2 con val 85
+nave 7 ha caricato 15 lotti di merce 2 spaziolibero: 25
+Nave 7 inizia a caricare
+*** NAVE 7: ricevuto SIGUSR1: data = 1 ***
+Nave 7 ha caricato
+3. stato nave 7 aggiornato
+Nave 7 parte
+Nave 7 arriva
+Nave 7 attraccata al porto 7
+1. stato nave 7 aggiornato
+*** NAVE 7: ricevuto SIGUSR1: data = 3 ***
+nave 7 in attesa dal giorno 3: giorno attuale: 3
+Nave 7 inizia a scaricare al porto 7. giorno 3
+Nave 7 ha scaricato al porto 7. giorno 3
+Richiesta da porto 6 merce 3 lotti 85 al porto 7 con val 98
+nave 7 ha caricato 2 lotti di merce 3 spaziolibero: 326
+Nave 7 inizia a caricare
+*** NAVE 7: ricevuto SIGUSR1: data = 5 ***
+Nave 7 ha caricato
+3. stato nave 7 aggiornato
+Nave 7 parte
+Nave 7 arriva
+*** NAVE 7: ricevuto SIGUSR1: data = 8 ***
+Nave 7 attraccata al porto 6
+1. stato nave 7 aggiornato
+*** NAVE 7: ricevuto SIGUSR1: data = 9 ***
+nave 7 in attesa dal giorno 9: giorno attuale: 9
+Nave 7 inizia a scaricare al porto 6. giorno 9
+Nave 7 ha scaricato al porto 6. giorno 9
+Richiesta da porto 3 merce 2 lotti 40 al porto 6 con val 76
+nave 7 ha caricato 15 lotti di merce 2 spaziolibero: 25
+Nave 7 inizia a caricare
+*** NAVE 7: ricevuto SIGUSR1: data = 11 ***
+Nave 7 ha caricato
+3. stato nave 7 aggiornato
+Nave 7 parte
+Nave 7 arriva
+Nave 7 attraccata al porto 3
+1. stato nave 7 aggiornato
+*** NAVE 7: ricevuto SIGUSR1: data = 13 ***
+nave 7 in attesa dal giorno 13: giorno attuale: 13
+Nave 7 inizia a scaricare al porto 3. giorno 13
+Nave 7 ha scaricato al porto 3. giorno 13
+Nave 7 deve skippare porto 3
+Nave 7 inizia a caricare
+Nave 7 ha caricato
+2. stato nave 7 aggiornato
+Nave 7 parte
+Nave 7 arriva
+Nave 7 attraccata al porto 0
+0. stato nave 7 aggiornato
+nave 7 in attesa dal giorno 13: giorno attuale: 13
+Nave 7 inizia a scaricare al porto 0. giorno 13
+Nave 7 ha scaricato al porto 0. giorno 13
+Richiesta da porto 8 merce 3 lotti 88 al porto 0 con val 101
+nave 7 ha caricato 2 lotti di merce 3 spaziolibero: 326
+Nave 7 inizia a caricare
+*** NAVE 7: ricevuto SIGUSR1: data = 15 ***
+Nave 7 ha caricato
+3. stato nave 7 aggiornato
+Nave 7 parte
+Nave 7 arriva
+Nave 7 attraccata al porto 8
+1. stato nave 7 aggiornato
+*** NAVE 7: ricevuto SIGUSR1: data = 16 ***
+nave 7 in attesa dal giorno 16: giorno attuale: 16
+Nave 7 inizia a scaricare al porto 8. giorno 16
+Nave 7 ha scaricato al porto 8. giorno 16
+Richiesta da porto 7 merce 2 lotti 15 al porto 8 con val 22
+nave 7 ha caricato 15 lotti di merce 2 spaziolibero: 25
+Nave 7 inizia a caricare
+*** NAVE 7: ricevuto SIGUSR1: data = 18 ***
+Nave 7 ha caricato
+3. stato nave 7 aggiornato
+Nave 7 parte
+Nave 7 arriva
+Nave 7 attraccata al porto 7
+1. stato nave 7 aggiornato
+NAVE 7: ricevuto SIGUSR2. data: 20
+#DEB - Nave 7:
+-porti_attraccati: 7
+-porti_lasciati: 6
+-ultimo_indice: 7
+Nave 12 in posizione x:432.864000 y:15.030000 indice porto piu vicino 1 x:500.000000 y;0.000000
+Nave 12 inizia il viaggio
+0. stato nave 12 aggiornato
+Nave 12 ha ricevuto una banchina al porto 1
+Richiesta da porto 6 merce 4 lotti 130 al porto 1 con val 82
+nave 12 ha caricato 20 lotti di merce 4 spaziolibero: 20
+Nave 12 inizia a caricare
+*** NAVE 12: ricevuto SIGUSR1: data = 1 ***
+Nave 12 ha caricato
+3. stato nave 12 aggiornato
+Nave 12 parte
+Nave 12 arriva
+*** NAVE 12: ricevuto SIGUSR1: data = 4 ***
+Nave 12 attraccata al porto 6
+1. stato nave 12 aggiornato
+*** NAVE 12: ricevuto SIGUSR1: data = 6 ***
+nave 12 in attesa dal giorno 6: giorno attuale: 6
+Nave 12 inizia a scaricare al porto 6. giorno 6
+Nave 12 ha scaricato al porto 6. giorno 6
+Richiesta da porto 3 merce 2 lotti 74 al porto 6 con val 106
+nave 12 ha caricato 15 lotti di merce 2 spaziolibero: 25
+Nave 12 inizia a caricare
+*** NAVE 12: ricevuto SIGUSR1: data = 8 ***
+Nave 12 ha caricato
+3. stato nave 12 aggiornato
+Nave 12 parte
+Nave 12 arriva
+Nave 12 attraccata al porto 3
+1. stato nave 12 aggiornato
+*** NAVE 12: ricevuto SIGUSR1: data = 10 ***
+nave 12 in attesa dal giorno 10: giorno attuale: 10
+Nave 12 inizia a scaricare al porto 3. giorno 10
+Nave 12 ha scaricato al porto 3. giorno 10
+Nave 12 deve skippare porto 3
+Nave 12 inizia a caricare
+Nave 12 ha caricato
+2. stato nave 12 aggiornato
+Nave 12 parte
+Nave 12 arriva
+*** NAVE 12: ricevuto SIGUSR1: data = 12 ***
+Nave 12 attraccata al porto 4
+0. stato nave 12 aggiornato
+nave 12 in attesa dal giorno 12: giorno attuale: 12
+Nave 12 inizia a scaricare al porto 4. giorno 12
+Nave 12 ha scaricato al porto 4. giorno 12
+Richiesta da porto 7 merce 2 lotti 45 al porto 4 con val 33
+nave 12 ha caricato 15 lotti di merce 2 spaziolibero: 25
+Nave 12 inizia a caricare
+*** NAVE 12: ricevuto SIGUSR1: data = 14 ***
+Nave 12 ha caricato
+3. stato nave 12 aggiornato
+Nave 12 parte
+Nave 12 arriva
+Nave 12 attraccata al porto 7
+1. stato nave 12 aggiornato
+*** NAVE 12: ricevuto SIGUSR1: data = 16 ***
+nave 12 in attesa dal giorno 16: giorno attuale: 16
+Nave 12 inizia a scaricare al porto 7. giorno 16
+Nave 12 ha scaricato al porto 7. giorno 16
+Richiesta da porto 8 merce 3 lotti 86 al porto 7 con val 82
+nave 12 ha caricato 2 lotti di merce 3 spaziolibero: 326
+Nave 12 inizia a caricare
+*** NAVE 12: ricevuto SIGUSR1: data = 17 ***
+Nave 12 ha caricato
+3. stato nave 12 aggiornato
+Nave 12 parte
+Nave 12 arriva
+Nave 12 attraccata al porto 8
+1. stato nave 12 aggiornato
+*** NAVE 12: ricevuto SIGUSR1: data = 19 ***
+nave 12 in attesa dal giorno 19: giorno attuale: 19
+Nave 12 inizia a scaricare al porto 8. giorno 19
+Nave 12 ha scaricato al porto 8. giorno 19
+Richiesta da porto 3 merce 2 lotti 7 al porto 8 con val 7
+nave 12 ha caricato 7 lotti di merce 2 spaziolibero: 545
+Nave 12 inizia a caricare
+Nave 12 ha caricato
+3. stato nave 12 aggiornato
+Nave 12 parte
+Nave 12 arriva
+Nave 12 attraccata al porto 3
+1. stato nave 12 aggiornato
+NAVE 12: ricevuto SIGUSR2. data: 20
+#DEB - Nave 12:
+-porti_attraccati: 7
+-porti_lasciati: 6
+-ultimo_indice: 3
+Nave 17 in posizione x:122.244000 y:400.800000 indice porto piu vicino 7 x:160.968000 y;300.440000
+Nave 17 inizia il viaggio
+0. stato nave 17 aggiornato
+Nave 17 ha ricevuto una banchina al porto 7
+Richiesta da porto 8 merce 3 lotti 98 al porto 7 con val 104
+nave 17 ha caricato 2 lotti di merce 3 spaziolibero: 326
+Nave 17 inizia a caricare
+*** NAVE 17: ricevuto SIGUSR1: data = 1 ***
+Nave 17 ha caricato
+3. stato nave 17 aggiornato
+Nave 17 parte
+Nave 17 arriva
+Nave 17 attraccata al porto 8
+1. stato nave 17 aggiornato
+*** NAVE 17: ricevuto SIGUSR1: data = 3 ***
+nave 17 in attesa dal giorno 3: giorno attuale: 3
+Nave 17 inizia a scaricare al porto 8. giorno 3
+Nave 17 ha scaricato al porto 8. giorno 3
+Richiesta da porto 9 merce 2 lotti 82 al porto 8 con val 83
+nave 17 ha caricato 15 lotti di merce 2 spaziolibero: 25
+Nave 17 inizia a caricare
+*** NAVE 17: ricevuto SIGUSR1: data = 5 ***
+Nave 17 ha caricato
+3. stato nave 17 aggiornato
+Nave 17 parte
+Nave 17 arriva
+Nave 17 attraccata al porto 9
+1. stato nave 17 aggiornato
+*** NAVE 17: ricevuto SIGUSR1: data = 7 ***
+nave 17 in attesa dal giorno 7: giorno attuale: 7
+Nave 17 inizia a scaricare al porto 9. giorno 7
+Nave 17 ha scaricato al porto 9. giorno 7
+Richiesta da porto 8 merce 3 lotti 94 al porto 9 con val 94
+nave 17 ha caricato 2 lotti di merce 3 spaziolibero: 326
+Nave 17 inizia a caricare
+*** NAVE 17: ricevuto SIGUSR1: data = 8 ***
+Nave 17 ha caricato
+3. stato nave 17 aggiornato
+Nave 17 parte
+Nave 17 arriva
+Nave 17 attraccata al porto 8
+1. stato nave 17 aggiornato
+*** NAVE 17: ricevuto SIGUSR1: data = 9 ***
+nave 17 in attesa dal giorno 9: giorno attuale: 9
+Nave 17 inizia a scaricare al porto 8. giorno 9
+Nave 17 ha scaricato al porto 8. giorno 9
+Richiesta da porto 5 merce 2 lotti 57 al porto 8 con val 64
+nave 17 ha caricato 15 lotti di merce 2 spaziolibero: 25
+Nave 17 inizia a caricare
+*** NAVE 17: ricevuto SIGUSR1: data = 11 ***
+Nave 17 ha caricato
+3. stato nave 17 aggiornato
+Nave 17 parte
+Nave 17 arriva
+Nave 17 attraccata al porto 5
+1. stato nave 17 aggiornato
+*** NAVE 17: ricevuto SIGUSR1: data = 13 ***
+nave 17 in attesa dal giorno 13: giorno attuale: 13
+Nave 17 inizia a scaricare al porto 5. giorno 13
+Nave 17 ha scaricato al porto 5. giorno 13
+Nave 17 deve skippare porto 5
+Nave 17 inizia a caricare
+Nave 17 ha caricato
+2. stato nave 17 aggiornato
+Nave 17 parte
+Nave 17 arriva
+NAVE 17: ricevuto SIGUSR2. data: 20
+#DEB - Nave 17:
+-porti_attraccati: 5
+-porti_lasciati: 5
+-ultimo_indice: 5
+Nave 16 in posizione x:283.566000 y:267.534000 indice porto piu vicino 5 x:285.218000 y;235.078000
+Nave 16 inizia il viaggio
+0. stato nave 16 aggiornato
+Nave 16 ha ricevuto una banchina al porto 5
+Richiesta da porto 3 merce 0 lotti 136 al porto 5 con val 221
+nave 16 ha caricato 136 lotti di merce 0 spaziolibero: 864
+Nave 16 inizia a caricare
+Nave 16 ha caricato
+3. stato nave 16 aggiornato
+Nave 16 parte
+Nave 16 arriva
+Nave 16 attraccata al porto 3
+1. stato nave 16 aggiornato
+nave 16 in attesa dal giorno 0: giorno attuale: 0
+Nave 16 inizia a scaricare al porto 3. giorno 0
+Nave 16 ha scaricato al porto 3. giorno 0
+Richiesta da porto 9 merce 4 lotti 123 al porto 3 con val 110
+nave 16 ha caricato 20 lotti di merce 4 spaziolibero: 20
+Nave 16 inizia a caricare
+*** NAVE 16: ricevuto SIGUSR1: data = 2 ***
+Nave 16 ha caricato
+3. stato nave 16 aggiornato
+Nave 16 parte
+Nave 16 arriva
+Nave 16 attraccata al porto 9
+1. stato nave 16 aggiornato
+*** NAVE 16: ricevuto SIGUSR1: data = 4 ***
+nave 16 in attesa dal giorno 4: giorno attuale: 4
+Nave 16 inizia a scaricare al porto 9. giorno 4
+Nave 16 ha scaricato al porto 9. giorno 4
+Richiesta da porto 6 merce 3 lotti 83 al porto 9 con val 96
+nave 16 ha caricato 2 lotti di merce 3 spaziolibero: 326
+Nave 16 inizia a caricare
+*** NAVE 16: ricevuto SIGUSR1: data = 5 ***
+Nave 16 ha caricato
+3. stato nave 16 aggiornato
+Nave 16 parte
+Nave 16 arriva
+*** NAVE 16: ricevuto SIGUSR1: data = 9 ***
+Nave 16 attraccata al porto 6
+1. stato nave 16 aggiornato
+*** NAVE 16: ricevuto SIGUSR1: data = 10 ***
+nave 16 in attesa dal giorno 10: giorno attuale: 10
+Nave 16 inizia a scaricare al porto 6. giorno 10
+Nave 16 ha scaricato al porto 6. giorno 10
+Richiesta da porto 5 merce 2 lotti 42 al porto 6 con val 61
+nave 16 ha caricato 15 lotti di merce 2 spaziolibero: 25
+Nave 16 inizia a caricare
+*** NAVE 16: ricevuto SIGUSR1: data = 12 ***
+Nave 16 ha caricato
+3. stato nave 16 aggiornato
+Nave 16 parte
+Nave 16 arriva
+Nave 16 attraccata al porto 5
+1. stato nave 16 aggiornato
+*** NAVE 16: ricevuto SIGUSR1: data = 14 ***
+nave 16 in attesa dal giorno 14: giorno attuale: 14
+Nave 16 inizia a scaricare al porto 5. giorno 14
+Nave 16 ha scaricato al porto 5. giorno 14
+Nave 16 deve skippare porto 5
+Nave 16 inizia a caricare
+Nave 16 ha caricato
+2. stato nave 16 aggiornato
+Nave 16 parte
+Nave 16 arriva
+Nave 16 attraccata al porto 5
+0. stato nave 16 aggiornato
+nave 16 in attesa dal giorno 14: giorno attuale: 14
+Nave 16 inizia a scaricare al porto 5. giorno 14
+Nave 16 ha scaricato al porto 5. giorno 14
+Nave 16 deve skippare porto 5
+Nave 16 inizia a caricare
+Nave 16 ha caricato
+2. stato nave 16 aggiornato
+Nave 16 parte
+Nave 16 arriva
+*** NAVE 16: ricevuto SIGUSR1: data = 19 ***
+Nave 16 attraccata al porto 6
+0. stato nave 16 aggiornato
+nave 16 in attesa dal giorno 19: giorno attuale: 19
+Nave 16 inizia a scaricare al porto 6. giorno 19
+Nave 16 ha scaricato al porto 6. giorno 19
+Nave 16 deve skippare porto 6
+Nave 16 inizia a caricare
+Nave 16 ha caricato
+2. stato nave 16 aggiornato
+Nave 16 parte
+Nave 16 arriva
+NAVE 16: ricevuto SIGUSR2. data: 20
+#DEB - Nave 16:
+-porti_attraccati: 7
+-porti_lasciati: 7
+-ultimo_indice: 6
+Nave 18 in posizione x:78.156000 y:205.410000 indice porto piu vicino 4 x:55.214000 y;250.500000
+Nave 18 inizia il viaggio
+0. stato nave 18 aggiornato
+Nave 18 ha ricevuto una banchina al porto 4
+Richiesta da porto 5 merce 2 lotti 132 al porto 4 con val 93
+nave 18 ha caricato 15 lotti di merce 2 spaziolibero: 25
+Nave 18 inizia a caricare
+*** NAVE 18: ricevuto SIGUSR1: data = 1 ***
+Nave 18 ha caricato
+3. stato nave 18 aggiornato
+Nave 18 parte
+Nave 18 arriva
+Nave 18 attraccata al porto 5
+1. stato nave 18 aggiornato
+*** NAVE 18: ricevuto SIGUSR1: data = 3 ***
+nave 18 in attesa dal giorno 3: giorno attuale: 3
+Nave 18 inizia a scaricare al porto 5. giorno 3
+Nave 18 ha scaricato al porto 5. giorno 3
+Richiesta da porto 2 merce 4 lotti 73 al porto 5 con val 48
+nave 18 ha caricato 20 lotti di merce 4 spaziolibero: 20
+Nave 18 inizia a caricare
+*** NAVE 18: ricevuto SIGUSR1: data = 5 ***
+Nave 18 ha caricato
+3. stato nave 18 aggiornato
+Nave 18 parte
+Nave 18 arriva
+Nave 18 attraccata al porto 2
+1. stato nave 18 aggiornato
+*** NAVE 18: ricevuto SIGUSR1: data = 7 ***
+nave 18 in attesa dal giorno 7: giorno attuale: 7
+Nave 18 inizia a scaricare al porto 2. giorno 7
+Nave 18 ha scaricato al porto 2. giorno 7
+Richiesta da porto 6 merce 3 lotti 79 al porto 2 con val 105
+nave 18 ha caricato 2 lotti di merce 3 spaziolibero: 326
+Nave 18 inizia a caricare
+*** NAVE 18: ricevuto SIGUSR1: data = 9 ***
+Nave 18 ha caricato
+3. stato nave 18 aggiornato
+Nave 18 parte
+Nave 18 arriva
+*** NAVE 18: ricevuto SIGUSR1: data = 14 ***
+Nave 18 attraccata al porto 6
+1. stato nave 18 aggiornato
+*** NAVE 18: ricevuto SIGUSR1: data = 15 ***
+nave 18 in attesa dal giorno 15: giorno attuale: 15
+Nave 18 inizia a scaricare al porto 6. giorno 15
+Nave 18 ha scaricato al porto 6. giorno 15
+Richiesta da porto 9 merce 2 lotti 37 al porto 6 con val 16
+nave 18 ha caricato 15 lotti di merce 2 spaziolibero: 25
+Nave 18 inizia a caricare
+*** NAVE 18: ricevuto SIGUSR1: data = 17 ***
+Nave 18 ha caricato
+3. stato nave 18 aggiornato
+Nave 18 parte
+Nave 18 arriva
+Nave 18 attraccata al porto 9
+1. stato nave 18 aggiornato
+*** NAVE 18: ricevuto SIGUSR1: data = 19 ***
+nave 18 in attesa dal giorno 19: giorno attuale: 19
+Nave 18 inizia a scaricare al porto 9. giorno 19
+Nave 18 ha scaricato al porto 9. giorno 19
+Richiesta da porto 6 merce 3 lotti 61 al porto 9 con val 74
+nave 18 ha caricato 2 lotti di merce 3 spaziolibero: 326
+Nave 18 inizia a caricare
+NAVE 18: ricevuto SIGUSR2. data: 20
+#DEB - Nave 18:
+-porti_attraccati: 5
+-porti_lasciati: 4
+-ultimo_indice: 9

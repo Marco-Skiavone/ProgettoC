@@ -31,7 +31,7 @@ void spawnMerciPorti(int nmerci, void* vptr_shm_mercato, merce* ptr_dettagli_lot
 void manda_richieste(int nmerci, void* vptr_shm_mercato, int indice, int coda_id);
 void inizializza_banchine(int sem_id, int indice, int so_banchine);
 int main(int argc, char *argv[]){
-
+    dup2(STDOUT_FILENO, STDERR_FILENO);
     int i, j, k;
     struct sigaction sa;
     sa.sa_flags = 0/*SA_RESTART*/;
@@ -56,11 +56,11 @@ int main(int argc, char *argv[]){
     inizializza_risorse();
 
 
-    //printf("Porto %d - x: %f y: %f\n", indice, CAST_POSIZIONI_PORTI(vptr_shm_posizioni_porti)[indice].x, CAST_POSIZIONI_PORTI(vptr_shm_posizioni_porti)[indice].y);
-    printf("test 53550\n");
+    //fprintf(stderr,"Porto %d - x: %f y: %f\n", indice, CAST_POSIZIONI_PORTI(vptr_shm_posizioni_porti)[indice].x, CAST_POSIZIONI_PORTI(vptr_shm_posizioni_porti)[indice].y);
+    
     spawnMerciPorti(SO_MERCI, vptr_shm_mercato, CAST_DETTAGLI_LOTTI(vptr_shm_dettagli_lotti),(SO_FILL/SO_PORTI), indice);
     manda_richieste(SO_MERCI, vptr_shm_mercato, indice, id_coda_richieste);
-    printf("test 69\n");
+    
     inizializza_banchine(id_semaforo_banchine, indice, SO_BANCHINE);
 
     /* si sgancia dalle memorie condivise. */
@@ -128,12 +128,13 @@ void spawnMerciPorti(int nmerci, void* vptr_shm_mercato, merce* ptr_dettagli_lot
             }
         }
     }
-    printf("P-Porto %d\n", indice);
-    sem_reserve(id_semaforo_gestione, 1);
 
     
+    sem_reserve(id_semaforo_gestione, 1);
+    
+    fprintf(stderr,"P-Porto %d\n", indice);
     for(j=0;j<SO_MERCI;j++){
-        printf("P-Merce %d nlotti %d scadenza %d\n", j, ptr_shm_mercato_porto[indice][j].val, ptr_shm_mercato_porto[indice][j].exp);
+        fprintf(stderr,"P-Merce %d nlotti %d scadenza %d\n", j, ptr_shm_mercato_porto[indice][j].val, ptr_shm_mercato_porto[indice][j].exp);
         /* aggiungo la merce al dump */
         if(ptr_shm_mercato_porto[indice][j].val > 0){
             CAST_MERCE_DUMP(vptr_shm_dump)[j].presente_in_porto += ptr_shm_mercato_porto[indice][j].val /* * CAST_DETTAGLI_LOTTI(vptr_shm_dettagli_lotti)[j].val*/;
@@ -168,7 +169,7 @@ void inizializza_banchine(int sem_id, int indice, int so_banchine){
     int nbanchine;
 	nbanchine = rand() % SO_BANCHINE + 1;
     CAST_PORTO_DUMP(vptr_shm_dump)[indice].banchineoccupate = 0;
-    printf("$$$ banchine di porto %d: %d\n", indice, nbanchine);
+    fprintf(stderr,"$$$ banchine di porto %d: %d\n", indice, nbanchine);
     CAST_PORTO_DUMP(vptr_shm_dump)[indice].banchinetotali = nbanchine;
     sem_set_val(sem_id, indice, nbanchine);
 }
@@ -176,10 +177,10 @@ void inizializza_banchine(int sem_id, int indice, int so_banchine){
 void signal_handler(int signo){
     switch(signo){
         case SIGUSR1:
-            printf("*** PORTO %d: ricevuto SIGUSR1: data = %d ***\n", indice, /*DATA*/CAST_DUMP(vptr_shm_dump)->data);
+            fprintf(stderr,"*** PORTO %d: ricevuto SIGUSR1: data = %d ***\n", indice, /*DATA*/CAST_DUMP(vptr_shm_dump)->data);
             break;
         case SIGUSR2:
-            printf("\nPORTO %d: ricevuto SIGUSR2.\n", indice);
+            fprintf(stderr,"\nPORTO %d: ricevuto SIGUSR2.\n", indice);
             sgancia_risorse();
             exit(EXIT_SUCCESS);
             break;

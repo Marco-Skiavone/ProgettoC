@@ -4,6 +4,7 @@
 #include "master_lib.h"
 
 void clearLog(){
+	fclose(fopen("out.txt", "w"));
 	fclose(fopen("log_dump.txt", "w"));
 	fclose(fopen("log_mercato.txt", "w"));
 	fclose(fopen("log_navi.txt","w"));
@@ -98,7 +99,7 @@ void stampa_dump(int PARAMETRO[], void * vptr_shm_dump, void *vptr_shm_mercato, 
     printf("*** Inizio stampa del dump: giorno %d ***\n", ((dump*)vptr_shm_dump)->data);
 	stampa_merci_porti_navi(PARAMETRO, vptr_shm_dump,vptr_shm_mercato, id_semaforo_banchine);
     printf("\n--- Fine stato dump attuale (giorno %d). ---\n", CAST_DUMP(vptr_shm_dump)->data);
-	freopen("/dev/tty", "a", stdout);
+	freopen("out.txt", "a", stdout);
 	fclose(fp);
 }
 
