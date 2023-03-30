@@ -4,6 +4,9 @@
 #ifndef _SEM_LIB_H
 	#include "sem_lib.h"
 #endif
+/* Funzione che pulisce i file txt usati per i log
+*/
+void clearLog();
  
 /* Funzione d'ausilio per controllare che sia corretto il dump:
  * - Controlla che mercato_shm sia uguale a dump_shm

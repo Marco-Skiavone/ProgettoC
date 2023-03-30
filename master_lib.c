@@ -3,6 +3,12 @@
 #endif
 #include "master_lib.h"
 
+void clearLog(){
+	fclose(fopen("log_dump.txt", "w"));
+	fclose(fopen("log_mercato.txt", "w"));
+	fclose(fopen("log_navi.txt","w"));
+}
+
 int confronto_mercato_dump(void *vptr_shm_dump, void *vptr_shm_mercato, int PARAMETRO[], int indice_porto){
 	int i, j, presente, trovata;
 	presente = trovata = 0;
@@ -20,13 +26,22 @@ int confronto_mercato_dump(void *vptr_shm_dump, void *vptr_shm_mercato, int PARA
 }
 
 void stampa_mercato_dump(void *vptr_shm_dump, void *vptr_shm_mercato, int PARAMETRO[], int indice_porto){
-	int j;
+	int j, totale;
+	totale = 0;
+	FILE *fp;
+	fp = freopen("log_mercato.txt","a", stdout);
 	printf("MERCATO, giorno %d\n", CAST_DUMP(vptr_shm_dump)->data);
 	printf("PORTO %d:\n", indice_porto);
 	for(j = 0; j < SO_MERCI; j++){
 		printf("[%d, %d] ", j, (CAST_MERCATO(vptr_shm_mercato))[indice_porto][j].val);
+		if((CAST_MERCATO(vptr_shm_mercato))[indice_porto][j].val>0){
+			totale += (CAST_MERCATO(vptr_shm_mercato))[indice_porto][j].val;
+		}
 	}
+	printf(" presente: %d", totale);
 	printf("\n");
+	fclose(fp);
+	
 }
 
 int controlla_mercato(void *vptr_shm_mercato, void *vptr_shm_dump, int PARAMETRO[]){
@@ -48,6 +63,7 @@ int controlla_mercato(void *vptr_shm_mercato, void *vptr_shm_dump, int PARAMETRO
 
 void stampa_merci_porti_navi(int PARAMETRO[], void * vptr_shm_dump, void *vptr_shm_mercato, int id_semaforo_banchine){
 	int i, j;
+	j=0;
 	/*da togliere in futuro --> vptr_shm_mercato e stampa_mercato_dump()*/
 	for(i = 0; i < (SO_MERCI+SO_PORTI); i++){
         if(i < SO_MERCI){  /* stampo merci per tipologia */
@@ -58,7 +74,6 @@ void stampa_merci_porti_navi(int PARAMETRO[], void * vptr_shm_dump, void *vptr_s
             printf("- scaduta in nave: %d\n", CAST_MERCE_DUMP(vptr_shm_dump)[i].scaduta_in_nave);
             printf("- scaduta in porto: %d\n", CAST_MERCE_DUMP(vptr_shm_dump)[i].scaduta_in_porto);
         } else {
-            j = i - SO_MERCI;
             printf("Porto %d\n", j);
             printf("- merce presente: %d\n",  (CAST_PORTO_DUMP(vptr_shm_dump))[j].mercepresente);
             printf("- merce ricevuta: %d\n", (CAST_PORTO_DUMP(vptr_shm_dump))[j].mercericevuta);
@@ -66,6 +81,8 @@ void stampa_merci_porti_navi(int PARAMETRO[], void * vptr_shm_dump, void *vptr_s
             (CAST_PORTO_DUMP(vptr_shm_dump))[j].banchineoccupate = (CAST_PORTO_DUMP(vptr_shm_dump))[j].banchinetotali - sem_get_val(id_semaforo_banchine, j);
             printf("- banchine occupate/totali: %d/%d\n", (CAST_PORTO_DUMP(vptr_shm_dump))[j].banchineoccupate, (CAST_PORTO_DUMP(vptr_shm_dump))[j].banchinetotali);
             stampa_mercato_dump(vptr_shm_dump, vptr_shm_mercato, PARAMETRO, j);
+			freopen("log_dump.txt", "a", stdout);
+            j++;
         }
     }
     printf("Navi:\n");
@@ -75,10 +92,14 @@ void stampa_merci_porti_navi(int PARAMETRO[], void * vptr_shm_dump, void *vptr_s
 }
 
 void stampa_dump(int PARAMETRO[], void * vptr_shm_dump, void *vptr_shm_mercato, int id_semaforo_banchine){
+	FILE *fp;
+	fp = freopen("log_dump.txt", "a", stdout);
 	/*da togliere in futuro --> vptr_shm_mercato e stampa_mercato_dump()*/
     printf("*** Inizio stampa del dump: giorno %d ***\n", ((dump*)vptr_shm_dump)->data);
 	stampa_merci_porti_navi(PARAMETRO, vptr_shm_dump,vptr_shm_mercato, id_semaforo_banchine);
     printf("\n--- Fine stato dump attuale (giorno %d). ---\n", CAST_DUMP(vptr_shm_dump)->data);
+	freopen("/dev/tty", "a", stdout);
+	fclose(fp);
 }
 
 void calcola_porti_term(int PARAMETRO[], void* vptr_shm_dump){

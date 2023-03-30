@@ -51,7 +51,8 @@ int main(int argc, char* argv[]){
     FILE *file_config;
     richiesta r;
     char *argv_figli[QNT_PARAMETRI + 3];
-    
+    setbuf(stdout, NULL); /* unbufferizza stdout */
+    clearLog();
     srand(time(NULL));
     if(argc !=2){
         perror("argc != 2");
@@ -131,7 +132,6 @@ int main(int argc, char* argv[]){
 		sprintf(argv_figli[i+2], "%d", PARAMETRO[i]);
 	}
     argv_figli[QNT_PARAMETRI + 2] = NULL;
-    setbuf(stdout, NULL); /* unbufferizza stdout */
     for(i=0;i<SO_PORTI;i++){
         
         switch(child_pids[i] = fork()){
