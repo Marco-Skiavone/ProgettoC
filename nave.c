@@ -96,10 +96,8 @@ int main(int argc, char *argv[]){
     sem_reserve(id_semaforo_gestione, 0);
     sem_wait_zero(id_semaforo_gestione, 0);
     
-    FILE *fp;
-    fp = freopen("log_navi.txt", "a", stdout);
+    freopen("log_navi.txt", "a", stdout);
     codice_simulazione();
-    fclose(fp);
 
     //printf("Nave %d sto uscendo con gestione = %d\n", indice, sem_get_val(id_semaforo_gestione, 0));
     sgancia_risorse();

@@ -130,18 +130,6 @@ void spawnMerciPorti(int nmerci, void* vptr_shm_mercato, merce* ptr_dettagli_lot
     }
 
     
-    sem_reserve(id_semaforo_gestione, 1);
-    
-    fprintf(stderr,"P-Porto %d\n", indice);
-    for(j=0;j<SO_MERCI;j++){
-        fprintf(stderr,"P-Merce %d nlotti %d scadenza %d\n", j, ptr_shm_mercato_porto[indice][j].val, ptr_shm_mercato_porto[indice][j].exp);
-        /* aggiungo la merce al dump */
-        if(ptr_shm_mercato_porto[indice][j].val > 0){
-            CAST_MERCE_DUMP(vptr_shm_dump)[j].presente_in_porto += ptr_shm_mercato_porto[indice][j].val /* * CAST_DETTAGLI_LOTTI(vptr_shm_dettagli_lotti)[j].val*/;
-            CAST_PORTO_DUMP(vptr_shm_dump)[indice].mercepresente += ptr_shm_mercato_porto[indice][j].val /* * CAST_DETTAGLI_LOTTI(vptr_shm_dettagli_lotti)[j].val*/;
-        }  
-    }
-    sem_release(id_semaforo_gestione, 1);
 }
 
 void inizializza_risorse(){
@@ -169,7 +157,6 @@ void inizializza_banchine(int sem_id, int indice, int so_banchine){
     int nbanchine;
 	nbanchine = rand() % SO_BANCHINE + 1;
     CAST_PORTO_DUMP(vptr_shm_dump)[indice].banchineoccupate = 0;
-    fprintf(stderr,"$$$ banchine di porto %d: %d\n", indice, nbanchine);
     CAST_PORTO_DUMP(vptr_shm_dump)[indice].banchinetotali = nbanchine;
     sem_set_val(sem_id, indice, nbanchine);
 }

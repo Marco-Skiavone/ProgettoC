@@ -124,7 +124,7 @@ int main(int argc, char* argv[]){
 
     sem_set_val(id_semaforo_gestione,0,SO_PORTI+SO_NAVI);
     sem_set_val(id_semaforo_gestione,1,1);
-    printf("Set id_semaforo_gestione a %d + %d = %d\n", SO_PORTI, SO_NAVI, sem_get_val(id_semaforo_gestione, 0));
+    //printf("Set id_semaforo_gestione a %d + %d = %d\n", SO_PORTI, SO_NAVI, sem_get_val(id_semaforo_gestione, 0));
 
     argv_figli[0] = (char *)malloc(MAX_STR_LEN);
 	argv_figli[1] = (char *)malloc(MAX_STR_LEN);
@@ -207,7 +207,6 @@ int main(int argc, char* argv[]){
     printf("\n__________________________ \n\n");
     
     /*
-    */
     for(i=0;i<SO_PORTI;i++){
         printf("Porto %d\n", i);
         for(j=0;j<SO_MERCI;j++){
@@ -215,13 +214,14 @@ int main(int argc, char* argv[]){
         }
     }
     printf("\n__________________________ \n\n");
+    */
 
     i = 0;
     do {
         r = accetta_richiesta(i, id_coda_richieste);
-        if(r.mtext.indicemerce != -1)
-            printf("Porto %ld merce %d nlotti %d\n", r.mtype, r.mtext.indicemerce, r.mtext.nlotti);
-        else if(i < SO_PORTI)
+        if(r.mtext.indicemerce != -1){
+            //printf("Porto %ld merce %d nlotti %d\n", r.mtype, r.mtext.indicemerce, r.mtext.nlotti);
+        }else if(i < SO_PORTI)
             i++;
     } while (r.mtext.indicemerce != -1 || i < SO_PORTI);
     printf("\n__________________________ \n\n");
@@ -376,7 +376,7 @@ void signal_handler(int signo){
     switch(signo){
         case SIGALRM:
             if(CAST_DUMP(vptr_shm_dump)->data < SO_DAYS-1){
-                fprintf(stderr, "\x1b[2J\x1b[H");
+                fprintf(stderr, "\x1b[%dF\x1b[0J", 1);
                 CAST_DUMP(vptr_shm_dump)->data++;
                 printf("\nMASTER: Passato giorno %d su %d.\n", CAST_DUMP(vptr_shm_dump)->data, SO_DAYS);
                 stampa_dump(PARAMETRO, vptr_shm_dump, vptr_shm_mercato, id_semaforo_banchine);
@@ -386,7 +386,7 @@ void signal_handler(int signo){
             } else {
                 CAST_DUMP(vptr_shm_dump)->data++;
                 stampa_terminazione(PARAMETRO, vptr_shm_dump, vptr_shm_mercato, id_semaforo_banchine);
-                fprintf(stderr, "\x1b[2J\x1b[H");
+                fprintf(stderr, "\x1b[%dF\x1b[0J", 1);
                 fprintf(stderr, "Simulazione completata ^_^\n");
             }
             break;

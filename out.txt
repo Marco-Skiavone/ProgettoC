@@ -1,237 +1,125 @@
-P-Porto 2
-P-Merce 0 nlotti -116 scadenza 21
-P-Merce 1 nlotti -93 scadenza 21
-P-Merce 2 nlotti 85 scadenza 44
-P-Merce 3 nlotti 109 scadenza 48
-P-Merce 4 nlotti -93 scadenza 21
-$$$ banchine di porto 2: 4
-P-Porto 3
-P-Merce 0 nlotti -136 scadenza 21
-P-Merce 1 nlotti -122 scadenza 21
-P-Merce 2 nlotti -109 scadenza 21
-P-Merce 3 nlotti -99 scadenza 21
-P-Merce 4 nlotti 110 scadenza 42
-$$$ banchine di porto 3: 3
-P-Porto 0
-P-Merce 0 nlotti 121 scadenza 46
-P-Merce 1 nlotti -102 scadenza 21
-P-Merce 2 nlotti 106 scadenza 44
-P-Merce 3 nlotti 101 scadenza 48
-P-Merce 4 nlotti 114 scadenza 42
-$$$ banchine di porto 0: 7
-P-Porto 8
-P-Merce 0 nlotti 185 scadenza 46
-P-Merce 1 nlotti 107 scadenza 46
-P-Merce 2 nlotti 112 scadenza 44
-P-Merce 3 nlotti -98 scadenza 21
-P-Merce 4 nlotti 122 scadenza 42
-$$$ banchine di porto 8: 5
-P-Porto 4
-P-Merce 0 nlotti -125 scadenza 21
-P-Merce 1 nlotti -139 scadenza 21
-P-Merce 2 nlotti 93 scadenza 44
-P-Merce 3 nlotti -99 scadenza 21
-P-Merce 4 nlotti 120 scadenza 42
-$$$ banchine di porto 4: 1
-P-Porto 5
-P-Merce 0 nlotti 221 scadenza 46
-P-Merce 1 nlotti -117 scadenza 21
-P-Merce 2 nlotti -132 scadenza 21
-P-Merce 3 nlotti -98 scadenza 21
-P-Merce 4 nlotti 88 scadenza 42
-$$$ banchine di porto 5: 3
-P-Porto 9
-P-Merce 0 nlotti -166 scadenza 21
-P-Merce 1 nlotti 112 scadenza 46
-P-Merce 2 nlotti -109 scadenza 21
-P-Merce 3 nlotti 98 scadenza 48
-P-Merce 4 nlotti -123 scadenza 21
-$$$ banchine di porto 9: 5
-P-Porto 7
-P-Merce 0 nlotti 114 scadenza 46
-P-Merce 1 nlotti -112 scadenza 21
-P-Merce 2 nlotti -90 scadenza 21
-P-Merce 3 nlotti 104 scadenza 48
-P-Merce 4 nlotti -108 scadenza 21
-$$$ banchine di porto 7: 2
-P-Porto 1
-P-Merce 0 nlotti 184 scadenza 46
-P-Merce 1 nlotti 115 scadenza 46
-P-Merce 2 nlotti 107 scadenza 44
-P-Merce 3 nlotti 104 scadenza 48
-P-Merce 4 nlotti 82 scadenza 42
-$$$ banchine di porto 1: 2
-P-Porto 6
-P-Merce 0 nlotti 130 scadenza 46
-P-Merce 1 nlotti -121 scadenza 21
-P-Merce 2 nlotti 136 scadenza 44
-P-Merce 3 nlotti -91 scadenza 21
-P-Merce 4 nlotti -130 scadenza 21
-$$$ banchine di porto 6: 2
 Parametri:
 SO_NAVI | SO_PORTI | SO_MERCI | SO_SIZE | SO_MIN_VITA | SO_MAX_VITA | SO_LATO | SO_SPEED | SO_CAPACITY | SO_BANCHINE | SO_FILL | SO_LOADSPEED | SO_DAYS
  20 | 10 | 5 | 500 | 40 | 50 | 500 | 50000 | 1000 | 7 | 500000 | 500 | 20 
-SHAREDM_MERCATO: 196618
-SHAREDM_DETTAGLI_LOTTI: 196619
-SHAREDM_POSIZIONI_PORTI: 196620
-SHAREDM_DUMP: 196621
-SEM_CREATE_MERCATO: 65552
-SEM_CREATE_GESTIONE: 65553
-SEM_CREATE_BANCHINE: 65554
-SEM_CREATE_DUMP: 65555
-CODA RICHIESTE: 36
+SHAREDM_MERCATO: 262160
+SHAREDM_DETTAGLI_LOTTI: 262161
+SHAREDM_POSIZIONI_PORTI: 262166
+SHAREDM_DUMP: 262167
+SEM_CREATE_MERCATO: 65596
+SEM_CREATE_GESTIONE: 65597
+SEM_CREATE_BANCHINE: 65598
+SEM_CREATE_DUMP: 65599
+CODA RICHIESTE: 47
 
 __________________________ 
 
 Merce 0 val 1 exp 46
-Merce 1 val 33 exp 46
-Merce 2 val 65 exp 44
-Merce 3 val 337 exp 48
-Merce 4 val 49 exp 42
-Set id_semaforo_gestione a 10 + 20 = 30
-MASTER: ammazzo il figlio 61003
-MASTER: ammazzo il figlio 61004
-MASTER: ammazzo il figlio 61005
-MASTER: ammazzo il figlio 61006
-MASTER: ammazzo il figlio 61007
-MASTER: ammazzo il figlio 61008
-MASTER: ammazzo il figlio 61009
-MASTER: ammazzo il figlio 61010
-MASTER: ammazzo il figlio 61011
-MASTER: ammazzo il figlio 61012
-MASTER: ammazzo il figlio 61013
-MASTER: ammazzo il figlio 61014
-MASTER: ammazzo il figlio 61015
-MASTER: ammazzo il figlio 61016
-MASTER: ammazzo il figlio 61017
-MASTER: ammazzo il figlio 61018
-MASTER: ammazzo il figlio 61019
-MASTER: ammazzo il figlio 61020
-MASTER: ammazzo il figlio 61022
-MASTER: ammazzo il figlio 61023
-MASTER: ammazzo il figlio 61024
-MASTER: ammazzo il figlio 61025
-MASTER: ammazzo il figlio 61026
-MASTER: ammazzo il figlio 61027
-MASTER: ammazzo il figlio 61028
-MASTER: ammazzo il figlio 61029
-MASTER: ammazzo il figlio 61030
-MASTER: ammazzo il figlio 61031
-MASTER: ammazzo il figlio 61032
-MASTER: ammazzo il figlio 61033
-Terminato figlio 61003 status 0
-Terminato figlio 61004 status 0
-Terminato figlio 61005 status 0
-Terminato figlio 61006 status 0
-Terminato figlio 61007 status 0
-Terminato figlio 61008 status 0
-Terminato figlio 61009 status 0
-Terminato figlio 61010 status 0
-Terminato figlio 61011 status 0
-Terminato figlio 61012 status 0
-Terminato figlio 61013 status 0
-Terminato figlio 61014 status 0
-Terminato figlio 61015 status 0
-Terminato figlio 61016 status 0
-Terminato figlio 61017 status 0
-Terminato figlio 61018 status 0
-Terminato figlio 61019 status 0
-Terminato figlio 61020 status 0
-Terminato figlio 61022 status 0
-Terminato figlio 61023 status 0
-Terminato figlio 61024 status 0
-Terminato figlio 61025 status 0
-Terminato figlio 61026 status 0
-Terminato figlio 61027 status 0
-Terminato figlio 61028 status 0
-Terminato figlio 61029 status 0
-Terminato figlio 61030 status 0
-Terminato figlio 61031 status 0
-Terminato figlio 61032 status 0
-Terminato figlio 61033 status 0
+Merce 1 val 21 exp 49
+Merce 2 val 417 exp 41
+Merce 3 val 177 exp 43
+Merce 4 val 437 exp 43
+
+MASTER: Passato giorno 1 su 20.
+
+MASTER: Passato giorno 2 su 20.
+
+MASTER: Passato giorno 3 su 20.
+
+MASTER: Passato giorno 4 su 20.
+
+MASTER: Passato giorno 5 su 20.
+
+MASTER: Passato giorno 6 su 20.
+
+MASTER: Passato giorno 7 su 20.
+
+MASTER: Passato giorno 8 su 20.
+
+MASTER: Passato giorno 9 su 20.
+
+MASTER: Passato giorno 10 su 20.
+
+MASTER: Passato giorno 11 su 20.
+
+MASTER: Passato giorno 12 su 20.
+
+MASTER: Passato giorno 13 su 20.
+
+MASTER: Passato giorno 14 su 20.
+
+MASTER: Passato giorno 15 su 20.
+
+MASTER: Passato giorno 16 su 20.
+
+MASTER: Passato giorno 17 su 20.
+
+MASTER: Passato giorno 18 su 20.
+
+MASTER: Passato giorno 19 su 20.
+MASTER: ammazzo il figlio 114054
+MASTER: ammazzo il figlio 114055
+MASTER: ammazzo il figlio 114056
+MASTER: ammazzo il figlio 114057
+MASTER: ammazzo il figlio 114058
+MASTER: ammazzo il figlio 114059
+MASTER: ammazzo il figlio 114060
+MASTER: ammazzo il figlio 114061
+MASTER: ammazzo il figlio 114062
+MASTER: ammazzo il figlio 114063
+MASTER: ammazzo il figlio 114064
+MASTER: ammazzo il figlio 114065
+MASTER: ammazzo il figlio 114066
+MASTER: ammazzo il figlio 114067
+MASTER: ammazzo il figlio 114068
+MASTER: ammazzo il figlio 114069
+MASTER: ammazzo il figlio 114070
+MASTER: ammazzo il figlio 114072
+MASTER: ammazzo il figlio 114073
+MASTER: ammazzo il figlio 114074
+MASTER: ammazzo il figlio 114075
+MASTER: ammazzo il figlio 114076
+MASTER: ammazzo il figlio 114077
+MASTER: ammazzo il figlio 114078
+MASTER: ammazzo il figlio 114079
+MASTER: ammazzo il figlio 114080
+MASTER: ammazzo il figlio 114081
+MASTER: ammazzo il figlio 114082
+MASTER: ammazzo il figlio 114083
+MASTER: ammazzo il figlio 114084
+Terminato figlio 114054 status 0
+Terminato figlio 114055 status 0
+Terminato figlio 114056 status 0
+Terminato figlio 114057 status 0
+Terminato figlio 114058 status 0
+Terminato figlio 114059 status 0
+Terminato figlio 114060 status 0
+Terminato figlio 114061 status 0
+Terminato figlio 114062 status 0
+Terminato figlio 114063 status 0
+Terminato figlio 114064 status 0
+Terminato figlio 114065 status 0
+Terminato figlio 114066 status 0
+Terminato figlio 114067 status 0
+Terminato figlio 114068 status 0
+Terminato figlio 114069 status 0
+Terminato figlio 114070 status 0
+Terminato figlio 114072 status 0
+Terminato figlio 114073 status 0
+Terminato figlio 114074 status 0
+Terminato figlio 114075 status 0
+Terminato figlio 114076 status 0
+Terminato figlio 114077 status 0
+Terminato figlio 114078 status 0
+Terminato figlio 114079 status 0
+Terminato figlio 114080 status 0
+Terminato figlio 114081 status 0
+Terminato figlio 114082 status 0
+Terminato figlio 114083 status 0
+Terminato figlio 114084 status 0
 Master sto uscendo con gestione = 0
 
 __________________________ 
 
-Porto 0
-Merce 0 nlotti 0 scadenza 46
-Merce 1 nlotti -102 scadenza 21
-Merce 2 nlotti 93 scadenza 44
-Merce 3 nlotti 99 scadenza 48
-Merce 4 nlotti 94 scadenza 42
-Porto 1
-Merce 0 nlotti 59 scadenza 46
-Merce 1 nlotti 59 scadenza 46
-Merce 2 nlotti 107 scadenza 44
-Merce 3 nlotti 102 scadenza 48
-Merce 4 nlotti 62 scadenza 42
-Porto 2
-Merce 0 nlotti 0 scadenza 21
-Merce 1 nlotti -24 scadenza 21
-Merce 2 nlotti 20 scadenza 44
-Merce 3 nlotti 103 scadenza 48
-Merce 4 nlotti -33 scadenza 21
-Porto 3
-Merce 0 nlotti 0 scadenza 21
-Merce 1 nlotti -11 scadenza 21
-Merce 2 nlotti -7 scadenza 21
-Merce 3 nlotti -89 scadenza 21
-Merce 4 nlotti 0 scadenza 42
-Porto 4
-Merce 0 nlotti 0 scadenza 21
-Merce 1 nlotti -113 scadenza 21
-Merce 2 nlotti 0 scadenza 44
-Merce 3 nlotti -95 scadenza 21
-Merce 4 nlotti 80 scadenza 42
-Porto 5
-Merce 0 nlotti 85 scadenza 46
-Merce 1 nlotti -117 scadenza 21
-Merce 2 nlotti 0 scadenza 21
-Merce 3 nlotti -98 scadenza 21
-Merce 4 nlotti 0 scadenza 42
-Porto 6
-Merce 0 nlotti 130 scadenza 46
-Merce 1 nlotti -112 scadenza 21
-Merce 2 nlotti 0 scadenza 44
-Merce 3 nlotti -69 scadenza 21
-Merce 4 nlotti -110 scadenza 21
-Porto 7
-Merce 0 nlotti 114 scadenza 46
-Merce 1 nlotti -52 scadenza 21
-Merce 2 nlotti -15 scadenza 21
-Merce 3 nlotti 76 scadenza 48
-Merce 4 nlotti -68 scadenza 21
-Porto 8
-Merce 0 nlotti 24 scadenza 46
-Merce 1 nlotti 0 scadenza 46
-Merce 2 nlotti 0 scadenza 44
-Merce 3 nlotti -82 scadenza 21
-Merce 4 nlotti 117 scadenza 42
-Porto 9
-Merce 0 nlotti 0 scadenza 21
-Merce 1 nlotti 0 scadenza 46
-Merce 2 nlotti -21 scadenza 21
-Merce 3 nlotti 72 scadenza 48
-Merce 4 nlotti -5 scadenza 21
-
-__________________________ 
-
-Porto 0 merce 1 nlotti 102
-Porto 2 merce 4 nlotti 33
-Porto 2 merce 1 nlotti 24
-Porto 3 merce 3 nlotti 87
-Porto 3 merce 1 nlotti 11
-Porto 4 merce 1 nlotti 113
-Porto 4 merce 3 nlotti 95
-Porto 5 merce 3 nlotti 98
-Porto 5 merce 1 nlotti 117
-Porto 6 merce 4 nlotti 90
-Porto 6 merce 3 nlotti 59
-Porto 6 merce 1 nlotti 112
-Porto 7 merce 1 nlotti 52
-Porto 7 merce 4 nlotti 48
-Porto 8 merce 3 nlotti 82
-Porto 9 merce 2 nlotti 21
 
 __________________________ 
 

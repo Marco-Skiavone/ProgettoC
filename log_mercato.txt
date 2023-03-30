@@ -1,630 +1,630 @@
 MERCATO, giorno 0
 PORTO 0:
-[0, 121] [1, -102] [2, 106] [3, 101] [4, 114]  presente: 442
+[0, 74] [1, 55] [2, -49] [3, 49] [4, 45]  presente: 223
 MERCATO, giorno 0
 PORTO 1:
-[0, 184] [1, 115] [2, 107] [3, 104] [4, 82]  presente: 592
+[0, 106] [1, 88] [2, -41] [3, -44] [4, -53]  presente: 194
 MERCATO, giorno 0
 PORTO 2:
-[0, -116] [1, -93] [2, 85] [3, 109] [4, -93]  presente: 194
+[0, -191] [1, 72] [2, -55] [3, -47] [4, -39]  presente: 72
 MERCATO, giorno 0
 PORTO 3:
-[0, -136] [1, -122] [2, -109] [3, -99] [4, 110]  presente: 110
+[0, -93] [1, -48] [2, 57] [3, -21] [4, 49]  presente: 106
 MERCATO, giorno 0
 PORTO 4:
-[0, -125] [1, -139] [2, 93] [3, -99] [4, 120]  presente: 213
+[0, -106] [1, -60] [2, 47] [3, 48] [4, -47]  presente: 95
 MERCATO, giorno 0
 PORTO 5:
-[0, 221] [1, -117] [2, -132] [3, -98] [4, 88]  presente: 309
+[0, 114] [1, -96] [2, 52] [3, 64] [4, 34]  presente: 264
 MERCATO, giorno 0
 PORTO 6:
-[0, 130] [1, -121] [2, 136] [3, -91] [4, -130]  presente: 266
+[0, -81] [1, 80] [2, -46] [3, 58] [4, 43]  presente: 181
 MERCATO, giorno 0
 PORTO 7:
-[0, 114] [1, -112] [2, -90] [3, 104] [4, -108]  presente: 218
+[0, -109] [1, 70] [2, 38] [3, 68] [4, -47]  presente: 176
 MERCATO, giorno 0
 PORTO 8:
-[0, 185] [1, 107] [2, 112] [3, -98] [4, 122]  presente: 526
+[0, -136] [1, 98] [2, 53] [3, 44] [4, -41]  presente: 195
 MERCATO, giorno 0
 PORTO 9:
-[0, -166] [1, 112] [2, -109] [3, 98] [4, -123]  presente: 210
+[0, -137] [1, 75] [2, -43] [3, 53] [4, 48]  presente: 176
 MERCATO, giorno 1
 PORTO 0:
-[0, 0] [1, -102] [2, 93] [3, 101] [4, 114]  presente: 308
+[0, 0] [1, 55] [2, -49] [3, 49] [4, 43]  presente: 147
 MERCATO, giorno 1
 PORTO 1:
-[0, 59] [1, 89] [2, 107] [3, 104] [4, 62]  presente: 421
+[0, 13] [1, 45] [2, -41] [3, -44] [4, -53]  presente: 58
 MERCATO, giorno 1
 PORTO 2:
-[0, -116] [1, -93] [2, 70] [3, 109] [4, -93]  presente: 179
+[0, -191] [1, 72] [2, -55] [3, -47] [4, -39]  presente: 72
 MERCATO, giorno 1
 PORTO 3:
-[0, 0] [1, -122] [2, -109] [3, -99] [4, 90]  presente: 90
+[0, -93] [1, -48] [2, 57] [3, -21] [4, 47]  presente: 104
 MERCATO, giorno 1
 PORTO 4:
-[0, -125] [1, -139] [2, 78] [3, -99] [4, 120]  presente: 198
+[0, -106] [1, -60] [2, 47] [3, 48] [4, -47]  presente: 95
 MERCATO, giorno 1
 PORTO 5:
-[0, 85] [1, -117] [2, -132] [3, -98] [4, 68]  presente: 153
+[0, 114] [1, -96] [2, 52] [3, 59] [4, 34]  presente: 259
 MERCATO, giorno 1
 PORTO 6:
-[0, 130] [1, -121] [2, 136] [3, -91] [4, -130]  presente: 266
+[0, -81] [1, 33] [2, -46] [3, 53] [4, 43]  presente: 129
 MERCATO, giorno 1
 PORTO 7:
-[0, 114] [1, -112] [2, -90] [3, 100] [4, -108]  presente: 214
+[0, -109] [1, 70] [2, 32] [3, 68] [4, -47]  presente: 170
 MERCATO, giorno 1
 PORTO 8:
-[0, 24] [1, 21] [2, 83] [3, -98] [4, 122]  presente: 250
+[0, -136] [1, 51] [2, 51] [3, 44] [4, -41]  presente: 146
 MERCATO, giorno 1
 PORTO 9:
-[0, -166] [1, 43] [2, -109] [3, 96] [4, -123]  presente: 139
+[0, -137] [1, 75] [2, -43] [3, 48] [4, 48]  presente: 171
 MERCATO, giorno 2
 PORTO 0:
-[0, 0] [1, -102] [2, 93] [3, 101] [4, 114]  presente: 308
+[0, 0] [1, 55] [2, -49] [3, 49] [4, 43]  presente: 147
 MERCATO, giorno 2
 PORTO 1:
-[0, 59] [1, 89] [2, 107] [3, 104] [4, 62]  presente: 421
+[0, 13] [1, 45] [2, -41] [3, -44] [4, -53]  presente: 58
 MERCATO, giorno 2
 PORTO 2:
-[0, -116] [1, -93] [2, 70] [3, 109] [4, -93]  presente: 179
+[0, -191] [1, 72] [2, -55] [3, -47] [4, -39]  presente: 72
 MERCATO, giorno 2
 PORTO 3:
-[0, 0] [1, -122] [2, -109] [3, -99] [4, 90]  presente: 90
+[0, -93] [1, -48] [2, 57] [3, -21] [4, 47]  presente: 104
 MERCATO, giorno 2
 PORTO 4:
-[0, -125] [1, -139] [2, 63] [3, -99] [4, 120]  presente: 183
+[0, -106] [1, -60] [2, 47] [3, 48] [4, -47]  presente: 95
 MERCATO, giorno 2
 PORTO 5:
-[0, 85] [1, -117] [2, -132] [3, -98] [4, 68]  presente: 153
+[0, 0] [1, -96] [2, 52] [3, 59] [4, 32]  presente: 143
 MERCATO, giorno 2
 PORTO 6:
-[0, 130] [1, -121] [2, 136] [3, -91] [4, -130]  presente: 266
+[0, -81] [1, 33] [2, -46] [3, 53] [4, 43]  presente: 129
 MERCATO, giorno 2
 PORTO 7:
-[0, 114] [1, -112] [2, -90] [3, 98] [4, -108]  presente: 212
+[0, -109] [1, 23] [2, 28] [3, 68] [4, -47]  presente: 119
 MERCATO, giorno 2
 PORTO 8:
-[0, 24] [1, 21] [2, 83] [3, -98] [4, 122]  presente: 250
+[0, -136] [1, 51] [2, 51] [3, 44] [4, -41]  presente: 146
 MERCATO, giorno 2
 PORTO 9:
-[0, -166] [1, 43] [2, -109] [3, 96] [4, -123]  presente: 139
+[0, -137] [1, 75] [2, -43] [3, 48] [4, 46]  presente: 169
 MERCATO, giorno 3
 PORTO 0:
-[0, 0] [1, -102] [2, 93] [3, 101] [4, 114]  presente: 308
+[0, 0] [1, 55] [2, -49] [3, 49] [4, 43]  presente: 147
 MERCATO, giorno 3
 PORTO 1:
-[0, 59] [1, 89] [2, 107] [3, 104] [4, 62]  presente: 421
+[0, 13] [1, 45] [2, -41] [3, -44] [4, -53]  presente: 58
 MERCATO, giorno 3
 PORTO 2:
-[0, -116] [1, -93] [2, 70] [3, 109] [4, -93]  presente: 179
+[0, -191] [1, 72] [2, -55] [3, -47] [4, -39]  presente: 72
 MERCATO, giorno 3
 PORTO 3:
-[0, 0] [1, -122] [2, -109] [3, -99] [4, 90]  presente: 90
+[0, -93] [1, -48] [2, 57] [3, -21] [4, 47]  presente: 104
 MERCATO, giorno 3
 PORTO 4:
-[0, -125] [1, -139] [2, 63] [3, -99] [4, 120]  presente: 183
+[0, -106] [1, -60] [2, 47] [3, 48] [4, -47]  presente: 95
 MERCATO, giorno 3
 PORTO 5:
-[0, 85] [1, -117] [2, -132] [3, -98] [4, 68]  presente: 153
+[0, 0] [1, -96] [2, 52] [3, 59] [4, 32]  presente: 143
 MERCATO, giorno 3
 PORTO 6:
-[0, 130] [1, -121] [2, 121] [3, -89] [4, -130]  presente: 251
+[0, -81] [1, 33] [2, -46] [3, 53] [4, 43]  presente: 129
 MERCATO, giorno 3
 PORTO 7:
-[0, 114] [1, -112] [2, -90] [3, 98] [4, -108]  presente: 212
+[0, -109] [1, 23] [2, 28] [3, 68] [4, -47]  presente: 119
 MERCATO, giorno 3
 PORTO 8:
-[0, 24] [1, 21] [2, 83] [3, -98] [4, 122]  presente: 250
+[0, -136] [1, 51] [2, 51] [3, 44] [4, -41]  presente: 146
 MERCATO, giorno 3
 PORTO 9:
-[0, -166] [1, 43] [2, -109] [3, 96] [4, -123]  presente: 139
+[0, -137] [1, 75] [2, -43] [3, 48] [4, 46]  presente: 169
 MERCATO, giorno 4
 PORTO 0:
-[0, 0] [1, -102] [2, 93] [3, 101] [4, 114]  presente: 308
+[0, 0] [1, 53] [2, -47] [3, 49] [4, 43]  presente: 145
 MERCATO, giorno 4
 PORTO 1:
-[0, 59] [1, 89] [2, 107] [3, 104] [4, 62]  presente: 421
+[0, 0] [1, 45] [2, -41] [3, -34] [4, -53]  presente: 45
 MERCATO, giorno 4
 PORTO 2:
-[0, 0] [1, -37] [2, 35] [3, 107] [4, -73]  presente: 142
+[0, -191] [1, 59] [2, -53] [3, -42] [4, -39]  presente: 59
 MERCATO, giorno 4
 PORTO 3:
-[0, 0] [1, -62] [2, -109] [3, -99] [4, 50]  presente: 50
+[0, 0] [1, -5] [2, 55] [3, -21] [4, 47]  presente: 102
 MERCATO, giorno 4
 PORTO 4:
-[0, -125] [1, -139] [2, 48] [3, -99] [4, 120]  presente: 168
+[0, -106] [1, -13] [2, 43] [3, 48] [4, -45]  presente: 91
 MERCATO, giorno 4
 PORTO 5:
-[0, 85] [1, -117] [2, -102] [3, -98] [4, 28]  presente: 113
+[0, 0] [1, -96] [2, 52] [3, 59] [4, 32]  presente: 143
 MERCATO, giorno 4
 PORTO 6:
-[0, 130] [1, -112] [2, 106] [3, -87] [4, -130]  presente: 236
+[0, -81] [1, 33] [2, -44] [3, 43] [4, 43]  presente: 119
 MERCATO, giorno 4
 PORTO 7:
-[0, 114] [1, -112] [2, -75] [3, 96] [4, -108]  presente: 210
+[0, -109] [1, 18] [2, 26] [3, 63] [4, -47]  presente: 107
 MERCATO, giorno 4
 PORTO 8:
-[0, 24] [1, 21] [2, 68] [3, -96] [4, 122]  presente: 235
+[0, -123] [1, 51] [2, 51] [3, 39] [4, -41]  presente: 141
 MERCATO, giorno 4
 PORTO 9:
-[0, 0] [1, 0] [2, -82] [3, 96] [4, -123]  presente: 96
+[0, -137] [1, 75] [2, -43] [3, 48] [4, 44]  presente: 167
 MERCATO, giorno 5
 PORTO 0:
-[0, 0] [1, -102] [2, 93] [3, 101] [4, 114]  presente: 308
+[0, 0] [1, 53] [2, -47] [3, 49] [4, 43]  presente: 145
 MERCATO, giorno 5
 PORTO 1:
-[0, 59] [1, 89] [2, 107] [3, 104] [4, 62]  presente: 421
+[0, 0] [1, 45] [2, -41] [3, -34] [4, -53]  presente: 45
 MERCATO, giorno 5
 PORTO 2:
-[0, 0] [1, -37] [2, 35] [3, 107] [4, -73]  presente: 142
+[0, -191] [1, 59] [2, -53] [3, -42] [4, -39]  presente: 59
 MERCATO, giorno 5
 PORTO 3:
-[0, 0] [1, -62] [2, -109] [3, -99] [4, 50]  presente: 50
+[0, 0] [1, -5] [2, 55] [3, -21] [4, 47]  presente: 102
 MERCATO, giorno 5
 PORTO 4:
-[0, -125] [1, -139] [2, 48] [3, -99] [4, 120]  presente: 168
+[0, -106] [1, -13] [2, 43] [3, 48] [4, -45]  presente: 91
 MERCATO, giorno 5
 PORTO 5:
-[0, 85] [1, -117] [2, -102] [3, -98] [4, 28]  presente: 113
+[0, 0] [1, -96] [2, 52] [3, 59] [4, 32]  presente: 143
 MERCATO, giorno 5
 PORTO 6:
-[0, 130] [1, -112] [2, 106] [3, -87] [4, -130]  presente: 236
+[0, -81] [1, 33] [2, -44] [3, 43] [4, 43]  presente: 119
 MERCATO, giorno 5
 PORTO 7:
-[0, 114] [1, -82] [2, -75] [3, 94] [4, -108]  presente: 208
+[0, -109] [1, 18] [2, 26] [3, 63] [4, -47]  presente: 107
 MERCATO, giorno 5
 PORTO 8:
-[0, 24] [1, 21] [2, 68] [3, -96] [4, 122]  presente: 235
+[0, -123] [1, 51] [2, 51] [3, 39] [4, -41]  presente: 141
 MERCATO, giorno 5
 PORTO 9:
-[0, 0] [1, 0] [2, -82] [3, 94] [4, -103]  presente: 94
+[0, -137] [1, 75] [2, -43] [3, 48] [4, 44]  presente: 167
 MERCATO, giorno 6
 PORTO 0:
-[0, 0] [1, -102] [2, 93] [3, 101] [4, 114]  presente: 308
+[0, 0] [1, 53] [2, -47] [3, 49] [4, 43]  presente: 145
 MERCATO, giorno 6
 PORTO 1:
-[0, 59] [1, 89] [2, 107] [3, 104] [4, 62]  presente: 421
+[0, 0] [1, 45] [2, -41] [3, -34] [4, -53]  presente: 45
 MERCATO, giorno 6
 PORTO 2:
-[0, 0] [1, -24] [2, 35] [3, 105] [4, -73]  presente: 140
+[0, -191] [1, 59] [2, -53] [3, -42] [4, -39]  presente: 59
 MERCATO, giorno 6
 PORTO 3:
-[0, 0] [1, -62] [2, -94] [3, -99] [4, 30]  presente: 30
+[0, 0] [1, -5] [2, 55] [3, -21] [4, 47]  presente: 102
 MERCATO, giorno 6
 PORTO 4:
-[0, -125] [1, -139] [2, 48] [3, -99] [4, 120]  presente: 168
+[0, -106] [1, -13] [2, 41] [3, 48] [4, -45]  presente: 89
 MERCATO, giorno 6
 PORTO 5:
-[0, 85] [1, -117] [2, -102] [3, -98] [4, 28]  presente: 113
+[0, 0] [1, -49] [2, 52] [3, 54] [4, 32]  presente: 138
 MERCATO, giorno 6
 PORTO 6:
-[0, 130] [1, -112] [2, 106] [3, -87] [4, -130]  presente: 236
+[0, -81] [1, 33] [2, -42] [3, 43] [4, 41]  presente: 117
 MERCATO, giorno 6
 PORTO 7:
-[0, 114] [1, -82] [2, -75] [3, 94] [4, -108]  presente: 208
+[0, -35] [1, 18] [2, 26] [3, 58] [4, -45]  presente: 102
 MERCATO, giorno 6
 PORTO 8:
-[0, 24] [1, 21] [2, 68] [3, -96] [4, 122]  presente: 235
+[0, -9] [1, 51] [2, 51] [3, 34] [4, -39]  presente: 136
 MERCATO, giorno 6
 PORTO 9:
-[0, 0] [1, 0] [2, -82] [3, 94] [4, -103]  presente: 94
+[0, -137] [1, 75] [2, -43] [3, 48] [4, 44]  presente: 167
 MERCATO, giorno 7
 PORTO 0:
-[0, 0] [1, -102] [2, 93] [3, 101] [4, 114]  presente: 308
+[0, 0] [1, 53] [2, -45] [3, 49] [4, 41]  presente: 143
 MERCATO, giorno 7
 PORTO 1:
-[0, 59] [1, 89] [2, 107] [3, 104] [4, 62]  presente: 421
+[0, 0] [1, 45] [2, -41] [3, -34] [4, -53]  presente: 45
 MERCATO, giorno 7
 PORTO 2:
-[0, 0] [1, -24] [2, 35] [3, 105] [4, -73]  presente: 140
+[0, -191] [1, 59] [2, -53] [3, -37] [4, -39]  presente: 59
 MERCATO, giorno 7
 PORTO 3:
-[0, 0] [1, -62] [2, -94] [3, -99] [4, 30]  presente: 30
+[0, 0] [1, -5] [2, 55] [3, -21] [4, 47]  presente: 102
 MERCATO, giorno 7
 PORTO 4:
-[0, -125] [1, -139] [2, 48] [3, -99] [4, 120]  presente: 168
+[0, -106] [1, 0] [2, 39] [3, 48] [4, -45]  presente: 87
 MERCATO, giorno 7
 PORTO 5:
-[0, 85] [1, -117] [2, -87] [3, -98] [4, 8]  presente: 93
+[0, 0] [1, -49] [2, 52] [3, 54] [4, 32]  presente: 138
 MERCATO, giorno 7
 PORTO 6:
-[0, 130] [1, -112] [2, 91] [3, -87] [4, -110]  presente: 221
+[0, -81] [1, 33] [2, -40] [3, 38] [4, 41]  presente: 112
 MERCATO, giorno 7
 PORTO 7:
-[0, 114] [1, -82] [2, -75] [3, 94] [4, -108]  presente: 208
+[0, -35] [1, 18] [2, 24] [3, 58] [4, -43]  presente: 100
 MERCATO, giorno 7
 PORTO 8:
-[0, 24] [1, 21] [2, 68] [3, -96] [4, 122]  presente: 235
+[0, -9] [1, 51] [2, 49] [3, 34] [4, -39]  presente: 134
 MERCATO, giorno 7
 PORTO 9:
-[0, 0] [1, 0] [2, -82] [3, 94] [4, -103]  presente: 94
+[0, -137] [1, 75] [2, -41] [3, 48] [4, 42]  presente: 165
 MERCATO, giorno 8
 PORTO 0:
-[0, 0] [1, -102] [2, 93] [3, 101] [4, 114]  presente: 308
+[0, 0] [1, 53] [2, -45] [3, 49] [4, 41]  presente: 143
 MERCATO, giorno 8
 PORTO 1:
-[0, 59] [1, 89] [2, 107] [3, 104] [4, 62]  presente: 421
+[0, 0] [1, 45] [2, -41] [3, -29] [4, -53]  presente: 45
 MERCATO, giorno 8
 PORTO 2:
-[0, 0] [1, -24] [2, 20] [3, 103] [4, -33]  presente: 123
+[0, -191] [1, 59] [2, -51] [3, -37] [4, -39]  presente: 59
 MERCATO, giorno 8
 PORTO 3:
-[0, 0] [1, -62] [2, -74] [3, -97] [4, 0]  presente: 0
+[0, 0] [1, 0] [2, 51] [3, -11] [4, 45]  presente: 96
 MERCATO, giorno 8
 PORTO 4:
-[0, 0] [1, -113] [2, 33] [3, -99] [4, 120]  presente: 153
+[0, -106] [1, 0] [2, 39] [3, 48] [4, -45]  presente: 87
 MERCATO, giorno 8
 PORTO 5:
-[0, 85] [1, -117] [2, -72] [3, -98] [4, 0]  presente: 85
+[0, 0] [1, -47] [2, 52] [3, 54] [4, 30]  presente: 136
 MERCATO, giorno 8
 PORTO 6:
-[0, 130] [1, -112] [2, 76] [3, -85] [4, -110]  presente: 206
+[0, -81] [1, 33] [2, -38] [3, 37] [4, 41]  presente: 111
 MERCATO, giorno 8
 PORTO 7:
-[0, 114] [1, -52] [2, -75] [3, 90] [4, -88]  presente: 204
+[0, -35] [1, 18] [2, 22] [3, 58] [4, -41]  presente: 98
 MERCATO, giorno 8
 PORTO 8:
-[0, 24] [1, 21] [2, 68] [3, -96] [4, 122]  presente: 235
+[0, -9] [1, 51] [2, 49] [3, 34] [4, -39]  presente: 134
 MERCATO, giorno 8
 PORTO 9:
-[0, 0] [1, 0] [2, -52] [3, 88] [4, -83]  presente: 88
+[0, -137] [1, 75] [2, -41] [3, 48] [4, 42]  presente: 165
 MERCATO, giorno 9
 PORTO 0:
-[0, 0] [1, -102] [2, 93] [3, 101] [4, 114]  presente: 308
+[0, 0] [1, 53] [2, -43] [3, 44] [4, 41]  presente: 138
 MERCATO, giorno 9
 PORTO 1:
-[0, 59] [1, 89] [2, 107] [3, 104] [4, 62]  presente: 421
+[0, 0] [1, 45] [2, -41] [3, -29] [4, -53]  presente: 45
 MERCATO, giorno 9
 PORTO 2:
-[0, 0] [1, -24] [2, 20] [3, 103] [4, -33]  presente: 123
+[0, -191] [1, 59] [2, -51] [3, -37] [4, -39]  presente: 59
 MERCATO, giorno 9
 PORTO 3:
-[0, 0] [1, -62] [2, -74] [3, -97] [4, 0]  presente: 0
+[0, 0] [1, 0] [2, 51] [3, -10] [4, 43]  presente: 94
 MERCATO, giorno 9
 PORTO 4:
-[0, 0] [1, -113] [2, 33] [3, -99] [4, 120]  presente: 153
+[0, -106] [1, 0] [2, 39] [3, 48] [4, -45]  presente: 87
 MERCATO, giorno 9
 PORTO 5:
-[0, 85] [1, -117] [2, -72] [3, -98] [4, 0]  presente: 85
+[0, 0] [1, -47] [2, 52] [3, 54] [4, 30]  presente: 136
 MERCATO, giorno 9
 PORTO 6:
-[0, 130] [1, -112] [2, 76] [3, -85] [4, -110]  presente: 206
+[0, -81] [1, 33] [2, -38] [3, 37] [4, 41]  presente: 111
 MERCATO, giorno 9
 PORTO 7:
-[0, 114] [1, -52] [2, -75] [3, 90] [4, -88]  presente: 204
+[0, -35] [1, 18] [2, 22] [3, 58] [4, -41]  presente: 98
 MERCATO, giorno 9
 PORTO 8:
-[0, 24] [1, 0] [2, 64] [3, -94] [4, 122]  presente: 210
+[0, -9] [1, 51] [2, 49] [3, 34] [4, -39]  presente: 134
 MERCATO, giorno 9
 PORTO 9:
-[0, 0] [1, 0] [2, -52] [3, 88] [4, -83]  presente: 88
+[0, -137] [1, 75] [2, -41] [3, 48] [4, 42]  presente: 165
 MERCATO, giorno 10
 PORTO 0:
-[0, 0] [1, -102] [2, 93] [3, 101] [4, 114]  presente: 308
+[0, 0] [1, 53] [2, -43] [3, 44] [4, 41]  presente: 138
 MERCATO, giorno 10
 PORTO 1:
-[0, 59] [1, 89] [2, 107] [3, 104] [4, 62]  presente: 421
+[0, 0] [1, 45] [2, -41] [3, -24] [4, -53]  presente: 45
 MERCATO, giorno 10
 PORTO 2:
-[0, 0] [1, -24] [2, 20] [3, 103] [4, -33]  presente: 123
+[0, -191] [1, 59] [2, -51] [3, -32] [4, -39]  presente: 59
 MERCATO, giorno 10
 PORTO 3:
-[0, 0] [1, -62] [2, -74] [3, -95] [4, 0]  presente: 0
+[0, 0] [1, 0] [2, 49] [3, -5] [4, 43]  presente: 92
 MERCATO, giorno 10
 PORTO 4:
-[0, 0] [1, -113] [2, 33] [3, -99] [4, 120]  presente: 153
+[0, -106] [1, 0] [2, 39] [3, 48] [4, -45]  presente: 87
 MERCATO, giorno 10
 PORTO 5:
-[0, 85] [1, -117] [2, -72] [3, -98] [4, 0]  presente: 85
+[0, 0] [1, -47] [2, 52] [3, 54] [4, 30]  presente: 136
 MERCATO, giorno 10
 PORTO 6:
-[0, 130] [1, -112] [2, 61] [3, -83] [4, -110]  presente: 191
+[0, -81] [1, 33] [2, -36] [3, 37] [4, 37]  presente: 107
 MERCATO, giorno 10
 PORTO 7:
-[0, 114] [1, -52] [2, -75] [3, 90] [4, -88]  presente: 204
+[0, -35] [1, 18] [2, 20] [3, 58] [4, -39]  presente: 96
 MERCATO, giorno 10
 PORTO 8:
-[0, 24] [1, 0] [2, 49] [3, -92] [4, 122]  presente: 195
+[0, -9] [1, 51] [2, 47] [3, 34] [4, -39]  presente: 132
 MERCATO, giorno 10
 PORTO 9:
-[0, 0] [1, 0] [2, -52] [3, 82] [4, -45]  presente: 82
+[0, -137] [1, 75] [2, -41] [3, 48] [4, 42]  presente: 165
 MERCATO, giorno 11
 PORTO 0:
-[0, 0] [1, -102] [2, 93] [3, 101] [4, 114]  presente: 308
+[0, 0] [1, 53] [2, -39] [3, 44] [4, 37]  presente: 134
 MERCATO, giorno 11
 PORTO 1:
-[0, 59] [1, 89] [2, 107] [3, 104] [4, 62]  presente: 421
+[0, 0] [1, 45] [2, -39] [3, -24] [4, -53]  presente: 45
 MERCATO, giorno 11
 PORTO 2:
-[0, 0] [1, -24] [2, 20] [3, 103] [4, -33]  presente: 123
+[0, -191] [1, 59] [2, -49] [3, -32] [4, -39]  presente: 59
 MERCATO, giorno 11
 PORTO 3:
-[0, 0] [1, -62] [2, -59] [3, -93] [4, 0]  presente: 0
+[0, 0] [1, 0] [2, 47] [3, 0] [4, 43]  presente: 90
 MERCATO, giorno 11
 PORTO 4:
-[0, 0] [1, -113] [2, 33] [3, -99] [4, 100]  presente: 133
+[0, -106] [1, 0] [2, 37] [3, 48] [4, -43]  presente: 85
 MERCATO, giorno 11
 PORTO 5:
-[0, 85] [1, -117] [2, -72] [3, -98] [4, 0]  presente: 85
+[0, 0] [1, -47] [2, 52] [3, 54] [4, 30]  presente: 136
 MERCATO, giorno 11
 PORTO 6:
-[0, 130] [1, -112] [2, 46] [3, -81] [4, -110]  presente: 176
+[0, -81] [1, 33] [2, -34] [3, 32] [4, 37]  presente: 102
 MERCATO, giorno 11
 PORTO 7:
-[0, 114] [1, -52] [2, -75] [3, 90] [4, -88]  presente: 204
+[0, -35] [1, 18] [2, 18] [3, 58] [4, -37]  presente: 94
 MERCATO, giorno 11
 PORTO 8:
-[0, 24] [1, 0] [2, 49] [3, -92] [4, 122]  presente: 195
+[0, -9] [1, 51] [2, 43] [3, 34] [4, -37]  presente: 128
 MERCATO, giorno 11
 PORTO 9:
-[0, 0] [1, 0] [2, -52] [3, 82] [4, -45]  presente: 82
+[0, -137] [1, 75] [2, -39] [3, 48] [4, 40]  presente: 163
 MERCATO, giorno 12
 PORTO 0:
-[0, 0] [1, -102] [2, 93] [3, 101] [4, 114]  presente: 308
+[0, 0] [1, 53] [2, -39] [3, 44] [4, 37]  presente: 134
 MERCATO, giorno 12
 PORTO 1:
-[0, 59] [1, 59] [2, 107] [3, 104] [4, 62]  presente: 391
+[0, 0] [1, 45] [2, -39] [3, -24] [4, -51]  presente: 45
 MERCATO, giorno 12
 PORTO 2:
-[0, 0] [1, -24] [2, 20] [3, 103] [4, -33]  presente: 123
+[0, -191] [1, 59] [2, -49] [3, -32] [4, -39]  presente: 59
 MERCATO, giorno 12
 PORTO 3:
-[0, 0] [1, -62] [2, -44] [3, -93] [4, 0]  presente: 0
+[0, 0] [1, 0] [2, 47] [3, 0] [4, 43]  presente: 90
 MERCATO, giorno 12
 PORTO 4:
-[0, 0] [1, -113] [2, 33] [3, -99] [4, 100]  presente: 133
+[0, -106] [1, 0] [2, 35] [3, 48] [4, -41]  presente: 83
 MERCATO, giorno 12
 PORTO 5:
-[0, 85] [1, -117] [2, -57] [3, -98] [4, 0]  presente: 85
+[0, 0] [1, 0] [2, 52] [3, 54] [4, 28]  presente: 134
 MERCATO, giorno 12
 PORTO 6:
-[0, 130] [1, -112] [2, 46] [3, -81] [4, -110]  presente: 176
+[0, -81] [1, 33] [2, -34] [3, 32] [4, 35]  presente: 100
 MERCATO, giorno 12
 PORTO 7:
-[0, 114] [1, -52] [2, -60] [3, 86] [4, -68]  presente: 200
+[0, -35] [1, 18] [2, 18] [3, 58] [4, -37]  presente: 94
 MERCATO, giorno 12
 PORTO 8:
-[0, 24] [1, 0] [2, 49] [3, -92] [4, 122]  presente: 195
+[0, -9] [1, 51] [2, 43] [3, 34] [4, -37]  presente: 128
 MERCATO, giorno 12
 PORTO 9:
-[0, 0] [1, 0] [2, -52] [3, 80] [4, -25]  presente: 80
+[0, -137] [1, 75] [2, -39] [3, 48] [4, 40]  presente: 163
 MERCATO, giorno 13
 PORTO 0:
-[0, 0] [1, -102] [2, 93] [3, 101] [4, 114]  presente: 308
+[0, 0] [1, 53] [2, -39] [3, 44] [4, 37]  presente: 134
 MERCATO, giorno 13
 PORTO 1:
-[0, 59] [1, 59] [2, 107] [3, 104] [4, 62]  presente: 391
+[0, 0] [1, 45] [2, -39] [3, -24] [4, -49]  presente: 45
 MERCATO, giorno 13
 PORTO 2:
-[0, 0] [1, -24] [2, 20] [3, 103] [4, -33]  presente: 123
+[0, -191] [1, 59] [2, -47] [3, -27] [4, -39]  presente: 59
 MERCATO, giorno 13
 PORTO 3:
-[0, 0] [1, -41] [2, -40] [3, -93] [4, 0]  presente: 0
+[0, 0] [1, 0] [2, 47] [3, 0] [4, 43]  presente: 90
 MERCATO, giorno 13
 PORTO 4:
-[0, 0] [1, -113] [2, 18] [3, -99] [4, 100]  presente: 118
+[0, -106] [1, 0] [2, 35] [3, 43] [4, -41]  presente: 78
 MERCATO, giorno 13
 PORTO 5:
-[0, 85] [1, -117] [2, -57] [3, -98] [4, 0]  presente: 85
+[0, 0] [1, 0] [2, 52] [3, 54] [4, 28]  presente: 134
 MERCATO, giorno 13
 PORTO 6:
-[0, 130] [1, -112] [2, 31] [3, -81] [4, -110]  presente: 161
+[0, -81] [1, 33] [2, -32] [3, 32] [4, 33]  presente: 98
 MERCATO, giorno 13
 PORTO 7:
-[0, 114] [1, -52] [2, -60] [3, 84] [4, -68]  presente: 198
+[0, -35] [1, 18] [2, 16] [3, 58] [4, -37]  presente: 92
 MERCATO, giorno 13
 PORTO 8:
-[0, 24] [1, 0] [2, 34] [3, -90] [4, 122]  presente: 180
+[0, -9] [1, 51] [2, 43] [3, 34] [4, -37]  presente: 128
 MERCATO, giorno 13
 PORTO 9:
-[0, 0] [1, 0] [2, -52] [3, 80] [4, -25]  presente: 80
+[0, -137] [1, 75] [2, -39] [3, 48] [4, 40]  presente: 163
 MERCATO, giorno 14
 PORTO 0:
-[0, 0] [1, -102] [2, 93] [3, 99] [4, 114]  presente: 306
+[0, 0] [1, 53] [2, -35] [3, 39] [4, 35]  presente: 127
 MERCATO, giorno 14
 PORTO 1:
-[0, 59] [1, 59] [2, 107] [3, 104] [4, 62]  presente: 391
+[0, 0] [1, 45] [2, -39] [3, -19] [4, -49]  presente: 45
 MERCATO, giorno 14
 PORTO 2:
-[0, 0] [1, -24] [2, 20] [3, 103] [4, -33]  presente: 123
+[0, -191] [1, 59] [2, -45] [3, -27] [4, -39]  presente: 59
 MERCATO, giorno 14
 PORTO 3:
-[0, 0] [1, -41] [2, -25] [3, -93] [4, 0]  presente: 0
+[0, 0] [1, 0] [2, 47] [3, 0] [4, 41]  presente: 88
 MERCATO, giorno 14
 PORTO 4:
-[0, 0] [1, -113] [2, 18] [3, -99] [4, 100]  presente: 118
+[0, -106] [1, 0] [2, 35] [3, 43] [4, -41]  presente: 78
 MERCATO, giorno 14
 PORTO 5:
-[0, 85] [1, -117] [2, -42] [3, -98] [4, 0]  presente: 85
+[0, 0] [1, 0] [2, 52] [3, 54] [4, 26]  presente: 132
 MERCATO, giorno 14
 PORTO 6:
-[0, 130] [1, -112] [2, 16] [3, -79] [4, -110]  presente: 146
+[0, -81] [1, 33] [2, -32] [3, 27] [4, 33]  presente: 93
 MERCATO, giorno 14
 PORTO 7:
-[0, 114] [1, -52] [2, -60] [3, 84] [4, -68]  presente: 198
+[0, -35] [1, 18] [2, 14] [3, 53] [4, -35]  presente: 85
 MERCATO, giorno 14
 PORTO 8:
-[0, 24] [1, 0] [2, 22] [3, -88] [4, 122]  presente: 168
+[0, -9] [1, 51] [2, 41] [3, 34] [4, -35]  presente: 126
 MERCATO, giorno 14
 PORTO 9:
-[0, 0] [1, 0] [2, -52] [3, 80] [4, -25]  presente: 80
+[0, -137] [1, 75] [2, -37] [3, 48] [4, 38]  presente: 161
 MERCATO, giorno 15
 PORTO 0:
-[0, 0] [1, -102] [2, 93] [3, 99] [4, 114]  presente: 306
+[0, 0] [1, 53] [2, -33] [3, 39] [4, 33]  presente: 125
 MERCATO, giorno 15
 PORTO 1:
-[0, 59] [1, 59] [2, 107] [3, 104] [4, 62]  presente: 391
+[0, 0] [1, 45] [2, -39] [3, -19] [4, -49]  presente: 45
 MERCATO, giorno 15
 PORTO 2:
-[0, 0] [1, -24] [2, 20] [3, 103] [4, -33]  presente: 123
+[0, -191] [1, 59] [2, -43] [3, -27] [4, -39]  presente: 59
 MERCATO, giorno 15
 PORTO 3:
-[0, 0] [1, -41] [2, -25] [3, -93] [4, 0]  presente: 0
+[0, 0] [1, 0] [2, 47] [3, 0] [4, 41]  presente: 88
 MERCATO, giorno 15
 PORTO 4:
-[0, 0] [1, -113] [2, 18] [3, -99] [4, 100]  presente: 118
+[0, -106] [1, 0] [2, 33] [3, 43] [4, -39]  presente: 76
 MERCATO, giorno 15
 PORTO 5:
-[0, 85] [1, -117] [2, -27] [3, -98] [4, 0]  presente: 85
+[0, 0] [1, 0] [2, 52] [3, 54] [4, 26]  presente: 132
 MERCATO, giorno 15
 PORTO 6:
-[0, 130] [1, -112] [2, 16] [3, -79] [4, -110]  presente: 146
+[0, -81] [1, 33] [2, -32] [3, 27] [4, 33]  presente: 93
 MERCATO, giorno 15
 PORTO 7:
-[0, 114] [1, -52] [2, -45] [3, 82] [4, -68]  presente: 196
+[0, -35] [1, 18] [2, 12] [3, 53] [4, -33]  presente: 83
 MERCATO, giorno 15
 PORTO 8:
-[0, 24] [1, 0] [2, 22] [3, -88] [4, 122]  presente: 168
+[0, -9] [1, 51] [2, 39] [3, 34] [4, -33]  presente: 124
 MERCATO, giorno 15
 PORTO 9:
-[0, 0] [1, 0] [2, -52] [3, 78] [4, -5]  presente: 78
+[0, -137] [1, 75] [2, -37] [3, 48] [4, 38]  presente: 161
 MERCATO, giorno 16
 PORTO 0:
-[0, 0] [1, -102] [2, 93] [3, 99] [4, 94]  presente: 286
+[0, 0] [1, 53] [2, -33] [3, 39] [4, 31]  presente: 123
 MERCATO, giorno 16
 PORTO 1:
-[0, 59] [1, 59] [2, 107] [3, 104] [4, 62]  presente: 391
+[0, 0] [1, 45] [2, -37] [3, -19] [4, -49]  presente: 45
 MERCATO, giorno 16
 PORTO 2:
-[0, 0] [1, -24] [2, 20] [3, 103] [4, -33]  presente: 123
+[0, -191] [1, 59] [2, -43] [3, -22] [4, -39]  presente: 59
 MERCATO, giorno 16
 PORTO 3:
-[0, 0] [1, -11] [2, -25] [3, -93] [4, 0]  presente: 0
+[0, 0] [1, 0] [2, 47] [3, 0] [4, 41]  presente: 88
 MERCATO, giorno 16
 PORTO 4:
-[0, 0] [1, -113] [2, 3] [3, -97] [4, 100]  presente: 103
+[0, -106] [1, 0] [2, 31] [3, 43] [4, -37]  presente: 74
 MERCATO, giorno 16
 PORTO 5:
-[0, 85] [1, -117] [2, -12] [3, -98] [4, 0]  presente: 85
+[0, 0] [1, 0] [2, 52] [3, 54] [4, 26]  presente: 132
 MERCATO, giorno 16
 PORTO 6:
-[0, 130] [1, -112] [2, 1] [3, -77] [4, -110]  presente: 131
+[0, -81] [1, 33] [2, -32] [3, 27] [4, 33]  presente: 93
 MERCATO, giorno 16
 PORTO 7:
-[0, 114] [1, -52] [2, -45] [3, 82] [4, -68]  presente: 196
+[0, -35] [1, 18] [2, 12] [3, 53] [4, -33]  presente: 83
 MERCATO, giorno 16
 PORTO 8:
-[0, 24] [1, 0] [2, 22] [3, -88] [4, 122]  presente: 168
+[0, -9] [1, 51] [2, 37] [3, 34] [4, -33]  presente: 122
 MERCATO, giorno 16
 PORTO 9:
-[0, 0] [1, 0] [2, -52] [3, 78] [4, -5]  presente: 78
+[0, -137] [1, 75] [2, -37] [3, 48] [4, 38]  presente: 161
 MERCATO, giorno 17
 PORTO 0:
-[0, 0] [1, -102] [2, 93] [3, 99] [4, 94]  presente: 286
+[0, 0] [1, 53] [2, -33] [3, 39] [4, 29]  presente: 121
 MERCATO, giorno 17
 PORTO 1:
-[0, 59] [1, 59] [2, 107] [3, 104] [4, 62]  presente: 391
+[0, 0] [1, 45] [2, -37] [3, -14] [4, -49]  presente: 45
 MERCATO, giorno 17
 PORTO 2:
-[0, 0] [1, -24] [2, 20] [3, 103] [4, -33]  presente: 123
+[0, -191] [1, 59] [2, -43] [3, -22] [4, -39]  presente: 59
 MERCATO, giorno 17
 PORTO 3:
-[0, 0] [1, -11] [2, -25] [3, -93] [4, 0]  presente: 0
+[0, 0] [1, 0] [2, 47] [3, 0] [4, 41]  presente: 88
 MERCATO, giorno 17
 PORTO 4:
-[0, 0] [1, -113] [2, 3] [3, -97] [4, 100]  presente: 103
+[0, -106] [1, 0] [2, 29] [3, 43] [4, -37]  presente: 72
 MERCATO, giorno 17
 PORTO 5:
-[0, 85] [1, -117] [2, -12] [3, -98] [4, 0]  presente: 85
+[0, 0] [1, 0] [2, 52] [3, 54] [4, 26]  presente: 132
 MERCATO, giorno 17
 PORTO 6:
-[0, 130] [1, -112] [2, 0] [3, -75] [4, -110]  presente: 130
+[0, -81] [1, 33] [2, -30] [3, 27] [4, 31]  presente: 91
 MERCATO, giorno 17
 PORTO 7:
-[0, 114] [1, -52] [2, -30] [3, 80] [4, -68]  presente: 194
+[0, -35] [1, 18] [2, 10] [3, 53] [4, -31]  presente: 81
 MERCATO, giorno 17
 PORTO 8:
-[0, 24] [1, 0] [2, 7] [3, -86] [4, 122]  presente: 153
+[0, -9] [1, 51] [2, 37] [3, 34] [4, -33]  presente: 122
 MERCATO, giorno 17
 PORTO 9:
-[0, 0] [1, 0] [2, -36] [3, 74] [4, -5]  presente: 74
+[0, -137] [1, 75] [2, -37] [3, 48] [4, 38]  presente: 161
 MERCATO, giorno 18
 PORTO 0:
-[0, 0] [1, -102] [2, 93] [3, 99] [4, 94]  presente: 286
+[0, 0] [1, 53] [2, -31] [3, 39] [4, 27]  presente: 119
 MERCATO, giorno 18
 PORTO 1:
-[0, 59] [1, 59] [2, 107] [3, 102] [4, 62]  presente: 389
+[0, 0] [1, 45] [2, -37] [3, -9] [4, -49]  presente: 45
 MERCATO, giorno 18
 PORTO 2:
-[0, 0] [1, -24] [2, 20] [3, 103] [4, -33]  presente: 123
+[0, -191] [1, 59] [2, -43] [3, -17] [4, -37]  presente: 59
 MERCATO, giorno 18
 PORTO 3:
-[0, 0] [1, -11] [2, -10] [3, -91] [4, 0]  presente: 0
+[0, 0] [1, 0] [2, 47] [3, 0] [4, 41]  presente: 88
 MERCATO, giorno 18
 PORTO 4:
-[0, 0] [1, -113] [2, 0] [3, -97] [4, 100]  presente: 100
+[0, -106] [1, 0] [2, 27] [3, 43] [4, -37]  presente: 70
 MERCATO, giorno 18
 PORTO 5:
-[0, 85] [1, -117] [2, 0] [3, -98] [4, 0]  presente: 85
+[0, 0] [1, 0] [2, 52] [3, 54] [4, 24]  presente: 130
 MERCATO, giorno 18
 PORTO 6:
-[0, 130] [1, -112] [2, 0] [3, -73] [4, -110]  presente: 130
+[0, -81] [1, 33] [2, -30] [3, 27] [4, 31]  presente: 91
 MERCATO, giorno 18
 PORTO 7:
-[0, 114] [1, -52] [2, -30] [3, 78] [4, -68]  presente: 192
+[0, -35] [1, 18] [2, 8] [3, 53] [4, -29]  presente: 79
 MERCATO, giorno 18
 PORTO 8:
-[0, 24] [1, 0] [2, 7] [3, -86] [4, 122]  presente: 153
+[0, -9] [1, 51] [2, 37] [3, 34] [4, -33]  presente: 122
 MERCATO, giorno 18
 PORTO 9:
-[0, 0] [1, 0] [2, -36] [3, 74] [4, -5]  presente: 74
+[0, -137] [1, 75] [2, -35] [3, 48] [4, 36]  presente: 159
 MERCATO, giorno 19
 PORTO 0:
-[0, 0] [1, -102] [2, 93] [3, 99] [4, 94]  presente: 286
+[0, 0] [1, 53] [2, -29] [3, 39] [4, 25]  presente: 117
 MERCATO, giorno 19
 PORTO 1:
-[0, 59] [1, 59] [2, 107] [3, 102] [4, 62]  presente: 389
+[0, 0] [1, 45] [2, -37] [3, -9] [4, -49]  presente: 45
 MERCATO, giorno 19
 PORTO 2:
-[0, 0] [1, -24] [2, 20] [3, 103] [4, -33]  presente: 123
+[0, -191] [1, 59] [2, -41] [3, -17] [4, -37]  presente: 59
 MERCATO, giorno 19
 PORTO 3:
-[0, 0] [1, -11] [2, -7] [3, -91] [4, 0]  presente: 0
+[0, 0] [1, 0] [2, 47] [3, 0] [4, 39]  presente: 86
 MERCATO, giorno 19
 PORTO 4:
-[0, 0] [1, -113] [2, 0] [3, -97] [4, 100]  presente: 100
+[0, -106] [1, 0] [2, 27] [3, 43] [4, -37]  presente: 70
 MERCATO, giorno 19
 PORTO 5:
-[0, 85] [1, -117] [2, 0] [3, -98] [4, 0]  presente: 85
+[0, 0] [1, 0] [2, 52] [3, 54] [4, 24]  presente: 130
 MERCATO, giorno 19
 PORTO 6:
-[0, 130] [1, -112] [2, 0] [3, -73] [4, -110]  presente: 130
+[0, -81] [1, 33] [2, -28] [3, 22] [4, 31]  presente: 86
 MERCATO, giorno 19
 PORTO 7:
-[0, 114] [1, -52] [2, -30] [3, 78] [4, -68]  presente: 192
+[0, -35] [1, 18] [2, 4] [3, 53] [4, -27]  presente: 75
 MERCATO, giorno 19
 PORTO 8:
-[0, 24] [1, 0] [2, 7] [3, -86] [4, 122]  presente: 153
+[0, -9] [1, 51] [2, 37] [3, 34] [4, -33]  presente: 122
 MERCATO, giorno 19
 PORTO 9:
-[0, 0] [1, 0] [2, -36] [3, 74] [4, -5]  presente: 74
+[0, -137] [1, 75] [2, -35] [3, 48] [4, 36]  presente: 159
 MERCATO, giorno 20
 PORTO 0:
-[0, 0] [1, -102] [2, 93] [3, 99] [4, 94]  presente: 286
+[0, 0] [1, 53] [2, -27] [3, 34] [4, 25]  presente: 112
 MERCATO, giorno 20
 PORTO 1:
-[0, 59] [1, 59] [2, 107] [3, 102] [4, 62]  presente: 389
+[0, 0] [1, 45] [2, -37] [3, -9] [4, -49]  presente: 45
 MERCATO, giorno 20
 PORTO 2:
-[0, 0] [1, -24] [2, 20] [3, 103] [4, -33]  presente: 123
+[0, -191] [1, 59] [2, -39] [3, -17] [4, -37]  presente: 59
 MERCATO, giorno 20
 PORTO 3:
-[0, 0] [1, -11] [2, -7] [3, -89] [4, 0]  presente: 0
+[0, 0] [1, 0] [2, 47] [3, 0] [4, 39]  presente: 86
 MERCATO, giorno 20
 PORTO 4:
-[0, 0] [1, -113] [2, 0] [3, -95] [4, 80]  presente: 80
+[0, -106] [1, 0] [2, 27] [3, 43] [4, -37]  presente: 70
 MERCATO, giorno 20
 PORTO 5:
-[0, 85] [1, -117] [2, 0] [3, -98] [4, 0]  presente: 85
+[0, 0] [1, 0] [2, 52] [3, 54] [4, 24]  presente: 130
 MERCATO, giorno 20
 PORTO 6:
-[0, 130] [1, -112] [2, 0] [3, -69] [4, -110]  presente: 130
+[0, -81] [1, 33] [2, -28] [3, 22] [4, 31]  presente: 86
 MERCATO, giorno 20
 PORTO 7:
-[0, 114] [1, -52] [2, -15] [3, 76] [4, -68]  presente: 190
+[0, -35] [1, 18] [2, 4] [3, 53] [4, -27]  presente: 75
 MERCATO, giorno 20
 PORTO 8:
-[0, 24] [1, 0] [2, 0] [3, -82] [4, 117]  presente: 141
+[0, -9] [1, 51] [2, 37] [3, 34] [4, -33]  presente: 122
 MERCATO, giorno 20
 PORTO 9:
-[0, 0] [1, 0] [2, -21] [3, 72] [4, -5]  presente: 72
+[0, -137] [1, 75] [2, -35] [3, 48] [4, 36]  presente: 159
