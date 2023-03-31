@@ -55,7 +55,6 @@ int main(int argc, char *argv[]){
 
     inizializza_risorse();
 
-
     //fprintf(stderr,"Porto %d - x: %f y: %f\n", indice, CAST_POSIZIONI_PORTI(vptr_shm_posizioni_porti)[indice].x, CAST_POSIZIONI_PORTI(vptr_shm_posizioni_porti)[indice].y);
     
     spawnMerciPorti(SO_MERCI, vptr_shm_mercato, CAST_DETTAGLI_LOTTI(vptr_shm_dettagli_lotti),(SO_FILL/SO_PORTI), indice);
@@ -76,7 +75,6 @@ int main(int argc, char *argv[]){
 }
 
 void manda_richieste(int nmerci, void* vptr_shm_mercato, int indice, int coda_id){
-
     int i;
     merce(*ptr_shm_mercato_porto)[nmerci] = CAST_MERCATO(vptr_shm_mercato);
     richiesta r;
@@ -164,7 +162,7 @@ void inizializza_banchine(int sem_id, int indice, int so_banchine){
 void signal_handler(int signo){
     switch(signo){
         case SIGUSR1:
-            fprintf(stderr,"*** PORTO %d: ricevuto SIGUSR1: data = %d ***\n", indice, /*DATA*/CAST_DUMP(vptr_shm_dump)->data);
+            fprintf(stderr,"*** PORTO %d: ricevuto SIGUSR1: data = %d ***\n", indice, CAST_DUMP(vptr_shm_dump)->data);
             break;
         case SIGUSR2:
             fprintf(stderr,"\nPORTO %d: ricevuto SIGUSR2.\n", indice);

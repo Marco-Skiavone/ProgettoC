@@ -24,7 +24,6 @@ int id_semaforo_dump;
 
 int id_coda_richieste;
 
-// int DATA;
 int *child_pids;
 
 int PARAMETRO[QNT_PARAMETRI];
@@ -47,7 +46,7 @@ int main(int argc, char* argv[]){
     int n_righe_file, file_config_char;
     
     int continua_simulazione;
-
+    void **ptrs_to_free; /* serve a liberare tutte le malloc a fine simulazione*/
     int child_pid, status;
     FILE *file_config;
     richiesta r;
@@ -55,7 +54,8 @@ int main(int argc, char* argv[]){
     setbuf(stdout, NULL); /* unbufferizza stdout */
     clearLog();
     srand(time(NULL));
-    freopen("out.txt", "a", stdout);
+    if(freopen("out.txt", "a", stdout)==NULL)
+        {perror("freopen ha ritornato NULL");}
     if(argc !=2){
         perror("argc != 2");
         exit(EXIT_FAILURE);
@@ -179,7 +179,6 @@ int main(int argc, char* argv[]){
     sa_alrm.sa_flags = 0;
     sigemptyset(&(sa_alrm.sa_mask));
     sigaction(SIGALRM, &sa_alrm, NULL);
-    // DATA = 0;
     
     continua_simulazione = 1;
     do{
@@ -192,7 +191,8 @@ int main(int argc, char* argv[]){
         pause();
     } while(((int)(CAST_DUMP(vptr_shm_dump)->data) < SO_DAYS) && continua_simulazione);
     
-    freopen("out.txt", "a", stdout);
+    if(freopen("out.txt", "a", stdout)==NULL)
+        {perror("freopen ha ritornato NULL");}
     for(i = 0; i < SO_NAVI+SO_PORTI; i++){
         printf("MASTER: ammazzo il figlio %d\n", child_pids[i]);
         kill(child_pids[i], SIGUSR2);
@@ -202,22 +202,12 @@ int main(int argc, char* argv[]){
     while((child_pid = wait(&status)) != -1){
         printf("Terminato figlio %d status %d\n", child_pid, WEXITSTATUS(status));
     }
-
     printf("Master sto uscendo con gestione = %d\n", sem_get_val(id_semaforo_gestione,0));
     printf("\n__________________________ \n\n");
     
-    /*
-    for(i=0;i<SO_PORTI;i++){
-        printf("Porto %d\n", i);
-        for(j=0;j<SO_MERCI;j++){
-            printf("Merce %d nlotti %d scadenza %d\n", j, ((merce(*)[SO_MERCI])vptr_shm_mercato)[i][j].val, ((merce(*)[SO_MERCI])vptr_shm_mercato)[i][j].exp);
-        }
-    }
-    printf("\n__________________________ \n\n");
-    */
-
+    /* svuotiamo la coda richieste */
     i = 0;
-    do {
+    do {    
         r = accetta_richiesta(i, id_coda_richieste);
         if(r.mtext.indicemerce != -1){
             //printf("Porto %ld merce %d nlotti %d\n", r.mtype, r.mtext.indicemerce, r.mtext.nlotti);
@@ -226,9 +216,12 @@ int main(int argc, char* argv[]){
     } while (r.mtext.indicemerce != -1 || i < SO_PORTI);
     printf("\n__________________________ \n\n");
 
-
     sgancia_e_distruggi_risorse();
-
+    
+    /* sono da liberare child_pids, ogni argv_figli[i] meno l'ultimo che è null,
+     *  e argv_figli stesso => tot=(QNT_PARAMETRI + 2))+1; */
+    free_ptr(child_pids, argv_figli, QNT_PARAMETRI+2);
+    exit(EXIT_SUCCESS);
 }
 
 void setUpLotto(merce* ptr_dettagli_lotti, int nmerci, int so_size, int so_min_vita, int so_max_vita){
@@ -286,15 +279,11 @@ void generate_positions(double lato, point* posizioni_porti) {
     }
 }
 
-
-
 void alloca_risorse(){
     int i;
-
     printf("SHAREDM_MERCATO: %d\n", id_shm_mercato = alloca_shm(CHIAVE_SHAREDM_MERCATO, SIZE_SHAREDM_MERCATO));
     vptr_shm_mercato = aggancia_shm(id_shm_mercato);
 
-    
     printf("SHAREDM_DETTAGLI_LOTTI: %d\n", id_shm_dettagli_lotti = alloca_shm(CHIAVE_SHAREDM_DETTAGLI_LOTTI, SIZE_SHAREDM_DETTAGLI_LOTTI));
     vptr_shm_dettagli_lotti = aggancia_shm(id_shm_dettagli_lotti);
 
@@ -304,20 +293,15 @@ void alloca_risorse(){
     printf("SHAREDM_DUMP: %d\n",id_shm_dump =  alloca_shm(CHIAVE_SHAREDM_DUMP, SIZE_SHAREDM_DUMP));
     vptr_shm_dump = aggancia_shm(id_shm_dump);
 
-
     printf("SEM_CREATE_MERCATO: %d\n", id_semaforo_mercato = sem_create(CHIAVE_SEM_MERCATO, SO_PORTI));
     for(i=0;i<SO_PORTI;i++){
         sem_set_val(id_semaforo_mercato, i, 1);
     }
 
     printf("SEM_CREATE_GESTIONE: %d\n", id_semaforo_gestione = sem_create(CHIAVE_SEM_GESTIONE, 2));
-
     printf("SEM_CREATE_BANCHINE: %d\n", id_semaforo_banchine = sem_create(CHIAVE_SEM_BANCHINE, SO_PORTI));
-
     printf("SEM_CREATE_DUMP: %d\n", id_semaforo_dump = sem_create(CHIAVE_SEM_DUMP, 2));
-
     printf("CODA RICHIESTE: %d\n", id_coda_richieste = set_coda_richieste(CHIAVE_CODA));
-
     printf("\n__________________________ \n\n");
 }
 

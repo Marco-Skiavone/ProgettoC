@@ -80,9 +80,11 @@ void stampa_merci_porti_navi(int PARAMETRO[], void * vptr_shm_dump, void *vptr_s
             (CAST_PORTO_DUMP(vptr_shm_dump))[j].banchineoccupate = (CAST_PORTO_DUMP(vptr_shm_dump))[j].banchinetotali - sem_get_val(id_semaforo_banchine, j);
             printf("- banchine occupate/totali: %d/%d\n", (CAST_PORTO_DUMP(vptr_shm_dump))[j].banchineoccupate, (CAST_PORTO_DUMP(vptr_shm_dump))[j].banchinetotali);
 
-			freopen("log_mercato.txt","a", stdout);
+			if(freopen("log_mercato.txt","a", stdout)==NULL)
+        		{perror("freopen ha ritornato NULL");}
 			stampa_mercato_dump(vptr_shm_dump, vptr_shm_mercato, PARAMETRO, j);
-			freopen("log_dump.txt", "a", stdout);
+			if(freopen("log_dump.txt", "a", stdout)==NULL)
+        		{perror("freopen ha ritornato NULL");}
             j++;
         }
     }
@@ -93,12 +95,14 @@ void stampa_merci_porti_navi(int PARAMETRO[], void * vptr_shm_dump, void *vptr_s
 }
 
 void stampa_dump(int PARAMETRO[], void * vptr_shm_dump, void *vptr_shm_mercato, int id_semaforo_banchine){
-	freopen("log_dump.txt", "a", stdout);
+	if(freopen("log_dump.txt", "a", stdout)==NULL)
+        {perror("freopen ha ritornato NULL");}
 	/*da togliere in futuro --> vptr_shm_mercato e stampa_mercato_dump()*/
     printf("*** Inizio stampa del dump: giorno %d ***\n", ((dump*)vptr_shm_dump)->data);
 	stampa_merci_porti_navi(PARAMETRO, vptr_shm_dump,vptr_shm_mercato, id_semaforo_banchine);
     printf("\n--- Fine stato dump attuale (giorno %d). ---\n", CAST_DUMP(vptr_shm_dump)->data);
-	freopen("out.txt", "a", stdout);
+	if(freopen("out.txt", "a", stdout)==NULL)
+        {perror("freopen ha ritornato NULL");}
 }
 
 void calcola_porti_term(int PARAMETRO[], void* vptr_shm_dump){
@@ -119,7 +123,8 @@ void calcola_porti_term(int PARAMETRO[], void* vptr_shm_dump){
 void stampa_terminazione(int PARAMETRO[], void * vptr_shm_dump, void * vptr_shm_mercato, int id_semaforo_banchine){
 	int i, j;
 	/*da togliere in futuro --> vptr_shm_mercato e stampa_mercato_dump()*/
-	freopen("log_dump.txt", "a", stdout);
+	if(freopen("log_dump.txt", "a", stdout)==NULL)
+        {perror("freopen ha ritornato NULL");}
 	printf("\n----------------------------------\n");
 	printf(" *** STAMPA DI TERMINAZIONE DELLA SIMULAZIONE! giorno %d ***\n", CAST_DUMP(vptr_shm_dump)->data);
 	stampa_merci_porti_navi(PARAMETRO, vptr_shm_dump,vptr_shm_mercato, id_semaforo_banchine);
@@ -129,5 +134,22 @@ void stampa_terminazione(int PARAMETRO[], void * vptr_shm_dump, void * vptr_shm_
 	printf("Porto che ha ricevuto più lotti di merce: %d\n", CAST_TERM_DUMP(vptr_shm_dump).porto_ricevute);
 	printf("Porto che ha spedito più lotti di merce: %d\n", CAST_TERM_DUMP(vptr_shm_dump).porto_spedite);
 	printf("\n----------------------------\n");
-	freopen("out.txt", "a", stdout);
+	if(freopen("out.txt", "a", stdout)==NULL)
+        {perror("freopen ha ritornato NULL");}
+}
+
+void free_ptr(void *childs, void* argv_figli[], int size){
+	if(childs != NULL){
+		free(childs);
+	} else 
+		perror("childs pointer is NULL");
+
+	if(argv_figli != NULL){
+		int i;
+		for(i = 0; i < size; i++){
+			if(argv_figli[i] != NULL)
+			free(argv_figli[i]);
+		}
+	} else
+		perror("argv_figli pointer is NULL");
 }

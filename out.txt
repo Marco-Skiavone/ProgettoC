@@ -1,121 +1,85 @@
 Parametri:
 SO_NAVI | SO_PORTI | SO_MERCI | SO_SIZE | SO_MIN_VITA | SO_MAX_VITA | SO_LATO | SO_SPEED | SO_CAPACITY | SO_BANCHINE | SO_FILL | SO_LOADSPEED | SO_DAYS
- 20 | 10 | 5 | 500 | 40 | 50 | 500 | 50000 | 1000 | 7 | 500000 | 500 | 20 
-SHAREDM_MERCATO: 262160
-SHAREDM_DETTAGLI_LOTTI: 262161
-SHAREDM_POSIZIONI_PORTI: 262166
-SHAREDM_DUMP: 262167
-SEM_CREATE_MERCATO: 65596
-SEM_CREATE_GESTIONE: 65597
-SEM_CREATE_BANCHINE: 65598
-SEM_CREATE_DUMP: 65599
-CODA RICHIESTE: 47
+ 20 | 10 | 5 | 500 | 40 | 50 | 500 | 50000 | 1000 | 7 | 500000 | 500 | 2 
+SHAREDM_MERCATO: 262152
+SHAREDM_DETTAGLI_LOTTI: 262154
+SHAREDM_POSIZIONI_PORTI: 262155
+SHAREDM_DUMP: 262156
+SEM_CREATE_MERCATO: 53
+SEM_CREATE_GESTIONE: 54
+SEM_CREATE_BANCHINE: 55
+SEM_CREATE_DUMP: 56
+CODA RICHIESTE: 13
 
 __________________________ 
 
-Merce 0 val 1 exp 46
-Merce 1 val 21 exp 49
-Merce 2 val 417 exp 41
-Merce 3 val 177 exp 43
-Merce 4 val 437 exp 43
+Merce 0 val 1 exp 49
+Merce 1 val 369 exp 47
+Merce 2 val 369 exp 41
+Merce 3 val 417 exp 41
+Merce 4 val 357 exp 45
 
-MASTER: Passato giorno 1 su 20.
-
-MASTER: Passato giorno 2 su 20.
-
-MASTER: Passato giorno 3 su 20.
-
-MASTER: Passato giorno 4 su 20.
-
-MASTER: Passato giorno 5 su 20.
-
-MASTER: Passato giorno 6 su 20.
-
-MASTER: Passato giorno 7 su 20.
-
-MASTER: Passato giorno 8 su 20.
-
-MASTER: Passato giorno 9 su 20.
-
-MASTER: Passato giorno 10 su 20.
-
-MASTER: Passato giorno 11 su 20.
-
-MASTER: Passato giorno 12 su 20.
-
-MASTER: Passato giorno 13 su 20.
-
-MASTER: Passato giorno 14 su 20.
-
-MASTER: Passato giorno 15 su 20.
-
-MASTER: Passato giorno 16 su 20.
-
-MASTER: Passato giorno 17 su 20.
-
-MASTER: Passato giorno 18 su 20.
-
-MASTER: Passato giorno 19 su 20.
-MASTER: ammazzo il figlio 114054
-MASTER: ammazzo il figlio 114055
-MASTER: ammazzo il figlio 114056
-MASTER: ammazzo il figlio 114057
-MASTER: ammazzo il figlio 114058
-MASTER: ammazzo il figlio 114059
-MASTER: ammazzo il figlio 114060
-MASTER: ammazzo il figlio 114061
-MASTER: ammazzo il figlio 114062
-MASTER: ammazzo il figlio 114063
-MASTER: ammazzo il figlio 114064
-MASTER: ammazzo il figlio 114065
-MASTER: ammazzo il figlio 114066
-MASTER: ammazzo il figlio 114067
-MASTER: ammazzo il figlio 114068
-MASTER: ammazzo il figlio 114069
-MASTER: ammazzo il figlio 114070
-MASTER: ammazzo il figlio 114072
-MASTER: ammazzo il figlio 114073
-MASTER: ammazzo il figlio 114074
-MASTER: ammazzo il figlio 114075
-MASTER: ammazzo il figlio 114076
-MASTER: ammazzo il figlio 114077
-MASTER: ammazzo il figlio 114078
-MASTER: ammazzo il figlio 114079
-MASTER: ammazzo il figlio 114080
-MASTER: ammazzo il figlio 114081
-MASTER: ammazzo il figlio 114082
-MASTER: ammazzo il figlio 114083
-MASTER: ammazzo il figlio 114084
-Terminato figlio 114054 status 0
-Terminato figlio 114055 status 0
-Terminato figlio 114056 status 0
-Terminato figlio 114057 status 0
-Terminato figlio 114058 status 0
-Terminato figlio 114059 status 0
-Terminato figlio 114060 status 0
-Terminato figlio 114061 status 0
-Terminato figlio 114062 status 0
-Terminato figlio 114063 status 0
-Terminato figlio 114064 status 0
-Terminato figlio 114065 status 0
-Terminato figlio 114066 status 0
-Terminato figlio 114067 status 0
-Terminato figlio 114068 status 0
-Terminato figlio 114069 status 0
-Terminato figlio 114070 status 0
-Terminato figlio 114072 status 0
-Terminato figlio 114073 status 0
-Terminato figlio 114074 status 0
-Terminato figlio 114075 status 0
-Terminato figlio 114076 status 0
-Terminato figlio 114077 status 0
-Terminato figlio 114078 status 0
-Terminato figlio 114079 status 0
-Terminato figlio 114080 status 0
-Terminato figlio 114081 status 0
-Terminato figlio 114082 status 0
-Terminato figlio 114083 status 0
-Terminato figlio 114084 status 0
+MASTER: Passato giorno 1 su 2.
+MASTER: ammazzo il figlio 10113
+MASTER: ammazzo il figlio 10114
+MASTER: ammazzo il figlio 10115
+MASTER: ammazzo il figlio 10116
+MASTER: ammazzo il figlio 10117
+MASTER: ammazzo il figlio 10118
+MASTER: ammazzo il figlio 10119
+MASTER: ammazzo il figlio 10120
+MASTER: ammazzo il figlio 10121
+MASTER: ammazzo il figlio 10122
+MASTER: ammazzo il figlio 10123
+MASTER: ammazzo il figlio 10124
+MASTER: ammazzo il figlio 10125
+MASTER: ammazzo il figlio 10126
+MASTER: ammazzo il figlio 10127
+MASTER: ammazzo il figlio 10128
+MASTER: ammazzo il figlio 10129
+MASTER: ammazzo il figlio 10130
+MASTER: ammazzo il figlio 10131
+MASTER: ammazzo il figlio 10132
+MASTER: ammazzo il figlio 10133
+MASTER: ammazzo il figlio 10134
+MASTER: ammazzo il figlio 10135
+MASTER: ammazzo il figlio 10136
+MASTER: ammazzo il figlio 10137
+MASTER: ammazzo il figlio 10138
+MASTER: ammazzo il figlio 10139
+MASTER: ammazzo il figlio 10140
+MASTER: ammazzo il figlio 10141
+MASTER: ammazzo il figlio 10142
+Terminato figlio 10113 status 0
+Terminato figlio 10114 status 0
+Terminato figlio 10115 status 0
+Terminato figlio 10116 status 0
+Terminato figlio 10117 status 0
+Terminato figlio 10118 status 0
+Terminato figlio 10119 status 0
+Terminato figlio 10120 status 0
+Terminato figlio 10121 status 0
+Terminato figlio 10122 status 0
+Terminato figlio 10125 status 0
+Terminato figlio 10123 status 0
+Terminato figlio 10124 status 0
+Terminato figlio 10126 status 0
+Terminato figlio 10127 status 0
+Terminato figlio 10128 status 0
+Terminato figlio 10129 status 0
+Terminato figlio 10130 status 0
+Terminato figlio 10132 status 0
+Terminato figlio 10133 status 0
+Terminato figlio 10134 status 0
+Terminato figlio 10135 status 0
+Terminato figlio 10136 status 0
+Terminato figlio 10137 status 0
+Terminato figlio 10139 status 0
+Terminato figlio 10140 status 0
+Terminato figlio 10141 status 0
+Terminato figlio 10142 status 0
+Terminato figlio 10131 status 0
+Terminato figlio 10138 status 0
 Master sto uscendo con gestione = 0
 
 __________________________ 

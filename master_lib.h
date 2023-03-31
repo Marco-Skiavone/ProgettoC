@@ -36,3 +36,6 @@ void calcola_porti_term(int PARAMETRO[], void* vptr_shm_dump);
 
 /* Stampa il dump alla terminazione della simulazione. */
 void stampa_terminazione(int PARAMETRO[], void * vptr_shm_dump, void * vptr_shm_mercato, int id_semaforo_banchine);
+
+/* Esegue le free() necessarie a fine simulazione; size è la lunghezza di argv_figli. */
+void free_ptr(void *childs, void* argv_figli[], int size);
