@@ -17,5 +17,8 @@ void *aggancia_shm(int shmid);
 /* Si sgancia dalla SHM. */
 void sgancia_shm(void *shm_ptr);
 
+/* Sgancia i 4 puntatori alle shm della simulazione. Richiama al suo interno sgancia_shm()*/
+void sgancia_risorse(void *ptr1, void *ptr2, void *ptr3, void *ptr4);
+
 /* Distrugge la SHM con id 'shmid'. */
 void distruggi_shm(int shmid);

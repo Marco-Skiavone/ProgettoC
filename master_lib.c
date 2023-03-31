@@ -10,20 +10,31 @@ void clearLog(){
 	fclose(fopen("log_navi.txt","w"));
 }
 
-int confronto_mercato_dump(void *vptr_shm_dump, void *vptr_shm_mercato, int PARAMETRO[], int indice_porto){
-	int i, j, presente, trovata;
-	presente = trovata = 0;
-	for(i = 0; i < SO_MERCI; i++){
-		if(CAST_MERCATO(vptr_shm_mercato)[i][j].val > 0){
-			presente += CAST_MERCATO(vptr_shm_mercato)[indice_porto][i].val;
-		}
-	}
-	trovata += CAST_PORTO_DUMP(vptr_shm_dump)[indice_porto].mercepresente;
-	if(presente != trovata){
-		printf("\nTROVATO ERRORE NEL DUMP AL PORTO %d: presente=%d, trovata=%d!\n", indice_porto, presente, trovata);
-		return 0;
-	}
-	return 1;
+void inizializza_dump(void *vptr_shm_dump, int PARAMETRO[]){
+    int i;
+    CAST_DUMP(vptr_shm_dump)->data = 0;
+    CAST_DUMP(vptr_shm_dump)->merce_dump_ptr = (merce_dump*)(vptr_shm_dump+sizeof(int));
+    CAST_DUMP(vptr_shm_dump)->porto_dump_ptr = (porto_dump*)(((merce_dump*) vptr_shm_dump+sizeof(int))+SO_MERCI);
+
+    CAST_TERM_DUMP(vptr_shm_dump).porto_ricevute = 0;
+    CAST_TERM_DUMP(vptr_shm_dump).porto_spedite = 0;
+
+    CAST_DUMP(vptr_shm_dump)->nd.navicariche = 0;
+    CAST_DUMP(vptr_shm_dump)->nd.naviscariche = SO_NAVI;
+    CAST_DUMP(vptr_shm_dump)->nd.naviporto = 0;
+    
+    for(i = 0; i < SO_MERCI; i++){
+        CAST_MERCE_DUMP(vptr_shm_dump)[i].consegnata = 0;
+        CAST_MERCE_DUMP(vptr_shm_dump)[i].presente_in_nave = 0;
+        CAST_MERCE_DUMP(vptr_shm_dump)[i].presente_in_porto = 0;
+        CAST_MERCE_DUMP(vptr_shm_dump)[i].scaduta_in_nave = 0;
+        CAST_MERCE_DUMP(vptr_shm_dump)[i].scaduta_in_porto = 0;
+    }
+    for(i = 0; i < SO_PORTI; i++){
+        CAST_PORTO_DUMP(vptr_shm_dump)[i].mercepresente = 0;
+        CAST_PORTO_DUMP(vptr_shm_dump)[i].mercericevuta = 0;
+        CAST_PORTO_DUMP(vptr_shm_dump)[i].mercespedita = 0;
+    }
 }
 
 void stampa_mercato_dump(void *vptr_shm_dump, void *vptr_shm_mercato, int PARAMETRO[], int indice_porto){

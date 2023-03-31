@@ -34,7 +34,6 @@ int DEB_porto_ultima_destinazione;
 /*-------------------------------*/
 
 void inizializza_risorse();
-void sgancia_risorse();
 void signal_handler(int signo);
 
 point generate_random_point(int lato);
@@ -88,11 +87,7 @@ int main(int argc, char *argv[]){
 		PARAMETRO[i - 2] = atoi(argv[i]);
 
 	}
-    
     inizializza_risorse();
-
-
-    
     sem_reserve(id_semaforo_gestione, 0);
     sem_wait_zero(id_semaforo_gestione, 0);
     
@@ -100,10 +95,8 @@ int main(int argc, char *argv[]){
         {perror("freopen ha ritornato NULL");}
     codice_simulazione();
 
-    //printf("Nave %d sto uscendo con gestione = %d\n", indice, sem_get_val(id_semaforo_gestione, 0));
-    sgancia_risorse();
+    sgancia_risorse(vptr_shm_dettagli_lotti, vptr_shm_dump, vptr_shm_mercato, vptr_shm_posizioni_porti);
     exit(EXIT_SUCCESS);
-
 }
 
 void aggiorna_dump_carico(int indiceporto, merce_nave* carico, int caricati, int spazio_libero){
@@ -111,10 +104,7 @@ void aggiorna_dump_carico(int indiceporto, merce_nave* carico, int caricati, int
     //printf("Entro aggiorna dump sem reserve \n");
     sem_reserve(id_semaforo_dump, 0);
 
-    if(spazio_libero != SO_CAPACITY){ /* spazio libero va in ton, ergo il dump dei porti deve essere in ton. */
-        /*CAST_PORTO_DUMP(vptr_shm_dump)[indiceporto].mercespedita += SO_CAPACITY - spazio_libero;
-        printf("PORTO %d, MERCE PRESENTE = %d, SPAZIO_LIBERO = %d\n",indiceporto, CAST_PORTO_DUMP(vptr_shm_dump)[indiceporto].mercepresente, spazio_libero);
-        CAST_PORTO_DUMP(vptr_shm_dump)[indiceporto].mercepresente -= SO_CAPACITY - spazio_libero;*/
+    if(spazio_libero != SO_CAPACITY){ 
         for(i = 0; i < caricati; i++){
             CAST_PORTO_DUMP(vptr_shm_dump)[indiceporto].mercespedita += carico[i].mer.val;
             CAST_PORTO_DUMP(vptr_shm_dump)[indiceporto].mercepresente -= carico[i].mer.val;
@@ -123,12 +113,9 @@ void aggiorna_dump_carico(int indiceporto, merce_nave* carico, int caricati, int
             CAST_MERCE_DUMP(vptr_shm_dump)[carico[i].indice].presente_in_porto -= carico[i].mer.val;
         }
     }
-    
-    
     sem_release(id_semaforo_dump, 0);
     //printf("Esco aggiorna dump sem reserve \n");
 }
-
 
 void scaricamerci(merce scarico, int indiceporto, int indicemerce, int data, int so_merci, void* vptr_shm_mercato_porto, void* vptr_shm_dump_porto){    
     /* aggiorno mercato shm se possibile */
@@ -241,7 +228,6 @@ void codice_simulazione(){
     posizione = CAST_POSIZIONI_PORTI(vptr_shm_posizioni_porti)[indiceportoattraccato];
     printf("Nave %d ha ricevuto una banchina al porto %d\n", indice, indicedestinazione);
 
-    
     while(1){
         /* Il primo do-while esegue la ricerca della prima richiesta da accettare,
          * in base alle risorse del porto di attracco. */
@@ -462,7 +448,6 @@ void richiedi_banchina(int indice_porto){
     sigprocmask(SIG_SETMASK, &oldmask, NULL);
 }   
 
-
 void statoNave(int stato){
     switch(stato){
         case DN_MV_PORTO:
@@ -512,13 +497,6 @@ void inizializza_risorse(){
     id_coda_richieste = get_coda_id(CHIAVE_CODA);
 }
 
-void sgancia_risorse(){
-    sgancia_shm(vptr_shm_mercato);
-    sgancia_shm(vptr_shm_dettagli_lotti);
-    sgancia_shm(vptr_shm_posizioni_porti);
-    sgancia_shm(vptr_shm_dump);
-}
-
 void signal_handler(int signo){
 
     switch(signo){
@@ -528,6 +506,7 @@ void signal_handler(int signo){
         case SIGUSR2:
             printf("NAVE %d: ricevuto SIGUSR2. data: %d\n", indice, CAST_DUMP(vptr_shm_dump)->data);
             printf("#DEB - Nave %d:\n-porti_attraccati: %d\n-porti_lasciati: %d\n-ultimo_indice: %d\n", indice, DEB_porti_attraccati, DEB_porti_lasciati, DEB_porto_ultima_destinazione);
+            sgancia_risorse(vptr_shm_dettagli_lotti, vptr_shm_dump, vptr_shm_mercato, vptr_shm_posizioni_porti);
             exit(EXIT_SUCCESS);
             break;
         default: 

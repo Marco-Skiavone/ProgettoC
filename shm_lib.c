@@ -37,6 +37,13 @@ void sgancia_shm(void *shm_ptr) {
     }
 }
 
+void sgancia_risorse(void *ptr1, void *ptr2, void *ptr3, void *ptr4){
+    sgancia_shm(ptr1);
+    sgancia_shm(ptr2);
+    sgancia_shm(ptr3);
+    sgancia_shm(ptr4);
+}
+
 void distruggi_shm(int shmid) {
     if (shmctl(shmid, IPC_RMID, NULL) == -1) {
         perror("shmctl distruggi_shm");

@@ -34,9 +34,6 @@ void generate_positions(double lato, point* posizioni_porti);
 void alloca_risorse();
 void sgancia_e_distruggi_risorse();
 
-/* inizializza i valori del dump, tra cui i puntatori, chiamato dal master a inizio simulazione */
-void inizializza_dump();
-
 void setUpLotto(merce* ptr_dettagli_lotti, int nmerci, int so_size, int so_min_vita, int so_max_vita);
 
 void signal_handler(int signo);
@@ -46,7 +43,7 @@ int main(int argc, char* argv[]){
     int n_righe_file, file_config_char;
     
     int continua_simulazione;
-    void **ptrs_to_free; /* serve a liberare tutte le malloc a fine simulazione*/
+    
     int child_pid, status;
     FILE *file_config;
     richiesta r;
@@ -96,7 +93,7 @@ int main(int argc, char* argv[]){
     child_pids = (int *) malloc((SO_NAVI*SO_PORTI) * sizeof(int));
 
     alloca_risorse();
-    inizializza_dump();
+    inizializza_dump(vptr_shm_dump, PARAMETRO);
     CAST_DUMP(vptr_shm_dump)->data = 0;
     generate_positions(SO_LATO, CAST_POSIZIONI_PORTI(vptr_shm_posizioni_porti));
     
@@ -294,9 +291,7 @@ void alloca_risorse(){
     vptr_shm_dump = aggancia_shm(id_shm_dump);
 
     printf("SEM_CREATE_MERCATO: %d\n", id_semaforo_mercato = sem_create(CHIAVE_SEM_MERCATO, SO_PORTI));
-    for(i=0;i<SO_PORTI;i++){
-        sem_set_val(id_semaforo_mercato, i, 1);
-    }
+    sem_set_all(id_semaforo_mercato, 1, SO_PORTI); /* bisogna farci il SET_ALL!!! (1 sola sys call)*/
 
     printf("SEM_CREATE_GESTIONE: %d\n", id_semaforo_gestione = sem_create(CHIAVE_SEM_GESTIONE, 2));
     printf("SEM_CREATE_BANCHINE: %d\n", id_semaforo_banchine = sem_create(CHIAVE_SEM_BANCHINE, SO_PORTI));
@@ -306,7 +301,6 @@ void alloca_risorse(){
 }
 
 void sgancia_e_distruggi_risorse(){
-
     printf("SGANCIA_SHAREDM_MERCATO\n"); sgancia_shm(vptr_shm_mercato);
     printf("SGANCIA_SHAREDM_DETTAGLI_LOTTI\n"); sgancia_shm(vptr_shm_dettagli_lotti);
     printf("SGANCIA_SHAREDM_POSIZIONI_PORTI\n"); sgancia_shm(vptr_shm_posizioni_porti);
@@ -322,38 +316,8 @@ void sgancia_e_distruggi_risorse(){
     printf("DISTRUGGI_SEM_BANCHINE\n"); sem_destroy(id_semaforo_banchine);
     printf("DISTRUGGI_SEM_GESTIONE\n"); sem_destroy(id_semaforo_gestione);
     printf("DISTRUGGI_CODA_RICHIESTE\n"); destroy_coda(id_coda_richieste);
-
     printf("\n__________________________ \n\n");
 }
-
-void inizializza_dump(){
-    int i;
-    CAST_DUMP(vptr_shm_dump)->data = 0;
-    CAST_DUMP(vptr_shm_dump)->merce_dump_ptr = (merce_dump*)(vptr_shm_dump+sizeof(int));/* probabilmente non funziona! ( ma andrebbe davvero inizializzato! )*/
-    CAST_DUMP(vptr_shm_dump)->porto_dump_ptr = (porto_dump*)(((merce_dump*) vptr_shm_dump+sizeof(int))+SO_MERCI);
-
-    CAST_TERM_DUMP(vptr_shm_dump).porto_ricevute = 0;
-    CAST_TERM_DUMP(vptr_shm_dump).porto_spedite = 0;
-
-    CAST_DUMP(vptr_shm_dump)->nd.navicariche = 0;
-    CAST_DUMP(vptr_shm_dump)->nd.naviscariche = SO_NAVI;
-    CAST_DUMP(vptr_shm_dump)->nd.naviporto = 0;
-    
-    for(i = 0; i < SO_MERCI; i++){
-        CAST_MERCE_DUMP(vptr_shm_dump)[i].consegnata = 0;
-        CAST_MERCE_DUMP(vptr_shm_dump)[i].presente_in_nave = 0;
-        CAST_MERCE_DUMP(vptr_shm_dump)[i].presente_in_porto = 0;
-        CAST_MERCE_DUMP(vptr_shm_dump)[i].scaduta_in_nave = 0;
-        CAST_MERCE_DUMP(vptr_shm_dump)[i].scaduta_in_porto = 0;
-    }
-    for(i = 0; i < SO_PORTI; i++){
-        CAST_PORTO_DUMP(vptr_shm_dump)[i].mercepresente = 0;
-        CAST_PORTO_DUMP(vptr_shm_dump)[i].mercericevuta = 0;
-        CAST_PORTO_DUMP(vptr_shm_dump)[i].mercespedita = 0;
-    }
-    /* bzero(CAST_DUMP(vptr_shm_dump)->merce_dump_ptr, sizeof(merce_dump)*SO_MERCI) */
-}
-
 
 void signal_handler(int signo){
     int i;

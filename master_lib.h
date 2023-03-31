@@ -7,11 +7,10 @@
 /* Funzione che pulisce i file txt usati per i log
 */
 void clearLog();
- 
-/* Funzione d'ausilio per controllare che sia corretto il dump:
- * - Controlla che mercato_shm sia uguale a dump_shm
- * RITORNA: 1 se è tutto ok, 0 altrimenti. (viene visualizzata una stampa)  */
-int confronto_mercato_dump(void *vptr_shm_dump, void *vptr_shm_mercato, int PARAMETRO[], int indicce_porto);
+
+/* inizializza i valori del dump, tra cui i puntatori, chiamato dal master a inizio simulazione */
+void inizializza_dump(void *vptr_shm_dump, int PARAMETRO[]);
+
 
 /* stampa l'istantanea del mercato.
  * Usato in fase di debug ora da stampa_dump(). */

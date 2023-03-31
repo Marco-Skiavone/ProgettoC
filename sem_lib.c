@@ -74,6 +74,20 @@ void sem_set_val(int semid, int sem_num, int val) {
     }
 }
 
+void sem_set_all(int sem_id, int value, int arr_size){
+    int semval, i;
+    union semun arg;
+    arg.array = malloc(arr_size * sizeof(int));
+    for(i = 0; i < arr_size; i++){
+        arg.array[i] = value; 
+    }
+    semval = semctl(sem_id, 0, SETALL, arg);
+    if (semval == -1) {
+        perror("semctl sem set all");
+        exit(255);
+    }
+}
+
 int sem_get_val(int sem_id, int sem_num) {
     int semval;
     semval = semctl(sem_id, sem_num, GETVAL);

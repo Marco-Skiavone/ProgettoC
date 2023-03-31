@@ -26,7 +26,6 @@ int indice;
 int PARAMETRO[QNT_PARAMETRI];
 void inizializza_risorse();
 void signal_handler(int signo);
-void sgancia_risorse();
 void spawnMerciPorti(int nmerci, void* vptr_shm_mercato, merce* ptr_dettagli_lotti, int Fill, int indice);
 void manda_richieste(int nmerci, void* vptr_shm_mercato, int indice, int coda_id);
 void inizializza_banchine(int sem_id, int indice, int so_banchine);
@@ -63,7 +62,7 @@ int main(int argc, char *argv[]){
     inizializza_banchine(id_semaforo_banchine, indice, SO_BANCHINE);
 
     /* si sgancia dalle memorie condivise. */
-    sgancia_risorse();
+    sgancia_risorse(vptr_shm_dettagli_lotti, vptr_shm_dump, vptr_shm_mercato, vptr_shm_posizioni_porti);
     /* si dichiara pronto e aspetta. (wait for zero) */
     sem_reserve(id_semaforo_gestione, 0);
     sem_wait_zero(id_semaforo_gestione, 0);
@@ -87,7 +86,6 @@ void manda_richieste(int nmerci, void* vptr_shm_mercato, int indice, int coda_id
         }
     }
 }
-
 
 void spawnMerciPorti(int nmerci, void* vptr_shm_mercato, merce* ptr_dettagli_lotti, int Fill, int indice){
     srand(getpid());
@@ -127,7 +125,14 @@ void spawnMerciPorti(int nmerci, void* vptr_shm_mercato, merce* ptr_dettagli_lot
         }
     }
 
-    
+    sem_reserve(id_semaforo_dump, 0);
+    for(j=0;j<SO_MERCI;j++){
+        if(ptr_shm_mercato_porto[indice][j].val > 0){
+            CAST_MERCE_DUMP(vptr_shm_dump)[j].presente_in_porto += ptr_shm_mercato_porto[indice][j].val;
+            CAST_PORTO_DUMP(vptr_shm_dump)[indice].mercepresente += ptr_shm_mercato_porto[indice][j].val;
+        }  
+    }
+    sem_release(id_semaforo_dump, 0);
 }
 
 void inizializza_risorse(){
@@ -141,13 +146,6 @@ void inizializza_risorse(){
     vptr_shm_dump = aggancia_shm(id_shm_dump);
     inizializza_semafori(&id_semaforo_mercato, &id_semaforo_gestione, &id_semaforo_banchine, &id_semaforo_dump, SO_PORTI);
     id_coda_richieste = get_coda_id(CHIAVE_CODA);
-}
-
-void sgancia_risorse(){
-    sgancia_shm(vptr_shm_mercato);
-    sgancia_shm(vptr_shm_dettagli_lotti);
-    sgancia_shm(vptr_shm_posizioni_porti);
-    sgancia_shm(vptr_shm_dump);
 }
 
 void inizializza_banchine(int sem_id, int indice, int so_banchine){
@@ -166,7 +164,7 @@ void signal_handler(int signo){
             break;
         case SIGUSR2:
             fprintf(stderr,"\nPORTO %d: ricevuto SIGUSR2.\n", indice);
-            sgancia_risorse();
+            sgancia_risorse(vptr_shm_dettagli_lotti, vptr_shm_dump, vptr_shm_mercato, vptr_shm_posizioni_porti);
             exit(EXIT_SUCCESS);
             break;
         default: 
