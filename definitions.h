@@ -48,8 +48,7 @@
 		else								\
 			printf("\n");					\
 	}										
-
-
+	
 
 /* stati nave */
 #define DN_MV_PORTO 0	/* da "in mare vuota" a "in porto" */
@@ -115,7 +114,6 @@
 
 /* --- casting delle shm --- */
 
-
 #define CAST_MERCATO(ptr) \
 	((merce(*)[SO_MERCI])ptr)
 
@@ -139,6 +137,8 @@
 
 /* ------------------------- */
 
+/* Lunghezza massima di ogni stringa di argv_figli[x].
+ * Usata per passare i parametri ai processi figli. */
 #define MAX_STR_LEN 15
 
 /* Tolleranza della uguaglianza tra punti nella mappa */
@@ -154,15 +154,6 @@ typedef struct {
 	double x;
 	double y;
 } point;
-
-/*
-typedef struct { /*struct ritornata da porto_piu_vicino*
-	int indice_porto;
-	long nanosec_nano;
-	/*restituisco anche le coordinate del porto dove si troverà la nave dopo*
-	double x;
-	double y;
-} viaggio;*/
 
 /* Rappresenta un lotto di merce. */
 typedef struct {
@@ -207,7 +198,6 @@ typedef struct {
     int banchinetotali;
 } porto_dump ;
 
-
 /* Tipo usato per la struttura del vettore di merci del dump. */
 typedef struct {
     int presente_in_porto;
@@ -231,3 +221,7 @@ typedef struct {
 	term_dump term_dump;
     nave_dump nd;
 } dump;
+
+/** 
+ * Definiizione di metodi usati da più processi. 
+ * ---------------------------------------------*/

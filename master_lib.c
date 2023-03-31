@@ -1,6 +1,12 @@
 #ifndef _DEFINITIONS_H
 	#include "definitions.h"
 #endif
+#ifndef _SHM_LIB_H
+	#include "shm_lib.h"
+#endif
+#ifndef _QUEUE_LIB_H
+	#include "queue_lib.h"
+#endif
 #include "master_lib.h"
 
 void clearLog(){
@@ -9,6 +15,66 @@ void clearLog(){
 	fclose(fopen("log_mercato.txt", "w"));
 	fclose(fopen("log_navi.txt","w"));
 }
+/*
+void alloca_risorse(int *id_shm__queue_ptr[], int id_length, void *shm_ptrs[], int ptr_length, int PARAMETRO[]){
+	if(id_shm__queue_ptr == NULL){
+		perror("pointer to null in \"alloca_risorse_id()\"");
+		return;
+	}
+    int i=0;
+	while(i < id_length){
+		printf("SHARED_MEM_MERCATO: %d\n", *(id_shm__queue_ptr[i++]) = alloca_shm(CHIAVE_SHAREDM_MERCATO, SIZE_SHAREDM_MERCATO));
+		printf("SHARED_MEM_DETTAGLI_LOTTI: %d\n", *(id_shm__queue_ptr[i++]) = alloca_shm(CHIAVE_SHAREDM_DETTAGLI_LOTTI, SIZE_SHAREDM_DETTAGLI_LOTTI));
+		printf("SHARED_MEM_POSIZIONI_PORTI: %d\n", *(id_shm__queue_ptr[i++]) = alloca_shm(CHIAVE_SHAREDM_POSIZIONI_PORTI, SIZE_SHAREDM_POSIZIONI_PORTI));
+		printf("SHARED_MEM_DUMP: %d\n", *(id_shm__queue_ptr[i++]) =  alloca_shm(CHIAVE_SHAREDM_DUMP, SIZE_SHAREDM_DUMP));
+		printf("CODA RICHIESTE: %d\n", *(id_shm__queue_ptr[i++]) = set_coda_richieste(CHIAVE_CODA));
+	}
+	i = 0; 
+	while(i < ptr_length){
+		shm_ptrs[i] = aggancia_shm(*(id_shm__queue_ptr[i++]));
+		shm_ptrs[i] = aggancia_shm(*(id_shm__queue_ptr[i++]));    
+		shm_ptrs[i] = aggancia_shm(*(id_shm__queue_ptr[i++]));
+		shm_ptrs[i] = aggancia_shm(*(id_shm__queue_ptr[i++]));
+	}
+    printf("\n__________________________ \n\n");
+}*/
+
+point generate_random_point_master(int lato) {
+    int mant, p_intera;
+    point p;
+    p_intera = mant = rand()%lato;
+
+	p.x = ((double)mant/lato) + (p_intera*getppid()%lato);
+	p_intera = mant = rand()%lato;
+	p.y = ((double)mant/lato) + ((p_intera*getppid()%lato));
+    return p;
+}
+
+void generate_positions(double lato, point* posizioni_porti, int PORTI) {
+    int i, j, found;
+    point p;
+    posizioni_porti[0].x = 0;       posizioni_porti[0].y = 0;
+    posizioni_porti[1].x = lato;    posizioni_porti[1].y = 0;
+    posizioni_porti[2].x = lato;    posizioni_porti[2].y = lato;
+    posizioni_porti[3].x = 0;       posizioni_porti[3].y = lato;
+
+    for (i = 4; i < PORTI; i++) {
+        p = generate_random_point_master(lato);
+        found = 0;
+        for (j = 0; j < i && !found; j++) {
+			if (equals(p.x, posizioni_porti[j].x) && (equals(p.y, posizioni_porti[j].y))) {
+				found = 1;
+			}
+		}
+		if (found) {
+			i--;
+		} else {
+			posizioni_porti[i].x = p.x;
+            posizioni_porti[i].y = p.y;
+		}
+    }
+}
+
 
 void inizializza_dump(void *vptr_shm_dump, int PARAMETRO[]){
     int i;
@@ -35,6 +101,23 @@ void inizializza_dump(void *vptr_shm_dump, int PARAMETRO[]){
         CAST_PORTO_DUMP(vptr_shm_dump)[i].mercericevuta = 0;
         CAST_PORTO_DUMP(vptr_shm_dump)[i].mercespedita = 0;
     }
+}
+
+void setUpLotto(merce* ptr_dettagli_lotti, int PARAMETRO[]){
+    int i;
+    ptr_dettagli_lotti[0].val = 1;
+    ptr_dettagli_lotti[0].exp = SO_MIN_VITA + (rand() % (SO_MAX_VITA - SO_MIN_VITA));
+    for(i=1;i<SO_MERCI;i++){
+        ptr_dettagli_lotti[i].val = (rand() & SO_SIZE) + 1;
+        ptr_dettagli_lotti[i].exp = SO_MIN_VITA + (rand() % (SO_MAX_VITA - SO_MIN_VITA));
+    }
+}
+
+int equals(double x, double y){
+	if(x > y)
+		return (x-y) < TOLLERANZA ? 1: 0;
+	else 
+		return (y-x) < TOLLERANZA ? 1 : 0;
 }
 
 void stampa_mercato_dump(void *vptr_shm_dump, void *vptr_shm_mercato, int PARAMETRO[], int indice_porto){

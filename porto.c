@@ -2,6 +2,7 @@
 #include "queue_lib.h"
 #include "sem_lib.h"
 #include "shm_lib.h"
+#include "porto_lib.h"
 
 void* vptr_shm_mercato;
 int id_shm_mercato;
@@ -25,10 +26,9 @@ int id_coda_richieste;
 int indice;
 int PARAMETRO[QNT_PARAMETRI];
 void inizializza_risorse();
+
 void signal_handler(int signo);
-void spawnMerciPorti(int nmerci, void* vptr_shm_mercato, merce* ptr_dettagli_lotti, int Fill, int indice);
-void manda_richieste(int nmerci, void* vptr_shm_mercato, int indice, int coda_id);
-void inizializza_banchine(int sem_id, int indice, int so_banchine);
+
 int main(int argc, char *argv[]){
     dup2(STDOUT_FILENO, STDERR_FILENO);
     int i, j, k;
@@ -54,12 +54,12 @@ int main(int argc, char *argv[]){
 
     inizializza_risorse();
 
-    //fprintf(stderr,"Porto %d - x: %f y: %f\n", indice, CAST_POSIZIONI_PORTI(vptr_shm_posizioni_porti)[indice].x, CAST_POSIZIONI_PORTI(vptr_shm_posizioni_porti)[indice].y);
+    /*fprintf(stderr,"Porto %d - x: %f y: %f\n", indice, CAST_POSIZIONI_PORTI(vptr_shm_posizioni_porti)[indice].x, CAST_POSIZIONI_PORTI(vptr_shm_posizioni_porti)[indice].y);*/
     
-    spawnMerciPorti(SO_MERCI, vptr_shm_mercato, CAST_DETTAGLI_LOTTI(vptr_shm_dettagli_lotti),(SO_FILL/SO_PORTI), indice);
-    manda_richieste(SO_MERCI, vptr_shm_mercato, indice, id_coda_richieste);
+    spawnMerciPorti(vptr_shm_mercato, CAST_DETTAGLI_LOTTI(vptr_shm_dettagli_lotti), vptr_shm_dump, id_semaforo_dump, PARAMETRO, indice);
+    manda_richieste(vptr_shm_mercato, indice, id_coda_richieste, PARAMETRO);
     
-    inizializza_banchine(id_semaforo_banchine, indice, SO_BANCHINE);
+    inizializza_banchine(id_semaforo_banchine, indice, vptr_shm_dump, PARAMETRO);
 
     /* si sgancia dalle memorie condivise. */
     sgancia_risorse(vptr_shm_dettagli_lotti, vptr_shm_dump, vptr_shm_mercato, vptr_shm_posizioni_porti);
@@ -73,68 +73,6 @@ int main(int argc, char *argv[]){
     exit(EXIT_SUCCESS);
 }
 
-void manda_richieste(int nmerci, void* vptr_shm_mercato, int indice, int coda_id){
-    int i;
-    merce(*ptr_shm_mercato_porto)[nmerci] = CAST_MERCATO(vptr_shm_mercato);
-    richiesta r;
-    r.mtype = indice;
-    for(i=0;i<nmerci;i++){
-        if(ptr_shm_mercato_porto[indice][i].val < 0){
-            r.mtext.indicemerce = i;
-            r.mtext.nlotti = - ptr_shm_mercato_porto[indice][i].val;
-            invia_richiesta(r,coda_id);
-        }
-    }
-}
-
-void spawnMerciPorti(int nmerci, void* vptr_shm_mercato, merce* ptr_dettagli_lotti, int Fill, int indice){
-    srand(getpid());
-    int i, j, nlotti, peso;
-    merce(*ptr_shm_mercato_porto)[nmerci] = CAST_MERCATO(vptr_shm_mercato);
-    for(i=0;i<nmerci;i++){
-        nlotti = rand()% 10 + 1;
-        peso = nlotti * ptr_dettagli_lotti[i].val;
-        while(peso > Fill){
-            nlotti --;
-            peso = nlotti * ptr_dettagli_lotti[i].val;
-        }
-        if(nlotti > 0 && nlotti%2==0){
-            ptr_shm_mercato_porto[indice][i].val = nlotti;
-            ptr_shm_mercato_porto[indice][i].exp = ptr_dettagli_lotti[i].exp;
-            Fill -= peso;
-        }else if(nlotti > 0 && nlotti%2==1){
-            ptr_shm_mercato_porto[indice][i].val = -nlotti;
-            ptr_shm_mercato_porto[indice][i].exp = SO_DAYS+1;
-            Fill -= peso;
-        }else{
-            ptr_shm_mercato_porto[indice][i].val = 0;
-            ptr_shm_mercato_porto[indice][i].exp = SO_DAYS+1;
-        }
-    }
-    while(Fill>0){
-        for(i=0;i<nmerci;i++){
-            nlotti = rand() % 10 + 1;
-            peso = nlotti * ptr_dettagli_lotti[i].val;
-            if(peso <= Fill && ptr_shm_mercato_porto[indice][i].val > 0){
-                ptr_shm_mercato_porto[indice][i].val += nlotti;
-                Fill -= peso;
-            }else if( peso <= Fill && ptr_shm_mercato_porto[indice][i].val < 0){
-                ptr_shm_mercato_porto[indice][i].val -= nlotti;
-                Fill -= peso;
-            }
-        }
-    }
-
-    sem_reserve(id_semaforo_dump, 0);
-    for(j=0;j<SO_MERCI;j++){
-        if(ptr_shm_mercato_porto[indice][j].val > 0){
-            CAST_MERCE_DUMP(vptr_shm_dump)[j].presente_in_porto += ptr_shm_mercato_porto[indice][j].val;
-            CAST_PORTO_DUMP(vptr_shm_dump)[indice].mercepresente += ptr_shm_mercato_porto[indice][j].val;
-        }  
-    }
-    sem_release(id_semaforo_dump, 0);
-}
-
 void inizializza_risorse(){
     id_shm_mercato = find_shm(CHIAVE_SHAREDM_MERCATO, SIZE_SHAREDM_MERCATO);
     vptr_shm_mercato = aggancia_shm(id_shm_mercato);
@@ -146,15 +84,6 @@ void inizializza_risorse(){
     vptr_shm_dump = aggancia_shm(id_shm_dump);
     inizializza_semafori(&id_semaforo_mercato, &id_semaforo_gestione, &id_semaforo_banchine, &id_semaforo_dump, SO_PORTI);
     id_coda_richieste = get_coda_id(CHIAVE_CODA);
-}
-
-void inizializza_banchine(int sem_id, int indice, int so_banchine){
-    srand(getpid());
-    int nbanchine;
-	nbanchine = rand() % SO_BANCHINE + 1;
-    CAST_PORTO_DUMP(vptr_shm_dump)[indice].banchineoccupate = 0;
-    CAST_PORTO_DUMP(vptr_shm_dump)[indice].banchinetotali = nbanchine;
-    sem_set_val(sem_id, indice, nbanchine);
 }
 
 void signal_handler(int signo){

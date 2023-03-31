@@ -8,9 +8,24 @@
 */
 void clearLog();
 
+/* Alloca (crea) le risorse, restituendo i valori degli id e dei puntatori nelle variabili tramite cui sono passati gli indirizzi. *
+void alloca_risorse(int *id_shm__queue_ptr[], int id_length, void *shm_ptrs[], int ptr_length, int PARAMETRO[]);*/
+
+/* Genera un punto casuale nella mappa di lato 'lato', senza modificare il seed di rand. */
+point generate_random_point_master(int lato);
+
+/* Genera le posizioni dei porti in vptr_shm_posizioni. */
+void generate_positions(double lato, point* posizioni_porti, int PORTI);
+
 /* inizializza i valori del dump, tra cui i puntatori, chiamato dal master a inizio simulazione */
 void inizializza_dump(void *vptr_shm_dump, int PARAMETRO[]);
 
+/* Crea randomicamente i valori in tonnellate per ogni lotto e le ripettive scadenze. */
+void setUpLotto(merce* ptr_dettagli_lotti, int PARAMETRO[]);
+
+/* Ritorna 1 se considera uguali x e y, 0 altrimenti. 
+ * NOTA: equals funziona con una certa TOLLERANZA (definita in definitions). */
+int equals(double x, double y);
 
 /* stampa l'istantanea del mercato.
  * Usato in fase di debug ora da stampa_dump(). */

@@ -28,14 +28,9 @@ int *child_pids;
 char **argv_figli;
 
 int PARAMETRO[QNT_PARAMETRI];
-int equals(double x, double y);
-point generate_random_point(int lato);
-void generate_positions(double lato, point* posizioni_porti);
 
 void alloca_risorse();
 void sgancia_e_distruggi_risorse();
-
-void setUpLotto(merce* ptr_dettagli_lotti, int nmerci, int so_size, int so_min_vita, int so_max_vita);
 
 void signal_handler(int signo);
 
@@ -93,11 +88,15 @@ int main(int argc, char* argv[]){
     STAMPA_PARAMETRI
 
     child_pids = (int *) malloc((SO_NAVI*SO_PORTI) * sizeof(int));
-
+    /*
+    int *id_shm__queue_ptr[] = {&id_shm_mercato, &id_shm_dettagli_lotti, &id_shm_posizioni_porti, &id_shm_dump, &id_coda_richieste};
+    void *shm_ptrs[] = {vptr_shm_mercato, vptr_shm_dettagli_lotti, vptr_shm_posizioni_porti, vptr_shm_dump};
+    alloca_risorse(id_shm__queue_ptr, 5, shm_ptrs, 4, PARAMETRO);
+    alloca_semafori(&id_semaforo_banchine, &id_semaforo_dump, &id_semaforo_gestione, &id_semaforo_mercato, PARAMETRO);*/
     alloca_risorse();
     inizializza_dump(vptr_shm_dump, PARAMETRO);
     CAST_DUMP(vptr_shm_dump)->data = 0;
-    generate_positions(SO_LATO, CAST_POSIZIONI_PORTI(vptr_shm_posizioni_porti));
+    generate_positions(SO_LATO, CAST_POSIZIONI_PORTI(vptr_shm_posizioni_porti), SO_PORTI);
     
     /*
     for(i=0;i<SO_PORTI;i++){
@@ -105,7 +104,7 @@ int main(int argc, char* argv[]){
     }
     */
     
-    setUpLotto(CAST_DETTAGLI_LOTTI(vptr_shm_dettagli_lotti), SO_MERCI, SO_SIZE, SO_MIN_VITA, SO_MAX_VITA);
+    setUpLotto(CAST_DETTAGLI_LOTTI(vptr_shm_dettagli_lotti),PARAMETRO);
     
     for(i=0;i<SO_MERCI;i++){
         printf("Merce %d val %d exp %d\n", i,
@@ -213,113 +212,49 @@ int main(int argc, char* argv[]){
         }else if(i < SO_PORTI)
             i++;
     } while (r.mtext.indicemerce != -1 || i < SO_PORTI);
-    printf("\n__________________________ \n\n");
 
     sgancia_e_distruggi_risorse();
     
     /* sono da liberare child_pids, ogni argv_figli[i] meno l'ultimo che è null,
      *  e argv_figli stesso => tot=(QNT_PARAMETRI + 2))+1; */
     free_ptr(child_pids, argv_figli, QNT_PARAMETRI+2);
-    printf("argv_figli: %p\n", argv_figli);
     exit(EXIT_SUCCESS);
-}
-
-void setUpLotto(merce* ptr_dettagli_lotti, int nmerci, int so_size, int so_min_vita, int so_max_vita){
-    int i;
-    ptr_dettagli_lotti[0].val = 1;
-    ptr_dettagli_lotti[0].exp = so_min_vita + (rand() % (so_max_vita - so_min_vita));
-    for(i=1;i<nmerci;i++){
-        ptr_dettagli_lotti[i].val = (rand() & so_size) + 1;
-        ptr_dettagli_lotti[i].exp = so_min_vita + (rand() % (so_max_vita - so_min_vita));
-    }
-}
-
-int equals(double x, double y){
-	if(x > y)
-		return (x-y) < TOLLERANZA ? 1: 0;
-	else 
-		return (y-x) < TOLLERANZA ? 1 : 0;
-}
-
-point generate_random_point(int lato) {
-    int mant, p_intera;
-    point p;
-    p_intera = mant = rand()%lato;
-
-	p.x = ((double)mant/lato) + (p_intera*getppid()%lato);
-	p_intera = mant = rand()%lato;
-	p.y = ((double)mant/lato) + ((p_intera*getppid()%lato));
-    return p;
-}
-
-void generate_positions(double lato, point* posizioni_porti) {
-    int i;
-    int j;
-    point p;
-    int found;
-    posizioni_porti[0].x = 0;       posizioni_porti[0].y = 0;
-    posizioni_porti[1].x = lato;    posizioni_porti[1].y = 0;
-    posizioni_porti[2].x = lato;    posizioni_porti[2].y = lato;
-    posizioni_porti[3].x = 0;       posizioni_porti[3].y = lato;
-
-    for (i = 4; i < SO_PORTI; i++) {
-        p = generate_random_point(lato);
-        found = 0;
-        for (j = 0; j < i && !found; j++) {
-			if (equals(p.x, posizioni_porti[j].x) && (equals(p.y, posizioni_porti[j].y))) {
-				found = 1;
-			}
-		}
-		if (found) {
-			i--;
-		} else {
-			posizioni_porti[i].x = p.x;
-            posizioni_porti[i].y = p.y;
-		}
-    }
 }
 
 void alloca_risorse(){
     int i;
-    printf("SHAREDM_MERCATO: %d\n", id_shm_mercato = alloca_shm(CHIAVE_SHAREDM_MERCATO, SIZE_SHAREDM_MERCATO));
-    vptr_shm_mercato = aggancia_shm(id_shm_mercato);
-
-    printf("SHAREDM_DETTAGLI_LOTTI: %d\n", id_shm_dettagli_lotti = alloca_shm(CHIAVE_SHAREDM_DETTAGLI_LOTTI, SIZE_SHAREDM_DETTAGLI_LOTTI));
-    vptr_shm_dettagli_lotti = aggancia_shm(id_shm_dettagli_lotti);
-
-    printf("SHAREDM_POSIZIONI_PORTI: %d\n", id_shm_posizioni_porti = alloca_shm(CHIAVE_SHAREDM_POSIZIONI_PORTI, SIZE_SHAREDM_POSIZIONI_PORTI));
-    vptr_shm_posizioni_porti = aggancia_shm(id_shm_posizioni_porti);
-
-    printf("SHAREDM_DUMP: %d\n",id_shm_dump =  alloca_shm(CHIAVE_SHAREDM_DUMP, SIZE_SHAREDM_DUMP));
-    vptr_shm_dump = aggancia_shm(id_shm_dump);
-
-    printf("SEM_CREATE_MERCATO: %d\n", id_semaforo_mercato = sem_create(CHIAVE_SEM_MERCATO, SO_PORTI));
-    sem_set_all(id_semaforo_mercato, 1, SO_PORTI); /* bisogna farci il SET_ALL!!! (1 sola sys call)*/
-
-    printf("SEM_CREATE_GESTIONE: %d\n", id_semaforo_gestione = sem_create(CHIAVE_SEM_GESTIONE, 2));
-    printf("SEM_CREATE_BANCHINE: %d\n", id_semaforo_banchine = sem_create(CHIAVE_SEM_BANCHINE, SO_PORTI));
-    printf("SEM_CREATE_DUMP: %d\n", id_semaforo_dump = sem_create(CHIAVE_SEM_DUMP, 2));
-    printf("CODA RICHIESTE: %d\n", id_coda_richieste = set_coda_richieste(CHIAVE_CODA));
     printf("\n__________________________ \n\n");
+    printf("SHARED_MEM_MERCATO: %d\n", id_shm_mercato = alloca_shm(CHIAVE_SHAREDM_MERCATO, SIZE_SHAREDM_MERCATO));
+    vptr_shm_mercato = aggancia_shm(id_shm_mercato);
+    printf("SHARED_MEM_DETTAGLI_LOTTI: %d\n", id_shm_dettagli_lotti = alloca_shm(CHIAVE_SHAREDM_DETTAGLI_LOTTI, SIZE_SHAREDM_DETTAGLI_LOTTI));
+    vptr_shm_dettagli_lotti = aggancia_shm(id_shm_dettagli_lotti);
+    printf("SHARED_MEM_POSIZIONI_PORTI: %d\n", id_shm_posizioni_porti = alloca_shm(CHIAVE_SHAREDM_POSIZIONI_PORTI, SIZE_SHAREDM_POSIZIONI_PORTI));
+    vptr_shm_posizioni_porti = aggancia_shm(id_shm_posizioni_porti);
+    printf("SHARED_MEM_DUMP: %d\n",id_shm_dump =  alloca_shm(CHIAVE_SHAREDM_DUMP, SIZE_SHAREDM_DUMP));
+    vptr_shm_dump = aggancia_shm(id_shm_dump);
+    printf("CODA RICHIESTE: %d\n", id_coda_richieste = set_coda_richieste(CHIAVE_CODA));
+    printf("__________________________ \n\n");
+    alloca_semafori(&id_semaforo_banchine, &id_semaforo_dump, &id_semaforo_gestione, &id_semaforo_mercato, PARAMETRO);
+    printf("__________________________ \n\n");
 }
 
 void sgancia_e_distruggi_risorse(){
-    printf("SGANCIA_SHAREDM_MERCATO\n"); sgancia_shm(vptr_shm_mercato);
-    printf("SGANCIA_SHAREDM_DETTAGLI_LOTTI\n"); sgancia_shm(vptr_shm_dettagli_lotti);
-    printf("SGANCIA_SHAREDM_POSIZIONI_PORTI\n"); sgancia_shm(vptr_shm_posizioni_porti);
-    printf("SGANCIA_SHAREDM_DUMP\n"); sgancia_shm(vptr_shm_dump);
-
-    printf("DISTRUGGI_SHAREDM_MERCATO\n"); distruggi_shm(id_shm_mercato);
-    printf("DISTRUGGI_SHAREDM_DETTAGLI_LOTTI\n"); distruggi_shm(id_shm_dettagli_lotti);
-    printf("DISTRUGGI_SHAREDM_POSIZIONI_PORTI\n"); distruggi_shm(id_shm_posizioni_porti);
-    printf("DISTRUGGI_SHAREDM_DUMP\n"); distruggi_shm(id_shm_dump);
-
+    printf("SGANCIA_SHARED_MEM_MERCATO\n"); sgancia_shm(vptr_shm_mercato);
+    printf("SGANCIA_SHARED_MEM_DETTAGLI_LOTTI\n"); sgancia_shm(vptr_shm_dettagli_lotti);
+    printf("SGANCIA_SHARED_MEM_POSIZIONI_PORTI\n"); sgancia_shm(vptr_shm_posizioni_porti);
+    printf("SGANCIA_SHARED_MEM_DUMP\n"); sgancia_shm(vptr_shm_dump);
+    printf("\n__________________________ \n\n");
+    printf("DISTRUGGI_SHARED_MEM_MERCATO\n"); distruggi_shm(id_shm_mercato);
+    printf("DISTRUGGI_SHARED_MEM_DETTAGLI_LOTTI\n"); distruggi_shm(id_shm_dettagli_lotti);
+    printf("DISTRUGGI_SHARED_MEM_POSIZIONI_PORTI\n"); distruggi_shm(id_shm_posizioni_porti);
+    printf("DISTRUGGI_SHARED_MEM_DUMP\n"); distruggi_shm(id_shm_dump);
+    
     printf("DISTRUGGI_SEM_MERCATO\n"); sem_destroy(id_semaforo_mercato);
     printf("DISTRUGGI_SEM_DUMP\n"); sem_destroy(id_semaforo_dump);
     printf("DISTRUGGI_SEM_BANCHINE\n"); sem_destroy(id_semaforo_banchine);
     printf("DISTRUGGI_SEM_GESTIONE\n"); sem_destroy(id_semaforo_gestione);
     printf("DISTRUGGI_CODA_RICHIESTE\n"); destroy_coda(id_coda_richieste);
-    printf("\n__________________________ \n\n");
+    printf("\n__________________________ \n");
 }
 
 void signal_handler(int signo){

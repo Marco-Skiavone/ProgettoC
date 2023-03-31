@@ -1,178 +1,371 @@
-Nave 0 in posizione x:317.314000 y:210.820000 indice porto piu vicino 4 x:422.014000 y;166.342000
-Nave 0 inizia il viaggio
-*** NAVE 0: ricevuto SIGUSR1: data = 1 ***
-0. stato nave 0 aggiornato
-Nave 0 ha ricevuto una banchina al porto 4
-Richiesta da porto 7 merce 2 lotti 35 al porto 4 con val 37
-nave 0 ha caricato 2 lotti di merce 2 spaziolibero: 294
-Nave 0 inizia a caricare
-NAVE 0: ricevuto SIGUSR2. data: 2
-#DEB - Nave 0:
--porti_attraccati: 1
--porti_lasciati: 0
--ultimo_indice: 4
-Nave 1 in posizione x:169.098000 y:434.228000 indice porto piu vicino 6 x:238.906000 y;352.924000
-Nave 1 inizia il viaggio
-0. stato nave 1 aggiornato
-Nave 1 ha ricevuto una banchina al porto 6
-Richiesta da porto 1 merce 4 lotti 29 al porto 6 con val 44
-nave 1 ha caricato 5 lotti di merce 4 spaziolibero: 115
-Nave 1 inizia a caricare
-*** NAVE 1: ricevuto SIGUSR1: data = 1 ***
-Nave 1 ha caricato
-3. stato nave 1 aggiornato
-Nave 1 parte
-Nave 1 arriva
-Nave 1 attraccata al porto 1
-1. stato nave 1 aggiornato
-NAVE 1: ricevuto SIGUSR2. data: 2
-#DEB - Nave 1:
--porti_attraccati: 2
--porti_lasciati: 1
--ultimo_indice: 1
-Nave 3 in posizione x:217.114000 y:242.164000 indice porto piu vicino 6 x:238.906000 y;352.924000
+Nave 3 in posizione x:267.918000 y:347.238000 indice porto piu vicino 7 x:132.288000 y;352.268000
 Nave 3 inizia il viaggio
 0. stato nave 3 aggiornato
-Nave 3 ha ricevuto una banchina al porto 6
-Richiesta da porto 3 merce 1 lotti 39 al porto 6 con val 41
-nave 3 ha caricato 3 lotti di merce 1 spaziolibero: 37
+Nave 3 ha ricevuto una banchina al porto 7
+Richiesta da porto 8 merce 4 lotti 44 al porto 7 con val 43
+nave 3 ha caricato 4 lotti di merce 4 spaziolibero: 36
 Nave 3 inizia a caricare
 *** NAVE 3: ricevuto SIGUSR1: data = 1 ***
 Nave 3 ha caricato
 3. stato nave 3 aggiornato
 Nave 3 parte
 Nave 3 arriva
-Nave 3 attraccata al porto 3
-1. stato nave 3 aggiornato
 NAVE 3: ricevuto SIGUSR2. data: 2
 #DEB - Nave 3:
--porti_attraccati: 2
--porti_lasciati: 1
--ultimo_indice: 3
-Nave 4 in posizione x:28.176000 y:209.778000 indice porto piu vicino 5 x:8.396000 y;126.362000
-Nave 4 inizia il viaggio
-0. stato nave 4 aggiornato
-Nave 4 ha ricevuto una banchina al porto 5
-Richiesta da porto 2 merce 1 lotti 32 al porto 5 con val 43
-nave 4 ha caricato 3 lotti di merce 1 spaziolibero: 37
-Nave 4 inizia a caricare
-*** NAVE 4: ricevuto SIGUSR1: data = 1 ***
-Nave 4 ha caricato
-3. stato nave 4 aggiornato
-Nave 4 parte
-Nave 4 arriva
-NAVE 4: ricevuto SIGUSR2. data: 2
-#DEB - Nave 4:
 -porti_attraccati: 1
 -porti_lasciati: 1
--ultimo_indice: 5
-Nave 2 in posizione x:334.028000 y:78.276000 indice porto piu vicino 4 x:422.014000 y;166.342000
+-ultimo_indice: 7
+Nave 1 in posizione x:480.920000 y:32.728000 indice porto piu vicino 1 x:500.000000 y;0.000000
+Nave 1 inizia il viaggio
+0. stato nave 1 aggiornato
+Nave 1 ha ricevuto una banchina al porto 1
+Richiesta da porto 2 merce 0 lotti 164 al porto 1 con val 315
+nave 1 ha caricato 164 lotti di merce 0 spaziolibero: 836
+nave 1 ha caricato 2 lotti di merce 2 spaziolibero: 130
+Nave 1 inizia a caricare
+*** NAVE 1: ricevuto SIGUSR1: data = 1 ***
+Nave 1 ha caricato
+3. stato nave 1 aggiornato
+Nave 1 parte
+Nave 1 arriva
+Nave 1 attraccata al porto 2
+1. stato nave 1 aggiornato
+NAVE 1: ricevuto SIGUSR2. data: 2
+#DEB - Nave 1:
+-porti_attraccati: 2
+-porti_lasciati: 1
+-ultimo_indice: 2
+Nave 0 in posizione x:258.932000 y:450.300000 indice porto piu vicino 9 x:108.372000 y;442.078000
+Nave 0 inizia il viaggio
+0. stato nave 0 aggiornato
+Nave 0 ha ricevuto una banchina al porto 9
+Richiesta da porto 4 merce 2 lotti 30 al porto 9 con val 39
+nave 0 ha caricato 2 lotti di merce 2 spaziolibero: 294
+Nave 0 inizia a caricare
+*** NAVE 0: ricevuto SIGUSR1: data = 1 ***
+Nave 0 ha caricato
+3. stato nave 0 aggiornato
+Nave 0 parte
+Nave 0 arriva
+Nave 0 attraccata al porto 4
+1. stato nave 0 aggiornato
+NAVE 0: ricevuto SIGUSR2. data: 2
+#DEB - Nave 0:
+-porti_attraccati: 2
+-porti_lasciati: 1
+-ultimo_indice: 4
+Nave 2 in posizione x:394.276000 y:284.336000 indice porto piu vicino 4 x:372.448000 y;142.878000
 Nave 2 inizia il viaggio
-*** NAVE 2: ricevuto SIGUSR1: data = 1 ***
 0. stato nave 2 aggiornato
 Nave 2 ha ricevuto una banchina al porto 4
-Richiesta da porto 8 merce 2 lotti 39 al porto 4 con val 35
-nave 2 ha caricato 2 lotti di merce 2 spaziolibero: 294
+Richiesta da porto 1 merce 3 lotti 41 al porto 4 con val 49
+nave 2 ha caricato 3 lotti di merce 3 spaziolibero: 133
 Nave 2 inizia a caricare
+*** NAVE 2: ricevuto SIGUSR1: data = 1 ***
+Nave 2 ha caricato
+3. stato nave 2 aggiornato
+Nave 2 parte
+Nave 2 arriva
+Nave 2 attraccata al porto 1
+1. stato nave 2 aggiornato
 NAVE 2: ricevuto SIGUSR2. data: 2
 #DEB - Nave 2:
--porti_attraccati: 1
--porti_lasciati: 0
--ultimo_indice: 4
-Nave 13 in posizione x:257.794000 y:264.088000 indice porto piu vicino 6 x:238.906000 y;352.924000
-Nave 13 inizia il viaggio
-0. stato nave 13 aggiornato
-Nave 13 ha ricevuto una banchina al porto 6
-Richiesta da porto 4 merce 0 lotti 100 al porto 6 con val 10
-nave 13 ha caricato 10 lotti di merce 0 spaziolibero: 990
-nave 13 ha caricato 3 lotti di merce 1 spaziolibero: 27
-Nave 13 inizia a caricare
-*** NAVE 13: ricevuto SIGUSR1: data = 1 ***
-Nave 13 ha caricato
-3. stato nave 13 aggiornato
-Nave 13 parte
-Nave 13 arriva
-NAVE 13: ricevuto SIGUSR2. data: 2
-#DEB - Nave 13:
--porti_attraccati: 1
+-porti_attraccati: 2
 -porti_lasciati: 1
--ultimo_indice: 6
-Nave 12 in posizione x:363.246000 y:423.766000 indice porto piu vicino 7 x:330.710000 y;366.742000
-Nave 12 inizia il viaggio
-0. stato nave 12 aggiornato
-Nave 12 ha ricevuto una banchina al porto 7
-Richiesta da porto 6 merce 3 lotti 32 al porto 7 con val 37
-nave 12 ha caricato 2 lotti di merce 3 spaziolibero: 166
-Nave 12 inizia a caricare
-*** NAVE 12: ricevuto SIGUSR1: data = 1 ***
-Nave 12 ha caricato
-3. stato nave 12 aggiornato
-Nave 12 parte
-Nave 12 arriva
-Nave 12 attraccata al porto 6
-1. stato nave 12 aggiornato
-NAVE 12: ricevuto SIGUSR2. data: 2
-#DEB - Nave 12:
+-ultimo_indice: 1
+Nave 9 in posizione x:138.452000 y:300.200000 indice porto piu vicino 7 x:132.288000 y;352.268000
+Nave 9 inizia il viaggio
+0. stato nave 9 aggiornato
+Nave 9 ha ricevuto una banchina al porto 7
+Richiesta da porto 6 merce 4 lotti 27 al porto 7 con val 51
+nave 9 ha caricato 4 lotti di merce 4 spaziolibero: 36
+Nave 9 inizia a caricare
+*** NAVE 9: ricevuto SIGUSR1: data = 1 ***
+Nave 9 ha caricato
+3. stato nave 9 aggiornato
+Nave 9 parte
+Nave 9 arriva
+Nave 9 attraccata al porto 6
+1. stato nave 9 aggiornato
+NAVE 9: ricevuto SIGUSR2. data: 2
+#DEB - Nave 9:
 -porti_attraccati: 2
 -porti_lasciati: 1
 -ultimo_indice: 6
-Nave 8 in posizione x:344.448000 y:9.378000 indice porto piu vicino 1 x:500.000000 y;0.000000
+Nave 11 in posizione x:32.728000 y:66.564000 indice porto piu vicino 0 x:0.000000 y;0.000000
+Nave 11 inizia il viaggio
+0. stato nave 11 aggiornato
+Nave 11 ha ricevuto una banchina al porto 0
+Richiesta da porto 1 merce 1 lotti 42 al porto 0 con val 40
+nave 11 ha caricato 3 lotti di merce 1 spaziolibero: 85
+Nave 11 inizia a caricare
+*** NAVE 11: ricevuto SIGUSR1: data = 1 ***
+Nave 11 ha caricato
+3. stato nave 11 aggiornato
+Nave 11 parte
+Nave 11 arriva
+Nave 11 attraccata al porto 1
+1. stato nave 11 aggiornato
+NAVE 11: ricevuto SIGUSR2. data: 2
+#DEB - Nave 11:
+-porti_attraccati: 2
+-porti_lasciati: 1
+-ultimo_indice: 1
+Nave 8 in posizione x:174.396000 y:138.452000 indice porto piu vicino 5 x:78.602000 y;220.980000
 Nave 8 inizia il viaggio
 0. stato nave 8 aggiornato
-Nave 8 ha ricevuto una banchina al porto 1
-Richiesta da porto 2 merce 1 lotti 29 al porto 1 con val 41
-nave 8 ha caricato 3 lotti di merce 1 spaziolibero: 37
+Nave 8 ha ricevuto una banchina al porto 5
+Richiesta da porto 6 merce 4 lotti 23 al porto 5 con val 40
+nave 8 ha caricato 4 lotti di merce 4 spaziolibero: 36
 Nave 8 inizia a caricare
 *** NAVE 8: ricevuto SIGUSR1: data = 1 ***
 Nave 8 ha caricato
 3. stato nave 8 aggiornato
 Nave 8 parte
 Nave 8 arriva
-Nave 8 attraccata al porto 2
+Nave 8 attraccata al porto 6
 1. stato nave 8 aggiornato
 NAVE 8: ricevuto SIGUSR2. data: 2
 #DEB - Nave 8:
 -porti_attraccati: 2
 -porti_lasciati: 1
+-ultimo_indice: 6
+Nave 7 in posizione x:78.212000 y:121.034000 indice porto piu vicino 5 x:78.602000 y;220.980000
+Nave 7 inizia il viaggio
+0. stato nave 7 aggiornato
+Nave 7 ha ricevuto una banchina al porto 5
+Richiesta da porto 3 merce 0 lotti 112 al porto 5 con val 89
+nave 7 ha caricato 89 lotti di merce 0 spaziolibero: 911
+nave 7 ha caricato 3 lotti di merce 4 spaziolibero: 188
+Nave 7 inizia a caricare
+*** NAVE 7: ricevuto SIGUSR1: data = 1 ***
+Nave 7 ha caricato
+3. stato nave 7 aggiornato
+Nave 7 parte
+Nave 7 arriva
+Nave 7 attraccata al porto 3
+1. stato nave 7 aggiornato
+NAVE 7: ricevuto SIGUSR2. data: 2
+#DEB - Nave 7:
+-porti_attraccati: 2
+-porti_lasciati: 1
+-ultimo_indice: 3
+Nave 14 in posizione x:417.018000 y:203.462000 indice porto piu vicino 4 x:372.448000 y;142.878000
+Nave 14 inizia il viaggio
+0. stato nave 14 aggiornato
+Nave 14 ha ricevuto una banchina al porto 4
+Richiesta da porto 9 merce 4 lotti 33 al porto 4 con val 37
+nave 14 ha caricato 4 lotti di merce 4 spaziolibero: 36
+Nave 14 inizia a caricare
+*** NAVE 14: ricevuto SIGUSR1: data = 1 ***
+Nave 14 ha caricato
+3. stato nave 14 aggiornato
+Nave 14 parte
+Nave 14 arriva
+Nave 14 attraccata al porto 9
+1. stato nave 14 aggiornato
+NAVE 14: ricevuto SIGUSR2. data: 2
+#DEB - Nave 14:
+-porti_attraccati: 2
+-porti_lasciati: 1
+-ultimo_indice: 9
+Nave 18 in posizione x:470.380000 y:281.674000 indice porto piu vicino 4 x:372.448000 y;142.878000
+Nave 18 inizia il viaggio
+0. stato nave 18 aggiornato
+Nave 18 ha ricevuto una banchina al porto 4
+Richiesta da porto 6 merce 1 lotti 26 al porto 4 con val 46
+nave 18 ha caricato 3 lotti di merce 1 spaziolibero: 85
+Nave 18 inizia a caricare
+*** NAVE 18: ricevuto SIGUSR1: data = 1 ***
+Nave 18 ha caricato
+3. stato nave 18 aggiornato
+Nave 18 parte
+Nave 18 arriva
+Nave 18 attraccata al porto 6
+1. stato nave 18 aggiornato
+NAVE 18: ricevuto SIGUSR2. data: 2
+#DEB - Nave 18:
+-porti_attraccati: 2
+-porti_lasciati: 1
+-ultimo_indice: 6
+Nave 12 in posizione x:409.586000 y:410.140000 indice porto piu vicino 6 x:484.556000 y;474.466000
+Nave 12 inizia il viaggio
+0. stato nave 12 aggiornato
+Nave 12 ha ricevuto una banchina al porto 6
+Richiesta da porto 4 merce 2 lotti 32 al porto 6 con val 58
+nave 12 ha caricato 2 lotti di merce 2 spaziolibero: 294
+Nave 12 inizia a caricare
+*** NAVE 12: ricevuto SIGUSR1: data = 1 ***
+Nave 12 ha caricato
+3. stato nave 12 aggiornato
+Nave 12 parte
+Nave 12 arriva
+Nave 12 attraccata al porto 4
+1. stato nave 12 aggiornato
+NAVE 12: ricevuto SIGUSR2. data: 2
+#DEB - Nave 12:
+-porti_attraccati: 2
+-porti_lasciati: 1
+-ultimo_indice: 4
+Nave 15 in posizione x:339.806000 y:273.242000 indice porto piu vicino 4 x:372.448000 y;142.878000
+Nave 15 inizia il viaggio
+0. stato nave 15 aggiornato
+Nave 15 ha ricevuto una banchina al porto 4
+Richiesta da porto 9 merce 4 lotti 29 al porto 4 con val 33
+nave 15 ha caricato 4 lotti di merce 4 spaziolibero: 36
+Nave 15 inizia a caricare
+*** NAVE 15: ricevuto SIGUSR1: data = 1 ***
+Nave 15 ha caricato
+3. stato nave 15 aggiornato
+Nave 15 parte
+Nave 15 arriva
+Nave 15 attraccata al porto 9
+1. stato nave 15 aggiornato
+NAVE 15: ricevuto SIGUSR2. data: 2
+#DEB - Nave 15:
+-porti_attraccati: 2
+-porti_lasciati: 1
+-ultimo_indice: 9
+Nave 6 in posizione x:231.974000 y:277.458000 indice porto piu vicino 7 x:132.288000 y;352.268000
+Nave 6 inizia il viaggio
+0. stato nave 6 aggiornato
+Nave 6 ha ricevuto una banchina al porto 7
+Richiesta da porto 6 merce 1 lotti 29 al porto 7 con val 34
+nave 6 ha caricato 3 lotti di merce 1 spaziolibero: 85
+Nave 6 inizia a caricare
+*** NAVE 6: ricevuto SIGUSR1: data = 1 ***
+Nave 6 ha caricato
+3. stato nave 6 aggiornato
+Nave 6 parte
+Nave 6 arriva
+Nave 6 attraccata al porto 6
+1. stato nave 6 aggiornato
+NAVE 6: ricevuto SIGUSR2. data: 2
+#DEB - Nave 6:
+-porti_attraccati: 2
+-porti_lasciati: 1
+-ultimo_indice: 6
+Nave 13 in posizione x:161.194000 y:447.638000 indice porto piu vicino 9 x:108.372000 y;442.078000
+Nave 13 inizia il viaggio
+0. stato nave 13 aggiornato
+Nave 13 ha ricevuto una banchina al porto 9
+Richiesta da porto 6 merce 1 lotti 32 al porto 9 con val 54
+nave 13 ha caricato 3 lotti di merce 1 spaziolibero: 85
+Nave 13 inizia a caricare
+*** NAVE 13: ricevuto SIGUSR1: data = 1 ***
+Nave 13 ha caricato
+3. stato nave 13 aggiornato
+Nave 13 parte
+Nave 13 arriva
+Nave 13 attraccata al porto 6
+1. stato nave 13 aggiornato
+NAVE 13: ricevuto SIGUSR2. data: 2
+#DEB - Nave 13:
+-porti_attraccati: 2
+-porti_lasciati: 1
+-ultimo_indice: 6
+Nave 16 in posizione x:211.894000 y:302.308000 indice porto piu vicino 7 x:132.288000 y;352.268000
+Nave 16 inizia il viaggio
+0. stato nave 16 aggiornato
+Nave 16 ha ricevuto una banchina al porto 7
+Richiesta da porto 3 merce 4 lotti 46 al porto 7 con val 47
+nave 16 ha caricato 4 lotti di merce 4 spaziolibero: 36
+Nave 16 inizia a caricare
+*** NAVE 16: ricevuto SIGUSR1: data = 1 ***
+Nave 16 ha caricato
+3. stato nave 16 aggiornato
+Nave 16 parte
+Nave 16 arriva
+Nave 16 attraccata al porto 3
+1. stato nave 16 aggiornato
+NAVE 16: ricevuto SIGUSR2. data: 2
+#DEB - Nave 16:
+-porti_attraccati: 2
+-porti_lasciati: 1
+-ultimo_indice: 3
+Nave 10 in posizione x:377.858000 y:103.062000 indice porto piu vicino 4 x:372.448000 y;142.878000
+Nave 10 inizia il viaggio
+0. stato nave 10 aggiornato
+Nave 10 ha ricevuto una banchina al porto 4
+Richiesta da porto 3 merce 0 lotti 279 al porto 4 con val 167
+nave 10 ha caricato 167 lotti di merce 0 spaziolibero: 833
+nave 10 ha caricato 3 lotti di merce 4 spaziolibero: 110
+Nave 10 inizia a caricare
+*** NAVE 10: ricevuto SIGUSR1: data = 1 ***
+Nave 10 ha caricato
+3. stato nave 10 aggiornato
+Nave 10 parte
+Nave 10 arriva
+Nave 10 attraccata al porto 3
+1. stato nave 10 aggiornato
+NAVE 10: ricevuto SIGUSR2. data: 2
+#DEB - Nave 10:
+-porti_attraccati: 2
+-porti_lasciati: 1
+-ultimo_indice: 3
+Nave 19 in posizione x:55.470000 y:336.144000 indice porto piu vicino 7 x:132.288000 y;352.268000
+Nave 19 inizia il viaggio
+0. stato nave 19 aggiornato
+Nave 19 ha ricevuto una banchina al porto 7
+Richiesta da porto 2 merce 2 lotti 30 al porto 7 con val 51
+nave 19 ha caricato 2 lotti di merce 2 spaziolibero: 294
+nave 19 ha caricato 1 lotti di merce 3 spaziolibero: 5
+Nave 19 inizia a caricare
+*** NAVE 19: ricevuto SIGUSR1: data = 1 ***
+Nave 19 ha caricato
+3. stato nave 19 aggiornato
+Nave 19 parte
+Nave 19 arriva
+Nave 19 attraccata al porto 2
+1. stato nave 19 aggiornato
+NAVE 19: ricevuto SIGUSR2. data: 2
+#DEB - Nave 19:
+-porti_attraccati: 2
+-porti_lasciati: 1
 -ultimo_indice: 2
-Nave 5 in posizione x:188.896000 y:255.710000 indice porto piu vicino 6 x:238.906000 y;352.924000
+Nave 4 in posizione x:143.222000 y:293.322000 indice porto piu vicino 7 x:132.288000 y;352.268000
+Nave 4 inizia il viaggio
+0. stato nave 4 aggiornato
+Nave 4 ha ricevuto una banchina al porto 7
+Richiesta da porto 8 merce 1 lotti 55 al porto 7 con val 37
+nave 4 ha caricato 3 lotti di merce 1 spaziolibero: 85
+Nave 4 inizia a caricare
+*** NAVE 4: ricevuto SIGUSR1: data = 1 ***
+Nave 4 ha caricato
+3. stato nave 4 aggiornato
+Nave 4 parte
+Nave 4 arriva
+Nave 4 attraccata al porto 8
+1. stato nave 4 aggiornato
+NAVE 4: ricevuto SIGUSR2. data: 2
+#DEB - Nave 4:
+-porti_attraccati: 2
+-porti_lasciati: 1
+-ultimo_indice: 8
+Nave 5 in posizione x:314.956000 y:7.878000 indice porto piu vicino 4 x:372.448000 y;142.878000
 Nave 5 inizia il viaggio
 0. stato nave 5 aggiornato
-Nave 5 ha ricevuto una banchina al porto 6
-Richiesta da porto 0 merce 4 lotti 35 al porto 6 con val 39
-nave 5 ha caricato 5 lotti di merce 4 spaziolibero: 115
+Nave 5 ha ricevuto una banchina al porto 4
+Richiesta da porto 2 merce 3 lotti 47 al porto 4 con val 46
+nave 5 ha caricato 3 lotti di merce 3 spaziolibero: 133
 Nave 5 inizia a caricare
 *** NAVE 5: ricevuto SIGUSR1: data = 1 ***
 Nave 5 ha caricato
 3. stato nave 5 aggiornato
 Nave 5 parte
 Nave 5 arriva
-Nave 5 attraccata al porto 0
+Nave 5 attraccata al porto 2
 1. stato nave 5 aggiornato
 NAVE 5: ricevuto SIGUSR2. data: 2
 #DEB - Nave 5:
 -porti_attraccati: 2
 -porti_lasciati: 1
--ultimo_indice: 0
-Nave 6 in posizione x:440.480000 y:380.960000 indice porto piu vicino 7 x:330.710000 y;366.742000
-Nave 6 inizia il viaggio
-*** NAVE 6: ricevuto SIGUSR1: data = 1 ***
-0. stato nave 6 aggiornato
-Nave 6 ha ricevuto una banchina al porto 7
-Richiesta da porto 1 merce 0 lotti 103 al porto 7 con val 96
-nave 6 ha caricato 96 lotti di merce 0 spaziolibero: 904
-nave 6 ha caricato 2 lotti di merce 3 spaziolibero: 70
-Nave 6 inizia a caricare
-NAVE 6: ricevuto SIGUSR2. data: 2
-#DEB - Nave 6:
--porti_attraccati: 1
--porti_lasciati: 0
--ultimo_indice: 7
-Nave 17 in posizione x:454.068000 y:259.878000 indice porto piu vicino 4 x:422.014000 y;166.342000
+-ultimo_indice: 2
+Nave 17 in posizione x:70.780000 y:461.394000 indice porto piu vicino 9 x:108.372000 y;442.078000
 Nave 17 inizia il viaggio
 0. stato nave 17 aggiornato
-Nave 17 ha ricevuto una banchina al porto 4
-Richiesta da porto 8 merce 2 lotti 41 al porto 4 con val 41
+Nave 17 ha ricevuto una banchina al porto 9
+Richiesta da porto 4 merce 2 lotti 34 al porto 9 con val 41
 nave 17 ha caricato 2 lotti di merce 2 spaziolibero: 294
 Nave 17 inizia a caricare
 *** NAVE 17: ricevuto SIGUSR1: data = 1 ***
@@ -180,171 +373,10 @@ Nave 17 ha caricato
 3. stato nave 17 aggiornato
 Nave 17 parte
 Nave 17 arriva
-Nave 17 attraccata al porto 8
+Nave 17 attraccata al porto 4
 1. stato nave 17 aggiornato
 NAVE 17: ricevuto SIGUSR2. data: 2
 #DEB - Nave 17:
 -porti_attraccati: 2
 -porti_lasciati: 1
--ultimo_indice: 8
-Nave 19 in posizione x:39.638000 y:404.968000 indice porto piu vicino 9 x:30.610000 y;342.054000
-Nave 19 inizia il viaggio
-0. stato nave 19 aggiornato
-Nave 19 ha ricevuto una banchina al porto 9
-Richiesta da porto 5 merce 3 lotti 38 al porto 9 con val 36
-nave 19 ha caricato 2 lotti di merce 3 spaziolibero: 166
-Nave 19 inizia a caricare
-*** NAVE 19: ricevuto SIGUSR1: data = 1 ***
-Nave 19 ha caricato
-3. stato nave 19 aggiornato
-Nave 19 parte
-Nave 19 arriva
-Nave 19 attraccata al porto 5
-1. stato nave 19 aggiornato
-NAVE 19: ricevuto SIGUSR2. data: 2
-#DEB - Nave 19:
--porti_attraccati: 2
--porti_lasciati: 1
--ultimo_indice: 5
-Nave 11 in posizione x:328.776000 y:154.468000 indice porto piu vicino 4 x:422.014000 y;166.342000
-Nave 11 inizia il viaggio
-0. stato nave 11 aggiornato
-Nave 11 ha ricevuto una banchina al porto 4
-Richiesta da porto 9 merce 2 lotti 36 al porto 4 con val 39
-nave 11 ha caricato 2 lotti di merce 2 spaziolibero: 294
-Nave 11 inizia a caricare
-*** NAVE 11: ricevuto SIGUSR1: data = 1 ***
-Nave 11 ha caricato
-3. stato nave 11 aggiornato
-Nave 11 parte
-Nave 11 arriva
-Nave 11 attraccata al porto 9
-1. stato nave 11 aggiornato
-NAVE 11: ricevuto SIGUSR2. data: 2
-#DEB - Nave 11:
--porti_attraccati: 2
--porti_lasciati: 1
--ultimo_indice: 9
-Nave 16 in posizione x:421.682000 y:46.932000 indice porto piu vicino 1 x:500.000000 y;0.000000
-Nave 16 inizia il viaggio
-0. stato nave 16 aggiornato
-Nave 16 ha ricevuto una banchina al porto 1
-Richiesta da porto 7 merce 2 lotti 37 al porto 1 con val 37
-nave 16 ha caricato 2 lotti di merce 2 spaziolibero: 294
-Nave 16 inizia a caricare
-*** NAVE 16: ricevuto SIGUSR1: data = 1 ***
-Nave 16 ha caricato
-3. stato nave 16 aggiornato
-Nave 16 parte
-Nave 16 arriva
-NAVE 16: ricevuto SIGUSR2. data: 2
-#DEB - Nave 16:
--porti_attraccati: 1
--porti_lasciati: 1
--ultimo_indice: 1
-Nave 7 in posizione x:131.502000 y:233.786000 indice porto piu vicino 9 x:30.610000 y;342.054000
-Nave 7 inizia il viaggio
-0. stato nave 7 aggiornato
-Nave 7 ha ricevuto una banchina al porto 9
-Richiesta da porto 5 merce 3 lotti 36 al porto 9 con val 34
-nave 7 ha caricato 2 lotti di merce 3 spaziolibero: 166
-Nave 7 inizia a caricare
-*** NAVE 7: ricevuto SIGUSR1: data = 1 ***
-Nave 7 ha caricato
-3. stato nave 7 aggiornato
-Nave 7 parte
-Nave 7 arriva
-Nave 7 attraccata al porto 5
-1. stato nave 7 aggiornato
-NAVE 7: ricevuto SIGUSR2. data: 2
-#DEB - Nave 7:
--porti_attraccati: 2
--porti_lasciati: 1
--ultimo_indice: 5
-Nave 10 in posizione x:13.546000 y:339.238000 indice porto piu vicino 9 x:30.610000 y;342.054000
-Nave 10 inizia il viaggio
-0. stato nave 10 aggiornato
-Nave 10 ha ricevuto una banchina al porto 9
-Richiesta da porto 1 merce 0 lotti 168 al porto 9 con val 65
-nave 10 ha caricato 65 lotti di merce 0 spaziolibero: 935
-nave 10 ha caricato 2 lotti di merce 3 spaziolibero: 101
-Nave 10 inizia a caricare
-*** NAVE 10: ricevuto SIGUSR1: data = 1 ***
-Nave 10 ha caricato
-3. stato nave 10 aggiornato
-Nave 10 parte
-Nave 10 arriva
-Nave 10 attraccata al porto 1
-1. stato nave 10 aggiornato
-NAVE 10: ricevuto SIGUSR2. data: 2
-#DEB - Nave 10:
--porti_attraccati: 2
--porti_lasciati: 1
--ultimo_indice: 1
-Nave 14 in posizione x:339.238000 y:1.042000 indice porto piu vicino 1 x:500.000000 y;0.000000
-Nave 14 inizia il viaggio
-0. stato nave 14 aggiornato
-Nave 14 ha ricevuto una banchina al porto 1
-Richiesta da porto 4 merce 1 lotti 30 al porto 1 con val 38
-nave 14 ha caricato 3 lotti di merce 1 spaziolibero: 37
-Nave 14 inizia a caricare
-*** NAVE 14: ricevuto SIGUSR1: data = 1 ***
-Nave 14 ha caricato
-3. stato nave 14 aggiornato
-Nave 14 parte
-Nave 14 arriva
-NAVE 14: ricevuto SIGUSR2. data: 2
-#DEB - Nave 14:
--porti_attraccati: 1
--porti_lasciati: 1
--ultimo_indice: 1
-Nave 9 in posizione x:218.156000 y:396.632000 indice porto piu vicino 6 x:238.906000 y;352.924000
-Nave 9 inizia il viaggio
-0. stato nave 9 aggiornato
-Nave 9 ha ricevuto una banchina al porto 6
-Richiesta da porto 0 merce 0 lotti 82 al porto 6 con val 92
-nave 9 ha caricato 82 lotti di merce 0 spaziolibero: 918
-nave 9 ha caricato 5 lotti di merce 4 spaziolibero: 33
-Nave 9 inizia a caricare
-*** NAVE 9: ricevuto SIGUSR1: data = 1 ***
-Nave 9 ha caricato
-3. stato nave 9 aggiornato
-Nave 9 parte
-Nave 9 arriva
-NAVE 9: ricevuto SIGUSR2. data: 2
-#DEB - Nave 9:
--porti_attraccati: 1
--porti_lasciati: 1
--ultimo_indice: 6
-Nave 18 in posizione x:494.748000 y:53.226000 indice porto piu vicino 1 x:500.000000 y;0.000000
-Nave 18 inizia il viaggio
-0. stato nave 18 aggiornato
-Nave 18 ha ricevuto una banchina al porto 1
-Richiesta da porto 3 merce 1 lotti 42 al porto 1 con val 44
-nave 18 ha caricato 3 lotti di merce 1 spaziolibero: 37
-Nave 18 inizia a caricare
-*** NAVE 18: ricevuto SIGUSR1: data = 1 ***
-Nave 18 ha caricato
-3. stato nave 18 aggiornato
-Nave 18 parte
-Nave 18 arriva
-Nave 18 attraccata al porto 3
-1. stato nave 18 aggiornato
-NAVE 18: ricevuto SIGUSR2. data: 2
-#DEB - Nave 18:
--porti_attraccati: 2
--porti_lasciati: 1
--ultimo_indice: 3
-Nave 15 in posizione x:222.324000 y:195.190000 indice porto piu vicino 6 x:238.906000 y;352.924000
-Nave 15 inizia il viaggio
-*** NAVE 15: ricevuto SIGUSR1: data = 1 ***
-0. stato nave 15 aggiornato
-Nave 15 ha ricevuto una banchina al porto 6
-Richiesta da porto 0 merce 4 lotti 30 al porto 6 con val 34
-nave 15 ha caricato 5 lotti di merce 4 spaziolibero: 115
-Nave 15 inizia a caricare
-NAVE 15: ricevuto SIGUSR2. data: 2
-#DEB - Nave 15:
--porti_attraccati: 1
--porti_lasciati: 0
--ultimo_indice: 6
+-ultimo_indice: 4

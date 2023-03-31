@@ -1,9 +1,7 @@
 #ifndef _DEFINITIONS_H
 	#include "definitions.h"
 #endif
-#ifndef _SEM_LIB_H
-	#define _SEM_LIB_H
-#endif
+#define _SEM_LIB_H
 
 union semun {
 	int val;    /* Value for SETVAL */
@@ -14,6 +12,9 @@ union semun {
 
 /* Crea un set di semafori date la chiave e il numero di semafori. */
 int sem_create(key_t key, int nsems);
+
+/* Crea i semafori della simulazione, chiamato solo dal master. */
+void alloca_semafori(int *id_semaforo_banchine, int *id_semaforo_dump, int *id_semaforo_gestione, int *id_semaforo_mercato, int PARAMETRO[]);
 
 /* Si aggancia a un set di semafori già esistente. */
 int sem_find(key_t key, int nsems);
