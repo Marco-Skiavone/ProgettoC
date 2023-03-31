@@ -25,6 +25,7 @@ int id_semaforo_dump;
 int id_coda_richieste;
 
 int *child_pids;
+char **argv_figli;
 
 int PARAMETRO[QNT_PARAMETRI];
 int equals(double x, double y);
@@ -47,7 +48,8 @@ int main(int argc, char* argv[]){
     int child_pid, status;
     FILE *file_config;
     richiesta r;
-    char *argv_figli[QNT_PARAMETRI + 3];
+    argv_figli = malloc((QNT_PARAMETRI + 3)*sizeof(char*));
+    /*char *argv_figli[QNT_PARAMETRI + 3];*/
     setbuf(stdout, NULL); /* unbufferizza stdout */
     clearLog();
     srand(time(NULL));

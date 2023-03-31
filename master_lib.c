@@ -149,7 +149,7 @@ void stampa_terminazione(int PARAMETRO[], void * vptr_shm_dump, void * vptr_shm_
         {perror("freopen ha ritornato NULL");}
 }
 
-void free_ptr(int *childs, char* argv_figli[], int size){
+void free_ptr(int *childs, char **argv_figli, int size){
 	if(childs != NULL){
 		free(childs);
 	} else 
@@ -161,6 +161,7 @@ void free_ptr(int *childs, char* argv_figli[], int size){
 			if(argv_figli[i] != NULL)
 			free(argv_figli[i]);
 		}
+		free(argv_figli);
 	} else
 		perror("argv_figli pointer is NULL");
 }
