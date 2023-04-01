@@ -1,0 +1,108 @@
+Parametri:
+SO_NAVI | SO_PORTI | SO_MERCI | SO_SIZE | SO_MIN_VITA | SO_MAX_VITA | SO_LATO | SO_SPEED | SO_CAPACITY | SO_BANCHINE | SO_FILL | SO_LOADSPEED | SO_DAYS
+ 20 | 10 | 5 | 500 | 40 | 50 | 500 | 50000 | 1000 | 7 | 500000 | 500 | 2 
+
+__________________________ 
+
+SHARED_MEM_MERCATO: 229384
+SHARED_MEM_DETTAGLI_LOTTI: 229385
+SHARED_MEM_POSIZIONI_PORTI: 229386
+SHARED_MEM_DUMP: 229387
+CODA RICHIESTE: 19
+__________________________ 
+
+SEM_CREATE_GESTIONE: 32785
+SEM_CREATE_BANCHINE: 32786
+SEM_CREATE_DUMP: 32787
+SEM_CREATE_MERCATO: 32788
+__________________________ 
+
+Merce 0 val 1 exp 42
+Merce 1 val 305 exp 45
+Merce 2 val 353 exp 47
+Merce 3 val 289 exp 45
+Merce 4 val 241 exp 46
+
+MASTER: Passato giorno 1 su 2.
+MASTER: ammazzo il figlio 12214
+MASTER: ammazzo il figlio 12215
+MASTER: ammazzo il figlio 12216
+MASTER: ammazzo il figlio 12217
+MASTER: ammazzo il figlio 12218
+MASTER: ammazzo il figlio 12219
+MASTER: ammazzo il figlio 12220
+MASTER: ammazzo il figlio 12221
+MASTER: ammazzo il figlio 12222
+MASTER: ammazzo il figlio 12223
+MASTER: ammazzo il figlio 12224
+MASTER: ammazzo il figlio 12225
+MASTER: ammazzo il figlio 12226
+MASTER: ammazzo il figlio 12227
+MASTER: ammazzo il figlio 12228
+MASTER: ammazzo il figlio 12229
+MASTER: ammazzo il figlio 12230
+MASTER: ammazzo il figlio 12231
+MASTER: ammazzo il figlio 12232
+MASTER: ammazzo il figlio 12233
+MASTER: ammazzo il figlio 12234
+MASTER: ammazzo il figlio 12235
+MASTER: ammazzo il figlio 12236
+MASTER: ammazzo il figlio 12237
+MASTER: ammazzo il figlio 12238
+MASTER: ammazzo il figlio 12239
+MASTER: ammazzo il figlio 12240
+MASTER: ammazzo il figlio 12241
+MASTER: ammazzo il figlio 12242
+MASTER: ammazzo il figlio 12243
+Terminato figlio 12214 status 0
+Terminato figlio 12215 status 0
+Terminato figlio 12216 status 0
+Terminato figlio 12217 status 0
+Terminato figlio 12218 status 0
+Terminato figlio 12219 status 0
+Terminato figlio 12220 status 0
+Terminato figlio 12221 status 0
+Terminato figlio 12222 status 0
+Terminato figlio 12223 status 0
+Terminato figlio 12225 status 0
+Terminato figlio 12227 status 0
+Terminato figlio 12224 status 0
+Terminato figlio 12233 status 0
+Terminato figlio 12226 status 0
+Terminato figlio 12235 status 0
+Terminato figlio 12232 status 0
+Terminato figlio 12230 status 0
+Terminato figlio 12231 status 0
+Terminato figlio 12236 status 0
+Terminato figlio 12237 status 0
+Terminato figlio 12238 status 0
+Terminato figlio 12239 status 0
+Terminato figlio 12242 status 0
+Terminato figlio 12234 status 0
+Terminato figlio 12228 status 0
+Terminato figlio 12240 status 0
+Terminato figlio 12243 status 0
+Terminato figlio 12229 status 0
+Terminato figlio 12241 status 0
+Master sto uscendo con gestione = 0
+
+__________________________ 
+
+SGANCIA_SHARED_MEM_MERCATO
+SGANCIA_SHARED_MEM_DETTAGLI_LOTTI
+SGANCIA_SHARED_MEM_POSIZIONI_PORTI
+SGANCIA_SHARED_MEM_DUMP
+
+__________________________ 
+
+DISTRUGGI_SHARED_MEM_MERCATO
+DISTRUGGI_SHARED_MEM_DETTAGLI_LOTTI
+DISTRUGGI_SHARED_MEM_POSIZIONI_PORTI
+DISTRUGGI_SHARED_MEM_DUMP
+DISTRUGGI_SEM_MERCATO
+DISTRUGGI_SEM_DUMP
+DISTRUGGI_SEM_BANCHINE
+DISTRUGGI_SEM_GESTIONE
+DISTRUGGI_CODA_RICHIESTE
+
+__________________________ 

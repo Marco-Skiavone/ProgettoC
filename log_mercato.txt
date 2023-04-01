@@ -1,0 +1,90 @@
+MERCATO, giorno 0
+PORTO 0:
+[0, -184] [1, 40] [2, 39] [3, 50] [4, -39]  presente: 129
+MERCATO, giorno 0
+PORTO 1:
+[0, 315] [1, -42] [2, 47] [3, -41] [4, 35]  presente: 397
+MERCATO, giorno 0
+PORTO 2:
+[0, -164] [1, 39] [2, -32] [3, -48] [4, 53]  presente: 92
+MERCATO, giorno 0
+PORTO 3:
+[0, -279] [1, 50] [2, 38] [3, 32] [4, -49]  presente: 120
+MERCATO, giorno 0
+PORTO 4:
+[0, 167] [1, 46] [2, -34] [3, 49] [4, 40]  presente: 302
+MERCATO, giorno 0
+PORTO 5:
+[0, 89] [1, 44] [2, 47] [3, 33] [4, 43]  presente: 256
+MERCATO, giorno 0
+PORTO 6:
+[0, -254] [1, -32] [2, 58] [3, 45] [4, -27]  presente: 103
+MERCATO, giorno 0
+PORTO 7:
+[0, -40] [1, 37] [2, 51] [3, 29] [4, 51]  presente: 168
+MERCATO, giorno 0
+PORTO 8:
+[0, 277] [1, -55] [2, 24] [3, -48] [4, -44]  presente: 301
+MERCATO, giorno 0
+PORTO 9:
+[0, -122] [1, 54] [2, 41] [3, 38] [4, -33]  presente: 133
+MERCATO, giorno 1
+PORTO 0:
+[0, -184] [1, 37] [2, 39] [3, 50] [4, -39]  presente: 126
+MERCATO, giorno 1
+PORTO 1:
+[0, 151] [1, -42] [2, 45] [3, -41] [4, 35]  presente: 231
+MERCATO, giorno 1
+PORTO 2:
+[0, -164] [1, 39] [2, -32] [3, -48] [4, 53]  presente: 92
+MERCATO, giorno 1
+PORTO 3:
+[0, -279] [1, 50] [2, 38] [3, 32] [4, -49]  presente: 120
+MERCATO, giorno 1
+PORTO 4:
+[0, 0] [1, 43] [2, -34] [3, 43] [4, 29]  presente: 115
+MERCATO, giorno 1
+PORTO 5:
+[0, 0] [1, 44] [2, 47] [3, 33] [4, 36]  presente: 160
+MERCATO, giorno 1
+PORTO 6:
+[0, -254] [1, -32] [2, 56] [3, 45] [4, -27]  presente: 101
+MERCATO, giorno 1
+PORTO 7:
+[0, -40] [1, 31] [2, 49] [3, 28] [4, 39]  presente: 147
+MERCATO, giorno 1
+PORTO 8:
+[0, 277] [1, -55] [2, 24] [3, -48] [4, -44]  presente: 301
+MERCATO, giorno 1
+PORTO 9:
+[0, -122] [1, 51] [2, 37] [3, 38] [4, -33]  presente: 126
+MERCATO, giorno 2
+PORTO 0:
+[0, -184] [1, 37] [2, 39] [3, 50] [4, -39]  presente: 126
+MERCATO, giorno 2
+PORTO 1:
+[0, 151] [1, -42] [2, 45] [3, -41] [4, 35]  presente: 231
+MERCATO, giorno 2
+PORTO 2:
+[0, -164] [1, 39] [2, -32] [3, -48] [4, 53]  presente: 92
+MERCATO, giorno 2
+PORTO 3:
+[0, -279] [1, 50] [2, 38] [3, 32] [4, -49]  presente: 120
+MERCATO, giorno 2
+PORTO 4:
+[0, 0] [1, 43] [2, -34] [3, 43] [4, 29]  presente: 115
+MERCATO, giorno 2
+PORTO 5:
+[0, 0] [1, 44] [2, 47] [3, 33] [4, 36]  presente: 160
+MERCATO, giorno 2
+PORTO 6:
+[0, -254] [1, -32] [2, 56] [3, 45] [4, -27]  presente: 101
+MERCATO, giorno 2
+PORTO 7:
+[0, -40] [1, 31] [2, 49] [3, 28] [4, 39]  presente: 147
+MERCATO, giorno 2
+PORTO 8:
+[0, 277] [1, -55] [2, 24] [3, -48] [4, -44]  presente: 301
+MERCATO, giorno 2
+PORTO 9:
+[0, -122] [1, 51] [2, 37] [3, 38] [4, -33]  presente: 126
