@@ -4,105 +4,102 @@ SO_NAVI | SO_PORTI | SO_MERCI | SO_SIZE | SO_MIN_VITA | SO_MAX_VITA | SO_LATO | 
 
 __________________________ 
 
-SHARED_MEM_MERCATO: 229384
-SHARED_MEM_DETTAGLI_LOTTI: 229385
-SHARED_MEM_POSIZIONI_PORTI: 229386
-SHARED_MEM_DUMP: 229387
-CODA RICHIESTE: 19
+SHARED_MEM_MERCATO: 426032
+SHARED_MEM_DETTAGLI_LOTTI: 426033
+SHARED_MEM_POSIZIONI_PORTI: 426034
+SHARED_MEM_DUMP: 426038
+CODA RICHIESTE: 21
 __________________________ 
 
-SEM_CREATE_GESTIONE: 32785
-SEM_CREATE_BANCHINE: 32786
-SEM_CREATE_DUMP: 32787
-SEM_CREATE_MERCATO: 32788
+SEM_CREATE_GESTIONE: 32790
+SEM_CREATE_BANCHINE: 32791
+SEM_CREATE_DUMP: 32792
+SEM_CREATE_MERCATO: 32793
 __________________________ 
 
-Merce 0 val 1 exp 42
-Merce 1 val 305 exp 45
-Merce 2 val 353 exp 47
-Merce 3 val 289 exp 45
-Merce 4 val 241 exp 46
+Merce 0 val 1 exp 43
+Merce 1 val 357 exp 41
+Merce 2 val 101 exp 45
+Merce 3 val 161 exp 44
+Merce 4 val 65 exp 49
 
 MASTER: Passato giorno 1 su 2.
-MASTER: ammazzo il figlio 12214
-MASTER: ammazzo il figlio 12215
-MASTER: ammazzo il figlio 12216
-MASTER: ammazzo il figlio 12217
-MASTER: ammazzo il figlio 12218
-MASTER: ammazzo il figlio 12219
-MASTER: ammazzo il figlio 12220
-MASTER: ammazzo il figlio 12221
-MASTER: ammazzo il figlio 12222
-MASTER: ammazzo il figlio 12223
-MASTER: ammazzo il figlio 12224
-MASTER: ammazzo il figlio 12225
-MASTER: ammazzo il figlio 12226
-MASTER: ammazzo il figlio 12227
-MASTER: ammazzo il figlio 12228
-MASTER: ammazzo il figlio 12229
-MASTER: ammazzo il figlio 12230
-MASTER: ammazzo il figlio 12231
-MASTER: ammazzo il figlio 12232
-MASTER: ammazzo il figlio 12233
-MASTER: ammazzo il figlio 12234
-MASTER: ammazzo il figlio 12235
-MASTER: ammazzo il figlio 12236
-MASTER: ammazzo il figlio 12237
-MASTER: ammazzo il figlio 12238
-MASTER: ammazzo il figlio 12239
-MASTER: ammazzo il figlio 12240
-MASTER: ammazzo il figlio 12241
-MASTER: ammazzo il figlio 12242
-MASTER: ammazzo il figlio 12243
-Terminato figlio 12214 status 0
-Terminato figlio 12215 status 0
-Terminato figlio 12216 status 0
-Terminato figlio 12217 status 0
-Terminato figlio 12218 status 0
-Terminato figlio 12219 status 0
-Terminato figlio 12220 status 0
-Terminato figlio 12221 status 0
-Terminato figlio 12222 status 0
-Terminato figlio 12223 status 0
-Terminato figlio 12225 status 0
-Terminato figlio 12227 status 0
-Terminato figlio 12224 status 0
-Terminato figlio 12233 status 0
-Terminato figlio 12226 status 0
-Terminato figlio 12235 status 0
-Terminato figlio 12232 status 0
-Terminato figlio 12230 status 0
-Terminato figlio 12231 status 0
-Terminato figlio 12236 status 0
-Terminato figlio 12237 status 0
-Terminato figlio 12238 status 0
-Terminato figlio 12239 status 0
-Terminato figlio 12242 status 0
-Terminato figlio 12234 status 0
-Terminato figlio 12228 status 0
-Terminato figlio 12240 status 0
-Terminato figlio 12243 status 0
-Terminato figlio 12229 status 0
-Terminato figlio 12241 status 0
+MASTER: ammazzo il figlio 21840
+MASTER: ammazzo il figlio 21841
+MASTER: ammazzo il figlio 21842
+MASTER: ammazzo il figlio 21843
+MASTER: ammazzo il figlio 21844
+MASTER: ammazzo il figlio 21845
+MASTER: ammazzo il figlio 21846
+MASTER: ammazzo il figlio 21847
+MASTER: ammazzo il figlio 21848
+MASTER: ammazzo il figlio 21849
+MASTER: ammazzo il figlio 21850
+MASTER: ammazzo il figlio 21851
+MASTER: ammazzo il figlio 21852
+MASTER: ammazzo il figlio 21853
+MASTER: ammazzo il figlio 21854
+MASTER: ammazzo il figlio 21855
+MASTER: ammazzo il figlio 21856
+MASTER: ammazzo il figlio 21857
+MASTER: ammazzo il figlio 21858
+MASTER: ammazzo il figlio 21859
+MASTER: ammazzo il figlio 21860
+MASTER: ammazzo il figlio 21861
+MASTER: ammazzo il figlio 21862
+MASTER: ammazzo il figlio 21863
+MASTER: ammazzo il figlio 21864
+MASTER: ammazzo il figlio 21865
+MASTER: ammazzo il figlio 21866
+MASTER: ammazzo il figlio 21867
+MASTER: ammazzo il figlio 21868
+MASTER: ammazzo il figlio 21869
+Terminato figlio 21840 status 0
+Terminato figlio 21841 status 0
+Terminato figlio 21842 status 0
+Terminato figlio 21843 status 0
+Terminato figlio 21844 status 0
+Terminato figlio 21845 status 0
+Terminato figlio 21846 status 0
+Terminato figlio 21847 status 0
+Terminato figlio 21848 status 0
+Terminato figlio 21849 status 0
+Terminato figlio 21852 status 0
+Terminato figlio 21850 status 0
+Terminato figlio 21851 status 0
+Terminato figlio 21853 status 0
+Terminato figlio 21854 status 0
+Terminato figlio 21858 status 0
+Terminato figlio 21857 status 0
+Terminato figlio 21855 status 0
+Terminato figlio 21861 status 0
+Terminato figlio 21863 status 0
+Terminato figlio 21862 status 0
+Terminato figlio 21868 status 0
+Terminato figlio 21864 status 0
+Terminato figlio 21856 status 0
+Terminato figlio 21865 status 0
+Terminato figlio 21866 status 0
+Terminato figlio 21859 status 0
+Terminato figlio 21869 status 0
+Terminato figlio 21867 status 0
+Terminato figlio 21860 status 0
 Master sto uscendo con gestione = 0
 
 __________________________ 
 
-SGANCIA_SHARED_MEM_MERCATO
-SGANCIA_SHARED_MEM_DETTAGLI_LOTTI
-SGANCIA_SHARED_MEM_POSIZIONI_PORTI
-SGANCIA_SHARED_MEM_DUMP
-
+TUTTE LE SHARED_MEM SONO STATE SGANCIATE DAL MASTER!
 __________________________ 
 
 DISTRUGGI_SHARED_MEM_MERCATO
 DISTRUGGI_SHARED_MEM_DETTAGLI_LOTTI
 DISTRUGGI_SHARED_MEM_POSIZIONI_PORTI
 DISTRUGGI_SHARED_MEM_DUMP
+DISTRUGGI_CODA_RICHIESTE
+__________________________ 
+
 DISTRUGGI_SEM_MERCATO
 DISTRUGGI_SEM_DUMP
 DISTRUGGI_SEM_BANCHINE
 DISTRUGGI_SEM_GESTIONE
-DISTRUGGI_CODA_RICHIESTE
-
 __________________________ 
