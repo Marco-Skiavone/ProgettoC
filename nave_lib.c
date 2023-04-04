@@ -2,6 +2,9 @@
 	#include "definitions.h"
 #endif
 #include "nave_lib.h"
+#ifndef _QUEUE_LIB_H
+    #include "queue_lib.h"
+#endif
 
 point generate_random_point_nave(int lato) {
     srand(getpid());
@@ -36,6 +39,273 @@ int calcola_porto_piu_vicino(point p, point* ptr_shm_posizioni_porti, int so_por
         }
     }
     return indicemin;
+}
+
+void codice_simulazione(int indice, int PARAMETRO[], int SEM_ID[], int id_coda_richieste,
+    void* vptr_shm_dump, void* vptr_shm_posizioni_porti, void* vptr_shm_dettagli_lotti, void* vptr_shm_mercato,
+    int *DEB_porti_attraccati, int *DEB_porti_lasciati, int *DEB_porto_ultima_destinazione){
+
+    int i, j, k, indice_destinazione, indice_porto_attraccato, i_carico=0;
+    int reqlett=0, spaziolibero = SO_CAPACITY, lotti_scartati = 0, noncaricare = 0;
+    int datascarico;
+    double distanza, tempo_carico = 0;
+    point posizione;
+    richiesta r;
+    merce_nave carico[MAX_CARICO];
+    bzero(carico, MAX_CARICO*sizeof(merce_nave));
+    printf("\nspaziolibero 0: %d SO_CAPACITY: %d\n", spaziolibero, SO_CAPACITY);
+    posizione = avvia_nave(indice, PARAMETRO, SEM_ID ,vptr_shm_dump, vptr_shm_posizioni_porti,DEB_porti_attraccati, DEB_porti_lasciati, DEB_porto_ultima_destinazione, &indice_porto_attraccato);
+    while(1){
+        /* Il primo do-while esegue la ricerca della prima richiesta da accettare,
+
+         * in base alle risorse del porto di attracco. */
+        sem_reserve(ID_SEMAFORO_MERCATO, indice_porto_attraccato);
+        r = esamina_porto(indice, PARAMETRO, SEM_ID, id_coda_richieste, vptr_shm_posizioni_porti, vptr_shm_dettagli_lotti, vptr_shm_mercato, vptr_shm_dettagli_lotti, vptr_shm_dump, &lotti_scartati, &indice_porto_attraccato, &reqlett, posizione, &spaziolibero, &tempo_carico,
+        carico, &i_carico, &indice_destinazione);        
+
+        if(reqlett == MAX_REQ_LETTE){
+            //STAMPA_DEBUG
+
+            printf("Nave %d deve skippare porto %d\n", indice, indice_porto_attraccato);
+            indice_destinazione = rand() % (SO_PORTI-1) + 0;
+            distanza = calcola_distanza(posizione, CAST_POSIZIONI_PORTI(vptr_shm_posizioni_porti)[indice_destinazione]);
+        }else{
+            /* Inizia il secondo do-while, che deve accettare le richieste
+            * del porto associato alla prima accettata. */
+            carica_dal_porto(indice, PARAMETRO, id_coda_richieste, vptr_shm_posizioni_porti, vptr_shm_mercato, vptr_shm_dettagli_lotti, vptr_shm_dump, r, posizione, &indice_destinazione, &indice_porto_attraccato, &lotti_scartati, &spaziolibero, &tempo_carico,
+            &i_carico, &reqlett, carico);
+            distanza = calcola_distanza(posizione, CAST_POSIZIONI_PORTI(vptr_shm_posizioni_porti)[indice_destinazione]);
+        }
+
+        /* a questo punto rilascia mercato shm e carica le risorse,
+         * dopodiché aggiorna il dump sul carico e salpa per il porto di destinazione */
+        sem_release(ID_SEMAFORO_MERCATO, indice_porto_attraccato);
+        if(spaziolibero != SO_CAPACITY)
+            printf("Nave %d inizia a caricare\n", indice);
+        
+        aggiorna_dump_carico(vptr_shm_dump, indice_porto_attraccato, carico, i_carico, spaziolibero, ID_SEMAFORO_DUMP, PARAMETRO);
+        printf("Attesa con spaziolibero 1: %d\n", spaziolibero);
+        attesa((SO_CAPACITY - spaziolibero), SO_LOADSPEED);
+        if(spaziolibero != SO_CAPACITY)
+            printf("Nave %d ha caricato\n", indice);
+        
+        sem_release(ID_SEMAFORO_BANCHINE, indice_porto_attraccato);
+
+        if(spaziolibero == SO_CAPACITY){
+			stato_nave(DN_PORTO_MV, ID_SEMAFORO_DUMP, vptr_shm_dump, indice);
+        }else{
+            stato_nave(DN_PORTO_MC, ID_SEMAFORO_DUMP, vptr_shm_dump, indice);
+        }
+
+        printf("Nave %d parte\n", indice);
+        DEB_porti_lasciati += 1;
+        printf("Attesa con distanza 1: %f\n", distanza);
+        attesa(distanza,SO_SPEED);
+        printf("Nave %d arriva\n", indice);
+        
+        posizione = CAST_POSIZIONI_PORTI(vptr_shm_posizioni_porti)[indice_destinazione];
+        indice_porto_attraccato = indice_destinazione;
+
+        attracco_e_scarico(indice, PARAMETRO, SEM_ID, DEB_porti_attraccati, DEB_porto_ultima_destinazione, vptr_shm_dump, vptr_shm_mercato, &spaziolibero, &i_carico, &tempo_carico, &reqlett, &indice_porto_attraccato, carico);
+    }   
+}
+
+
+point avvia_nave(int indice, int PARAMETRO[], int SEM_ID[], void* vptr_shm_dump, void* vptr_shm_posizioni_porti, int *DEB_porti_attraccati, int *DEB_porti_lasciati, int *DEB_porto_ultima_destinazione, int *indice_porto_attraccato){
+    int indice_destinazione;
+    point posizione;
+    double distanza;
+    *DEB_porti_attraccati = *DEB_porti_lasciati = 0;
+    *DEB_porto_ultima_destinazione = -1;
+    
+    /* Genera la posizione della nave, 
+     * trova il porto più vicino e ci va. */
+    posizione = generate_random_point_nave(SO_LATO);
+    indice_destinazione = calcola_porto_piu_vicino(posizione, CAST_POSIZIONI_PORTI(vptr_shm_posizioni_porti), SO_PORTI, SO_LATO);
+    distanza = calcola_distanza(posizione, CAST_POSIZIONI_PORTI(vptr_shm_posizioni_porti)[indice_destinazione]);
+    printf("\nNave %d in posizione x:%f y:%f indice porto piu vicino %d x:%f y;%f\n", indice, posizione.x, posizione.y, indice_destinazione, CAST_POSIZIONI_PORTI(vptr_shm_posizioni_porti)[indice_destinazione].x, CAST_POSIZIONI_PORTI(vptr_shm_posizioni_porti)[indice_destinazione].y );
+    printf("Nave %d inizia il viaggio\n", indice);
+    printf("Attesa con distanza 2: %f\n", distanza);
+    attesa(distanza, SO_SPEED);
+    /* richiede la banchina e una volta dentro aggiorna il dump */
+    /*sem_reserve(id_semaforo_banchine, indice_destinazione);*/
+    richiedi_banchina(ID_SEMAFORO_BANCHINE, indice_destinazione);
+    *DEB_porti_attraccati++;
+    *DEB_porto_ultima_destinazione = indice_destinazione; 
+    stato_nave(DN_MV_PORTO, ID_SEMAFORO_DUMP, vptr_shm_dump, indice);
+    *indice_porto_attraccato = indice_destinazione;
+    posizione = CAST_POSIZIONI_PORTI(vptr_shm_posizioni_porti)[*indice_porto_attraccato];
+    printf("Nave %d ha ricevuto una banchina al porto %d\n", indice, indice_destinazione);
+    return posizione;
+}
+
+richiesta esamina_porto(int indice, int PARAMETRO[], int SEM_ID[], int id_coda_richieste, void* vptr_shm_posizioni_porti, void* vptr_shm_dettagli_porti, void* vptr_shm_mercato, void* vptr_shm_dettagli_lotti, void* vptr_shm_dump, int* lotti_scartati, int *indice_porto_attraccato, int *reqlett, point posizione, int *spaziolibero, double *tempo_carico, merce_nave carico[], int *i_carico, int *indice_destinazione){
+    richiesta r;
+    double distanza;
+    printf("Parte esamina porto\n");
+    do{
+            //STAMPA_DEBUG
+            r = accetta_richiesta(-1, id_coda_richieste);
+            if(r.mtext.indicemerce == -1){
+                perror("coda vuota");
+                exit(255);
+            }
+            //STAMPA_DEBUG
+            if(CAST_MERCATO(vptr_shm_mercato)[*indice_porto_attraccato][r.mtext.indicemerce].val > 0){
+                printf("Richiesta da porto %d merce %d lotti %d al porto %d con val %d\n", (int)r.mtype,r.mtext.indicemerce, r.mtext.nlotti, *indice_porto_attraccato, (CAST_MERCATO(vptr_shm_mercato)[*indice_porto_attraccato][r.mtext.indicemerce].val));
+                distanza = calcola_distanza(posizione, CAST_POSIZIONI_PORTI(vptr_shm_posizioni_porti)[r.mtype]);
+                while(r.mtext.nlotti * CAST_DETTAGLI_LOTTI(vptr_shm_dettagli_lotti)[r.mtext.indicemerce].val > *spaziolibero){
+                    r.mtext.nlotti--;
+                    (*lotti_scartati)++;
+                }
+                
+                while(r.mtext.nlotti > CAST_MERCATO(vptr_shm_mercato)[*indice_porto_attraccato][r.mtext.indicemerce].val){
+                    r.mtext.nlotti--;
+                    (*lotti_scartati)++;
+                }
+                *tempo_carico += ((r.mtext.nlotti * CAST_DETTAGLI_LOTTI(vptr_shm_dettagli_lotti)[r.mtext.indicemerce].val) / SO_LOADSPEED) *2;
+
+                if((CAST_DETTAGLI_LOTTI(vptr_shm_dettagli_lotti)[r.mtext.indicemerce].exp > (/*DATA*/CAST_DUMP(vptr_shm_dump)->data + *tempo_carico + (distanza/SO_SPEED))) && r.mtext.nlotti > 0){
+                    //STAMPA_DEBUG
+                    carico[*i_carico].indice = r.mtext.indicemerce;
+                    carico[*i_carico].mer.val = r.mtext.nlotti;
+                    carico[*i_carico].mer.exp = CAST_DETTAGLI_LOTTI(vptr_shm_dettagli_lotti)[r.mtext.indicemerce].exp;
+
+                    *spaziolibero -= r.mtext.nlotti * CAST_DETTAGLI_LOTTI(vptr_shm_dettagli_lotti)[r.mtext.indicemerce].val;
+
+                    CAST_MERCATO(vptr_shm_mercato)[*indice_porto_attraccato][r.mtext.indicemerce].val -= r.mtext.nlotti;
+                    //STAMPA_DEBUG
+                    printf("nave %d ha caricato %d lotti di merce %d spaziolibero: %d\n", indice, carico[*i_carico].mer.val, carico[*i_carico].indice, *spaziolibero);
+
+                    (*i_carico)++;
+
+                    if(*lotti_scartati > 0){
+                        r.mtext.nlotti =  *lotti_scartati;
+                        invia_richiesta(r, id_coda_richieste);
+                        *lotti_scartati = 0;
+                    }
+
+                    *indice_destinazione = r.mtype;
+                    break;
+                }else{
+                    *tempo_carico = 0;
+                    r.mtext.nlotti += *lotti_scartati;
+                    invia_richiesta(r, id_coda_richieste);
+                    *lotti_scartati = 0;
+                    (*reqlett)++;
+                }
+            }else{
+                invia_richiesta(r, id_coda_richieste);
+                *lotti_scartati = 0;
+                (*reqlett)++;
+                //STAMPA_DEBUG
+            }
+        }while((*reqlett) < MAX_REQ_LETTE);
+        return r;
+}
+
+void carica_dal_porto(int indice, int PARAMETRO[], int id_coda_richieste, void *vptr_shm_posizioni_porti, void *vptr_shm_mercato, void *vptr_shm_dettagli_lotti, void *vptr_shm_dump, richiesta r, point posizione, int *indice_destinazione, int *indice_porto_attraccato, int *lotti_scartati, int *spaziolibero, double *tempo_carico, int *i_carico, int *reqlett, merce_nave carico[]){
+    double distanza;
+    distanza = calcola_distanza(posizione, CAST_POSIZIONI_PORTI(vptr_shm_posizioni_porti)[r.mtype]);
+    int noncaricare = 0;
+    int j;
+    printf("Parte carica dal porto\n");
+    do{
+        r = accetta_richiesta(*indice_destinazione, id_coda_richieste);
+        if(r.mtext.indicemerce == -1){
+            break;
+        }
+        if(CAST_MERCATO(vptr_shm_mercato)[*indice_porto_attraccato][r.mtext.indicemerce].val > 0){
+            while(r.mtext.nlotti * CAST_DETTAGLI_LOTTI(vptr_shm_dettagli_lotti)[r.mtext.indicemerce].val > *spaziolibero){
+                r.mtext.nlotti--;
+                (*lotti_scartati)++;
+            }
+            while(r.mtext.nlotti > CAST_MERCATO(vptr_shm_mercato)[*indice_porto_attraccato][r.mtext.indicemerce].val){
+            r.mtext.nlotti--;
+                (*lotti_scartati)++;
+            }
+            *tempo_carico += ((r.mtext.nlotti * CAST_DETTAGLI_LOTTI(vptr_shm_dettagli_lotti)[r.mtext.indicemerce].val) / SO_LOADSPEED) *2;
+            if((CAST_DETTAGLI_LOTTI(vptr_shm_dettagli_lotti)[r.mtext.indicemerce].exp > (*tempo_carico + (distanza/SO_SPEED) + /*DATA*/CAST_DUMP(vptr_shm_dump)->data)) && r.mtext.nlotti > 0){
+                //STAMPA_DEBUG
+                noncaricare = 0;
+                for(j=0;j<*i_carico;j++){
+                    if(CAST_DETTAGLI_LOTTI(vptr_shm_dettagli_lotti)[carico[j].indice].exp < ((distanza/SO_SPEED) + *tempo_carico + /*DATA*/CAST_DUMP(vptr_shm_dump)->data)){
+                        noncaricare = 1;
+                        break;
+                    }
+                }
+                if(noncaricare){
+                    //STAMPA_DEBUG
+                    *tempo_carico += ((r.mtext.nlotti * CAST_DETTAGLI_LOTTI(vptr_shm_dettagli_lotti)[r.mtext.indicemerce].val) / SO_LOADSPEED) *2;
+                    r.mtext.nlotti += *lotti_scartati;
+                    invia_richiesta(r, id_coda_richieste);
+                    *lotti_scartati = 0;
+                }else{
+                    //STAMPA_DEBUG
+                    *spaziolibero -= r.mtext.nlotti * CAST_DETTAGLI_LOTTI(vptr_shm_dettagli_lotti)[r.mtext.indicemerce].val;
+                    carico[*i_carico].indice = r.mtext.indicemerce;
+                    carico[*i_carico].mer.val = r.mtext.nlotti;
+                    carico[*i_carico].mer.exp = CAST_DETTAGLI_LOTTI(vptr_shm_dettagli_lotti)[r.mtext.indicemerce].exp;
+                    CAST_MERCATO(vptr_shm_mercato)[*indice_porto_attraccato][r.mtext.indicemerce].val -= r.mtext.nlotti;
+                    //STAMPA_DEBUG
+                    printf("nave %d ha caricato %d lotti di merce %d spaziolibero: %d\n", indice, carico[*i_carico].mer.val, carico[*i_carico].indice, *spaziolibero);
+                    (*i_carico)++;
+                    if(*lotti_scartati > 0){
+                        r.mtext.nlotti =  *lotti_scartati;
+                        invia_richiesta(r, id_coda_richieste);
+                        *lotti_scartati = 0;
+                    }
+                }
+            }else{
+                *tempo_carico -= ((r.mtext.nlotti * CAST_DETTAGLI_LOTTI(vptr_shm_dettagli_lotti)[r.mtext.indicemerce].val) / SO_LOADSPEED) *2;
+                r.mtext.nlotti += *lotti_scartati;
+                invia_richiesta(r, id_coda_richieste);
+                *lotti_scartati = 0;
+            }
+            (*reqlett)++;
+        }else{
+            invia_richiesta(r, id_coda_richieste);
+            *lotti_scartati = 0;
+            (*reqlett)++;
+        }
+    }while(*reqlett < MAX_REQ_LETTE);    
+}
+
+void attracco_e_scarico(int indice, int PARAMETRO[], int SEM_ID[], int *DEB_porti_attraccati, int *DEB_porto_ultima_destinazione, void *vptr_shm_dump, void * vptr_shm_mercato, int *spaziolibero, int *i_carico, double *tempo_carico, int *reqlett, int *indice_porto_attraccato, merce_nave carico[]){
+    int j, datascarico;
+    //sem_reserve(id_semaforo_banchine, indice_porto_attraccato);
+    richiedi_banchina(ID_SEMAFORO_BANCHINE, *indice_porto_attraccato);
+    *DEB_porti_attraccati += 1;
+    *DEB_porto_ultima_destinazione = *indice_porto_attraccato;
+    printf("Nave %d attraccata al porto %d\n", indice, *indice_porto_attraccato);
+    if(*spaziolibero == SO_CAPACITY){
+        stato_nave(DN_MV_PORTO, ID_SEMAFORO_DUMP, vptr_shm_dump, indice);
+    }else{
+        stato_nave(DN_MC_PORTO, ID_SEMAFORO_DUMP, vptr_shm_dump, indice);
+    }
+    printf("Attesa con spaziolibero 2: %d\n", *spaziolibero);
+    attesa((SO_CAPACITY-*spaziolibero), SO_LOADSPEED);
+    /* salva la data di scarico della merce */
+    datascarico = CAST_DUMP(vptr_shm_dump)->data;
+    /* invertendo sem_release e sem_reserve del dump, ho forse creato capacità potenziale di deadlock ???? */
+    /* se non l'avessi fatto, avremmo modifiche al dump in zone critiche senza mutua esclusione !!!! */
+    int data1 = CAST_DUMP(vptr_shm_dump)->data;
+    sem_reserve(ID_SEMAFORO_MERCATO,*indice_porto_attraccato);
+    printf("nave %d in attesa dal giorno %d: giorno attuale: %d\n", indice, data1, CAST_DUMP(vptr_shm_dump)->data);
+    if(*spaziolibero != SO_CAPACITY)
+        printf("Nave %d inizia a scaricare al porto %d. giorno %d\n", indice, *indice_porto_attraccato, CAST_DUMP(vptr_shm_dump)->data);
+    for(j=0;j<*i_carico;j++){
+        scaricamerci(carico[j].mer, *indice_porto_attraccato, carico[j].indice, datascarico, vptr_shm_mercato, vptr_shm_dump, ID_SEMAFORO_DUMP, PARAMETRO);
+    }
+    if(*spaziolibero != SO_CAPACITY)
+        printf("Nave %d ha scaricato al porto %d. giorno %d\n", indice, *indice_porto_attraccato, CAST_DUMP(vptr_shm_dump)->data);
+     sem_release(ID_SEMAFORO_MERCATO, *indice_porto_attraccato);
+    
+    /* resetto i valori dei parametri necessari all'iterazione successiva */
+    *spaziolibero = SO_CAPACITY;
+    *tempo_carico = 0;
+    *i_carico = 0;
+    *reqlett = 0;
 }
 
 void richiedi_banchina(int id_semaforo_banchine, int indice_porto){

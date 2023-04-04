@@ -15,6 +15,17 @@ double calcola_distanza(point p1, point p2);
 /* Calola il porto più vicino alla posizione p passata come argomento. */
 int calcola_porto_piu_vicino(point p, point* ptr_shm_posizioni_porti, int so_porti, int so_lato);
 
+void codice_simulazione(int indice, int PARAMETRO[], int SEM_ID[], int id_coda_richieste,
+    void* vptr_shm_dump, void* vptr_shm_posizioni_porti, void* vptr_shm_dettagli_lotti, void* vptr_shm_mercato,
+    int *DEB_porti_attraccati, int *DEB_porti_lasciati, int *DEB_porto_ultima_destinazione);
+
+point avvia_nave(int indice, int PARAMETRO[], int SEM_ID[], void* vptr_shm_dump, void* vptr_shm_posizioni_porti, int *DEB_porti_attraccati, int *DEB_porti_lasciati, int *DEB_porto_ultima_destinazione, int *indice_porto_attraccato);
+
+richiesta esamina_porto(int indice, int PARAMETRO[], int SEM_ID[], int id_coda_richieste, void* vptr_shm_posizioni_porti, void* vptr_shm_dettagli_porti, void* vptr_shm_mercato, void* vptr_shm_dettagli_lotti, void* vptr_shm_dump, int* lotti_scartati, int *indice_porto_attraccato, int *reqlett, point posizione, int *spaziolibero, double *tempo_carico, merce_nave carico[], int *i_carico, int *indice_destinazione);
+
+void carica_dal_porto(int indice, int PARAMETRO[], int id_coda_richieste, void *vptr_shm_posizioni_porti, void *vptr_shm_mercato, void *vptr_shm_dettagli_lotti, void *vptr_shm_dump, richiesta r, point posizione, int *indice_destinazione, int *indice_porto_attraccato, int *lotti_scartati, int *spaziolibero, double *tempo_carico, int *i_carico, int *reqlett, merce_nave carico[]);
+
+void attracco_e_scarico(int indice, int PARAMETRO[], int SEM_ID[], int *DEB_porti_attraccati, int *DEB_porto_ultima_destinazione, void *vptr_shm_dump, void * vptr_shm_mercato, int *spaziolibero, int *i_carico, double *tempo_carico, int *reqlett, int *indice_porto_attraccato, merce_nave carico[]);
 /* Richiede una banchina al semaforo di indice 'indice_porto', effettuando 
  * una maschera dei segnali per evitare spiacevoli 'loop' dello scheduler.
  * 

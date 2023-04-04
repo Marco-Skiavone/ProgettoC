@@ -86,6 +86,12 @@
 #define SO_LOADSPEED PARAMETRO[I_LOADSPEED]
 #define SO_DAYS PARAMETRO[I_DAYS]
 
+#define ID_SEMAFORO_BANCHINE SEM_ID[0]
+#define ID_SEMAFORO_DUMP SEM_ID[1]
+#define ID_SEMAFORO_GESTIONE SEM_ID[2]
+#define ID_SEMAFORO_MERCATO SEM_ID[3]
+
+
 /* Numero di parametri: 
  * - 13 versione da 24
  * - 16 versione da 30 */
