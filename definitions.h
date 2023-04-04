@@ -4,6 +4,7 @@
 #include <stdlib.h>
 #include <fcntl.h>
 #include <string.h>
+#include <strings.h>
 #include <sys/ipc.h>
 #include <sys/sem.h>
 #include <sys/shm.h>
@@ -16,7 +17,6 @@
 #include <signal.h>
 #include <time.h>
 #include <math.h>
-
 
 #define STAMPA_DEBUG printf("%s: data = %d, linea %d\n", __FILE__, CAST_DUMP(vptr_shm_dump)->data, __LINE__);
 
@@ -48,10 +48,13 @@
 		else								\
 			printf("\n");					\
 	}										
+	
 
-
-
-
+/* stati nave */
+#define DN_MV_PORTO 0	/* da "in mare vuota" a "in porto" */
+#define DN_MC_PORTO 1	/* da "in mare carica" a "in porto" */
+#define DN_PORTO_MV 2	/* da "in porto" a "in mare vuota" */
+#define DN_PORTO_MC 3	/* da "in porto" a "in mare carica" */
 
 /* indice dei parametri */
 #define I_NAVI 0
@@ -83,6 +86,9 @@
 #define SO_LOADSPEED PARAMETRO[I_LOADSPEED]
 #define SO_DAYS PARAMETRO[I_DAYS]
 
+/* Numero di parametri: 
+ * - 13 versione da 24
+ * - 16 versione da 30 */
 #define QNT_PARAMETRI 13
 
 
@@ -98,8 +104,18 @@
 #define CHIAVE_SHAREDM_DUMP 40
 #define SIZE_SHAREDM_DUMP ((sizeof(porto_dump) * SO_PORTI) + (sizeof(merce_dump) * SO_MERCI) + sizeof(dump))
 
+#define MSG_SIZE (sizeof(int)*2)
+#define CHIAVE_CODA 50
+
+#define CHIAVE_SEM_MERCATO 11
+#define CHIAVE_SEM_DUMP 41
+#define CHIAVE_SEM_BANCHINE 51
+#define CHIAVE_SEM_GESTIONE 61
+
+/* --- casting delle shm --- */
+
 #define CAST_MERCATO(ptr) \
-	((merce(*)[SO_PORTI])ptr)
+	((merce(*)[SO_MERCI])ptr)
 
 #define CAST_POSIZIONI_PORTI(ptr) \
 	((point *)ptr)
@@ -114,68 +130,66 @@
 	((merce_dump *) ptr+sizeof(int))
 
 #define CAST_PORTO_DUMP(ptr) \
-	(porto_dump*)(((merce_dump*) ptr+sizeof(int))+SO_MERCI);
+	((porto_dump*)(((merce_dump*) ptr+sizeof(int))+SO_MERCI))
 
-#define CHIAVE_CODA 50
-#define MSG_SIZE (sizeof(int)*2)
+#define CAST_TERM_DUMP(ptr)	\
+	(((dump*)ptr)->term_dump)
 
-#define CHIAVE_SEM_MERCATO 11
-#define CHIAVE_SEM_DUMP 41
+/* ------------------------- */
 
-#define CHIAVE_SEM_BANCHINE 50
-#define CHIAVE_SEM_GESTIONE 55
- 
+/* Lunghezza massima di ogni stringa di argv_figli[x].
+ * Usata per passare i parametri ai processi figli. */
 #define MAX_STR_LEN 15
 
+/* Tolleranza della uguaglianza tra punti nella mappa */
 #define TOLLERANZA 0.05
+/* Massimo di richieste da poter leggere. (arbitrario) */
 #define MAX_REQ_LETTE 20
+/* Massima lunghezza dell'array di carico merci delle navi. */
 #define MAX_CARICO 10
 
 
-
+/* Punto generico di posizione con coordinate x e y. */
 typedef struct {
 	double x;
 	double y;
 } point;
 
-typedef struct { /*struct ritornata da porto_piu_vicino*/
-	int indice_porto; /*i del ciclo*/
-	long nanosec_nano;
-	/*restituisco anche le coordinate del porto dove si troverà la nave dopo*/
-	double x;
-	double y;
-} viaggio;
-
-/* Rappresenta un lotto di merce */
+/* Rappresenta un lotto di merce. */
 typedef struct {
     int val;
     int exp;
 } merce;
 
+/* Tipo del corpo del messaggio. */
 typedef struct {
 	int indicemerce;
     int nlotti;
 } m_text;
 
-/* richiesta da inserire in CODA MSG*/
+/* Tipo base di richiesta da inserire in CODA MSG*/
 typedef struct {
     long mtype;
     m_text mtext;
 } richiesta;
 
+/* Tipo specifico per il carico in nave, possiede un indice che è l'indice della merce. */
 typedef struct {
-    int indice; /* indice merce */
+	/* indice della merce */
+    int indice; 
     merce mer;
 } merce_nave;
 
 /* SERIE DI STRUCT NECESSARIE PER I DATI RIGUARDANTI I DUMP*/
 
+/* Tipo usato per contare lo stato delle navi nel dump. */
 typedef struct {
     int naviporto;
     int naviscariche;
     int navicariche;
 } nave_dump;
 
+/* Tipo usato per la struttura del vettore di porti del dump. */
 typedef struct {
     int mercespedita;
     int mercericevuta;
@@ -184,6 +198,7 @@ typedef struct {
     int banchinetotali;
 } porto_dump ;
 
+/* Tipo usato per la struttura del vettore di merci del dump. */
 typedef struct {
     int presente_in_porto;
     int presente_in_nave;
@@ -192,9 +207,17 @@ typedef struct {
     int scaduta_in_nave;
 } merce_dump;
 
+/* Tipo usato per la struttura del vettore nel dump, usato in fase di terminazione della simulazione. */
+typedef struct {
+	int porto_spedite;	/* Indica il porto che a fine simulazione ha spedito più merci. */
+	int porto_ricevute;	/* Indica il porto che a fine simulazione ha ricevuto più merci. */
+} term_dump;
+
+/* Tipo usato per la struttura del dump. */
 typedef struct {
 	int data;
     merce_dump *merce_dump_ptr;
     porto_dump *porto_dump_ptr;
+	term_dump term_dump;
     nave_dump nd;
 } dump;

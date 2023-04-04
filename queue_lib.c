@@ -21,7 +21,7 @@ int get_coda_id(key_t key) {
     return coda_id;
 }
 
-void destroy_coda(int coda_id) {
+void distruggi_coda(int coda_id) {
     if (msgctl(coda_id, IPC_RMID, NULL) == -1) {
         perror("msgctl destroy coda");
         exit(255);
