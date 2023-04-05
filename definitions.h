@@ -91,6 +91,11 @@
 #define ID_SEMAFORO_GESTIONE SEM_ID[2]
 #define ID_SEMAFORO_MERCATO SEM_ID[3]
 
+#define VPTR_SHM_DETTAGLI_LOTTI VPTR_ARR[0]
+#define VPTR_SHM_DUMP VPTR_ARR[1]
+#define VPTR_SHM_MERCATO VPTR_ARR[2]
+#define VPTR_SHM_POSIZIONI_PORTI VPTR_ARR[3]
+
 
 /* Numero di parametri: 
  * - 13 versione da 24

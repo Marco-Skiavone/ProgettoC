@@ -26,13 +26,6 @@ int id_coda_richieste;
 int indice;
 int PARAMETRO[QNT_PARAMETRI];
 
-
-/* elementi di debug per la nave */
-int DEB_porti_attraccati;
-int DEB_porti_lasciati;
-int DEB_porto_ultima_destinazione;
-/*-------------------------------*/
-
 void inizializza_risorse();
 void codice_simulazione();
 
@@ -69,8 +62,9 @@ int main(int argc, char *argv[]){
     if(freopen("log_navi.txt", "a", stdout)==NULL)
         {perror("freopen ha ritornato NULL");}
     int SEM_ID[] = {id_semaforo_banchine, id_semaforo_dump, id_semaforo_gestione, id_semaforo_mercato};
-    codice_simulazione(indice, PARAMETRO, SEM_ID, id_coda_richieste, vptr_shm_dump, vptr_shm_posizioni_porti, vptr_shm_dettagli_lotti, vptr_shm_mercato,
-        &DEB_porti_attraccati, &DEB_porti_lasciati, &DEB_porto_ultima_destinazione);
+    void* VPTR_ARR[] = {vptr_shm_dettagli_lotti, vptr_shm_dump, vptr_shm_mercato, vptr_shm_posizioni_porti};
+
+    codice_simulazione(indice, PARAMETRO, SEM_ID, id_coda_richieste, VPTR_ARR);
 
     sgancia_risorse(vptr_shm_dettagli_lotti, vptr_shm_dump, vptr_shm_mercato, vptr_shm_posizioni_porti);
     exit(EXIT_SUCCESS);
@@ -97,7 +91,6 @@ void signal_handler(int signo){
             break;
         case SIGUSR2:
             printf("NAVE %d: ricevuto SIGUSR2. data: %d\n", indice, CAST_DUMP(vptr_shm_dump)->data);
-            printf("#DEB - Nave %d:\n-porti_attraccati: %d\n-porti_lasciati: %d\n-ultimo_indice: %d\n", indice, DEB_porti_attraccati, DEB_porti_lasciati, DEB_porto_ultima_destinazione);
             sgancia_risorse(vptr_shm_dettagli_lotti, vptr_shm_dump, vptr_shm_mercato, vptr_shm_posizioni_porti);
             exit(EXIT_SUCCESS);
             break;
