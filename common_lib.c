@@ -15,4 +15,5 @@ void trova_tutti_id(int *id_mercato, int *id_lotti, int *id_posizioni, int *id_d
     *(id_dump) = find_shm(CHIAVE_SHAREDM_DUMP, SIZE_SHAREDM_DUMP);
     TEST_ERROR
 	*(id_coda) = get_coda_id(CHIAVE_CODA);
+    TEST_ERROR
 }

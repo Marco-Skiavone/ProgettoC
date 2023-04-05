@@ -3,6 +3,7 @@
 #include "sem_lib.h"
 #include "shm_lib.h"
 #include "nave_lib.h"
+#include "common_lib.h"
 
 void* vptr_shm_mercato;
 int id_shm_mercato;
@@ -54,7 +55,12 @@ int main(int argc, char *argv[]){
 		PARAMETRO[i - 2] = atoi(argv[i]);
 
 	}
+    
+    trova_tutti_id(&id_shm_mercato, &id_shm_dettagli_lotti, &id_shm_posizioni_porti, &id_shm_dump, &id_coda_richieste, PARAMETRO);
     inizializza_risorse();
+
+
+
     sem_reserve(id_semaforo_gestione, 0);
     sem_wait_zero(id_semaforo_gestione, 0);
     
@@ -71,16 +77,16 @@ int main(int argc, char *argv[]){
 
 
 void inizializza_risorse(){
-    id_shm_mercato = find_shm(CHIAVE_SHAREDM_MERCATO, SIZE_SHAREDM_MERCATO);
+    //id_shm_mercato = find_shm(CHIAVE_SHAREDM_MERCATO, SIZE_SHAREDM_MERCATO);
+    //id_shm_dettagli_lotti = find_shm(CHIAVE_SHAREDM_DETTAGLI_LOTTI, SIZE_SHAREDM_DETTAGLI_LOTTI);
+    //id_shm_posizioni_porti = find_shm(CHIAVE_SHAREDM_POSIZIONI_PORTI, SIZE_SHAREDM_POSIZIONI_PORTI);
+    //id_shm_dump = find_shm(CHIAVE_SHAREDM_DUMP, SIZE_SHAREDM_DUMP);
+    //id_coda_richieste = get_coda_id(CHIAVE_CODA);
     vptr_shm_mercato = aggancia_shm(id_shm_mercato);
-    id_shm_dettagli_lotti = find_shm(CHIAVE_SHAREDM_DETTAGLI_LOTTI, SIZE_SHAREDM_DETTAGLI_LOTTI);
     vptr_shm_dettagli_lotti = aggancia_shm(id_shm_dettagli_lotti);
-    id_shm_posizioni_porti = find_shm(CHIAVE_SHAREDM_POSIZIONI_PORTI, SIZE_SHAREDM_POSIZIONI_PORTI);
     vptr_shm_posizioni_porti = aggancia_shm(id_shm_posizioni_porti);
-    id_shm_dump = find_shm(CHIAVE_SHAREDM_DUMP, SIZE_SHAREDM_DUMP);
     vptr_shm_dump = aggancia_shm(id_shm_dump);
     inizializza_semafori(&id_semaforo_mercato, &id_semaforo_gestione, &id_semaforo_banchine, &id_semaforo_dump, SO_PORTI);
-    id_coda_richieste = get_coda_id(CHIAVE_CODA);
 }
 
 void signal_handler(int signo){
