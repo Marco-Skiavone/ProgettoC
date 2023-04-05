@@ -1,125 +1,89 @@
 Parametri:
 SO_NAVI | SO_PORTI | SO_MERCI | SO_SIZE | SO_MIN_VITA | SO_MAX_VITA | SO_LATO | SO_SPEED | SO_CAPACITY | SO_BANCHINE | SO_FILL | SO_LOADSPEED | SO_DAYS
- 20 | 10 | 5 | 500 | 40 | 50 | 500 | 50000 | 1000 | 7 | 500000 | 500 | 20 
+ 20 | 10 | 5 | 500 | 40 | 50 | 500 | 50000 | 1000 | 7 | 500000 | 500 | 2 
 
 __________________________ 
 
-SHARED_MEM_MERCATO: 327711
-SHARED_MEM_DETTAGLI_LOTTI: 327712
-SHARED_MEM_POSIZIONI_PORTI: 327713
-SHARED_MEM_DUMP: 327714
-CODA RICHIESTE: 22
+SHARED_MEM_MERCATO: 491534
+SHARED_MEM_DETTAGLI_LOTTI: 491536
+SHARED_MEM_POSIZIONI_PORTI: 491539
+SHARED_MEM_DUMP: 491540
+CODA RICHIESTE: 29
 __________________________ 
 
-SEM_CREATE_GESTIONE: 32793
-SEM_CREATE_BANCHINE: 32794
-SEM_CREATE_DUMP: 32795
-SEM_CREATE_MERCATO: 32796
+SEM_CREATE_GESTIONE: 32822
+SEM_CREATE_BANCHINE: 32823
+SEM_CREATE_DUMP: 32824
+SEM_CREATE_MERCATO: 32825
 __________________________ 
 
-Merce 0 val 21 exp 41
-Merce 1 val 305 exp 48
-Merce 2 val 53 exp 40
-Merce 3 val 17 exp 45
-Merce 4 val 1 exp 40
+Merce 0 val 357 exp 44
+Merce 1 val 69 exp 47
+Merce 2 val 309 exp 43
+Merce 3 val 213 exp 48
+Merce 4 val 1 exp 43
 
-MASTER: Passato giorno 1 su 20.
-
-MASTER: Passato giorno 2 su 20.
-
-MASTER: Passato giorno 3 su 20.
-
-MASTER: Passato giorno 4 su 20.
-
-MASTER: Passato giorno 5 su 20.
-
-MASTER: Passato giorno 6 su 20.
-
-MASTER: Passato giorno 7 su 20.
-
-MASTER: Passato giorno 8 su 20.
-
-MASTER: Passato giorno 9 su 20.
-
-MASTER: Passato giorno 10 su 20.
-
-MASTER: Passato giorno 11 su 20.
-
-MASTER: Passato giorno 12 su 20.
-
-MASTER: Passato giorno 13 su 20.
-
-MASTER: Passato giorno 14 su 20.
-
-MASTER: Passato giorno 15 su 20.
-
-MASTER: Passato giorno 16 su 20.
-
-MASTER: Passato giorno 17 su 20.
-
-MASTER: Passato giorno 18 su 20.
-
-MASTER: Passato giorno 19 su 20.
-MASTER: ammazzo il figlio 22407
-MASTER: ammazzo il figlio 22408
-MASTER: ammazzo il figlio 22409
-MASTER: ammazzo il figlio 22410
-MASTER: ammazzo il figlio 22411
-MASTER: ammazzo il figlio 22412
-MASTER: ammazzo il figlio 22413
-MASTER: ammazzo il figlio 22414
-MASTER: ammazzo il figlio 22415
-MASTER: ammazzo il figlio 22416
-MASTER: ammazzo il figlio 22417
-MASTER: ammazzo il figlio 22418
-MASTER: ammazzo il figlio 22419
-MASTER: ammazzo il figlio 22420
-MASTER: ammazzo il figlio 22421
-MASTER: ammazzo il figlio 22422
-MASTER: ammazzo il figlio 22423
-MASTER: ammazzo il figlio 22424
-MASTER: ammazzo il figlio 22425
-MASTER: ammazzo il figlio 22426
-MASTER: ammazzo il figlio 22427
-MASTER: ammazzo il figlio 22428
-MASTER: ammazzo il figlio 22429
-MASTER: ammazzo il figlio 22430
-MASTER: ammazzo il figlio 22431
-MASTER: ammazzo il figlio 22432
-MASTER: ammazzo il figlio 22433
-MASTER: ammazzo il figlio 22434
-MASTER: ammazzo il figlio 22435
-MASTER: ammazzo il figlio 22436
-Terminato figlio 22407 status 0
-Terminato figlio 22408 status 0
-Terminato figlio 22409 status 0
-Terminato figlio 22410 status 0
-Terminato figlio 22411 status 0
-Terminato figlio 22412 status 0
-Terminato figlio 22413 status 0
-Terminato figlio 22414 status 0
-Terminato figlio 22415 status 0
-Terminato figlio 22416 status 0
-Terminato figlio 22417 status 0
-Terminato figlio 22418 status 0
-Terminato figlio 22419 status 0
-Terminato figlio 22420 status 0
-Terminato figlio 22421 status 0
-Terminato figlio 22422 status 0
-Terminato figlio 22423 status 0
-Terminato figlio 22424 status 0
-Terminato figlio 22425 status 0
-Terminato figlio 22426 status 0
-Terminato figlio 22427 status 0
-Terminato figlio 22428 status 0
-Terminato figlio 22429 status 0
-Terminato figlio 22430 status 0
-Terminato figlio 22432 status 0
-Terminato figlio 22433 status 0
-Terminato figlio 22434 status 0
-Terminato figlio 22435 status 0
-Terminato figlio 22436 status 0
-Terminato figlio 22431 status 0
+MASTER: Passato giorno 1 su 2.
+MASTER: ammazzo il figlio 29271
+MASTER: ammazzo il figlio 29272
+MASTER: ammazzo il figlio 29273
+MASTER: ammazzo il figlio 29274
+MASTER: ammazzo il figlio 29275
+MASTER: ammazzo il figlio 29276
+MASTER: ammazzo il figlio 29277
+MASTER: ammazzo il figlio 29278
+MASTER: ammazzo il figlio 29279
+MASTER: ammazzo il figlio 29280
+MASTER: ammazzo il figlio 29281
+MASTER: ammazzo il figlio 29282
+MASTER: ammazzo il figlio 29283
+MASTER: ammazzo il figlio 29284
+MASTER: ammazzo il figlio 29285
+MASTER: ammazzo il figlio 29286
+MASTER: ammazzo il figlio 29287
+MASTER: ammazzo il figlio 29288
+MASTER: ammazzo il figlio 29289
+MASTER: ammazzo il figlio 29290
+MASTER: ammazzo il figlio 29291
+MASTER: ammazzo il figlio 29292
+MASTER: ammazzo il figlio 29293
+MASTER: ammazzo il figlio 29294
+MASTER: ammazzo il figlio 29295
+MASTER: ammazzo il figlio 29296
+MASTER: ammazzo il figlio 29297
+MASTER: ammazzo il figlio 29298
+MASTER: ammazzo il figlio 29299
+MASTER: ammazzo il figlio 29300
+Terminato figlio 29271 status 0
+Terminato figlio 29272 status 0
+Terminato figlio 29273 status 0
+Terminato figlio 29274 status 0
+Terminato figlio 29275 status 0
+Terminato figlio 29276 status 0
+Terminato figlio 29277 status 0
+Terminato figlio 29278 status 0
+Terminato figlio 29279 status 0
+Terminato figlio 29280 status 0
+Terminato figlio 29281 status 0
+Terminato figlio 29282 status 0
+Terminato figlio 29283 status 0
+Terminato figlio 29287 status 0
+Terminato figlio 29286 status 0
+Terminato figlio 29290 status 0
+Terminato figlio 29291 status 0
+Terminato figlio 29293 status 0
+Terminato figlio 29298 status 0
+Terminato figlio 29284 status 0
+Terminato figlio 29288 status 0
+Terminato figlio 29294 status 0
+Terminato figlio 29292 status 0
+Terminato figlio 29295 status 0
+Terminato figlio 29285 status 0
+Terminato figlio 29299 status 0
+Terminato figlio 29289 status 0
+Terminato figlio 29296 status 0
+Terminato figlio 29300 status 0
+Terminato figlio 29297 status 0
 Master sto uscendo con gestione = 0
 
 __________________________ 

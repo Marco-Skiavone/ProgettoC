@@ -3,15 +3,20 @@ CFLAGS = -O2  #-std=c89 -Wpedantic
 # Se la si vuole, la definizione di GDBFLAGS serve a permettere l'avvio di gdb
 GDBFLAGS = -std=c89 -Wpedantic -O0 -g
 TARGET = application
+TARGET_ME = application_ME
 PORTO = porto
 NAVE = nave
 #possiamo aggiungere altre librerie qua sotto
 OBJS = *lib.o
+OBJS_ME = *_lib.o
 SOURCES = *.c
 #var = [parametro da inserire su cmd: "make run var=[args]"]
 
 $(OBJS): $(SOURCES)
-	gcc $(CFLAGS) $(SOURCES) -c
+	gcc $(SOURCES) $(CFLAGS) -c
+
+$(OBJS_ME): $(SOURCES)
+	gcc $(SOURCES) $(CFLAGS) -D DUMP_ME -c
 
 $(TARGET): $(OBJS)
 	gcc $(OBJS) master.o -o $(TARGET) -lm
@@ -32,12 +37,11 @@ all: $(SOURCES)
 run: $(TARGET)
 	./$(TARGET) $(var)
 
-runME: $(TARGET)
-	gcc -E $(SOURCES) -D DUMP_ME -o $(TARGET_ME) -lm 
+runME: $(TARGET_ME)
 	./$(TARGET_ME) $(var)
 
 clear:
-	rm -f *.o $(TARGET) $(DEBUG) $(NAVE) $(PORTO)
+	rm -f *.o $(TARGET) $(TARGET_ME) $(NAVE) $(PORTO)
 
 ipc:
 	ipcrm --all
