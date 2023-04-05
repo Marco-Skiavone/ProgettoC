@@ -27,7 +27,6 @@ int indice;
 int PARAMETRO[QNT_PARAMETRI];
 
 void inizializza_risorse();
-void codice_simulazione();
 
 void signal_handler(int signo);
 
