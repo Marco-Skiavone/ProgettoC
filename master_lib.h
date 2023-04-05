@@ -1,15 +1,23 @@
 #ifndef _DEFINITIONS_H
 	#include "definitions.h"
 #endif
+#ifndef _QUEUE_LIB_H
+	#include "queue_lib.h"
+#endif
 #ifndef _SEM_LIB_H
 	#include "sem_lib.h"
 #endif
+#ifndef _SHM_LIB_H
+	#include "shm_lib.h"
+#endif
+
 /* Funzione che pulisce i file txt usati per i log
 */
 void clearLog();
 
-/* Alloca (crea) le risorse, restituendo i valori degli id e dei puntatori nelle variabili tramite cui sono passati gli indirizzi. *
-void alloca_risorse(int *id_shm__queue_ptr[], int id_length, void *shm_ptrs[], int ptr_length, int PARAMETRO[]);*/
+/* Alloca le risorse IPC di memorie condivise e coda.
+ * Vengono passate per referenza le varibili, per impostare gli id nel master. */
+void alloca_id(int *id_shm_mercato, int *id_shm_dettagli_lotti, int *id_shm_posizioni_porti, int *id_shm_dump, int *id_coda_richieste, int PARAMETRO[]);
 
 /* Genera un punto casuale nella mappa di lato 'lato', senza modificare il seed di rand. */
 point generate_random_point_master(int lato);
@@ -50,6 +58,15 @@ void calcola_porti_term(int PARAMETRO[], void* vptr_shm_dump);
 
 /* Stampa il dump alla terminazione della simulazione. */
 void stampa_terminazione(int PARAMETRO[], void * vptr_shm_dump, void * vptr_shm_mercato, int id_semaforo_banchine);
+
+/* distruzione finale delle risorse 
+ * ----------------------------------- */
+
+/* Distrugge le risorse di cui sono passati gli id. (shm e coda) */
+void distruggi_risorse(int id_mercato, int id_lotti, int id_posizioni, int id_dump, int id_coda);
+
+/* Usato dal master alla fine, per distruggere i semafori della simulazione. */
+void distruggi_semafori(int id_sem_mercato, int id_sem_dump, int id_sem_banchine, int id_sem_gestione);
 
 /* Esegue le free() necessarie a fine simulazione; size è la lunghezza di argv_figli. */
 void free_ptr(int *childs, char** argv_figli, int size);

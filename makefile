@@ -36,6 +36,7 @@ run: $(SOURCES)
 	gcc $(OBJS) porto.o -o $(PORTO) -lm
 	gcc $(OBJS) nave.o -o $(NAVE) -lm
 	./$(TARGET) $(var)
+	make clear
 
 debug: $(DEBUG)
 	./$(DEBUG) $(var)

@@ -1,12 +1,6 @@
 #ifndef _DEFINITIONS_H
 	#include "definitions.h"
 #endif
-#ifndef _SHM_LIB_H
-	#include "shm_lib.h"
-#endif
-#ifndef _QUEUE_LIB_H
-	#include "queue_lib.h"
-#endif
 #include "master_lib.h"
 
 void clearLog(){
@@ -15,29 +9,21 @@ void clearLog(){
 	fclose(fopen("log_mercato.txt", "w"));
 	fclose(fopen("log_navi.txt","w"));
 }
-/*
-void alloca_risorse(int *id_shm__queue_ptr[], int id_length, void *shm_ptrs[], int ptr_length, int PARAMETRO[]){
-	if(id_shm__queue_ptr == NULL){
-		perror("pointer to null in \"alloca_risorse_id()\"");
-		return;
-	}
-    int i=0;
-	while(i < id_length){
-		printf("SHARED_MEM_MERCATO: %d\n", *(id_shm__queue_ptr[i++]) = alloca_shm(CHIAVE_SHAREDM_MERCATO, SIZE_SHAREDM_MERCATO));
-		printf("SHARED_MEM_DETTAGLI_LOTTI: %d\n", *(id_shm__queue_ptr[i++]) = alloca_shm(CHIAVE_SHAREDM_DETTAGLI_LOTTI, SIZE_SHAREDM_DETTAGLI_LOTTI));
-		printf("SHARED_MEM_POSIZIONI_PORTI: %d\n", *(id_shm__queue_ptr[i++]) = alloca_shm(CHIAVE_SHAREDM_POSIZIONI_PORTI, SIZE_SHAREDM_POSIZIONI_PORTI));
-		printf("SHARED_MEM_DUMP: %d\n", *(id_shm__queue_ptr[i++]) =  alloca_shm(CHIAVE_SHAREDM_DUMP, SIZE_SHAREDM_DUMP));
-		printf("CODA RICHIESTE: %d\n", *(id_shm__queue_ptr[i++]) = set_coda_richieste(CHIAVE_CODA));
-	}
-	i = 0; 
-	while(i < ptr_length){
-		shm_ptrs[i] = aggancia_shm(*(id_shm__queue_ptr[i++]));
-		shm_ptrs[i] = aggancia_shm(*(id_shm__queue_ptr[i++]));    
-		shm_ptrs[i] = aggancia_shm(*(id_shm__queue_ptr[i++]));
-		shm_ptrs[i] = aggancia_shm(*(id_shm__queue_ptr[i++]));
-	}
-    printf("\n__________________________ \n\n");
-}*/
+
+
+void alloca_id(int *id_shm_mercato, int *id_shm_dettagli_lotti, int *id_shm_posizioni_porti, int *id_shm_dump, int *id_coda_richieste, int PARAMETRO[]){
+	*(id_shm_mercato) = alloca_shm(CHIAVE_SHAREDM_MERCATO, SIZE_SHAREDM_MERCATO);
+	*(id_shm_dettagli_lotti) = alloca_shm(CHIAVE_SHAREDM_DETTAGLI_LOTTI, SIZE_SHAREDM_DETTAGLI_LOTTI);
+	*(id_shm_posizioni_porti) = alloca_shm(CHIAVE_SHAREDM_POSIZIONI_PORTI, SIZE_SHAREDM_POSIZIONI_PORTI);
+	*(id_shm_dump) = alloca_shm(CHIAVE_SHAREDM_DUMP, SIZE_SHAREDM_DUMP);
+	*(id_coda_richieste) = set_coda_richieste(CHIAVE_CODA);
+	printf("SHARED_MEM_MERCATO: %d\n", *(id_shm_mercato));
+	printf("SHARED_MEM_DETTAGLI_LOTTI: %d\n", *(id_shm_dettagli_lotti));
+	printf("SHARED_MEM_POSIZIONI_PORTI: %d\n", *(id_shm_posizioni_porti));
+	printf("SHARED_MEM_DUMP: %d\n", *(id_shm_dump));
+	printf("CODA RICHIESTE: %d\n", *(id_coda_richieste));
+    printf("__________________________ \n\n");
+}
 
 point generate_random_point_master(int lato) {
     int mant, p_intera;
@@ -230,6 +216,27 @@ void stampa_terminazione(int PARAMETRO[], void * vptr_shm_dump, void * vptr_shm_
 	printf("\n----------------------------\n");
 	if(freopen("out.txt", "a", stdout)==NULL)
         {perror("freopen ha ritornato NULL");}
+}
+
+/* distruzione finale delle risorse 
+ * ----------------------------------- */
+
+
+void distruggi_risorse(int id_mercato, int id_lotti, int id_posizioni, int id_dump, int id_coda){
+    printf("DISTRUGGI_SHARED_MEM_MERCATO\n"); distruggi_shm(id_mercato);
+    printf("DISTRUGGI_SHARED_MEM_DETTAGLI_LOTTI\n"); distruggi_shm(id_lotti);
+    printf("DISTRUGGI_SHARED_MEM_POSIZIONI_PORTI\n"); distruggi_shm(id_posizioni);
+    printf("DISTRUGGI_SHARED_MEM_DUMP\n"); distruggi_shm(id_dump);
+    printf("DISTRUGGI_CODA_RICHIESTE\n"); distruggi_coda(id_coda);
+	printf("__________________________ \n\n");
+}
+
+void distruggi_semafori(int id_sem_mercato, int id_sem_dump, int id_sem_banchine, int id_sem_gestione){
+    printf("DISTRUGGI_SEM_MERCATO\n");  sem_destroy(id_sem_mercato);
+    printf("DISTRUGGI_SEM_DUMP\n");     sem_destroy(id_sem_dump);
+    printf("DISTRUGGI_SEM_BANCHINE\n"); sem_destroy(id_sem_banchine);
+    printf("DISTRUGGI_SEM_GESTIONE\n"); sem_destroy(id_sem_gestione);
+    printf("__________________________ \n");
 }
 
 void free_ptr(int *childs, char **argv_figli, int size){

@@ -221,7 +221,3 @@ typedef struct {
 	term_dump term_dump;
     nave_dump nd;
 } dump;
-
-/** 
- * Definiizione di metodi usati da più processi. 
- * ---------------------------------------------*/

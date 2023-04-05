@@ -10,7 +10,7 @@ int set_coda_richieste(key_t key);
 int get_coda_id(key_t key);
 
 /* Distrugge la coda... (commento inutile) */
-void destroy_coda(int coda_id);
+void distruggi_coda(int coda_id);
 
 /* Invia una richiesta 'r' alla coda. 
  *

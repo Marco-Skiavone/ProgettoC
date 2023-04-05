@@ -30,7 +30,7 @@ char **argv_figli;
 int PARAMETRO[QNT_PARAMETRI];
 
 void alloca_risorse();
-void sgancia_e_distruggi_risorse();
+void distruggi_risorse();
 
 void signal_handler(int signo);
 
@@ -38,8 +38,12 @@ int main(int argc, char* argv[]){
     int i, j, k;
     int n_righe_file, file_config_char;
     
+    /* puntatore ad un array degli indirizzi degli id delle risorse IPC. */
+    int *id_shm__queue_ptr[] = {&id_shm_mercato, &id_shm_dettagli_lotti, &id_shm_posizioni_porti, &id_shm_dump, &id_coda_richieste};
+    /* PUNTATORE A PUNTATORI: vi verranno inseriti inizialmente i puntatori delle mem. condivise. */
+    void **shm_ptrs = malloc(sizeof(void *) * 4);
+
     int continua_simulazione;
-    
     int child_pid, status;
     FILE *file_config;
     richiesta r;
@@ -88,11 +92,9 @@ int main(int argc, char* argv[]){
     STAMPA_PARAMETRI
 
     child_pids = (int *) malloc((SO_NAVI*SO_PORTI) * sizeof(int));
-    /*
-    int *id_shm__queue_ptr[] = {&id_shm_mercato, &id_shm_dettagli_lotti, &id_shm_posizioni_porti, &id_shm_dump, &id_coda_richieste};
-    void *shm_ptrs[] = {vptr_shm_mercato, vptr_shm_dettagli_lotti, vptr_shm_posizioni_porti, vptr_shm_dump};
-    alloca_risorse(id_shm__queue_ptr, 5, shm_ptrs, 4, PARAMETRO);
-    alloca_semafori(&id_semaforo_banchine, &id_semaforo_dump, &id_semaforo_gestione, &id_semaforo_mercato, PARAMETRO);*/
+    
+    /* eseguo una malloc per ricevere i puntatori delle memorie condivise */
+    // shm_ptrs = malloc(sizeof(void*) * 4);
     alloca_risorse();
     inizializza_dump(vptr_shm_dump, PARAMETRO);
     CAST_DUMP(vptr_shm_dump)->data = 0;
@@ -213,8 +215,11 @@ int main(int argc, char* argv[]){
             i++;
     } while (r.mtext.indicemerce != -1 || i < SO_PORTI);
 
-    sgancia_e_distruggi_risorse();
-    
+    sgancia_risorse(vptr_shm_dettagli_lotti,vptr_shm_dump, vptr_shm_mercato, vptr_shm_posizioni_porti);
+    printf("TUTTE LE SHARED_MEM SONO STATE SGANCIATE DAL MASTER!\n");
+    printf("__________________________ \n\n");
+    distruggi_risorse(id_shm_mercato, id_shm_dettagli_lotti, id_shm_posizioni_porti, id_shm_dump, id_coda_richieste);
+    distruggi_semafori(id_semaforo_mercato, id_semaforo_dump, id_semaforo_banchine, id_semaforo_gestione);
     /* sono da liberare child_pids, ogni argv_figli[i] meno l'ultimo che è null,
      *  e argv_figli stesso => tot=(QNT_PARAMETRI + 2))+1; */
     free_ptr(child_pids, argv_figli, QNT_PARAMETRI+2);
@@ -224,37 +229,19 @@ int main(int argc, char* argv[]){
 void alloca_risorse(){
     int i;
     printf("\n__________________________ \n\n");
-    printf("SHARED_MEM_MERCATO: %d\n", id_shm_mercato = alloca_shm(CHIAVE_SHAREDM_MERCATO, SIZE_SHAREDM_MERCATO));
+    alloca_id(&id_shm_mercato, &id_shm_dettagli_lotti, &id_shm_posizioni_porti, &id_shm_dump, &id_coda_richieste, PARAMETRO);
+    
     vptr_shm_mercato = aggancia_shm(id_shm_mercato);
-    printf("SHARED_MEM_DETTAGLI_LOTTI: %d\n", id_shm_dettagli_lotti = alloca_shm(CHIAVE_SHAREDM_DETTAGLI_LOTTI, SIZE_SHAREDM_DETTAGLI_LOTTI));
     vptr_shm_dettagli_lotti = aggancia_shm(id_shm_dettagli_lotti);
-    printf("SHARED_MEM_POSIZIONI_PORTI: %d\n", id_shm_posizioni_porti = alloca_shm(CHIAVE_SHAREDM_POSIZIONI_PORTI, SIZE_SHAREDM_POSIZIONI_PORTI));
     vptr_shm_posizioni_porti = aggancia_shm(id_shm_posizioni_porti);
-    printf("SHARED_MEM_DUMP: %d\n",id_shm_dump =  alloca_shm(CHIAVE_SHAREDM_DUMP, SIZE_SHAREDM_DUMP));
     vptr_shm_dump = aggancia_shm(id_shm_dump);
-    printf("CODA RICHIESTE: %d\n", id_coda_richieste = set_coda_richieste(CHIAVE_CODA));
-    printf("__________________________ \n\n");
+    //printf("SHARED_MEM_MERCATO: %d\n", id_shm_mercato = alloca_shm(CHIAVE_SHAREDM_MERCATO, SIZE_SHAREDM_MERCATO));
+    //printf("SHARED_MEM_DETTAGLI_LOTTI: %d\n", id_shm_dettagli_lotti = alloca_shm(CHIAVE_SHAREDM_DETTAGLI_LOTTI, SIZE_SHAREDM_DETTAGLI_LOTTI));
+    //printf("SHARED_MEM_POSIZIONI_PORTI: %d\n", id_shm_posizioni_porti = alloca_shm(CHIAVE_SHAREDM_POSIZIONI_PORTI, SIZE_SHAREDM_POSIZIONI_PORTI));
+    //printf("SHARED_MEM_DUMP: %d\n",id_shm_dump =  alloca_shm(CHIAVE_SHAREDM_DUMP, SIZE_SHAREDM_DUMP));
+    //printf("CODA RICHIESTE: %d\n", id_coda_richieste = set_coda_richieste(CHIAVE_CODA));
     alloca_semafori(&id_semaforo_banchine, &id_semaforo_dump, &id_semaforo_gestione, &id_semaforo_mercato, PARAMETRO);
     printf("__________________________ \n\n");
-}
-
-void sgancia_e_distruggi_risorse(){
-    printf("SGANCIA_SHARED_MEM_MERCATO\n"); sgancia_shm(vptr_shm_mercato);
-    printf("SGANCIA_SHARED_MEM_DETTAGLI_LOTTI\n"); sgancia_shm(vptr_shm_dettagli_lotti);
-    printf("SGANCIA_SHARED_MEM_POSIZIONI_PORTI\n"); sgancia_shm(vptr_shm_posizioni_porti);
-    printf("SGANCIA_SHARED_MEM_DUMP\n"); sgancia_shm(vptr_shm_dump);
-    printf("\n__________________________ \n\n");
-    printf("DISTRUGGI_SHARED_MEM_MERCATO\n"); distruggi_shm(id_shm_mercato);
-    printf("DISTRUGGI_SHARED_MEM_DETTAGLI_LOTTI\n"); distruggi_shm(id_shm_dettagli_lotti);
-    printf("DISTRUGGI_SHARED_MEM_POSIZIONI_PORTI\n"); distruggi_shm(id_shm_posizioni_porti);
-    printf("DISTRUGGI_SHARED_MEM_DUMP\n"); distruggi_shm(id_shm_dump);
-    
-    printf("DISTRUGGI_SEM_MERCATO\n"); sem_destroy(id_semaforo_mercato);
-    printf("DISTRUGGI_SEM_DUMP\n"); sem_destroy(id_semaforo_dump);
-    printf("DISTRUGGI_SEM_BANCHINE\n"); sem_destroy(id_semaforo_banchine);
-    printf("DISTRUGGI_SEM_GESTIONE\n"); sem_destroy(id_semaforo_gestione);
-    printf("DISTRUGGI_CODA_RICHIESTE\n"); destroy_coda(id_coda_richieste);
-    printf("\n__________________________ \n");
 }
 
 void signal_handler(int signo){
