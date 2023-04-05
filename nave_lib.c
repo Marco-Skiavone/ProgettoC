@@ -386,8 +386,8 @@ void scaricamerci(merce scarico, int indiceporto, int indicemerce, int data, voi
     /* aggiorno mercato shm se possibile */
     if(scarico.exp >= data && CAST_MERCATO(vptr_mercato)[indiceporto][indicemerce].val <= -scarico.val){
         CAST_MERCATO(vptr_mercato)[indiceporto][indicemerce].val += scarico.val;
-    } else {
-        perror("scarica_merci()");
+    } else if(CAST_MERCATO(vptr_mercato)[indiceporto][indicemerce].val > -scarico.val) {
+        fprintf(stderr, "Errore in scarica_merci()\n");
     }
     sem_reserve(id_sem_dump, 0);
     if(scarico.exp >= data){ 

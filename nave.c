@@ -56,10 +56,8 @@ int main(int argc, char *argv[]){
 
 	}
     
-    trova_tutti_id(&id_shm_mercato, &id_shm_dettagli_lotti, &id_shm_posizioni_porti, &id_shm_dump, &id_coda_richieste, PARAMETRO);
+    //trova_tutti_id(&id_shm_mercato, &id_shm_dettagli_lotti, &id_shm_posizioni_porti, &id_shm_dump, &id_coda_richieste, PARAMETRO);
     inizializza_risorse();
-
-
 
     sem_reserve(id_semaforo_gestione, 0);
     sem_wait_zero(id_semaforo_gestione, 0);
@@ -77,11 +75,11 @@ int main(int argc, char *argv[]){
 
 
 void inizializza_risorse(){
-    //id_shm_mercato = find_shm(CHIAVE_SHAREDM_MERCATO, SIZE_SHAREDM_MERCATO);
-    //id_shm_dettagli_lotti = find_shm(CHIAVE_SHAREDM_DETTAGLI_LOTTI, SIZE_SHAREDM_DETTAGLI_LOTTI);
-    //id_shm_posizioni_porti = find_shm(CHIAVE_SHAREDM_POSIZIONI_PORTI, SIZE_SHAREDM_POSIZIONI_PORTI);
-    //id_shm_dump = find_shm(CHIAVE_SHAREDM_DUMP, SIZE_SHAREDM_DUMP);
-    //id_coda_richieste = get_coda_id(CHIAVE_CODA);
+    id_shm_mercato = find_shm(CHIAVE_SHAREDM_MERCATO, SIZE_SHAREDM_MERCATO);
+    id_shm_dettagli_lotti = find_shm(CHIAVE_SHAREDM_DETTAGLI_LOTTI, SIZE_SHAREDM_DETTAGLI_LOTTI);
+    id_shm_posizioni_porti = find_shm(CHIAVE_SHAREDM_POSIZIONI_PORTI, SIZE_SHAREDM_POSIZIONI_PORTI);
+    id_shm_dump = find_shm(CHIAVE_SHAREDM_DUMP, SIZE_SHAREDM_DUMP);
+    id_coda_richieste = get_coda_id(CHIAVE_CODA);
     vptr_shm_mercato = aggancia_shm(id_shm_mercato);
     vptr_shm_dettagli_lotti = aggancia_shm(id_shm_dettagli_lotti);
     vptr_shm_posizioni_porti = aggancia_shm(id_shm_posizioni_porti);
@@ -93,6 +91,9 @@ void signal_handler(int signo){
     switch(signo){
         case SIGUSR1:
             printf("*** NAVE %d: ricevuto SIGUSR1: data = %d ***\n", indice, CAST_DUMP(vptr_shm_dump)->data);
+            #ifdef DUMP_ME
+            sem_wait_zero(id_semaforo_gestione, 1);
+            #endif
             break;
         case SIGUSR2:
             printf("NAVE %d: ricevuto SIGUSR2. data: %d\n", indice, CAST_DUMP(vptr_shm_dump)->data);

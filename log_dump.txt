@@ -2,265 +2,1831 @@
 Merce 0
 - consegnata: 0
 - presente in nave: 0
-- presente in porto: 1089
+- presente in porto: 627
 - scaduta in nave: 0
 - scaduta in porto: 0
 Merce 1
 - consegnata: 0
 - presente in nave: 0
-- presente in porto: 367
+- presente in porto: 879
 - scaduta in nave: 0
 - scaduta in porto: 0
 Merce 2
 - consegnata: 0
 - presente in nave: 0
-- presente in porto: 349
+- presente in porto: 784
 - scaduta in nave: 0
 - scaduta in porto: 0
 Merce 3
 - consegnata: 0
 - presente in nave: 0
-- presente in porto: 299
+- presente in porto: 552
 - scaduta in nave: 0
 - scaduta in porto: 0
 Merce 4
 - consegnata: 0
 - presente in nave: 0
-- presente in porto: 304
+- presente in porto: 599
 - scaduta in nave: 0
 - scaduta in porto: 0
 Porto 0
-- merce presente: 217
-- merce ricevuta: 0
-- merce spedita: 0
-- banchine occupate/totali: 0/5
-Porto 1
-- merce presente: 283
+- merce presente: 278
 - merce ricevuta: 0
 - merce spedita: 0
 - banchine occupate/totali: 0/1
+Porto 1
+- merce presente: 323
+- merce ricevuta: 0
+- merce spedita: 0
+- banchine occupate/totali: 0/5
 Porto 2
-- merce presente: 257
+- merce presente: 510
 - merce ricevuta: 0
 - merce spedita: 0
-- banchine occupate/totali: 0/2
+- banchine occupate/totali: 0/4
 Porto 3
-- merce presente: 192
+- merce presente: 399
 - merce ricevuta: 0
 - merce spedita: 0
-- banchine occupate/totali: 0/2
+- banchine occupate/totali: 0/3
 Porto 4
-- merce presente: 195
+- merce presente: 371
 - merce ricevuta: 0
 - merce spedita: 0
 - banchine occupate/totali: 0/2
 Porto 5
-- merce presente: 230
+- merce presente: 452
+- merce ricevuta: 0
+- merce spedita: 0
+- banchine occupate/totali: 0/7
+Porto 6
+- merce presente: 289
+- merce ricevuta: 0
+- merce spedita: 0
+- banchine occupate/totali: 0/1
+Porto 7
+- merce presente: 249
+- merce ricevuta: 0
+- merce spedita: 0
+- banchine occupate/totali: 0/3
+Porto 8
+- merce presente: 306
 - merce ricevuta: 0
 - merce spedita: 0
 - banchine occupate/totali: 0/2
-Porto 6
-- merce presente: 278
-- merce ricevuta: 0
-- merce spedita: 0
-- banchine occupate/totali: 0/5
-Porto 7
-- merce presente: 238
-- merce ricevuta: 0
-- merce spedita: 0
-- banchine occupate/totali: 0/5
-Porto 8
-- merce presente: 287
-- merce ricevuta: 0
-- merce spedita: 0
-- banchine occupate/totali: 0/4
 Porto 9
-- merce presente: 231
+- merce presente: 264
 - merce ricevuta: 0
 - merce spedita: 0
 - banchine occupate/totali: 0/1
 Navi:
 - navi in mare con carico: 0
-- navi in mare senza carico: 20
-- navi in porto (carico/scarico): 0
+- navi in mare senza carico: 19
+- navi in porto (carico/scarico): 1
 
 --- Fine stato dump attuale (giorno 0). ---
 *** Inizio stampa del dump: giorno 1 ***
 Merce 0
 - consegnata: 0
-- presente in nave: 242
-- presente in porto: 847
+- presente in nave: 143
+- presente in porto: 484
 - scaduta in nave: 0
 - scaduta in porto: 0
 Merce 1
 - consegnata: 0
-- presente in nave: 6
-- presente in porto: 361
+- presente in nave: 21
+- presente in porto: 858
 - scaduta in nave: 0
 - scaduta in porto: 0
 Merce 2
 - consegnata: 0
-- presente in nave: 20
-- presente in porto: 329
+- presente in nave: 90
+- presente in porto: 694
 - scaduta in nave: 0
 - scaduta in porto: 0
 Merce 3
 - consegnata: 0
-- presente in nave: 19
-- presente in porto: 280
+- presente in nave: 10
+- presente in porto: 542
 - scaduta in nave: 0
 - scaduta in porto: 0
 Merce 4
 - consegnata: 0
-- presente in nave: 103
-- presente in porto: 201
+- presente in nave: 298
+- presente in porto: 301
 - scaduta in nave: 0
 - scaduta in porto: 0
 Porto 0
-- merce presente: 217
+- merce presente: 270
 - merce ricevuta: 0
-- merce spedita: 0
-- banchine occupate/totali: 0/5
+- merce spedita: 8
+- banchine occupate/totali: 1/1
 Porto 1
-- merce presente: 283
+- merce presente: 305
+- merce ricevuta: 0
+- merce spedita: 18
+- banchine occupate/totali: 1/5
+Porto 2
+- merce presente: 502
+- merce ricevuta: 0
+- merce spedita: 8
+- banchine occupate/totali: 1/4
+Porto 3
+- merce presente: 379
+- merce ricevuta: 0
+- merce spedita: 20
+- banchine occupate/totali: 1/3
+Porto 4
+- merce presente: 229
+- merce ricevuta: 0
+- merce spedita: 142
+- banchine occupate/totali: 2/2
+Porto 5
+- merce presente: 384
+- merce ricevuta: 0
+- merce spedita: 68
+- banchine occupate/totali: 3/7
+Porto 6
+- merce presente: 271
+- merce ricevuta: 0
+- merce spedita: 18
+- banchine occupate/totali: 1/1
+Porto 7
+- merce presente: 152
+- merce ricevuta: 0
+- merce spedita: 97
+- banchine occupate/totali: 3/3
+Porto 8
+- merce presente: 123
+- merce ricevuta: 0
+- merce spedita: 183
+- banchine occupate/totali: 2/2
+Porto 9
+- merce presente: 264
 - merce ricevuta: 0
 - merce spedita: 0
 - banchine occupate/totali: 0/1
-Porto 2
-- merce presente: 227
-- merce ricevuta: 0
-- merce spedita: 30
-- banchine occupate/totali: 2/2
-Porto 3
-- merce presente: 174
-- merce ricevuta: 0
-- merce spedita: 18
-- banchine occupate/totali: 2/2
-Porto 4
-- merce presente: 180
-- merce ricevuta: 0
-- merce spedita: 15
-- banchine occupate/totali: 1/2
-Porto 5
-- merce presente: 200
-- merce ricevuta: 0
-- merce spedita: 30
-- banchine occupate/totali: 2/2
-Porto 6
-- merce presente: 274
-- merce ricevuta: 0
-- merce spedita: 4
-- banchine occupate/totali: 1/5
-Porto 7
-- merce presente: 88
-- merce ricevuta: 0
-- merce spedita: 150
-- banchine occupate/totali: 3/5
-Porto 8
-- merce presente: 147
-- merce ricevuta: 0
-- merce spedita: 140
-- banchine occupate/totali: 3/4
-Porto 9
-- merce presente: 228
-- merce ricevuta: 0
-- merce spedita: 3
-- banchine occupate/totali: 1/1
 Navi:
-- navi in mare con carico: 1
-- navi in mare senza carico: 4
+- navi in mare con carico: 2
+- navi in mare senza carico: 3
 - navi in porto (carico/scarico): 15
 
 --- Fine stato dump attuale (giorno 1). ---
-
-----------------------------------
- *** STAMPA DI TERMINAZIONE DELLA SIMULAZIONE! giorno 2 ***
+*** Inizio stampa del dump: giorno 2 ***
 Merce 0
 - consegnata: 0
-- presente in nave: 242
-- presente in porto: 847
+- presente in nave: 171
+- presente in porto: 456
 - scaduta in nave: 0
 - scaduta in porto: 0
 Merce 1
 - consegnata: 0
-- presente in nave: 8
-- presente in porto: 359
+- presente in nave: 27
+- presente in porto: 852
 - scaduta in nave: 0
 - scaduta in porto: 0
 Merce 2
 - consegnata: 0
-- presente in nave: 38
-- presente in porto: 311
+- presente in nave: 90
+- presente in porto: 694
 - scaduta in nave: 0
 - scaduta in porto: 0
 Merce 3
 - consegnata: 0
-- presente in nave: 19
-- presente in porto: 280
+- presente in nave: 10
+- presente in porto: 542
 - scaduta in nave: 0
 - scaduta in porto: 0
 Merce 4
 - consegnata: 0
-- presente in nave: 103
-- presente in porto: 201
+- presente in nave: 298
+- presente in porto: 301
 - scaduta in nave: 0
 - scaduta in porto: 0
 Porto 0
-- merce presente: 217
+- merce presente: 270
 - merce ricevuta: 0
-- merce spedita: 0
-- banchine occupate/totali: 2/5
-Porto 1
-- merce presente: 283
-- merce ricevuta: 0
-- merce spedita: 0
+- merce spedita: 8
 - banchine occupate/totali: 1/1
+Porto 1
+- merce presente: 305
+- merce ricevuta: 0
+- merce spedita: 18
+- banchine occupate/totali: 2/5
 Porto 2
-- merce presente: 227
+- merce presente: 502
 - merce ricevuta: 0
-- merce spedita: 30
-- banchine occupate/totali: 0/2
+- merce spedita: 8
+- banchine occupate/totali: 1/4
 Porto 3
-- merce presente: 156
+- merce presente: 379
 - merce ricevuta: 0
-- merce spedita: 36
-- banchine occupate/totali: 2/2
+- merce spedita: 20
+- banchine occupate/totali: 2/3
 Porto 4
-- merce presente: 180
+- merce presente: 229
 - merce ricevuta: 0
-- merce spedita: 15
-- banchine occupate/totali: 2/2
+- merce spedita: 142
+- banchine occupate/totali: 1/2
 Porto 5
-- merce presente: 200
+- merce presente: 384
 - merce ricevuta: 0
-- merce spedita: 30
-- banchine occupate/totali: 2/2
+- merce spedita: 68
+- banchine occupate/totali: 0/7
 Porto 6
-- merce presente: 274
+- merce presente: 268
 - merce ricevuta: 0
-- merce spedita: 4
-- banchine occupate/totali: 2/5
+- merce spedita: 21
+- banchine occupate/totali: 1/1
 Porto 7
-- merce presente: 88
+- merce presente: 121
 - merce ricevuta: 0
-- merce spedita: 150
-- banchine occupate/totali: 2/5
+- merce spedita: 128
+- banchine occupate/totali: 3/3
 Porto 8
-- merce presente: 147
+- merce presente: 123
 - merce ricevuta: 0
-- merce spedita: 140
-- banchine occupate/totali: 2/4
+- merce spedita: 183
+- banchine occupate/totali: 2/2
 Porto 9
-- merce presente: 226
+- merce presente: 264
 - merce ricevuta: 0
-- merce spedita: 5
+- merce spedita: 0
 - banchine occupate/totali: 1/1
 Navi:
-- navi in mare con carico: 3
+- navi in mare con carico: 6
+- navi in mare senza carico: 0
+- navi in porto (carico/scarico): 14
+
+--- Fine stato dump attuale (giorno 2). ---
+*** Inizio stampa del dump: giorno 3 ***
+Merce 0
+- consegnata: 0
+- presente in nave: 171
+- presente in porto: 456
+- scaduta in nave: 0
+- scaduta in porto: 0
+Merce 1
+- consegnata: 0
+- presente in nave: 30
+- presente in porto: 849
+- scaduta in nave: 0
+- scaduta in porto: 0
+Merce 2
+- consegnata: 0
+- presente in nave: 90
+- presente in porto: 694
+- scaduta in nave: 0
+- scaduta in porto: 0
+Merce 3
+- consegnata: 0
+- presente in nave: 10
+- presente in porto: 542
+- scaduta in nave: 0
+- scaduta in porto: 0
+Merce 4
+- consegnata: 92
+- presente in nave: 206
+- presente in porto: 301
+- scaduta in nave: 0
+- scaduta in porto: 0
+Porto 0
+- merce presente: 267
+- merce ricevuta: 92
+- merce spedita: 11
+- banchine occupate/totali: 1/1
+Porto 1
+- merce presente: 305
+- merce ricevuta: 0
+- merce spedita: 18
+- banchine occupate/totali: 3/5
+Porto 2
+- merce presente: 502
+- merce ricevuta: 0
+- merce spedita: 8
+- banchine occupate/totali: 1/4
+Porto 3
+- merce presente: 379
+- merce ricevuta: 0
+- merce spedita: 20
+- banchine occupate/totali: 3/3
+Porto 4
+- merce presente: 229
+- merce ricevuta: 0
+- merce spedita: 142
+- banchine occupate/totali: 0/2
+Porto 5
+- merce presente: 384
+- merce ricevuta: 0
+- merce spedita: 68
+- banchine occupate/totali: 0/7
+Porto 6
+- merce presente: 268
+- merce ricevuta: 0
+- merce spedita: 21
+- banchine occupate/totali: 1/1
+Porto 7
+- merce presente: 121
+- merce ricevuta: 0
+- merce spedita: 128
+- banchine occupate/totali: 3/3
+Porto 8
+- merce presente: 123
+- merce ricevuta: 0
+- merce spedita: 183
+- banchine occupate/totali: 2/2
+Porto 9
+- merce presente: 264
+- merce ricevuta: 0
+- merce spedita: 0
+- banchine occupate/totali: 1/1
+Navi:
+- navi in mare con carico: 5
+- navi in mare senza carico: 0
+- navi in porto (carico/scarico): 15
+
+--- Fine stato dump attuale (giorno 3). ---
+*** Inizio stampa del dump: giorno 4 ***
+Merce 0
+- consegnata: 94
+- presente in nave: 77
+- presente in porto: 456
+- scaduta in nave: 0
+- scaduta in porto: 0
+Merce 1
+- consegnata: 15
+- presente in nave: 27
+- presente in porto: 837
+- scaduta in nave: 0
+- scaduta in porto: 0
+Merce 2
+- consegnata: 54
+- presente in nave: 108
+- presente in porto: 622
+- scaduta in nave: 0
+- scaduta in porto: 0
+Merce 3
+- consegnata: 0
+- presente in nave: 75
+- presente in porto: 477
+- scaduta in nave: 0
+- scaduta in porto: 0
+Merce 4
+- consegnata: 298
+- presente in nave: 186
+- presente in porto: 115
+- scaduta in nave: 0
+- scaduta in porto: 0
+Porto 0
+- merce presente: 267
+- merce ricevuta: 92
+- merce spedita: 11
+- banchine occupate/totali: 1/1
+Porto 1
+- merce presente: 119
+- merce ricevuta: 50
+- merce spedita: 204
+- banchine occupate/totali: 3/5
+Porto 2
+- merce presente: 494
+- merce ricevuta: 18
+- merce spedita: 16
+- banchine occupate/totali: 1/4
+Porto 3
+- merce presente: 283
+- merce ricevuta: 9
+- merce spedita: 116
+- banchine occupate/totali: 3/3
+Porto 4
+- merce presente: 229
+- merce ricevuta: 0
+- merce spedita: 142
+- banchine occupate/totali: 0/2
+Porto 5
+- merce presente: 384
+- merce ricevuta: 0
+- merce spedita: 68
+- banchine occupate/totali: 0/7
+Porto 6
+- merce presente: 250
+- merce ricevuta: 121
+- merce spedita: 39
+- banchine occupate/totali: 1/1
+Porto 7
+- merce presente: 118
+- merce ricevuta: 18
+- merce spedita: 131
+- banchine occupate/totali: 2/3
+Porto 8
+- merce presente: 117
+- merce ricevuta: 65
+- merce spedita: 189
+- banchine occupate/totali: 2/2
+Porto 9
+- merce presente: 246
+- merce ricevuta: 88
+- merce spedita: 18
+- banchine occupate/totali: 1/1
+Navi:
+- navi in mare con carico: 6
+- navi in mare senza carico: 0
+- navi in porto (carico/scarico): 14
+
+--- Fine stato dump attuale (giorno 4). ---
+*** Inizio stampa del dump: giorno 5 ***
+Merce 0
+- consegnata: 94
+- presente in nave: 77
+- presente in porto: 456
+- scaduta in nave: 0
+- scaduta in porto: 0
+Merce 1
+- consegnata: 18
+- presente in nave: 30
+- presente in porto: 831
+- scaduta in nave: 0
+- scaduta in porto: 0
+Merce 2
+- consegnata: 72
+- presente in nave: 108
+- presente in porto: 604
+- scaduta in nave: 0
+- scaduta in porto: 0
+Merce 3
+- consegnata: 5
+- presente in nave: 75
+- presente in porto: 472
+- scaduta in nave: 0
+- scaduta in porto: 0
+Merce 4
+- consegnata: 423
+- presente in nave: 61
+- presente in porto: 115
+- scaduta in nave: 0
+- scaduta in porto: 0
+Porto 0
+- merce presente: 267
+- merce ricevuta: 92
+- merce spedita: 11
+- banchine occupate/totali: 1/1
+Porto 1
+- merce presente: 101
+- merce ricevuta: 58
+- merce spedita: 222
+- banchine occupate/totali: 2/5
+Porto 2
+- merce presente: 494
+- merce ricevuta: 18
+- merce spedita: 16
+- banchine occupate/totali: 1/4
+Porto 3
+- merce presente: 283
+- merce ricevuta: 9
+- merce spedita: 116
+- banchine occupate/totali: 3/3
+Porto 4
+- merce presente: 229
+- merce ricevuta: 0
+- merce spedita: 142
+- banchine occupate/totali: 0/2
+Porto 5
+- merce presente: 376
+- merce ricevuta: 125
+- merce spedita: 76
+- banchine occupate/totali: 1/7
+Porto 6
+- merce presente: 250
+- merce ricevuta: 121
+- merce spedita: 39
+- banchine occupate/totali: 1/1
+Porto 7
+- merce presente: 115
+- merce ricevuta: 36
+- merce spedita: 134
+- banchine occupate/totali: 2/3
+Porto 8
+- merce presente: 117
+- merce ricevuta: 65
+- merce spedita: 189
+- banchine occupate/totali: 2/2
+Porto 9
+- merce presente: 246
+- merce ricevuta: 88
+- merce spedita: 18
+- banchine occupate/totali: 1/1
+Navi:
+- navi in mare con carico: 6
+- navi in mare senza carico: 0
+- navi in porto (carico/scarico): 14
+
+--- Fine stato dump attuale (giorno 5). ---
+*** Inizio stampa del dump: giorno 6 ***
+Merce 0
+- consegnata: 141
+- presente in nave: 30
+- presente in porto: 456
+- scaduta in nave: 0
+- scaduta in porto: 0
+Merce 1
+- consegnata: 21
+- presente in nave: 27
+- presente in porto: 831
+- scaduta in nave: 0
+- scaduta in porto: 0
+Merce 2
+- consegnata: 72
+- presente in nave: 126
+- presente in porto: 586
+- scaduta in nave: 0
+- scaduta in porto: 0
+Merce 3
+- consegnata: 5
+- presente in nave: 133
+- presente in porto: 414
+- scaduta in nave: 0
+- scaduta in porto: 0
+Merce 4
+- consegnata: 423
+- presente in nave: 61
+- presente in porto: 115
+- scaduta in nave: 0
+- scaduta in porto: 0
+Porto 0
+- merce presente: 209
+- merce ricevuta: 139
+- merce spedita: 69
+- banchine occupate/totali: 1/1
+Porto 1
+- merce presente: 83
+- merce ricevuta: 61
+- merce spedita: 240
+- banchine occupate/totali: 2/5
+Porto 2
+- merce presente: 494
+- merce ricevuta: 18
+- merce spedita: 16
+- banchine occupate/totali: 2/4
+Porto 3
+- merce presente: 283
+- merce ricevuta: 9
+- merce spedita: 116
+- banchine occupate/totali: 2/3
+Porto 4
+- merce presente: 229
+- merce ricevuta: 0
+- merce spedita: 142
+- banchine occupate/totali: 0/2
+Porto 5
+- merce presente: 376
+- merce ricevuta: 125
+- merce spedita: 76
+- banchine occupate/totali: 1/7
+Porto 6
+- merce presente: 250
+- merce ricevuta: 121
+- merce spedita: 39
+- banchine occupate/totali: 1/1
+Porto 7
+- merce presente: 115
+- merce ricevuta: 36
+- merce spedita: 134
+- banchine occupate/totali: 3/3
+Porto 8
+- merce presente: 117
+- merce ricevuta: 65
+- merce spedita: 189
+- banchine occupate/totali: 2/2
+Porto 9
+- merce presente: 246
+- merce ricevuta: 88
+- merce spedita: 18
+- banchine occupate/totali: 1/1
+Navi:
+- navi in mare con carico: 5
+- navi in mare senza carico: 0
+- navi in porto (carico/scarico): 15
+
+--- Fine stato dump attuale (giorno 6). ---
+*** Inizio stampa del dump: giorno 7 ***
+Merce 0
+- consegnata: 169
+- presente in nave: 2
+- presente in porto: 456
+- scaduta in nave: 0
+- scaduta in porto: 0
+Merce 1
+- consegnata: 21
+- presente in nave: 33
+- presente in porto: 825
+- scaduta in nave: 0
+- scaduta in porto: 0
+Merce 2
+- consegnata: 72
+- presente in nave: 126
+- presente in porto: 586
+- scaduta in nave: 0
+- scaduta in porto: 0
+Merce 3
+- consegnata: 5
+- presente in nave: 133
+- presente in porto: 414
+- scaduta in nave: 0
+- scaduta in porto: 0
+Merce 4
+- consegnata: 484
+- presente in nave: 0
+- presente in porto: 115
+- scaduta in nave: 0
+- scaduta in porto: 0
+Porto 0
+- merce presente: 209
+- merce ricevuta: 139
+- merce spedita: 69
+- banchine occupate/totali: 1/1
+Porto 1
+- merce presente: 83
+- merce ricevuta: 61
+- merce spedita: 240
+- banchine occupate/totali: 3/5
+Porto 2
+- merce presente: 494
+- merce ricevuta: 18
+- merce spedita: 16
+- banchine occupate/totali: 2/4
+Porto 3
+- merce presente: 283
+- merce ricevuta: 9
+- merce spedita: 116
+- banchine occupate/totali: 3/3
+Porto 4
+- merce presente: 229
+- merce ricevuta: 0
+- merce spedita: 142
+- banchine occupate/totali: 0/2
+Porto 5
+- merce presente: 376
+- merce ricevuta: 125
+- merce spedita: 76
+- banchine occupate/totali: 0/7
+Porto 6
+- merce presente: 247
+- merce ricevuta: 182
+- merce spedita: 42
+- banchine occupate/totali: 1/1
+Porto 7
+- merce presente: 115
+- merce ricevuta: 36
+- merce spedita: 134
+- banchine occupate/totali: 2/3
+Porto 8
+- merce presente: 114
+- merce ricevuta: 93
+- merce spedita: 192
+- banchine occupate/totali: 2/2
+Porto 9
+- merce presente: 246
+- merce ricevuta: 88
+- merce spedita: 18
+- banchine occupate/totali: 1/1
+Navi:
+- navi in mare con carico: 5
+- navi in mare senza carico: 0
+- navi in porto (carico/scarico): 15
+
+--- Fine stato dump attuale (giorno 7). ---
+*** Inizio stampa del dump: giorno 8 ***
+Merce 0
+- consegnata: 169
+- presente in nave: 180
+- presente in porto: 278
+- scaduta in nave: 0
+- scaduta in porto: 0
+Merce 1
+- consegnata: 33
+- presente in nave: 30
+- presente in porto: 816
+- scaduta in nave: 0
+- scaduta in porto: 0
+Merce 2
+- consegnata: 144
+- presente in nave: 73
+- presente in porto: 567
+- scaduta in nave: 0
+- scaduta in porto: 0
+Merce 3
+- consegnata: 70
+- presente in nave: 132
+- presente in porto: 350
+- scaduta in nave: 0
+- scaduta in porto: 0
+Merce 4
+- consegnata: 484
+- presente in nave: 74
+- presente in porto: 41
+- scaduta in nave: 0
+- scaduta in porto: 0
+Porto 0
+- merce presente: 209
+- merce ricevuta: 139
+- merce spedita: 69
+- banchine occupate/totali: 1/1
+Porto 1
+- merce presente: 65
+- merce ricevuta: 64
+- merce spedita: 258
+- banchine occupate/totali: 2/5
+Porto 2
+- merce presente: 318
+- merce ricevuta: 54
+- merce spedita: 192
+- banchine occupate/totali: 2/4
+Porto 3
+- merce presente: 189
+- merce ricevuta: 15
+- merce spedita: 210
+- banchine occupate/totali: 3/3
+Porto 4
+- merce presente: 229
+- merce ricevuta: 0
+- merce spedita: 142
+- banchine occupate/totali: 0/2
+Porto 5
+- merce presente: 376
+- merce ricevuta: 125
+- merce spedita: 76
+- banchine occupate/totali: 0/7
+Porto 6
+- merce presente: 247
+- merce ricevuta: 182
+- merce spedita: 42
+- banchine occupate/totali: 0/1
+Porto 7
+- merce presente: 109
+- merce ricevuta: 74
+- merce spedita: 140
+- banchine occupate/totali: 3/3
+Porto 8
+- merce presente: 111
+- merce ricevuta: 151
+- merce spedita: 195
+- banchine occupate/totali: 2/2
+Porto 9
+- merce presente: 199
+- merce ricevuta: 96
+- merce spedita: 65
+- banchine occupate/totali: 1/1
+Navi:
+- navi in mare con carico: 6
+- navi in mare senza carico: 0
+- navi in porto (carico/scarico): 14
+
+--- Fine stato dump attuale (giorno 8). ---
+*** Inizio stampa del dump: giorno 9 ***
+Merce 0
+- consegnata: 169
+- presente in nave: 180
+- presente in porto: 278
+- scaduta in nave: 0
+- scaduta in porto: 0
+Merce 1
+- consegnata: 39
+- presente in nave: 24
+- presente in porto: 816
+- scaduta in nave: 0
+- scaduta in porto: 0
+Merce 2
+- consegnata: 144
+- presente in nave: 109
+- presente in porto: 531
+- scaduta in nave: 0
+- scaduta in porto: 0
+Merce 3
+- consegnata: 75
+- presente in nave: 127
+- presente in porto: 350
+- scaduta in nave: 0
+- scaduta in porto: 0
+Merce 4
+- consegnata: 484
+- presente in nave: 74
+- presente in porto: 41
+- scaduta in nave: 0
+- scaduta in porto: 0
+Porto 0
+- merce presente: 209
+- merce ricevuta: 139
+- merce spedita: 69
+- banchine occupate/totali: 1/1
+Porto 1
+- merce presente: 47
+- merce ricevuta: 72
+- merce spedita: 276
+- banchine occupate/totali: 3/5
+Porto 2
+- merce presente: 318
+- merce ricevuta: 54
+- merce spedita: 192
+- banchine occupate/totali: 2/4
+Porto 3
+- merce presente: 171
+- merce ricevuta: 18
+- merce spedita: 228
+- banchine occupate/totali: 3/3
+Porto 4
+- merce presente: 229
+- merce ricevuta: 0
+- merce spedita: 142
+- banchine occupate/totali: 0/2
+Porto 5
+- merce presente: 376
+- merce ricevuta: 125
+- merce spedita: 76
+- banchine occupate/totali: 0/7
+Porto 6
+- merce presente: 247
+- merce ricevuta: 182
+- merce spedita: 42
+- banchine occupate/totali: 0/1
+Porto 7
+- merce presente: 109
+- merce ricevuta: 74
+- merce spedita: 140
+- banchine occupate/totali: 3/3
+Porto 8
+- merce presente: 111
+- merce ricevuta: 151
+- merce spedita: 195
+- banchine occupate/totali: 2/2
+Porto 9
+- merce presente: 199
+- merce ricevuta: 96
+- merce spedita: 65
+- banchine occupate/totali: 1/1
+Navi:
+- navi in mare con carico: 5
+- navi in mare senza carico: 0
+- navi in porto (carico/scarico): 15
+
+--- Fine stato dump attuale (giorno 9). ---
+*** Inizio stampa del dump: giorno 10 ***
+Merce 0
+- consegnata: 171
+- presente in nave: 178
+- presente in porto: 278
+- scaduta in nave: 0
+- scaduta in porto: 0
+Merce 1
+- consegnata: 39
+- presente in nave: 30
+- presente in porto: 810
+- scaduta in nave: 0
+- scaduta in porto: 0
+Merce 2
+- consegnata: 180
+- presente in nave: 73
+- presente in porto: 531
+- scaduta in nave: 0
+- scaduta in porto: 0
+Merce 3
+- consegnata: 75
+- presente in nave: 132
+- presente in porto: 345
+- scaduta in nave: 0
+- scaduta in porto: 0
+Merce 4
+- consegnata: 484
+- presente in nave: 74
+- presente in porto: 41
+- scaduta in nave: 0
+- scaduta in porto: 0
+Porto 0
+- merce presente: 201
+- merce ricevuta: 159
+- merce spedita: 77
+- banchine occupate/totali: 1/1
+Porto 1
+- merce presente: 47
+- merce ricevuta: 72
+- merce spedita: 276
+- banchine occupate/totali: 3/5
+Porto 2
+- merce presente: 318
+- merce ricevuta: 54
+- merce spedita: 192
+- banchine occupate/totali: 0/4
+Porto 3
+- merce presente: 171
+- merce ricevuta: 18
+- merce spedita: 228
+- banchine occupate/totali: 2/3
+Porto 4
+- merce presente: 229
+- merce ricevuta: 0
+- merce spedita: 142
+- banchine occupate/totali: 2/2
+Porto 5
+- merce presente: 376
+- merce ricevuta: 125
+- merce spedita: 76
+- banchine occupate/totali: 0/7
+Porto 6
+- merce presente: 247
+- merce ricevuta: 182
+- merce spedita: 42
+- banchine occupate/totali: 1/1
+Porto 7
+- merce presente: 106
+- merce ricevuta: 92
+- merce spedita: 143
+- banchine occupate/totali: 2/3
+Porto 8
+- merce presente: 111
+- merce ricevuta: 151
+- merce spedita: 195
+- banchine occupate/totali: 2/2
+Porto 9
+- merce presente: 199
+- merce ricevuta: 96
+- merce spedita: 65
+- banchine occupate/totali: 1/1
+Navi:
+- navi in mare con carico: 6
+- navi in mare senza carico: 0
+- navi in porto (carico/scarico): 14
+
+--- Fine stato dump attuale (giorno 10). ---
+*** Inizio stampa del dump: giorno 11 ***
+Merce 0
+- consegnata: 171
+- presente in nave: 178
+- presente in porto: 278
+- scaduta in nave: 0
+- scaduta in porto: 0
+Merce 1
+- consegnata: 42
+- presente in nave: 30
+- presente in porto: 807
+- scaduta in nave: 0
+- scaduta in porto: 0
+Merce 2
+- consegnata: 180
+- presente in nave: 91
+- presente in porto: 513
+- scaduta in nave: 0
+- scaduta in porto: 0
+Merce 3
+- consegnata: 133
+- presente in nave: 74
+- presente in porto: 345
+- scaduta in nave: 0
+- scaduta in porto: 0
+Merce 4
+- consegnata: 484
+- presente in nave: 74
+- presente in porto: 41
+- scaduta in nave: 0
+- scaduta in porto: 0
+Porto 0
+- merce presente: 201
+- merce ricevuta: 159
+- merce spedita: 77
+- banchine occupate/totali: 1/1
+Porto 1
+- merce presente: 29
+- merce ricevuta: 75
+- merce spedita: 294
+- banchine occupate/totali: 2/5
+Porto 2
+- merce presente: 318
+- merce ricevuta: 54
+- merce spedita: 192
+- banchine occupate/totali: 0/4
+Porto 3
+- merce presente: 171
+- merce ricevuta: 18
+- merce spedita: 228
+- banchine occupate/totali: 1/3
+Porto 4
+- merce presente: 229
+- merce ricevuta: 0
+- merce spedita: 142
+- banchine occupate/totali: 2/2
+Porto 5
+- merce presente: 376
+- merce ricevuta: 125
+- merce spedita: 76
+- banchine occupate/totali: 0/7
+Porto 6
+- merce presente: 247
+- merce ricevuta: 182
+- merce spedita: 42
+- banchine occupate/totali: 1/1
+Porto 7
+- merce presente: 106
+- merce ricevuta: 92
+- merce spedita: 143
+- banchine occupate/totali: 3/3
+Porto 8
+- merce presente: 108
+- merce ricevuta: 209
+- merce spedita: 198
+- banchine occupate/totali: 2/2
+Porto 9
+- merce presente: 199
+- merce ricevuta: 96
+- merce spedita: 65
+- banchine occupate/totali: 1/1
+Navi:
+- navi in mare con carico: 7
+- navi in mare senza carico: 0
+- navi in porto (carico/scarico): 13
+
+--- Fine stato dump attuale (giorno 11). ---
+*** Inizio stampa del dump: giorno 12 ***
+Merce 0
+- consegnata: 305
+- presente in nave: 91
+- presente in porto: 231
+- scaduta in nave: 0
+- scaduta in porto: 0
+Merce 1
+- consegnata: 51
+- presente in nave: 33
+- presente in porto: 795
+- scaduta in nave: 0
+- scaduta in porto: 0
+Merce 2
+- consegnata: 199
+- presente in nave: 108
+- presente in porto: 477
+- scaduta in nave: 0
+- scaduta in porto: 0
+Merce 3
+- consegnata: 197
+- presente in nave: 68
+- presente in porto: 287
+- scaduta in nave: 0
+- scaduta in porto: 0
+Merce 4
+- consegnata: 484
+- presente in nave: 74
+- presente in porto: 41
+- scaduta in nave: 0
+- scaduta in porto: 0
+Porto 0
+- merce presente: 201
+- merce ricevuta: 159
+- merce spedita: 77
+- banchine occupate/totali: 1/1
+Porto 1
+- merce presente: 11
+- merce ricevuta: 78
+- merce spedita: 312
+- banchine occupate/totali: 3/5
+Porto 2
+- merce presente: 318
+- merce ricevuta: 54
+- merce spedita: 192
+- banchine occupate/totali: 0/4
+Porto 3
+- merce presente: 113
+- merce ricevuta: 21
+- merce spedita: 286
+- banchine occupate/totali: 1/3
+Porto 4
+- merce presente: 208
+- merce ricevuta: 105
+- merce spedita: 163
+- banchine occupate/totali: 2/2
+Porto 5
+- merce presente: 376
+- merce ricevuta: 125
+- merce spedita: 76
+- banchine occupate/totali: 0/7
+Porto 6
+- merce presente: 244
+- merce ricevuta: 229
+- merce spedita: 45
+- banchine occupate/totali: 1/1
+Porto 7
+- merce presente: 103
+- merce ricevuta: 110
+- merce spedita: 146
+- banchine occupate/totali: 2/3
+Porto 8
+- merce presente: 105
+- merce ricevuta: 256
+- merce spedita: 201
+- banchine occupate/totali: 2/2
+Porto 9
+- merce presente: 152
+- merce ricevuta: 99
+- merce spedita: 112
+- banchine occupate/totali: 1/1
+Navi:
+- navi in mare con carico: 7
+- navi in mare senza carico: 0
+- navi in porto (carico/scarico): 13
+
+--- Fine stato dump attuale (giorno 12). ---
+*** Inizio stampa del dump: giorno 13 ***
+Merce 0
+- consegnata: 305
+- presente in nave: 91
+- presente in porto: 231
+- scaduta in nave: 0
+- scaduta in porto: 0
+Merce 1
+- consegnata: 51
+- presente in nave: 36
+- presente in porto: 792
+- scaduta in nave: 0
+- scaduta in porto: 0
+Merce 2
+- consegnata: 217
+- presente in nave: 90
+- presente in porto: 477
+- scaduta in nave: 0
+- scaduta in porto: 0
+Merce 3
+- consegnata: 197
+- presente in nave: 68
+- presente in porto: 287
+- scaduta in nave: 0
+- scaduta in porto: 0
+Merce 4
+- consegnata: 484
+- presente in nave: 74
+- presente in porto: 41
+- scaduta in nave: 0
+- scaduta in porto: 0
+Porto 0
+- merce presente: 201
+- merce ricevuta: 159
+- merce spedita: 77
+- banchine occupate/totali: 1/1
+Porto 1
+- merce presente: 11
+- merce ricevuta: 78
+- merce spedita: 312
+- banchine occupate/totali: 2/5
+Porto 2
+- merce presente: 318
+- merce ricevuta: 54
+- merce spedita: 192
+- banchine occupate/totali: 0/4
+Porto 3
+- merce presente: 113
+- merce ricevuta: 21
+- merce spedita: 286
+- banchine occupate/totali: 1/3
+Porto 4
+- merce presente: 208
+- merce ricevuta: 105
+- merce spedita: 163
+- banchine occupate/totali: 2/2
+Porto 5
+- merce presente: 376
+- merce ricevuta: 125
+- merce spedita: 76
+- banchine occupate/totali: 0/7
+Porto 6
+- merce presente: 244
+- merce ricevuta: 229
+- merce spedita: 45
+- banchine occupate/totali: 1/1
+Porto 7
+- merce presente: 100
+- merce ricevuta: 128
+- merce spedita: 149
+- banchine occupate/totali: 2/3
+Porto 8
+- merce presente: 105
+- merce ricevuta: 256
+- merce spedita: 201
+- banchine occupate/totali: 2/2
+Porto 9
+- merce presente: 152
+- merce ricevuta: 99
+- merce spedita: 112
+- banchine occupate/totali: 1/1
+Navi:
+- navi in mare con carico: 8
+- navi in mare senza carico: 0
+- navi in porto (carico/scarico): 12
+
+--- Fine stato dump attuale (giorno 13). ---
+*** Inizio stampa del dump: giorno 14 ***
+Merce 0
+- consegnata: 305
+- presente in nave: 91
+- presente in porto: 231
+- scaduta in nave: 0
+- scaduta in porto: 0
+Merce 1
+- consegnata: 54
+- presente in nave: 36
+- presente in porto: 789
+- scaduta in nave: 0
+- scaduta in porto: 0
+Merce 2
+- consegnata: 235
+- presente in nave: 83
+- presente in porto: 466
+- scaduta in nave: 0
+- scaduta in porto: 0
+Merce 3
+- consegnata: 202
+- presente in nave: 63
+- presente in porto: 287
+- scaduta in nave: 0
+- scaduta in porto: 0
+Merce 4
+- consegnata: 484
+- presente in nave: 74
+- presente in porto: 41
+- scaduta in nave: 0
+- scaduta in porto: 0
+Porto 0
+- merce presente: 198
+- merce ricevuta: 177
+- merce spedita: 80
+- banchine occupate/totali: 1/1
+Porto 1
+- merce presente: 0
+- merce ricevuta: 86
+- merce spedita: 323
+- banchine occupate/totali: 3/5
+Porto 2
+- merce presente: 318
+- merce ricevuta: 54
+- merce spedita: 192
+- banchine occupate/totali: 0/4
+Porto 3
+- merce presente: 113
+- merce ricevuta: 21
+- merce spedita: 286
+- banchine occupate/totali: 1/3
+Porto 4
+- merce presente: 208
+- merce ricevuta: 105
+- merce spedita: 163
+- banchine occupate/totali: 1/2
+Porto 5
+- merce presente: 376
+- merce ricevuta: 125
+- merce spedita: 76
+- banchine occupate/totali: 0/7
+Porto 6
+- merce presente: 244
+- merce ricevuta: 229
+- merce spedita: 45
+- banchine occupate/totali: 0/1
+Porto 7
+- merce presente: 100
+- merce ricevuta: 128
+- merce spedita: 149
+- banchine occupate/totali: 1/3
+Porto 8
+- merce presente: 105
+- merce ricevuta: 256
+- merce spedita: 201
+- banchine occupate/totali: 2/2
+Porto 9
+- merce presente: 152
+- merce ricevuta: 99
+- merce spedita: 112
+- banchine occupate/totali: 1/1
+Navi:
+- navi in mare con carico: 10
+- navi in mare senza carico: 0
+- navi in porto (carico/scarico): 10
+
+--- Fine stato dump attuale (giorno 14). ---
+*** Inizio stampa del dump: giorno 15 ***
+Merce 0
+- consegnata: 305
+- presente in nave: 91
+- presente in porto: 231
+- scaduta in nave: 0
+- scaduta in porto: 0
+Merce 1
+- consegnata: 54
+- presente in nave: 39
+- presente in porto: 786
+- scaduta in nave: 0
+- scaduta in porto: 0
+Merce 2
+- consegnata: 253
+- presente in nave: 65
+- presente in porto: 466
+- scaduta in nave: 0
+- scaduta in porto: 0
+Merce 3
+- consegnata: 202
+- presente in nave: 63
+- presente in porto: 287
+- scaduta in nave: 0
+- scaduta in porto: 0
+Merce 4
+- consegnata: 484
+- presente in nave: 74
+- presente in porto: 41
+- scaduta in nave: 0
+- scaduta in porto: 0
+Porto 0
+- merce presente: 198
+- merce ricevuta: 177
+- merce spedita: 80
+- banchine occupate/totali: 1/1
+Porto 1
+- merce presente: 0
+- merce ricevuta: 86
+- merce spedita: 323
+- banchine occupate/totali: 4/5
+Porto 2
+- merce presente: 318
+- merce ricevuta: 54
+- merce spedita: 192
+- banchine occupate/totali: 0/4
+Porto 3
+- merce presente: 113
+- merce ricevuta: 21
+- merce spedita: 286
+- banchine occupate/totali: 1/3
+Porto 4
+- merce presente: 208
+- merce ricevuta: 105
+- merce spedita: 163
+- banchine occupate/totali: 1/2
+Porto 5
+- merce presente: 376
+- merce ricevuta: 125
+- merce spedita: 76
+- banchine occupate/totali: 0/7
+Porto 6
+- merce presente: 244
+- merce ricevuta: 229
+- merce spedita: 45
+- banchine occupate/totali: 0/1
+Porto 7
+- merce presente: 100
+- merce ricevuta: 128
+- merce spedita: 149
+- banchine occupate/totali: 0/3
+Porto 8
+- merce presente: 102
+- merce ricevuta: 274
+- merce spedita: 204
+- banchine occupate/totali: 2/2
+Porto 9
+- merce presente: 152
+- merce ricevuta: 99
+- merce spedita: 112
+- banchine occupate/totali: 1/1
+Navi:
+- navi in mare con carico: 10
+- navi in mare senza carico: 0
+- navi in porto (carico/scarico): 10
+
+--- Fine stato dump attuale (giorno 15). ---
+*** Inizio stampa del dump: giorno 16 ***
+Merce 0
+- consegnata: 352
+- presente in nave: 109
+- presente in porto: 166
+- scaduta in nave: 0
+- scaduta in porto: 0
+Merce 1
+- consegnata: 69
+- presente in nave: 27
+- presente in porto: 783
+- scaduta in nave: 0
+- scaduta in porto: 0
+Merce 2
+- consegnata: 271
+- presente in nave: 76
+- presente in porto: 437
+- scaduta in nave: 0
+- scaduta in porto: 0
+Merce 3
+- consegnata: 202
+- presente in nave: 63
+- presente in porto: 287
+- scaduta in nave: 0
+- scaduta in porto: 0
+Merce 4
+- consegnata: 484
+- presente in nave: 74
+- presente in porto: 41
+- scaduta in nave: 0
+- scaduta in porto: 0
+Porto 0
+- merce presente: 198
+- merce ricevuta: 177
+- merce spedita: 80
+- banchine occupate/totali: 1/1
+Porto 1
+- merce presente: 0
+- merce ricevuta: 95
+- merce spedita: 323
+- banchine occupate/totali: 0/5
+Porto 2
+- merce presente: 276
+- merce ricevuta: 54
+- merce spedita: 234
+- banchine occupate/totali: 1/4
+Porto 3
+- merce presente: 93
+- merce ricevuta: 24
+- merce spedita: 306
+- banchine occupate/totali: 2/3
+Porto 4
+- merce presente: 197
+- merce ricevuta: 152
+- merce spedita: 174
+- banchine occupate/totali: 1/2
+Porto 5
+- merce presente: 376
+- merce ricevuta: 125
+- merce spedita: 76
+- banchine occupate/totali: 0/7
+Porto 6
+- merce presente: 244
+- merce ricevuta: 229
+- merce spedita: 45
+- banchine occupate/totali: 0/1
+Porto 7
+- merce presente: 100
+- merce ricevuta: 128
+- merce spedita: 149
+- banchine occupate/totali: 0/3
+Porto 8
+- merce presente: 99
+- merce ricevuta: 292
+- merce spedita: 207
+- banchine occupate/totali: 2/2
+Porto 9
+- merce presente: 131
+- merce ricevuta: 102
+- merce spedita: 133
+- banchine occupate/totali: 1/1
+Navi:
+- navi in mare con carico: 10
+- navi in mare senza carico: 2
+- navi in porto (carico/scarico): 8
+
+--- Fine stato dump attuale (giorno 16). ---
+*** Inizio stampa del dump: giorno 17 ***
+Merce 0
+- consegnata: 352
+- presente in nave: 109
+- presente in porto: 166
+- scaduta in nave: 0
+- scaduta in porto: 0
+Merce 1
+- consegnata: 69
+- presente in nave: 27
+- presente in porto: 783
+- scaduta in nave: 0
+- scaduta in porto: 0
+Merce 2
+- consegnata: 271
+- presente in nave: 76
+- presente in porto: 437
+- scaduta in nave: 0
+- scaduta in porto: 0
+Merce 3
+- consegnata: 202
+- presente in nave: 63
+- presente in porto: 287
+- scaduta in nave: 0
+- scaduta in porto: 0
+Merce 4
+- consegnata: 484
+- presente in nave: 74
+- presente in porto: 41
+- scaduta in nave: 0
+- scaduta in porto: 0
+Porto 0
+- merce presente: 198
+- merce ricevuta: 177
+- merce spedita: 80
+- banchine occupate/totali: 1/1
+Porto 1
+- merce presente: 0
+- merce ricevuta: 95
+- merce spedita: 323
+- banchine occupate/totali: 0/5
+Porto 2
+- merce presente: 276
+- merce ricevuta: 54
+- merce spedita: 234
+- banchine occupate/totali: 1/4
+Porto 3
+- merce presente: 93
+- merce ricevuta: 24
+- merce spedita: 306
+- banchine occupate/totali: 2/3
+Porto 4
+- merce presente: 197
+- merce ricevuta: 152
+- merce spedita: 174
+- banchine occupate/totali: 1/2
+Porto 5
+- merce presente: 376
+- merce ricevuta: 125
+- merce spedita: 76
+- banchine occupate/totali: 0/7
+Porto 6
+- merce presente: 244
+- merce ricevuta: 229
+- merce spedita: 45
+- banchine occupate/totali: 0/1
+Porto 7
+- merce presente: 100
+- merce ricevuta: 128
+- merce spedita: 149
+- banchine occupate/totali: 0/3
+Porto 8
+- merce presente: 99
+- merce ricevuta: 292
+- merce spedita: 207
+- banchine occupate/totali: 2/2
+Porto 9
+- merce presente: 131
+- merce ricevuta: 102
+- merce spedita: 133
+- banchine occupate/totali: 1/1
+Navi:
+- navi in mare con carico: 10
+- navi in mare senza carico: 2
+- navi in porto (carico/scarico): 8
+
+--- Fine stato dump attuale (giorno 17). ---
+*** Inizio stampa del dump: giorno 18 ***
+Merce 0
+- consegnata: 417
+- presente in nave: 44
+- presente in porto: 166
+- scaduta in nave: 0
+- scaduta in porto: 0
+Merce 1
+- consegnata: 72
+- presente in nave: 27
+- presente in porto: 780
+- scaduta in nave: 0
+- scaduta in porto: 0
+Merce 2
+- consegnata: 271
+- presente in nave: 76
+- presente in porto: 437
+- scaduta in nave: 0
+- scaduta in porto: 0
+Merce 3
+- consegnata: 202
+- presente in nave: 136
+- presente in porto: 214
+- scaduta in nave: 0
+- scaduta in porto: 0
+Merce 4
+- consegnata: 558
+- presente in nave: 0
+- presente in porto: 41
+- scaduta in nave: 0
+- scaduta in porto: 0
+Porto 0
+- merce presente: 140
+- merce ricevuta: 295
+- merce spedita: 138
+- banchine occupate/totali: 1/1
+Porto 1
+- merce presente: 0
+- merce ricevuta: 95
+- merce spedita: 323
+- banchine occupate/totali: 1/5
+Porto 2
+- merce presente: 276
+- merce ricevuta: 54
+- merce spedita: 234
+- banchine occupate/totali: 0/4
+Porto 3
+- merce presente: 78
+- merce ricevuta: 27
+- merce spedita: 321
+- banchine occupate/totali: 1/3
+Porto 4
+- merce presente: 194
+- merce ricevuta: 173
+- merce spedita: 177
+- banchine occupate/totali: 1/2
+Porto 5
+- merce presente: 376
+- merce ricevuta: 125
+- merce spedita: 76
+- banchine occupate/totali: 0/7
+Porto 6
+- merce presente: 244
+- merce ricevuta: 229
+- merce spedita: 45
+- banchine occupate/totali: 0/1
+Porto 7
+- merce presente: 100
+- merce ricevuta: 128
+- merce spedita: 149
+- banchine occupate/totali: 0/3
+Porto 8
+- merce presente: 99
+- merce ricevuta: 292
+- merce spedita: 207
+- banchine occupate/totali: 2/2
+Porto 9
+- merce presente: 131
+- merce ricevuta: 102
+- merce spedita: 133
+- banchine occupate/totali: 1/1
+Navi:
+- navi in mare con carico: 11
+- navi in mare senza carico: 2
+- navi in porto (carico/scarico): 7
+
+--- Fine stato dump attuale (giorno 18). ---
+*** Inizio stampa del dump: giorno 19 ***
+Merce 0
+- consegnata: 417
+- presente in nave: 44
+- presente in porto: 166
+- scaduta in nave: 0
+- scaduta in porto: 0
+Merce 1
+- consegnata: 78
+- presente in nave: 27
+- presente in porto: 774
+- scaduta in nave: 0
+- scaduta in porto: 0
+Merce 2
+- consegnata: 289
+- presente in nave: 94
+- presente in porto: 401
+- scaduta in nave: 0
+- scaduta in porto: 0
+Merce 3
+- consegnata: 222
+- presente in nave: 116
+- presente in porto: 214
+- scaduta in nave: 0
+- scaduta in porto: 0
+Merce 4
+- consegnata: 558
+- presente in nave: 0
+- presente in porto: 41
+- scaduta in nave: 0
+- scaduta in porto: 0
+Porto 0
+- merce presente: 140
+- merce ricevuta: 295
+- merce spedita: 138
+- banchine occupate/totali: 1/1
+Porto 1
+- merce presente: 0
+- merce ricevuta: 98
+- merce spedita: 323
+- banchine occupate/totali: 0/5
+Porto 2
+- merce presente: 276
+- merce ricevuta: 54
+- merce spedita: 234
+- banchine occupate/totali: 0/4
+Porto 3
+- merce presente: 78
+- merce ricevuta: 27
+- merce spedita: 321
+- banchine occupate/totali: 0/3
+Porto 4
+- merce presente: 176
+- merce ricevuta: 188
+- merce spedita: 195
+- banchine occupate/totali: 2/2
+Porto 5
+- merce presente: 376
+- merce ricevuta: 125
+- merce spedita: 76
+- banchine occupate/totali: 0/7
+Porto 6
+- merce presente: 241
+- merce ricevuta: 229
+- merce spedita: 48
+- banchine occupate/totali: 1/1
+Porto 7
+- merce presente: 100
+- merce ricevuta: 128
+- merce spedita: 149
+- banchine occupate/totali: 0/3
+Porto 8
+- merce presente: 96
+- merce ricevuta: 310
+- merce spedita: 210
+- banchine occupate/totali: 2/2
+Porto 9
+- merce presente: 113
+- merce ricevuta: 110
+- merce spedita: 151
+- banchine occupate/totali: 1/1
+Navi:
+- navi in mare con carico: 11
+- navi in mare senza carico: 2
+- navi in porto (carico/scarico): 7
+
+--- Fine stato dump attuale (giorno 19). ---
+
+----------------------------------
+ *** STAMPA DI TERMINAZIONE DELLA SIMULAZIONE! giorno 20 ***
+Merce 0
+- consegnata: 417
+- presente in nave: 44
+- presente in porto: 166
+- scaduta in nave: 0
+- scaduta in porto: 0
+Merce 1
+- consegnata: 78
+- presente in nave: 33
+- presente in porto: 768
+- scaduta in nave: 0
+- scaduta in porto: 0
+Merce 2
+- consegnata: 307
+- presente in nave: 76
+- presente in porto: 401
+- scaduta in nave: 0
+- scaduta in porto: 0
+Merce 3
+- consegnata: 222
+- presente in nave: 121
+- presente in porto: 209
+- scaduta in nave: 0
+- scaduta in porto: 0
+Merce 4
+- consegnata: 558
+- presente in nave: 0
+- presente in porto: 41
+- scaduta in nave: 0
+- scaduta in porto: 0
+Porto 0
+- merce presente: 132
+- merce ricevuta: 295
+- merce spedita: 146
+- banchine occupate/totali: 1/1
+Porto 1
+- merce presente: 0
+- merce ricevuta: 98
+- merce spedita: 323
+- banchine occupate/totali: 1/5
+Porto 2
+- merce presente: 276
+- merce ricevuta: 54
+- merce spedita: 234
+- banchine occupate/totali: 0/4
+Porto 3
+- merce presente: 78
+- merce ricevuta: 27
+- merce spedita: 321
+- banchine occupate/totali: 0/3
+Porto 4
+- merce presente: 176
+- merce ricevuta: 188
+- merce spedita: 195
+- banchine occupate/totali: 1/2
+Porto 5
+- merce presente: 376
+- merce ricevuta: 125
+- merce spedita: 76
+- banchine occupate/totali: 0/7
+Porto 6
+- merce presente: 241
+- merce ricevuta: 229
+- merce spedita: 48
+- banchine occupate/totali: 1/1
+Porto 7
+- merce presente: 100
+- merce ricevuta: 128
+- merce spedita: 149
+- banchine occupate/totali: 0/3
+Porto 8
+- merce presente: 93
+- merce ricevuta: 328
+- merce spedita: 213
+- banchine occupate/totali: 2/2
+Porto 9
+- merce presente: 113
+- merce ricevuta: 110
+- merce spedita: 151
+- banchine occupate/totali: 1/1
+Navi:
+- navi in mare con carico: 12
 - navi in mare senza carico: 1
-- navi in porto (carico/scarico): 16
+- navi in porto (carico/scarico): 7
 Report speciale di terminazione:
-Porto che ha ricevuto più lotti di merce: 0
-Porto che ha spedito più lotti di merce: 7
+Porto che ha ricevuto più lotti di merce: 8
+Porto che ha spedito più lotti di merce: 1
 
 ----------------------------

@@ -48,6 +48,11 @@ int main(int argc, char* argv[]){
     FILE *file_config;
     richiesta r;
     argv_figli = malloc((QNT_PARAMETRI + 3)*sizeof(char*));
+
+    #ifdef DUMP_ME
+    printf("Programma in avvio con parametro DUMP_ME abilitato!\n\n");
+    #endif
+
     /*char *argv_figli[QNT_PARAMETRI + 3];*/
     setbuf(stdout, NULL); /* unbufferizza stdout */
     clearLog();
@@ -123,8 +128,10 @@ int main(int argc, char* argv[]){
     /* ---------------------------------------- */
 
     sem_set_val(id_semaforo_gestione,0,SO_PORTI+SO_NAVI);
-    sem_set_val(id_semaforo_gestione,1,1);
-    //printf("Set id_semaforo_gestione a %d + %d = %d\n", SO_PORTI, SO_NAVI, sem_get_val(id_semaforo_gestione, 0));
+
+    #ifdef DUMP_ME/* definito nel caso di dump in mutua esclusione. */
+    sem_set_val(id_semaforo_gestione,1,0);  
+    #endif
 
     argv_figli[0] = (char *)malloc(MAX_STR_LEN);
 	argv_figli[1] = (char *)malloc(MAX_STR_LEN);
@@ -248,6 +255,9 @@ void signal_handler(int signo){
     int i;
     switch(signo){
         case SIGALRM:
+            #ifdef DUMP_ME
+            sem_release(id_semaforo_gestione, 1);
+            #endif
             if(CAST_DUMP(vptr_shm_dump)->data < SO_DAYS-1){
                 fprintf(stderr, "\x1b[%dF\x1b[0J", 1);
                 CAST_DUMP(vptr_shm_dump)->data++;
@@ -263,6 +273,9 @@ void signal_handler(int signo){
                 fprintf(stderr, "Simulazione completata ^_^\n");
             }
             break;
+            #ifdef DUMP_ME
+            sem_reserve(id_semaforo_gestione, 1);
+            #endif
         default: 
             perror("MASTER: giunto segnale diverso da SIGALRM!");
             exit(254);
