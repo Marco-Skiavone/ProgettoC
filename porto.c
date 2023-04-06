@@ -53,8 +53,6 @@ int main(int argc, char *argv[]){
     TEST_ERROR
 
     inizializza_risorse();
-
-    /*fprintf(stderr,"Porto %d - x: %f y: %f\n", indice, CAST_POSIZIONI_PORTI(vptr_shm_posizioni_porti)[indice].x, CAST_POSIZIONI_PORTI(vptr_shm_posizioni_porti)[indice].y);*/
     
     spawnMerciPorti(vptr_shm_mercato, CAST_DETTAGLI_LOTTI(vptr_shm_dettagli_lotti), vptr_shm_dump, id_semaforo_dump, PARAMETRO, indice);
     manda_richieste(vptr_shm_mercato, indice, id_coda_richieste, PARAMETRO);
@@ -90,6 +88,7 @@ void signal_handler(int signo){
     switch(signo){
         case SIGUSR1:
             fprintf(stderr,"*** PORTO %d: ricevuto SIGUSR1: data = %d ***\n", indice, CAST_DUMP(vptr_shm_dump)->data);
+            controlla_scadenze(vptr_shm_dettagli_lotti, vptr_shm_mercato, vptr_shm_dump, indice, id_semaforo_dump, PARAMETRO);
             break;
         case SIGUSR2:
             fprintf(stderr,"\nPORTO %d: ricevuto SIGUSR2.\n", indice);

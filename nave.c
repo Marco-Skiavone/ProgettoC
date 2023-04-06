@@ -52,7 +52,6 @@ int main(int argc, char *argv[]){
 
 	for (i = 2; i < argc; i++){
 		PARAMETRO[i - 2] = atoi(argv[i]);
-
 	}
     
     //trova_tutti_id(&id_shm_mercato, &id_shm_dettagli_lotti, &id_shm_posizioni_porti, &id_shm_dump, &id_coda_richieste, PARAMETRO);

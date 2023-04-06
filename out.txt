@@ -1,89 +1,78 @@
 Parametri:
 SO_NAVI | SO_PORTI | SO_MERCI | SO_SIZE | SO_MIN_VITA | SO_MAX_VITA | SO_LATO | SO_SPEED | SO_CAPACITY | SO_BANCHINE | SO_FILL | SO_LOADSPEED | SO_DAYS
- 20 | 10 | 5 | 500 | 40 | 50 | 500 | 50000 | 1000 | 7 | 500000 | 500 | 2 
+ 10 | 4 | 10 | 1 | 3 | 6 | 1000 | 500 | 10 | 5 | 500000 | 20000 | 10 
 
 __________________________ 
 
-SHARED_MEM_MERCATO: 163864
-SHARED_MEM_DETTAGLI_LOTTI: 163865
-SHARED_MEM_POSIZIONI_PORTI: 163866
-SHARED_MEM_DUMP: 163867
-CODA RICHIESTE: 10
+SHARED_MEM_MERCATO: 327741
+SHARED_MEM_DETTAGLI_LOTTI: 360448
+SHARED_MEM_POSIZIONI_PORTI: 360450
+SHARED_MEM_DUMP: 360451
+CODA RICHIESTE: 16
 __________________________ 
 
-SEM_CREATE_GESTIONE: 41
-SEM_CREATE_BANCHINE: 42
-SEM_CREATE_DUMP: 43
-SEM_CREATE_MERCATO: 44
+SEM_CREATE_GESTIONE: 32769
+SEM_CREATE_BANCHINE: 32770
+SEM_CREATE_DUMP: 32771
+SEM_CREATE_MERCATO: 32772
 __________________________ 
 
-Merce 0 val 197 exp 43
-Merce 1 val 485 exp 48
-Merce 2 val 273 exp 41
-Merce 3 val 389 exp 43
-Merce 4 val 1 exp 41
+Merce 0 val 2 exp 5
+Merce 1 val 2 exp 3
+Merce 2 val 2 exp 3
+Merce 3 val 2 exp 4
+Merce 4 val 2 exp 3
+Merce 5 val 1 exp 5
+Merce 6 val 1 exp 5
+Merce 7 val 2 exp 3
+Merce 8 val 1 exp 4
+Merce 9 val 1 exp 5
 
-MASTER: Passato giorno 1 su 2.
-MASTER: ammazzo il figlio 10011
-MASTER: ammazzo il figlio 10012
-MASTER: ammazzo il figlio 10013
-MASTER: ammazzo il figlio 10014
-MASTER: ammazzo il figlio 10015
-MASTER: ammazzo il figlio 10016
-MASTER: ammazzo il figlio 10017
-MASTER: ammazzo il figlio 10018
-MASTER: ammazzo il figlio 10019
-MASTER: ammazzo il figlio 10020
-MASTER: ammazzo il figlio 10021
-MASTER: ammazzo il figlio 10022
-MASTER: ammazzo il figlio 10023
-MASTER: ammazzo il figlio 10024
-MASTER: ammazzo il figlio 10025
-MASTER: ammazzo il figlio 10026
-MASTER: ammazzo il figlio 10027
-MASTER: ammazzo il figlio 10028
-MASTER: ammazzo il figlio 10029
-MASTER: ammazzo il figlio 10030
-MASTER: ammazzo il figlio 10031
-MASTER: ammazzo il figlio 10032
-MASTER: ammazzo il figlio 10033
-MASTER: ammazzo il figlio 10034
-MASTER: ammazzo il figlio 10035
-MASTER: ammazzo il figlio 10036
-MASTER: ammazzo il figlio 10037
-MASTER: ammazzo il figlio 10038
-MASTER: ammazzo il figlio 10039
-MASTER: ammazzo il figlio 10040
-Terminato figlio 10011 status 0
-Terminato figlio 10012 status 0
-Terminato figlio 10013 status 0
-Terminato figlio 10014 status 0
-Terminato figlio 10015 status 0
-Terminato figlio 10016 status 0
-Terminato figlio 10017 status 0
-Terminato figlio 10018 status 0
-Terminato figlio 10019 status 0
-Terminato figlio 10020 status 0
-Terminato figlio 10024 status 0
-Terminato figlio 10021 status 0
-Terminato figlio 10022 status 0
-Terminato figlio 10023 status 0
-Terminato figlio 10028 status 0
-Terminato figlio 10026 status 0
-Terminato figlio 10027 status 0
-Terminato figlio 10029 status 0
-Terminato figlio 10030 status 0
-Terminato figlio 10031 status 0
-Terminato figlio 10033 status 0
-Terminato figlio 10036 status 0
-Terminato figlio 10038 status 0
-Terminato figlio 10032 status 0
-Terminato figlio 10035 status 0
-Terminato figlio 10025 status 0
-Terminato figlio 10040 status 0
-Terminato figlio 10034 status 0
-Terminato figlio 10037 status 0
-Terminato figlio 10039 status 0
+MASTER: Passato giorno 1 su 10.
+
+MASTER: Passato giorno 2 su 10.
+
+MASTER: Passato giorno 3 su 10.
+
+MASTER: Passato giorno 4 su 10.
+
+MASTER: Passato giorno 5 su 10.
+
+MASTER: Passato giorno 6 su 10.
+
+MASTER: Passato giorno 7 su 10.
+
+MASTER: Passato giorno 8 su 10.
+
+MASTER: Passato giorno 9 su 10.
+MASTER: ammazzo il figlio 18221
+MASTER: ammazzo il figlio 18222
+MASTER: ammazzo il figlio 18223
+MASTER: ammazzo il figlio 18224
+MASTER: ammazzo il figlio 18225
+MASTER: ammazzo il figlio 18226
+MASTER: ammazzo il figlio 18227
+MASTER: ammazzo il figlio 18228
+MASTER: ammazzo il figlio 18229
+MASTER: ammazzo il figlio 18230
+MASTER: ammazzo il figlio 18231
+MASTER: ammazzo il figlio 18232
+MASTER: ammazzo il figlio 18233
+MASTER: ammazzo il figlio 18234
+Terminato figlio 18221 status 0
+Terminato figlio 18222 status 0
+Terminato figlio 18223 status 0
+Terminato figlio 18224 status 0
+Terminato figlio 18225 status 0
+Terminato figlio 18226 status 0
+Terminato figlio 18227 status 0
+Terminato figlio 18228 status 0
+Terminato figlio 18230 status 0
+Terminato figlio 18232 status 0
+Terminato figlio 18234 status 0
+Terminato figlio 18231 status 0
+Terminato figlio 18229 status 0
+Terminato figlio 18233 status 0
 Master sto uscendo con gestione = 0
 
 __________________________ 

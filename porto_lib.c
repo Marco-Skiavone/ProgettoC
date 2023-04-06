@@ -74,3 +74,24 @@ void manda_richieste(void* vptr_shm_mercato, int indice, int coda_id, int PARAME
         }
     }
 }
+
+void controlla_scadenze(void *vptr_lotti, void *vptr_mercato, void *vptr_dump, int indice, int id_sem_dump, int PARAMETRO[]){
+    int i, tmp;
+    /* da modificare se si fa la parte da 30 ... come segue!
+        if(CAST_MERCATO(vptr_mercato)[indice][i].val > 0 && CAST_MERCATO(vptr_mercato)[indice][i].exp < CAST_DUMP(vptr_dump)->data){
+            ...
+        } */
+    sem_reserve(id_sem_dump, 0);
+    for(i = 0; i < SO_MERCI; i++){
+        if((CAST_DETTAGLI_LOTTI(vptr_lotti))[i].exp < CAST_DUMP(vptr_dump)->data){
+            /* allora la merce è scaduta: aggiorno porto(mercato e dump) e dump_merci */
+            if(CAST_MERCATO(vptr_mercato)[indice][i].val > 0){
+                tmp = CAST_MERCATO(vptr_mercato)[indice][i].val;            
+                CAST_MERCE_DUMP(vptr_dump)[i].scaduta_in_porto += tmp;  /* <--- sez. critica */
+                CAST_PORTO_DUMP(vptr_dump)[indice].mercepresente -= tmp;
+                CAST_MERCATO(vptr_mercato)[indice][i].val = 0;
+            }
+        }
+    }
+    sem_release(id_sem_dump, 0);
+}
