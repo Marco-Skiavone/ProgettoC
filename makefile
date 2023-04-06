@@ -7,32 +7,31 @@ TARGET_ME = application_ME
 PORTO = porto
 NAVE = nave
 #possiamo aggiungere altre librerie qua sotto
-OBJS = *lib.o
-OBJS_ME = *_lib.o
+#OBJS = *lib.o
 SOURCES = *.c
 #var = [parametro da inserire su cmd: "make run var=[args]"]
 
-$(OBJS): $(SOURCES)
+compila: $(SOURCES)
 	gcc $(SOURCES) $(CFLAGS) -c
 
-$(OBJS_ME): $(SOURCES)
+compila_ME: $(SOURCES)
 	gcc $(SOURCES) $(CFLAGS) -D DUMP_ME -c
 
-$(TARGET): $(OBJS)
-	gcc $(OBJS) master.o -o $(TARGET) -lm
-	gcc $(OBJS) porto.o -o $(PORTO) -lm
-	gcc $(OBJS) nave.o -o $(NAVE) -lm
+$(TARGET): compila
+	gcc *lib.o master.o -o $(TARGET) -lm
+	gcc *lib.o porto.o -o $(PORTO) -lm
+	gcc *lib.o nave.o -o $(NAVE) -lm
 
-$(TARGET_ME): $(OBJS_ME)
-	gcc $(OBJS_ME) master.o -o $(TARGET_ME) -lm
-	gcc $(OBJS_ME) porto.o -o $(PORTO) -lm
-	gcc $(OBJS_ME) nave.o -o $(NAVE) -lm
+$(TARGET_ME): compila_ME
+	gcc *lib.o master.o -o $(TARGET_ME) -lm
+	gcc *lib.o porto.o -o $(PORTO) -lm
+	gcc *lib.o nave.o -o $(NAVE) -lm
 
 all: $(SOURCES)
 	gcc $(CFLAGS) $(SOURCES) -c
-	gcc $(OBJS) master.o -o $(TARGET) -lm
-	gcc $(OBJS) porto.o -o $(PORTO) -lm
-	gcc $(OBJS) nave.o -o $(NAVE) -lm
+	gcc *lib.o master.o -o $(TARGET) -lm
+	gcc *lib.o porto.o -o $(PORTO) -lm
+	gcc *lib.o nave.o -o $(NAVE) -lm
 
 run: $(TARGET)
 	./$(TARGET) $(var)

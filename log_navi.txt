@@ -1,327 +1,488 @@
 
 spaziolibero 0: 1000 SO_CAPACITY: 1000
 
-Nave 0 in posizione x:470.122000 y:280.528000 indice porto piu vicino 4 x:362.804000 y;306.652000
-Nave 0 inizia il viaggio
-Attesa con distanza 2: 110.451874
-0. stato nave 0 aggiornato
-Nave 0 ha ricevuto una banchina al porto 4
+Nave 3 in posizione x:60.612000 y:490.898000 indice porto piu vicino 3 x:0.000000 y;500.000000
+Nave 3 inizia il viaggio
+Attesa con distanza 2: 61.291606
+0. stato nave 3 aggiornato
+Nave 3 ha ricevuto una banchina al porto 3
 Parte esamina porto
-Richiesta da porto 3 merce 1 lotti 52 al porto 4 con val 36
-nave 0 ha caricato 14 lotti di merce 1 spaziolibero: 34
+Richiesta da porto 8 merce 3 lotti 26 al porto 3 con val 30
+nave 3 ha caricato 2 lotti di merce 3 spaziolibero: 222
+Parte carica dal porto
+Nave 3 inizia a caricare
+Attesa con spaziolibero 1: 222
+*** NAVE 3: ricevuto SIGUSR1: data = 1 ***
+Nave 3 ha caricato
+3. stato nave 3 aggiornato
+Nave 3 parte
+Attesa con distanza 1: 430.004147
+Nave 3 arriva
+Nave 3 attraccata al porto 8
+1. stato nave 3 aggiornato
+Attesa con spaziolibero 2: 222
+NAVE 3: ricevuto SIGUSR2. data: 2
+
+spaziolibero 0: 1000 SO_CAPACITY: 1000
+
+Nave 0 in posizione x:240.248000 y:300.560000 indice porto piu vicino 6 x:175.666000 y;200.144000
+Nave 0 inizia il viaggio
+Attesa con distanza 2: 119.390987
+0. stato nave 0 aggiornato
+Nave 0 ha ricevuto una banchina al porto 6
+Parte esamina porto
+Richiesta da porto 9 merce 3 lotti 16 al porto 6 con val 47
+nave 0 ha caricato 2 lotti di merce 3 spaziolibero: 222
 Parte carica dal porto
 Nave 0 inizia a caricare
-Attesa con spaziolibero 1: 34
+Attesa con spaziolibero 1: 222
 *** NAVE 0: ricevuto SIGUSR1: data = 1 ***
+Nave 0 ha caricato
+3. stato nave 0 aggiornato
+Nave 0 parte
+Attesa con distanza 1: 124.822124
+Nave 0 arriva
+Nave 0 attraccata al porto 9
+1. stato nave 0 aggiornato
+Attesa con spaziolibero 2: 222
 NAVE 0: ricevuto SIGUSR2. data: 2
 
 spaziolibero 0: 1000 SO_CAPACITY: 1000
 
-Nave 2 in posizione x:70.282000 y:10.526000 indice porto piu vicino 0 x:0.000000 y;0.000000
-Nave 2 inizia il viaggio
-Attesa con distanza 2: 71.065858
-0. stato nave 2 aggiornato
-Nave 2 ha ricevuto una banchina al porto 0
+Nave 1 in posizione x:300.260000 y:250.650000 indice porto piu vicino 8 x:350.532000 y;250.940000
+Nave 1 inizia il viaggio
+Attesa con distanza 2: 50.272836
+0. stato nave 1 aggiornato
+Nave 1 ha ricevuto una banchina al porto 8
 Parte esamina porto
-Richiesta da porto 6 merce 4 lotti 92 al porto 0 con val 167
-nave 2 ha caricato 92 lotti di merce 4 spaziolibero: 908
+Richiesta da porto 5 merce 2 lotti 48 al porto 8 con val 40
+nave 1 ha caricato 3 lotti di merce 2 spaziolibero: 181
+Parte carica dal porto
+Nave 1 inizia a caricare
+Attesa con spaziolibero 1: 181
+*** NAVE 1: ricevuto SIGUSR1: data = 1 ***
+Nave 1 ha caricato
+3. stato nave 1 aggiornato
+Nave 1 parte
+Attesa con distanza 1: 336.914548
+Nave 1 arriva
+Nave 1 attraccata al porto 5
+1. stato nave 1 aggiornato
+Attesa con spaziolibero 2: 181
+NAVE 1: ricevuto SIGUSR2. data: 2
+
+spaziolibero 0: 1000 SO_CAPACITY: 1000
+
+Nave 7 in posizione x:390.778000 y:230.646000 indice porto piu vicino 8 x:350.532000 y;250.940000
+Nave 7 inizia il viaggio
+Attesa con distanza 2: 45.073129
+0. stato nave 7 aggiornato
+Nave 7 ha ricevuto una banchina al porto 8
+Parte esamina porto
+Richiesta da porto 4 merce 0 lotti 32 al porto 8 con val 36
+nave 7 ha caricato 5 lotti di merce 0 spaziolibero: 15
+Parte carica dal porto
+Nave 7 inizia a caricare
+Attesa con spaziolibero 1: 15
+*** NAVE 7: ricevuto SIGUSR1: data = 1 ***
+Nave 7 ha caricato
+3. stato nave 7 aggiornato
+Nave 7 parte
+Attesa con distanza 1: 100.352965
+Nave 7 arriva
+Nave 7 attraccata al porto 4
+1. stato nave 7 aggiornato
+Attesa con spaziolibero 2: 15
+NAVE 7: ricevuto SIGUSR2. data: 2
+
+spaziolibero 0: 1000 SO_CAPACITY: 1000
+
+Nave 2 in posizione x:0.200000 y:230.646000 indice porto piu vicino 9 x:75.914000 y;275.178000
+Nave 2 inizia il viaggio
+Attesa con distanza 2: 87.839108
+0. stato nave 2 aggiornato
+Nave 2 ha ricevuto una banchina al porto 9
+Parte esamina porto
+Richiesta da porto 4 merce 0 lotti 27 al porto 9 con val 43
+nave 2 ha caricato 5 lotti di merce 0 spaziolibero: 15
 Parte carica dal porto
 Nave 2 inizia a caricare
-Attesa con spaziolibero 1: 908
+Attesa con spaziolibero 1: 15
+*** NAVE 2: ricevuto SIGUSR1: data = 1 ***
 Nave 2 ha caricato
 3. stato nave 2 aggiornato
 Nave 2 parte
-Attesa con distanza 1: 360.916709
+Attesa con distanza 1: 301.158171
 Nave 2 arriva
 NAVE 2: ricevuto SIGUSR2. data: 2
 
 spaziolibero 0: 1000 SO_CAPACITY: 1000
 
-Nave 6 in posizione x:310.606000 y:230.298000 indice porto piu vicino 6 x:245.790000 y;264.288000
-Nave 6 inizia il viaggio
-Attesa con distanza 2: 73.187663
-0. stato nave 6 aggiornato
-Nave 6 ha ricevuto una banchina al porto 6
-Parte esamina porto
-Richiesta da porto 8 merce 3 lotti 34 al porto 6 con val 41
-nave 6 ha caricato 4 lotti di merce 3 spaziolibero: 148
-Parte carica dal porto
-Nave 6 inizia a caricare
-Attesa con spaziolibero 1: 148
-*** NAVE 6: ricevuto SIGUSR1: data = 1 ***
-NAVE 6: ricevuto SIGUSR2. data: 2
-
-spaziolibero 0: 1000 SO_CAPACITY: 1000
-
-Nave 1 in posizione x:10.226000 y:430.818000 indice porto piu vicino 3 x:0.000000 y;500.000000
-Nave 1 inizia il viaggio
-Attesa con distanza 2: 69.933684
-0. stato nave 1 aggiornato
-Nave 1 ha ricevuto una banchina al porto 3
-Parte esamina porto
-Richiesta da porto 9 merce 3 lotti 53 al porto 3 con val 45
-nave 1 ha caricato 4 lotti di merce 3 spaziolibero: 148
-Parte carica dal porto
-nave 1 ha caricato 128 lotti di merce 4 spaziolibero: 20
-Nave 1 inizia a caricare
-Attesa con spaziolibero 1: 20
-*** NAVE 1: ricevuto SIGUSR1: data = 1 ***
-NAVE 1: ricevuto SIGUSR2. data: 2
-
-spaziolibero 0: 1000 SO_CAPACITY: 1000
-
-Nave 5 in posizione x:440.844000 y:80.708000 indice porto piu vicino 1 x:500.000000 y;0.000000
-Nave 5 inizia il viaggio
-Attesa con distanza 2: 100.066046
-0. stato nave 5 aggiornato
-Nave 5 ha ricevuto una banchina al porto 1
-Parte esamina porto
-Richiesta da porto 0 merce 2 lotti 53 al porto 1 con val 46
-nave 5 ha caricato 3 lotti di merce 2 spaziolibero: 73
-Parte carica dal porto
-Nave 5 inizia a caricare
-Attesa con spaziolibero 1: 73
-*** NAVE 5: ricevuto SIGUSR1: data = 1 ***
-NAVE 5: ricevuto SIGUSR2. data: 2
-
-spaziolibero 0: 1000 SO_CAPACITY: 1000
-
-Nave 17 in posizione x:90.334000 y:340.984000 indice porto piu vicino 8 x:158.036000 y;478.476000
-Nave 17 inizia il viaggio
-Attesa con distanza 2: 153.256683
-NAVE 17: ricevuto SIGUSR2. data: 2
-
-spaziolibero 0: 1000 SO_CAPACITY: 1000
-
-Nave 9 in posizione x:240.824000 y:310.606000 indice porto piu vicino 6 x:245.790000 y;264.288000
+Nave 9 in posizione x:270.654000 y:480.896000 indice porto piu vicino 7 x:400.408000 y;425.566000
 Nave 9 inizia il viaggio
-Attesa con distanza 2: 46.583455
+Attesa con distanza 2: 141.058532
 0. stato nave 9 aggiornato
-Nave 9 ha ricevuto una banchina al porto 6
+Nave 9 ha ricevuto una banchina al porto 7
 Parte esamina porto
-Richiesta da porto 2 merce 1 lotti 47 al porto 6 con val 38
-nave 9 ha caricato 14 lotti di merce 1 spaziolibero: 34
+Richiesta da porto 2 merce 1 lotti 37 al porto 7 con val 41
+nave 9 ha caricato 2 lotti di merce 1 spaziolibero: 30
 Parte carica dal porto
 Nave 9 inizia a caricare
-Attesa con spaziolibero 1: 34
+Attesa con spaziolibero 1: 30
 *** NAVE 9: ricevuto SIGUSR1: data = 1 ***
+Nave 9 ha caricato
+3. stato nave 9 aggiornato
+Nave 9 parte
+Attesa con distanza 1: 124.334174
+Nave 9 arriva
+Nave 9 attraccata al porto 2
+1. stato nave 9 aggiornato
+Attesa con spaziolibero 2: 30
 NAVE 9: ricevuto SIGUSR2. data: 2
 
 spaziolibero 0: 1000 SO_CAPACITY: 1000
 
-Nave 10 in posizione x:10.226000 y:400.840000 indice porto piu vicino 3 x:0.000000 y;500.000000
-Nave 10 inizia il viaggio
-Attesa con distanza 2: 99.685890
-0. stato nave 10 aggiornato
-Nave 10 ha ricevuto una banchina al porto 3
+Nave 5 in posizione x:30.706000 y:160.432000 indice porto piu vicino 9 x:75.914000 y;275.178000
+Nave 5 inizia il viaggio
+Attesa con distanza 2: 123.330482
+0. stato nave 5 aggiornato
+Nave 5 ha ricevuto una banchina al porto 9
 Parte esamina porto
-Richiesta da porto 2 merce 4 lotti 104 al porto 3 con val 12
-nave 10 ha caricato 12 lotti di merce 4 spaziolibero: 988
+Richiesta da porto 1 merce 4 lotti 28 al porto 9 con val 176
+nave 5 ha caricato 28 lotti di merce 4 spaziolibero: 972
+Parte carica dal porto
+Nave 5 inizia a caricare
+Attesa con spaziolibero 1: 972
+Nave 5 ha caricato
+3. stato nave 5 aggiornato
+Nave 5 parte
+Attesa con distanza 1: 505.541163
+Nave 5 arriva
+Nave 5 attraccata al porto 1
+1. stato nave 5 aggiornato
+Attesa con spaziolibero 2: 972
+nave 5 in attesa dal giorno 0: giorno attuale: 0
+Nave 5 inizia a scaricare al porto 1. giorno 0
+Nave 5 ha scaricato al porto 1. giorno 0
+Parte esamina porto
+Richiesta da porto 5 merce 1 lotti 40 al porto 1 con val 37
+nave 5 ha caricato 2 lotti di merce 1 spaziolibero: 30
+Parte carica dal porto
+Nave 5 inizia a caricare
+Attesa con spaziolibero 1: 30
+NAVE 5: ricevuto SIGUSR2. data: 2
+
+spaziolibero 0: 1000 SO_CAPACITY: 1000
+
+Nave 10 in posizione x:440.388000 y:180.136000 indice porto piu vicino 4 x:350.092000 y;150.588000
+Nave 10 inizia il viaggio
+Attesa con distanza 2: 95.007641
+0. stato nave 10 aggiornato
+Nave 10 ha ricevuto una banchina al porto 4
+Parte esamina porto
+Richiesta da porto 5 merce 2 lotti 45 al porto 4 con val 26
+nave 10 ha caricato 3 lotti di merce 2 spaziolibero: 181
 Parte carica dal porto
 Nave 10 inizia a caricare
-Attesa con spaziolibero 1: 988
+Attesa con spaziolibero 1: 181
+*** NAVE 10: ricevuto SIGUSR1: data = 1 ***
 Nave 10 ha caricato
 3. stato nave 10 aggiornato
 Nave 10 parte
-Attesa con distanza 1: 500.000000
+Attesa con distanza 1: 279.397052
 Nave 10 arriva
-Nave 10 attraccata al porto 2
+Nave 10 attraccata al porto 5
 1. stato nave 10 aggiornato
-Attesa con spaziolibero 2: 988
-nave 10 in attesa dal giorno 0: giorno attuale: 0
-Nave 10 inizia a scaricare al porto 2. giorno 0
-Nave 10 ha scaricato al porto 2. giorno 0
-Parte esamina porto
-Richiesta da porto 9 merce 3 lotti 49 al porto 2 con val 34
-nave 10 ha caricato 4 lotti di merce 3 spaziolibero: 148
-Parte carica dal porto
-Nave 10 inizia a caricare
-Attesa con spaziolibero 1: 148
-*** NAVE 10: ricevuto SIGUSR1: data = 1 ***
+Attesa con spaziolibero 2: 181
 NAVE 10: ricevuto SIGUSR2. data: 2
 
 spaziolibero 0: 1000 SO_CAPACITY: 1000
 
-Nave 12 in posizione x:400.340000 y:220.872000 indice porto piu vicino 4 x:362.804000 y;306.652000
-Nave 12 inizia il viaggio
-Attesa con distanza 2: 93.633112
-0. stato nave 12 aggiornato
-Nave 12 ha ricevuto una banchina al porto 4
+Nave 6 in posizione x:460.392000 y:330.366000 indice porto piu vicino 7 x:400.408000 y;425.566000
+Nave 6 inizia il viaggio
+Attesa con distanza 2: 112.521644
+0. stato nave 6 aggiornato
+Nave 6 ha ricevuto una banchina al porto 7
 Parte esamina porto
-Richiesta da porto 9 merce 2 lotti 54 al porto 4 con val 28
-nave 12 ha caricato 3 lotti di merce 2 spaziolibero: 73
+Richiesta da porto 8 merce 1 lotti 45 al porto 7 con val 43
+nave 6 ha caricato 2 lotti di merce 1 spaziolibero: 30
 Parte carica dal porto
-nave 12 ha caricato 1 lotti di merce 1 spaziolibero: 4
-Nave 12 inizia a caricare
-Attesa con spaziolibero 1: 4
-*** NAVE 12: ricevuto SIGUSR1: data = 1 ***
-NAVE 12: ricevuto SIGUSR2. data: 2
+Nave 6 inizia a caricare
+Attesa con spaziolibero 1: 30
+*** NAVE 6: ricevuto SIGUSR1: data = 1 ***
+Nave 6 ha caricato
+3. stato nave 6 aggiornato
+Nave 6 parte
+Attesa con distanza 1: 181.609073
+Nave 6 arriva
+NAVE 6: ricevuto SIGUSR2. data: 2
 
 spaziolibero 0: 1000 SO_CAPACITY: 1000
 
-Nave 3 in posizione x:80.208000 y:480.748000 indice porto piu vicino 7 x:125.750000 y;492.264000
-Nave 3 inizia il viaggio
-Attesa con distanza 2: 46.975441
-0. stato nave 3 aggiornato
-Nave 3 ha ricevuto una banchina al porto 7
-Parte esamina porto
-Richiesta da porto 3 merce 0 lotti 44 al porto 7 con val 60
-nave 3 ha caricato 2 lotti di merce 0 spaziolibero: 286
-Parte carica dal porto
-nave 3 ha caricato 4 lotti di merce 1 spaziolibero: 10
-Nave 3 inizia a caricare
-Attesa con spaziolibero 1: 10
-*** NAVE 3: ricevuto SIGUSR1: data = 1 ***
-NAVE 3: ricevuto SIGUSR2. data: 2
-
-spaziolibero 0: 1000 SO_CAPACITY: 1000
-
-Nave 7 in posizione x:380.388000 y:320.832000 indice porto piu vicino 4 x:362.804000 y;306.652000
-Nave 7 inizia il viaggio
-Attesa con distanza 2: 22.589145
-0. stato nave 7 aggiornato
-Nave 7 ha ricevuto una banchina al porto 4
-Parte esamina porto
-Richiesta da porto 0 merce 2 lotti 56 al porto 4 con val 31
-nave 7 ha caricato 3 lotti di merce 2 spaziolibero: 73
-Parte carica dal porto
-Nave 7 inizia a caricare
-Attesa con spaziolibero 1: 73
-*** NAVE 7: ricevuto SIGUSR1: data = 1 ***
-NAVE 7: ricevuto SIGUSR2. data: 2
-
-spaziolibero 0: 1000 SO_CAPACITY: 1000
-
-Nave 13 in posizione x:260.576000 y:170.642000 indice porto piu vicino 6 x:245.790000 y;264.288000
-Nave 13 inizia il viaggio
-Attesa con distanza 2: 94.806113
-0. stato nave 13 aggiornato
-Nave 13 ha ricevuto una banchina al porto 6
-Parte esamina porto
-Richiesta da porto 8 merce 3 lotti 30 al porto 6 con val 37
-nave 13 ha caricato 4 lotti di merce 3 spaziolibero: 148
-Parte carica dal porto
-Nave 13 inizia a caricare
-Attesa con spaziolibero 1: 148
-*** NAVE 13: ricevuto SIGUSR1: data = 1 ***
-NAVE 13: ricevuto SIGUSR2. data: 2
-
-spaziolibero 0: 1000 SO_CAPACITY: 1000
-
-Nave 11 in posizione x:440.044000 y:450.770000 indice porto piu vicino 2 x:500.000000 y;500.000000
-Nave 11 inizia il viaggio
-Attesa con distanza 2: 77.577799
-0. stato nave 11 aggiornato
-Nave 11 ha ricevuto una banchina al porto 2
-Parte esamina porto
-Richiesta da porto 5 merce 3 lotti 50 al porto 2 con val 38
-nave 11 ha caricato 4 lotti di merce 3 spaziolibero: 148
-Parte carica dal porto
-Nave 11 inizia a caricare
-Attesa con spaziolibero 1: 148
-*** NAVE 11: ricevuto SIGUSR1: data = 1 ***
-NAVE 11: ricevuto SIGUSR2. data: 2
-
-spaziolibero 0: 1000 SO_CAPACITY: 1000
-
-Nave 14 in posizione x:120.212000 y:360.036000 indice porto piu vicino 8 x:158.036000 y;478.476000
-Nave 14 inizia il viaggio
-Attesa con distanza 2: 124.332975
-0. stato nave 14 aggiornato
-Nave 14 ha ricevuto una banchina al porto 8
-Parte esamina porto
-Richiesta da porto 7 merce 2 lotti 37 al porto 8 con val 63
-nave 14 ha caricato 3 lotti di merce 2 spaziolibero: 73
-Parte carica dal porto
-Nave 14 inizia a caricare
-Attesa con spaziolibero 1: 73
-*** NAVE 14: ricevuto SIGUSR1: data = 1 ***
-NAVE 14: ricevuto SIGUSR2. data: 2
-
-spaziolibero 0: 1000 SO_CAPACITY: 1000
-
-Nave 4 in posizione x:390.514000 y:260.376000 indice porto piu vicino 4 x:362.804000 y;306.652000
-Nave 4 inizia il viaggio
-Attesa con distanza 2: 53.938041
-0. stato nave 4 aggiornato
-Nave 4 ha ricevuto una banchina al porto 4
-Parte esamina porto
-Richiesta da porto 5 merce 1 lotti 47 al porto 4 con val 51
-nave 4 ha caricato 14 lotti di merce 1 spaziolibero: 34
-Parte carica dal porto
-Nave 4 inizia a caricare
-Attesa con spaziolibero 1: 34
-*** NAVE 4: ricevuto SIGUSR1: data = 1 ***
-NAVE 4: ricevuto SIGUSR2. data: 2
-
-spaziolibero 0: 1000 SO_CAPACITY: 1000
-
-Nave 16 in posizione x:390.214000 y:50.030000 indice porto piu vicino 1 x:500.000000 y;0.000000
-Nave 16 inizia il viaggio
-Attesa con distanza 2: 120.648111
-0. stato nave 16 aggiornato
-Nave 16 ha ricevuto una banchina al porto 1
-Parte esamina porto
-Richiesta da porto 5 merce 2 lotti 53 al porto 1 con val 43
-nave 16 ha caricato 3 lotti di merce 2 spaziolibero: 73
-Parte carica dal porto
-Nave 16 inizia a caricare
-Attesa con spaziolibero 1: 73
-*** NAVE 16: ricevuto SIGUSR1: data = 1 ***
-NAVE 16: ricevuto SIGUSR2. data: 2
-
-spaziolibero 0: 1000 SO_CAPACITY: 1000
-
-Nave 18 in posizione x:350.710000 y:310.306000 indice porto piu vicino 4 x:362.804000 y;306.652000
-Nave 18 inizia il viaggio
-Attesa con distanza 2: 12.633944
-0. stato nave 18 aggiornato
-Nave 18 ha ricevuto una banchina al porto 4
-Parte esamina porto
-Richiesta da porto 1 merce 1 lotti 58 al porto 4 con val 65
-nave 18 ha caricato 14 lotti di merce 1 spaziolibero: 34
-Parte carica dal porto
-Nave 18 inizia a caricare
-Attesa con spaziolibero 1: 34
-*** NAVE 18: ricevuto SIGUSR1: data = 1 ***
-NAVE 18: ricevuto SIGUSR2. data: 2
-
-spaziolibero 0: 1000 SO_CAPACITY: 1000
-
-Nave 8 in posizione x:170.042000 y:220.272000 indice porto piu vicino 6 x:245.790000 y;264.288000
+Nave 8 in posizione x:280.856000 y:40.508000 indice porto piu vicino 4 x:350.092000 y;150.588000
 Nave 8 inizia il viaggio
-Attesa con distanza 2: 87.608035
+Attesa con distanza 2: 130.043186
+*** NAVE 8: ricevuto SIGUSR1: data = 1 ***
 0. stato nave 8 aggiornato
-Nave 8 ha ricevuto una banchina al porto 6
+Nave 8 ha ricevuto una banchina al porto 4
 Parte esamina porto
-Richiesta da porto 7 merce 2 lotti 40 al porto 6 con val 67
-nave 8 ha caricato 3 lotti di merce 2 spaziolibero: 73
+Richiesta da porto 9 merce 3 lotti 14 al porto 4 con val 43
+nave 8 ha caricato 2 lotti di merce 3 spaziolibero: 222
 Parte carica dal porto
 Nave 8 inizia a caricare
-Attesa con spaziolibero 1: 73
-*** NAVE 8: ricevuto SIGUSR1: data = 1 ***
+Attesa con spaziolibero 1: 222
 NAVE 8: ricevuto SIGUSR2. data: 2
 
 spaziolibero 0: 1000 SO_CAPACITY: 1000
 
-Nave 15 in posizione x:160.516000 y:360.936000 indice porto piu vicino 5 x:259.578000 y;382.644000
+Nave 15 in posizione x:470.494000 y:220.744000 indice porto piu vicino 8 x:350.532000 y;250.940000
 Nave 15 inizia il viaggio
-Attesa con distanza 2: 101.412608
+Attesa con distanza 2: 123.704001
 0. stato nave 15 aggiornato
-Nave 15 ha ricevuto una banchina al porto 5
+Nave 15 ha ricevuto una banchina al porto 8
 Parte esamina porto
-Richiesta da porto 4 merce 0 lotti 65 al porto 5 con val 55
-nave 15 ha caricato 2 lotti di merce 0 spaziolibero: 286
+Richiesta da porto 4 merce 0 lotti 22 al porto 8 con val 31
+nave 15 ha caricato 5 lotti di merce 0 spaziolibero: 15
 Parte carica dal porto
-nave 15 ha caricato 95 lotti di merce 4 spaziolibero: 191
 Nave 15 inizia a caricare
-Attesa con spaziolibero 1: 191
-*** NAVE 15: ricevuto SIGUSR1: data = 1 ***
+Attesa con spaziolibero 1: 15
 NAVE 15: ricevuto SIGUSR2. data: 2
 
 spaziolibero 0: 1000 SO_CAPACITY: 1000
 
-Nave 19 in posizione x:120.012000 y:270.702000 indice porto piu vicino 6 x:245.790000 y;264.288000
+Nave 17 in posizione x:130.026000 y:140.528000 indice porto piu vicino 6 x:175.666000 y;200.144000
+Nave 17 inizia il viaggio
+Attesa con distanza 2: 75.080471
+0. stato nave 17 aggiornato
+Nave 17 ha ricevuto una banchina al porto 6
+Parte esamina porto
+Richiesta da porto 2 merce 0 lotti 40 al porto 6 con val 40
+nave 17 ha caricato 5 lotti di merce 0 spaziolibero: 15
+Parte carica dal porto
+Nave 17 inizia a caricare
+Attesa con spaziolibero 1: 15
+*** NAVE 17: ricevuto SIGUSR1: data = 1 ***
+Nave 17 ha caricato
+3. stato nave 17 aggiornato
+Nave 17 parte
+Attesa con distanza 1: 441.708234
+Nave 17 arriva
+Nave 17 attraccata al porto 2
+1. stato nave 17 aggiornato
+Attesa con spaziolibero 2: 15
+NAVE 17: ricevuto SIGUSR2. data: 2
+
+spaziolibero 0: 1000 SO_CAPACITY: 1000
+
+Nave 12 in posizione x:140.628000 y:420.384000 indice porto piu vicino 9 x:75.914000 y;275.178000
+Nave 12 inizia il viaggio
+Attesa con distanza 2: 158.973848
+0. stato nave 12 aggiornato
+Nave 12 ha ricevuto una banchina al porto 9
+Parte esamina porto
+Richiesta da porto 3 merce 2 lotti 37 al porto 9 con val 37
+nave 12 ha caricato 3 lotti di merce 2 spaziolibero: 181
+Parte carica dal porto
+nave 12 ha caricato 8 lotti di merce 4 spaziolibero: 173
+Nave 12 inizia a caricare
+Attesa con spaziolibero 1: 173
+*** NAVE 12: ricevuto SIGUSR1: data = 1 ***
+Nave 12 ha caricato
+3. stato nave 12 aggiornato
+Nave 12 parte
+Attesa con distanza 1: 237.292788
+Nave 12 arriva
+Nave 12 attraccata al porto 3
+1. stato nave 12 aggiornato
+Attesa con spaziolibero 2: 173
+NAVE 12: ricevuto SIGUSR2. data: 2
+
+spaziolibero 0: 1000 SO_CAPACITY: 1000
+
+Nave 14 in posizione x:420.184000 y:100.120000 indice porto piu vicino 4 x:350.092000 y;150.588000
+Nave 14 inizia il viaggio
+Attesa con distanza 2: 86.370756
+0. stato nave 14 aggiornato
+Nave 14 ha ricevuto una banchina al porto 4
+Parte esamina porto
+Richiesta da porto 3 merce 2 lotti 40 al porto 4 con val 29
+nave 14 ha caricato 3 lotti di merce 2 spaziolibero: 181
+Parte carica dal porto
+nave 14 ha caricato 137 lotti di merce 4 spaziolibero: 44
+Nave 14 inizia a caricare
+Attesa con spaziolibero 1: 44
+*** NAVE 14: ricevuto SIGUSR1: data = 1 ***
+Nave 14 ha caricato
+3. stato nave 14 aggiornato
+Nave 14 parte
+Attesa con distanza 1: 494.624256
+Nave 14 arriva
+Nave 14 attraccata al porto 3
+1. stato nave 14 aggiornato
+Attesa con spaziolibero 2: 44
+NAVE 14: ricevuto SIGUSR2. data: 2
+
+spaziolibero 0: 1000 SO_CAPACITY: 1000
+
+Nave 11 in posizione x:90.418000 y:60.412000 indice porto piu vicino 5 x:100.392000 y;25.238000
+Nave 11 inizia il viaggio
+Attesa con distanza 2: 36.560784
+0. stato nave 11 aggiornato
+Nave 11 ha ricevuto una banchina al porto 5
+Parte esamina porto
+Richiesta da porto 3 merce 0 lotti 35 al porto 5 con val 26
+nave 11 ha caricato 5 lotti di merce 0 spaziolibero: 15
+Parte carica dal porto
+Nave 11 inizia a caricare
+Attesa con spaziolibero 1: 15
+*** NAVE 11: ricevuto SIGUSR1: data = 1 ***
+Nave 11 ha caricato
+3. stato nave 11 aggiornato
+Nave 11 parte
+Attesa con distanza 1: 485.260250
+Nave 11 arriva
+Nave 11 attraccata al porto 3
+1. stato nave 11 aggiornato
+Attesa con spaziolibero 2: 15
+NAVE 11: ricevuto SIGUSR2. data: 2
+
+spaziolibero 0: 1000 SO_CAPACITY: 1000
+
+Nave 4 in posizione x:50.610000 y:470.894000 indice porto piu vicino 3 x:0.000000 y;500.000000
+Nave 4 inizia il viaggio
+Attesa con distanza 2: 58.382629
+0. stato nave 4 aggiornato
+Nave 4 ha ricevuto una banchina al porto 3
+Parte esamina porto
+Richiesta da porto 9 merce 3 lotti 18 al porto 3 con val 28
+nave 4 ha caricato 2 lotti di merce 3 spaziolibero: 222
+Parte carica dal porto
+Nave 4 inizia a caricare
+Attesa con spaziolibero 1: 222
+*** NAVE 4: ricevuto SIGUSR1: data = 1 ***
+Nave 4 ha caricato
+3. stato nave 4 aggiornato
+Nave 4 parte
+Attesa con distanza 1: 237.292788
+Nave 4 arriva
+Nave 4 attraccata al porto 9
+1. stato nave 4 aggiornato
+Attesa con spaziolibero 2: 222
+NAVE 4: ricevuto SIGUSR2. data: 2
+
+spaziolibero 0: 1000 SO_CAPACITY: 1000
+
+Nave 19 in posizione x:60.212000 y:490.998000 indice porto piu vicino 3 x:0.000000 y;500.000000
 Nave 19 inizia il viaggio
-Attesa con distanza 2: 125.941434
+Attesa con distanza 2: 60.881204
+0. stato nave 19 aggiornato
+Nave 19 ha ricevuto una banchina al porto 3
+Parte esamina porto
+Richiesta da porto 8 merce 3 lotti 24 al porto 3 con val 26
+nave 19 ha caricato 2 lotti di merce 3 spaziolibero: 222
+Parte carica dal porto
+Nave 19 inizia a caricare
+Attesa con spaziolibero 1: 222
+*** NAVE 19: ricevuto SIGUSR1: data = 1 ***
+Nave 19 ha caricato
+3. stato nave 19 aggiornato
+Nave 19 parte
+Attesa con distanza 1: 430.004147
+Nave 19 arriva
+Nave 19 attraccata al porto 8
+1. stato nave 19 aggiornato
+Attesa con spaziolibero 2: 222
 NAVE 19: ricevuto SIGUSR2. data: 2
+
+spaziolibero 0: 1000 SO_CAPACITY: 1000
+
+Nave 13 in posizione x:110.522000 y:20.804000 indice porto piu vicino 5 x:100.392000 y;25.238000
+Nave 13 inizia il viaggio
+Attesa con distanza 2: 11.057905
+0. stato nave 13 aggiornato
+Nave 13 ha ricevuto una banchina al porto 5
+Parte esamina porto
+Richiesta da porto 1 merce 4 lotti 185 al porto 5 con val 108
+nave 13 ha caricato 108 lotti di merce 4 spaziolibero: 892
+Parte carica dal porto
+Nave 13 inizia a caricare
+Attesa con spaziolibero 1: 892
+Nave 13 ha caricato
+3. stato nave 13 aggiornato
+Nave 13 parte
+Attesa con distanza 1: 400.404184
+Nave 13 arriva
+Nave 13 attraccata al porto 1
+1. stato nave 13 aggiornato
+Attesa con spaziolibero 2: 892
+nave 13 in attesa dal giorno 0: giorno attuale: 0
+Nave 13 inizia a scaricare al porto 1. giorno 0
+Nave 13 ha scaricato al porto 1. giorno 0
+Parte esamina porto
+Richiesta da porto 8 merce 3 lotti 22 al porto 1 con val 32
+nave 13 ha caricato 2 lotti di merce 3 spaziolibero: 222
+Parte carica dal porto
+Nave 13 inizia a caricare
+Attesa con spaziolibero 1: 222
+*** NAVE 13: ricevuto SIGUSR1: data = 1 ***
+Nave 13 ha caricato
+3. stato nave 13 aggiornato
+Nave 13 parte
+Attesa con distanza 1: 292.081438
+NAVE 13: ricevuto SIGUSR2. data: 2
+
+spaziolibero 0: 1000 SO_CAPACITY: 1000
+
+Nave 16 in posizione x:280.556000 y:240.348000 indice porto piu vicino 8 x:350.532000 y;250.940000
+Nave 16 inizia il viaggio
+Attesa con distanza 2: 70.773095
+0. stato nave 16 aggiornato
+Nave 16 ha ricevuto una banchina al porto 8
+Parte esamina porto
+Richiesta da porto 1 merce 4 lotti 77 al porto 8 con val 49
+nave 16 ha caricato 49 lotti di merce 4 spaziolibero: 951
+Parte carica dal porto
+Nave 16 inizia a caricare
+Attesa con spaziolibero 1: 951
+Nave 16 ha caricato
+3. stato nave 16 aggiornato
+Nave 16 parte
+Attesa con distanza 1: 292.081438
+Nave 16 arriva
+Nave 16 attraccata al porto 1
+1. stato nave 16 aggiornato
+Attesa con spaziolibero 2: 951
+nave 16 in attesa dal giorno 0: giorno attuale: 0
+Nave 16 inizia a scaricare al porto 1. giorno 0
+Nave 16 ha scaricato al porto 1. giorno 0
+Parte esamina porto
+Richiesta da porto 7 merce 0 lotti 41 al porto 1 con val 39
+nave 16 ha caricato 5 lotti di merce 0 spaziolibero: 15
+Parte carica dal porto
+Nave 16 inizia a caricare
+Attesa con spaziolibero 1: 15
+NAVE 16: ricevuto SIGUSR2. data: 2
+
+spaziolibero 0: 1000 SO_CAPACITY: 1000
+
+Nave 18 in posizione x:120.224000 y:40.308000 indice porto piu vicino 5 x:100.392000 y;25.238000
+Nave 18 inizia il viaggio
+Attesa con distanza 2: 24.908094
+0. stato nave 18 aggiornato
+Nave 18 ha ricevuto una banchina al porto 5
+Parte esamina porto
+Richiesta da porto 2 merce 0 lotti 45 al porto 5 con val 31
+nave 18 ha caricato 5 lotti di merce 0 spaziolibero: 15
+Parte carica dal porto
+Nave 18 inizia a caricare
+Attesa con spaziolibero 1: 15
+*** NAVE 18: ricevuto SIGUSR1: data = 1 ***
+Nave 18 ha caricato
+3. stato nave 18 aggiornato
+Nave 18 parte
+Attesa con distanza 1: 620.552585
+Nave 18 arriva
+Nave 18 attraccata al porto 2
+1. stato nave 18 aggiornato
+Attesa con spaziolibero 2: 15
+NAVE 18: ricevuto SIGUSR2. data: 2

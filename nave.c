@@ -44,7 +44,6 @@ int main(int argc, char *argv[]){
     sigaddset(&mask1, SIGUSR1);
     sigprocmask(SIG_UNBLOCK, &mask1, NULL);
 
-    // /*DATA*/CAST_DUMP(vptr_shm_dump)->data = 0;
     if(argc !=(2 + QNT_PARAMETRI)){
         perror("argc != 2");
         exit(EXIT_FAILURE);

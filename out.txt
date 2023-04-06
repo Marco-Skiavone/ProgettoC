@@ -4,86 +4,86 @@ SO_NAVI | SO_PORTI | SO_MERCI | SO_SIZE | SO_MIN_VITA | SO_MAX_VITA | SO_LATO | 
 
 __________________________ 
 
-SHARED_MEM_MERCATO: 491534
-SHARED_MEM_DETTAGLI_LOTTI: 491536
-SHARED_MEM_POSIZIONI_PORTI: 491539
-SHARED_MEM_DUMP: 491540
-CODA RICHIESTE: 29
+SHARED_MEM_MERCATO: 163864
+SHARED_MEM_DETTAGLI_LOTTI: 163865
+SHARED_MEM_POSIZIONI_PORTI: 163866
+SHARED_MEM_DUMP: 163867
+CODA RICHIESTE: 10
 __________________________ 
 
-SEM_CREATE_GESTIONE: 32822
-SEM_CREATE_BANCHINE: 32823
-SEM_CREATE_DUMP: 32824
-SEM_CREATE_MERCATO: 32825
+SEM_CREATE_GESTIONE: 41
+SEM_CREATE_BANCHINE: 42
+SEM_CREATE_DUMP: 43
+SEM_CREATE_MERCATO: 44
 __________________________ 
 
-Merce 0 val 357 exp 44
-Merce 1 val 69 exp 47
-Merce 2 val 309 exp 43
-Merce 3 val 213 exp 48
-Merce 4 val 1 exp 43
+Merce 0 val 197 exp 43
+Merce 1 val 485 exp 48
+Merce 2 val 273 exp 41
+Merce 3 val 389 exp 43
+Merce 4 val 1 exp 41
 
 MASTER: Passato giorno 1 su 2.
-MASTER: ammazzo il figlio 29271
-MASTER: ammazzo il figlio 29272
-MASTER: ammazzo il figlio 29273
-MASTER: ammazzo il figlio 29274
-MASTER: ammazzo il figlio 29275
-MASTER: ammazzo il figlio 29276
-MASTER: ammazzo il figlio 29277
-MASTER: ammazzo il figlio 29278
-MASTER: ammazzo il figlio 29279
-MASTER: ammazzo il figlio 29280
-MASTER: ammazzo il figlio 29281
-MASTER: ammazzo il figlio 29282
-MASTER: ammazzo il figlio 29283
-MASTER: ammazzo il figlio 29284
-MASTER: ammazzo il figlio 29285
-MASTER: ammazzo il figlio 29286
-MASTER: ammazzo il figlio 29287
-MASTER: ammazzo il figlio 29288
-MASTER: ammazzo il figlio 29289
-MASTER: ammazzo il figlio 29290
-MASTER: ammazzo il figlio 29291
-MASTER: ammazzo il figlio 29292
-MASTER: ammazzo il figlio 29293
-MASTER: ammazzo il figlio 29294
-MASTER: ammazzo il figlio 29295
-MASTER: ammazzo il figlio 29296
-MASTER: ammazzo il figlio 29297
-MASTER: ammazzo il figlio 29298
-MASTER: ammazzo il figlio 29299
-MASTER: ammazzo il figlio 29300
-Terminato figlio 29271 status 0
-Terminato figlio 29272 status 0
-Terminato figlio 29273 status 0
-Terminato figlio 29274 status 0
-Terminato figlio 29275 status 0
-Terminato figlio 29276 status 0
-Terminato figlio 29277 status 0
-Terminato figlio 29278 status 0
-Terminato figlio 29279 status 0
-Terminato figlio 29280 status 0
-Terminato figlio 29281 status 0
-Terminato figlio 29282 status 0
-Terminato figlio 29283 status 0
-Terminato figlio 29287 status 0
-Terminato figlio 29286 status 0
-Terminato figlio 29290 status 0
-Terminato figlio 29291 status 0
-Terminato figlio 29293 status 0
-Terminato figlio 29298 status 0
-Terminato figlio 29284 status 0
-Terminato figlio 29288 status 0
-Terminato figlio 29294 status 0
-Terminato figlio 29292 status 0
-Terminato figlio 29295 status 0
-Terminato figlio 29285 status 0
-Terminato figlio 29299 status 0
-Terminato figlio 29289 status 0
-Terminato figlio 29296 status 0
-Terminato figlio 29300 status 0
-Terminato figlio 29297 status 0
+MASTER: ammazzo il figlio 10011
+MASTER: ammazzo il figlio 10012
+MASTER: ammazzo il figlio 10013
+MASTER: ammazzo il figlio 10014
+MASTER: ammazzo il figlio 10015
+MASTER: ammazzo il figlio 10016
+MASTER: ammazzo il figlio 10017
+MASTER: ammazzo il figlio 10018
+MASTER: ammazzo il figlio 10019
+MASTER: ammazzo il figlio 10020
+MASTER: ammazzo il figlio 10021
+MASTER: ammazzo il figlio 10022
+MASTER: ammazzo il figlio 10023
+MASTER: ammazzo il figlio 10024
+MASTER: ammazzo il figlio 10025
+MASTER: ammazzo il figlio 10026
+MASTER: ammazzo il figlio 10027
+MASTER: ammazzo il figlio 10028
+MASTER: ammazzo il figlio 10029
+MASTER: ammazzo il figlio 10030
+MASTER: ammazzo il figlio 10031
+MASTER: ammazzo il figlio 10032
+MASTER: ammazzo il figlio 10033
+MASTER: ammazzo il figlio 10034
+MASTER: ammazzo il figlio 10035
+MASTER: ammazzo il figlio 10036
+MASTER: ammazzo il figlio 10037
+MASTER: ammazzo il figlio 10038
+MASTER: ammazzo il figlio 10039
+MASTER: ammazzo il figlio 10040
+Terminato figlio 10011 status 0
+Terminato figlio 10012 status 0
+Terminato figlio 10013 status 0
+Terminato figlio 10014 status 0
+Terminato figlio 10015 status 0
+Terminato figlio 10016 status 0
+Terminato figlio 10017 status 0
+Terminato figlio 10018 status 0
+Terminato figlio 10019 status 0
+Terminato figlio 10020 status 0
+Terminato figlio 10024 status 0
+Terminato figlio 10021 status 0
+Terminato figlio 10022 status 0
+Terminato figlio 10023 status 0
+Terminato figlio 10028 status 0
+Terminato figlio 10026 status 0
+Terminato figlio 10027 status 0
+Terminato figlio 10029 status 0
+Terminato figlio 10030 status 0
+Terminato figlio 10031 status 0
+Terminato figlio 10033 status 0
+Terminato figlio 10036 status 0
+Terminato figlio 10038 status 0
+Terminato figlio 10032 status 0
+Terminato figlio 10035 status 0
+Terminato figlio 10025 status 0
+Terminato figlio 10040 status 0
+Terminato figlio 10034 status 0
+Terminato figlio 10037 status 0
+Terminato figlio 10039 status 0
 Master sto uscendo con gestione = 0
 
 __________________________ 
