@@ -1,32 +1,32 @@
 Parametri:
 SO_NAVI | SO_PORTI | SO_MERCI | SO_SIZE | SO_MIN_VITA | SO_MAX_VITA | SO_LATO | SO_SPEED | SO_CAPACITY | SO_BANCHINE | SO_FILL | SO_LOADSPEED | SO_DAYS
- 10 | 4 | 10 | 1 | 3 | 6 | 1000 | 500 | 10 | 5 | 500000 | 20000 | 10 
+ 20 | 10 | 10 | 500 | 3 | 9 | 500 | 50000 | 1000 | 7 | 500000 | 500 | 10 
 
 __________________________ 
 
-SHARED_MEM_MERCATO: 327741
-SHARED_MEM_DETTAGLI_LOTTI: 360448
-SHARED_MEM_POSIZIONI_PORTI: 360450
-SHARED_MEM_DUMP: 360451
-CODA RICHIESTE: 16
+SHARED_MEM_MERCATO: 131108
+SHARED_MEM_DETTAGLI_LOTTI: 131109
+SHARED_MEM_POSIZIONI_PORTI: 131110
+SHARED_MEM_DUMP: 131111
+CODA RICHIESTE: 15
 __________________________ 
 
-SEM_CREATE_GESTIONE: 32769
-SEM_CREATE_BANCHINE: 32770
-SEM_CREATE_DUMP: 32771
-SEM_CREATE_MERCATO: 32772
+SEM_CREATE_GESTIONE: 61
+SEM_CREATE_BANCHINE: 62
+SEM_CREATE_DUMP: 63
+SEM_CREATE_MERCATO: 32768
 __________________________ 
 
-Merce 0 val 2 exp 5
-Merce 1 val 2 exp 3
-Merce 2 val 2 exp 3
-Merce 3 val 2 exp 4
-Merce 4 val 2 exp 3
-Merce 5 val 1 exp 5
-Merce 6 val 1 exp 5
-Merce 7 val 2 exp 3
-Merce 8 val 1 exp 4
-Merce 9 val 1 exp 5
+Merce 0 val 465 exp 7
+Merce 1 val 37 exp 5
+Merce 2 val 21 exp 4
+Merce 3 val 197 exp 7
+Merce 4 val 113 exp 5
+Merce 5 val 433 exp 8
+Merce 6 val 293 exp 4
+Merce 7 val 17 exp 3
+Merce 8 val 33 exp 3
+Merce 9 val 1 exp 3
 
 MASTER: Passato giorno 1 su 10.
 
@@ -45,34 +45,66 @@ MASTER: Passato giorno 7 su 10.
 MASTER: Passato giorno 8 su 10.
 
 MASTER: Passato giorno 9 su 10.
-MASTER: ammazzo il figlio 18221
-MASTER: ammazzo il figlio 18222
-MASTER: ammazzo il figlio 18223
-MASTER: ammazzo il figlio 18224
-MASTER: ammazzo il figlio 18225
-MASTER: ammazzo il figlio 18226
-MASTER: ammazzo il figlio 18227
-MASTER: ammazzo il figlio 18228
-MASTER: ammazzo il figlio 18229
-MASTER: ammazzo il figlio 18230
-MASTER: ammazzo il figlio 18231
-MASTER: ammazzo il figlio 18232
-MASTER: ammazzo il figlio 18233
-MASTER: ammazzo il figlio 18234
-Terminato figlio 18221 status 0
-Terminato figlio 18222 status 0
-Terminato figlio 18223 status 0
-Terminato figlio 18224 status 0
-Terminato figlio 18225 status 0
-Terminato figlio 18226 status 0
-Terminato figlio 18227 status 0
-Terminato figlio 18228 status 0
-Terminato figlio 18230 status 0
-Terminato figlio 18232 status 0
-Terminato figlio 18234 status 0
-Terminato figlio 18231 status 0
-Terminato figlio 18229 status 0
-Terminato figlio 18233 status 0
+MASTER: ammazzo il figlio 7549
+MASTER: ammazzo il figlio 7550
+MASTER: ammazzo il figlio 7551
+MASTER: ammazzo il figlio 7552
+MASTER: ammazzo il figlio 7553
+MASTER: ammazzo il figlio 7554
+MASTER: ammazzo il figlio 7555
+MASTER: ammazzo il figlio 7556
+MASTER: ammazzo il figlio 7557
+MASTER: ammazzo il figlio 7558
+MASTER: ammazzo il figlio 7559
+MASTER: ammazzo il figlio 7560
+MASTER: ammazzo il figlio 7561
+MASTER: ammazzo il figlio 7562
+MASTER: ammazzo il figlio 7563
+MASTER: ammazzo il figlio 7564
+MASTER: ammazzo il figlio 7565
+MASTER: ammazzo il figlio 7566
+MASTER: ammazzo il figlio 7567
+MASTER: ammazzo il figlio 7568
+MASTER: ammazzo il figlio 7569
+MASTER: ammazzo il figlio 7570
+MASTER: ammazzo il figlio 7571
+MASTER: ammazzo il figlio 7572
+MASTER: ammazzo il figlio 7573
+MASTER: ammazzo il figlio 7574
+MASTER: ammazzo il figlio 7575
+MASTER: ammazzo il figlio 7576
+MASTER: ammazzo il figlio 7577
+MASTER: ammazzo il figlio 7578
+Terminato figlio 7549 status 0
+Terminato figlio 7550 status 0
+Terminato figlio 7551 status 0
+Terminato figlio 7552 status 0
+Terminato figlio 7553 status 0
+Terminato figlio 7554 status 0
+Terminato figlio 7555 status 0
+Terminato figlio 7556 status 0
+Terminato figlio 7557 status 0
+Terminato figlio 7558 status 0
+Terminato figlio 7559 status 0
+Terminato figlio 7560 status 0
+Terminato figlio 7561 status 0
+Terminato figlio 7562 status 0
+Terminato figlio 7563 status 0
+Terminato figlio 7564 status 0
+Terminato figlio 7565 status 0
+Terminato figlio 7566 status 0
+Terminato figlio 7567 status 0
+Terminato figlio 7568 status 0
+Terminato figlio 7569 status 0
+Terminato figlio 7570 status 0
+Terminato figlio 7571 status 0
+Terminato figlio 7572 status 0
+Terminato figlio 7573 status 0
+Terminato figlio 7576 status 0
+Terminato figlio 7574 status 0
+Terminato figlio 7575 status 0
+Terminato figlio 7577 status 0
+Terminato figlio 7578 status 0
 Master sto uscendo con gestione = 0
 
 __________________________ 

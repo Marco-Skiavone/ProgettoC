@@ -81,17 +81,21 @@ void controlla_scadenze(void *vptr_lotti, void *vptr_mercato, void *vptr_dump, i
         if(CAST_MERCATO(vptr_mercato)[indice][i].val > 0 && CAST_MERCATO(vptr_mercato)[indice][i].exp < CAST_DUMP(vptr_dump)->data){
             ...
         } */
+    printf("Approccio sem_reserve di controlla_scadenze()\n");
     sem_reserve(id_sem_dump, 0);
+    printf("Entrato in sem_reserve di controlla_scadenze()\n");
     for(i = 0; i < SO_MERCI; i++){
         if((CAST_DETTAGLI_LOTTI(vptr_lotti))[i].exp < CAST_DUMP(vptr_dump)->data){
             /* allora la merce è scaduta: aggiorno porto(mercato e dump) e dump_merci */
             if(CAST_MERCATO(vptr_mercato)[indice][i].val > 0){
                 tmp = CAST_MERCATO(vptr_mercato)[indice][i].val;            
+                printf("porto %d: entrato su controlla scadenze con val = %d\n", indice, tmp);
                 CAST_MERCE_DUMP(vptr_dump)[i].scaduta_in_porto += tmp;  /* <--- sez. critica */
                 CAST_PORTO_DUMP(vptr_dump)[indice].mercepresente -= tmp;
                 CAST_MERCATO(vptr_mercato)[indice][i].val = 0;
             }
         }
     }
+    printf("Approccio sem_release di controlla_scadenze()\n");
     sem_release(id_sem_dump, 0);
 }

@@ -39,7 +39,6 @@ int main(int argc, char *argv[]){
     sigaction(SIGUSR1, &sa, NULL);
     sigaction(SIGUSR2, &sa, NULL);
 
-
     if(argc !=(2 + QNT_PARAMETRI)){
         perror("argc != 2");
         exit(EXIT_FAILURE);
@@ -48,12 +47,16 @@ int main(int argc, char *argv[]){
     TEST_ERROR
 	for (i = 2; i < argc; i++){
 		PARAMETRO[i - 2] = atoi(argv[i]);
-
 	}
     TEST_ERROR
 
     inizializza_risorse();
-    
+
+    if(freopen("log_porti.txt", "a", stdout)==NULL)
+        {perror("freopen ha ritornato NULL");}
+
+    fprintf(stdout, "prova stampa porto\n");
+
     spawnMerciPorti(vptr_shm_mercato, CAST_DETTAGLI_LOTTI(vptr_shm_dettagli_lotti), vptr_shm_dump, id_semaforo_dump, PARAMETRO, indice);
     manda_richieste(vptr_shm_mercato, indice, id_coda_richieste, PARAMETRO);
     
@@ -68,7 +71,6 @@ int main(int argc, char *argv[]){
     do {
         pause();
     } while(1);
-    exit(EXIT_SUCCESS);
 }
 
 void inizializza_risorse(){
@@ -87,11 +89,12 @@ void inizializza_risorse(){
 void signal_handler(int signo){
     switch(signo){
         case SIGUSR1:
-            fprintf(stderr,"*** PORTO %d: ricevuto SIGUSR1: data = %d ***\n", indice, CAST_DUMP(vptr_shm_dump)->data);
+            fprintf(stdout,"*** PORTO %d: ricevuto SIGUSR1: data = %d ***\n", indice, CAST_DUMP(vptr_shm_dump)->data);
             controlla_scadenze(vptr_shm_dettagli_lotti, vptr_shm_mercato, vptr_shm_dump, indice, id_semaforo_dump, PARAMETRO);
             break;
         case SIGUSR2:
-            fprintf(stderr,"\nPORTO %d: ricevuto SIGUSR2.\n", indice);
+            fprintf(stdout,"\nPORTO %d: ricevuto SIGUSR2.\n", indice);
+            controlla_scadenze(vptr_shm_dettagli_lotti, vptr_shm_mercato, vptr_shm_dump, indice, id_semaforo_dump, PARAMETRO);
             sgancia_risorse(vptr_shm_dettagli_lotti, vptr_shm_dump, vptr_shm_mercato, vptr_shm_posizioni_porti);
             exit(EXIT_SUCCESS);
             break;

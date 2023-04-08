@@ -8,6 +8,7 @@ void clearLog(){
 	fclose(fopen("log_dump.txt", "w"));
 	fclose(fopen("log_mercato.txt", "w"));
 	fclose(fopen("log_navi.txt","w"));
+	fclose(fopen("log_porti.txt","w"));
 }
 
 
