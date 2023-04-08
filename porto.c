@@ -31,11 +31,15 @@ int main(int argc, char *argv[]){
     int id_coda_richieste;
     int SHM_ID[4];
     struct sigaction sa;
-    sa.sa_flags = 0/*SA_RESTART*/;
+    sigset_t mask1;
+    sa.sa_flags = 0;
     sa.sa_handler = signal_handler;
     sigemptyset(&(sa.sa_mask));
     sigaction(SIGUSR1, &sa, NULL);
     sigaction(SIGUSR2, &sa, NULL);
+    sigemptyset(&mask1);
+    sigaddset(&mask1, SIGUSR1);
+    sigprocmask(SIG_UNBLOCK, &mask1, NULL);
 
     if(argc !=(2 + QNT_PARAMETRI)){
         perror("argc != 2");
@@ -48,6 +52,12 @@ int main(int argc, char *argv[]){
 	}
     TEST_ERROR
 
+    //dup2(open("log_porti.txt", O_APPEND | O_CREAT | O_WRONLY, 0666), STDOUT_FILENO);
+    if(freopen("log_porti.txt", "a", stdout)==NULL)
+        {perror("freopen ha ritornato NULL");}
+
+    printf("prova stampa porto %d\n", indice);
+
     trova_tutti_id(&id_shm_mercato, &id_shm_dettagli_lotti, &id_shm_posizioni_porti, &id_shm_dump, &id_coda_richieste, PARAMETRO);
     SHM_ID[0] = id_shm_mercato;
     SHM_ID[1] = id_shm_dettagli_lotti;
@@ -55,19 +65,10 @@ int main(int argc, char *argv[]){
     SHM_ID[3] = id_shm_dump;
     aggancia_tutte_shm(&vptr_shm_mercato, &vptr_shm_dettagli_lotti, &vptr_shm_posizioni_porti, &vptr_shm_dump, SHM_ID, PARAMETRO);
     inizializza_semafori(&id_semaforo_mercato, &id_semaforo_gestione, &id_semaforo_banchine, &id_semaforo_dump, SO_PORTI);
-    //inizializza_risorse();
-
-    //dup2(open("log_porti.txt", O_APPEND | O_CREAT | O_WRONLY, 0666), STDOUT_FILENO);
-    if(freopen("log_porti.txt", "a", stdout)==NULL)
-        {perror("freopen ha ritornato NULL");}
-
-    printf("prova stampa porto\n");
-
+    inizializza_banchine(id_semaforo_banchine, indice, vptr_shm_dump, PARAMETRO);
+    
     spawnMerciPorti(vptr_shm_mercato, CAST_DETTAGLI_LOTTI(vptr_shm_dettagli_lotti), vptr_shm_dump, id_semaforo_dump, PARAMETRO, indice);
     manda_richieste(vptr_shm_mercato, indice, id_coda_richieste, PARAMETRO);
-    
-    inizializza_banchine(id_semaforo_banchine, indice, vptr_shm_dump, PARAMETRO);
-
     /* si sgancia dalle memorie condivise. */
     sgancia_risorse(vptr_shm_dettagli_lotti, vptr_shm_dump, vptr_shm_mercato, vptr_shm_posizioni_porti);
     /* si dichiara pronto e aspetta. (wait for zero) */
@@ -76,7 +77,6 @@ int main(int argc, char *argv[]){
     
     do {
         pause();
-        //controlla_scadenze(vptr_shm_dettagli_lotti, vptr_shm_mercato, vptr_shm_dump, indice, id_semaforo_dump, PARAMETRO);
     } while(1);
 }
 
@@ -84,7 +84,6 @@ void signal_handler(int signo){
     switch(signo){
         case SIGUSR1:
             fprintf(stdout,"*** PORTO %d: ricevuto SIGUSR1: data = %d ***\n", indice, CAST_DUMP(vptr_shm_dump)->data);
-            controlla_scadenze(CAST_DETTAGLI_LOTTI(vptr_shm_dettagli_lotti), vptr_shm_mercato, vptr_shm_dump, indice, id_semaforo_dump, PARAMETRO);
             break;
         case SIGUSR2:
             fprintf(stdout,"\nPORTO %d: ricevuto SIGUSR2.\n", indice);

@@ -1,0 +1,68 @@
+provo a entrare in sem_dump: data = 0
+sono entrato in sem_dump
+provo a entrare in sem_dump: data = 1
+sono entrato in sem_dump
+provo a entrare in sem_dump: data = 2
+sono entrato in sem_dump
+provo a entrare in sem_dump: data = 3
+sono entrato in sem_dump
+provo a entrare in sem_dump: data = 4
+sono entrato in sem_dump
+aggiorno scadenze di merce 2: sottraggo 36 al porto 1
+aggiorno scadenze di merce 2: sottraggo 15 al porto 2
+aggiorno scadenze di merce 2: sottraggo 15 al porto 8
+aggiorno scadenze di merce 2: sottraggo 31 al porto 9
+provo a entrare in sem_dump: data = 5
+sono entrato in sem_dump
+aggiorno scadenze di merce 4: sottraggo 14 al porto 0
+aggiorno scadenze di merce 4: sottraggo 16 al porto 3
+aggiorno scadenze di merce 4: sottraggo 17 al porto 4
+aggiorno scadenze di merce 4: sottraggo 11 al porto 5
+aggiorno scadenze di merce 6: sottraggo 24 al porto 0
+aggiorno scadenze di merce 6: sottraggo 23 al porto 1
+aggiorno scadenze di merce 6: sottraggo 26 al porto 2
+aggiorno scadenze di merce 6: sottraggo 21 al porto 6
+aggiorno scadenze di merce 6: sottraggo 23 al porto 7
+aggiorno scadenze di merce 6: sottraggo 27 al porto 8
+aggiorno scadenze di merce 8: sottraggo 15 al porto 1
+aggiorno scadenze di merce 8: sottraggo 23 al porto 2
+aggiorno scadenze di merce 8: sottraggo 32 al porto 3
+aggiorno scadenze di merce 8: sottraggo 21 al porto 4
+aggiorno scadenze di merce 8: sottraggo 30 al porto 6
+aggiorno scadenze di merce 8: sottraggo 13 al porto 7
+aggiorno scadenze di merce 8: sottraggo 27 al porto 8
+provo a entrare in sem_dump: data = 6
+sono entrato in sem_dump
+aggiorno scadenze di merce 1: sottraggo 22 al porto 0
+aggiorno scadenze di merce 1: sottraggo 23 al porto 1
+aggiorno scadenze di merce 1: sottraggo 24 al porto 4
+aggiorno scadenze di merce 1: sottraggo 19 al porto 8
+aggiorno scadenze di merce 1: sottraggo 24 al porto 9
+provo a entrare in sem_dump: data = 7
+sono entrato in sem_dump
+aggiorno scadenze di merce 9: sottraggo 55 al porto 2
+aggiorno scadenze di merce 9: sottraggo 126 al porto 3
+aggiorno scadenze di merce 9: sottraggo 95 al porto 8
+aggiorno scadenze di merce 9: sottraggo 11 al porto 9
+provo a entrare in sem_dump: data = 8
+sono entrato in sem_dump
+aggiorno scadenze di merce 5: sottraggo 25 al porto 0
+aggiorno scadenze di merce 5: sottraggo 21 al porto 1
+aggiorno scadenze di merce 5: sottraggo 19 al porto 2
+aggiorno scadenze di merce 5: sottraggo 15 al porto 6
+aggiorno scadenze di merce 5: sottraggo 27 al porto 7
+aggiorno scadenze di merce 7: sottraggo 19 al porto 6
+aggiorno scadenze di merce 7: sottraggo 23 al porto 8
+aggiorno scadenze di merce 7: sottraggo 6 al porto 9
+provo a entrare in sem_dump: data = 9
+sono entrato in sem_dump
+aggiorno scadenze di merce 0: sottraggo 18 al porto 3
+aggiorno scadenze di merce 0: sottraggo 7 al porto 4
+aggiorno scadenze di merce 0: sottraggo 11 al porto 5
+aggiorno scadenze di merce 0: sottraggo 35 al porto 8
+aggiorno scadenze di merce 3: sottraggo 10 al porto 1
+aggiorno scadenze di merce 3: sottraggo 26 al porto 3
+aggiorno scadenze di merce 3: sottraggo 31 al porto 4
+aggiorno scadenze di merce 3: sottraggo 16 al porto 5
+aggiorno scadenze di merce 3: sottraggo 20 al porto 6
+aggiorno scadenze di merce 3: sottraggo 19 al porto 8

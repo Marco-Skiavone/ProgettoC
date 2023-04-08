@@ -11,8 +11,20 @@ void clearLog(){
 	fclose(fopen("log_porti.txt","w"));
 }
 
+int controllo_parametri(int PARAMETRO[]){
+	int ret_val = 1;
+	if(SO_NAVI < 1 || SO_PORTI < 4){
+		ret_val = 0;
+	}
+	if(SO_NAVI < 1 || SO_PORTI < 1 || SO_MERCI < 1 || SO_SIZE < 1 || SO_MIN_VITA < 1 || SO_MIN_VITA > SO_MAX_VITA || SO_LATO < 1 || SO_SPEED <= 0
+			|| SO_CAPACITY < 1 || SO_BANCHINE < 1 || SO_LOADSPEED <= 0 || SO_DAYS < 0 || SO_FILL < SO_PORTI /*facciamo SO_FILL/SO_PORTI*/){
+		ret_val = (ret_val) ? -1 : -2;
+	}
+	return ret_val;
+}
 
 void alloca_id(int *id_shm_mercato, int *id_shm_dettagli_lotti, int *id_shm_posizioni_porti, int *id_shm_dump, int *id_coda_richieste, int PARAMETRO[]){
+	printf("\n__________________________ \n\n");
 	*(id_shm_mercato) = alloca_shm(CHIAVE_SHAREDM_MERCATO, SIZE_SHAREDM_MERCATO);
 	*(id_shm_dettagli_lotti) = alloca_shm(CHIAVE_SHAREDM_DETTAGLI_LOTTI, SIZE_SHAREDM_DETTAGLI_LOTTI);
 	*(id_shm_posizioni_porti) = alloca_shm(CHIAVE_SHAREDM_POSIZIONI_PORTI, SIZE_SHAREDM_POSIZIONI_PORTI);
@@ -139,6 +151,33 @@ int controlla_mercato(void *vptr_shm_mercato, void *vptr_shm_dump, int PARAMETRO
 	}
 	return offerte || richieste;
 }
+
+void controllo_scadenze_porti(merce *p_lotti, void *p_mercato, void *p_dump, int id_sem_dump, int PARAMETRO[]){
+	if(freopen("log_porti.txt", "a", stdout)==NULL)
+        {perror("freopen ha ritornato NULL");}
+	int i, j, tmp;
+	printf("provo a entrare in sem_dump: data = %d\n", CAST_DUMP(p_dump)->data);
+	sem_reserve(id_sem_dump, 0);
+	printf("sono entrato in sem_dump\n");
+	for(i = 0; i < SO_MERCI; i++){
+		if(p_lotti[i].exp < CAST_DUMP(p_dump)->data){	/* la merce di tipo i scade sempre lo stesso giorno, dovunque si trovi. */
+			for(j = 0; j < SO_PORTI; j++){
+				if(CAST_MERCATO(p_mercato)[j][i].val > 0){
+					tmp = CAST_MERCATO(p_mercato)[j][i].val;
+					printf("aggiorno scadenze di merce %d: sottraggo %d al porto %d\n", i, tmp, j);
+					CAST_MERCATO(p_mercato)[j][i].val = 0;
+					CAST_PORTO_DUMP(p_dump)[j].mercepresente -= tmp;
+					CAST_MERCE_DUMP(p_dump)[i].scaduta_in_porto += tmp;
+					CAST_MERCE_DUMP(p_dump)[i].presente_in_porto -= tmp;
+				}
+			}
+		}
+	}
+	sem_release(id_sem_dump, 0);
+	if(freopen("out.txt", "a", stdout)==NULL)
+        {perror("freopen ha ritornato NULL");}
+}
+
 
 void stampa_merci_porti_navi(int PARAMETRO[], void * vptr_shm_dump, void *vptr_shm_mercato, int id_semaforo_banchine){
 	int i, j;

@@ -10,6 +10,8 @@ void* vptr_shm_dump;
 void* vptr_shm_mercato;
 void* vptr_shm_posizioni_porti;
 
+int id_semaforo_gestione; /* può essere chiamato da runME (con definizione di DUMP_ME) */
+
 int indice;
 int PARAMETRO[QNT_PARAMETRI];
 
@@ -18,7 +20,6 @@ void signal_handler(int signo);
 int main(int argc, char *argv[]){
     int i, j, k;
     int id_semaforo_mercato;
-    int id_semaforo_gestione;
     int id_semaforo_banchine;
     int id_semaforo_dump;
 
@@ -27,12 +28,12 @@ int main(int argc, char *argv[]){
     int id_shm_mercato;
     int id_shm_posizioni_porti;
     int id_coda_richieste;
-
     int SHM_ID[4];
-
+    int SEM_ID[4];
+    void* VPTR_ARR[4];
     sigset_t mask1;
     struct sigaction sa;
-    sa.sa_flags = 0/*SA_RESTART*/;
+    sa.sa_flags = 0;
     sa.sa_handler = signal_handler;
     sigemptyset(&(sa.sa_mask));
     sigaction(SIGUSR1, &sa, NULL);
@@ -64,8 +65,14 @@ int main(int argc, char *argv[]){
     sem_reserve(id_semaforo_gestione, 0);
     sem_wait_zero(id_semaforo_gestione, 0);
     
-    int SEM_ID[] = {id_semaforo_banchine, id_semaforo_dump, id_semaforo_gestione, id_semaforo_mercato};
-    void* VPTR_ARR[] = {vptr_shm_dettagli_lotti, vptr_shm_dump, vptr_shm_mercato, vptr_shm_posizioni_porti};
+    SEM_ID[0] = id_semaforo_banchine;
+    SEM_ID[1] = id_semaforo_dump;
+    SEM_ID[2] = id_semaforo_gestione;
+    SEM_ID[3] = id_semaforo_mercato;
+    VPTR_ARR[0] = vptr_shm_dettagli_lotti;
+    VPTR_ARR[1] = vptr_shm_dump;
+    VPTR_ARR[2] = vptr_shm_mercato;
+    VPTR_ARR[3] = vptr_shm_posizioni_porti;
 
     codice_simulazione(indice, PARAMETRO, SEM_ID, id_coda_richieste, VPTR_ARR);
 

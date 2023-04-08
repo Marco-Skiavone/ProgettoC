@@ -1,402 +1,3377 @@
 
 spaziolibero 0: 1000 SO_CAPACITY: 1000
 
-Nave 0 in posizione x:478.762000 y:340.360000 indice porto piu vicino 2 x:500.000000 y;500.000000
-Nave 0 inizia il viaggio
-Attesa con distanza 2: 161.046522
-0. stato nave 0 aggiornato
-Nave 0 ha ricevuto una banchina al porto 2
-Parte esamina porto
-Richiesta da porto 9 merce 2 lotti 56 al porto 2 con val 47
-nave 0 ha caricato 3 lotti di merce 2 spaziolibero: 85
-Parte carica dal porto
-Nave 0 inizia a caricare
-Attesa con spaziolibero 1: 85
-*** NAVE 0: ricevuto SIGUSR1: data = 1 ***
-Nave 0 ha caricato
-3. stato nave 0 aggiornato
-Nave 0 parte
-Attesa con distanza 1: 523.689970
-Nave 0 arriva
-NAVE 0: ricevuto SIGUSR2. data: 2
-
-spaziolibero 0: 1000 SO_CAPACITY: 1000
-
-Nave 1 in posizione x:192.168000 y:60.740000 indice porto piu vicino 9 x:90.060000 y;174.116000
-Nave 1 inizia il viaggio
-Attesa con distanza 2: 152.578377
-NAVE 1: ricevuto SIGUSR2. data: 2
-
-spaziolibero 0: 1000 SO_CAPACITY: 1000
-
-Nave 5 in posizione x:230.670000 y:54.766000 indice porto piu vicino 5 x:310.540000 y;188.792000
-Nave 5 inizia il viaggio
-Attesa con distanza 2: 156.019824
-NAVE 5: ricevuto SIGUSR2. data: 2
-
-spaziolibero 0: 1000 SO_CAPACITY: 1000
-
-Nave 3 in posizione x:64.056000 y:428.812000 indice porto piu vicino 3 x:0.000000 y;500.000000
-Nave 3 inizia il viaggio
-Attesa con distanza 2: 95.764829
-0. stato nave 3 aggiornato
-Nave 3 ha ricevuto una banchina al porto 3
-Parte esamina porto
-Richiesta da porto 5 merce 1 lotti 54 al porto 3 con val 46
-nave 3 ha caricato 2 lotti di merce 1 spaziolibero: 198
-Parte carica dal porto
-Nave 3 inizia a caricare
-Attesa con spaziolibero 1: 198
-*** NAVE 3: ricevuto SIGUSR1: data = 1 ***
-Nave 3 ha caricato
-3. stato nave 3 aggiornato
-Nave 3 parte
-Attesa con distanza 1: 439.642481
-Nave 3 arriva
-NAVE 3: ricevuto SIGUSR2. data: 2
-
-spaziolibero 0: 1000 SO_CAPACITY: 1000
-
-Nave 8 in posizione x:62.398000 y:188.852000 indice porto piu vicino 9 x:90.060000 y;174.116000
-Nave 8 inizia il viaggio
-Attesa con distanza 2: 31.342239
-0. stato nave 8 aggiornato
-Nave 8 ha ricevuto una banchina al porto 9
-Parte esamina porto
-Richiesta da porto 1 merce 0 lotti 42 al porto 9 con val 64
-nave 8 ha caricato 4 lotti di merce 0 spaziolibero: 20
-Parte carica dal porto
-nave 8 ha caricato 4 lotti di merce 3 spaziolibero: 0
-Nave 8 inizia a caricare
-Attesa con spaziolibero 1: 0
-*** NAVE 8: ricevuto SIGUSR1: data = 1 ***
-Nave 8 ha caricato
-3. stato nave 8 aggiornato
-Nave 8 parte
-Attesa con distanza 1: 445.384312
-NAVE 8: ricevuto SIGUSR2. data: 2
-
-spaziolibero 0: 1000 SO_CAPACITY: 1000
-
-Nave 13 in posizione x:442.918000 y:188.352000 indice porto piu vicino 5 x:310.540000 y;188.792000
-Nave 13 inizia il viaggio
-Attesa con distanza 2: 132.378731
-*** NAVE 13: ricevuto SIGUSR1: data = 1 ***
-0. stato nave 13 aggiornato
-Nave 13 ha ricevuto una banchina al porto 5
-Parte esamina porto
-Richiesta da porto 8 merce 4 lotti 35 al porto 5 con val 98
-nave 13 ha caricato 35 lotti di merce 4 spaziolibero: 965
-Parte carica dal porto
-nave 13 ha caricato 3 lotti di merce 0 spaziolibero: 230
-Nave 13 inizia a caricare
-Attesa con spaziolibero 1: 230
-NAVE 13: ricevuto SIGUSR2. data: 2
-
-spaziolibero 0: 1000 SO_CAPACITY: 1000
-
-Nave 2 in posizione x:256.724000 y:222.538000 indice porto piu vicino 5 x:310.540000 y;188.792000
-Nave 2 inizia il viaggio
-Attesa con distanza 2: 63.521291
-0. stato nave 2 aggiornato
-Nave 2 ha ricevuto una banchina al porto 5
-Parte esamina porto
-Richiesta da porto 2 merce 0 lotti 67 al porto 5 con val 40
-nave 2 ha caricato 4 lotti di merce 0 spaziolibero: 20
-Parte carica dal porto
-Nave 2 inizia a caricare
-Attesa con spaziolibero 1: 20
-*** NAVE 2: ricevuto SIGUSR1: data = 1 ***
-Nave 2 ha caricato
-3. stato nave 2 aggiornato
-Nave 2 parte
-Attesa con distanza 1: 364.342573
-Nave 2 arriva
-Nave 2 attraccata al porto 2
-1. stato nave 2 aggiornato
-Attesa con spaziolibero 2: 20
-NAVE 2: ricevuto SIGUSR2. data: 2
-
-spaziolibero 0: 1000 SO_CAPACITY: 1000
-
-Nave 6 in posizione x:140.060000 y:74.346000 indice porto piu vicino 9 x:90.060000 y;174.116000
-Nave 6 inizia il viaggio
-Attesa con distanza 2: 111.597728
-*** NAVE 6: ricevuto SIGUSR1: data = 2 ***
-0. stato nave 6 aggiornato
-Nave 6 ha ricevuto una banchina al porto 9
-Parte esamina porto
-Richiesta da porto 1 merce 3 lotti 21 al porto 9 con val 58
-nave 6 ha caricato 21 lotti di merce 3 spaziolibero: 895
-Parte carica dal porto
-nave 6 ha caricato 3 lotti di merce 0 spaziolibero: 160
-Nave 6 inizia a caricare
-Attesa con spaziolibero 1: 160
-NAVE 6: ricevuto SIGUSR2. data: 2
-
-spaziolibero 0: 1000 SO_CAPACITY: 1000
-
-Nave 7 in posizione x:468.972000 y:132.428000 indice porto piu vicino 1 x:500.000000 y;0.000000
-Nave 7 inizia il viaggio
-Attesa con distanza 2: 136.014381
-0. stato nave 7 aggiornato
-Nave 7 ha ricevuto una banchina al porto 1
-Parte esamina porto
-Richiesta da porto 4 merce 4 lotti 30 al porto 1 con val 71
-nave 7 ha caricato 30 lotti di merce 4 spaziolibero: 970
-Parte carica dal porto
-Nave 7 inizia a caricare
-Attesa con spaziolibero 1: 970
-Nave 7 ha caricato
-3. stato nave 7 aggiornato
-Nave 7 parte
-Attesa con distanza 1: 524.930001
-Nave 7 arriva
-Nave 7 attraccata al porto 4
-1. stato nave 7 aggiornato
-Attesa con spaziolibero 2: 970
-nave 7 in attesa dal giorno 0: giorno attuale: 0
-Nave 7 inizia a scaricare al porto 4. giorno 0
-Nave 7 ha scaricato al porto 4. giorno 0
-Parte esamina porto
-Richiesta da porto 0 merce 1 lotti 47 al porto 4 con val 64
-nave 7 ha caricato 2 lotti di merce 1 spaziolibero: 198
-Parte carica dal porto
-Nave 7 inizia a caricare
-Attesa con spaziolibero 1: 198
-*** NAVE 7: ricevuto SIGUSR1: data = 1 ***
-Nave 7 ha caricato
-3. stato nave 7 aggiornato
-Nave 7 parte
-Attesa con distanza 1: 346.334385
-Nave 7 arriva
-Nave 7 attraccata al porto 0
-1. stato nave 7 aggiornato
-Attesa con spaziolibero 2: 198
-NAVE 7: ricevuto SIGUSR2. data: 2
-
-spaziolibero 0: 1000 SO_CAPACITY: 1000
-
-Nave 11 in posizione x:130.270000 y:38.502000 indice porto piu vicino 8 x:32.688000 y;105.070000
-Nave 11 inizia il viaggio
-Attesa con distanza 2: 118.125126
-0. stato nave 11 aggiornato
-Nave 11 ha ricevuto una banchina al porto 8
-Parte esamina porto
-Richiesta da porto 1 merce 2 lotti 58 al porto 8 con val 55
-nave 11 ha caricato 3 lotti di merce 2 spaziolibero: 85
-Parte carica dal porto
-nave 11 ha caricato 17 lotti di merce 3 spaziolibero: 0
-Nave 11 inizia a caricare
-Attesa con spaziolibero 1: 0
-NAVE 11: ricevuto SIGUSR2. data: 2
-
-spaziolibero 0: 1000 SO_CAPACITY: 1000
-
-Nave 19 in posizione x:62.898000 y:204.116000 indice porto piu vicino 7 x:27.018000 y;202.468000
-Nave 19 inizia il viaggio
-Attesa con distanza 2: 35.917827
-0. stato nave 19 aggiornato
-Nave 19 ha ricevuto una banchina al porto 7
-Parte esamina porto
-Richiesta da porto 0 merce 0 lotti 63 al porto 7 con val 49
-nave 19 ha caricato 4 lotti di merce 0 spaziolibero: 20
-Parte carica dal porto
-nave 19 ha caricato 4 lotti di merce 3 spaziolibero: 0
-Nave 19 inizia a caricare
-Attesa con spaziolibero 1: 0
-*** NAVE 19: ricevuto SIGUSR1: data = 1 ***
-Nave 19 ha caricato
-3. stato nave 19 aggiornato
-Nave 19 parte
-Attesa con distanza 1: 204.262731
-NAVE 19: ricevuto SIGUSR2. data: 2
-
-spaziolibero 0: 1000 SO_CAPACITY: 1000
-
-Nave 10 in posizione x:316.964000 y:292.568000 indice porto piu vicino 5 x:310.540000 y;188.792000
-Nave 10 inizia il viaggio
-Attesa con distanza 2: 103.974641
-0. stato nave 10 aggiornato
-Nave 10 ha ricevuto una banchina al porto 5
-Parte esamina porto
-Richiesta da porto 8 merce 0 lotti 56 al porto 5 con val 36
-nave 10 ha caricato 4 lotti di merce 0 spaziolibero: 20
-Parte carica dal porto
-nave 10 ha caricato 20 lotti di merce 4 spaziolibero: 0
-Nave 10 inizia a caricare
-Attesa con spaziolibero 1: 0
-NAVE 10: ricevuto SIGUSR2. data: 2
-
-spaziolibero 0: 1000 SO_CAPACITY: 1000
-
-Nave 16 in posizione x:178.562000 y:188.852000 indice porto piu vicino 6 x:144.096000 y;245.830000
-Nave 16 inizia il viaggio
-Attesa con distanza 2: 66.591273
-0. stato nave 16 aggiornato
-Nave 16 ha ricevuto una banchina al porto 6
-Parte esamina porto
-Richiesta da porto 3 merce 0 lotti 57 al porto 6 con val 48
-nave 16 ha caricato 4 lotti di merce 0 spaziolibero: 20
-Parte carica dal porto
-Nave 16 inizia a caricare
-Attesa con spaziolibero 1: 20
-*** NAVE 16: ricevuto SIGUSR1: data = 1 ***
-Nave 16 ha caricato
-3. stato nave 16 aggiornato
-Nave 16 parte
-Attesa con distanza 1: 292.174684
-Nave 16 arriva
-Nave 16 attraccata al porto 3
-1. stato nave 16 aggiornato
-Attesa con spaziolibero 2: 20
-NAVE 16: ricevuto SIGUSR2. data: 2
-
-spaziolibero 0: 1000 SO_CAPACITY: 1000
-
-Nave 4 in posizione x:354.966000 y:480.920000 indice porto piu vicino 2 x:500.000000 y;500.000000
-Nave 4 inizia il viaggio
-Attesa con distanza 2: 146.283654
-0. stato nave 4 aggiornato
-Nave 4 ha ricevuto una banchina al porto 2
-Parte esamina porto
-Richiesta da porto 8 merce 4 lotti 118 al porto 2 con val 83
-nave 4 ha caricato 83 lotti di merce 4 spaziolibero: 917
-Parte carica dal porto
-Nave 4 inizia a caricare
-Attesa con spaziolibero 1: 917
-Nave 4 ha caricato
-3. stato nave 4 aggiornato
-Nave 4 parte
-Attesa con distanza 1: 611.841655
-Nave 4 arriva
-Nave 4 attraccata al porto 8
-1. stato nave 4 aggiornato
-Attesa con spaziolibero 2: 917
-nave 4 in attesa dal giorno 0: giorno attuale: 0
-Nave 4 inizia a scaricare al porto 8. giorno 0
-Nave 4 ha scaricato al porto 8. giorno 0
-Parte esamina porto
-Richiesta da porto 4 merce 2 lotti 40 al porto 8 con val 52
-nave 4 ha caricato 3 lotti di merce 2 spaziolibero: 85
-Parte carica dal porto
-nave 4 ha caricato 3 lotti di merce 3 spaziolibero: 70
-Nave 4 inizia a caricare
-Attesa con spaziolibero 1: 70
-NAVE 4: ricevuto SIGUSR2. data: 2
-
-spaziolibero 0: 1000 SO_CAPACITY: 1000
-
-Nave 18 in posizione x:46.634000 y:442.418000 indice porto piu vicino 3 x:0.000000 y;500.000000
+Nave 18 in posizione x:450.350000 y:302.366000 indice porto piu vicino 9 x:416.648000 y;284.952000
 Nave 18 inizia il viaggio
-Attesa con distanza 2: 74.097346
+Attesa con distanza 2: 37.935105
 0. stato nave 18 aggiornato
-Nave 18 ha ricevuto una banchina al porto 3
+Nave 18 ha ricevuto una banchina al porto 9
 Parte esamina porto
-Richiesta da porto 4 merce 3 lotti 87 al porto 3 con val 84
-nave 18 ha caricato 84 lotti di merce 3 spaziolibero: 580
+Richiesta da porto 2 merce 7 lotti 26 al porto 9 con val 18
+nave 18 ha caricato 6 lotti di merce 7 spaziolibero: 10
 Parte carica dal porto
-nave 18 ha caricato 89 lotti di merce 4 spaziolibero: 491
 Nave 18 inizia a caricare
-Attesa con spaziolibero 1: 491
+Attesa con spaziolibero 1: 10
 *** NAVE 18: ricevuto SIGUSR1: data = 1 ***
 Nave 18 ha caricato
 3. stato nave 18 aggiornato
 Nave 18 parte
-Attesa con distanza 1: 191.638999
+Attesa con distanza 1: 230.636507
+Nave 18 arriva
+Nave 18 attraccata al porto 2
+1. stato nave 18 aggiornato
+Attesa con spaziolibero 2: 10
+*** NAVE 18: ricevuto SIGUSR1: data = 3 ***
+nave 18 in attesa dal giorno 3: giorno attuale: 3
+Nave 18 inizia a scaricare al porto 2. giorno 3
+Nave 18 ha scaricato al porto 2. giorno 3
+Parte esamina porto
+Richiesta da porto 5 merce 5 lotti 21 al porto 2 con val 21
+nave 18 ha caricato 2 lotti di merce 5 spaziolibero: 294
+Parte carica dal porto
+Nave 18 inizia a caricare
+Attesa con spaziolibero 1: 294
+*** NAVE 18: ricevuto SIGUSR1: data = 5 ***
+Nave 18 ha caricato
+3. stato nave 18 aggiornato
+Nave 18 parte
+Attesa con distanza 1: 310.997456
+Nave 18 arriva
+Nave 18 attraccata al porto 5
+1. stato nave 18 aggiornato
+Attesa con spaziolibero 2: 294
+*** NAVE 18: ricevuto SIGUSR1: data = 6 ***
+nave 18 in attesa dal giorno 6: giorno attuale: 6
+Nave 18 inizia a scaricare al porto 5. giorno 6
+Nave 18 ha scaricato al porto 5. giorno 6
+Parte esamina porto
+Richiesta da porto 9 merce 0 lotti 26 al porto 5 con val 11
+Richiesta da porto 9 merce 3 lotti 6 al porto 5 con val 16
+Richiesta da porto 1 merce 0 lotti 26 al porto 5 con val 11
+Richiesta da porto 0 merce 0 lotti 17 al porto 5 con val 11
+Richiesta da porto 0 merce 3 lotti 6 al porto 5 con val 16
+Nave 18 deve skippare porto 5
+Attesa con spaziolibero 1: 1000
+2. stato nave 18 aggiornato
+Nave 18 parte
+Attesa con distanza 1: 295.654308
+Nave 18 arriva
+Nave 18 attraccata al porto 6
+0. stato nave 18 aggiornato
+Attesa con spaziolibero 2: 1000
+nave 18 in attesa dal giorno 6: giorno attuale: 6
+Parte esamina porto
+Richiesta da porto 4 merce 7 lotti 12 al porto 6 con val 19
+Richiesta da porto 4 merce 5 lotti 22 al porto 6 con val 15
+Richiesta da porto 2 merce 3 lotti 11 al porto 6 con val 20
+Richiesta da porto 2 merce 7 lotti 20 al porto 6 con val 19
+Richiesta da porto 5 merce 5 lotti 19 al porto 6 con val 15
+Richiesta da porto 5 merce 7 lotti 9 al porto 6 con val 19
+Richiesta da porto 8 merce 5 lotti 24 al porto 6 con val 15
+Nave 18 deve skippare porto 6
+Attesa con spaziolibero 1: 1000
+2. stato nave 18 aggiornato
+Nave 18 parte
+Attesa con distanza 1: 295.654308
+Nave 18 arriva
+Nave 18 attraccata al porto 5
+0. stato nave 18 aggiornato
+Attesa con spaziolibero 2: 1000
+nave 18 in attesa dal giorno 6: giorno attuale: 6
+Parte esamina porto
+Richiesta da porto 7 merce 3 lotti 18 al porto 5 con val 16
+Richiesta da porto 7 merce 0 lotti 18 al porto 5 con val 11
+Richiesta da porto 9 merce 0 lotti 26 al porto 5 con val 11
+Richiesta da porto 9 merce 3 lotti 6 al porto 5 con val 16
+Richiesta da porto 1 merce 0 lotti 26 al porto 5 con val 11
+Richiesta da porto 0 merce 0 lotti 17 al porto 5 con val 11
+Richiesta da porto 0 merce 3 lotti 6 al porto 5 con val 16
+Nave 18 deve skippare porto 5
+Attesa con spaziolibero 1: 1000
+2. stato nave 18 aggiornato
+Nave 18 parte
+Attesa con distanza 1: 255.073898
 Nave 18 arriva
 Nave 18 attraccata al porto 4
-1. stato nave 18 aggiornato
-Attesa con spaziolibero 2: 491
-NAVE 18: ricevuto SIGUSR2. data: 2
-
-spaziolibero 0: 1000 SO_CAPACITY: 1000
-
-Nave 12 in posizione x:412.548000 y:310.990000 indice porto piu vicino 5 x:310.540000 y;188.792000
-Nave 12 inizia il viaggio
-Attesa con distanza 2: 159.179092
-NAVE 12: ricevuto SIGUSR2. data: 2
-
-spaziolibero 0: 1000 SO_CAPACITY: 1000
-
-Nave 9 in posizione x:194.326000 y:366.914000 indice porto piu vicino 4 x:94.396000 y;333.222000
-Nave 9 inizia il viaggio
-Attesa con distanza 2: 105.456891
-0. stato nave 9 aggiornato
-Nave 9 ha ricevuto una banchina al porto 4
+0. stato nave 18 aggiornato
+Attesa con spaziolibero 2: 1000
+nave 18 in attesa dal giorno 6: giorno attuale: 6
 Parte esamina porto
-Richiesta da porto 9 merce 1 lotti 42 al porto 4 con val 66
-nave 9 ha caricato 2 lotti di merce 1 spaziolibero: 198
+Richiesta da porto 3 merce 1 lotti 25 al porto 4 con val 24
+Richiesta da porto 2 merce 0 lotti 32 al porto 4 con val 7
+Richiesta da porto 2 merce 1 lotti 21 al porto 4 con val 24
+Richiesta da porto 2 merce 3 lotti 11 al porto 4 con val 31
+Richiesta da porto 5 merce 1 lotti 18 al porto 4 con val 24
+Nave 18 deve skippare porto 4
+Attesa con spaziolibero 1: 1000
+2. stato nave 18 aggiornato
+Nave 18 parte
+Attesa con distanza 1: 0.000000
+Nave 18 a
+spaziolibero 0: 1000 SO_CAPACITY: 1000
+
+Nave 0 in posizione x:484.772000 y:496.568000 indice porto piu vicino 2 x:500.000000 y;500.000000
+Nave 0 inizia il viaggio
+Attesa con distanza 2: 15.609952
+0. stato nave 0 aggiornato
+Nave 0 ha ricevuto una banchina al porto 2
+Parte esamina porto
+Richiesta da porto 0 merce 2 lotti 34 al porto 2 con val 21
+nave 0 ha caricato 2 lotti di merce 2 spaziolibero: 254
 Parte carica dal porto
+nave 0 ha caricato 1 lotti di merce 8 spaziolibero: 13
+nave 0 ha caricato 13 lotti di merce 9 spaziolibero: 0
+Nave 0 inizia a caricare
+Attesa con spaziolibero 1: 0
+*** NAVE 0: ricevuto SIGUSR1: data = 1 ***
+Nave 0 ha caricato
+3. stato nave 0 aggiornato
+Nave 0 parte
+Attesa con distanza 1: 707.106781
+*** NAVE 0: ricevuto SIGUSR1: data = 2 ***
+Nave 0 arriva
+*** NAVE 0: ricevuto SIGUSR1: data = 5 ***
+Nave 0 attraccata al porto 0
+1. stato nave 0 aggiornato
+Attesa con spaziolibero 2: 0
+*** NAVE 0: ricevuto SIGUSR1: data = 7 ***
+nave 0 in attesa dal giorno 7: giorno attuale: 7
+Nave 0 inizia a scaricare al porto 0. giorno 7
+Nave 0 ha scaricato al porto 0. giorno 7
+Parte esamina porto
+Richiesta da porto 4 merce 5 lotti 22 al porto 0 con val 25
+Richiesta da porto 5 merce 5 lotti 19 al porto 0 con val 25
+Nave 0 deve skippare porto 0
+Attesa con spaziolibero 1: 1000
+2. stato nave 0 aggiornato
+Nave 0 parte
+Attesa con distanza 1: 411.989584
+Nave 0 arriva
+Nave 0 attraccata al porto 5
+0. stato nave 0 aggiornato
+Attesa con spaziolibero 2: 1000
+nave 0 in attesa dal giorno 7: giorno attuale: 7
+Parte esamina porto
+Richiesta da porto 7 merce 3 lotti 18 al porto 5 con val 16
+Richiesta da porto 7 merce 0 lotti 18 al porto 5 con val 11
+Richiesta da porto 9 merce 0 lotti 26 al porto 5 con val 11
+Richiesta da porto 9 merce 3 lotti 6 al porto 5 con val 16
+Richiesta da porto 1 merce 0 lotti 26 al porto 5 con val 11
+Richiesta da porto 0 merce 0 lotti 17 al porto 5 con val 11
+Richiesta da porto 0 merce 3 lotti 6 al porto 5 con val 16
+Nave 0 deve skippare porto 5
+Attesa con spaziolibero 1: 1000
+2. stato nave 0 aggiornato
+Nave 0 parte
+Attesa con distanza 1: 295.654308
+Nave 0 arriva
+Nave 0 attraccata al porto 6
+0. stato nave 0 aggiornato
+Attesa con spaziolibero 2: 1000
+nave 0 in attesa dal giorno 7: giorno attuale: 7
+Parte esamina porto
+Richiesta da porto 0 merce 7 lotti 20 al porto 6 con val 19
+Richiesta da porto 3 merce 5 lotti 18 al porto 6 con val 15
+Richiesta da porto 4 merce 7 lotti 12 al porto 6 con val 19
+Richiesta da porto 4 merce 5 lotti 22 al porto 6 con val 15
+Richiesta da porto 2 merce 3 lotti 11 al porto 6 con val 20
+Richiesta da porto 2 merce 7 lotti 20 al porto 6 con val 19
+Richiesta da porto 5 merce 5 lotti 19 al porto 6 con val 15
+Nave 0 deve skippare porto 6
+Attesa con spaziolibero 1: 1000
+2. stato nave 0 aggiornato
+Nave 0 parte
+Attesa con distanza 1: 295.654308
+Nave 0 arriva
+Nave 0 attraccata al porto 5
+0. stato nave 0 aggiornato
+Attesa con spaziolibero 2: 1000
+nave 0 in attesa dal giorno 7: giorno attuale: 7
+Parte esamina porto
+Richiesta da porto 6 merce 0 lotti 26 al porto 5 con val 11
+Richiesta da porto 7 merce 3 lotti 18 al porto 5 con val 16
+Richiesta da porto 7 merce 0 lotti 18 al porto 5 con val 11
+Richiesta da porto 9 merce 0 lotti 26 al porto 5 con val 11
+Richiesta da porto 9 merce 3 lotti 6 al porto 5 con val 16
+Nave 0 deve skippare porto 5
+Attesa con spaziolibero 1: 1000
+2. stato nave 0 aggiornato
+Nave 0 parte
+Attesa con distanza 1: 283.713619
+Nave 0 arriva
+Nave 0 attraccata al porto 3
+0. stato nave 0 aggiornato
+Attesa con spaziolibero 2: 1000
+nave 0 in attesa dal giorno 7: giorno attuale: 7
+Parte esamina porto
+Richiesta da porto 1 merce 0 lotti 26 al porto 3 con val 18
+Richiesta da porto 0 merce 0 lotti 17 al porto 3 con val 18
+Richiesta da porto 0 merce 3 lotti 6 al porto 3 con val 26
+Richiesta da porto 0 merce 9 lotti 74 al porto 3 con val 126
+Richiesta da porto 2 merce 0 lotti 32 al porto 3 con val 18
+Richiesta da porto 2 merce 3 lotti 11 al porto 3 con val 26
+Nave 0 deve skippare porto 3
+Attesa con spaziolibero 1: 1000
+2. stato nave 0 aggiornato
+Nave 0 parte
+Attesa con distanza 1: 283.713619
+Nave 0 arriva
+Nave 0 attraccata al porto 5
+0. stato nave 0 aggiornato
+Attesa con spaziolibero 2: 1000
+nave 0 in attesa dal giorno 7: giorno attuale: 7
+Parte esamina porto
+Richiesta da porto 6 merce 0 lotti 26 al porto 5 con val 11
+Richiesta da porto 7 merce 3 lotti 18 al porto 5 con val 16
+Richiesta da porto 7 merce 0 lotti 18 al porto 5 con val 11
+Nave 0 deve skippare porto 5
+Attesa con spaziolibero 1: 1000
+2. stato nave 0 aggiornato
+Nave 0 parte
+Attesa con distanza 1: 295.654308
+Nave 0 arriva
+Nave 0 attraccata al porto 6
+0. stato nave 0 aggiornato
+Attesa con spaziolibero 2: 1000
+nave 0 in attesa dal giorno 7: giorno attuale: 7
+Parte esamina porto
+Richiesta da porto 9 merce 5 lotti 18 al porto 6 con val 15
+Richiesta da porto 9 merce 3 lotti 6 al porto 6 con val 20
+Richiesta da porto 1 merce 7 lotti 8 al porto 6 con val 19
+Richiesta da porto 0 merce 3 lotti 6 al porto 6 con val 20
+Richiesta da porto 0 merce 7 lotti 20 al porto 6 con val 19
+Richiesta da porto 3 merce 5 lotti 18 al porto 6 con val 15
+Nave 0 deve skippare porto 6
+Attesa con spaziolibero 1: 1000
+2. stato nave 0 aggiornato
+Nave 0 parte
+Attesa con distanza 1: 0.000000
+Nave 0 arriva
+Nave 0 attraccata al porto 6
+0. stato nave 0 aggiornato
+Attesa con spaziolibero 2: 1000
+nave 0 in attesa dal giorno 7: giorno attuale: 7
+Parte esamina porto
+Richiesta da porto 4 merce 7 lotti 12 al porto 6 con val 19
+Richiesta da porto 4 merce 5 lotti 22 al porto 6 con val 15
+Richiesta da porto 2 merce 3 lotti 11 al porto 6 con val 20
+Richiesta da porto 2 merce 7 lotti 20 al porto 6 con val 19
+Richiesta da porto 5 merce 5 lotti 19 al porto 6 con val 15
+Richiesta da porto 5 merce 7 lotti 9 al porto 6 con val 19
+Richiesta da porto 8 merce 5 lotti 24 al porto 6 con val 15
+Nave 0 deve skippare porto 6
+Attesa con spaziolibero 1: 1000
+2. stato nave 0 aggiornato
+Nave 0 parte
+Attesa con distanza 1: 270.431849
+Nave 0 arriva
+Nave 0 attraccata al porto 8
+0. stato nave 0 aggiornato
+Attesa con spaziolibero 2: 1000
+nave 0 in attesa dal giorno 7: giorno attuale: 7
+Parte esamina porto
+Richiesta da porto 7 merce 3 lotti 18 al porto 8 con val 19
+Richiesta da porto 7 merce 7 lotti 30 al porto 8 con val 23
+Richiesta da porto 7 merce 0 lotti 18 al porto 8 con val 35
+Richiesta da porto 9 merce 0 lotti 26 al porto 8 con val 35
+Richiesta da porto 9 merce 3 lotti 6 al porto 8 con val 19
+Richiesta da porto 1 merce 7 lotti 8 al porto 8 con val 23
+Richiesta da porto 1 merce 0 lotti 26 al porto 8 con val 35
+Richiesta da porto 0 merce 0 lotti 17 al porto 8 con val 35
+Richiesta da porto 0 merce 3 lotti 6 al porto 8 con val 19
+Richiesta da porto 0 merce 7 lotti 20 al porto 8 con val 23
+Nave 0 deve skippare porto 8
+Attesa con spaziolibero 1: 1000
+2. stato nave 0 aggiornato
+Nave 0 parte
+Attesa con distanza 1: 0.000000
+Nave 0 arriva
+Nave 0 attraccata al porto 8
+0. stato nave 0 aggiornato
+Attesa con spaziolibero 2: 1000
+nave 0 in attesa dal giorno 7: giorno attuale: 7
+Parte esamina porto
+Richiesta da porto 0 merce 9 lotti 74 al porto 8 con val 95
+Richiesta da porto 4 merce 7 lotti 12 al porto 8 con val 23
+Richiesta da porto 2 merce 0 lotti 32 al porto 8 con val 35
+Richiesta da porto 2 merce 3 lotti 11 al porto 8 con val 19
+Richiesta da porto 2 merce 7 lotti 20 al porto 8 con val 23
+Richiesta da porto 5 merce 7 lotti 9 al porto 8 con val 23
+Nave 0 deve skippare porto 8
+Attesa con spaziolibero 1: 1000
+2. stato nave 0 aggiornato
+Nave 0 parte
+Attesa con distanza 1: 251.612548
+Nave 0 arriva
+Nave 0 attraccata al porto 2
+0. stato nave 0 aggiornato
+Attesa con spaziolibero 2: 1000
+nave 0 in attesa dal giorno 7: giorno attuale: 7
+Parte esamina porto
+Richiesta da porto 8 merce 5 lotti 24 al porto 2 con val 19
+Richiesta da porto 9 merce 5 lotti 18 al porto 2 con val 19
+Nave 0 deve skippare porto 2
+Attesa con spaziolibero 1: 1000
+2. stato nave 0 aggiornato
+Nave 0 parte
+Attesa con distanza 1: 0.000000
+Nave 0 arriva
+Nave 0 attraccata al porto 2
+0. stato nave 0 aggiornato
+Attesa con spaziolibero 2: 1000
+nave 0 in attesa dal giorno 7: giorno attuale: 7
+Parte esamina porto
+Richiesta da porto 0 merce 9 lotti 74 al porto 2 con val 55
+Richiesta da
+spaziolibero 0: 1000 SO_CAPACITY: 1000
+
+Nave 11 in posizione x:462.146000 y:460.680000 indice porto piu vicino 2 x:500.000000 y;500.000000
+Nave 11 inizia il viaggio
+Attesa con distanza 2: 54.580104
+0. stato nave 11 aggiornato
+Nave 11 ha ricevuto una banchina al porto 2
+Parte esamina porto
+Richiesta da porto 5 merce 2 lotti 29 al porto 2 con val 17
+nave 11 ha caricato 2 lotti di merce 2 spaziolibero: 254
+Parte carica dal porto
+nave 11 ha caricato 2 lotti di merce 6 spaziolibero: 52
+nave 11 ha caricato 52 lotti di merce 9 spaziolibero: 0
+Nave 11 inizia a caricare
+Attesa con spaziolibero 1: 0
+*** NAVE 11: ricevuto SIGUSR1: data = 1 ***
+Nave 11 ha caricato
+3. stato nave 11 aggiornato
+Nave 11 parte
+Attesa con distanza 1: 310.997456
+*** NAVE 11: ricevuto SIGUSR1: data = 2 ***
+Nave 11 arriva
+Nave 11 attraccata al porto 5
+1. stato nave 11 aggiornato
+Attesa con spaziolibero 2: 0
+*** NAVE 11: ricevuto SIGUSR1: data = 4 ***
+nave 11 in attesa dal giorno 4: giorno attuale: 4
+Nave 11 inizia a scaricare al porto 5. giorno 4
+Nave 11 ha scaricato al porto 5. giorno 4
+Parte esamina porto
+Richiesta da porto 8 merce 4 lotti 6 al porto 5 con val 11
+Richiesta da porto 7 merce 3 lotti 23 al porto 5 con val 21
+nave 11 ha caricato 5 lotti di merce 3 spaziolibero: 95
+Parte carica dal porto
+Nave 11 inizia a caricare
+Attesa con spaziolibero 1: 95
+*** NAVE 11: ricevuto SIGUSR1: data = 5 ***
+Nave 11 ha caricato
+3. stato nave 11 aggiornato
+Nave 11 parte
+Attesa con distanza 1: 257.864197
+Nave 11 arriva
+Nave 11 attraccata al porto 7
+1. stato nave 11 aggiornato
+Attesa con spaziolibero 2: 95
+*** NAVE 11: ricevuto SIGUSR1: data = 7 ***
+nave 11 in attesa dal giorno 7: giorno attuale: 7
+Nave 11 inizia a scaricare al porto 7. giorno 7
+Nave 11 ha scaricato al porto 7. giorno 7
+Parte esamina porto
+Richiesta da porto 3 merce 5 lotti 18 al porto 7 con val 27
+Richiesta da porto 4 merce 5 lotti 22 al porto 7 con val 27
+Nave 11 deve skippare porto 7
+Attesa con spaziolibero 1: 1000
+2. stato nave 11 aggiornato
+Nave 11 parte
+Attesa con distanza 1: 257.864197
+Nave 11 arriva
+Nave 11 attraccata al porto 5
+0. stato nave 11 aggiornato
+Attesa con spaziolibero 2: 1000
+nave 11 in attesa dal giorno 7: giorno attuale: 7
+Parte esamina porto
+Richiesta da porto 2 merce 3 lotti 11 al porto 5 con val 16
+Richiesta da porto 6 merce 0 lotti 26 al porto 5 con val 11
+Richiesta da porto 7 merce 3 lotti 18 al porto 5 con val 16
+Nave 11 deve skippare porto 5
+Attesa con spaziolibero 1: 1000
+2. stato nave 11 aggiornato
+Nave 11 parte
+Attesa con distanza 1: 310.997456
+Nave 11 arriva
+Nave 11 attraccata al porto 2
+0. stato nave 11 aggiornato
+Attesa con spaziolibero 2: 1000
+nave 11 in attesa dal giorno 7: giorno attuale: 7
+Parte esamina porto
+Richiesta da porto 9 merce 5 lotti 18 al porto 2 con val 19
+Richiesta da porto 0 merce 9 lotti 74 al porto 2 con val 55
+Richiesta da porto 3 merce 5 lotti 18 al porto 2 con val 19
+Nave 11 deve skippare porto 2
+Attesa con spaziolibero 1: 1000
+2. stato nave 11 aggiornato
+Nave 11 parte
+Attesa con distanza 1: 491.978435
+Nave 11 arriva
+Nave 11 attraccata al porto 6
+0. stato nave 11 aggiornato
+Attesa con spaziolibero 2: 1000
+nave 11 in attesa dal giorno 7: giorno attuale: 7
+Parte esamina porto
+Richiesta da porto 4 merce 7 lotti 12 al porto 6 con val 19
+Richiesta da porto 4 merce 5 lotti 22 al porto 6 con val 15
+Richiesta da porto 2 merce 3 lotti 11 al porto 6 con val 20
+Richiesta da porto 2 merce 7 lotti 20 al porto 6 con val 19
+Richiesta da porto 5 merce 5 lotti 19 al porto 6 con val 15
+Richiesta da porto 5 merce 7 lotti 9 al porto 6 con val 19
+Nave 11 deve skippare porto 6
+Attesa con spaziolibero 1: 1000
+2. stato nave 11 aggiornato
+Nave 11 parte
+Attesa con distanza 1: 539.596869
+Nave 11 arriva
+Nave 11 attraccata al porto 3
+0. stato nave 11 aggiornato
+Attesa con spaziolibero 2: 1000
+nave 11 in attesa dal giorno 7: giorno attuale: 7
+Parte esamina porto
+Richiesta da porto 7 merce 3 lotti 18 al porto 3 con val 26
+Richiesta da porto 7 merce 0 lotti 18 al porto 3 con val 18
+Richiesta da porto 9 merce 0 lotti 26 al porto 3 con val 18
+Richiesta da porto 9 merce 3 lotti 6
+spaziolibero 0: 1000 SO_CAPACITY: 1000
+
+Nave 12 in posizione x:470.510000 y:498.034000 indice porto piu vicino 2 x:500.000000 y;500.000000
+Nave 12 inizia il viaggio
+Attesa con distanza 2: 29.555461
+0. stato nave 12 aggiornato
+Nave 12 ha ricevuto una banchina al porto 2
+Parte esamina porto
+Richiesta da porto 4 merce 2 lotti 22 al porto 2 con val 19
+nave 12 ha caricato 2 lotti di merce 2 spaziolibero: 254
+Parte carica dal porto
+nave 12 ha caricato 2 lotti di merce 6 spaziolibero: 52
+Nave 12 inizia a caricare
+Attesa con spaziolibero 1: 52
+*** NAVE 12: ricevuto SIGUSR1: data = 1 ***
+Nave 12 ha caricato
+3. stato nave 12 aggiornato
+Nave 12 parte
+Attesa con distanza 1: 512.605633
+Nave 12 arriva
+Nave 12 attraccata al porto 4
+1. stato nave 12 aggiornato
+Attesa con spaziolibero 2: 52
+*** NAVE 12: ricevuto SIGUSR1: data = 3 ***
+nave 12 in attesa dal giorno 3: giorno attuale: 3
+Nave 12 inizia a scaricare al porto 4. giorno 3
+Nave 12 ha scaricato al porto 4. giorno 3
+Parte esamina porto
+Richiesta da porto 6 merce 1 lotti 17 al porto 4 con val 24
+Richiesta da porto 6 merce 4 lotti 20 al porto 4 con val 17
+Richiesta da porto 6 merce 0 lotti 35 al porto 4 con val 13
+nave 12 ha caricato 3 lotti di merce 0 spaziolibero: 217
+Parte carica dal porto
+Nave 12 inizia a caricare
+Attesa con spaziolibero 1: 217
+*** NAVE 12: ricevuto SIGUSR1: data = 5 ***
+Nave 12 ha caricato
+3. stato nave 12 aggiornato
+Nave 12 parte
+Attesa con distanza 1: 108.767247
+Nave 12 arriva
+Nave 12 attraccata al porto 6
+1. stato nave 12 aggiornato
+Attesa con spaziolibero 2: 217
+*** NAVE 12: ricevuto SIGUSR1: data = 6 ***
+nave 12 in attesa dal giorno 6: giorno attuale: 6
+Nave 12 inizia a scaricare al porto 6. giorno 6
+Nave 12 ha scaricato al porto 6. giorno 6
+Parte esamina porto
+Richiesta da porto 4 merce 7 lotti 12 al porto 6 con val 19
+Richiesta da porto 4 merce 5 lotti 22 al porto 6 con val 15
+Richiesta da porto 2 merce 3 lotti 11 al porto 6 con val 20
+Richiesta da porto 2 merce 7 lotti 20 al porto 6 con val 19
+Richiesta da porto 5 merce 5 lotti 19 al porto 6 con val 15
+Richiesta da porto 5 merce 7 lotti 9 al porto 6 con val 19
+Nave 12 deve skippare porto 6
+Attesa con spaziolibero 1: 1000
+2. stato nave 12 aggiornato
+Nave 12 parte
+Attesa con distanza 1: 295.654308
+Nave 12 arriva
+Nave 12 attraccata al porto 5
+0. stato nave 12 aggiornato
+Attesa con spaziolibero 2: 1000
+nave 12 in attesa dal giorno 6: giorno attuale: 6
+Parte esamina porto
+Richiesta da porto 7 merce 3 lotti 18 al porto 5 con val 16
+Richiesta da porto 7 merce 0 lotti 18 al porto 5 con val 11
+Richiesta da porto 9 merce 0 lotti 26 al porto 5 con val 11
+Richiesta da porto 9 merce 3 lotti 6 al porto 5 con val 16
+Richiesta da porto 1 merce 0 lotti 26 al porto 5 con val 11
+Richiesta da porto 0 merce 0 lotti 17 al porto 5 con val 11
+Nave 12 deve skippare porto 5
+Attesa con spaziolibero 1: 1000
+2. stato nave 12 aggiornato
+Nave 12 parte
+Attesa con distanza 1: 0.000000
+Nave 12 arriva
+Nave 12 attraccata al porto 5
+0. stato nave 12 aggiornato
+Attesa con spaziolibero 2: 1000
+nave 12 in attesa dal giorno 6: giorno attuale: 6
+Parte esamina porto
+Richiesta da porto 0 merce 3 lotti 6 al porto 5 con val 16
+Richiesta da porto 2 merce 0 lotti 32 al porto 5 con val 11
+Richiesta da porto 2 merce 3 lotti 11 al porto 5 con val 16
+Nave 12 deve skippare porto 5
+Attesa con spaziolibero 1: 1000
+2. stato nave 12 aggiornato
+Nave 12 parte
+Attesa con distanza 1: 257.864197
+Nave 12 arriva
+Nave 12 attraccata al porto 7
+0. stato nave 12 aggiornato
+Attesa con spaziolibero 2: 1000
+nave 12 in attesa dal giorno 6: giorno attuale: 6
+Parte esamina porto
+Richiesta da porto 5 merce 5 lotti 19 al porto 7 con val 27
+Richiesta da porto 8 merce 5 lotti 24 al porto 7 con val 27
+Richiesta da porto 9 merce 5 lotti 18 al porto 7 con val 27
+Nave 12 deve skippare porto 7
+Attesa con spaziolibero 1: 1000
+2. stato nave 12 aggiornato
+Nave 12 parte
+Attesa con distanza 1: 592.418122
+Nave 12 arriva
+*** NAVE 12: ricevuto SIGUSR1: data = 9 ***
+Nave 12 attraccata al porto 0
+0. stato nave 12 aggiornato
+Attesa con spaziolibero 2: 1000
+nave 12 in attesa dal giorno 9: giorno a
+spaziolibero 0: 1000 SO_CAPACITY: 1000
+
+Nave 4 in posizione x:156.848000 y:30.990000 indice porto piu vicino 4 x:196.488000 y;86.908000
+Nave 4 inizia il viaggio
+Attesa con distanza 2: 68.543069
+0. stato nave 4 aggiornato
+Nave 4 ha ricevuto una banchina al porto 4
+Parte esamina porto
+Richiesta da porto 8 merce 4 lotti 22 al porto 4 con val 33
+nave 4 ha caricato 8 lotti di merce 4 spaziolibero: 96
+Parte carica dal porto
+Nave 4 inizia a caricare
+Attesa con spaziolibero 1: 96
+*** NAVE 4: ricevuto SIGUSR1: data = 1 ***
+Nave 4 ha caricato
+3. stato nave 4 aggiornato
+Nave 4 parte
+Attesa con distanza 1: 329.396228
+Nave 4 arriva
+Nave 4 attraccata al porto 8
+1. stato nave 4 aggiornato
+Attesa con spaziolibero 2: 96
+*** NAVE 4: ricevuto SIGUSR1: data = 3 ***
+nave 4 in attesa dal giorno 3: giorno attuale: 3
+Nave 4 inizia a scaricare al porto 8. giorno 3
+Nave 4 ha scaricato al porto 8. giorno 3
+Parte esamina porto
+Richiesta da porto 3 merce 2 lotti 25 al porto 8 con val 15
+Richiesta da porto 3 merce 1 lotti 25 al porto 8 con val 19
+Richiesta da porto 4 merce 6 lotti 29 al porto 8 con val 27
+Richiesta da porto 4 merce 7 lotti 19 al porto 8 con val 29
+nave 4 ha caricato 6 lotti di merce 7 spaziolibero: 10
+Parte carica dal porto
+Nave 4 inizia a caricare
+Attesa con spaziolibero 1: 10
+*** NAVE 4: ricevuto SIGUSR1: data = 5 ***
+Nave 4 ha caricato
+3. stato nave 4 aggiornato
+Nave 4 parte
+Attesa con distanza 1: 329.396228
+Nave 4 arriva
+Nave 4 attraccata al porto 4
+1. stato nave 4 aggiornato
+Attesa con spaziolibero 2: 10
+*** NAVE 4: ricevuto SIGUSR1: data = 7 ***
+nave 4 in attesa dal giorno 7: giorno attuale: 7
+Nave 4 inizia a scaricare al porto 4. giorno 7
+Nave 4 ha scaricato al porto 4. giorno 7
+Parte esamina porto
+Richiesta da porto 2 merce 0 lotti 32 al porto 4 con val 7
+Richiesta da porto 2 merce 3 lotti 11 al porto 4 con val 31
+Richiesta da porto 6 merce 0 lotti 26 al porto 4 con val 7
+Nave 4 deve skippare porto 4
+Attesa con spaziolibero 1: 1000
+2. stato nave 4 aggiornato
+Nave 4 parte
+Attesa con distanza 1: 382.733516
+Nave 4 arriva
+Nave 4 attraccata al porto 7
+0. stato nave 4 aggiornato
+Attesa con spaziolibero 2: 1000
+nave 4 in attesa dal giorno 7: giorno attuale: 7
+Parte esamina porto
+Richiesta da porto 8 merce 5 lotti 24 al porto 7 con val 27
+Richiesta da porto 9 merce 5 lotti 18 al porto 7 con val 27
+Nave 4 deve skippare porto 7
+Attesa con spaziolibero 1: 1000
+2. stato nave 4 aggiornato
+Nave 4 parte
+Attesa con distanza 1: 82.208392
+Nave 4 arriva
+Nave 4 attraccata al porto 8
+0. stato nave 4 aggiornato
+Attesa con spaziolibero 2: 1000
+nave 4 in attesa dal giorno 7: giorno attuale: 7
+Parte esamina porto
+Richiesta da porto 0 merce 3 lotti 6 al porto 8 con val 19
+Richiesta da porto 0 merce 7 lotti 20 al porto 8 con val 23
+Richiesta da porto 0 merce 9 lotti 74 al porto 8 con val 95
+Richiesta da porto 4 merce 7 lotti 12 al porto 8 con val 23
+Richiesta da porto 2 merce 0 lotti 32 al porto 8 con val 35
+Richiesta da porto 2 merce 3 lotti 11 al porto 8 con val 19
+Richiesta da porto 2 merce 7 lotti 20 al porto 8 con val 23
+Nave 4 deve skippare porto 8
+Attesa con spaziolibero 1: 1000
+2. stato nave 4 aggiornato
+Nave 4 parte
+Attesa con distanza 1: 544.594229
+Nave 4 arriva
+Nave 4 attraccata al porto 3
+0. stato nave 4 aggiornato
+Attesa con spaziolibero 2: 1000
+nave 4 in attesa dal giorno 7: giorno attuale: 7
+Parte esamina porto
+Richiesta da porto 6 merce 0 lotti 26 al porto 3 con val 18
+Richiesta da porto 7 merce 3 lotti 18 al porto 3 con val 26
+Richiesta da porto 7 merce 0 lotti 18 al porto 3 con val 18
+Richiesta da porto 9 merce 0 lotti 26 al porto 3 con val 18
+Nave 4 deve skippare porto 3
+Attesa con spaziolibero 1: 1000
+2. stato nave 4 aggiornato
+Nave 4 parte
+Attesa con distanza 1: 500.000000
+Nave 4 arriva
+*** NAVE 4: ricevuto SIGUSR1: data = 9 ***
+Nave 4 attraccata al porto 0
+0. stato nave 4 aggiornato
+Attesa con spaziolibero 2: 1000
+nave 4 in attesa dal giorno 9: giorno attuale: 9
+Parte esamina porto
+Nave 4 deve skippare porto 0
+Attesa con spaziolibero 1: 1000
+2. stato nave 4 aggiornato
+Nave 4 parte
+Attesa con distanza 1: 543.623835
+Nave 4 arriva
+N
+spaziolibero 0: 1000 SO_CAPACITY: 1000
+
+Nave 16 in posizione x:496.568000 y:342.686000 indice porto piu vicino 7 x:491.498000 y;330.740000
+Nave 16 inizia il viaggio
+Attesa con distanza 2: 12.977358
+0. stato nave 16 aggiornato
+Nave 16 ha ricevuto una banchina al porto 7
+Parte esamina porto
+Richiesta da porto 3 merce 5 lotti 22 al porto 7 con val 29
+nave 16 ha caricato 2 lotti di merce 5 spaziolibero: 294
+Parte carica dal porto
+nave 16 ha caricato 2 lotti di merce 6 spaziolibero: 92
+Nave 16 inizia a caricare
+Attesa con spaziolibero 1: 92
+*** NAVE 16: ricevuto SIGUSR1: data = 1 ***
+Nave 16 ha caricato
+3. stato nave 16 aggiornato
+Nave 16 parte
+Attesa con distanza 1: 519.826155
+Nave 16 arriva
+*** NAVE 16: ricevuto SIGUSR1: data = 2 ***
+Nave 16 attraccata al porto 3
+1. stato nave 16 aggiornato
+Attesa con spaziolibero 2: 92
+*** NAVE 16: ricevuto SIGUSR1: data = 3 ***
+nave 16 in attesa dal giorno 3: giorno attuale: 3
+Nave 16 inizia a scaricare al porto 3. giorno 3
+Nave 16 ha scaricato al porto 3. giorno 3
+Parte esamina porto
+Richiesta da porto 8 merce 4 lotti 6 al porto 3 con val 16
+Richiesta da porto 7 merce 0 lotti 21 al porto 3 con val 21
+nave 16 ha caricato 3 lotti di merce 0 spaziolibero: 217
+Parte carica dal porto
+nave 16 ha caricato 1 lotti di merce 3 spaziolibero: 36
+Nave 16 inizia a caricare
+Attesa con spaziolibero 1: 36
+*** NAVE 16: ricevuto SIGUSR1: data = 5 ***
+Nave 16 ha caricato
+3. stato nave 16 aggiornato
+Nave 16 parte
+Attesa con distanza 1: 519.826155
+Nave 16 arriva
+Nave 16 attraccata al porto 7
+1. stato nave 16 aggiornato
+Attesa con spaziolibero 2: 36
+*** NAVE 16: ricevuto SIGUSR1: data = 7 ***
+nave 16 in attesa dal giorno 7: giorno attuale: 7
+Nave 16 inizia a scaricare al porto 7. giorno 7
+Nave 16 ha scaricato al porto 7. giorno 7
+Parte esamina porto
+Richiesta da porto 8 merce 5 lotti 24 al porto 7 con val 27
+Richiesta da porto 9 merce 5 lotti 18 al porto 7 con val 27
+Nave 16 deve skippare porto 7
+Attesa con spaziolibero 1: 1000
+2. stato nave 16 aggiornato
+Nave 16 parte
+Attesa con distanza 1: 592.418122
+Nave 16 arriva
+*** NAVE 16: ricevuto SIGUSR1: data = 9 ***
+Nave 16 attraccata al porto 0
+0. stato nave 16 aggiornato
+Attesa con spaziolibero 2: 1000
+nave 16 in attesa dal giorno 9: giorno attuale: 9
+Parte esamina porto
+Nave 16 deve skippare porto 0
+Attesa con spaziolibero 1: 1000
+2. stato nave 16 aggiornato
+Nave 16 parte
+Attesa con distanza 1: 303.421787
+Nave 16 arriva
+Nave 16 attraccata al porto 6
+0. stato nave 16 aggiornato
+Attesa con spaziolibero 2: 1000
+nave 16 in attesa dal giorno 9: giorno attuale: 9
+Parte esamina porto
+Richiesta da porto 7 merce 3 lotti 18 al porto 6 con val 20
+Richiesta da porto 9 merce 3 lotti 6 al porto 6 con val 20
+Nave 16 deve skippare porto 6
+Attesa con spaziolibero 1: 1000
+2. stato nave 16 aggiornato
+Nave 16 parte
+Attesa con distanza 1: 270.431849
+Nave 16 arriva
+Nave 16 attraccata al porto 8
+0. stato nave 16 aggiornato
+Attesa con spaziolibero 2: 1000
+nave 16 in attesa dal giorno 9: giorno attuale: 9
+Parte esamina porto
+Richiesta da porto 7 merce 0 lotti 18 al porto 8 con val 35
+Richiesta da porto 9 merce 0 lotti 26 al porto 8 con val 35
+Richiesta da porto 9 merce 3 lotti 6 al porto 8 con val 19
+Richiesta da porto 1 merce 0 lotti 26 al porto 8 con val 35
+Richiesta da porto 0 merce 0 lotti 17 al porto 8 con val 35
+Richiesta da porto 0 merce 3 lotti 6 al porto 8 con val 19
+Nave 16 deve skippare porto 8
+Attesa con spaziolibero 1: 1000
+2. stato nave 16 aggiornato
+Nave 16 parte
+Attesa con distanza 1: 544.594229
+Nave 16 arriva
+Nave 16 attraccata al porto 3
+0. stato nave 16 aggiornato
+Attesa con spaziolibero 2: 1000
+nave 16 in attesa dal giorno 9: giorno attuale: 9
+Parte esamina porto
+Richiesta da porto 1 merce 0 lotti 26 al porto 3 con val 18
+Richiesta da porto 0 merce 0 lotti 17 al porto 3 con val 18
+Richiesta da porto 0 merce 3 lotti 6 al porto 3 con val 26
+Richiesta da porto 2 merce 0 lotti 32 al porto 3 con val 18
+Richiesta da porto 2 merce 3 lotti 11 al porto 3 con val 26
+Nave 16 deve skippare porto 3
+Attesa con spaziolibero 1: 1000
+2. stato nave 16 aggiornato
+Nave 16 parte
+Attesa c
+spaziolibero 0: 1000 SO_CAPACITY: 1000
+
+Nave 1 in posizione x:198.134000 y:98.834000 indice porto piu vicino 4 x:196.488000 y;86.908000
+Nave 1 inizia il viaggio
+Attesa con distanza 2: 12.039053
+0. stato nave 1 aggiornato
+Nave 1 ha ricevuto una banchina al porto 4
+Parte esamina porto
+Richiesta da porto 1 merce 0 lotti 29 al porto 4 con val 16
+nave 1 ha caricato 3 lotti di merce 0 spaziolibero: 217
+Parte carica dal porto
+nave 1 ha caricato 1 lotti di merce 4 spaziolibero: 104
+nave 1 ha caricato 56 lotti di merce 9 spaziolibero: 48
+Nave 1 inizia a caricare
+Attesa con spaziolibero 1: 48
+*** NAVE 1: ricevuto SIGUSR1: data = 1 ***
+Nave 1 ha caricato
+3. stato nave 1 aggiornato
+Nave 1 parte
+Attesa con distanza 1: 315.709573
+Nave 1 arriva
+*** NAVE 1: ricevuto SIGUSR1: data = 5 ***
+Nave 1 attraccata al porto 1
+1. stato nave 1 aggiornato
+Attesa con spaziolibero 2: 48
+*** NAVE 1: ricevuto SIGUSR1: data = 7 ***
+nave 1 in attesa dal giorno 7: giorno attuale: 7
+Nave 1 inizia a scaricare al porto 1. giorno 7
+Nave 1 ha scaricato al porto 1. giorno 7
+Parte esamina porto
+Richiesta da porto 9 merce 3 lotti 6 al porto 1 con val 10
+Richiesta da porto 0 merce 3 lotti 6 al porto 1 con val 10
+Richiesta da porto 3 merce 5 lotti 18 al porto 1 con val 21
+Nave 1 deve skippare porto 1
+Attesa con spaziolibero 1: 1000
+2. stato nave 1 aggiornato
+Nave 1 parte
+Attesa con distanza 1: 249.505259
+Nave 1 arriva
+Nave 1 attraccata al porto 8
+0. stato nave 1 aggiornato
+Attesa con spaziolibero 2: 1000
+nave 1 in attesa dal giorno 7: giorno attuale: 7
+Parte esamina porto
+Richiesta da porto 2 merce 0 lotti 32 al porto 8 con val 35
+Richiesta da porto 2 merce 3 lotti 11 al porto 8 con val 19
+Richiesta da porto 2 merce 7 lotti 20 al porto 8 con val 23
+Richiesta da porto 5 merce 7 lotti 9 al porto 8 con val 23
+Richiesta da porto 6 merce 0 lotti 26 al porto 8 con val 35
+Richiesta da porto 7 merce 3 lotti 18 al porto 8 con val 19
+Nave 1 deve skippare porto 8
+Attesa con spaziolibero 1: 1000
+2. stato nave 1 aggiornato
+Nave 1 parte
+Attesa con distanza 1: 543.623835
+Nave 1 arriva
+*** NAVE 1: ricevuto SIGUSR1: data = 9 ***
+Nave 1 attraccata al porto 0
+0. stato nave 1 aggiornato
+Attesa con spaziolibero 2: 1000
+nave 1 in attesa dal giorno 9: giorno attuale: 9
+Parte esamina porto
+Nave 1 deve skippare porto 0
+Attesa con spaziolibero 1: 1000
+2. stato nave 1 aggiornato
+Nave 1 parte
+Attesa con distanza 1: 543.623835
+Nave 1 arriva
+Nave 1 attraccata al porto 8
+0. stato nave 1 aggiornato
+Attesa con spaziolibero 2: 1000
+nave 1 in attesa dal giorno 9: giorno attuale: 9
+Parte esamina porto
+Richiesta da porto 9 merce 3 lotti 6 al porto 8 con val 19
+Richiesta da porto 1 merce 0 lotti 26 al porto 8 con val 35
+Richiesta da porto 0 merce 0 lotti 17 al porto 8 con val 35
+Richiesta da porto 0 merce 3 lotti 6 al porto 8 con val 19
+Richiesta da porto 2 merce 0 lotti 32 al porto 8 con val 35
+Nave 1 deve skippare porto 8
+Attesa con spaziolibero 1: 1000
+2. stato nave 1 aggiornato
+Nave 1 parte
+Attesa con distanza 1: 270.431849
+Nave 1 arriva
+Nave 1 attraccata al porto 6
+0. stato nave 1 aggiornato
+Attesa con spaziolibero 2: 1000
+nave 1 in attesa dal giorno 9: giorno attuale: 9
+Parte esamina porto
+Richiesta da porto 7 merce 3 lotti 18 al porto 6 con val 20
+Richiesta da porto 9 merce 3 lotti 6 al porto 6 con val 20
+Nave 1 deve skippare porto 6
+Attesa con spaziolibero 1: 1000
+2. stato nave 1 aggiornato
+Nave 1 parte
+Attesa con distanza 1: 303.421787
+Nave 1 arriva
+Nave 1 attraccata al porto 0
+0. stato nave 1 aggiornato
+Attesa con spaziolibero 2: 1000
+nave 1 in attesa dal giorno 9: giorno attuale: 9
+Parte esamina porto
+Nave 1 deve skippare porto 0
+Attesa con spaziolibero 1: 1000
+2. stato nave 1 aggiornato
+Nave 1 parte
+Attesa con distanza 1: 411.989584
+Nave 1 arriva
+Nave 1 attraccata al porto 5
+0. stato nave 1 aggiornato
+Attesa con spaziolibero 2: 1000
+nave 1 in attesa dal giorno 9: giorno attuale: 9
+Parte esamina porto
+Richiesta da porto 0 merce 3 lotti 6 al porto 5 con val 16
+Richiesta da porto 2 merce 0 lotti 32 al porto 5 con val 11
+Richiesta da porto 2 merce 3 lotti 11 al porto 5 con val 16
+Nave 1 deve sk porto 3 merce 5 lotti 18 al porto 2 con val 19
+Richiesta da porto 4 merce 5 lotti 22 al porto 2 con val 19
+Nave 0 deve skippare porto 2
+Attesa con spaziolibero 1: 1000
+2. stato nave 0 aggiornato
+Nave 0 parte
+Attesa con distanza 1: 707.106781
+Nave 0 arriva
+*** NAVE 0: ricevuto SIGUSR1: data = 9 ***
+Nave 0 attraccata al porto 0
+0. stato nave 0 aggiornato
+Attesa con spaziolibero 2: 1000
+nave 0 in attesa dal giorno 9: giorno attuale: 9
+Parte esamina porto
+Nave 0 deve skippare porto 0
+Attesa con spaziolibero 1: 1000
+2. stato nave 0 aggiornato
+Nave 0 parte
+Attesa con distanza 1: 0.000000
+Nave 0 arriva
+Nave 0 attraccata al porto 0
+0. stato nave 0 aggiornato
+Attesa con spaziolibero 2: 1000
+nave 0 in attesa dal giorno 9: giorno attuale: 9
+Parte esamina porto
+Nave 0 deve skippare porto 0
+Attesa con spaziolibero 1: 1000
+2. stato nave 0 aggiornato
+Nave 0 parte
+Attesa con distanza 1: 214.850028
+Nave 0 arriva
+Nave 0 attraccata al porto 4
+0. stato nave 0 aggiornato
+Attesa con spaziolibero 2: 1000
+nave 0 in attesa dal giorno 9: giorno attuale: 9
+Parte esamina porto
+Richiesta da porto 2 merce 0 lotti 32 al porto 4 con val 7
+Richiesta da porto 2 merce 3 lotti 11 al porto 4 con val 31
+Richiesta da porto 6 merce 0 lotti 26 al porto 4 con val 7
+Nave 0 deve skippare porto 4
+Attesa con spaziolibero 1: 1000
+2. stato nave 0 aggiornato
+Nave 0 parte
+Attesa con distanza 1: 382.733516
+Nave 0 arriva
+Nave 0 attraccata al porto 7
+0. stato nave 0 aggiornato
+Attesa con spaziolibero 2: 1000
+nave 0 in attesa dal giorno 9: giorno attuale: 9
+Parte esamina porto
+Nave 0 deve skippare porto 7
+Attesa con spaziolibero 1: 1000
+2. stato nave 0 aggiornato
+Nave 0 parte
+Attesa con distanza 1: 257.864197
+Nave 0 arriva
+Nave 0 attraccata al porto 5
+0. stato nave 0 aggiornato
+Attesa con spaziolibero 2: 1000
+nave 0 in attesa dal giorno 9: giorno attuale: 9
+Parte esamina porto
+Richiesta da porto 6 merce 0 lotti 26 al porto 5 con val 11
+Richiesta da porto 7 merce 3 lotti 18 al porto 5 con val 16
+Richiesta da porto 7 merce 0 lotti 18 al porto 5 con val 11
+Nave 0 deve skippare porto 5
+Attesa con spaziolibero 1: 1000
+2. stato nave 0 aggiornato
+Nave 0 parte
+Attesa con distanza 1: 255.073898
+Nave 0 arriva
+Nave 0 attraccata al porto 4
+0. stato nave 0 aggiornato
+Attesa con spaziolibero 2: 1000
+nave 0 in attesa dal giorno 9: giorno attuale: 9
+Parte esamina porto
+Richiesta da porto 6 merce 0 lotti 26 al porto 4 con val 7
+Richiesta da porto 7 merce 3 lotti 18 al porto 4 con val 31
+Richiesta da porto 7 merce 0 lotti 18 al porto 4 con val 7
+Nave 0 deve skippare porto 4
+Attesa con spaziolibero 1: 1000
+2. stato nave 0 aggiornato
+Nave 0 parte
+Attesa con distanza 1: 255.073898
+Nave 0 arriva
+Nave 0 attraccata al porto 5
+0. stato nave 0 aggiornato
+Attesa con spaziolibero 2: 1000
+nave 0 in attesa dal giorno 9: giorno attuale: 9
+Parte esamina porto
+Richiesta da porto 7 merce 3 lotti 18 al porto 5 con val 16
+Richiesta da porto 7 merce 0 lotti 18 al porto 5 con val 11
+Richiesta da porto 9 merce 3 lotti 6 al porto 5 con val 16
+Richiesta da porto 9 merce 0 lotti 26 al porto 5 con val 11
+Richiesta da porto 1 merce 0 lotti 26 al porto 5 con val 11
+Richiesta da porto 0 merce 0 lotti 17 al porto 5 con val 11
+Richiesta da porto 0 merce 3 lotti 6 al porto 5 con val 16
+Nave 0 deve skippare porto 5
+Attesa con spaziolibero 1: 1000
+2. stato nave 0 aggiornato
+Nave 0 parte
+Attesa con distanza 1: 0.000000
+Nave 0 arriva
+Nave 0 attraccata al porto 5
+0. stato nave 0 aggiornato
+Attesa con spaziolibero 2: 1000
+nave 0 in attesa dal giorno 9: giorno attuale: 9
+Parte esamina porto
+Richiesta da porto 7 merce 3 lotti 18 al porto 5 con val 16
+Richiesta da porto 7 merce 0 lotti 18 al porto 5 con val 11
+Richiesta da porto 9 merce 3 lotti 6 al porto 5 con val 16
+Richiesta da porto 9 merce 0 lotti 26 al porto 5 con val 11
+Richiesta da porto 1 merce 0 lotti 26 al porto 5 con val 11
+Richiesta da porto 0 merce 0 lotti 17 al porto 5 con val 11
+Nave 0 deve skippare porto 5
+Attesa con spaziolibero 1: 1000
+2. stato nave 0 aggiornato
+Nave 0 parte
+Attesa con distanza 1: 283.713619
+Nave 0 arriva
+Nave 0 attraccata al porto 3
+0. stato n
+spaziolibero 0: 1000 SO_CAPACITY: 1000
+
+Nave 13 in posizione x:396.768000 y:82.106000 indice porto piu vicino 6 x:299.122000 y;50.900000
+Nave 13 inizia il viaggio
+Attesa con distanza 2: 102.511247
+0. stato nave 13 aggiornato
+Nave 13 ha ricevuto una banchina al porto 6
+Parte esamina porto
+Richiesta da porto 2 merce 3 lotti 21 al porto 6 con val 30
+nave 13 ha caricato 5 lotti di merce 3 spaziolibero: 95
+Parte carica dal porto
+Nave 13 inizia a caricare
+Attesa con spaziolibero 1: 95
+*** NAVE 13: ricevuto SIGUSR1: data = 1 ***
+Nave 13 ha caricato
+3. stato nave 13 aggiornato
+Nave 13 parte
+Attesa con distanza 1: 491.978435
+Nave 13 arriva
+Nave 13 attraccata al porto 2
+1. stato nave 13 aggiornato
+Attesa con spaziolibero 2: 95
+*** NAVE 13: ricevuto SIGUSR1: data = 3 ***
+nave 13 in attesa dal giorno 3: giorno attuale: 3
+Nave 13 inizia a scaricare al porto 2. giorno 3
+Nave 13 ha scaricato al porto 2. giorno 3
+Parte esamina porto
+Richiesta da porto 5 merce 2 lotti 27 al porto 2 con val 15
+Richiesta da porto 5 merce 5 lotti 23 al porto 2 con val 23
+nave 13 ha caricato 2 lotti di merce 5 spaziolibero: 294
+Parte carica dal porto
+nave 13 ha caricato 6 lotti di merce 9 spaziolibero: 288
+Nave 13 inizia a caricare
+Attesa con spaziolibero 1: 288
+*** NAVE 13: ricevuto SIGUSR1: data = 5 ***
+Nave 13 ha caricato
+3. stato nave 13 aggiornato
+Nave 13 parte
+Attesa con distanza 1: 310.997456
+Nave 13 arriva
+Nave 13 attraccata al porto 5
+1. stato nave 13 aggiornato
+Attesa con spaziolibero 2: 288
+*** NAVE 13: ricevuto SIGUSR1: data = 6 ***
+nave 13 in attesa dal giorno 6: giorno attuale: 6
+Nave 13 inizia a scaricare al porto 5. giorno 6
+Nave 13 ha scaricato al porto 5. giorno 6
+Parte esamina porto
+Richiesta da porto 2 merce 0 lotti 32 al porto 5 con val 11
+Richiesta da porto 2 merce 3 lotti 11 al porto 5 con val 16
+Nave 13 deve skippare porto 5
+Attesa con spaziolibero 1: 1000
+2. stato nave 13 aggiornato
+Nave 13 parte
+Attesa con distanza 1: 411.989584
+Nave 13 arriva
+*** NAVE 13: ricevuto SIGUSR1: data = 9 ***
+Nave 13 attraccata al porto 0
+0. stato nave 13 aggiornato
+Attesa con spaziolibero 2: 1000
+nave 13 in attesa dal giorno 9: giorno attuale: 9
+Parte esamina porto
+Nave 13 deve skippare porto 0
+Attesa con spaziolibero 1: 1000
+2. stato nave 13 aggiornato
+Nave 13 parte
+Attesa con distanza 1: 707.106781
+Nave 13 arriva
+Nave 13 attraccata al porto 2
+0. stato nave 13 aggiornato
+Attesa con spaziolibero 2: 1000
+nave 13 in attesa dal giorno 9: giorno attuale: 9
+Parte esamina porto
+Nave 13 deve skippare porto 2
+Attesa con spaziolibero 1: 1000
+2. stato nave 13 aggiornato
+Nave 13 parte
+Attesa con distanza 1: 707.106781
+Nave 13 arriva
+Nave 13 attraccata al porto 0
+0. stato nave 13 aggiornato
+Attesa con spaziolibero 2: 1000
+nave 13 in attesa dal giorno 9: giorno attuale: 9
+Parte esamina porto
+Nave 13 deve skippare porto 0
+Attesa con spaziolibero 1: 1000
+2. stato nave 13 aggiornato
+Nave 13 parte
+Attesa con distanza 1: 303.421787
+Nave 13 arriva
+Nave 13 attraccata al porto 6
+0. stato nave 13 aggiornato
+Attesa con spaziolibero 2: 1000
+nave 13 in attesa dal giorno 9: giorno attuale: 9
+Parte esamina porto
+Richiesta da porto 2 merce 3 lotti 11 al porto 6 con val 20
+Richiesta da porto 7 merce 3 lotti 18 al porto 6 con val 20
+Nave 13 deve skippare porto 6
+Attesa con spaziolibero 1: 1000
+2. stato nave 13 aggiornato
+Nave 13 parte
+Attesa con distanza 1: 491.978435
+Nave 13 arriva
+Nave 13 attraccata al porto 2
+0. stato nave 13 aggiornato
+Attesa con spaziolibero 2: 1000
+nave 13 in attesa dal giorno 9: giorno attuale: 9
+Parte esamina porto
+Nave 13 deve skippare porto 2
+Attesa con spaziolibero 1: 1000
+2. stato nave 13 aggiornato
+Nave 13 parte
+Attesa con distanza 1: 169.473395
+Nave 13 arriva
+Nave 13 attraccata al porto 7
+0. stato nave 13 aggiornato
+Attesa con spaziolibero 2: 1000
+nave 13 in attesa dal giorno 9: giorno attuale: 9
+Parte esamina porto
+Nave 13 deve skippare porto 7
+Attesa con spaziolibero 1: 1000
+2. stato nave 13 aggiornato
+Nave 13 parte
+Attesa con distanza 1: 82.208392
+Nave 13 arriva
+Nave 13 attraccata al porto 8
+0. stato nave 13 aggiornato
+Attesa con spaziolibero 2: 100
+spaziolibero 0: 1000 SO_CAPACITY: 1000
+
+Nave 15 in posizione x:184.872000 y:306.298000 indice porto piu vicino 5 x:233.774000 y;339.242000
+Nave 15 inizia il viaggio
+Attesa con distanza 2: 58.963656
+0. stato nave 15 aggiornato
+Nave 15 ha ricevuto una banchina al porto 5
+Parte esamina porto
+Richiesta da porto 6 merce 0 lotti 38 al porto 5 con val 29
+nave 15 ha caricato 3 lotti di merce 0 spaziolibero: 217
+Parte carica dal porto
+nave 15 ha caricato 1 lotti di merce 4 spaziolibero: 104
+Nave 15 inizia a caricare
+Attesa con spaziolibero 1: 104
+*** NAVE 15: ricevuto SIGUSR1: data = 1 ***
+Nave 15 ha caricato
+3. stato nave 15 aggiornato
+Nave 15 parte
+Attesa con distanza 1: 295.654308
+Nave 15 arriva
+Nave 15 attraccata al porto 6
+1. stato nave 15 aggiornato
+Attesa con spaziolibero 2: 104
+*** NAVE 15: ricevuto SIGUSR1: data = 3 ***
+nave 15 in attesa dal giorno 3: giorno attuale: 3
+Nave 15 inizia a scaricare al porto 6. giorno 3
+Nave 15 ha scaricato al porto 6. giorno 3
+Parte esamina porto
+Richiesta da porto 0 merce 3 lotti 11 al porto 6 con val 25
+nave 15 ha caricato 5 lotti di merce 3 spaziolibero: 95
+Parte carica dal porto
+Nave 15 inizia a caricare
+Attesa con spaziolibero 1: 95
+*** NAVE 15: ricevuto SIGUSR1: data = 5 ***
+Nave 15 ha caricato
+3. stato nave 15 aggiornato
+Nave 15 parte
+Attesa con distanza 1: 303.421787
+Nave 15 arriva
+*** NAVE 15: ricevuto SIGUSR1: data = 7 ***
+Nave 15 attraccata al porto 0
+1. stato nave 15 aggiornato
+Attesa con spaziolibero 2: 95
+*** NAVE 15: ricevuto SIGUSR1: data = 9 ***
+nave 15 in attesa dal giorno 9: giorno attuale: 9
+Nave 15 inizia a scaricare al porto 0. giorno 9
+Nave 15 ha scaricato al porto 0. giorno 9
+Parte esamina porto
+Nave 15 deve skippare porto 0
+Attesa con spaziolibero 1: 1000
+2. stato nave 15 aggiornato
+Nave 15 parte
+Attesa con distanza 1: 500.000000
+Nave 15 arriva
+Nave 15 attraccata al porto 3
+0. stato nave 15 aggiornato
+Attesa con spaziolibero 2: 1000
+nave 15 in attesa dal giorno 9: giorno attuale: 9
+Parte esamina porto
+Richiesta da porto 0 merce 3 lotti 6 al porto 3 con val 26
+Richiesta da porto 2 merce 0 lotti 32 al porto 3 con val 18
+Richiesta da porto 2 merce 3 lotti 11 al porto 3 con val 26
+Nave 15 deve skippare porto 3
+Attesa con spaziolibero 1: 1000
+2. stato nave 15 aggiornato
+Nave 15 parte
+Attesa con distanza 1: 519.826155
+Nave 15 arriva
+Nave 15 attraccata al porto 7
+0. stato nave 15 aggiornato
+Attesa con spaziolibero 2: 1000
+nave 15 in attesa dal giorno 9: giorno attuale: 9
+Parte esamina porto
+Nave 15 deve skippare porto 7
+Attesa con spaziolibero 1: 1000
+2. stato nave 15 aggiornato
+Nave 15 parte
+Attesa con distanza 1: 519.826155
+Nave 15 arriva
+Nave 15 attraccata al porto 3
+0. stato nave 15 aggiornato
+Attesa con spaziolibero 2: 1000
+nave 15 in attesa dal giorno 9: giorno attuale: 9
+Parte esamina porto
+Richiesta da porto 2 merce 0 lotti 32 al porto 3 con val 18
+Richiesta da porto 2 merce 3 lotti 11 al porto 3 con val 26
+Richiesta da porto 6 merce 0 lotti 26 al porto 3 con val 18
+Nave 15 deve skippare porto 3
+Attesa con spaziolibero 1: 1000
+2. stato nave 15 aggiornato
+Nave 15 parte
+Attesa con distanza 1: 500.000000
+Nave 15 arriva
+Nave 15 attraccata al porto 2
+0. stato nave 15 aggiornato
+Attesa con spaziolibero 2: 1000
+nave 15 in attesa dal giorno 9: giorno attuale: 9
+Parte esamina porto
+Nave 15 deve skippare porto 2
+Attesa con spaziolibero 1: 1000
+2. stato nave 15 aggiornato
+Nave 15 parte
+Attesa con distanza 1: 310.997456
+Nave 15 arriva
+Nave 15 attraccata al porto 5
+0. stato nave 15 aggiornato
+Attesa con spaziolibero 2: 1000
+nave 15 in attesa dal giorno 9: giorno attuale: 9
+Parte esamina porto
+Richiesta da porto 2 merce 0 lotti 32 al porto 5 con val 11
+Richiesta da porto 2 merce 3 lotti 11 al porto 5 con val 16
+Richiesta da porto 6 merce 0 lotti 26 al porto 5 con val 11
+Nave 15 deve skippare porto 5
+Attesa con spaziolibero 1: 1000
+2. stato nave 15 aggiornato
+Nave 15 parte
+Attesa con distanza 1: 411.989584
+Nave 15 arriva
+Nave 15 attraccata al porto 0
+0. stato nave 15 aggiornato
+Attesa con spaziolibero 2: 1000
+nave 15 in attesa dal giorno 9: giorno attuale: 9
+Parte esamina porto
+
+spaziolibero 0: 1000 SO_CAPACITY: 1000
+
+Nave 19 in posizione x:180.940000 y:226.158000 indice porto piu vicino 5 x:233.774000 y;339.242000
+Nave 19 inizia il viaggio
+Attesa con distanza 2: 124.817557
+*** NAVE 19: ricevuto SIGUSR1: data = 1 ***
+0. stato nave 19 aggiornato
+Nave 19 ha ricevuto una banchina al porto 5
+Parte esamina porto
+Richiesta da porto 7 merce 3 lotti 29 al porto 5 con val 27
+nave 19 ha caricato 5 lotti di merce 3 spaziolibero: 95
+Parte carica dal porto
+Nave 19 inizia a caricare
+Attesa con spaziolibero 1: 95
+*** NAVE 19: ricevuto SIGUSR1: data = 3 ***
+Nave 19 ha caricato
+3. stato nave 19 aggiornato
+Nave 19 parte
+Attesa con distanza 1: 257.864197
+Nave 19 arriva
+Nave 19 attraccata al porto 7
+1. stato nave 19 aggiornato
+Attesa con spaziolibero 2: 95
+*** NAVE 19: ricevuto SIGUSR1: data = 5 ***
+nave 19 in attesa dal giorno 5: giorno attuale: 5
+Nave 19 inizia a scaricare al porto 7. giorno 5
+Nave 19 ha scaricato al porto 7. giorno 5
+Parte esamina porto
+Richiesta da porto 0 merce 8 lotti 25 al porto 7 con val 13
+Richiesta da porto 3 merce 5 lotti 18 al porto 7 con val 27
+Richiesta da porto 3 merce 6 lotti 21 al porto 7 con val 23
+Richiesta da porto 4 merce 6 lotti 29 al porto 7 con val 23
+Richiesta da porto 4 merce 5 lotti 22 al porto 7 con val 27
+Nave 19 deve skippare porto 7
+Attesa con spaziolibero 1: 1000
+2. stato nave 19 aggiornato
+Nave 19 parte
+Attesa con distanza 1: 592.418122
+Nave 19 arriva
+*** NAVE 19: ricevuto SIGUSR1: data = 9 ***
+Nave 19 attraccata al porto 0
+0. stato nave 19 aggiornato
+Attesa con spaziolibero 2: 1000
+nave 19 in attesa dal giorno 9: giorno attuale: 9
+Parte esamina porto
+Nave 19 deve skippare porto 0
+Attesa con spaziolibero 1: 1000
+2. stato nave 19 aggiornato
+Nave 19 parte
+Attesa con distanza 1: 707.106781
+Nave 19 arriva
+Nave 19 attraccata al porto 2
+0. stato nave 19 aggiornato
+Attesa con spaziolibero 2: 1000
+nave 19 in attesa dal giorno 9: giorno attuale: 9
+Parte esamina porto
+Nave 19 deve skippare porto 2
+Attesa con spaziolibero 1: 1000
+2. stato nave 19 aggiornato
+Nave 19 parte
+Attesa con distanza 1: 707.106781
+Nave 19 arriva
+Nave 19 attraccata al porto 0
+0. stato nave 19 aggiornato
+Attesa con spaziolibero 2: 1000
+nave 19 in attesa dal giorno 9: giorno attuale: 9
+Parte esamina porto
+Nave 19 deve skippare porto 0
+Attesa con spaziolibero 1: 1000
+2. stato nave 19 aggiornato
+Nave 19 parte
+Attesa con distanza 1: 543.623835
+Nave 19 arriva
+Nave 19 attraccata al porto 8
+0. stato nave 19 aggiornato
+Attesa con spaziolibero 2: 1000
+nave 19 in attesa dal giorno 9: giorno attuale: 9
+Parte esamina porto
+Richiesta da porto 6 merce 0 lotti 26 al porto 8 con val 35
+Richiesta da porto 7 merce 3 lotti 18 al porto 8 con val 19
+Richiesta da porto 7 merce 0 lotti 18 al porto 8 con val 35
+Richiesta da porto 9 merce 3 lotti 6 al porto 8 con val 19
+Richiesta da porto 9 merce 0 lotti 26 al porto 8 con val 35
+Nave 19 deve skippare porto 8
+Attesa con spaziolibero 1: 1000
+2. stato nave 19 aggiornato
+Nave 19 parte
+Attesa con distanza 1: 0.000000
+Nave 19 arriva
+Nave 19 attraccata al porto 8
+0. stato nave 19 aggiornato
+Attesa con spaziolibero 2: 1000
+nave 19 in attesa dal giorno 9: giorno attuale: 9
+Parte esamina porto
+Richiesta da porto 1 merce 0 lotti 26 al porto 8 con val 35
+Richiesta da porto 0 merce 0 lotti 17 al porto 8 con val 35
+Richiesta da porto 0 merce 3 lotti 6 al porto 8 con val 19
+Richiesta da porto 2 merce 0 lotti 32 al porto 8 con val 35
+Richiesta da porto 2 merce 3 lotti 11 al porto 8 con val 19
+Nave 19 deve skippare porto 8
+Attesa con spaziolibero 1: 1000
+2. stato nave 19 aggiornato
+Nave 19 parte
+Attesa con distanza 1: 251.612548
+Nave 19 arriva
+Nave 19 attraccata al porto 2
+0. stato nave 19 aggiornato
+Attesa con spaziolibero 2: 1000
+nave 19 in attesa dal giorno 9: giorno attuale: 9
+Parte esamina porto
+Nave 19 deve skippare porto 2
+Attesa con spaziolibero 1: 1000
+2. stato nave 19 aggiornato
+Nave 19 parte
+Attesa con distanza 1: 707.106781
+Nave 19 arriva
+Nave 19 attraccata al porto 0
+0. stato nave 19 aggiornato
+Attesa con spaziolibero 2: 1000
+nave 19 in attesa dal giorno 9: giorno attuale: 9
+Parte e
+spaziolibero 0: 1000 SO_CAPACITY: 1000
+
+Nave 17 in posizione x:110.630000 y:292.036000 indice porto piu vicino 5 x:233.774000 y;339.242000
+Nave 17 inizia il viaggio
+Attesa con distanza 2: 131.881959
+*** NAVE 17: ricevuto SIGUSR1: data = 1 ***
+0. stato nave 17 aggiornato
+Nave 17 ha ricevuto una banchina al porto 5
+Parte esamina porto
+Richiesta da porto 9 merce 0 lotti 32 al porto 5 con val 17
+nave 17 ha caricato 3 lotti di merce 0 spaziolibero: 217
+Parte carica dal porto
+nave 17 ha caricato 1 lotti di merce 3 spaziolibero: 36
+Nave 17 inizia a caricare
+Attesa con spaziolibero 1: 36
+*** NAVE 17: ricevuto SIGUSR1: data = 3 ***
+Nave 17 ha caricato
+3. stato nave 17 aggiornato
+Nave 17 parte
+Attesa con distanza 1: 190.762428
+Nave 17 arriva
+Nave 17 attraccata al porto 9
+1. stato nave 17 aggiornato
+Attesa con spaziolibero 2: 36
+*** NAVE 17: ricevuto SIGUSR1: data = 5 ***
+nave 17 in attesa dal giorno 5: giorno attuale: 5
+Nave 17 inizia a scaricare al porto 9. giorno 5
+Nave 17 ha scaricato al porto 9. giorno 5
+Parte esamina porto
+Richiesta da porto 7 merce 7 lotti 30 al porto 9 con val 6
+Richiesta da porto 7 merce 1 lotti 27 al porto 9 con val 24
+Richiesta da porto 1 merce 7 lotti 8 al porto 9 con val 6
+Nave 17 deve skippare porto 9
+Attesa con spaziolibero 1: 1000
+2. stato nave 17 aggiornato
+Nave 17 parte
+Attesa con distanza 1: 504.770441
+Nave 17 arriva
+*** NAVE 17: ricevuto SIGUSR1: data = 9 ***
+Nave 17 attraccata al porto 0
+0. stato nave 17 aggiornato
+Attesa con spaziolibero 2: 1000
+nave 17 in attesa dal giorno 9: giorno attuale: 9
+Parte esamina porto
+Nave 17 deve skippare porto 0
+Attesa con spaziolibero 1: 1000
+2. stato nave 17 aggiornato
+Nave 17 parte
+Attesa con distanza 1: 500.000000
+Nave 17 arriva
+Nave 17 attraccata al porto 3
+0. stato nave 17 aggiornato
+Attesa con spaziolibero 2: 1000
+nave 17 in attesa dal giorno 9: giorno attuale: 9
+Parte esamina porto
+Richiesta da porto 6 merce 0 lotti 26 al porto 3 con val 18
+Richiesta da porto 7 merce 3 lotti 18 al porto 3 con val 26
+Richiesta da porto 7 merce 0 lotti 18 al porto 3 con val 18
+Richiesta da porto 9 merce 0 lotti 26 al porto 3 con val 18
+Nave 17 deve skippare porto 3
+Attesa con spaziolibero 1: 1000
+2. stato nave 17 aggiornato
+Nave 17 parte
+Attesa con distanza 1: 500.000000
+Nave 17 arriva
+Nave 17 attraccata al porto 2
+0. stato nave 17 aggiornato
+Attesa con spaziolibero 2: 1000
+nave 17 in attesa dal giorno 9: giorno attuale: 9
+Parte esamina porto
+Nave 17 deve skippare porto 2
+Attesa con spaziolibero 1: 1000
+2. stato nave 17 aggiornato
+Nave 17 parte
+Attesa con distanza 1: 169.473395
+Nave 17 arriva
+Nave 17 attraccata al porto 7
+0. stato nave 17 aggiornato
+Attesa con spaziolibero 2: 1000
+nave 17 in attesa dal giorno 9: giorno attuale: 9
+Parte esamina porto
+Nave 17 deve skippare porto 7
+Attesa con spaziolibero 1: 1000
+2. stato nave 17 aggiornato
+Nave 17 parte
+Attesa con distanza 1: 592.418122
+Nave 17 arriva
+Nave 17 attraccata al porto 0
+0. stato nave 17 aggiornato
+Attesa con spaziolibero 2: 1000
+nave 17 in attesa dal giorno 9: giorno attuale: 9
+Parte esamina porto
+Nave 17 deve skippare porto 0
+Attesa con spaziolibero 1: 1000
+2. stato nave 17 aggiornato
+Nave 17 parte
+Attesa con distanza 1: 592.418122
+Nave 17 arriva
+Nave 17 attraccata al porto 7
+0. stato nave 17 aggiornato
+Attesa con spaziolibero 2: 1000
+nave 17 in attesa dal giorno 9: giorno attuale: 9
+Parte esamina porto
+Nave 17 deve skippare porto 7
+Attesa con spaziolibero 1: 1000
+2. stato nave 17 aggiornato
+Nave 17 parte
+Attesa con distanza 1: 169.473395
+Nave 17 arriva
+Nave 17 attraccata al porto 2
+0. stato nave 17 aggiornato
+Attesa con spaziolibero 2: 1000
+nave 17 in attesa dal giorno 9: giorno attuale: 9
+Parte esamina porto
+Nave 17 deve skippare porto 2
+Attesa con spaziolibero 1: 1000
+2. stato nave 17 aggiornato
+Nave 17 parte
+Attesa con distanza 1: 512.605633
+Nave 17 arriva
+Nave 17 attraccata al porto 4
+0. stato nave 17 aggiornato
+Attesa con spaziolibero 2: 1000
+nave 17 in attesa dal giorno 9: giorno attuale: 9
+Parte esamina porto
+Richiesta da porto 1 merce 0 lotti 26 al porto 4 con val 7
+Richiesta da porto 0 merce 0 lotti 17ave 4 attraccata al porto 8
+0. stato nave 4 aggiornato
+Attesa con spaziolibero 2: 1000
+nave 4 in attesa dal giorno 9: giorno attuale: 9
+Parte esamina porto
+Richiesta da porto 2 merce 3 lotti 11 al porto 8 con val 19
+Richiesta da porto 6 merce 0 lotti 26 al porto 8 con val 35
+Richiesta da porto 7 merce 3 lotti 18 al porto 8 con val 19
+Nave 4 deve skippare porto 8
+Attesa con spaziolibero 1: 1000
+2. stato nave 4 aggiornato
+Nave 4 parte
+Attesa con distanza 1: 265.337481
+Nave 4 arriva
+Nave 4 attraccata al porto 5
+0. stato nave 4 aggiornato
+Attesa con spaziolibero 2: 1000
+nave 4 in attesa dal giorno 9: giorno attuale: 9
+Parte esamina porto
+Richiesta da porto 1 merce 0 lotti 26 al porto 5 con val 11
+Richiesta da porto 0 merce 0 lotti 17 al porto 5 con val 11
+Richiesta da porto 0 merce 3 lotti 6 al porto 5 con val 16
+Richiesta da porto 2 merce 0 lotti 32 al porto 5 con val 11
+Richiesta da porto 2 merce 3 lotti 11 al porto 5 con val 16
+Nave 4 deve skippare porto 5
+Attesa con spaziolibero 1: 1000
+2. stato nave 4 aggiornato
+Nave 4 parte
+Attesa con distanza 1: 283.713619
+Nave 4 arriva
+Nave 4 attraccata al porto 3
+0. stato nave 4 aggiornato
+Attesa con spaziolibero 2: 1000
+nave 4 in attesa dal giorno 9: giorno attuale: 9
+Parte esamina porto
+Richiesta da porto 9 merce 0 lotti 26 al porto 3 con val 18
+Richiesta da porto 1 merce 0 lotti 26 al porto 3 con val 18
+Nave 4 deve skippare porto 3
+Attesa con spaziolibero 1: 1000
+2. stato nave 4 aggiornato
+Nave 4 parte
+Attesa con distanza 1: 539.596869
+Nave 4 arriva
+Nave 4 attraccata al porto 6
+0. stato nave 4 aggiornato
+Attesa con spaziolibero 2: 1000
+nave 4 in attesa dal giorno 9: giorno attuale: 9
+Parte esamina porto
+Richiesta da porto 7 merce 3 lotti 18 al porto 6 con val 20
+Richiesta da porto 9 merce 3 lotti 6 al porto 6 con val 20
+Nave 4 deve skippare porto 6
+Attesa con spaziolibero 1: 1000
+2. stato nave 4 aggiornato
+Nave 4 parte
+Attesa con distanza 1: 339.586441
+Nave 4 arriva
+Nave 4 attraccata al porto 7
+0. stato nave 4 aggiornato
+Attesa con spaziolibero 2: 1000
+nave 4 in attesa dal giorno 9: giorno attuale: 9
+Parte esamina porto
+Nave 4 deve skippare porto 7
+Attesa con spaziolibero 1: 1000
+2. stato nave 4 aggiornato
+Nave 4 parte
+Attesa con distanza 1: 592.418122
+Nave 4 arriva
+Nave 4 attraccata al porto 0
+0. stato nave 4 aggiornato
+Attesa con spaziolibero 2: 1000
+nave 4 in attesa dal giorno 9: giorno attuale: 9
+Parte esamina porto
+Nave 4 deve skippare porto 0
+Attesa con spaziolibero 1: 1000
+2. stato nave 4 aggiornato
+Nave 4 parte
+Attesa con distanza 1: 214.850028
+Nave 4 arriva
+Nave 4 attraccata al porto 4
+0. stato nave 4 aggiornato
+Attesa con spaziolibero 2: 1000
+nave 4 in attesa dal giorno 9: giorno attuale: 9
+Parte esamina porto
+Richiesta da porto 2 merce 0 lotti 32 al porto 4 con val 7
+Richiesta da porto 2 merce 3 lotti 11 al porto 4 con val 31
+Richiesta da porto 6 merce 0 lotti 26 al porto 4 con val 7
+Nave 4 deve skippare porto 4
+Attesa con spaziolibero 1: 1000
+2. stato nave 4 aggiornato
+Nave 4 parte
+Attesa con distanza 1: 108.767247
+Nave 4 arriva
+Nave 4 attraccata al porto 6
+0. stato nave 4 aggiornato
+Attesa con spaziolibero 2: 1000
+nave 4 in attesa dal giorno 9: giorno attuale: 9
+Parte esamina porto
+Richiesta da porto 2 merce 3 lotti 11 al porto 6 con val 20
+Nave 4 deve skippare porto 6
+Attesa con spaziolibero 1: 1000
+2. stato nave 4 aggiornato
+Nave 4 parte
+Attesa con distanza 1: 0.000000
+Nave 4 arriva
+Nave 4 attraccata al porto 6
+0. stato nave 4 aggiornato
+Attesa con spaziolibero 2: 1000
+nave 4 in attesa dal giorno 9: giorno attuale: 9
+Parte esamina porto
+Richiesta da porto 7 merce 3 lotti 18 al porto 6 con val 20
+Richiesta da porto 9 merce 3 lotti 6 al porto 6 con val 20
+Nave 4 deve skippare porto 6
+Attesa con spaziolibero 1: 1000
+2. stato nave 4 aggiornato
+Nave 4 parte
+Attesa con distanza 1: 270.431849
+Nave 4 arriva
+Nave 4 attraccata al porto 8
+0. stato nave 4 aggiornato
+Attesa con spaziolibero 2: 1000
+nave 4 in attesa dal giorno 9: giorno attuale: 9
+Parte esamina porto
+Richiesta da porto 2 merce 0 lotti 32 al porto 8 con val 35
+Richiesta da porto 2 merce 3 lotti 11 al porto 8 con Nave 15 deve skippare porto 0
+Attesa con spaziolibero 1: 1000
+2. stato nave 15 aggiornato
+Nave 15 parte
+Attesa con distanza 1: 707.106781
+Nave 15 arriva
+Nave 15 attraccata al porto 2
+0. stato nave 15 aggiornato
+Attesa con spaziolibero 2: 1000
+nave 15 in attesa dal giorno 9: giorno attuale: 9
+Parte esamina porto
+Nave 15 deve skippare porto 2
+Attesa con spaziolibero 1: 1000
+2. stato nave 15 aggiornato
+Nave 15 parte
+Attesa con distanza 1: 512.605633
+Nave 15 arriva
+Nave 15 attraccata al porto 4
+0. stato nave 15 aggiornato
+Attesa con spaziolibero 2: 1000
+nave 15 in attesa dal giorno 9: giorno attuale: 9
+Parte esamina porto
+Richiesta da porto 7 merce 3 lotti 18 al porto 4 con val 31
+Richiesta da porto 7 merce 0 lotti 18 al porto 4 con val 7
+Richiesta da porto 9 merce 3 lotti 6 al porto 4 con val 31
+Richiesta da porto 9 merce 0 lotti 26 al porto 4 con val 7
+Richiesta da porto 1 merce 0 lotti 26 al porto 4 con val 7
+Richiesta da porto 0 merce 0 lotti 17 al porto 4 con val 7
+Richiesta da porto 0 merce 3 lotti 6 al porto 4 con val 31
+Nave 15 deve skippare porto 4
+Attesa con spaziolibero 1: 1000
+2. stato nave 15 aggiornato
+Nave 15 parte
+Attesa con distanza 1: 255.073898
+Nave 15 arriva
+Nave 15 attraccata al porto 5
+0. stato nave 15 aggiornato
+Attesa con spaziolibero 2: 1000
+nave 15 in attesa dal giorno 9: giorno attuale: 9
+Parte esamina porto
+Richiesta da porto 7 merce 3 lotti 18 al porto 5 con val 16
+Richiesta da porto 7 merce 0 lotti 18 al porto 5 con val 11
+Richiesta da porto 9 merce 3 lotti 6 al porto 5 con val 16
+Richiesta da porto 9 merce 0 lotti 26 al porto 5 con val 11
+Richiesta da porto 1 merce 0 lotti 26 al porto 5 con val 11
+Richiesta da porto 0 merce 0 lotti 17 al porto 5 con val 11
+Nave 15 deve skippare porto 5
+Attesa con spaziolibero 1: 1000
+2. stato nave 15 aggiornato
+Nave 15 parte
+Attesa con distanza 1: 0.000000
+Nave 15 arriva
+Nave 15 attraccata al porto 5
+0. stato nave 15 aggiornato
+Attesa con spaziolibero 2: 1000
+nave 15 in attesa dal giorno 9: giorno attuale: 9
+Parte esamina porto
+Richiesta da porto 0 merce 3 lotti 6 al porto 5 con val 16
+Richiesta da porto 2 merce 0 lotti 32 al porto 5 con val 11
+Richiesta da porto 2 merce 3 lotti 11 al porto 5 con val 16
+Nave 15 deve skippare porto 5
+Attesa con spaziolibero 1: 1000
+2. stato nave 15 aggiornato
+Nave 15 parte
+Attesa con distanza 1: 0.000000
+Nave 15 arriva
+Nave 15 attraccata al porto 5
+0. stato nave 15 aggiornato
+Attesa con spaziolibero 2: 1000
+nave 15 in attesa dal giorno 9: giorno attuale: 9
+Parte esamina porto
+Richiesta da porto 6 merce 0 lotti 26 al porto 5 con val 11
+Richiesta da porto 7 merce 3 lotti 18 al porto 5 con val 16
+Richiesta da porto 7 merce 0 lotti 18 al porto 5 con val 11
+Richiesta da porto 9 merce 3 lotti 6 al porto 5 con val 16
+Nave 15 deve skippare porto 5
+Attesa con spaziolibero 1: 1000
+2. stato nave 15 aggiornato
+Nave 15 parte
+Attesa con distanza 1: 310.997456
+Nave 15 arriva
+Nave 15 attraccata al porto 2
+0. stato nave 15 aggiornato
+Attesa con spaziolibero 2: 1000
+nave 15 in attesa dal giorno 9: giorno attuale: 9
+Parte esamina porto
+Nave 15 deve skippare porto 2
+Attesa con spaziolibero 1: 1000
+2. stato nave 15 aggiornato
+Nave 15 parte
+Attesa con distanza 1: 500.000000
+Nave 15 arriva
+Nave 15 attraccata al porto 3
+0. stato nave 15 aggiornato
+Attesa con spaziolibero 2: 1000
+nave 15 in attesa dal giorno 9: giorno attuale: 9
+Parte esamina porto
+Richiesta da porto 2 merce 0 lotti 32 al porto 3 con val 18
+Richiesta da porto 2 merce 3 lotti 11 al porto 3 con val 26
+Nave 15 deve skippare porto 3
+Attesa con spaziolibero 1: 1000
+2. stato nave 15 aggiornato
+Nave 15 parte
+Attesa con distanza 1: 539.596869
+Nave 15 arriva
+Nave 15 attraccata al porto 6
+0. stato nave 15 aggiornato
+Attesa con spaziolibero 2: 1000
+nave 15 in attesa dal giorno 9: giorno attuale: 9
+Parte esamina porto
+Richiesta da porto 0 merce 3 lotti 6 al porto 6 con val 20
+Richiesta da porto 2 merce 3 lotti 11 al porto 6 con val 20
+Nave 15 deve skippare porto 6
+Attesa con spaziolibero 1: 1000
+2. stato nave 15 aggiornato
+Nave 15 parte
+Attesa con distanza 1: 491.978435
+Nave 15 arriva
+Nave 15 attra
+spaziolibero 0: 1000 SO_CAPACITY: 1000
+
+Nave 7 in posizione x:126.858000 y:492.136000 indice porto piu vicino 3 x:0.000000 y;500.000000
+Nave 7 inizia il viaggio
+Attesa con distanza 2: 127.101513
+*** NAVE 7: ricevuto SIGUSR1: data = 1 ***
+0. stato nave 7 aggiornato
+Nave 7 ha ricevuto una banchina al porto 3
+Parte esamina porto
+Richiesta da porto 1 merce 7 lotti 19 al porto 3 con val 5
+nave 7 ha caricato 5 lotti di merce 7 spaziolibero: 175
+Parte carica dal porto
+nave 7 ha caricato 19 lotti di merce 9 spaziolibero: 156
+nave 7 ha caricato 1 lotti di merce 4 spaziolibero: 43
+Nave 7 inizia a caricare
+Attesa con spaziolibero 1: 43
+*** NAVE 7: ricevuto SIGUSR1: data = 3 ***
+Nave 7 ha caricato
+3. stato nave 7 aggiornato
+Nave 7 parte
+Attesa con distanza 1: 707.106781
+Nave 7 arriva
+*** NAVE 7: ricevuto SIGUSR1: data = 7 ***
+Nave 7 attraccata al porto 1
+1. stato nave 7 aggiornato
+Attesa con spaziolibero 2: 43
+*** NAVE 7: ricevuto SIGUSR1: data = 9 ***
+nave 7 in attesa dal giorno 9: giorno attuale: 9
+Nave 7 inizia a scaricare al porto 1. giorno 9
+Nave 7 ha scaricato al porto 1. giorno 9
+Parte esamina porto
+Richiesta da porto 7 merce 3 lotti 18 al porto 1 con val 10
+Richiesta da porto 9 merce 3 lotti 6 al porto 1 con val 10
+Nave 7 deve skippare porto 1
+Attesa con spaziolibero 1: 1000
+2. stato nave 7 aggiornato
+Nave 7 parte
+Attesa con distanza 1: 207.226400
+Nave 7 arriva
+Nave 7 attraccata al porto 6
+0. stato nave 7 aggiornato
+Attesa con spaziolibero 2: 1000
+nave 7 in attesa dal giorno 9: giorno attuale: 9
+Parte esamina porto
+Richiesta da porto 7 merce 3 lotti 18 al porto 6 con val 20
+Nave 7 deve skippare porto 6
+Attesa con spaziolibero 1: 1000
+2. stato nave 7 aggiornato
+Nave 7 parte
+Attesa con distanza 1: 108.767247
+Nave 7 arriva
+Nave 7 attraccata al porto 4
+0. stato nave 7 aggiornato
+Attesa con spaziolibero 2: 1000
+nave 7 in attesa dal giorno 9: giorno attuale: 9
+Parte esamina porto
+Richiesta da porto 9 merce 3 lotti 6 al porto 4 con val 31
+Richiesta da porto 9 merce 0 lotti 26 al porto 4 con val 7
+Richiesta da porto 1 merce 0 lotti 26 al porto 4 con val 7
+Richiesta da porto 0 merce 0 lotti 17 al porto 4 con val 7
+Richiesta da porto 0 merce 3 lotti 6 al porto 4 con val 31
+Nave 7 deve skippare porto 4
+Attesa con spaziolibero 1: 1000
+2. stato nave 7 aggiornato
+Nave 7 parte
+Attesa con distanza 1: 382.733516
+Nave 7 arriva
+Nave 7 attraccata al porto 7
+0. stato nave 7 aggiornato
+Attesa con spaziolibero 2: 1000
+nave 7 in attesa dal giorno 9: giorno attuale: 9
+Parte esamina porto
+Nave 7 deve skippare porto 7
+Attesa con spaziolibero 1: 1000
+2. stato nave 7 aggiornato
+Nave 7 parte
+Attesa con distanza 1: 0.000000
+Nave 7 arriva
+Nave 7 attraccata al porto 7
+0. stato nave 7 aggiornato
+Attesa con spaziolibero 2: 1000
+nave 7 in attesa dal giorno 9: giorno attuale: 9
+Parte esamina porto
+Nave 7 deve skippare porto 7
+Attesa con spaziolibero 1: 1000
+2. stato nave 7 aggiornato
+Nave 7 parte
+Attesa con distanza 1: 169.473395
+Nave 7 arriva
+Nave 7 attraccata al porto 2
+0. stato nave 7 aggiornato
+Attesa con spaziolibero 2: 1000
+nave 7 in attesa dal giorno 9: giorno attuale: 9
+Parte esamina porto
+Nave 7 deve skippare porto 2
+Attesa con spaziolibero 1: 1000
+2. stato nave 7 aggiornato
+Nave 7 parte
+Attesa con distanza 1: 169.473395
+Nave 7 arriva
+Nave 7 attraccata al porto 7
+0. stato nave 7 aggiornato
+Attesa con spaziolibero 2: 1000
+nave 7 in attesa dal giorno 9: giorno attuale: 9
+Parte esamina porto
+Nave 7 deve skippare porto 7
+Attesa con spaziolibero 1: 1000
+2. stato nave 7 aggiornato
+Nave 7 parte
+Attesa con distanza 1: 82.208392
+Nave 7 arriva
+Nave 7 attraccata al porto 8
+0. stato nave 7 aggiornato
+Attesa con spaziolibero 2: 1000
+nave 7 in attesa dal giorno 9: giorno attuale: 9
+Parte esamina porto
+Richiesta da porto 9 merce 3 lotti 6 al porto 8 con val 19
+Richiesta da porto 9 merce 0 lotti 26 al porto 8 con val 35
+Richiesta da porto 1 merce 0 lotti 26 al porto 8 con val 35
+Richiesta da porto 0 merce 0 lotti 17 al porto 8 con val 35
+Richiesta da porto 0 merce 3 lotti 6 al porto 8 con val 19
+Nave 7 deve skippare porto 8
+Attesa con spaziolibero 1: 1000
+2. stato na
+spaziolibero 0: 1000 SO_CAPACITY: 1000
+
+Nave 8 in posizione x:176.008000 y:240.920000 indice porto piu vicino 5 x:233.774000 y;339.242000
+Nave 8 inizia il viaggio
+Attesa con distanza 2: 114.035637
+*** NAVE 8: ricevuto SIGUSR1: data = 1 ***
+0. stato nave 8 aggiornato
+Nave 8 ha ricevuto una banchina al porto 5
+Parte esamina porto
+Richiesta da porto 8 merce 4 lotti 14 al porto 5 con val 19
+nave 8 ha caricato 8 lotti di merce 4 spaziolibero: 96
+Parte carica dal porto
+Nave 8 inizia a caricare
+Attesa con spaziolibero 1: 96
+*** NAVE 8: ricevuto SIGUSR1: data = 3 ***
+Nave 8 ha caricato
+3. stato nave 8 aggiornato
+Nave 8 parte
+Attesa con distanza 1: 265.337481
+Nave 8 arriva
+Nave 8 attraccata al porto 8
+1. stato nave 8 aggiornato
+Attesa con spaziolibero 2: 96
+*** NAVE 8: ricevuto SIGUSR1: data = 5 ***
+nave 8 in attesa dal giorno 5: giorno attuale: 5
+Nave 8 inizia a scaricare al porto 8. giorno 5
+Nave 8 ha scaricato al porto 8. giorno 5
+Parte esamina porto
+Richiesta da porto 9 merce 0 lotti 29 al porto 8 con val 38
+nave 8 ha caricato 3 lotti di merce 0 spaziolibero: 217
+Parte carica dal porto
+nave 8 ha caricato 1 lotti di merce 3 spaziolibero: 36
+Nave 8 inizia a caricare
+Attesa con spaziolibero 1: 36
+*** NAVE 8: ricevuto SIGUSR1: data = 7 ***
+Nave 8 ha caricato
+3. stato nave 8 aggiornato
+Nave 8 parte
+Attesa con distanza 1: 75.733744
+Nave 8 arriva
+Nave 8 attraccata al porto 9
+1. stato nave 8 aggiornato
+Attesa con spaziolibero 2: 36
+*** NAVE 8: ricevuto SIGUSR1: data = 9 ***
+nave 8 in attesa dal giorno 9: giorno attuale: 9
+Nave 8 inizia a scaricare al porto 9. giorno 9
+Nave 8 ha scaricato al porto 9. giorno 9
+Parte esamina porto
+Nave 8 deve skippare porto 9
+Attesa con spaziolibero 1: 1000
+2. stato nave 8 aggiornato
+Nave 8 parte
+Attesa con distanza 1: 468.872262
+Nave 8 arriva
+Nave 8 attraccata al porto 3
+0. stato nave 8 aggiornato
+Attesa con spaziolibero 2: 1000
+nave 8 in attesa dal giorno 9: giorno attuale: 9
+Parte esamina porto
+Richiesta da porto 7 merce 3 lotti 18 al porto 3 con val 26
+Richiesta da porto 7 merce 0 lotti 18 al porto 3 con val 18
+Richiesta da porto 9 merce 3 lotti 6 al porto 3 con val 26
+Richiesta da porto 9 merce 0 lotti 26 al porto 3 con val 18
+Richiesta da porto 1 merce 0 lotti 26 al porto 3 con val 18
+Richiesta da porto 0 merce 0 lotti 17 al porto 3 con val 18
+Richiesta da porto 0 merce 3 lotti 6 al porto 3 con val 26
+Nave 8 deve skippare porto 3
+Attesa con spaziolibero 1: 1000
+2. stato nave 8 aggiornato
+Nave 8 parte
+Attesa con distanza 1: 500.000000
+Nave 8 arriva
+Nave 8 attraccata al porto 2
+0. stato nave 8 aggiornato
+Attesa con spaziolibero 2: 1000
+nave 8 in attesa dal giorno 9: giorno attuale: 9
+Parte esamina porto
+Nave 8 deve skippare porto 2
+Attesa con spaziolibero 1: 1000
+2. stato nave 8 aggiornato
+Nave 8 parte
+Attesa con distanza 1: 0.000000
+Nave 8 arriva
+Nave 8 attraccata al porto 2
+0. stato nave 8 aggiornato
+Attesa con spaziolibero 2: 1000
+nave 8 in attesa dal giorno 9: giorno attuale: 9
+Parte esamina porto
+Nave 8 deve skippare porto 2
+Attesa con spaziolibero 1: 1000
+2. stato nave 8 aggiornato
+Nave 8 parte
+Attesa con distanza 1: 169.473395
+Nave 8 arriva
+Nave 8 attraccata al porto 7
+0. stato nave 8 aggiornato
+Attesa con spaziolibero 2: 1000
+nave 8 in attesa dal giorno 9: giorno attuale: 9
+Parte esamina porto
+Nave 8 deve skippare porto 7
+Attesa con spaziolibero 1: 1000
+2. stato nave 8 aggiornato
+Nave 8 parte
+Attesa con distanza 1: 257.864197
+Nave 8 arriva
+Nave 8 attraccata al porto 5
+0. stato nave 8 aggiornato
+Attesa con spaziolibero 2: 1000
+nave 8 in attesa dal giorno 9: giorno attuale: 9
+Parte esamina porto
+Richiesta da porto 0 merce 3 lotti 6 al porto 5 con val 16
+Richiesta da porto 2 merce 0 lotti 32 al porto 5 con val 11
+Richiesta da porto 2 merce 3 lotti 11 al porto 5 con val 16
+Nave 8 deve skippare porto 5
+Attesa con spaziolibero 1: 1000
+2. stato nave 8 aggiornato
+Nave 8 parte
+Attesa con distanza 1: 257.864197
+Nave 8 arriva
+Nave 8 attraccata al porto 7
+0. stato nave 8 aggiornato
+Attesa con spaziolibero 2: 1000
+nave 8 in attesa dal giorno 9: giorno attuale: 9
+Parte esamina porto
+Nave 8 deve skippare ve 7 aggiornato
+Nave 7 parte
+Attesa con distanza 1: 251.612548
+Nave 7 arriva
+Nave 7 attraccata al porto 2
+0. stato nave 7 aggiornato
+Attesa con spaziolibero 2: 1000
+nave 7 in attesa dal giorno 9: giorno attuale: 9
+Parte esamina porto
+Nave 7 deve skippare porto 2
+Attesa con spaziolibero 1: 1000
+2. stato nave 7 aggiornato
+Nave 7 parte
+Attesa con distanza 1: 169.473395
+Nave 7 arriva
+Nave 7 attraccata al porto 7
+0. stato nave 7 aggiornato
+Attesa con spaziolibero 2: 1000
+nave 7 in attesa dal giorno 9: giorno attuale: 9
+Parte esamina porto
+Nave 7 deve skippare porto 7
+Attesa con spaziolibero 1: 1000
+2. stato nave 7 aggiornato
+Nave 7 parte
+Attesa con distanza 1: 82.208392
+Nave 7 arriva
+Nave 7 attraccata al porto 8
+0. stato nave 7 aggiornato
+Attesa con spaziolibero 2: 1000
+nave 7 in attesa dal giorno 9: giorno attuale: 9
+Parte esamina porto
+Richiesta da porto 6 merce 0 lotti 26 al porto 8 con val 35
+Richiesta da porto 7 merce 3 lotti 18 al porto 8 con val 19
+Richiesta da porto 7 merce 0 lotti 18 al porto 8 con val 35
+Richiesta da porto 9 merce 3 lotti 6 al porto 8 con val 19
+Nave 7 deve skippare porto 8
+Attesa con spaziolibero 1: 1000
+2. stato nave 7 aggiornato
+Nave 7 parte
+Attesa con distanza 1: 251.612548
+Nave 7 arriva
+Nave 7 attraccata al porto 2
+0. stato nave 7 aggiornato
+Attesa con spaziolibero 2: 1000
+nave 7 in attesa dal giorno 9: giorno attuale: 9
+Parte esamina porto
+Nave 7 deve skippare porto 2
+Attesa con spaziolibero 1: 1000
+2. stato nave 7 aggiornato
+Nave 7 parte
+Attesa con distanza 1: 251.612548
+Nave 7 arriva
+Nave 7 attraccata al porto 8
+0. stato nave 7 aggiornato
+Attesa con spaziolibero 2: 1000
+nave 7 in attesa dal giorno 9: giorno attuale: 9
+Parte esamina porto
+Richiesta da porto 7 merce 3 lotti 18 al porto 8 con val 19
+Richiesta da porto 7 merce 0 lotti 18 al porto 8 con val 35
+Richiesta da porto 9 merce 3 lotti 6 al porto 8 con val 19
+Richiesta da porto 9 merce 0 lotti 26 al porto 8 con val 35
+Richiesta da porto 1 merce 0 lotti 26 al porto 8 con val 35
+Richiesta da porto 0 merce 0 lotti 17 al porto 8 con val 35
+Nave 7 deve skippare porto 8
+Attesa con spaziolibero 1: 1000
+2. stato nave 7 aggiornato
+Nave 7 parte
+Attesa con distanza 1: 543.623835
+Nave 7 arriva
+Nave 7 attraccata al porto 0
+0. stato nave 7 aggiornato
+Attesa con spaziolibero 2: 1000
+nave 7 in attesa dal giorno 9: giorno attuale: 9
+Parte esamina porto
+Nave 7 deve skippare porto 0
+Attesa con spaziolibero 1: 1000
+2. stato nave 7 aggiornato
+Nave 7 parte
+Attesa con distanza 1: 500.000000
+Nave 7 arriva
+Nave 7 attraccata al porto 3
+0. stato nave 7 aggiornato
+Attesa con spaziolibero 2: 1000
+nave 7 in attesa dal giorno 9: giorno attuale: 9
+Parte esamina porto
+Richiesta da porto 2 merce 0 lotti 32 al porto 3 con val 18
+Richiesta da porto 2 merce 3 lotti 11 al porto 3 con val 26
+Richiesta da porto 6 merce 0 lotti 26 al porto 3 con val 18
+Nave 7 deve skippare porto 3
+Attesa con spaziolibero 1: 1000
+2. stato nave 7 aggiornato
+Nave 7 parte
+Attesa con distanza 1: 539.596869
+Nave 7 arriva
+Nave 7 attraccata al porto 6
+0. stato nave 7 aggiornato
+Attesa con spaziolibero 2: 1000
+nave 7 in attesa dal giorno 9: giorno attuale: 9
+Parte esamina porto
+Richiesta da porto 2 merce 3 lotti 11 al porto 6 con val 20
+Nave 7 deve skippare porto 6
+Attesa con spaziolibero 1: 1000
+2. stato nave 7 aggiornato
+Nave 7 parte
+Attesa con distanza 1: 303.421787
+Nave 7 arriva
+Nave 7 attraccata al porto 0
+0. stato nave 7 aggiornato
+Attesa con spaziolibero 2: 1000
+nave 7 in attesa dal giorno 9: giorno attuale: 9
+Parte esamina porto
+Nave 7 deve skippare porto 0
+Attesa con spaziolibero 1: 1000
+2. stato nave 7 aggiornato
+Nave 7 parte
+Attesa con distanza 1: 543.623835
+Nave 7 arriva
+Nave 7 attraccata al porto 8
+0. stato nave 7 aggiornato
+Attesa con spaziolibero 2: 1000
+nave 7 in attesa dal giorno 9: giorno attuale: 9
+Parte esamina porto
+Richiesta da porto 7 merce 3 lotti 18 al porto 8 con val 19
+Richiesta da porto 7 merce 0 lotti 18 al porto 8 con val 35
+Richiesta da porto 9 merce 3 lotti 6 al porto 8 con val 19
+Richiesta da porto 9 merce 0 lotti 26 al porto 8 con val 35
+Richiesta da porto 1 merce 0 lotporto 7
+Attesa con spaziolibero 1: 1000
+2. stato nave 8 aggiornato
+Nave 8 parte
+Attesa con distanza 1: 382.733516
+Nave 8 arriva
+Nave 8 attraccata al porto 4
+0. stato nave 8 aggiornato
+Attesa con spaziolibero 2: 1000
+nave 8 in attesa dal giorno 9: giorno attuale: 9
+Parte esamina porto
+Richiesta da porto 6 merce 0 lotti 26 al porto 4 con val 7
+Richiesta da porto 7 merce 3 lotti 18 al porto 4 con val 31
+Nave 8 deve skippare porto 4
+Attesa con spaziolibero 1: 1000
+2. stato nave 8 aggiornato
+Nave 8 parte
+Attesa con distanza 1: 0.000000
+Nave 8 arriva
+Nave 8 attraccata al porto 4
+0. stato nave 8 aggiornato
+Attesa con spaziolibero 2: 1000
+nave 8 in attesa dal giorno 9: giorno attuale: 9
+Parte esamina porto
+Richiesta da porto 7 merce 0 lotti 18 al porto 4 con val 7
+Richiesta da porto 9 merce 3 lotti 6 al porto 4 con val 31
+Richiesta da porto 9 merce 0 lotti 26 al porto 4 con val 7
+Richiesta da porto 1 merce 0 lotti 26 al porto 4 con val 7
+Richiesta da porto 0 merce 0 lotti 17 al porto 4 con val 7
+Richiesta da porto 0 merce 3 lotti 6 al porto 4 con val 31
+Nave 8 deve skippare porto 4
+Attesa con spaziolibero 1: 1000
+2. stato nave 8 aggiornato
+Nave 8 parte
+Attesa con distanza 1: 329.396228
+Nave 8 arriva
+Nave 8 attraccata al porto 8
+0. stato nave 8 aggiornato
+Attesa con spaziolibero 2: 1000
+nave 8 in attesa dal giorno 9: giorno attuale: 9
+Parte esamina porto
+Richiesta da porto 7 merce 3 lotti 18 al porto 8 con val 19
+Richiesta da porto 7 merce 0 lotti 18 al porto 8 con val 35
+Richiesta da porto 9 merce 3 lotti 6 al porto 8 con val 19
+Richiesta da porto 9 merce 0 lotti 26 al porto 8 con val 35
+Richiesta da porto 1 merce 0 lotti 26 al porto 8 con val 35
+Richiesta da porto 0 merce 0 lotti 17 al porto 8 con val 35
+Richiesta da porto 0 merce 3 lotti 6 al porto 8 con val 19
+Nave 8 deve skippare porto 8
+Attesa con spaziolibero 1: 1000
+2. stato nave 8 aggiornato
+Nave 8 parte
+Attesa con distanza 1: 544.594229
+Nave 8 arriva
+Nave 8 attraccata al porto 3
+0. stato nave 8 aggiornato
+Attesa con spaziolibero 2: 1000
+nave 8 in attesa dal giorno 9: giorno attuale: 9
+Parte esamina porto
+Richiesta da porto 6 merce 0 lotti 26 al porto 3 con val 18
+Richiesta da porto 7 merce 3 lotti 18 al porto 3 con val 26
+Richiesta da porto 7 merce 0 lotti 18 al porto 3 con val 18
+Richiesta da porto 9 merce 3 lotti 6 al porto 3 con val 26
+Richiesta da porto 9 merce 0 lotti 26 al porto 3 con val 18
+Nave 8 deve skippare porto 3
+Attesa con spaziolibero 1: 1000
+2. stato nave 8 aggiornato
+Nave 8 parte
+Attesa con distanza 1: 457.441291
+Nave 8 arriva
+Nave 8 attraccata al porto 4
+0. stato nave 8 aggiornato
+Attesa con spaziolibero 2: 1000
+nave 8 in attesa dal giorno 9: giorno attuale: 9
+Parte esamina porto
+Richiesta da porto 6 merce 0 lotti 26 al porto 4 con val 7
+Richiesta da porto 7 merce 3 lotti 18 al porto 4 con val 31
+Richiesta da porto 7 merce 0 lotti 18 al porto 4 con val 7
+Nave 8 deve skippare porto 4
+Attesa con spaziolibero 1: 1000
+2. stato nave 8 aggiornato
+Nave 8 parte
+Attesa con distanza 1: 0.000000
+Nave 8 arriva
+Nave 8 attraccata al porto 4
+0. stato nave 8 aggiornato
+Attesa con spaziolibero 2: 1000
+nave 8 in attesa dal giorno 9: giorno attuale: 9
+Parte esamina porto
+Richiesta da porto 9 merce 3 lotti 6 al porto 4 con val 31
+Richiesta da porto 9 merce 0 lotti 26 al porto 4 con val 7
+Richiesta da porto 1 merce 0 lotti 26 al porto 4 con val 7
+Richiesta da porto 0 merce 0 lotti 17 al porto 4 con val 7
+Richiesta da porto 0 merce 3 lotti 6 al porto 4 con val 31
+Nave 8 deve skippare porto 4
+Attesa con spaziolibero 1: 1000
+2. stato nave 8 aggiornato
+Nave 8 parte
+Attesa con distanza 1: 214.850028
+Nave 8 arriva
+Nave 8 attraccata al porto 0
+0. stato nave 8 aggiornato
+Attesa con spaziolibero 2: 1000
+nave 8 in attesa dal giorno 9: giorno attuale: 9
+Parte esamina porto
+Nave 8 deve skippare porto 0
+Attesa con spaziolibero 1: 1000
+2. stato nave 8 aggiornato
+Nave 8 parte
+Attesa con distanza 1: 214.850028
+Nave 8 arriva
+Nave 8 attraccata al porto 4
+0. stato nave 8 aggiornato
+Attesa con spaziolibero 2: 1000
+nave 8 in attesa dal giorno 9: giorno attuale: 9
+Parte esamina porto
+Richiesta ippare porto 5
+Attesa con spaziolibero 1: 1000
+2. stato nave 1 aggiornato
+Nave 1 parte
+Attesa con distanza 1: 255.073898
+Nave 1 arriva
+Nave 1 attraccata al porto 4
+0. stato nave 1 aggiornato
+Attesa con spaziolibero 2: 1000
+nave 1 in attesa dal giorno 9: giorno attuale: 9
+Parte esamina porto
+Richiesta da porto 2 merce 0 lotti 32 al porto 4 con val 7
+Richiesta da porto 2 merce 3 lotti 11 al porto 4 con val 31
+Nave 1 deve skippare porto 4
+Attesa con spaziolibero 1: 1000
+2. stato nave 1 aggiornato
+Nave 1 parte
+Attesa con distanza 1: 108.767247
+Nave 1 arriva
+Nave 1 attraccata al porto 6
+0. stato nave 1 aggiornato
+Attesa con spaziolibero 2: 1000
+nave 1 in attesa dal giorno 9: giorno attuale: 9
+Parte esamina porto
+Richiesta da porto 7 merce 3 lotti 18 al porto 6 con val 20
+Nave 1 deve skippare porto 6
+Attesa con spaziolibero 1: 1000
+2. stato nave 1 aggiornato
+Nave 1 parte
+Attesa con distanza 1: 295.654308
+Nave 1 arriva
+Nave 1 attraccata al porto 5
+0. stato nave 1 aggiornato
+Attesa con spaziolibero 2: 1000
+nave 1 in attesa dal giorno 9: giorno attuale: 9
+Parte esamina porto
+Richiesta da porto 6 merce 0 lotti 26 al porto 5 con val 11
+Richiesta da porto 7 merce 3 lotti 18 al porto 5 con val 16
+Richiesta da porto 7 merce 0 lotti 18 al porto 5 con val 11
+Nave 1 deve skippare porto 5
+Attesa con spaziolibero 1: 1000
+2. stato nave 1 aggiornato
+Nave 1 parte
+Attesa con distanza 1: 0.000000
+Nave 1 arriva
+Nave 1 attraccata al porto 5
+0. stato nave 1 aggiornato
+Attesa con spaziolibero 2: 1000
+nave 1 in attesa dal giorno 9: giorno attuale: 9
+Parte esamina porto
+Richiesta da porto 9 merce 3 lotti 6 al porto 5 con val 16
+Richiesta da porto 9 merce 0 lotti 26 al porto 5 con val 11
+Richiesta da porto 1 merce 0 lotti 26 al porto 5 con val 11
+Richiesta da porto 0 merce 0 lotti 17 al porto 5 con val 11
+Richiesta da porto 0 merce 3 lotti 6 al porto 5 con val 16
+Nave 1 deve skippare porto 5
+Attesa con spaziolibero 1: 1000
+2. stato nave 1 aggiornato
+Nave 1 parte
+Attesa con distanza 1: 431.232440
+Nave 1 arriva
+NAVE 1: ricevuto SIGUSR2. data: 10
+ave 0 aggiornato
+Attesa con spaziolibero 2: 1000
+nave 0 in attesa dal giorno 9: giorno attuale: 9
+Parte esamina porto
+Richiesta da porto 7 merce 3 lotti 18 al porto 3 con val 26
+Richiesta da porto 7 merce 0 lotti 18 al porto 3 con val 18
+Richiesta da porto 9 merce 3 lotti 6 al porto 3 con val 26
+Richiesta da porto 9 merce 0 lotti 26 al porto 3 con val 18
+Richiesta da porto 1 merce 0 lotti 26 al porto 3 con val 18
+Richiesta da porto 0 merce 0 lotti 17 al porto 3 con val 18
+Richiesta da porto 0 merce 3 lotti 6 al porto 3 con val 26
+Nave 0 deve skippare porto 3
+Attesa con spaziolibero 1: 1000
+2. stato nave 0 aggiornato
+Nave 0 parte
+Attesa con distanza 1: 457.441291
+Nave 0 arriva
+Nave 0 attraccata al porto 4
+0. stato nave 0 aggiornato
+Attesa con spaziolibero 2: 1000
+nave 0 in attesa dal giorno 9: giorno attuale: 9
+Parte esamina porto
+Richiesta da porto 6 merce 0 lotti 26 al porto 4 con val 7
+Richiesta da porto 7 merce 3 lotti 18 al porto 4 con val 31
+Richiesta da porto 7 merce 0 lotti 18 al porto 4 con val 7
+Richiesta da porto 9 merce 3 lotti 6 al porto 4 con val 31
+Richiesta da porto 0 merce 0 lotti 17 al porto 4 con val 7
+Richiesta da porto 0 merce 3 lotti 6 al porto 4 con val 31
+Richiesta da porto 2 merce 0 lotti 32 al porto 4 con val 7
+Nave 0 deve skippare porto 4
+Attesa con spaziolibero 1: 1000
+2. stato nave 0 aggiornato
+Nave 0 parte
+Attesa con distanza 1: 255.073898
+Nave 0 arriva
+Nave 0 attraccata al porto 5
+0. stato nave 0 aggiornato
+Attesa con spaziolibero 2: 1000
+nave 0 in attesa dal giorno 9: giorno attuale: 9
+Parte esamina porto
+Richiesta da porto 0 merce 3 lotti 6 al porto 5 con val 16
+Richiesta da porto 2 merce 0 lotti 32 al porto 5 con val 11
+Richiesta da porto 2 merce 3 lotti 11 al porto 5 con val 16
+Nave 0 deve skippare porto 5
+Attesa con spaziolibero 1: 1000
+2. stato nave 0 aggiornato
+Nave 0 parte
+Attesa con distanza 1: 431.232440
+Nave 0 arriva
+NAVE 0: ricevuto SIGUSR2. data: 10
+
+spaziolibero 0: 1000 SO_CAPACITY: 1000
+
+Nave 2 in posizione x:166.678000 y:364.812000 indice porto piu vicino 5 x:233.774000 y;339.242000
+Nave 2 inizia il viaggio
+Attesa con distanza 2: 71.803190
+0. stato nave 2 aggiornato
+Nave 2 ha ricevuto una banchina al porto 5
+Parte esamina porto
+Richiesta da porto 7 merce 0 lotti 24 al porto 5 con val 26
+nave 2 ha caricato 3 lotti di merce 0 spaziolibero: 217
+Parte carica dal porto
+nave 2 ha caricato 1 lotti di merce 3 spaziolibero: 36
+Nave 2 inizia a caricare
+Attesa con spaziolibero 1: 36
+*** NAVE 2: ricevuto SIGUSR1: data = 1 ***
+Nave 2 ha caricato
+3. stato nave 2 aggiornato
+Nave 2 parte
+Attesa con distanza 1: 257.864197
+Nave 2 arriva
+Nave 2 attraccata al porto 7
+1. stato nave 2 aggiornato
+Attesa con spaziolibero 2: 36
+*** NAVE 2: ricevuto SIGUSR1: data = 3 ***
+nave 2 in attesa dal giorno 3: giorno attuale: 3
+Nave 2 inizia a scaricare al porto 7. giorno 3
+Nave 2 ha scaricato al porto 7. giorno 3
+Parte esamina porto
+Richiesta da porto 0 merce 8 lotti 25 al porto 7 con val 13
+Richiesta da porto 0 merce 9 lotti 100 al porto 7 con val 26
+nave 2 ha caricato 26 lotti di merce 9 spaziolibero: 974
+Parte carica dal porto
+Nave 2 inizia a caricare
+Attesa con spaziolibero 1: 974
+Nave 2 ha caricato
+3. stato nave 2 aggiornato
+Nave 2 parte
+Attesa con distanza 1: 592.418122
+Nave 2 arriva
+*** NAVE 2: ricevuto SIGUSR1: data = 7 ***
+Nave 2 attraccata al porto 0
+1. stato nave 2 aggiornato
+Attesa con spaziolibero 2: 974
+nave 2 in attesa dal giorno 7: giorno attuale: 7
+Nave 2 inizia a scaricare al porto 0. giorno 7
+Nave 2 ha scaricato al porto 0. giorno 7
+Parte esamina porto
+Richiesta da porto 5 merce 5 lotti 19 al porto 0 con val 25
+Richiesta da porto 8 merce 5 lotti 24 al porto 0 con val 25
+Richiesta da porto 9 merce 5 lotti 18 al porto 0 con val 25
+Nave 2 deve skippare porto 0
+Attesa con spaziolibero 1: 1000
+2. stato nave 2 aggiornato
+Nave 2 parte
+Attesa con distanza 1: 500.000000
+Nave 2 arriva
+NAVE 2: ricevuto SIGUSR2. data: 10
+
+spaziolibero 0: 1000 SO_CAPACITY: 1000
+
+Nave 9 in posizione x:382.506000 y:410.030000 indice porto piu vicino 9 x:416.648000 y;284.952000
+Nave 9 inizia il viaggio
+Attesa con distanza 2: 129.654087
+0. stato nave 9 aggiornato
+Nave 9 ha ricevuto una banchina al porto 9
+Parte esamina porto
+Richiesta da porto 6 merce 1 lotti 20 al porto 9 con val 27
+nave 9 ha caricato 3 lotti di merce 1 spaziolibero: 85
+Parte carica dal porto
+nave 9 ha caricato 67 lotti di merce 9 spaziolibero: 18
 Nave 9 inizia a caricare
-Attesa con spaziolibero 1: 198
+Attesa con spaziolibero 1: 18
 *** NAVE 9: ricevuto SIGUSR1: data = 1 ***
 Nave 9 ha caricato
 3. stato nave 9 aggiornato
 Nave 9 parte
-Attesa con distanza 1: 159.165072
+Attesa con distanza 1: 261.902080
 Nave 9 arriva
-NAVE 9: ricevuto SIGUSR2. data: 2
+Nave 9 attraccata al porto 6
+1. stato nave 9 aggiornato
+Attesa con spaziolibero 2: 18
+*** NAVE 9: ricevuto SIGUSR1: data = 3 ***
+nave 9 in attesa dal giorno 3: giorno attuale: 3
+Nave 9 inizia a scaricare al porto 6. giorno 3
+Nave 9 ha scaricato al porto 6. giorno 3
+Parte esamina porto
+Richiesta da porto 4 merce 5 lotti 24 al porto 6 con val 17
+nave 9 ha caricato 2 lotti di merce 5 spaziolibero: 294
+Parte carica dal porto
+nave 9 ha caricato 1 lotti di merce 7 spaziolibero: 129
+Nave 9 inizia a caricare
+Attesa con spaziolibero 1: 129
+*** NAVE 9: ricevuto SIGUSR1: data = 5 ***
+Nave 9 ha caricato
+3. stato nave 9 aggiornato
+Nave 9 parte
+Attesa con distanza 1: 108.767247
+Nave 9 arriva
+Nave 9 attraccata al porto 4
+1. stato nave 9 aggiornato
+Attesa con spaziolibero 2: 129
+*** NAVE 9: ricevuto SIGUSR1: data = 7 ***
+nave 9 in attesa dal giorno 7: giorno attuale: 7
+Nave 9 inizia a scaricare al porto 4. giorno 7
+Nave 9 ha scaricato al porto 4. giorno 7
+Parte esamina porto
+Richiesta da porto 7 merce 0 lotti 18 al porto 4 con val 7
+Richiesta da porto 9 merce 0 lotti 26 al porto 4 con val 7
+Richiesta da porto 9 merce 3 lotti 6 al porto 4 con val 31
+Richiesta da porto 1 merce 0 lotti 26 al porto 4 con val 7
+Richiesta da porto 0 merce 0 lotti 17 al porto 4 con val 7
+Richiesta da porto 0 merce 3 lotti 6 al porto 4 con val 31
+Nave 9 deve skippare porto 4
+Attesa con spaziolibero 1: 1000
+2. stato nave 9 aggiornato
+Nave 9 parte
+Attesa con distanza 1: 315.709573
+Nave 9 arriva
+NAVE 9: ricevuto SIGUSR2. data: 10
+ al porto 4 con val 7
+Richiesta da porto 0 merce 3 lotti 6 al porto 4 con val 31
+Richiesta da porto 2 merce 0 lotti 32 al porto 4 con val 7
+Richiesta da porto 2 merce 3 lotti 11 al porto 4 con val 31
+Nave 17 deve skippare porto 4
+Attesa con spaziolibero 1: 1000
+2. stato nave 17 aggiornato
+Nave 17 parte
+Attesa con distanza 1: 108.767247
+Nave 17 arriva
+Nave 17 attraccata al porto 6
+0. stato nave 17 aggiornato
+Attesa con spaziolibero 2: 1000
+nave 17 in attesa dal giorno 9: giorno attuale: 9
+Parte esamina porto
+Richiesta da porto 9 merce 3 lotti 6 al porto 6 con val 20
+Richiesta da porto 0 merce 3 lotti 6 al porto 6 con val 20
+Nave 17 deve skippare porto 6
+Attesa con spaziolibero 1: 1000
+2. stato nave 17 aggiornato
+Nave 17 parte
+Attesa con distanza 1: 339.586441
+Nave 17 arriva
+Nave 17 attraccata al porto 7
+0. stato nave 17 aggiornato
+Attesa con spaziolibero 2: 1000
+nave 17 in attesa dal giorno 9: giorno attuale: 9
+Parte esamina porto
+Nave 17 deve skippare porto 7
+Attesa con spaziolibero 1: 1000
+2. stato nave 17 aggiornato
+Nave 17 parte
+Attesa con distanza 1: 592.418122
+Nave 17 arriva
+Nave 17 attraccata al porto 0
+0. stato nave 17 aggiornato
+Attesa con spaziolibero 2: 1000
+nave 17 in attesa dal giorno 9: giorno attuale: 9
+Parte esamina porto
+Nave 17 deve skippare porto 0
+Attesa con spaziolibero 1: 1000
+2. stato nave 17 aggiornato
+Nave 17 parte
+Attesa con distanza 1: 543.623835
+Nave 17 arriva
+Nave 17 attraccata al porto 8
+0. stato nave 17 aggiornato
+Attesa con spaziolibero 2: 1000
+nave 17 in attesa dal giorno 9: giorno attuale: 9
+Parte esamina porto
+Richiesta da porto 2 merce 3 lotti 11 al porto 8 con val 19
+Richiesta da porto 6 merce 0 lotti 26 al porto 8 con val 35
+Richiesta da porto 7 merce 3 lotti 18 al porto 8 con val 19
+Nave 17 deve skippare porto 8
+Attesa con spaziolibero 1: 1000
+2. stato nave 17 aggiornato
+Nave 17 parte
+Attesa con distanza 1: 0.000000
+Nave 17 arriva
+Nave 17 attraccata al porto 8
+0. stato nave 17 aggiornato
+Attesa con spaziolibero 2: 1000
+nave 17 in attesa dal giorno 9: giorno attuale: 9
+Parte esamina porto
+Richiesta da porto 7 merce 0 lotti 18 al porto 8 con val 35
+Richiesta da porto 9 merce 3 lotti 6 al porto 8 con val 19
+Richiesta da porto 9 merce 0 lotti 26 al porto 8 con val 35
+Richiesta da porto 1 merce 0 lotti 26 al porto 8 con val 35
+Richiesta da porto 0 merce 0 lotti 17 al porto 8 con val 35
+Richiesta da porto 0 merce 3 lotti 6 al porto 8 con val 19
+Nave 17 deve skippare porto 8
+Attesa con spaziolibero 1: 1000
+2. stato nave 17 aggiornato
+Nave 17 parte
+Attesa con distanza 1: 82.208392
+Nave 17 arriva
+Nave 17 attraccata al porto 7
+0. stato nave 17 aggiornato
+Attesa con spaziolibero 2: 1000
+nave 17 in attesa dal giorno 9: giorno attuale: 9
+Parte esamina porto
+Nave 17 deve skippare porto 7
+Attesa con spaziolibero 1: 1000
+2. stato nave 17 aggiornato
+Nave 17 parte
+Attesa con distanza 1: 82.208392
+Nave 17 arriva
+Nave 17 attraccata al porto 8
+0. stato nave 17 aggiornato
+Attesa con spaziolibero 2: 1000
+nave 17 in attesa dal giorno 9: giorno attuale: 9
+Parte esamina porto
+Richiesta da porto 7 merce 3 lotti 18 al porto 8 con val 19
+Richiesta da porto 7 merce 0 lotti 18 al porto 8 con val 35
+Richiesta da porto 9 merce 3 lotti 6 al porto 8 con val 19
+Richiesta da porto 9 merce 0 lotti 26 al porto 8 con val 35
+Richiesta da porto 1 merce 0 lotti 26 al porto 8 con val 35
+Richiesta da porto 0 merce 0 lotti 17 al porto 8 con val 35
+Richiesta da porto 0 merce 3 lotti 6 al porto 8 con val 19
+Nave 17 deve skippare porto 8
+Attesa con spaziolibero 1: 1000
+2. stato nave 17 aggiornato
+Nave 17 parte
+Attesa con distanza 1: 249.505259
+Nave 17 arriva
+NAVE 17: ricevuto SIGUSR2. data: 10
 
 spaziolibero 0: 1000 SO_CAPACITY: 1000
 
-Nave 14 in posizione x:336.044000 y:494.026000 indice porto piu vicino 2 x:500.000000 y;500.000000
-Nave 14 inizia il viaggio
-Attesa con distanza 2: 164.064800
-0. stato nave 14 aggiornato
-Nave 14 ha ricevuto una banchina al porto 2
+Nave 5 in posizione x:150.450000 y:322.526000 indice porto piu vicino 5 x:233.774000 y;339.242000
+Nave 5 inizia il viaggio
+Attesa con distanza 2: 84.984196
+0. stato nave 5 aggiornato
+Nave 5 ha ricevuto una banchina al porto 5
 Parte esamina porto
-Richiesta da porto 1 merce 2 lotti 55 al porto 2 con val 44
-nave 14 ha caricato 3 lotti di merce 2 spaziolibero: 85
+Richiesta da porto 0 merce 0 lotti 20 al porto 5 con val 20
+nave 5 ha caricato 3 lotti di merce 0 spaziolibero: 217
 Parte carica dal porto
-nave 14 ha caricato 17 lotti di merce 3 spaziolibero: 0
+nave 5 ha caricato 1 lotti di merce 3 spaziolibero: 36
+Nave 5 inizia a caricare
+Attesa con spaziolibero 1: 36
+*** NAVE 5: ricevuto SIGUSR1: data = 1 ***
+Nave 5 ha caricato
+3. stato nave 5 aggiornato
+Nave 5 parte
+Attesa con distanza 1: 411.989584
+Nave 5 arriva
+Nave 5 attraccata al porto 0
+1. stato nave 5 aggiornato
+Attesa con spaziolibero 2: 36
+*** NAVE 5: ricevuto SIGUSR1: data = 3 ***
+nave 5 in attesa dal giorno 3: giorno attuale: 3
+Nave 5 inizia a scaricare al porto 0. giorno 3
+Nave 5 ha scaricato al porto 0. giorno 3
+Parte esamina porto
+Richiesta da porto 3 merce 5 lotti 20 al porto 0 con val 27
+nave 5 ha caricato 2 lotti di merce 5 spaziolibero: 294
+Parte carica dal porto
+Nave 5 inizia a caricare
+Attesa con spaziolibero 1: 294
+*** NAVE 5: ricevuto SIGUSR1: data = 5 ***
+Nave 5 ha caricato
+3. stato nave 5 aggiornato
+Nave 5 parte
+Attesa con distanza 1: 500.000000
+Nave 5 arriva
+Nave 5 attraccata al porto 3
+1. stato nave 5 aggiornato
+Attesa con spaziolibero 2: 294
+*** NAVE 5: ricevuto SIGUSR1: data = 6 ***
+nave 5 in attesa dal giorno 6: giorno attuale: 6
+Nave 5 inizia a scaricare al porto 3. giorno 6
+Nave 5 ha scaricato al porto 3. giorno 6
+Parte esamina porto
+Richiesta da porto 6 merce 0 lotti 26 al porto 3 con val 18
+Richiesta da porto 7 merce 3 lotti 18 al porto 3 con val 26
+Richiesta da porto 7 merce 0 lotti 18 al porto 3 con val 18
+Richiesta da porto 9 merce 0 lotti 26 al porto 3 con val 18
+Richiesta da porto 9 merce 3 lotti 6 al porto 3 con val 26
+Nave 5 deve skippare porto 3
+Attesa con spaziolibero 1: 1000
+2. stato nave 5 aggiornato
+Nave 5 parte
+Attesa con distanza 1: 0.000000
+Nave 5 arriva
+Nave 5 attraccata al porto 3
+0. stato nave 5 aggiornato
+Attesa con spaziolibero 2: 1000
+nave 5 in attesa dal giorno 6: giorno attuale: 6
+Parte esamina porto
+Richiesta da porto 1 merce 0 lotti 26 al porto 3 con val 18
+Richiesta da porto 0 merce 0 lotti 17 al porto 3 con val 18
+Richiesta da porto 0 merce 3 lotti 6 al porto 3 con val 26
+Richiesta da porto 0 merce 9 lotti 74 al porto 3 con val 126
+Richiesta da porto 2 merce 0 lotti 32 al porto 3 con val 18
+Richiesta da porto 2 merce 3 lotti 11 al porto 3 con val 26
+Nave 5 deve skippare porto 3
+Attesa con spaziolibero 1: 1000
+2. stato nave 5 aggiornato
+Nave 5 parte
+Attesa con distanza 1: 539.596869
+Nave 5 arriva
+Nave 5 attraccata al porto 6
+0. stato nave 5 aggiornato
+Attesa con spaziolibero 2: 1000
+nave 5 in attesa dal giorno 6: giorno attuale: 6
+Parte esamina porto
+Richiesta da porto 2 merce 7 lotti 20 al porto 6 con val 19
+Richiesta da porto 5 merce 5 lotti 19 al porto 6 con val 15
+Richiesta da porto 5 merce 7 lotti 9 al porto 6 con val 19
+Richiesta da porto 8 merce 5 lotti 24 al porto 6 con val 15
+Richiesta da porto 7 merce 3 lotti 18 al porto 6 con val 20
+Richiesta da porto 7 merce 7 lotti 30 al porto 6 con val 19
+Nave 5 deve skippare porto 6
+Attesa con spaziolibero 1: 1000
+2. stato nave 5 aggiornato
+Nave 5 parte
+Attesa con distanza 1: 207.226400
+Nave 5 arriva
+NAVE 5: ricevuto SIGUSR2. data: 10
+
+spaziolibero 0: 1000 SO_CAPACITY: 1000
+
+Nave 10 in posizione x:156.348000 y:324.992000 indice porto piu vicino 5 x:233.774000 y;339.242000
+Nave 10 inizia il viaggio
+Attesa con distanza 2: 78.726412
+0. stato nave 10 aggiornato
+Nave 10 ha ricevuto una banchina al porto 5
+Parte esamina porto
+Richiesta da porto 9 merce 0 lotti 35 al porto 5 con val 23
+nave 10 ha caricato 3 lotti di merce 0 spaziolibero: 217
+Parte carica dal porto
+nave 10 ha caricato 1 lotti di merce 3 spaziolibero: 36
+Nave 10 inizia a caricare
+Attesa con spaziolibero 1: 36
+*** NAVE 10: ricevuto SIGUSR1: data = 1 ***
+Nave 10 ha caricato
+3. stato nave 10 aggiornato
+Nave 10 parte
+Attesa con distanza 1: 190.762428
+Nave 10 arriva
+Nave 10 attraccata al porto 9
+1. stato nave 10 aggiornato
+Attesa con spaziolibero 2: 36
+*** NAVE 10: ricevuto SIGUSR1: data = 3 ***
+nave 10 in attesa dal giorno 3: giorno attuale: 3
+Nave 10 inizia a scaricare al porto 9. giorno 3
+Nave 10 ha scaricato al porto 9. giorno 3
+Parte esamina porto
+Richiesta da porto 1 merce 7 lotti 14 al porto 9 con val 12
+nave 10 ha caricato 6 lotti di merce 7 spaziolibero: 10
+Parte carica dal porto
+Nave 10 inizia a caricare
+Attesa con spaziolibero 1: 10
+*** NAVE 10: ricevuto SIGUSR1: data = 5 ***
+Nave 10 ha caricato
+3. stato nave 10 aggiornato
+Nave 10 parte
+Attesa con distanza 1: 296.892570
+Nave 10 arriva
+*** NAVE 10: ricevuto SIGUSR1: data = 9 ***
+Nave 10 attraccata al porto 1
+1. stato nave 10 aggiornato
+Attesa con spaziolibero 2: 10
+NAVE 10: ricevuto SIGUSR2. data: 10
+da porto 2 merce 0 lotti 32 al porto 4 con val 7
+Richiesta da porto 2 merce 3 lotti 11 al porto 4 con val 31
+Richiesta da porto 6 merce 0 lotti 26 al porto 4 con val 7
+Nave 8 deve skippare porto 4
+Attesa con spaziolibero 1: 1000
+2. stato nave 8 aggiornato
+Nave 8 parte
+Attesa con distanza 1: 108.767247
+Nave 8 arriva
+Nave 8 attraccata al porto 6
+0. stato nave 8 aggiornato
+Attesa con spaziolibero 2: 1000
+nave 8 in attesa dal giorno 9: giorno attuale: 9
+Parte esamina porto
+Richiesta da porto 0 merce 3 lotti 6 al porto 6 con val 20
+Richiesta da porto 2 merce 3 lotti 11 al porto 6 con val 20
+Nave 8 deve skippare porto 6
+Attesa con spaziolibero 1: 1000
+2. stato nave 8 aggiornato
+Nave 8 parte
+Attesa con distanza 1: 539.596869
+Nave 8 arriva
+Nave 8 attraccata al porto 3
+0. stato nave 8 aggiornato
+Attesa con spaziolibero 2: 1000
+nave 8 in attesa dal giorno 9: giorno attuale: 9
+Parte esamina porto
+Richiesta da porto 6 merce 0 lotti 26 al porto 3 con val 18
+Richiesta da porto 7 merce 3 lotti 18 al porto 3 con val 26
+Richiesta da porto 7 merce 0 lotti 18 al porto 3 con val 18
+Richiesta da porto 9 merce 3 lotti 6 al porto 3 con val 26
+Nave 8 deve skippare porto 3
+Attesa con spaziolibero 1: 1000
+2. stato nave 8 aggiornato
+Nave 8 parte
+Attesa con distanza 1: 539.596869
+Nave 8 arriva
+Nave 8 attraccata al porto 6
+0. stato nave 8 aggiornato
+Attesa con spaziolibero 2: 1000
+nave 8 in attesa dal giorno 9: giorno attuale: 9
+Parte esamina porto
+Richiesta da porto 0 merce 3 lotti 6 al porto 6 con val 20
+Nave 8 deve skippare porto 6
+Attesa con spaziolibero 1: 1000
+2. stato nave 8 aggiornato
+Nave 8 parte
+Attesa con distanza 1: 339.586441
+Nave 8 arriva
+Nave 8 attraccata al porto 7
+0. stato nave 8 aggiornato
+Attesa con spaziolibero 2: 1000
+nave 8 in attesa dal giorno 9: giorno attuale: 9
+Parte esamina porto
+Nave 8 deve skippare porto 7
+Attesa con spaziolibero 1: 1000
+2. stato nave 8 aggiornato
+Nave 8 parte
+Attesa con distanza 1: 382.733516
+Nave 8 arriva
+Nave 8 attraccata al porto 4
+0. stato nave 8 aggiornato
+Attesa con spaziolibero 2: 1000
+nave 8 in attesa dal giorno 9: giorno attuale: 9
+Parte esamina porto
+Richiesta da porto 7 merce 0 lotti 18 al porto 4 con val 7
+Richiesta da porto 9 merce 3 lotti 6 al porto 4 con val 31
+Richiesta da porto 9 merce 0 lotti 26 al porto 4 con val 7
+Richiesta da porto 1 merce 0 lotti 26 al porto 4 con val 7
+Richiesta da porto 0 merce 0 lotti 17 al porto 4 con val 7
+Richiesta da porto 0 merce 3 lotti 6 al porto 4 con val 31
+Nave 8 deve skippare porto 4
+Attesa con spaziolibero 1: 1000
+2. stato nave 8 aggiornato
+Nave 8 parte
+Attesa con distanza 1: 315.709573
+Nave 8 arriva
+NAVE 8: ricevuto SIGUSR2. data: 10
+ttuale: 9
+Parte esamina porto
+Nave 12 deve skippare porto 0
+Attesa con spaziolibero 1: 1000
+2. stato nave 12 aggiornato
+Nave 12 parte
+Attesa con distanza 1: 0.000000
+Nave 12 arriva
+Nave 12 attraccata al porto 0
+0. stato nave 12 aggiornato
+Attesa con spaziolibero 2: 1000
+nave 12 in attesa dal giorno 9: giorno attuale: 9
+Parte esamina porto
+Nave 12 deve skippare porto 0
+Attesa con spaziolibero 1: 1000
+2. stato nave 12 aggiornato
+Nave 12 parte
+Attesa con distanza 1: 500.000000
+Nave 12 arriva
+NAVE 12: ricevuto SIGUSR2. data: 10
+
+spaziolibero 0: 1000 SO_CAPACITY: 1000
+
+Nave 3 in posizione x:78.174000 y:444.952000 indice porto piu vicino 3 x:0.000000 y;500.000000
+Nave 3 inizia il viaggio
+Attesa con distanza 2: 95.610965
+0. stato nave 3 aggiornato
+Nave 3 ha ricevuto una banchina al porto 3
+Parte esamina porto
+Richiesta da porto 4 merce 7 lotti 25 al porto 3 con val 17
+nave 3 ha caricato 6 lotti di merce 7 spaziolibero: 10
+Parte carica dal porto
+Nave 3 inizia a caricare
+Attesa con spaziolibero 1: 10
+*** NAVE 3: ricevuto SIGUSR1: data = 1 ***
+Nave 3 ha caricato
+3. stato nave 3 aggiornato
+Nave 3 parte
+Attesa con distanza 1: 457.441291
+Nave 3 arriva
+Nave 3 attraccata al porto 4
+1. stato nave 3 aggiornato
+Attesa con spaziolibero 2: 10
+*** NAVE 3: ricevuto SIGUSR1: data = 3 ***
+nave 3 in attesa dal giorno 3: giorno attuale: 3
+Nave 3 inizia a scaricare al porto 4. giorno 3
+Nave 3 ha scaricato al porto 4. giorno 3
+Parte esamina porto
+Richiesta da porto 6 merce 4 lotti 20 al porto 4 con val 17
+Richiesta da porto 6 merce 0 lotti 32 al porto 4 con val 10
+nave 3 ha caricato 3 lotti di merce 0 spaziolibero: 217
+Parte carica dal porto
+Nave 3 inizia a caricare
+Attesa con spaziolibero 1: 217
+*** NAVE 3: ricevuto SIGUSR1: data = 5 ***
+Nave 3 ha caricato
+3. stato nave 3 aggiornato
+Nave 3 parte
+Attesa con distanza 1: 108.767247
+Nave 3 arriva
+Nave 3 attraccata al porto 6
+1. stato nave 3 aggiornato
+Attesa con spaziolibero 2: 217
+*** NAVE 3: ricevuto SIGUSR1: data = 7 ***
+nave 3 in attesa dal giorno 7: giorno attuale: 7
+Nave 3 inizia a scaricare al porto 6. giorno 7
+Nave 3 ha scaricato al porto 6. giorno 7
+Parte esamina porto
+Richiesta da porto 9 merce 3 lotti 6 al porto 6 con val 20
+Richiesta da porto 1 merce 7 lotti 8 al porto 6 con val 19
+Richiesta da porto 0 merce 3 lotti 6 al porto 6 con val 20
+Richiesta da porto 0 merce 7 lotti 20 al porto 6 con val 19
+Richiesta da porto 3 merce 5 lotti 18 al porto 6 con val 15
+Richiesta da porto 4 merce 7 lotti 12 al porto 6 con val 19
+Richiesta da porto 4 merce 5 lotti 22 al porto 6 con val 15
+Nave 3 deve skippare porto 6
+Attesa con spaziolibero 1: 1000
+2. stato nave 3 aggiornato
+Nave 3 parte
+Attesa con distanza 1: 0.000000
+Nave 3 arriva
+Nave 3 attraccata al porto 6
+0. stato nave 3 aggiornato
+Attesa con spaziolibero 2: 1000
+nave 3 in attesa dal giorno 7: giorno attuale: 7
+Parte esamina porto
+Richiesta da porto 2 merce 3 lotti 11 al porto 6 con val 20
+Richiesta da porto 2 merce 7 lotti 20 al porto 6 con val 19
+Richiesta da porto 5 merce 5 lotti 19 al porto 6 con val 15
+Richiesta da porto 5 merce 7 lotti 9 al porto 6 con val 19
+Richiesta da porto 8 merce 5 lotti 24 al porto 6 con val 15
+Richiesta da porto 7 merce 3 lotti 18 al porto 6 con val 20
+Richiesta da porto 7 merce 7 lotti 30 al porto 6 con val 19
+Nave 3 deve skippare porto 6
+Attesa con spaziolibero 1: 1000
+2. stato nave 3 aggiornato
+Nave 3 parte
+Attesa con distanza 1: 207.226400
+Nave 3 arriva
+NAVE 3: ricevuto SIGUSR2. data: 10
+ti 26 al porto 8 con val 35
+Richiesta da porto 0 merce 0 lotti 17 al porto 8 con val 35
+Richiesta da porto 0 merce 3 lotti 6 al porto 8 con val 19
+Nave 7 deve skippare porto 8
+Attesa con spaziolibero 1: 1000
+2. stato nave 7 aggiornato
+Nave 7 parte
+Attesa con distanza 1: 251.612548
+Nave 7 arriva
+Nave 7 attraccata al porto 2
+0. stato nave 7 aggiornato
+Attesa con spaziolibero 2: 1000
+nave 7 in attesa dal giorno 9: giorno attuale: 9
+Parte esamina porto
+Nave 7 deve skippare porto 2
+Attesa con spaziolibero 1: 1000
+2. stato nave 7 aggiornato
+Nave 7 parte
+Attesa con distanza 1: 500.000000
+Nave 7 arriva
+NAVE 7: ricevuto SIGUSR2. data: 10
+val 19
+Richiesta da porto 6 merce 0 lotti 26 al porto 8 con val 35
+Nave 4 deve skippare porto 8
+Attesa con spaziolibero 1: 1000
+2. stato nave 4 aggiornato
+Nave 4 parte
+Attesa con distanza 1: 329.396228
+Nave 4 arriva
+Nave 4 attraccata al porto 4
+0. stato nave 4 aggiornato
+Attesa con spaziolibero 2: 1000
+nave 4 in attesa dal giorno 9: giorno attuale: 9
+Parte esamina porto
+Richiesta da porto 6 merce 0 lotti 26 al porto 4 con val 7
+Richiesta da porto 7 merce 3 lotti 18 al porto 4 con val 31
+Richiesta da porto 7 merce 0 lotti 18 al porto 4 con val 7
+Nave 4 deve skippare porto 4
+Attesa con spaziolibero 1: 1000
+2. stato nave 4 aggiornato
+Nave 4 parte
+Attesa con distanza 1: 315.709573
+Nave 4 arriva
+NAVE 4: ricevuto SIGUSR2. data: 10
+
+spaziolibero 0: 1000 SO_CAPACITY: 1000
+
+Nave 6 in posizione x:202.566000 y:2.966000 indice porto piu vicino 4 x:196.488000 y;86.908000
+Nave 6 inizia il viaggio
+Attesa con distanza 2: 84.161758
+0. stato nave 6 aggiornato
+Nave 6 ha ricevuto una banchina al porto 4
+Parte esamina porto
+Richiesta da porto 1 merce 4 lotti 23 al porto 4 con val 25
+nave 6 ha caricato 8 lotti di merce 4 spaziolibero: 96
+Parte carica dal porto
+Nave 6 inizia a caricare
+Attesa con spaziolibero 1: 96
+*** NAVE 6: ricevuto SIGUSR1: data = 1 ***
+Nave 6 ha caricato
+3. stato nave 6 aggiornato
+Nave 6 parte
+Attesa con distanza 1: 315.709573
+Nave 6 arriva
+Nave 6 attraccata al porto 1
+1. stato nave 6 aggiornato
+Attesa con spaziolibero 2: 96
+*** NAVE 6: ricevuto SIGUSR1: data = 3 ***
+nave 6 in attesa dal giorno 3: giorno attuale: 3
+Nave 6 inizia a scaricare al porto 1. giorno 3
+Nave 6 ha scaricato al porto 1. giorno 3
+Parte esamina porto
+Richiesta da porto 3 merce 6 lotti 21 al porto 1 con val 23
+Richiesta da porto 4 merce 2 lotti 20 al porto 1 con val 36
+Richiesta da porto 2 merce 1 lotti 21 al porto 1 con val 23
+Richiesta da porto 2 merce 3 lotti 16 al porto 1 con val 15
+nave 6 ha caricato 5 lotti di merce 3 spaziolibero: 95
+Parte carica dal porto
+Nave 6 inizia a caricare
+Attesa con spaziolibero 1: 95
+*** NAVE 6: ricevuto SIGUSR1: data = 5 ***
+Nave 6 ha caricato
+3. stato nave 6 aggiornato
+Nave 6 parte
+Attesa con distanza 1: 500.000000
+Nave 6 arriva
+Nave 6 attraccata al porto 2
+1. stato nave 6 aggiornato
+Attesa con spaziolibero 2: 95
+*** NAVE 6: ricevuto SIGUSR1: data = 7 ***
+nave 6 in attesa dal giorno 7: giorno attuale: 7
+Nave 6 inizia a scaricare al porto 2. giorno 7
+Nave 6 ha scaricato al porto 2. giorno 7
+Parte esamina porto
+Richiesta da porto 9 merce 5 lotti 18 al porto 2 con val 19
+Richiesta da porto 0 merce 9 lotti 74 al porto 2 con val 55
+Richiesta da porto 3 merce 5 lotti 18 al porto 2 con val 19
+Nave 6 deve skippare porto 2
+Attesa con spaziolibero 1: 1000
+2. stato nave 6 aggiornato
+Nave 6 parte
+Attesa con distanza 1: 500.000000
+Nave 6 arriva
+NAVE 6: ricevuto SIGUSR2. data: 10
+
+spaziolibero 0: 1000 SO_CAPACITY: 1000
+
+Nave 14 in posizione x:18.194000 y:398.734000 indice porto piu vicino 3 x:0.000000 y;500.000000
+Nave 14 inizia il viaggio
+Attesa con distanza 2: 102.887436
+0. stato nave 14 aggiornato
+Nave 14 ha ricevuto una banchina al porto 3
+Parte esamina porto
+Richiesta da porto 5 merce 7 lotti 15 al porto 3 con val 11
+nave 14 ha caricato 6 lotti di merce 7 spaziolibero: 10
+Parte carica dal porto
+nave 14 ha caricato 10 lotti di merce 9 spaziolibero: 0
 Nave 14 inizia a caricare
 Attesa con spaziolibero 1: 0
-NAVE 14: ricevuto SIGUSR2. data: 2
-
-spaziolibero 0: 1000 SO_CAPACITY: 1000
-
-Nave 15 in posizione x:244.276000 y:262.198000 indice porto piu vicino 5 x:310.540000 y;188.792000
-Nave 15 inizia il viaggio
-Attesa con distanza 2: 98.890639
+*** NAVE 14: ricevuto SIGUSR1: data = 2 ***
+Nave 14 ha caricato
+3. stato nave 14 aggiornato
+Nave 14 parte
+Attesa con distanza 1: 283.713619
+Nave 14 arriva
+*** NAVE 14: ricevuto SIGUSR1: data = 3 ***
+Nave 14 attraccata al porto 5
+1. stato nave 14 aggiornato
+Attesa con spaziolibero 2: 0
+*** NAVE 14: ricevuto SIGUSR1: data = 5 ***
+nave 14 in attesa dal giorno 5: giorno attuale: 5
+Nave 14 inizia a scaricare al porto 5. giorno 5
+Nave 14 ha scaricato al porto 5. giorno 5
+Parte esamina porto
+Richiesta da porto 2 merce 4 lotti 20 al porto 5 con val 11
+Richiesta da porto 6 merce 4 lotti 20 al porto 5 con val 11
+Richiesta da porto 6 merce 0 lotti 29 al porto 5 con val 14
+nave 14 ha caricato 3 lotti di merce 0 spaziolibero: 217
+Parte carica dal porto
+Nave 14 inizia a caricare
+Attesa con spaziolibero 1: 217
+*** NAVE 14: ricevuto SIGUSR1: data = 7 ***
+Nave 14 ha caricato
+3. stato nave 14 aggiornato
+Nave 14 parte
+Attesa con distanza 1: 295.654308
+Nave 14 arriva
+Nave 14 attraccata al porto 6
+1. stato nave 14 aggiornato
+Attesa con spaziolibero 2: 217
+*** NAVE 14: ricevuto SIGUSR1: data = 8 ***
+nave 14 in attesa dal giorno 8: giorno attuale: 8
+Nave 14 inizia a scaricare al porto 6. giorno 8
+Nave 14 ha scaricato al porto 6. giorno 8
+Parte esamina porto
+Richiesta da porto 1 merce 7 lotti 8 al porto 6 con val 19
+Richiesta da porto 0 merce 3 lotti 6 al porto 6 con val 20
+Richiesta da porto 0 merce 7 lotti 20 al porto 6 con val 19
+Richiesta da porto 3 merce 5 lotti 18 al porto 6 con val 15
+Richiesta da porto 4 merce 7 lotti 12 al porto 6 con val 19
+Richiesta da porto 4 merce 5 lotti 22 al porto 6 con val 15
+Richiesta da porto 2 merce 3 lotti 11 al porto 6 con val 20
+Nave 14 deve skippare porto 6
+Attesa con spaziolibero 1: 1000
+2. stato nave 14 aggiornato
+Nave 14 parte
+Attesa con distanza 1: 207.226400
+Nave 14 arriva
+NAVE 14: ricevuto SIGUSR2. data: 10
+on distanza 1: 500.000000
+Nave 16 arriva
+Nave 16 attraccata al porto 0
+0. stato nave 16 aggiornato
+Attesa con spaziolibero 2: 1000
+nave 16 in attesa dal giorno 9: giorno attuale: 9
+Parte esamina porto
+Nave 16 deve skippare porto 0
+Attesa con spaziolibero 1: 1000
+2. stato nave 16 aggiornato
+Nave 16 parte
+Attesa con distanza 1: 0.000000
+Nave 16 arriva
+Nave 16 attraccata al porto 0
+0. stato nave 16 aggiornato
+Attesa con spaziolibero 2: 1000
+nave 16 in attesa dal giorno 9: giorno attuale: 9
+Parte esamina porto
+Nave 16 deve skippare porto 0
+Attesa con spaziolibero 1: 1000
+2. stato nave 16 aggiornato
+Nave 16 parte
+Attesa con distanza 1: 543.623835
+Nave 16 arriva
+Nave 16 attraccata al porto 8
+0. stato nave 16 aggiornato
+Attesa con spaziolibero 2: 1000
+nave 16 in attesa dal giorno 9: giorno attuale: 9
+Parte esamina porto
+Richiesta da porto 9 merce 0 lotti 26 al porto 8 con val 35
+Richiesta da porto 1 merce 0 lotti 26 al porto 8 con val 35
+Richiesta da porto 2 merce 3 lotti 11 al porto 8 con val 19
+Nave 16 deve skippare porto 8
+Attesa con spaziolibero 1: 1000
+2. stato nave 16 aggiornato
+Nave 16 parte
+Attesa con distanza 1: 329.396228
+Nave 16 arriva
+Nave 16 attraccata al porto 4
+0. stato nave 16 aggiornato
+Attesa con spaziolibero 2: 1000
+nave 16 in attesa dal giorno 9: giorno attuale: 9
+Parte esamina porto
+Richiesta da porto 9 merce 0 lotti 26 al porto 4 con val 7
+Richiesta da porto 1 merce 0 lotti 26 al porto 4 con val 7
+Richiesta da porto 0 merce 0 lotti 17 al porto 4 con val 7
+Richiesta da porto 0 merce 3 lotti 6 al porto 4 con val 31
+Richiesta da porto 2 merce 0 lotti 32 al porto 4 con val 7
+Nave 16 deve skippare porto 4
+Attesa con spaziolibero 1: 1000
+2. stato nave 16 aggiornato
+Nave 16 parte
+Attesa con distanza 1: 512.605633
+Nave 16 arriva
+Nave 16 attraccata al porto 2
+0. stato nave 16 aggiornato
+Attesa con spaziolibero 2: 1000
+nave 16 in attesa dal giorno 9: giorno attuale: 9
+Parte esamina porto
+Nave 16 deve skippare porto 2
+Attesa con spaziolibero 1: 1000
+2. stato nave 16 aggiornato
+Nave 16 parte
+Attesa con distanza 1: 169.473395
+Nave 16 arriva
+Nave 16 attraccata al porto 7
+0. stato nave 16 aggiornato
+Attesa con spaziolibero 2: 1000
+nave 16 in attesa dal giorno 9: giorno attuale: 9
+Parte esamina porto
+Nave 16 deve skippare porto 7
+Attesa con spaziolibero 1: 1000
+2. stato nave 16 aggiornato
+Nave 16 parte
+Attesa con distanza 1: 592.418122
+Nave 16 arriva
+Nave 16 attraccata al porto 0
+0. stato nave 16 aggiornato
+Attesa con spaziolibero 2: 1000
+nave 16 in attesa dal giorno 9: giorno attuale: 9
+Parte esamina porto
+Nave 16 deve skippare porto 0
+Attesa con spaziolibero 1: 1000
+2. stato nave 16 aggiornato
+Nave 16 parte
+Attesa con distanza 1: 500.000000
+Nave 16 arriva
+NAVE 16: ricevuto SIGUSR2. data: 10
+0
+nave 13 in attesa dal giorno 9: giorno attuale: 9
+Parte esamina porto
+Richiesta da porto 7 merce 3 lotti 18 al porto 8 con val 19
+Richiesta da porto 7 merce 0 lotti 18 al porto 8 con val 35
+Richiesta da porto 9 merce 3 lotti 6 al porto 8 con val 19
+Richiesta da porto 9 merce 0 lotti 26 al porto 8 con val 35
+Richiesta da porto 1 merce 0 lotti 26 al porto 8 con val 35
+Richiesta da porto 0 merce 0 lotti 17 al porto 8 con val 35
+Nave 13 deve skippare porto 8
+Attesa con spaziolibero 1: 1000
+2. stato nave 13 aggiornato
+Nave 13 parte
+Attesa con distanza 1: 249.505259
+Nave 13 arriva
+NAVE 13: ricevuto SIGUSR2. data: 10
+ccata al porto 2
 0. stato nave 15 aggiornato
-Nave 15 ha ricevuto una banchina al porto 5
+Attesa con spaziolibero 2: 1000
+nave 15 in attesa dal giorno 9: giorno attuale: 9
 Parte esamina porto
-Richiesta da porto 6 merce 4 lotti 78 al porto 5 con val 196
-nave 15 ha caricato 78 lotti di merce 4 spaziolibero: 922
-Parte carica dal porto
-Nave 15 inizia a caricare
-Attesa con spaziolibero 1: 922
-Nave 15 ha caricato
-3. stato nave 15 aggiornato
+Nave 15 deve skippare porto 2
+Attesa con spaziolibero 1: 1000
+2. stato nave 15 aggiornato
 Nave 15 parte
-Attesa con distanza 1: 175.945840
+Attesa con distanza 1: 707.106781
 Nave 15 arriva
-Nave 15 attraccata al porto 6
-1. stato nave 15 aggiornato
-Attesa con spaziolibero 2: 922
-nave 15 in attesa dal giorno 0: giorno attuale: 0
-Nave 15 inizia a scaricare al porto 6. giorno 0
-Nave 15 ha scaricato al porto 6. giorno 0
+Nave 15 attraccata al porto 0
+0. stato nave 15 aggiornato
+Attesa con spaziolibero 2: 1000
+nave 15 in attesa dal giorno 9: giorno attuale: 9
 Parte esamina porto
-Richiesta da porto 3 merce 2 lotti 56 al porto 6 con val 49
-nave 15 ha caricato 3 lotti di merce 2 spaziolibero: 85
-Parte carica dal porto
-Nave 15 inizia a caricare
-Attesa con spaziolibero 1: 85
-NAVE 15: ricevuto SIGUSR2. data: 2
-
-spaziolibero 0: 1000 SO_CAPACITY: 1000
-
-Nave 17 in posizione x:226.854000 y:88.952000 indice porto piu vicino 5 x:310.540000 y;188.792000
-Nave 17 inizia il viaggio
-Attesa con distanza 2: 130.274219
-0. stato nave 17 aggiornato
-Nave 17 ha ricevuto una banchina al porto 5
+Nave 15 deve skippare porto 0
+Attesa con spaziolibero 1: 1000
+2. stato nave 15 aggiornato
+Nave 15 parte
+Attesa con distanza 1: 214.850028
+Nave 15 arriva
+Nave 15 attraccata al porto 4
+0. stato nave 15 aggiornato
+Attesa con spaziolibero 2: 1000
+nave 15 in attesa dal giorno 9: giorno attuale: 9
 Parte esamina porto
-Richiesta da porto 2 merce 0 lotti 63 al porto 5 con val 32
-nave 17 ha caricato 4 lotti di merce 0 spaziolibero: 20
-Parte carica dal porto
-Nave 17 inizia a caricare
-Attesa con spaziolibero 1: 20
-NAVE 17: ricevuto SIGUSR2. data: 2
+Richiesta da porto 7 merce 0 lotti 18 al porto 4 con val 7
+Richiesta da porto 9 merce 0 lotti 26 al porto 4 con val 7
+Richiesta da porto 0 merce 0 lotti 17 al porto 4 con val 7
+Richiesta da porto 0 merce 3 lotti 6 al porto 4 con val 31
+Richiesta da porto 2 merce 0 lotti 32 al porto 4 con val 7
+Richiesta da porto 2 merce 3 lotti 11 al porto 4 con val 31
+Nave 15 deve skippare porto 4
+Attesa con spaziolibero 1: 1000
+2. stato nave 15 aggiornato
+Nave 15 parte
+Attesa con distanza 1: 315.709573
+Nave 15 arriva
+NAVE 15: ricevuto SIGUSR2. data: 10
+ al porto 3 con val 26
+Richiesta da porto 1 merce 0 lotti 26 al porto 3 con val 18
+Richiesta da porto 0 merce 0 lotti 17 al porto 3 con val 18
+Richiesta da porto 0 merce 3 lotti 6 al porto 3 con val 26
+Nave 11 deve skippare porto 3
+Attesa con spaziolibero 1: 1000
+2. stato nave 11 aggiornato
+Nave 11 parte
+Attesa con distanza 1: 519.826155
+Nave 11 arriva
+Nave 11 attraccata al porto 7
+0. stato nave 11 aggiornato
+Attesa con spaziolibero 2: 1000
+nave 11 in attesa dal giorno 7: giorno attuale: 7
+Parte esamina porto
+Richiesta da porto 3 merce 5 lotti 18 al porto 7 con val 27
+Richiesta da porto 4 merce 5 lotti 22 al porto 7 con val 27
+Richiesta da porto 5 merce 5 lotti 19 al porto 7 con val 27
+Nave 11 deve skippare porto 7
+Attesa con spaziolibero 1: 1000
+2. stato nave 11 aggiornato
+Nave 11 parte
+Attesa con distanza 1: 330.849258
+Nave 11 arriva
+NAVE 11: ricevuto SIGUSR2. data: 10
+rriva
+Nave 18 attraccata al porto 4
+0. stato nave 18 aggiornato
+Attesa con spaziolibero 2: 1000
+nave 18 in attesa dal giorno 6: giorno attuale: 6
+Parte esamina porto
+Richiesta da porto 6 merce 0 lotti 26 al porto 4 con val 7
+Richiesta da porto 6 merce 1 lotti 17 al porto 4 con val 24
+Richiesta da porto 7 merce 3 lotti 18 al porto 4 con val 31
+Richiesta da porto 7 merce 0 lotti 18 al porto 4 con val 7
+Richiesta da porto 7 merce 1 lotti 27 al porto 4 con val 24
+Richiesta da porto 9 merce 0 lotti 26 al porto 4 con val 7
+Richiesta da porto 9 merce 3 lotti 6 al porto 4 con val 31
+Nave 18 deve skippare porto 4
+Attesa con spaziolibero 1: 1000
+2. stato nave 18 aggiornato
+Nave 18 parte
+Attesa con distanza 1: 512.605633
+Nave 18 arriva
+Nave 18 attraccata al porto 2
+0. stato nave 18 aggiornato
+Attesa con spaziolibero 2: 1000
+nave 18 in attesa dal giorno 6: giorno attuale: 6
+Parte esamina porto
+Richiesta da porto 0 merce 9 lotti 74 al porto 2 con val 55
+Richiesta da porto 3 merce 5 lotti 18 al porto 2 con val 19
+Richiesta da porto 4 merce 5 lotti 22 al porto 2 con val 19
+Nave 18 deve skippare porto 2
+Attesa con spaziolibero 1: 1000
+2. stato nave 18 aggiornato
+Nave 18 parte
+Attesa con distanza 1: 310.997456
+Nave 18 arriva
+Nave 18 attraccata al porto 5
+0. stato nave 18 aggiornato
+Attesa con spaziolibero 2: 1000
+nave 18 in attesa dal giorno 6: giorno attuale: 6
+Parte esamina porto
+Richiesta da porto 6 merce 0 lotti 26 al porto 5 con val 11
+Richiesta da porto 7 merce 3 lotti 18 al porto 5 con val 16
+Richiesta da porto 7 merce 0 lotti 18 al porto 5 con val 11
+Nave 18 deve skippare porto 5
+Attesa con spaziolibero 1: 1000
+2. stato nave 18 aggiornato
+Nave 18 parte
+Attesa con distanza 1: 255.073898
+Nave 18 arriva
+Nave 18 attraccata al porto 4
+0. stato nave 18 aggiornato
+Attesa con spaziolibero 2: 1000
+nave 18 in attesa dal giorno 6: giorno attuale: 6
+Parte esamina porto
+Richiesta da porto 9 merce 0 lotti 26 al porto 4 con val 7
+Richiesta da porto 9 merce 3 lotti 6 al porto 4 con val 31
+Richiesta da porto 1 merce 0 lotti 26 al porto 4 con val 7
+Richiesta da porto 0 merce 0 lotti 17 al porto 4 con val 7
+Richiesta da porto 0 merce 3 lotti 6 al porto 4 con val 31
+Richiesta da porto 3 merce 1 lotti 25 al porto 4 con val 24
+Nave 18 deve skippare porto 4
+Attesa con spaziolibero 1: 1000
+2. stato nave 18 aggiornato
+Nave 18 parte
+Attesa con distanza 1: 108.767247
+Nave 18 arriva
+Nave 18 attraccata al porto 6
+0. stato nave 18 aggiornato
+Attesa con spaziolibero 2: 1000
+nave 18 in attesa dal giorno 6: giorno attuale: 6
+Parte esamina porto
+Richiesta da porto 4 merce 5 lotti 22 al porto 6 con val 15
+Richiesta da porto 2 merce 3 lotti 11 al porto 6 con val 20
+Richiesta da porto 2 merce 7 lotti 20 al porto 6 con val 19
+Richiesta da porto 5 merce 5 lotti 19 al porto 6 con val 15
+Richiesta da porto 5 merce 7 lotti 9 al porto 6 con val 19
+Richiesta da porto 8 merce 5 lotti 24 al porto 6 con val 15
+Richiesta da porto 7 merce 3 lotti 18 al porto 6 con val 20
+Nave 18 deve skippare porto 6
+Attesa con spaziolibero 1: 1000
+2. stato nave 18 aggiornato
+Nave 18 parte
+Attesa con distanza 1: 539.596869
+Nave 18 arriva
+Nave 18 attraccata al porto 3
+0. stato nave 18 aggiornato
+Attesa con spaziolibero 2: 1000
+nave 18 in attesa dal giorno 6: giorno attuale: 6
+Parte esamina porto
+Richiesta da porto 7 merce 0 lotti 18 al porto 3 con val 18
+Richiesta da porto 9 merce 0 lotti 26 al porto 3 con val 18
+Richiesta da porto 9 merce 3 lotti 6 al porto 3 con val 26
+Richiesta da porto 1 merce 0 lotti 26 al porto 3 con val 18
+Richiesta da porto 0 merce 0 lotti 17 al porto 3 con val 18
+Richiesta da porto 0 merce 3 lotti 6 al porto 3 con val 26
+Richiesta da porto 0 merce 9 lotti 74 al porto 3 con val 126
+Nave 18 deve skippare porto 3
+Attesa con spaziolibero 1: 1000
+2. stato nave 18 aggiornato
+Nave 18 parte
+Attesa con distanza 1: 707.106781
+Nave 18 arriva
+NAVE 18: ricevuto SIGUSR2. data: 10
+samina porto
+Nave 19 deve skippare porto 0
+Attesa con spaziolibero 1: 1000
+2. stato nave 19 aggiornato
+Nave 19 parte
+Attesa con distanza 1: 592.418122
+Nave 19 arriva
+Nave 19 attraccata al porto 7
+0. stato nave 19 aggiornato
+Attesa con spaziolibero 2: 1000
+nave 19 in attesa dal giorno 9: giorno attuale: 9
+Parte esamina porto
+Nave 19 deve skippare porto 7
+Attesa con spaziolibero 1: 1000
+2. stato nave 19 aggiornato
+Nave 19 parte
+Attesa con distanza 1: 382.733516
+Nave 19 arriva
+Nave 19 attraccata al porto 4
+0. stato nave 19 aggiornato
+Attesa con spaziolibero 2: 1000
+nave 19 in attesa dal giorno 9: giorno attuale: 9
+Parte esamina porto
+Richiesta da porto 9 merce 3 lotti 6 al porto 4 con val 31
+Richiesta da porto 9 merce 0 lotti 26 al porto 4 con val 7
+Richiesta da porto 1 merce 0 lotti 26 al porto 4 con val 7
+Richiesta da porto 0 merce 0 lotti 17 al porto 4 con val 7
+Richiesta da porto 0 merce 3 lotti 6 al porto 4 con val 31
+Nave 19 deve skippare porto 4
+Attesa con spaziolibero 1: 1000
+2. stato nave 19 aggiornato
+Nave 19 parte
+Attesa con distanza 1: 315.709573
+Nave 19 arriva
+NAVE 19: ricevuto SIGUSR2. data: 10

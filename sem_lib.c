@@ -22,6 +22,7 @@ void alloca_semafori(int *id_semaforo_banchine, int *id_semaforo_dump, int *id_s
     printf("SEM_CREATE_DUMP: %d\n", *id_semaforo_dump = sem_create(CHIAVE_SEM_DUMP, 2));
     printf("SEM_CREATE_MERCATO: %d\n", *id_semaforo_mercato = sem_create(CHIAVE_SEM_MERCATO, SO_PORTI));
     sem_set_all(*(id_semaforo_mercato), 1, SO_PORTI); /* bisogna farci il SET_ALL!!! (1 sola sys call)*/
+    printf("__________________________ \n\n");
 }
 
 int sem_find(key_t key, int nsems) {

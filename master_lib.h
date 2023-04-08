@@ -15,6 +15,15 @@
 */
 void clearLog();
 
+/* Esegue tutte le verifiche sui parametri della simulazione.
+ *
+ * RITORNA:
+ * - 1: se tutti i parametri sono accettati. 
+ * - 0: in caso di violazione dei vincoli del progetto (PORTI < 4 e/o NAVI < 1).
+ * - -1: in caso di errori che renderebbero instabile la simulazione. (se SPEED == 0 => avremo divisioni per zero) 
+ * - -2: in caso di errori e violazione dei vincoli. */
+int controllo_parametri(int PARAMETRO[]);
+
 /* Alloca le risorse IPC di memorie condivise e coda.
  * Vengono passate per referenza le varibili, per impostare gli id nel master. */
 void alloca_id(int *id_shm_mercato, int *id_shm_dettagli_lotti, int *id_shm_posizioni_porti, int *id_shm_dump, int *id_coda_richieste, int PARAMETRO[]);
@@ -42,6 +51,13 @@ void stampa_mercato_dump(void *vptr_shm_dump, void *vptr_shm_mercato, int PARAME
 /* Controlla l'effettiva presenza di altre merci in richiesta o in offerta.
  * Qualora entrambe siano assenti, terminerà la simulazione. */
 int controlla_mercato(void *vptr_shm_mercato, void *vptr_shm_dump, int PARAMETRO[]);
+
+/* Controlla la scadenza delle merci in mercato allo scattare di ogni nuovo giorno. 
+ * 
+ * NOTA:
+ * - Aggiorna il dump delle merci e dei porti ed elimina le merci scadute dalla shm mercato. 
+ * - Fa uso del semaforo del dump in posizione 0. */
+void controllo_scadenze_porti(merce *p_lotti, void *p_mercato, void *p_dump, int id_sem_dump, int PARAMETRO[]);
 
 /* Stampa in ordine:
  * - le merci, coi 5 parametri richiesti

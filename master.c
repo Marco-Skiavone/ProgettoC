@@ -3,7 +3,7 @@
 #include "sem_lib.h"
 #include "shm_lib.h"
 #include "master_lib.h"
-
+#include "common_lib.h"
 
 void* vptr_shm_mercato;
 int id_shm_mercato;
@@ -29,32 +29,25 @@ char **argv_figli;
 
 int PARAMETRO[QNT_PARAMETRI];
 
-void alloca_risorse();
-void distruggi_risorse();
-
 void signal_handler(int signo);
 
 int main(int argc, char* argv[]){
     int i, j, k;
     int n_righe_file, file_config_char;
-    
-    /* puntatore ad un array degli indirizzi degli id delle risorse IPC. */
-    int *id_shm__queue_ptr[] = {&id_shm_mercato, &id_shm_dettagli_lotti, &id_shm_posizioni_porti, &id_shm_dump, &id_coda_richieste};
-    /* PUNTATORE A PUNTATORI: vi verranno inseriti inizialmente i puntatori delle mem. condivise. */
-    void **shm_ptrs = malloc(sizeof(void *) * 4);
+    int SHM_ID[4];
 
     int continua_simulazione;
     int child_pid, status;
     FILE *file_config;
     richiesta r;
+    struct sigaction sa_alrm;
     argv_figli = malloc((QNT_PARAMETRI + 3)*sizeof(char*));
 
     #ifdef DUMP_ME
     printf("Programma in avvio con parametro DUMP_ME abilitato!\n\n");
     #endif
 
-    /*char *argv_figli[QNT_PARAMETRI + 3];*/
-    //setbuf(stdout, NULL); /* unbufferizza stdout */
+    setbuf(stdout, NULL); /* unbufferizza stdout */
     clearLog();
     srand(time(NULL));
     if(freopen("out.txt", "a", stdout)==NULL)
@@ -96,20 +89,45 @@ int main(int argc, char* argv[]){
 
     STAMPA_PARAMETRI
 
+    switch(controllo_parametri(PARAMETRO)){
+        case 1: 
+            break;
+        case 0: 
+            fprintf(stderr, "\nErrore di inserimento dei parametri: violazione dei vincoli di progetto!\n");
+            exit(EXIT_FAILURE);
+            break;
+        case -1: 
+            fprintf(stderr, "\nErrore di inserimento parametri: valori ambigui!\n");
+            exit(EXIT_FAILURE);
+            break;
+        case -2: 
+            fprintf(stderr, "\nErrore di inserimento parametri: valori ambigui & violazione dei vincoli di progetto!\n");
+            exit(EXIT_FAILURE);
+            break;
+        default:
+            fprintf(stderr, "\n**FATAL ERROR**\t(inserimento parametri: caso default di ritorno)\n");
+            exit(EXIT_FAILURE);
+            break;
+    }
+
     child_pids = (int *) malloc((SO_NAVI*SO_PORTI) * sizeof(int));
     
-    /* eseguo una malloc per ricevere i puntatori delle memorie condivise */
-    // shm_ptrs = malloc(sizeof(void*) * 4);
-    alloca_risorse();
+    /* alloca_risorse */
+    alloca_id(&id_shm_mercato, &id_shm_dettagli_lotti, &id_shm_posizioni_porti, &id_shm_dump, &id_coda_richieste, PARAMETRO);
+    SHM_ID[0] = id_shm_mercato;
+    SHM_ID[1] = id_shm_dettagli_lotti;
+    SHM_ID[2] = id_shm_posizioni_porti;
+    SHM_ID[3] = id_shm_dump;
+    aggancia_tutte_shm(&vptr_shm_mercato, &vptr_shm_dettagli_lotti, &vptr_shm_posizioni_porti, &vptr_shm_dump, SHM_ID, PARAMETRO);
+    vptr_shm_mercato = aggancia_shm(id_shm_mercato);
+    vptr_shm_dettagli_lotti = aggancia_shm(id_shm_dettagli_lotti);
+    vptr_shm_posizioni_porti = aggancia_shm(id_shm_posizioni_porti);
+    vptr_shm_dump = aggancia_shm(id_shm_dump);
+    alloca_semafori(&id_semaforo_banchine, &id_semaforo_dump, &id_semaforo_gestione, &id_semaforo_mercato, PARAMETRO);
+
     inizializza_dump(vptr_shm_dump, PARAMETRO);
     CAST_DUMP(vptr_shm_dump)->data = 0;
     generate_positions(SO_LATO, CAST_POSIZIONI_PORTI(vptr_shm_posizioni_porti), SO_PORTI);
-    
-    /*
-    for(i=0;i<SO_PORTI;i++){
-        printf("Porto %d - x: %f y: %f\n", i, CAST_POSIZIONI_PORTI(vptr_shm_posizioni_porti)[i].x, CAST_POSIZIONI_PORTI(vptr_shm_posizioni_porti)[i].y);
-    }
-    */
     
     setUpLotto(CAST_DETTAGLI_LOTTI(vptr_shm_dettagli_lotti),PARAMETRO);
     
@@ -133,15 +151,14 @@ int main(int argc, char* argv[]){
     sem_set_val(id_semaforo_gestione,1,0);  
     #endif
 
+    /* settaggio di argv_figli e fork dei processi porto e nave */
     argv_figli[0] = (char *)malloc(MAX_STR_LEN);
 	argv_figli[1] = (char *)malloc(MAX_STR_LEN);
-
 	for (i = 0; i < QNT_PARAMETRI; i++){
 		argv_figli[i+2] = (char *)malloc(MAX_STR_LEN);
 		sprintf(argv_figli[i+2], "%d", PARAMETRO[i]);
 	}
     argv_figli[QNT_PARAMETRI + 2] = NULL;
-    
     for(i=0;i<SO_PORTI;i++){
         
         switch(child_pids[i] = fork()){
@@ -159,7 +176,6 @@ int main(int argc, char* argv[]){
                 break;
         }
     }
-
     for(int i=0;i<SO_NAVI;i++){
         
         switch( child_pids[SO_PORTI + i] =  fork()){
@@ -177,12 +193,11 @@ int main(int argc, char* argv[]){
                 break;
         }
     }
-
-
-    
+    /* Fine settaggio argv_figli e creazione dei processi.
+     * Inizio attesa di sincronizzazione e partenza del loop di simulazione. */
     sem_wait_zero(id_semaforo_gestione, 0);
     stampa_dump(PARAMETRO, vptr_shm_dump, vptr_shm_mercato, id_semaforo_banchine);
-    struct sigaction sa_alrm;
+    
     sa_alrm.sa_handler = signal_handler;
     sa_alrm.sa_flags = 0;
     sigemptyset(&(sa_alrm.sa_mask));
@@ -199,8 +214,8 @@ int main(int argc, char* argv[]){
         pause();
     } while(((int)(CAST_DUMP(vptr_shm_dump)->data) < SO_DAYS) && continua_simulazione);
     
-    if(freopen("out.txt", "a", stdout)==NULL)
-        {perror("freopen ha ritornato NULL");}
+    /*if(freopen("out.txt", "a", stdout)==NULL)
+        {perror("freopen ha ritornato NULL");}*/
     for(i = 0; i < SO_NAVI+SO_PORTI; i++){
         printf("MASTER: ammazzo il figlio %d\n", child_pids[i]);
         kill(child_pids[i], SIGUSR2);
@@ -234,23 +249,15 @@ int main(int argc, char* argv[]){
     exit(EXIT_SUCCESS);
 }
 
+/*
 void alloca_risorse(){
-    int i;
-    printf("\n__________________________ \n\n");
-    alloca_id(&id_shm_mercato, &id_shm_dettagli_lotti, &id_shm_posizioni_porti, &id_shm_dump, &id_coda_richieste, PARAMETRO);
-    
     vptr_shm_mercato = aggancia_shm(id_shm_mercato);
     vptr_shm_dettagli_lotti = aggancia_shm(id_shm_dettagli_lotti);
     vptr_shm_posizioni_porti = aggancia_shm(id_shm_posizioni_porti);
     vptr_shm_dump = aggancia_shm(id_shm_dump);
-    //printf("SHARED_MEM_MERCATO: %d\n", id_shm_mercato = alloca_shm(CHIAVE_SHAREDM_MERCATO, SIZE_SHAREDM_MERCATO));
-    //printf("SHARED_MEM_DETTAGLI_LOTTI: %d\n", id_shm_dettagli_lotti = alloca_shm(CHIAVE_SHAREDM_DETTAGLI_LOTTI, SIZE_SHAREDM_DETTAGLI_LOTTI));
-    //printf("SHARED_MEM_POSIZIONI_PORTI: %d\n", id_shm_posizioni_porti = alloca_shm(CHIAVE_SHAREDM_POSIZIONI_PORTI, SIZE_SHAREDM_POSIZIONI_PORTI));
-    //printf("SHARED_MEM_DUMP: %d\n",id_shm_dump =  alloca_shm(CHIAVE_SHAREDM_DUMP, SIZE_SHAREDM_DUMP));
-    //printf("CODA RICHIESTE: %d\n", id_coda_richieste = set_coda_richieste(CHIAVE_CODA));
     alloca_semafori(&id_semaforo_banchine, &id_semaforo_dump, &id_semaforo_gestione, &id_semaforo_mercato, PARAMETRO);
-    printf("__________________________ \n\n");
-}
+    
+}*/
 
 void signal_handler(int signo){
     int i;
@@ -259,6 +266,7 @@ void signal_handler(int signo){
             #ifdef DUMP_ME
             sem_release(id_semaforo_gestione, 1);
             #endif
+            controllo_scadenze_porti(CAST_DETTAGLI_LOTTI(vptr_shm_dettagli_lotti), vptr_shm_mercato, vptr_shm_dump, id_semaforo_dump, PARAMETRO);
             if(CAST_DUMP(vptr_shm_dump)->data < SO_DAYS-1){
                 fprintf(stderr, "\x1b[%dF\x1b[0J", 1);
                 CAST_DUMP(vptr_shm_dump)->data++;
