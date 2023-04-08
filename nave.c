@@ -5,41 +5,38 @@
 #include "nave_lib.h"
 #include "common_lib.h"
 
-void* vptr_shm_mercato;
-int id_shm_mercato;
-
-void* vptr_shm_posizioni_porti;
-int id_shm_posizioni_porti;
-
 void* vptr_shm_dettagli_lotti;
-int id_shm_dettagli_lotti;
-
 void* vptr_shm_dump;
-int id_shm_dump;
-
-int id_semaforo_mercato;
-int id_semaforo_gestione;
-int id_semaforo_banchine;
-int id_semaforo_dump;
-
-int id_coda_richieste;
+void* vptr_shm_mercato;
+void* vptr_shm_posizioni_porti;
 
 int indice;
 int PARAMETRO[QNT_PARAMETRI];
-
-void inizializza_risorse();
 
 void signal_handler(int signo);
 
 int main(int argc, char *argv[]){
     int i, j, k;
+    int id_semaforo_mercato;
+    int id_semaforo_gestione;
+    int id_semaforo_banchine;
+    int id_semaforo_dump;
+
+    int id_shm_dettagli_lotti;
+    int id_shm_dump;
+    int id_shm_mercato;
+    int id_shm_posizioni_porti;
+    int id_coda_richieste;
+
+    int SHM_ID[4];
+
+    sigset_t mask1;
     struct sigaction sa;
     sa.sa_flags = 0/*SA_RESTART*/;
     sa.sa_handler = signal_handler;
     sigemptyset(&(sa.sa_mask));
     sigaction(SIGUSR1, &sa, NULL);
     sigaction(SIGUSR2, &sa, NULL);
-    sigset_t mask1;
     sigemptyset(&mask1);
     sigaddset(&mask1, SIGUSR1);
     sigprocmask(SIG_UNBLOCK, &mask1, NULL);
@@ -53,15 +50,20 @@ int main(int argc, char *argv[]){
 	for (i = 2; i < argc; i++){
 		PARAMETRO[i - 2] = atoi(argv[i]);
 	}
-    
-    //trova_tutti_id(&id_shm_mercato, &id_shm_dettagli_lotti, &id_shm_posizioni_porti, &id_shm_dump, &id_coda_richieste, PARAMETRO);
-    inizializza_risorse();
+    if(freopen("log_navi.txt", "a", stdout)==NULL)
+        {perror("freopen ha ritornato NULL");}
+
+    trova_tutti_id(&id_shm_mercato, &id_shm_dettagli_lotti, &id_shm_posizioni_porti, &id_shm_dump, &id_coda_richieste, PARAMETRO);
+    SHM_ID[0] = id_shm_mercato;
+    SHM_ID[1] = id_shm_dettagli_lotti;
+    SHM_ID[2] = id_shm_posizioni_porti;
+    SHM_ID[3] = id_shm_dump;
+    aggancia_tutte_shm(&vptr_shm_mercato, &vptr_shm_dettagli_lotti, &vptr_shm_posizioni_porti, &vptr_shm_dump, SHM_ID, PARAMETRO);
+    inizializza_semafori(&id_semaforo_mercato, &id_semaforo_gestione, &id_semaforo_banchine, &id_semaforo_dump, SO_PORTI);
 
     sem_reserve(id_semaforo_gestione, 0);
     sem_wait_zero(id_semaforo_gestione, 0);
     
-    if(freopen("log_navi.txt", "a", stdout)==NULL)
-        {perror("freopen ha ritornato NULL");}
     int SEM_ID[] = {id_semaforo_banchine, id_semaforo_dump, id_semaforo_gestione, id_semaforo_mercato};
     void* VPTR_ARR[] = {vptr_shm_dettagli_lotti, vptr_shm_dump, vptr_shm_mercato, vptr_shm_posizioni_porti};
 
@@ -69,20 +71,6 @@ int main(int argc, char *argv[]){
 
     sgancia_risorse(vptr_shm_dettagli_lotti, vptr_shm_dump, vptr_shm_mercato, vptr_shm_posizioni_porti);
     exit(EXIT_SUCCESS);
-}
-
-
-void inizializza_risorse(){
-    id_shm_mercato = find_shm(CHIAVE_SHAREDM_MERCATO, SIZE_SHAREDM_MERCATO);
-    id_shm_dettagli_lotti = find_shm(CHIAVE_SHAREDM_DETTAGLI_LOTTI, SIZE_SHAREDM_DETTAGLI_LOTTI);
-    id_shm_posizioni_porti = find_shm(CHIAVE_SHAREDM_POSIZIONI_PORTI, SIZE_SHAREDM_POSIZIONI_PORTI);
-    id_shm_dump = find_shm(CHIAVE_SHAREDM_DUMP, SIZE_SHAREDM_DUMP);
-    id_coda_richieste = get_coda_id(CHIAVE_CODA);
-    vptr_shm_mercato = aggancia_shm(id_shm_mercato);
-    vptr_shm_dettagli_lotti = aggancia_shm(id_shm_dettagli_lotti);
-    vptr_shm_posizioni_porti = aggancia_shm(id_shm_posizioni_porti);
-    vptr_shm_dump = aggancia_shm(id_shm_dump);
-    inizializza_semafori(&id_semaforo_mercato, &id_semaforo_gestione, &id_semaforo_banchine, &id_semaforo_dump, SO_PORTI);
 }
 
 void signal_handler(int signo){

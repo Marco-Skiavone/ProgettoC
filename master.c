@@ -54,7 +54,7 @@ int main(int argc, char* argv[]){
     #endif
 
     /*char *argv_figli[QNT_PARAMETRI + 3];*/
-    setbuf(stdout, NULL); /* unbufferizza stdout */
+    //setbuf(stdout, NULL); /* unbufferizza stdout */
     clearLog();
     srand(time(NULL));
     if(freopen("out.txt", "a", stdout)==NULL)
@@ -141,6 +141,7 @@ int main(int argc, char* argv[]){
 		sprintf(argv_figli[i+2], "%d", PARAMETRO[i]);
 	}
     argv_figli[QNT_PARAMETRI + 2] = NULL;
+    
     for(i=0;i<SO_PORTI;i++){
         
         switch(child_pids[i] = fork()){

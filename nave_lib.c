@@ -123,7 +123,6 @@ point avvia_nave(int indice, int PARAMETRO[], int SEM_ID[], void* VPTR_ARR[], in
     printf("Attesa con distanza 2: %f\n", distanza);
     attesa(distanza, SO_SPEED);
     /* richiede la banchina e una volta dentro aggiorna il dump */
-    /*sem_reserve(id_semaforo_banchine, indice_destinazione);*/
     richiedi_banchina(ID_SEMAFORO_BANCHINE, indice_destinazione);
     stato_nave(DN_MV_PORTO, ID_SEMAFORO_DUMP, VPTR_SHM_DUMP, indice);
     *indice_porto_attraccato = indice_destinazione;
@@ -260,7 +259,6 @@ void carica_dal_porto(int indice, int PARAMETRO[], int id_coda_richieste, void* 
 
 void attracco_e_scarico(int indice, int PARAMETRO[], int SEM_ID[],void* VPTR_ARR[], int *spaziolibero, int *i_carico, double *tempo_carico, int *reqlett, int *indice_porto_attraccato, merce_nave carico[]){
     int j, datascarico;
-    //sem_reserve(id_semaforo_banchine, indice_porto_attraccato);
     richiedi_banchina(ID_SEMAFORO_BANCHINE, *indice_porto_attraccato);
     printf("Nave %d attraccata al porto %d\n", indice, *indice_porto_attraccato);
     if(*spaziolibero == SO_CAPACITY){

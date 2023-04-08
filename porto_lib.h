@@ -24,4 +24,4 @@ void manda_richieste(void* vptr_shm_mercato, int indice, int coda_id, int PARAME
  * 
  * NOTA:
  * Aggiorna il dump delle merci e dei porti ed elimina le merci scadute dalla shm mercato. */
-void controlla_scadenze(void *vptr_lotti, void *vptr_mercato, void *vptr_dump, int indice, int id_sem_dump, int PARAMETRO[]);
+void controlla_scadenze(merce *vptr_lotti, void *vptr_mercato, void *vptr_dump, int indice, int id_sem_dump, int PARAMETRO[]);

@@ -3,35 +3,33 @@
 #include "sem_lib.h"
 #include "shm_lib.h"
 #include "porto_lib.h"
-
-void* vptr_shm_mercato;
-int id_shm_mercato;
-
-void* vptr_shm_posizioni_porti;
-int id_shm_posizioni_porti;
+#include "common_lib.h"
 
 void* vptr_shm_dettagli_lotti;
-int id_shm_dettagli_lotti;
-
 void* vptr_shm_dump;
-int id_shm_dump;
+void* vptr_shm_mercato;
+void* vptr_shm_posizioni_porti;
 
-int id_semaforo_mercato;
-int id_semaforo_gestione;
-int id_semaforo_banchine;
 int id_semaforo_dump;
-
-int id_coda_richieste;
 
 int indice;
 int PARAMETRO[QNT_PARAMETRI];
-void inizializza_risorse();
 
 void signal_handler(int signo);
 
 int main(int argc, char *argv[]){
-    dup2(STDOUT_FILENO, STDERR_FILENO);
     int i, j, k;
+
+    int id_semaforo_mercato;
+    int id_semaforo_gestione;
+    int id_semaforo_banchine;
+
+    int id_shm_dettagli_lotti;
+    int id_shm_dump;
+    int id_shm_mercato;
+    int id_shm_posizioni_porti;
+    int id_coda_richieste;
+    int SHM_ID[4];
     struct sigaction sa;
     sa.sa_flags = 0/*SA_RESTART*/;
     sa.sa_handler = signal_handler;
@@ -50,12 +48,20 @@ int main(int argc, char *argv[]){
 	}
     TEST_ERROR
 
-    inizializza_risorse();
+    trova_tutti_id(&id_shm_mercato, &id_shm_dettagli_lotti, &id_shm_posizioni_porti, &id_shm_dump, &id_coda_richieste, PARAMETRO);
+    SHM_ID[0] = id_shm_mercato;
+    SHM_ID[1] = id_shm_dettagli_lotti;
+    SHM_ID[2] = id_shm_posizioni_porti;
+    SHM_ID[3] = id_shm_dump;
+    aggancia_tutte_shm(&vptr_shm_mercato, &vptr_shm_dettagli_lotti, &vptr_shm_posizioni_porti, &vptr_shm_dump, SHM_ID, PARAMETRO);
+    inizializza_semafori(&id_semaforo_mercato, &id_semaforo_gestione, &id_semaforo_banchine, &id_semaforo_dump, SO_PORTI);
+    //inizializza_risorse();
 
+    //dup2(open("log_porti.txt", O_APPEND | O_CREAT | O_WRONLY, 0666), STDOUT_FILENO);
     if(freopen("log_porti.txt", "a", stdout)==NULL)
         {perror("freopen ha ritornato NULL");}
 
-    fprintf(stdout, "prova stampa porto\n");
+    printf("prova stampa porto\n");
 
     spawnMerciPorti(vptr_shm_mercato, CAST_DETTAGLI_LOTTI(vptr_shm_dettagli_lotti), vptr_shm_dump, id_semaforo_dump, PARAMETRO, indice);
     manda_richieste(vptr_shm_mercato, indice, id_coda_richieste, PARAMETRO);
@@ -70,31 +76,18 @@ int main(int argc, char *argv[]){
     
     do {
         pause();
+        //controlla_scadenze(vptr_shm_dettagli_lotti, vptr_shm_mercato, vptr_shm_dump, indice, id_semaforo_dump, PARAMETRO);
     } while(1);
-}
-
-void inizializza_risorse(){
-    id_shm_mercato = find_shm(CHIAVE_SHAREDM_MERCATO, SIZE_SHAREDM_MERCATO);
-    vptr_shm_mercato = aggancia_shm(id_shm_mercato);
-    id_shm_dettagli_lotti = find_shm(CHIAVE_SHAREDM_DETTAGLI_LOTTI, SIZE_SHAREDM_DETTAGLI_LOTTI);
-    vptr_shm_dettagli_lotti = aggancia_shm(id_shm_dettagli_lotti);
-    id_shm_posizioni_porti = find_shm(CHIAVE_SHAREDM_POSIZIONI_PORTI, SIZE_SHAREDM_POSIZIONI_PORTI);
-    vptr_shm_posizioni_porti = aggancia_shm(id_shm_posizioni_porti);
-    id_shm_dump = find_shm(CHIAVE_SHAREDM_DUMP, SIZE_SHAREDM_DUMP);
-    vptr_shm_dump = aggancia_shm(id_shm_dump);
-    inizializza_semafori(&id_semaforo_mercato, &id_semaforo_gestione, &id_semaforo_banchine, &id_semaforo_dump, SO_PORTI);
-    id_coda_richieste = get_coda_id(CHIAVE_CODA);
 }
 
 void signal_handler(int signo){
     switch(signo){
         case SIGUSR1:
             fprintf(stdout,"*** PORTO %d: ricevuto SIGUSR1: data = %d ***\n", indice, CAST_DUMP(vptr_shm_dump)->data);
-            controlla_scadenze(vptr_shm_dettagli_lotti, vptr_shm_mercato, vptr_shm_dump, indice, id_semaforo_dump, PARAMETRO);
+            controlla_scadenze(CAST_DETTAGLI_LOTTI(vptr_shm_dettagli_lotti), vptr_shm_mercato, vptr_shm_dump, indice, id_semaforo_dump, PARAMETRO);
             break;
         case SIGUSR2:
             fprintf(stdout,"\nPORTO %d: ricevuto SIGUSR2.\n", indice);
-            controlla_scadenze(vptr_shm_dettagli_lotti, vptr_shm_mercato, vptr_shm_dump, indice, id_semaforo_dump, PARAMETRO);
             sgancia_risorse(vptr_shm_dettagli_lotti, vptr_shm_dump, vptr_shm_mercato, vptr_shm_posizioni_porti);
             exit(EXIT_SUCCESS);
             break;
