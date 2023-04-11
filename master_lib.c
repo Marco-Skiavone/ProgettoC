@@ -182,7 +182,6 @@ void controllo_scadenze_porti(merce *p_lotti, void *p_mercato, void *p_dump, int
 void stampa_merci_porti_navi(int PARAMETRO[], void * vptr_shm_dump, void *vptr_shm_mercato, int id_semaforo_banchine){
 	int i, j;
 	j=0;
-	/*da togliere in futuro --> vptr_shm_mercato e stampa_mercato_dump()*/
 	for(i = 0; i < (SO_MERCI+SO_PORTI); i++){
 		
         if(i < SO_MERCI){  /* stampo merci per tipologia */
@@ -217,7 +216,6 @@ void stampa_merci_porti_navi(int PARAMETRO[], void * vptr_shm_dump, void *vptr_s
 void stampa_dump(int PARAMETRO[], void * vptr_shm_dump, void *vptr_shm_mercato, int id_semaforo_banchine){
 	if(freopen("log_dump.txt", "a", stdout)==NULL)
         {perror("freopen ha ritornato NULL");}
-	/*da togliere in futuro --> vptr_shm_mercato e stampa_mercato_dump()*/
     printf("*** Inizio stampa del dump: giorno %d ***\n", ((dump*)vptr_shm_dump)->data);
 	stampa_merci_porti_navi(PARAMETRO, vptr_shm_dump,vptr_shm_mercato, id_semaforo_banchine);
     printf("\n--- Fine stato dump attuale (giorno %d). ---\n", CAST_DUMP(vptr_shm_dump)->data);
