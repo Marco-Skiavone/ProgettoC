@@ -1,100 +1,107 @@
+prova stampa porto 3
+prova stampa porto 4
+prova stampa porto 2
+prova stampa porto 1
+prova stampa porto 0
 provo a entrare in sem_dump: data = 0
 sono entrato in sem_dump
+*** PORTO 3: ricevuto SIGUSR1: data = 1 ***
+*** PORTO 2: ricevuto SIGUSR1: data = 1 ***
+*** PORTO 0: ricevuto SIGUSR1: data = 1 ***
+*** PORTO 1: ricevuto SIGUSR1: data = 1 ***
+*** PORTO 4: ricevuto SIGUSR1: data = 1 ***
 provo a entrare in sem_dump: data = 1
 sono entrato in sem_dump
+*** PORTO 3: ricevuto SIGUSR1: data = 2 ***
+*** PORTO 2: ricevuto SIGUSR1: data = 2 ***
+*** PORTO 4: ricevuto SIGUSR1: data = 2 ***
+*** PORTO 1: ricevuto SIGUSR1: data = 2 ***
+*** PORTO 0: ricevuto SIGUSR1: data = 2 ***
 provo a entrare in sem_dump: data = 2
 sono entrato in sem_dump
+*** PORTO 2: ricevuto SIGUSR1: data = 3 ***
+*** PORTO 3: ricevuto SIGUSR1: data = 3 ***
+*** PORTO 4: ricevuto SIGUSR1: data = 3 ***
+*** PORTO 0: ricevuto SIGUSR1: data = 3 ***
+*** PORTO 1: ricevuto SIGUSR1: data = 3 ***
 provo a entrare in sem_dump: data = 3
 sono entrato in sem_dump
+*** PORTO 1: ricevuto SIGUSR1: data = 4 ***
+*** PORTO 2: ricevuto SIGUSR1: data = 4 ***
+*** PORTO 0: ricevuto SIGUSR1: data = 4 ***
+*** PORTO 3: ricevuto SIGUSR1: data = 4 ***
+*** PORTO 4: ricevuto SIGUSR1: data = 4 ***
 provo a entrare in sem_dump: data = 4
 sono entrato in sem_dump
+aggiorno scadenze di merce 3: sottraggo 1578 al porto 1
+aggiorno scadenze di merce 3: sottraggo 1523 al porto 2
+aggiorno scadenze di merce 3: sottraggo 1666 al porto 3
+*** PORTO 0: ricevuto SIGUSR1: data = 5 ***
+*** PORTO 2: ricevuto SIGUSR1: data = 5 ***
+*** PORTO 1: ricevuto SIGUSR1: data = 5 ***
+*** PORTO 3: ricevuto SIGUSR1: data = 5 ***
+*** PORTO 4: ricevuto SIGUSR1: data = 5 ***
 provo a entrare in sem_dump: data = 5
 sono entrato in sem_dump
-aggiorno scadenze di merce 0: sottraggo 21 al porto 3
-aggiunta merce scaduta: 21
-aggiorno scadenze di merce 0: sottraggo 16 al porto 6
-aggiunta merce scaduta: 37
-aggiorno scadenze di merce 0: sottraggo 15 al porto 7
-aggiunta merce scaduta: 52
-aggiorno scadenze di merce 0: sottraggo 17 al porto 8
-aggiunta merce scaduta: 69
+aggiorno scadenze di merce 2: sottraggo 1556 al porto 0
+aggiorno scadenze di merce 2: sottraggo 1558 al porto 1
+aggiorno scadenze di merce 4: sottraggo 1634 al porto 0
+aggiorno scadenze di merce 4: sottraggo 1497 al porto 2
+*** PORTO 0: ricevuto SIGUSR1: data = 6 ***
+*** PORTO 1: ricevuto SIGUSR1: data = 6 ***
+*** PORTO 2: ricevuto SIGUSR1: data = 6 ***
+*** PORTO 3: ricevuto SIGUSR1: data = 6 ***
+*** PORTO 4: ricevuto SIGUSR1: data = 6 ***
 provo a entrare in sem_dump: data = 6
 sono entrato in sem_dump
-aggiorno scadenze di merce 4: sottraggo 12 al porto 0
-aggiunta merce scaduta: 12
-aggiorno scadenze di merce 4: sottraggo 11 al porto 2
-aggiunta merce scaduta: 23
-aggiorno scadenze di merce 4: sottraggo 18 al porto 3
-aggiunta merce scaduta: 41
-aggiorno scadenze di merce 4: sottraggo 9 al porto 4
-aggiunta merce scaduta: 50
-aggiorno scadenze di merce 4: sottraggo 3 al porto 5
-aggiunta merce scaduta: 53
-aggiorno scadenze di merce 4: sottraggo 21 al porto 7
-aggiunta merce scaduta: 74
-aggiorno scadenze di merce 4: sottraggo 27 al porto 8
-aggiunta merce scaduta: 101
-aggiorno scadenze di merce 6: sottraggo 27 al porto 2
-aggiunta merce scaduta: 27
-aggiorno scadenze di merce 6: sottraggo 18 al porto 4
-aggiunta merce scaduta: 45
-aggiorno scadenze di merce 6: sottraggo 21 al porto 6
-aggiunta merce scaduta: 66
-aggiorno scadenze di merce 6: sottraggo 17 al porto 8
-aggiunta merce scaduta: 83
-aggiorno scadenze di merce 6: sottraggo 22 al porto 9
-aggiunta merce scaduta: 105
-aggiorno scadenze di merce 8: sottraggo 17 al porto 1
-aggiunta merce scaduta: 17
-aggiorno scadenze di merce 8: sottraggo 17 al porto 3
-aggiunta merce scaduta: 34
-aggiorno scadenze di merce 8: sottraggo 24 al porto 4
-aggiunta merce scaduta: 58
-aggiorno scadenze di merce 8: sottraggo 11 al porto 7
-aggiunta merce scaduta: 69
-aggiorno scadenze di merce 8: sottraggo 17 al porto 8
-aggiunta merce scaduta: 86
+aggiorno scadenze di merce 0: sottraggo 1625 al porto 0
+aggiorno scadenze di merce 0: sottraggo 1704 al porto 1
+aggiorno scadenze di merce 0: sottraggo 1575 al porto 3
+aggiorno scadenze di merce 0: sottraggo 1612 al porto 4
+aggiorno scadenze di merce 7: sottraggo 1521 al porto 0
+aggiorno scadenze di merce 7: sottraggo 1591 al porto 1
+aggiorno scadenze di merce 7: sottraggo 1579 al porto 2
+aggiorno scadenze di merce 9: sottraggo 1635 al porto 0
+*** PORTO 0: ricevuto SIGUSR1: data = 7 ***
+*** PORTO 1: ricevuto SIGUSR1: data = 7 ***
+*** PORTO 3: ricevuto SIGUSR1: data = 7 ***
+*** PORTO 4: ricevuto SIGUSR1: data = 7 ***
+*** PORTO 2: ricevuto SIGUSR1: data = 7 ***
 provo a entrare in sem_dump: data = 7
 sono entrato in sem_dump
-aggiorno scadenze di merce 1: sottraggo 11 al porto 0
-aggiunta merce scaduta: 11
-aggiorno scadenze di merce 1: sottraggo 26 al porto 1
-aggiunta merce scaduta: 37
-aggiorno scadenze di merce 1: sottraggo 16 al porto 3
-aggiunta merce scaduta: 53
-aggiorno scadenze di merce 1: sottraggo 8 al porto 4
-aggiunta merce scaduta: 61
-aggiorno scadenze di merce 1: sottraggo 47 al porto 6
-aggiunta merce scaduta: 108
-aggiorno scadenze di merce 1: sottraggo 1 al porto 7
-aggiunta merce scaduta: 109
-aggiorno scadenze di merce 2: sottraggo 30 al porto 0
-aggiunta merce scaduta: 30
-aggiorno scadenze di merce 2: sottraggo 27 al porto 1
-aggiunta merce scaduta: 57
-aggiorno scadenze di merce 2: sottraggo 28 al porto 7
-aggiunta merce scaduta: 85
-aggiorno scadenze di merce 2: sottraggo 11 al porto 9
-aggiunta merce scaduta: 96
+aggiorno scadenze di merce 6: sottraggo 1546 al porto 0
+aggiorno scadenze di merce 6: sottraggo 1551 al porto 3
+*** PORTO 0: ricevuto SIGUSR1: data = 8 ***
+*** PORTO 1: ricevuto SIGUSR1: data = 8 ***
+*** PORTO 3: ricevuto SIGUSR1: data = 8 ***
+*** PORTO 4: ricevuto SIGUSR1: data = 8 ***
+*** PORTO 2: ricevuto SIGUSR1: data = 8 ***
 provo a entrare in sem_dump: data = 8
 sono entrato in sem_dump
-aggiorno scadenze di merce 3: sottraggo 13 al porto 0
-aggiunta merce scaduta: 13
-aggiorno scadenze di merce 3: sottraggo 7 al porto 1
-aggiunta merce scaduta: 20
-aggiorno scadenze di merce 3: sottraggo 23 al porto 3
-aggiunta merce scaduta: 43
-aggiorno scadenze di merce 3: sottraggo 14 al porto 9
-aggiunta merce scaduta: 57
+aggiorno scadenze di merce 1: sottraggo 936 al porto 1
+aggiorno scadenze di merce 1: sottraggo 1227 al porto 4
+aggiorno scadenze di merce 5: sottraggo 1397 al porto 0
+aggiorno scadenze di merce 5: sottraggo 1688 al porto 1
+aggiorno scadenze di merce 5: sottraggo 1259 al porto 2
+aggiorno scadenze di merce 5: sottraggo 1609 al porto 4
+aggiorno scadenze di merce 8: sottraggo 1609 al porto 0
+aggiorno scadenze di merce 8: sottraggo 1537 al porto 1
+aggiorno scadenze di merce 8: sottraggo 1651 al porto 3
+aggiorno scadenze di merce 8: sottraggo 1592 al porto 4
+*** PORTO 2: ricevuto SIGUSR1: data = 9 ***
+*** PORTO 0: ricevuto SIGUSR1: data = 9 ***
+*** PORTO 4: ricevuto SIGUSR1: data = 9 ***
+*** PORTO 1: ricevuto SIGUSR1: data = 9 ***
+*** PORTO 3: ricevuto SIGUSR1: data = 9 ***
 provo a entrare in sem_dump: data = 9
 sono entrato in sem_dump
-aggiorno scadenze di merce 7: sottraggo 15 al porto 4
-aggiunta merce scaduta: 15
-aggiorno scadenze di merce 7: sottraggo 8 al porto 5
-aggiunta merce scaduta: 23
-aggiorno scadenze di merce 7: sottraggo 10 al porto 6
-aggiunta merce scaduta: 33
-aggiorno scadenze di merce 7: sottraggo 21 al porto 8
-aggiunta merce scaduta: 54
-aggiorno scadenze di merce 7: sottraggo 16 al porto 9
-aggiunta merce scaduta: 70
+
+PORTO 0: ricevuto SIGUSR2.
+
+PORTO 1: ricevuto SIGUSR2.
+
+PORTO 2: ricevuto SIGUSR2.
+
+PORTO 3: ricevuto SIGUSR2.
+
+PORTO 4: ricevuto SIGUSR2.

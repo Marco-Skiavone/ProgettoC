@@ -1,32 +1,32 @@
 Parametri:
 SO_NAVI | SO_PORTI | SO_MERCI | SO_SIZE | SO_MIN_VITA | SO_MAX_VITA | SO_LATO | SO_SPEED | SO_CAPACITY | SO_BANCHINE | SO_FILL | SO_LOADSPEED | SO_DAYS
- 20 | 10 | 10 | 500 | 3 | 9 | 500 | 50000 | 1000 | 7 | 500000 | 500 | 10 
+ 10 | 5 | 10 | 10 | 3 | 8 | 1000 | 500 | 200 | 5 | 500000 | 500 | 10 
 
 __________________________ 
 
-SHARED_MEM_MERCATO: 163841
-SHARED_MEM_DETTAGLI_LOTTI: 163842
-SHARED_MEM_POSIZIONI_PORTI: 163843
-SHARED_MEM_DUMP: 163847
-CODA RICHIESTE: 0
+SHARED_MEM_MERCATO: 65546
+SHARED_MEM_DETTAGLI_LOTTI: 65547
+SHARED_MEM_POSIZIONI_PORTI: 65548
+SHARED_MEM_DUMP: 65549
+CODA RICHIESTE: 14
 __________________________ 
 
-SEM_CREATE_GESTIONE: 1
-SEM_CREATE_BANCHINE: 2
-SEM_CREATE_DUMP: 3
-SEM_CREATE_MERCATO: 4
+SEM_CREATE_GESTIONE: 56
+SEM_CREATE_BANCHINE: 57
+SEM_CREATE_DUMP: 58
+SEM_CREATE_MERCATO: 59
 __________________________ 
 
-Merce 0 val 293 exp 4
-Merce 1 val 17 exp 6
-Merce 2 val 293 exp 6
-Merce 3 val 181 exp 7
-Merce 4 val 97 exp 5
-Merce 5 val 437 exp 5
-Merce 6 val 453 exp 5
-Merce 7 val 417 exp 8
-Merce 8 val 241 exp 5
-Merce 9 val 1 exp 4
+Merce 0 val 11 exp 5
+Merce 1 val 1 exp 7
+Merce 2 val 11 exp 4
+Merce 3 val 9 exp 3
+Merce 4 val 3 exp 4
+Merce 5 val 1 exp 7
+Merce 6 val 11 exp 6
+Merce 7 val 3 exp 5
+Merce 8 val 11 exp 7
+Merce 9 val 1 exp 5
 
 MASTER: Passato giorno 1 su 10.
 
@@ -45,66 +45,36 @@ MASTER: Passato giorno 7 su 10.
 MASTER: Passato giorno 8 su 10.
 
 MASTER: Passato giorno 9 su 10.
-MASTER: ammazzo il figlio 25309
-MASTER: ammazzo il figlio 25310
-MASTER: ammazzo il figlio 25311
-MASTER: ammazzo il figlio 25312
-MASTER: ammazzo il figlio 25313
-MASTER: ammazzo il figlio 25314
-MASTER: ammazzo il figlio 25315
-MASTER: ammazzo il figlio 25316
-MASTER: ammazzo il figlio 25317
-MASTER: ammazzo il figlio 25318
-MASTER: ammazzo il figlio 25319
-MASTER: ammazzo il figlio 25320
-MASTER: ammazzo il figlio 25321
-MASTER: ammazzo il figlio 25322
-MASTER: ammazzo il figlio 25323
-MASTER: ammazzo il figlio 25324
-MASTER: ammazzo il figlio 25325
-MASTER: ammazzo il figlio 25326
-MASTER: ammazzo il figlio 25327
-MASTER: ammazzo il figlio 25328
-MASTER: ammazzo il figlio 25329
-MASTER: ammazzo il figlio 25330
-MASTER: ammazzo il figlio 25331
-MASTER: ammazzo il figlio 25332
-MASTER: ammazzo il figlio 25333
-MASTER: ammazzo il figlio 25334
-MASTER: ammazzo il figlio 25335
-MASTER: ammazzo il figlio 25336
-MASTER: ammazzo il figlio 25337
-MASTER: ammazzo il figlio 25338
-Terminato figlio 25309 status 0
-Terminato figlio 25310 status 0
-Terminato figlio 25311 status 0
-Terminato figlio 25312 status 0
-Terminato figlio 25313 status 0
-Terminato figlio 25314 status 0
-Terminato figlio 25315 status 0
-Terminato figlio 25316 status 0
-Terminato figlio 25317 status 0
-Terminato figlio 25318 status 0
-Terminato figlio 25320 status 0
-Terminato figlio 25321 status 0
-Terminato figlio 25332 status 0
-Terminato figlio 25319 status 0
-Terminato figlio 25327 status 0
-Terminato figlio 25323 status 0
-Terminato figlio 25325 status 0
-Terminato figlio 25331 status 0
-Terminato figlio 25333 status 0
-Terminato figlio 25334 status 0
-Terminato figlio 25330 status 0
-Terminato figlio 25337 status 0
-Terminato figlio 25322 status 0
-Terminato figlio 25336 status 0
-Terminato figlio 25338 status 0
-Terminato figlio 25329 status 0
-Terminato figlio 25335 status 0
-Terminato figlio 25324 status 0
-Terminato figlio 25328 status 0
-Terminato figlio 25326 status 0
+MASTER: ammazzo il figlio 15805
+MASTER: ammazzo il figlio 15806
+MASTER: ammazzo il figlio 15807
+MASTER: ammazzo il figlio 15808
+MASTER: ammazzo il figlio 15809
+MASTER: ammazzo il figlio 15810
+MASTER: ammazzo il figlio 15811
+MASTER: ammazzo il figlio 15812
+MASTER: ammazzo il figlio 15813
+MASTER: ammazzo il figlio 15814
+MASTER: ammazzo il figlio 15815
+MASTER: ammazzo il figlio 15816
+MASTER: ammazzo il figlio 15817
+MASTER: ammazzo il figlio 15818
+MASTER: ammazzo il figlio 15819
+Terminato figlio 15805 status 0
+Terminato figlio 15806 status 0
+Terminato figlio 15807 status 0
+Terminato figlio 15808 status 0
+Terminato figlio 15809 status 0
+Terminato figlio 15810 status 0
+Terminato figlio 15811 status 0
+Terminato figlio 15812 status 0
+Terminato figlio 15813 status 0
+Terminato figlio 15814 status 0
+Terminato figlio 15815 status 0
+Terminato figlio 15816 status 0
+Terminato figlio 15818 status 0
+Terminato figlio 15819 status 0
+Terminato figlio 15817 status 0
 Master sto uscendo con gestione = 0
 
 __________________________ 
