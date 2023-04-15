@@ -53,12 +53,6 @@ int main(int argc, char *argv[]){
     TEST_ERROR
 
     dup2(open("log_porti.txt", O_APPEND | O_CREAT | O_WRONLY, 0666), STDERR_FILENO);
-    /*
-    if(freopen("log_porti.txt", "a", stderr)==NULL)
-        {perror("freopen ha ritornato NULL");}
-    */
-
-    fprintf(stderr, "prova stampa porto %d\n", indice);
 
     trova_tutti_id(&id_shm_mercato, &id_shm_dettagli_lotti, &id_shm_posizioni_porti, &id_shm_dump, &id_coda_richieste, PARAMETRO);
     SHM_ID[0] = id_shm_mercato;

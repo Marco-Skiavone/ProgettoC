@@ -1,10 +1,9 @@
+#ifndef _SHM_LIB_H
+#define _SHM_LIB_H
 #ifndef _DEFINITIONS_H
 	#include "definitions.h"
 #endif
 
-#ifndef _SHM_LIB_H
-#define _SHM_LIB_H
-#endif
 /* Crea la SHM e ne ritorna l'id. */
 int alloca_shm(key_t key, size_t size);
 
@@ -22,3 +21,5 @@ void sgancia_risorse(void *ptr1, void *ptr2, void *ptr3, void *ptr4);
 
 /* Distrugge la SHM con id 'shmid'. */
 void distruggi_shm(int shmid);
+
+#endif

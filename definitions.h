@@ -1,4 +1,5 @@
-/*#define _GNU_SOURCE*/
+#ifndef _DEFINITIONS_H
+#define _GNU_SOURCE
 #define _DEFINITIONS_H
 #include <stdio.h>
 #include <stdlib.h>
@@ -232,3 +233,5 @@ typedef struct {
 	term_dump term_dump;
     nave_dump nd;
 } dump;
+
+#endif

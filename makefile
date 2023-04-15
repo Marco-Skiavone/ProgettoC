@@ -1,13 +1,11 @@
 CC = gcc
-CFLAGS = -O2  #-std=c89 -Wpedantic
+CFLAGS = -O2  -std=c89 -pedantic -w
 # Se la si vuole, la definizione di GDBFLAGS serve a permettere l'avvio di gdb
-GDBFLAGS = -std=c89 -Wpedantic -O0 -g
+GDBFLAGS = -std=c89 -pedantic -w -O0 -g
 TARGET = application
 TARGET_ME = application_ME
 PORTO = porto
 NAVE = nave
-#possiamo aggiungere altre librerie qua sotto
-#OBJS = *lib.o
 SOURCES = *.c
 #var = [parametro da inserire su cmd: "make run var=[args]"]
 

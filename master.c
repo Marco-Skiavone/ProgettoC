@@ -6,27 +6,15 @@
 #include "common_lib.h"
 
 void* vptr_shm_mercato;
-int id_shm_mercato;
-
 void* vptr_shm_posizioni_porti;
-int id_shm_posizioni_porti;
-
 void* vptr_shm_dettagli_lotti;
-int id_shm_dettagli_lotti;
-
 void* vptr_shm_dump;
-int id_shm_dump;
 
-int id_semaforo_mercato;
 int id_semaforo_gestione;
 int id_semaforo_banchine;
 int id_semaforo_dump;
 
-int id_coda_richieste;
-
 int *child_pids;
-char **argv_figli;
-
 int PARAMETRO[QNT_PARAMETRI];
 
 void signal_handler(int signo);
@@ -34,10 +22,14 @@ void signal_handler(int signo);
 int main(int argc, char* argv[]){
     int i, j, k;
     int n_righe_file, file_config_char;
-    int SHM_ID[4];
 
-    int continua_simulazione;
-    int child_pid, status;
+    int id_shm_mercato, id_shm_posizioni_porti;
+    int id_shm_dettagli_lotti, id_shm_dump, id_coda_richieste;
+    int SHM_ID[4];
+    int id_semaforo_mercato;
+
+    char **argv_figli;
+    int continua_simulazione, child_pid, status;
     FILE *file_config;
     richiesta r;
     struct sigaction sa_alrm;
@@ -119,10 +111,6 @@ int main(int argc, char* argv[]){
     SHM_ID[2] = id_shm_posizioni_porti;
     SHM_ID[3] = id_shm_dump;
     aggancia_tutte_shm(&vptr_shm_mercato, &vptr_shm_dettagli_lotti, &vptr_shm_posizioni_porti, &vptr_shm_dump, SHM_ID, PARAMETRO);
-    vptr_shm_mercato = aggancia_shm(id_shm_mercato);
-    vptr_shm_dettagli_lotti = aggancia_shm(id_shm_dettagli_lotti);
-    vptr_shm_posizioni_porti = aggancia_shm(id_shm_posizioni_porti);
-    vptr_shm_dump = aggancia_shm(id_shm_dump);
     alloca_semafori(&id_semaforo_banchine, &id_semaforo_dump, &id_semaforo_gestione, &id_semaforo_mercato, PARAMETRO);
 
     inizializza_dump(vptr_shm_dump, PARAMETRO);
@@ -136,8 +124,6 @@ int main(int argc, char* argv[]){
             CAST_DETTAGLI_LOTTI(vptr_shm_dettagli_lotti)[i].val,
             CAST_DETTAGLI_LOTTI(vptr_shm_dettagli_lotti)[i].exp);
     }
-    
-
 
     /* ---------------------------------------- */
     /* semaforo numero 1 su 2 che fa 1-0 per far scrivere le navi in m.e.*/
@@ -176,7 +162,7 @@ int main(int argc, char* argv[]){
                 break;
         }
     }
-    for(int i=0;i<SO_NAVI;i++){
+    for(i=0;i<SO_NAVI;i++){
         
         switch( child_pids[SO_PORTI + i] =  fork()){
             case -1:
@@ -214,8 +200,6 @@ int main(int argc, char* argv[]){
         pause();
     } while(((int)(CAST_DUMP(vptr_shm_dump)->data) < SO_DAYS) && continua_simulazione);
     
-    /*if(freopen("out.txt", "a", stdout)==NULL)
-        {perror("freopen ha ritornato NULL");}*/
     for(i = 0; i < SO_NAVI+SO_PORTI; i++){
         printf("MASTER: ammazzo il figlio %d\n", child_pids[i]);
         kill(child_pids[i], SIGUSR2);
@@ -233,7 +217,7 @@ int main(int argc, char* argv[]){
     do {    
         r = accetta_richiesta(i, id_coda_richieste);
         if(r.mtext.indicemerce != -1){
-            //printf("Porto %ld merce %d nlotti %d\n", r.mtype, r.mtext.indicemerce, r.mtext.nlotti);
+            /*printf("Porto %ld merce %d nlotti %d\n", r.mtype, r.mtext.indicemerce, r.mtext.nlotti);*/
         }else if(i < SO_PORTI)
             i++;
     } while (r.mtext.indicemerce != -1 || i < SO_PORTI);
@@ -248,16 +232,6 @@ int main(int argc, char* argv[]){
     free_ptr(child_pids, argv_figli, QNT_PARAMETRI+2);
     exit(EXIT_SUCCESS);
 }
-
-/*
-void alloca_risorse(){
-    vptr_shm_mercato = aggancia_shm(id_shm_mercato);
-    vptr_shm_dettagli_lotti = aggancia_shm(id_shm_dettagli_lotti);
-    vptr_shm_posizioni_porti = aggancia_shm(id_shm_posizioni_porti);
-    vptr_shm_dump = aggancia_shm(id_shm_dump);
-    alloca_semafori(&id_semaforo_banchine, &id_semaforo_dump, &id_semaforo_gestione, &id_semaforo_mercato, PARAMETRO);
-    
-}*/
 
 void signal_handler(int signo){
     int i;

@@ -1,8 +1,8 @@
+#ifndef _COMMON_LIB_H
+#define _COMMON_LIB_H
 #ifndef _DEFINITIONS_H
 	#include "definitions.h"
 #endif
-#define _COMMON_LIB_H
-
 #ifndef _SHM_LIB_H
 #include "shm_lib.h"
 #endif
@@ -18,3 +18,4 @@ void trova_tutti_id(int *id_mercato, int *id_lotti, int *id_posizioni, int *id_d
 
 /* Esegue le aggancia_shm(), ritornando i valori negli indirizzi passati come argomenti. */
 void aggancia_tutte_shm(void **p_mercato, void **p_lotti, void **p_posizioni, void **p_dump, int IDS[], int PARAMETRO[]);
+#endif

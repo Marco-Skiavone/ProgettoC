@@ -42,11 +42,7 @@ void sem_reserve(int semid, int sem_num) {
     while (semop(semid, &sops, 1) == -1 && errno == EINTR) {
         printf("reitero su un nuovo sem_reserve\n");
         perror("semop reserve");
-    }/*
-    if(semop(semid, &sops, 1) == -1 && errno == EINTR){
-        printf("apro un nuovo sem_reserve\n");
-        sem_reserve(semid, sem_num);
-    }*/
+    }
 }
 
 void sem_release(int semid, int sem_num) {
@@ -57,11 +53,7 @@ void sem_release(int semid, int sem_num) {
     while (semop(semid, &sops, 1) == -1 && errno == EINTR) {
         printf("reitero su un nuovo sem_release\n");
         perror("semop release");
-    }/*
-    if(semop(semid, &sops, 1) == -1 && errno == EINTR){
-        printf("apro un nuovo sem_release\n");
-        sem_release(semid, sem_num);
-    }*/
+    }
 }
 
 void sem_wait_zero(int semid, int sem_num) {
@@ -69,14 +61,9 @@ void sem_wait_zero(int semid, int sem_num) {
     sops.sem_num = sem_num;
     sops.sem_op = 0;
     sops.sem_flg = 0;
-    errno = 0;/*
+    errno = 0;
     while (semop(semid, &sops, 1) == -1 && errno == EINTR) {
         perror("semop wait for zero");
-    }
-    */
-    if(semop(semid, &sops, 1) == -1 && errno == EINTR){
-        printf("apro un nuovo sem_wait_zero\n");
-        sem_wait_zero(semid, sem_num);
     }
 }
 

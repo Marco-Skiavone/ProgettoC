@@ -35,7 +35,7 @@ void invia_richiesta(richiesta r, int coda_id){
         TEST_ERROR
         exit(255);
     }
-    //STAMPA_DEBUG
+    /*STAMPA_DEBUG*/
 }
 
 richiesta accetta_richiesta(int msgtype, int coda_id){
