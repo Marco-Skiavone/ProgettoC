@@ -38,32 +38,32 @@ int main(int argc, char* argv[]){
     #ifdef DUMP_ME
     printf("Programma in avvio con parametro DUMP_ME abilitato!\n\n");
     #endif
-
+    
     setbuf(stdout, NULL); /* unbufferizza stdout */
     clearLog();
     srand(time(NULL));
     if(freopen("out.txt", "a", stdout)==NULL)
-        {perror("freopen ha ritornato NULL");}
+        {fprintf(stderr, "freopen ha ritornato NULL");}
     if(argc !=2){
-        perror("argc != 2");
+        fprintf(stderr, "argc != 2");
         exit(EXIT_FAILURE);
     }
 
     n_righe_file = atoi(argv[1]);
     
     if(n_righe_file < 1){
-        perror("n_righe_file < 1");
+        fprintf(stderr, "n_righe_file < 1");
         exit(EXIT_FAILURE);
     }
 
     file_config = fopen("config.txt", "r");
     TEST_ERROR
-
+    
     for(i=0;i<n_righe_file;){
         if(file_config_char = fgetc(file_config) == '\n'){
             i++;
         }else if(file_config_char ==EOF){
-            perror("ricerca parametri");
+            fprintf(stderr, "ricerca parametri");
             fclose(file_config);
             exit(EXIT_FAILURE);
         }
@@ -71,14 +71,14 @@ int main(int argc, char* argv[]){
     
     for(i=0;i<QNT_PARAMETRI;i++){
         if(fscanf(file_config, "%d", &PARAMETRO[i]) != 1){
-            perror("lettura parametro");
+            fprintf(stderr, "ERRORE: lettura parametro");
             fclose(file_config);
             exit(EXIT_FAILURE);
         }
     }
 
     fclose(file_config);
-
+    
     STAMPA_PARAMETRI
 
     switch(controllo_parametri(PARAMETRO)){
@@ -114,7 +114,6 @@ int main(int argc, char* argv[]){
     alloca_semafori(&id_semaforo_banchine, &id_semaforo_dump, &id_semaforo_gestione, &id_semaforo_mercato, PARAMETRO);
 
     inizializza_dump(vptr_shm_dump, PARAMETRO);
-    CAST_DUMP(vptr_shm_dump)->data = 0;
     generate_positions(SO_LATO, CAST_POSIZIONI_PORTI(vptr_shm_posizioni_porti), SO_PORTI);
     
     setUpLotto(CAST_DETTAGLI_LOTTI(vptr_shm_dettagli_lotti),PARAMETRO);
@@ -136,7 +135,6 @@ int main(int argc, char* argv[]){
     #ifdef DUMP_ME/* definito nel caso di dump in mutua esclusione. */
     sem_set_val(id_semaforo_gestione,1,0);  
     #endif
-
     /* settaggio di argv_figli e fork dei processi porto e nave */
     argv_figli[0] = (char *)malloc(MAX_STR_LEN);
 	argv_figli[1] = (char *)malloc(MAX_STR_LEN);
@@ -179,11 +177,12 @@ int main(int argc, char* argv[]){
                 break;
         }
     }
+    fprintf(stderr, "we waglio\n");
     /* Fine settaggio argv_figli e creazione dei processi.
      * Inizio attesa di sincronizzazione e partenza del loop di simulazione. */
     sem_wait_zero(id_semaforo_gestione, 0);
+    fprintf(stderr, "we waglio\n");
     stampa_dump(PARAMETRO, vptr_shm_dump, vptr_shm_mercato, id_semaforo_banchine);
-    
     sa_alrm.sa_handler = signal_handler;
     sa_alrm.sa_flags = 0;
     sigemptyset(&(sa_alrm.sa_mask));

@@ -105,7 +105,10 @@ void inizializza_dump(void *vptr_shm_dump, int PARAMETRO[]){
 void setUpLotto(merce* ptr_dettagli_lotti, int PARAMETRO[]){
     int i;
     ptr_dettagli_lotti[SO_MERCI-1].val = 1;
-    ptr_dettagli_lotti[SO_MERCI-1].exp = SO_MIN_VITA + (rand() % (SO_MAX_VITA - SO_MIN_VITA));
+	if(SO_MIN_VITA == SO_MAX_VITA){
+		ptr_dettagli_lotti[SO_MERCI-1].exp = SO_MAX_VITA;
+	} else
+    	ptr_dettagli_lotti[SO_MERCI-1].exp = SO_MIN_VITA + (rand() % (SO_MAX_VITA - SO_MIN_VITA));
     for(i=0;i<SO_MERCI-1;i++){
         ptr_dettagli_lotti[i].val = (rand() & SO_SIZE) + 1;
         ptr_dettagli_lotti[i].exp = SO_MIN_VITA + (rand() % (SO_MAX_VITA - SO_MIN_VITA));

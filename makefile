@@ -40,5 +40,5 @@ runME: $(TARGET_ME)
 clear:
 	rm -f *.o $(TARGET) $(TARGET_ME) $(NAVE) $(PORTO)
 
-ipc:
+ipc: clear
 	ipcrm --all
