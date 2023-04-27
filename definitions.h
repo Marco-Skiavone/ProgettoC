@@ -116,7 +116,7 @@
 #define CHIAVE_SHAREDM_DUMP 40
 #define SIZE_SHAREDM_DUMP ((sizeof(porto_dump) * SO_PORTI) + (sizeof(merce_dump) * SO_MERCI) + sizeof(dump))
 
-#define MSG_SIZE (sizeof(int)*2)
+#define MSG_SIZE (sizeof(m_text))
 #define CHIAVE_CODA 50
 
 #define CHIAVE_SEM_MERCATO 11

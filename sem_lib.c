@@ -6,21 +6,19 @@
 int sem_create(key_t key, int nsems) {
     int semid;
     if ((semid = semget(key, nsems, IPC_CREAT | IPC_EXCL | S_IWUSR | S_IRUSR)) == -1) {
-        perror("semget creazione");
+        fprintf(stderr, "semget creazione");
         exit(255);
     }
     return semid;
 }
 
 void alloca_semafori(int *id_semaforo_banchine, int *id_semaforo_dump, int *id_semaforo_gestione, int *id_semaforo_mercato, int PARAMETRO[]){
-    fprintf(stderr, "we waglio\n");
     #ifdef DUMP_ME
     printf("SEM_CREATE_GESTIONE: %d\n", *id_semaforo_gestione = sem_create(CHIAVE_SEM_GESTIONE, 2));
     #else
     printf("SEM_CREATE_GESTIONE: %d\n", *id_semaforo_gestione = sem_create(CHIAVE_SEM_GESTIONE, 1));
     TEST_ERROR
     #endif
-    fprintf(stderr, "we waglio\n");
     printf("SEM_CREATE_BANCHINE: %d\n", *id_semaforo_banchine = sem_create(CHIAVE_SEM_BANCHINE, SO_PORTI));
     printf("SEM_CREATE_DUMP: %d\n", *id_semaforo_dump = sem_create(CHIAVE_SEM_DUMP, 2));
     printf("SEM_CREATE_MERCATO: %d\n", *id_semaforo_mercato = sem_create(CHIAVE_SEM_MERCATO, SO_PORTI));

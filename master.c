@@ -177,11 +177,10 @@ int main(int argc, char* argv[]){
                 break;
         }
     }
-    fprintf(stderr, "we waglio\n");
+
     /* Fine settaggio argv_figli e creazione dei processi.
      * Inizio attesa di sincronizzazione e partenza del loop di simulazione. */
     sem_wait_zero(id_semaforo_gestione, 0);
-    fprintf(stderr, "we waglio\n");
     stampa_dump(PARAMETRO, vptr_shm_dump, vptr_shm_mercato, id_semaforo_banchine);
     sa_alrm.sa_handler = signal_handler;
     sa_alrm.sa_flags = 0;
