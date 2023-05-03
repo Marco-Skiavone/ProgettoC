@@ -125,15 +125,14 @@ int equals(double x, double y){
 void stampa_mercato_dump(void *vptr_shm_dump, void *vptr_shm_mercato, int PARAMETRO[], int indice_porto){
 	int j, totale;
 	totale = 0;
-	printf("MERCATO, giorno %d\n", CAST_DUMP(vptr_shm_dump)->data);
-	printf("PORTO %d:\n", indice_porto);
+	
 	for(j = 0; j < SO_MERCI; j++){
-		printf("[%d, %d] ", j, (CAST_MERCATO(vptr_shm_mercato))[indice_porto][j].val);
+		printf("Lotto %d: %d ", j, (CAST_MERCATO(vptr_shm_mercato))[indice_porto][j].val);
 		if((CAST_MERCATO(vptr_shm_mercato))[indice_porto][j].val>0){
 			totale += (CAST_MERCATO(vptr_shm_mercato))[indice_porto][j].val;
 		}
 	}
-	printf(" presente: %d", totale);
+	printf("\npresente: %d", totale);
 	printf("\n");
 	
 }
@@ -159,9 +158,7 @@ void controllo_scadenze_porti(merce *p_lotti, void *p_mercato, void *p_dump, int
 	if(freopen("log_porti.txt", "a", stdout)==NULL)
         {perror("freopen ha ritornato NULL");}
 	int i, j, tmp;
-	printf("provo a entrare in sem_dump: data = %d\n", CAST_DUMP(p_dump)->data);
 	sem_reserve(id_sem_dump, 0);
-	printf("sono entrato in sem_dump\n");
 	for(i = 0; i < SO_MERCI; i++){
 		if(p_lotti[i].exp < CAST_DUMP(p_dump)->data){	/* la merce di tipo i scade sempre lo stesso giorno, dovunque si trovi. */
 			for(j = 0; j < SO_PORTI; j++){
@@ -186,7 +183,8 @@ void stampa_merci_porti_navi(int PARAMETRO[], void * vptr_shm_dump, void *vptr_s
 	int i, j;
 	j=0;
 	for(i = 0; i < (SO_MERCI+SO_PORTI); i++){
-		
+		if(i==SO_MERCI) printf("\n");
+
         if(i < SO_MERCI){  /* stampo merci per tipologia */
             printf("Merce %d\n", i);
             printf("- consegnata: %d\n", CAST_MERCE_DUMP(vptr_shm_dump)[i].consegnata);
@@ -204,13 +202,15 @@ void stampa_merci_porti_navi(int PARAMETRO[], void * vptr_shm_dump, void *vptr_s
 
 			if(freopen("log_mercato.txt","a", stdout)==NULL)
         		{perror("freopen ha ritornato NULL");}
+			printf("\nGiorno %d\n", CAST_DUMP(vptr_shm_dump)->data);
+			printf("PORTO %d:\n", j);
 			stampa_mercato_dump(vptr_shm_dump, vptr_shm_mercato, PARAMETRO, j);
 			if(freopen("log_dump.txt", "a", stdout)==NULL)
         		{perror("freopen ha ritornato NULL");}
             j++;
         }
     }
-    printf("Navi:\n");
+    printf("\nNavi:\n");
     printf("- navi in mare con carico: %d\n", CAST_DUMP(vptr_shm_dump)->nd.navicariche);
     printf("- navi in mare senza carico: %d\n", CAST_DUMP(vptr_shm_dump)->nd.naviscariche);
     printf("- navi in porto (carico/scarico): %d\n", CAST_DUMP(vptr_shm_dump)->nd.naviporto);

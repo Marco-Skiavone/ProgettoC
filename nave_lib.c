@@ -51,7 +51,6 @@ void codice_simulazione(int indice, int PARAMETRO[], int SEM_ID[], int id_coda_r
     richiesta r;
     merce_nave carico[MAX_CARICO];
     bzero(carico, MAX_CARICO*sizeof(merce_nave));
-    printf("\nspaziolibero 0: %d SO_CAPACITY: %d\n", spaziolibero, SO_CAPACITY);
     posizione = avvia_nave(indice, PARAMETRO, SEM_ID , VPTR_ARR, &indice_porto_attraccato);
     while(1){
         /* Il primo do-while esegue la ricerca della prima richiesta da accettare,
@@ -80,7 +79,7 @@ void codice_simulazione(int indice, int PARAMETRO[], int SEM_ID[], int id_coda_r
             printf("Nave %d inizia a caricare\n", indice);
         
         aggiorna_dump_carico(VPTR_SHM_DUMP, indice_porto_attraccato, carico, i_carico, spaziolibero, ID_SEMAFORO_DUMP, PARAMETRO);
-        printf("Attesa con spaziolibero 1: %d\n", spaziolibero);
+        
         attesa((SO_CAPACITY - spaziolibero), SO_LOADSPEED);
         if(spaziolibero != SO_CAPACITY)
             printf("Nave %d ha caricato\n", indice);
@@ -94,7 +93,6 @@ void codice_simulazione(int indice, int PARAMETRO[], int SEM_ID[], int id_coda_r
         }
 
         printf("Nave %d parte\n", indice);
-        printf("Attesa con distanza 1: %f\n", distanza);
         attesa(distanza,SO_SPEED);
         printf("Nave %d arriva\n", indice);
         
@@ -118,7 +116,6 @@ point avvia_nave(int indice, int PARAMETRO[], int SEM_ID[], void* VPTR_ARR[], in
     distanza = calcola_distanza(posizione, CAST_POSIZIONI_PORTI(VPTR_SHM_POSIZIONI_PORTI)[indice_destinazione]);
     printf("\nNave %d in posizione x:%f y:%f indice porto piu vicino %d x:%f y;%f\n", indice, posizione.x, posizione.y, indice_destinazione, CAST_POSIZIONI_PORTI(VPTR_SHM_POSIZIONI_PORTI)[indice_destinazione].x, CAST_POSIZIONI_PORTI(VPTR_SHM_POSIZIONI_PORTI)[indice_destinazione].y );
     printf("Nave %d inizia il viaggio\n", indice);
-    printf("Attesa con distanza 2: %f\n", distanza);
     attesa(distanza, SO_SPEED);
     /* richiede la banchina e una volta dentro aggiorna il dump */
     richiedi_banchina(ID_SEMAFORO_BANCHINE, indice_destinazione);
@@ -132,7 +129,6 @@ point avvia_nave(int indice, int PARAMETRO[], int SEM_ID[], void* VPTR_ARR[], in
 richiesta esamina_porto(int indice, int PARAMETRO[], int SEM_ID[], int id_coda_richieste, void* VPTR_ARR[], int* lotti_scartati, int *indice_porto_attraccato, int *reqlett, point posizione, int *spaziolibero, double *tempo_carico, merce_nave carico[], int *i_carico, int *indice_destinazione){
     richiesta r;
     double distanza;
-    printf("Parte esamina porto\n");
     do{
         r = accetta_richiesta(-1, id_coda_richieste);
         if(r.mtext.indicemerce == -1){
@@ -140,7 +136,7 @@ richiesta esamina_porto(int indice, int PARAMETRO[], int SEM_ID[], int id_coda_r
             exit(255);
         }
         if(CAST_MERCATO(VPTR_SHM_MERCATO)[*indice_porto_attraccato][r.mtext.indicemerce].val > 0){
-            printf("Richiesta da porto %d merce %d lotti %d al porto %d con val %d\n", (int)r.mtype,r.mtext.indicemerce, r.mtext.nlotti, *indice_porto_attraccato, (CAST_MERCATO(VPTR_SHM_MERCATO)[*indice_porto_attraccato][r.mtext.indicemerce].val));
+            printf("Nave %d richiesta da porto %d merce %d lotti %d al porto %d con val %d\n", indice,(int)r.mtype,r.mtext.indicemerce, r.mtext.nlotti, *indice_porto_attraccato, (CAST_MERCATO(VPTR_SHM_MERCATO)[*indice_porto_attraccato][r.mtext.indicemerce].val));
             distanza = calcola_distanza(posizione, CAST_POSIZIONI_PORTI(VPTR_SHM_POSIZIONI_PORTI)[r.mtype]);
             while(r.mtext.nlotti * CAST_DETTAGLI_LOTTI(VPTR_SHM_DETTAGLI_LOTTI)[r.mtext.indicemerce].val > *spaziolibero){
                 r.mtext.nlotti--;
@@ -188,7 +184,6 @@ void carica_dal_porto(int indice, int PARAMETRO[], int id_coda_richieste, void* 
     double distanza;
     int noncaricare = 0, j;
     distanza = calcola_distanza(posizione, CAST_POSIZIONI_PORTI(VPTR_SHM_POSIZIONI_PORTI)[r.mtype]);
-    printf("Parte carica dal porto\n");
     do{
         r = accetta_richiesta(*indice_destinazione, id_coda_richieste);
         if(r.mtext.indicemerce == -1){
@@ -257,7 +252,6 @@ void attracco_e_scarico(int indice, int PARAMETRO[], int SEM_ID[],void* VPTR_ARR
     }else{
         stato_nave(DN_MC_PORTO, ID_SEMAFORO_DUMP, VPTR_SHM_DUMP, indice);
     }
-    printf("Attesa con spaziolibero 2: %d\n", *spaziolibero);
     attesa((SO_CAPACITY-*spaziolibero), SO_LOADSPEED);
     /* salva la data di scarico della merce */
     datascarico = CAST_DUMP(VPTR_SHM_DUMP)->data;
@@ -301,28 +295,24 @@ void stato_nave(int stato, int id_semaforo_dump, void *vptr_shm_dump, int indice
             ((dump*)vptr_shm_dump)->nd.naviscariche--;
             ((dump*)vptr_shm_dump)->nd.naviporto++;
             sem_release(id_semaforo_dump,1);
-            printf("0. stato nave %d aggiornato\n", indice);
             break;
         case DN_MC_PORTO:
             sem_reserve(id_semaforo_dump,1);
             ((dump*)vptr_shm_dump)->nd.navicariche--;
             ((dump*)vptr_shm_dump)->nd.naviporto++;
             sem_release(id_semaforo_dump,1);
-            printf("1. stato nave %d aggiornato\n", indice);
             break;
         case DN_PORTO_MV:
             sem_reserve(id_semaforo_dump,1);
             ((dump*)vptr_shm_dump)->nd.naviporto--;
             ((dump*)vptr_shm_dump)->nd.naviscariche++;
             sem_release(id_semaforo_dump,1);
-            printf("2. stato nave %d aggiornato\n", indice);
             break;
         case DN_PORTO_MC: 
             sem_reserve(id_semaforo_dump,1);
             ((dump*)vptr_shm_dump)->nd.naviporto--;
             ((dump*)vptr_shm_dump)->nd.navicariche++;
             sem_release(id_semaforo_dump,1);
-            printf("3. stato nave %d aggiornato\n", indice);
             break;
         default:
             perror("**** ERRORE! Caso default di stato_nave()");
