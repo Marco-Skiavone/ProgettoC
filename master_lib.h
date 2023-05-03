@@ -12,6 +12,7 @@
 #endif
 
 /* Funzione che pulisce i file txt usati per i log
+	viene chiamata all'avvio di ogni simulazione
 */
 void clearLog();
 
