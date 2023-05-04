@@ -125,14 +125,16 @@ int equals(double x, double y){
 void stampa_mercato_dump(void *vptr_shm_dump, void *vptr_shm_mercato, int PARAMETRO[], int indice_porto){
 	int j, totale;
 	totale = 0;
-	
+	printf("[");
 	for(j = 0; j < SO_MERCI; j++){
-		printf("Lotto %d: %d ", j, (CAST_MERCATO(vptr_shm_mercato))[indice_porto][j].val);
+		printf("%d ", (CAST_MERCATO(vptr_shm_mercato))[indice_porto][j].val);
 		if((CAST_MERCATO(vptr_shm_mercato))[indice_porto][j].val>0){
 			totale += (CAST_MERCATO(vptr_shm_mercato))[indice_porto][j].val;
 		}
+		if((j+1)%10==0 && j!=SO_MERCI-1)
+			printf("\n");
 	}
-	printf("\npresente: %d", totale);
+	printf("]\npresente: %d", totale);
 	printf("\n");
 	
 }
