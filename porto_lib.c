@@ -61,19 +61,16 @@ void spawnMerciPorti(void* vptr_mercato, merce* ptr_lotti, void *vptr_dump, int 
     sem_release(id_sem_dump, 0);
 }
 
-int manda_richieste(void* vptr_shm_mercato, int indice, int coda_id, int indice_richiesta, int PARAMETRO[]){
+void manda_richieste(void* vptr_shm_mercato, int indice, int coda_id, int PARAMETRO[]){
     int i;
     merce(*ptr_shm_mercato_porto)[SO_MERCI] = CAST_MERCATO(vptr_shm_mercato);
     richiesta r;
     r.mtype = indice;
-    for(i=indice_richiesta;i<SO_MERCI;i++){
+    for(i=0;i<SO_MERCI;i++){
         if(ptr_shm_mercato_porto[indice][i].val < 0){
             r.mtext.indicemerce = i;
             r.mtext.nlotti = - ptr_shm_mercato_porto[indice][i].val;
-            invia_richiesta(r,coda_id); /* se arriva eagain segni il punto di arrivo, dopo il primo giorno */
-            if(errno == EAGAIN)
-                return i;
+            invia_richiesta(r,coda_id);
         }
     }
-    return i;
 }

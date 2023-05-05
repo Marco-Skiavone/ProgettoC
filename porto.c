@@ -30,7 +30,6 @@ int main(int argc, char *argv[]){
     int id_shm_posizioni_porti;
     int id_coda_richieste;
     int SHM_ID[4];
-    int richieste_mandate = 0;
     struct sigaction sa;
     sigset_t mask1;
     sa.sa_flags = 0;
@@ -65,16 +64,14 @@ int main(int argc, char *argv[]){
     inizializza_banchine(id_semaforo_banchine, indice, vptr_shm_dump, PARAMETRO);
     
     spawnMerciPorti(vptr_shm_mercato, CAST_DETTAGLI_LOTTI(vptr_shm_dettagli_lotti), vptr_shm_dump, id_semaforo_dump, PARAMETRO, indice);
-    richieste_mandate = manda_richieste(vptr_shm_mercato, indice, id_coda_richieste, 0, PARAMETRO);
+    manda_richieste(vptr_shm_mercato, indice, id_coda_richieste, PARAMETRO);
     /* si sgancia dalle memorie condivise. */
     /* si dichiara pronto e aspetta. (wait for zero) */
     sem_reserve(id_semaforo_gestione, 0);
     sem_wait_zero(id_semaforo_gestione, 0);
+    
     do {
         pause();
-        
-        richieste_mandate = manda_richieste(vptr_shm_mercato, indice, id_coda_richieste, richieste_mandate, PARAMETRO);
-        printf("Porto %d: richieste mandate: %d\n", indice, richieste_mandate);
     } while(1);
     sgancia_risorse(vptr_shm_dettagli_lotti, vptr_shm_dump, vptr_shm_mercato, vptr_shm_posizioni_porti);
 }

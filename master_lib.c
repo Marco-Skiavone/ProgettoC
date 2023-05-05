@@ -127,10 +127,12 @@ void stampa_mercato_dump(void *vptr_shm_dump, void *vptr_shm_mercato, int PARAME
 	totale = 0;
 	printf("[");
 	for(j = 0; j < SO_MERCI; j++){
-		printf("%d, ", (CAST_MERCATO(vptr_shm_mercato))[indice_porto][j].val);
+		printf("%d ", (CAST_MERCATO(vptr_shm_mercato))[indice_porto][j].val);
 		if((CAST_MERCATO(vptr_shm_mercato))[indice_porto][j].val>0){
 			totale += (CAST_MERCATO(vptr_shm_mercato))[indice_porto][j].val;
 		}
+		if((j+1)%10==0 && j!=SO_MERCI-1)
+			printf("\n");
 	}
 	printf("]\npresente: %d", totale);
 	printf("\n");

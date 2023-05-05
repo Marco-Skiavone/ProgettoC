@@ -18,4 +18,4 @@ void inizializza_banchine(int sem_id, int indice, void * vptr_shm_dump, int PARA
 void spawnMerciPorti(void* vptr_mercato, merce* ptr_lotti, void *vptr_dump, int id_sem_dump, int PARAMETRO[], int indice);
 
 /* Invia le richieste alla coda messaggi in base ai valori di mercato_shm. */
-int manda_richieste(void* vptr_shm_mercato, int indice, int coda_id, int indice_richiesta, int PARAMETRO[]);
+void manda_richieste(void* vptr_shm_mercato, int indice, int coda_id, int PARAMETRO[]);
