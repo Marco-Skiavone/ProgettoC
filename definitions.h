@@ -1,4 +1,5 @@
-/*#define _GNU_SOURCE*/
+#ifndef _DEFINITIONS_H
+#define _GNU_SOURCE
 #define _DEFINITIONS_H
 #include <stdio.h>
 #include <stdlib.h>
@@ -17,7 +18,7 @@
 #include <signal.h>
 #include <time.h>
 #include <math.h>
-
+/* define utilizzata per effettuare test di debug*/
 #define STAMPA_DEBUG printf("%s: data = %d, linea %d\n", __FILE__, CAST_DUMP(vptr_shm_dump)->data, __LINE__);
 
 /* stampa un messaggio di errore dove str è una stringa personalizzabile */
@@ -86,12 +87,26 @@
 #define SO_LOADSPEED PARAMETRO[I_LOADSPEED]
 #define SO_DAYS PARAMETRO[I_DAYS]
 
+/* MACRO per riferimenti agli ID dei semafori*/
+#define ID_SEMAFORO_BANCHINE SEM_ID[0]
+#define ID_SEMAFORO_DUMP SEM_ID[1]
+#define ID_SEMAFORO_GESTIONE SEM_ID[2]
+#define ID_SEMAFORO_MERCATO SEM_ID[3]
+
+/* MACRO per riferimenti ai puntatori delle shared memory*/
+#define VPTR_SHM_DETTAGLI_LOTTI VPTR_ARR[0]
+#define VPTR_SHM_DUMP VPTR_ARR[1]
+#define VPTR_SHM_MERCATO VPTR_ARR[2]
+#define VPTR_SHM_POSIZIONI_PORTI VPTR_ARR[3]
+
+
 /* Numero di parametri: 
  * - 13 versione da 24
  * - 16 versione da 30 */
 #define QNT_PARAMETRI 13
 
-
+/* MACRO utilizzate per indicare le chiavi delle shared memory, la loro dimensione,
+	la dimensione dei messaggi e le chiavi dei semafori */
 #define CHIAVE_SHAREDM_MERCATO 10
 #define SIZE_SHAREDM_MERCATO ((sizeof(merce) * SO_MERCI ) * SO_PORTI)
 
@@ -104,7 +119,7 @@
 #define CHIAVE_SHAREDM_DUMP 40
 #define SIZE_SHAREDM_DUMP ((sizeof(porto_dump) * SO_PORTI) + (sizeof(merce_dump) * SO_MERCI) + sizeof(dump))
 
-#define MSG_SIZE (sizeof(int)*2)
+#define MSG_SIZE (sizeof(m_text))
 #define CHIAVE_CODA 50
 
 #define CHIAVE_SEM_MERCATO 11
@@ -113,6 +128,7 @@
 #define CHIAVE_SEM_GESTIONE 61
 
 /* --- casting delle shm --- */
+/* usate per fare il casting dei void pointer alla shared memory*/
 
 #define CAST_MERCATO(ptr) \
 	((merce(*)[SO_MERCI])ptr)
@@ -221,3 +237,5 @@ typedef struct {
 	term_dump term_dump;
     nave_dump nd;
 } dump;
+
+#endif

@@ -1,7 +1,8 @@
+#ifndef _QUEUE_LIB_H
+#define _QUEUE_LIB_H
 #ifndef _DEFINITIONS_H
 	#include "definitions.h"
 #endif
-#define _QUEUE_LIB_H
 
 /* Crea la coda di msg 'richieste' e ne restituisce l'id. */
 int set_coda_richieste(key_t key);
@@ -25,3 +26,4 @@ void invia_richiesta(richiesta r, int coda_id);
 * In pratica aggiungono aggiungono 1 prima di eseguire effettivamente la system call,
 * in questa maniera è possibile usare l'indice dei porti (che parte da 0) come tipo dei messaggi. */
 richiesta accetta_richiesta(int msgtype, int coda_id);
+#endif
