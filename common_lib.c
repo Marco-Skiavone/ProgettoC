@@ -15,4 +15,16 @@ void trova_tutti_id(int *id_mercato, int *id_lotti, int *id_posizioni, int *id_d
     *(id_dump) = find_shm(CHIAVE_SHAREDM_DUMP, SIZE_SHAREDM_DUMP);
     TEST_ERROR
 	*(id_coda) = get_coda_id(CHIAVE_CODA);
+    TEST_ERROR
+}
+
+void aggancia_tutte_shm(void **p_mercato, void **p_lotti, void **p_posizioni, void **p_dump, int ids[], int PARAMETRO[]){
+    *(p_mercato) = aggancia_shm(ids[0]);
+    TEST_ERROR
+    *(p_lotti) = aggancia_shm(ids[1]);
+    TEST_ERROR
+    *(p_posizioni) = aggancia_shm(ids[2]);
+    TEST_ERROR
+    *(p_dump) = aggancia_shm(ids[3]);
+    TEST_ERROR
 }

@@ -30,12 +30,12 @@ void distruggi_coda(int coda_id) {
 
 void invia_richiesta(richiesta r, int coda_id){
     r.mtype += 1;
-    if(msgsnd(coda_id, &r, MSG_SIZE, 0) == -1){
-        perror("invia richiesta");
+    if(msgsnd(coda_id, &r, MSG_SIZE, IPC_NOWAIT) == -1){    /* forse senza ipc_nowait */
+        /* inserito IPC_NOWAIT per le troppe richieste che eventualmente possono bloccare la simulazione. */
+        if(errno == EAGAIN)
+            fprintf(stderr, "EAGAIN riscontrato nella coda, provate a stampare la coda!\n");
         TEST_ERROR
-        exit(255);
     }
-    //STAMPA_DEBUG
 }
 
 richiesta accetta_richiesta(int msgtype, int coda_id){

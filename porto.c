@@ -3,42 +3,44 @@
 #include "sem_lib.h"
 #include "shm_lib.h"
 #include "porto_lib.h"
-
-void* vptr_shm_mercato;
-int id_shm_mercato;
-
-void* vptr_shm_posizioni_porti;
-int id_shm_posizioni_porti;
+#include "common_lib.h"
 
 void* vptr_shm_dettagli_lotti;
-int id_shm_dettagli_lotti;
-
 void* vptr_shm_dump;
-int id_shm_dump;
+void* vptr_shm_mercato;
+void* vptr_shm_posizioni_porti;
 
-int id_semaforo_mercato;
-int id_semaforo_gestione;
-int id_semaforo_banchine;
 int id_semaforo_dump;
-
-int id_coda_richieste;
 
 int indice;
 int PARAMETRO[QNT_PARAMETRI];
-void inizializza_risorse();
 
 void signal_handler(int signo);
 
 int main(int argc, char *argv[]){
-    dup2(STDOUT_FILENO, STDERR_FILENO);
     int i, j, k;
+
+    int id_semaforo_mercato;
+    int id_semaforo_gestione;
+    int id_semaforo_banchine;
+
+    int id_shm_dettagli_lotti;
+    int id_shm_dump;
+    int id_shm_mercato;
+    int id_shm_posizioni_porti;
+    int id_coda_richieste;
+    int SHM_ID[4];
+    int richieste_mandate = 0;
     struct sigaction sa;
-    sa.sa_flags = 0/*SA_RESTART*/;
+    sigset_t mask1;
+    sa.sa_flags = 0;
     sa.sa_handler = signal_handler;
     sigemptyset(&(sa.sa_mask));
     sigaction(SIGUSR1, &sa, NULL);
     sigaction(SIGUSR2, &sa, NULL);
-
+    sigemptyset(&mask1);
+    sigaddset(&mask1, SIGUSR1);
+    sigprocmask(SIG_UNBLOCK, &mask1, NULL);
 
     if(argc !=(2 + QNT_PARAMETRI)){
         perror("argc != 2");
@@ -48,42 +50,33 @@ int main(int argc, char *argv[]){
     TEST_ERROR
 	for (i = 2; i < argc; i++){
 		PARAMETRO[i - 2] = atoi(argv[i]);
-
 	}
     TEST_ERROR
 
-    inizializza_risorse();
+    dup2(open("log_porti.txt", O_APPEND | O_CREAT | O_WRONLY, 0666), STDERR_FILENO);
 
-    /*fprintf(stderr,"Porto %d - x: %f y: %f\n", indice, CAST_POSIZIONI_PORTI(vptr_shm_posizioni_porti)[indice].x, CAST_POSIZIONI_PORTI(vptr_shm_posizioni_porti)[indice].y);*/
+    trova_tutti_id(&id_shm_mercato, &id_shm_dettagli_lotti, &id_shm_posizioni_porti, &id_shm_dump, &id_coda_richieste, PARAMETRO);
+    SHM_ID[0] = id_shm_mercato;
+    SHM_ID[1] = id_shm_dettagli_lotti;
+    SHM_ID[2] = id_shm_posizioni_porti;
+    SHM_ID[3] = id_shm_dump;
+    aggancia_tutte_shm(&vptr_shm_mercato, &vptr_shm_dettagli_lotti, &vptr_shm_posizioni_porti, &vptr_shm_dump, SHM_ID, PARAMETRO);
+    inizializza_semafori(&id_semaforo_mercato, &id_semaforo_gestione, &id_semaforo_banchine, &id_semaforo_dump, SO_PORTI);
+    inizializza_banchine(id_semaforo_banchine, indice, vptr_shm_dump, PARAMETRO);
     
     spawnMerciPorti(vptr_shm_mercato, CAST_DETTAGLI_LOTTI(vptr_shm_dettagli_lotti), vptr_shm_dump, id_semaforo_dump, PARAMETRO, indice);
-    manda_richieste(vptr_shm_mercato, indice, id_coda_richieste, PARAMETRO);
-    
-    inizializza_banchine(id_semaforo_banchine, indice, vptr_shm_dump, PARAMETRO);
-
+    richieste_mandate = manda_richieste(vptr_shm_mercato, indice, id_coda_richieste, 0, PARAMETRO);
     /* si sgancia dalle memorie condivise. */
-    sgancia_risorse(vptr_shm_dettagli_lotti, vptr_shm_dump, vptr_shm_mercato, vptr_shm_posizioni_porti);
     /* si dichiara pronto e aspetta. (wait for zero) */
     sem_reserve(id_semaforo_gestione, 0);
     sem_wait_zero(id_semaforo_gestione, 0);
-    
     do {
         pause();
+        
+        richieste_mandate = manda_richieste(vptr_shm_mercato, indice, id_coda_richieste, richieste_mandate, PARAMETRO);
+        printf("Porto %d: richieste mandate: %d\n", indice, richieste_mandate);
     } while(1);
-    exit(EXIT_SUCCESS);
-}
-
-void inizializza_risorse(){
-    id_shm_mercato = find_shm(CHIAVE_SHAREDM_MERCATO, SIZE_SHAREDM_MERCATO);
-    vptr_shm_mercato = aggancia_shm(id_shm_mercato);
-    id_shm_dettagli_lotti = find_shm(CHIAVE_SHAREDM_DETTAGLI_LOTTI, SIZE_SHAREDM_DETTAGLI_LOTTI);
-    vptr_shm_dettagli_lotti = aggancia_shm(id_shm_dettagli_lotti);
-    id_shm_posizioni_porti = find_shm(CHIAVE_SHAREDM_POSIZIONI_PORTI, SIZE_SHAREDM_POSIZIONI_PORTI);
-    vptr_shm_posizioni_porti = aggancia_shm(id_shm_posizioni_porti);
-    id_shm_dump = find_shm(CHIAVE_SHAREDM_DUMP, SIZE_SHAREDM_DUMP);
-    vptr_shm_dump = aggancia_shm(id_shm_dump);
-    inizializza_semafori(&id_semaforo_mercato, &id_semaforo_gestione, &id_semaforo_banchine, &id_semaforo_dump, SO_PORTI);
-    id_coda_richieste = get_coda_id(CHIAVE_CODA);
+    sgancia_risorse(vptr_shm_dettagli_lotti, vptr_shm_dump, vptr_shm_mercato, vptr_shm_posizioni_porti);
 }
 
 void signal_handler(int signo){

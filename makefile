@@ -1,47 +1,44 @@
 CC = gcc
-CFLAGS = -O2 #-std=c89 -Wpedantic
-DEVFLAGS = -std=c89 -Wpedantic
-# la definizione di GDBFLAGS serve a permettere l'avvio di gdb
-GDBFLAGS = -std=c89 -Wpedantic -O0 -g
+CFLAGS = -O2  -std=c89 -pedantic -w
+# Se la si vuole, la definizione di GDBFLAGS serve a permettere l'avvio di gdb
+GDBFLAGS = -std=c89 -pedantic -w -O0 -g
 TARGET = application
+TARGET_ME = application_ME
 PORTO = porto
 NAVE = nave
-DEBUG = Dapplication
-#possiamo aggiungere altre librerie qua sotto
-OBJS = *lib.o
 SOURCES = *.c
 #var = [parametro da inserire su cmd: "make run var=[args]"]
 
-$(OBJS): $(SOURCES)
-	gcc $(CFLAGS) $(SOURCES) -c
+compila: $(SOURCES)
+	gcc $(SOURCES) $(CFLAGS) -c
 
-$(TARGET): $(OBJS)
-	gcc $(OBJS) master.o -o $(TARGET)
+compila_ME: $(SOURCES)
+	gcc $(SOURCES) $(CFLAGS) -D DUMP_ME -c
 
-$(DEBUG): $(SOURCES)
-	gcc $(DEVFLAGS) $(SOURCES) -D DEBUG -c
-	gcc $(OBJS) master.o -o $(DEBUG) -lm
-	gcc $(OBJS) porto.o -o $(PORTO) -lm
-	gcc $(OBJS) nave.o -o $(NAVE) -lm
+$(TARGET): compila
+	gcc *lib.o master.o -o $(TARGET) -lm
+	gcc *lib.o porto.o -o $(PORTO) -lm
+	gcc *lib.o nave.o -o $(NAVE) -lm
+
+$(TARGET_ME): compila_ME
+	gcc *lib.o master.o -o $(TARGET_ME) -lm
+	gcc *lib.o porto.o -o $(PORTO) -lm
+	gcc *lib.o nave.o -o $(NAVE) -lm
 
 all: $(SOURCES)
 	gcc $(CFLAGS) $(SOURCES) -c
-	gcc $(OBJS) master.o -o $(TARGET) -lm
-	gcc $(OBJS) porto.o -o $(PORTO) -lm
-	gcc $(OBJS) nave.o -o $(NAVE) -lm
+	gcc *lib.o master.o -o $(TARGET) -lm
+	gcc *lib.o porto.o -o $(PORTO) -lm
+	gcc *lib.o nave.o -o $(NAVE) -lm
 
-run: $(SOURCES)
-	gcc $(CFLAGS) $(SOURCES) -c
-	gcc $(OBJS) master.o -o $(TARGET) -lm
-	gcc $(OBJS) porto.o -o $(PORTO) -lm
-	gcc $(OBJS) nave.o -o $(NAVE) -lm
+run: $(TARGET)
 	./$(TARGET) $(var)
 
-debug: $(DEBUG)
-	./$(DEBUG) $(var)
+runME: $(TARGET_ME)
+	./$(TARGET_ME) $(var)
 
 clear:
+	rm -f *.o $(TARGET) $(TARGET_ME) $(NAVE) $(PORTO)
 
-	rm -f *.o $(TARGET) $(DEBUG) $(NAVE) $(PORTO)
-ipc:
+ipc: clear
 	ipcrm --all

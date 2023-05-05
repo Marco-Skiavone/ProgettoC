@@ -1,7 +1,8 @@
+#ifndef _SEM_LIB_H
+#define _SEM_LIB_H
 #ifndef _DEFINITIONS_H
 	#include "definitions.h"
 #endif
-#define _SEM_LIB_H
 
 union semun {
 	int val;    /* Value for SETVAL */
@@ -42,3 +43,4 @@ int sem_get_val(int sem_id, int sem_num);
 
 /* Inizializza gli id dei semafori. */
 void inizializza_semafori(int *id_mercato, int *id_gestione, int *id_banchine, int *id_dump, int PORTI);
+#endif

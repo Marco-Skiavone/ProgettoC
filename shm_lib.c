@@ -30,21 +30,6 @@ void *aggancia_shm(int shmid) {
     return shm_ptr;
 }
 
-void trova_tutti_ptr(void* p_mercato, void *p_lotti, void*p_posizioni, void *p_dump, int id_shms[], int PARAMETRO[]){
-	if(id_shms == NULL){
-		perror("trova_tutti_ptr: id_shms NULL!");
-		exit(105);
-	}
-	p_mercato = aggancia_shm(id_shms[0]);
-	TEST_ERROR
-	p_lotti = aggancia_shm(id_shms[1]);
-	TEST_ERROR
-	p_posizioni = aggancia_shm(id_shms[2]);
-	TEST_ERROR
-	p_dump = aggancia_shm(id_shms[3]);
-	TEST_ERROR
-}
-
 void sgancia_shm(void *shm_ptr) {
     if (shmdt(shm_ptr) == -1) {
         perror("shmdt sgancia_shm");
