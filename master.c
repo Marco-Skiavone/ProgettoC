@@ -15,6 +15,8 @@ int id_semaforo_banchine;
 int id_semaforo_dump;
 
 int *child_pids;
+int fd_fifo;
+int demone_pid;
 int PARAMETRO[QNT_PARAMETRI];
 
 void signal_handler(int signo);
@@ -124,13 +126,15 @@ int main(int argc, char* argv[]){
             CAST_DETTAGLI_LOTTI(vptr_shm_dettagli_lotti)[i].exp);
     }
 
+    if((mkfifo(NOME_FIFO, O_RDONLY) == -1))
+        fprintf(stderr, "Master: Errore nella creazione della FIFO!\n");
     /* ---------------------------------------- */
     /* semaforo numero 1 su 2 che fa 1-0 per far scrivere le navi in m.e.*/
     sem_set_val(id_semaforo_dump,1,1);
     sem_set_val(id_semaforo_dump,0,1); 
     /* ---------------------------------------- */
 
-    sem_set_val(id_semaforo_gestione,0,SO_PORTI+SO_NAVI);
+    sem_set_val(id_semaforo_gestione,0,SO_PORTI+SO_NAVI+1);
 
     #ifdef DUMP_ME/* definito nel caso di dump in mutua esclusione. */
     sem_set_val(id_semaforo_gestione,1,0);  
@@ -225,6 +229,7 @@ int main(int argc, char* argv[]){
     printf("__________________________ \n\n");
     distruggi_risorse(id_shm_mercato, id_shm_dettagli_lotti, id_shm_posizioni_porti, id_shm_dump, id_coda_richieste);
     distruggi_semafori(id_semaforo_mercato, id_semaforo_dump, id_semaforo_banchine, id_semaforo_gestione);
+    close(fd_fifo);
     /* sono da liberare child_pids, ogni argv_figli[i] meno l'ultimo che è null,
      *  e argv_figli stesso => tot=(QNT_PARAMETRI + 2))+1; */
     free_ptr(child_pids, argv_figli, QNT_PARAMETRI+2);
@@ -259,6 +264,7 @@ void signal_handler(int signo){
             #endif
         default: 
             perror("MASTER: giunto segnale diverso da SIGALRM!");
+            close(fd_fifo);
             exit(254);
     }
 }

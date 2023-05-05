@@ -1,0 +1,37 @@
+#include "demone.h"
+#include "queue_lib.h"
+
+int fd_fifo;
+void signal_handler(int signo);
+
+int main(int argc, char *argv[]){
+	int id_coda;
+	struct sigaction sa;
+	richiesta r;
+	sa.sa_handler = signal_handler;
+	set_empty_mask(&(sa.sa_mask));
+	sigaction(SIGUSR2, &sa, NULL);
+	get_coda_id(CHIAVE_CODA);
+	if(fd_fifo = open(NOME_FIFO, O_RDONLY) == -1){
+		fprintf("File %s, %d: Errore nell'apertura della FIFO!\n", __FILE__, __LINE__);
+		exit(EXIT_FAILURE);
+	}
+
+	do {
+		if(read(fd_fifo, &r, sizeof(richiesta)) == -1)
+			fprintf("File %s, %d: Errore nella lettura dalla FIFO!\n", __FILE__, __LINE__);
+		msgsnd(id_coda, &r, MSG_SIZE, 0);
+	} while(1);
+}
+
+void signal_handler(int signo){
+	switch (signo) {
+		case SIGUSR2:
+			close(fd_fifo);
+			exit(EXIT_SUCCESS);
+			break;
+		default:
+			fprintf(stderr, "File %s, %d: giunto segnale non contemplato!\n", __FILE__, __LINE__);
+			break;
+	}
+}

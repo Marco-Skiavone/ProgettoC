@@ -1,6 +1,6 @@
 #ifndef _DEFINITIONS_H
-#define _GNU_SOURCE
 #define _DEFINITIONS_H
+#define _GNU_SOURCE
 #include <stdio.h>
 #include <stdlib.h>
 #include <fcntl.h>
@@ -18,6 +18,9 @@
 #include <signal.h>
 #include <time.h>
 #include <math.h>
+
+#include "demone.h"
+
 /* define utilizzata per effettuare test di debug*/
 #define STAMPA_DEBUG printf("%s: data = %d, linea %d\n", __FILE__, CAST_DUMP(vptr_shm_dump)->data, __LINE__);
 
@@ -119,9 +122,6 @@
 #define CHIAVE_SHAREDM_DUMP 40
 #define SIZE_SHAREDM_DUMP ((sizeof(porto_dump) * SO_PORTI) + (sizeof(merce_dump) * SO_MERCI) + sizeof(dump))
 
-#define MSG_SIZE (sizeof(m_text))
-#define CHIAVE_CODA 50
-
 #define CHIAVE_SEM_MERCATO 11
 #define CHIAVE_SEM_DUMP 41
 #define CHIAVE_SEM_BANCHINE 51
@@ -176,18 +176,6 @@ typedef struct {
     int val;
     int exp;
 } merce;
-
-/* Tipo del corpo del messaggio. */
-typedef struct {
-	int indicemerce;
-    int nlotti;
-} m_text;
-
-/* Tipo base di richiesta da inserire in CODA MSG*/
-typedef struct {
-    long mtype;
-    m_text mtext;
-} richiesta;
 
 /* Tipo specifico per il carico in nave, possiede un indice che è l'indice della merce. */
 typedef struct {

@@ -41,7 +41,7 @@ int calcola_porto_piu_vicino(point p, point* ptr_shm_posizioni_porti, int so_por
     return indicemin;
 }
 
-void codice_simulazione(int indice, int PARAMETRO[], int SEM_ID[], int id_coda_richieste, void* VPTR_ARR[]){
+void codice_simulazione(int indice, int PARAMETRO[], int SEM_ID[], int id_coda_richieste, void* VPTR_ARR[], int fd_fifo){
 
     int i, j, k, indice_destinazione, indice_porto_attraccato, i_carico=0;
     int reqlett=0, spaziolibero = SO_CAPACITY, lotti_scartati = 0, noncaricare = 0;
@@ -159,7 +159,7 @@ richiesta esamina_porto(int indice, int PARAMETRO[], int SEM_ID[], int id_coda_r
                 (*i_carico)++;
                 if(*lotti_scartati > 0){
                     r.mtext.nlotti =  *lotti_scartati;
-                    invia_richiesta(r, id_coda_richieste);
+                    invia_richiesta(r, id_coda_richieste, fd_fifo);
                     *lotti_scartati = 0;
                 }
                 *indice_destinazione = r.mtype;
@@ -167,12 +167,12 @@ richiesta esamina_porto(int indice, int PARAMETRO[], int SEM_ID[], int id_coda_r
             }else{
                 *tempo_carico = 0;
                 r.mtext.nlotti += *lotti_scartati;
-                invia_richiesta(r, id_coda_richieste);
+                invia_richiesta(r, id_coda_richieste, fd_fifo);
                 *lotti_scartati = 0;
                 (*reqlett)++;
             }
         }else{
-            invia_richiesta(r, id_coda_richieste);
+            invia_richiesta(r, id_coda_richieste, fd_fifo);
             *lotti_scartati = 0;
             (*reqlett)++;
         }
@@ -212,7 +212,7 @@ void carica_dal_porto(int indice, int PARAMETRO[], int id_coda_richieste, void* 
                     /* STAMPA_DEBUG */
                     *tempo_carico += ((r.mtext.nlotti * CAST_DETTAGLI_LOTTI(VPTR_SHM_DETTAGLI_LOTTI)[r.mtext.indicemerce].val) / SO_LOADSPEED) *2;
                     r.mtext.nlotti += *lotti_scartati;
-                    invia_richiesta(r, id_coda_richieste);
+                    invia_richiesta(r, id_coda_richieste, fd_fifo);
                     *lotti_scartati = 0;
                 }else{
                     *spaziolibero -= r.mtext.nlotti * CAST_DETTAGLI_LOTTI(VPTR_SHM_DETTAGLI_LOTTI)[r.mtext.indicemerce].val;
@@ -224,19 +224,19 @@ void carica_dal_porto(int indice, int PARAMETRO[], int id_coda_richieste, void* 
                     (*i_carico)++;
                     if(*lotti_scartati > 0){
                         r.mtext.nlotti =  *lotti_scartati;
-                        invia_richiesta(r, id_coda_richieste);
+                        invia_richiesta(r, id_coda_richieste, fd_fifo);
                         *lotti_scartati = 0;
                     }
                 }
             }else{
                 *tempo_carico -= ((r.mtext.nlotti * CAST_DETTAGLI_LOTTI(VPTR_SHM_DETTAGLI_LOTTI)[r.mtext.indicemerce].val) / SO_LOADSPEED) *2;
                 r.mtext.nlotti += *lotti_scartati;
-                invia_richiesta(r, id_coda_richieste);
+                invia_richiesta(r, id_coda_richieste, fd_fifo);
                 *lotti_scartati = 0;
             }
             (*reqlett)++;
         }else{
-            invia_richiesta(r, id_coda_richieste);
+            invia_richiesta(r, id_coda_richieste, fd_fifo);
             *lotti_scartati = 0;
             (*reqlett)++;
         }

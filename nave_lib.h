@@ -16,7 +16,7 @@ double calcola_distanza(point p1, point p2);
 int calcola_porto_piu_vicino(point p, point* ptr_shm_posizioni_porti, int so_porti, int so_lato);
 
 /* E' il metodo generale della simulazione, gestisce le operazioni della nave. */
-void codice_simulazione(int indice, int PARAMETRO[], int SEM_ID[], int id_coda_richieste, void* VPTR_ARR[]);
+void codice_simulazione(int indice, int PARAMETRO[], int SEM_ID[], int id_coda_richieste, void* VPTR_ARR[], int fd_fifo);
 
 /* Genera la posizione della nave, trova il porto più vicino e ci va. 
  * Dopo esservi attraccata, aggiorna il dump e ritorna l'attuale posizione della nave. */

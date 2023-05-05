@@ -13,6 +13,7 @@ void* vptr_shm_posizioni_porti;
 int id_semaforo_gestione; /* può essere chiamato da runME (con definizione di DUMP_ME) */
 
 int indice;
+int fd_fifo;
 int PARAMETRO[QNT_PARAMETRI];
 
 void signal_handler(int signo);
@@ -54,6 +55,8 @@ int main(int argc, char *argv[]){
     if(freopen("log_navi.txt", "a", stdout)==NULL)
         {perror("freopen ha ritornato NULL");}
 
+    if((fd_fifo = open(NOME_FIFO, O_WRONLY)) == -1)
+        fprintf(stdout, "Nave: Errore nell'apertura della FIFO\n");
     trova_tutti_id(&id_shm_mercato, &id_shm_dettagli_lotti, &id_shm_posizioni_porti, &id_shm_dump, &id_coda_richieste, PARAMETRO);
     SHM_ID[0] = id_shm_mercato;
     SHM_ID[1] = id_shm_dettagli_lotti;
@@ -74,7 +77,7 @@ int main(int argc, char *argv[]){
     VPTR_ARR[2] = vptr_shm_mercato;
     VPTR_ARR[3] = vptr_shm_posizioni_porti;
 
-    codice_simulazione(indice, PARAMETRO, SEM_ID, id_coda_richieste, VPTR_ARR);
+    codice_simulazione(indice, PARAMETRO, SEM_ID, id_coda_richieste, VPTR_ARR, fd_fifo);
 
     sgancia_risorse(vptr_shm_dettagli_lotti, vptr_shm_dump, vptr_shm_mercato, vptr_shm_posizioni_porti);
     exit(EXIT_SUCCESS);
@@ -90,6 +93,7 @@ void signal_handler(int signo){
             break;
         case SIGUSR2:
             printf("NAVE %d: ricevuto SIGUSR2. data: %d\n", indice, CAST_DUMP(vptr_shm_dump)->data);
+            close(fd_fifo);
             sgancia_risorse(vptr_shm_dettagli_lotti, vptr_shm_dump, vptr_shm_mercato, vptr_shm_posizioni_porti);
             exit(EXIT_SUCCESS);
             break;
