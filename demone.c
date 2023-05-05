@@ -8,6 +8,7 @@ int main(int argc, char *argv[]){
 	int id_coda;
 	struct sigaction sa;
 	richiesta r;
+	sa.sa_flags = 0;
 	sa.sa_handler = signal_handler;
 	set_empty_mask(&(sa.sa_mask));
 	sigaction(SIGUSR2, &sa, NULL);
@@ -20,7 +21,9 @@ int main(int argc, char *argv[]){
 	do {
 		if(read(fd_fifo, &r, sizeof(richiesta)) == -1)
 			fprintf("File %s, %d: Errore nella lettura dalla FIFO!\n", __FILE__, __LINE__);
-		msgsnd(id_coda, &r, MSG_SIZE, 0);
+		if(msgsnd(id_coda, &r, MSG_SIZE, 0) == -1){
+			fprintf(stderr, "File %s, %d: Errore nella msgsnd da FIFO a coda!\n", __FILE__, __LINE__)
+		}
 	} while(1);
 }
 

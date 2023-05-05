@@ -30,7 +30,7 @@ int main(int argc, char* argv[]){
     int SHM_ID[4];
     int id_semaforo_mercato;
 
-    char **argv_figli;
+    char **argv_figli, **argv_demone;
     int continua_simulazione, child_pid, status;
     FILE *file_config;
     richiesta r;
@@ -126,7 +126,7 @@ int main(int argc, char* argv[]){
             CAST_DETTAGLI_LOTTI(vptr_shm_dettagli_lotti)[i].exp);
     }
 
-    if((mkfifo(NOME_FIFO, O_RDONLY) == -1))
+    if((mkfifo(NOME_FIFO, 0666) == -1))
         fprintf(stderr, "Master: Errore nella creazione della FIFO!\n");
     /* ---------------------------------------- */
     /* semaforo numero 1 su 2 che fa 1-0 per far scrivere le navi in m.e.*/
@@ -140,6 +140,21 @@ int main(int argc, char* argv[]){
     sem_set_val(id_semaforo_gestione,1,0);  
     #endif
     /* settaggio di argv_figli e fork dei processi porto e nave */
+    argv_demone[0] = (char*)malloc(MAX_STR_LEN);
+    argv_demone[0] = "./demone";
+
+    switch(demone_pid = fork()){
+        case -1:
+            fprintf(stderr, " Linea %d: errore nella fork del demone.\n", __LINE__);
+            break;
+        case 0:
+            execve("./demone", argv_demone, NULL);
+            fprintf(stderr, "Linea %d: execve demone ha fallito!\n", __LINE__);
+            break;
+        default:
+            break;
+    }
+
     argv_figli[0] = (char *)malloc(MAX_STR_LEN);
 	argv_figli[1] = (char *)malloc(MAX_STR_LEN);
 	for (i = 0; i < QNT_PARAMETRI; i++){
@@ -202,6 +217,8 @@ int main(int argc, char* argv[]){
         pause();
     } while(((int)(CAST_DUMP(vptr_shm_dump)->data) < SO_DAYS) && continua_simulazione);
     
+    unlink(NOME_FIFO);
+    kill(demone_pid, SIGUSR2);
     for(i = 0; i < SO_NAVI+SO_PORTI; i++){
         printf("MASTER: ammazzo il figlio %d\n", child_pids[i]);
         kill(child_pids[i], SIGUSR2);
