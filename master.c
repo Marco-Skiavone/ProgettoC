@@ -36,7 +36,7 @@ int main(int argc, char* argv[]){
     richiesta r;
     struct sigaction sa_alrm;
     argv_figli = malloc((QNT_PARAMETRI + 3)*sizeof(char*));
-    argv_demone = malloc(sizeof(char*));
+    argv_demone = malloc(sizeof(char*)*3);
 
     #ifdef DUMP_ME
     printf("Programma in avvio con parametro DUMP_ME abilitato!\n\n");
@@ -136,7 +136,7 @@ int main(int argc, char* argv[]){
     sem_set_val(id_semaforo_dump,0,1); 
     /* ---------------------------------------- */
 
-    sem_set_val(id_semaforo_gestione,0,SO_PORTI+SO_NAVI);
+    sem_set_val(id_semaforo_gestione,0,SO_PORTI+SO_NAVI+1);
 
     #ifdef DUMP_ME/* definito nel caso di dump in mutua esclusione. */
     sem_set_val(id_semaforo_gestione,1,0);  
@@ -144,6 +144,9 @@ int main(int argc, char* argv[]){
     /* settaggio di argv_figli e fork dei processi porto e nave */
     argv_demone[0] = (char*)malloc(MAX_STR_LEN);
     argv_demone[0] = "./demone";
+    argv_demone[1] = (char*)malloc(3*sizeof(char));
+    sprintf(argv_demone[1], "%d", CHIAVE_SEM_GESTIONE);
+    argv_demone[2] = NULL;
     switch(demone_pid = fork()){
         case -1:
             fprintf(stderr, " Linea %d: errore nella fork del demone.\n", __LINE__);
@@ -230,7 +233,6 @@ int main(int argc, char* argv[]){
     while((child_pid = wait(&status)) != -1){
         printf("Terminato figlio %d status %d\n", child_pid, WEXITSTATUS(status));
     }
-    printf("Master sto uscendo con gestione = %d\n", sem_get_val(id_semaforo_gestione,0));
     printf("\n__________________________ \n\n");
     
     /* svuotiamo la coda richieste */

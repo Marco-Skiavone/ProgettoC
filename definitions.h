@@ -159,8 +159,8 @@
 
 /* Tolleranza della uguaglianza tra punti nella mappa */
 #define TOLLERANZA 0.05
-/* Massimo di richieste da poter leggere. (arbitrario) */
-#define MAX_REQ_LETTE 20
+/* Massimo di richieste da poter leggere. (arbitrario: 20 ?) */
+#define MAX_REQ_LETTE ((SO_PORTI/SO_NAVI) >= 10 ? SO_PORTI/SO_NAVI : 10)
 /* Massima lunghezza dell'array di carico merci delle navi. */
 #define MAX_CARICO 10
 

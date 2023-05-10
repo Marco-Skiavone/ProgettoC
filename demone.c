@@ -1,12 +1,18 @@
 #include "demone.h"
 #include "queue_lib.h"
+#include "sem_lib.h"
 
 int fd_fifo;
 void signal_handler(int signo);
 int main(int argc, char *argv[]){
-	int id_coda;
+	int id_coda, id_semaforo_gestione;
 	struct sigaction sa;
 	richiesta r;
+	if(argc > 1){
+		id_semaforo_gestione = sem_find(atoi(argv[1]), 1);	/* si aggancia a sem_gestione. */
+	} else {
+		printf("Errore nel passaggio dei parametri al Demone: argc = %d/2\n", argc);
+	}
 	sa.sa_flags = 0;
 	sa.sa_handler = signal_handler;
 	sigemptyset(&(sa.sa_mask));
@@ -16,6 +22,8 @@ int main(int argc, char *argv[]){
 		fprintf("File %s, %d: Errore nell'apertura della FIFO!\n", __FILE__, __LINE__);
 		exit(EXIT_FAILURE);
 	}
+	sem_reserve(id_semaforo_gestione, 0);
+	sem_wait_zero(id_semaforo_gestione, 0);
 	
 	do {
 		if(read(fd_fifo, &r, sizeof(richiesta)) == -1){
