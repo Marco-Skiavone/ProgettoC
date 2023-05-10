@@ -19,7 +19,7 @@ int main(int argc, char *argv[]){
 	
 	do {
 		if(read(fd_fifo, &r, sizeof(richiesta)) == -1){
-			fprintf("File %s, %d: Errore nella lettura dalla FIFO!\n", __FILE__, __LINE__);
+			fprintf(stdout, "File %s, %d: Errore nella lettura dalla FIFO!\n", __FILE__, __LINE__);
 		}
 		if(msgsnd(id_coda, &r, MSG_SIZE, 0) == -1){
 			fprintf(stdout, "File %s, %d: Errore nella msgsnd da FIFO a coda!\n", __FILE__, __LINE__);
