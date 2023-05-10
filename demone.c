@@ -3,7 +3,6 @@
 #include "definitions.h"
 int fd_fifo;
 void signal_handler(int signo);
-
 int main(int argc, char *argv[]){
 	int id_coda;
 	struct sigaction sa;
@@ -23,7 +22,7 @@ int main(int argc, char *argv[]){
 			fprintf("File %s, %d: Errore nella lettura dalla FIFO!\n", __FILE__, __LINE__);
 		}
 		if(msgsnd(id_coda, &r, MSG_SIZE, 0) == -1){
-			fprintf(stderr, "File %s, %d: Errore nella msgsnd da FIFO a coda!\n", __FILE__, __LINE__);
+			fprintf(stdout, "File %s, %d: Errore nella msgsnd da FIFO a coda!\n", __FILE__, __LINE__);
 		}
 	} while(1);
 }
