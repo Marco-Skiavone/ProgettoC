@@ -58,7 +58,7 @@ void codice_simulazione(int indice, int PARAMETRO[], int SEM_ID[], int id_coda_r
          * in base alle risorse del porto di attracco. */
         sem_reserve(ID_SEMAFORO_MERCATO, indice_porto_attraccato);
         r = esamina_porto(indice, PARAMETRO, SEM_ID, id_coda_richieste, VPTR_ARR, &lotti_scartati, &indice_porto_attraccato, &reqlett, posizione, &spaziolibero, &tempo_carico,
-        carico, &i_carico, &indice_destinazione);        
+        carico, &i_carico, &indice_destinazione, fd_fifo);        
 
         if(reqlett == MAX_REQ_LETTE){
             printf("Nave %d deve skippare porto %d\n", indice, indice_porto_attraccato);
@@ -68,7 +68,7 @@ void codice_simulazione(int indice, int PARAMETRO[], int SEM_ID[], int id_coda_r
             /* Inizia il secondo do-while, che deve accettare le richieste
             * del porto associato alla prima accettata. */
             carica_dal_porto(indice, PARAMETRO, id_coda_richieste, VPTR_ARR, r, posizione, &indice_destinazione, &indice_porto_attraccato, &lotti_scartati, &spaziolibero, &tempo_carico,
-            &i_carico, &reqlett, carico);
+            &i_carico, &reqlett, carico, fd_fifo);
             distanza = calcola_distanza(posizione, CAST_POSIZIONI_PORTI(VPTR_SHM_POSIZIONI_PORTI)[indice_destinazione]);
         }
 
@@ -126,7 +126,7 @@ point avvia_nave(int indice, int PARAMETRO[], int SEM_ID[], void* VPTR_ARR[], in
     return posizione;
 }
 
-richiesta esamina_porto(int indice, int PARAMETRO[], int SEM_ID[], int id_coda_richieste, void* VPTR_ARR[], int* lotti_scartati, int *indice_porto_attraccato, int *reqlett, point posizione, int *spaziolibero, double *tempo_carico, merce_nave carico[], int *i_carico, int *indice_destinazione){
+richiesta esamina_porto(int indice, int PARAMETRO[], int SEM_ID[], int id_coda_richieste, void* VPTR_ARR[], int* lotti_scartati, int *indice_porto_attraccato, int *reqlett, point posizione, int *spaziolibero, double *tempo_carico, merce_nave carico[], int *i_carico, int *indice_destinazione, int fd_fifo){
     richiesta r;
     double distanza;
     do{
@@ -180,7 +180,7 @@ richiesta esamina_porto(int indice, int PARAMETRO[], int SEM_ID[], int id_coda_r
     return r;
 }
 
-void carica_dal_porto(int indice, int PARAMETRO[], int id_coda_richieste, void* VPTR_ARR[], richiesta r, point posizione, int *indice_destinazione, int *indice_porto_attraccato, int *lotti_scartati, int *spaziolibero, double *tempo_carico, int *i_carico, int *reqlett, merce_nave carico[]){
+void carica_dal_porto(int indice, int PARAMETRO[], int id_coda_richieste, void* VPTR_ARR[], richiesta r, point posizione, int *indice_destinazione, int *indice_porto_attraccato, int *lotti_scartati, int *spaziolibero, double *tempo_carico, int *i_carico, int *reqlett, merce_nave carico[], int fd_fifo){
     double distanza;
     int noncaricare = 0, j;
     distanza = calcola_distanza(posizione, CAST_POSIZIONI_PORTI(VPTR_SHM_POSIZIONI_PORTI)[r.mtype]);

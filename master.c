@@ -36,6 +36,7 @@ int main(int argc, char* argv[]){
     richiesta r;
     struct sigaction sa_alrm;
     argv_figli = malloc((QNT_PARAMETRI + 3)*sizeof(char*));
+    argv_demone = malloc(sizeof(char*));
 
     #ifdef DUMP_ME
     printf("Programma in avvio con parametro DUMP_ME abilitato!\n\n");
@@ -80,7 +81,6 @@ int main(int argc, char* argv[]){
     }
 
     fclose(file_config);
-    
     STAMPA_PARAMETRI
 
     switch(controllo_parametri(PARAMETRO)){
@@ -104,8 +104,9 @@ int main(int argc, char* argv[]){
             break;
     }
 
-    child_pids = (int *) malloc((SO_NAVI*SO_PORTI) * sizeof(int));
     
+    child_pids = (int *) malloc((SO_NAVI*SO_PORTI + 1) * sizeof(int));
+
     /* alloca_risorse */
     alloca_id(&id_shm_mercato, &id_shm_dettagli_lotti, &id_shm_posizioni_porti, &id_shm_dump, &id_coda_richieste, PARAMETRO);
     SHM_ID[0] = id_shm_mercato;
@@ -128,13 +129,14 @@ int main(int argc, char* argv[]){
 
     if((mkfifo(NOME_FIFO, 0666) == -1))
         fprintf(stderr, "Master: Errore nella creazione della FIFO!\n");
+
     /* ---------------------------------------- */
     /* semaforo numero 1 su 2 che fa 1-0 per far scrivere le navi in m.e.*/
     sem_set_val(id_semaforo_dump,1,1);
     sem_set_val(id_semaforo_dump,0,1); 
     /* ---------------------------------------- */
 
-    sem_set_val(id_semaforo_gestione,0,SO_PORTI+SO_NAVI+1);
+    sem_set_val(id_semaforo_gestione,0,SO_PORTI+SO_NAVI);
 
     #ifdef DUMP_ME/* definito nel caso di dump in mutua esclusione. */
     sem_set_val(id_semaforo_gestione,1,0);  
@@ -142,7 +144,6 @@ int main(int argc, char* argv[]){
     /* settaggio di argv_figli e fork dei processi porto e nave */
     argv_demone[0] = (char*)malloc(MAX_STR_LEN);
     argv_demone[0] = "./demone";
-
     switch(demone_pid = fork()){
         case -1:
             fprintf(stderr, " Linea %d: errore nella fork del demone.\n", __LINE__);
@@ -200,6 +201,7 @@ int main(int argc, char* argv[]){
     /* Fine settaggio argv_figli e creazione dei processi.
      * Inizio attesa di sincronizzazione e partenza del loop di simulazione. */
     sem_wait_zero(id_semaforo_gestione, 0);
+
     stampa_dump(PARAMETRO, vptr_shm_dump, vptr_shm_mercato, id_semaforo_banchine);
     sa_alrm.sa_handler = signal_handler;
     sa_alrm.sa_flags = 0;

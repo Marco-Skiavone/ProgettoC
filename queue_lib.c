@@ -34,6 +34,7 @@ void invia_richiesta(richiesta r, int coda_id, int fd_fifo){
     if(msgsnd(coda_id, &r, MSG_SIZE, IPC_NOWAIT) == -1){    
         if(errno == EAGAIN){
             /* passa richiesta su fifo! */
+            printf("\npassata su fifo\n");
             write(fd_fifo, &r, sizeof(richiesta));
             errno = 0;
         }

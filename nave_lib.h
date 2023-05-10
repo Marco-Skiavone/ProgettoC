@@ -26,11 +26,11 @@ point avvia_nave(int indice, int PARAMETRO[], int SEM_ID[], void* VPTR_ARR[], in
  * Ciò vincolerà successivamente la nave a cercare richieste provenienti dallo stesso porto. 
  *
  * NOTA: se 'reqlett' giunge al suo massimo, allora bisogna skippare il porto. */
-richiesta esamina_porto(int indice, int PARAMETRO[], int SEM_ID[], int id_coda_richieste, void* VPTR_ARR[], int* lotti_scartati, int *indice_porto_attraccato, int *reqlett, point posizione, int *spaziolibero, double *tempo_carico, merce_nave carico[], int *i_carico, int *indice_destinazione);
+richiesta esamina_porto(int indice, int PARAMETRO[], int SEM_ID[], int id_coda_richieste, void* VPTR_ARR[], int* lotti_scartati, int *indice_porto_attraccato, int *reqlett, point posizione, int *spaziolibero, double *tempo_carico, merce_nave carico[], int *i_carico, int *indice_destinazione, int fd_fifo);
 
 /* Carica, se possibile, altre merci per il porto di destinazione.
  * Dipende sempre da 'reqlett' e 'noncaricare' per terminare. */
-void carica_dal_porto(int indice, int PARAMETRO[], int id_coda_richieste, void* VPTR_ARR[], richiesta r, point posizione, int *indice_destinazione, int *indice_porto_attraccato, int *lotti_scartati, int *spaziolibero, double *tempo_carico, int *i_carico, int *reqlett, merce_nave carico[]);
+void carica_dal_porto(int indice, int PARAMETRO[], int id_coda_richieste, void* VPTR_ARR[], richiesta r, point posizione, int *indice_destinazione, int *indice_porto_attraccato, int *lotti_scartati, int *spaziolibero, double *tempo_carico, int *i_carico, int *reqlett, merce_nave carico[], int fd_fifo);
 
 /* giunge al porto di destinazione, attracca e scarica le merci (coi dovuti controlli). 
  * Richiama scaricamerci(). */
