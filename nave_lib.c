@@ -75,14 +75,10 @@ void codice_simulazione(int indice, int PARAMETRO[], int SEM_ID[], int id_coda_r
         /* a questo punto rilascia mercato shm e carica le risorse,
          * dopodiché aggiorna il dump sul carico e salpa per il porto di destinazione */
         sem_release(ID_SEMAFORO_MERCATO, indice_porto_attraccato);
-        if(spaziolibero != SO_CAPACITY)
-            printf("Nave %d inizia a caricare\n", indice);
         
         aggiorna_dump_carico(VPTR_SHM_DUMP, indice_porto_attraccato, carico, i_carico, spaziolibero, ID_SEMAFORO_DUMP, PARAMETRO);
         
         attesa((SO_CAPACITY - spaziolibero), SO_LOADSPEED);
-        if(spaziolibero != SO_CAPACITY)
-            printf("Nave %d ha caricato\n", indice);
         
         sem_release(ID_SEMAFORO_BANCHINE, indice_porto_attraccato);
 
@@ -136,7 +132,6 @@ richiesta esamina_porto(int indice, int PARAMETRO[], int SEM_ID[], int id_coda_r
             exit(255);
         }
         if(CAST_MERCATO(VPTR_SHM_MERCATO)[*indice_porto_attraccato][r.mtext.indicemerce].val > 0){
-            printf("Nave %d richiesta da porto %d merce %d lotti %d al porto %d con val %d\n", indice,(int)r.mtype,r.mtext.indicemerce, r.mtext.nlotti, *indice_porto_attraccato, (CAST_MERCATO(VPTR_SHM_MERCATO)[*indice_porto_attraccato][r.mtext.indicemerce].val));
             distanza = calcola_distanza(posizione, CAST_POSIZIONI_PORTI(VPTR_SHM_POSIZIONI_PORTI)[r.mtype]);
             while(r.mtext.nlotti * CAST_DETTAGLI_LOTTI(VPTR_SHM_DETTAGLI_LOTTI)[r.mtext.indicemerce].val > *spaziolibero){
                 r.mtext.nlotti--;
@@ -155,7 +150,7 @@ richiesta esamina_porto(int indice, int PARAMETRO[], int SEM_ID[], int id_coda_r
                 carico[*i_carico].mer.exp = CAST_DETTAGLI_LOTTI(VPTR_SHM_DETTAGLI_LOTTI)[r.mtext.indicemerce].exp;
                 *spaziolibero -= r.mtext.nlotti * CAST_DETTAGLI_LOTTI(VPTR_SHM_DETTAGLI_LOTTI)[r.mtext.indicemerce].val;
                 CAST_MERCATO(VPTR_SHM_MERCATO)[*indice_porto_attraccato][r.mtext.indicemerce].val -= r.mtext.nlotti;
-                printf("nave %d ha caricato %d lotti di merce %d spaziolibero: %d\n", indice, carico[*i_carico].mer.val, carico[*i_carico].indice, *spaziolibero);
+                printf("nave %d sta caricando %d lotti di merce %d spaziolibero: %d\n", indice, carico[*i_carico].mer.val, carico[*i_carico].indice, *spaziolibero);
                 (*i_carico)++;
                 if(*lotti_scartati > 0){
                     r.mtext.nlotti =  *lotti_scartati;
@@ -220,7 +215,7 @@ void carica_dal_porto(int indice, int PARAMETRO[], int id_coda_richieste, void* 
                     carico[*i_carico].mer.val = r.mtext.nlotti;
                     carico[*i_carico].mer.exp = CAST_DETTAGLI_LOTTI(VPTR_SHM_DETTAGLI_LOTTI)[r.mtext.indicemerce].exp;
                     CAST_MERCATO(VPTR_SHM_MERCATO)[*indice_porto_attraccato][r.mtext.indicemerce].val -= r.mtext.nlotti;
-                    printf("nave %d ha caricato %d lotti di merce %d spaziolibero: %d\n", indice, carico[*i_carico].mer.val, carico[*i_carico].indice, *spaziolibero);
+                    printf("nave %d sta caricando %d lotti di merce %d spaziolibero: %d\n", indice, carico[*i_carico].mer.val, carico[*i_carico].indice, *spaziolibero);
                     (*i_carico)++;
                     if(*lotti_scartati > 0){
                         r.mtext.nlotti =  *lotti_scartati;

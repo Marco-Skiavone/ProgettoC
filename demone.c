@@ -1,6 +1,6 @@
 #include "demone.h"
 #include "queue_lib.h"
-#include "definitions.h"
+
 int fd_fifo;
 void signal_handler(int signo);
 int main(int argc, char *argv[]){
@@ -19,10 +19,10 @@ int main(int argc, char *argv[]){
 	
 	do {
 		if(read(fd_fifo, &r, sizeof(richiesta)) == -1){
-			fprintf(stdout, "File %s, %d: Errore nella lettura dalla FIFO!\n", __FILE__, __LINE__);
+			printf("File %s, %d: Errore nella lettura dalla FIFO!\n", __FILE__, __LINE__);
 		}
 		if(msgsnd(id_coda, &r, MSG_SIZE, 0) == -1){
-			fprintf(stdout, "File %s, %d: Errore nella msgsnd da FIFO a coda!\n", __FILE__, __LINE__);
+			printf("File %s, %d: Errore nella msgsnd da FIFO a coda!\n", __FILE__, __LINE__);
 		}
 	} while(1);
 }
@@ -34,7 +34,7 @@ void signal_handler(int signo){
 			exit(EXIT_SUCCESS);
 			break;
 		default:
-			fprintf(stderr, "File %s, %d: giunto segnale non contemplato!\n", __FILE__, __LINE__);
+			printf("File %s, %d: giunto segnale non contemplato!\n", __FILE__, __LINE__);
 			break;
 	}
 }

@@ -8,6 +8,7 @@ PORTO = porto
 NAVE = nave
 DEMONE = demone
 SOURCES = *.c
+var = 9
 #var = [parametro da inserire su cmd: "make run var=[args]"]
 
 compila: $(SOURCES)
