@@ -43,7 +43,7 @@ runME: $(TARGET_ME)
 	./$(TARGET_ME) $(var)
 
 clear:
-	rm -f *.o $(TARGET) $(TARGET_ME) $(NAVE) $(PORTO) $(DEMONE)
+	rm -f *.o $(TARGET) $(TARGET_ME) $(NAVE) $(PORTO) $(DEMONE) log_*.txt out.txt
 
 ipc: clear
 	ipcrm --all
