@@ -1,15 +1,9 @@
-#ifndef _DEFINITIONS_H
-	#include "definitions.h"
-#endif
-#ifndef _QUEUE_LIB_H
-	#include "queue_lib.h"
-#endif
-#ifndef _SEM_LIB_H
-	#include "sem_lib.h"
-#endif
-#ifndef _SHM_LIB_H
-	#include "shm_lib.h"
-#endif
+#ifndef _MASTER_LIB_H
+#define _MASTER_LIB_H
+#include "definitions.h"
+#include "queue_lib.h"
+#include "sem_lib.h"
+#include "shm_lib.h"
 
 /* Funzione che pulisce i file txt usati per i log
 	viene chiamata all'avvio di ogni simulazione
@@ -87,3 +81,4 @@ void distruggi_semafori(int id_sem_mercato, int id_sem_dump, int id_sem_banchine
 
 /* Esegue le free() necessarie a fine simulazione; size è la lunghezza di argv_figli. */
 void free_ptr(int *childs, char** argv_figli, int size);
+#endif

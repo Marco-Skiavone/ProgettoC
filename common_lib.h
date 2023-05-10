@@ -1,14 +1,8 @@
 #ifndef _COMMON_LIB_H
 #define _COMMON_LIB_H
-#ifndef _DEFINITIONS_H
-	#include "definitions.h"
-#endif
-#ifndef _SHM_LIB_H
+#include "definitions.h"
 #include "shm_lib.h"
-#endif
-#ifndef _QUEUE_LIB_H
 #include "queue_lib.h"
-#endif
 
 /** Questo modulo serve a compilare i metodi comuni a più processi.
  * ---------------------------------------------------------------- */

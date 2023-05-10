@@ -2,7 +2,6 @@
 #define _QUEUE_LIB_H
 #include "definitions.h"
 
-
 /* Crea la coda di msg 'richieste' e ne restituisce l'id. */
 int set_coda_richieste(key_t key);
 

@@ -1,9 +1,8 @@
-#ifndef _DEFINITIONS_H
-	#include "definitions.h"
-#endif
-#ifndef _SEM_LIB_H
-	#include "sem_lib.h"
-#endif
+#ifndef _NAVE_LIB_H
+#define _NAVE_LIB_H
+#include "definitions.h"
+#include "sem_lib.h"
+
 
 /*  Genera un punto casuale nella mappa di lato 'lato'.
  * ATTENZIONE: modifica il seed di rand. */
@@ -56,3 +55,4 @@ void aggiorna_dump_carico(void *vptr_dump, int indiceporto, merce_nave* carico, 
 
 /* Scarica la merce dalla nave aggiornando mercato e dump. */
 void scaricamerci(merce scarico, int indiceporto, int indicemerce, int data, void* vptr_mercato, void* vptr_dump, int id_sem_dump, int PARAMETRO[]);
+#endif
