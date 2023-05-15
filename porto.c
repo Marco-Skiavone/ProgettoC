@@ -11,6 +11,7 @@ void* vptr_shm_mercato;
 void* vptr_shm_posizioni_porti;
 
 int id_semaforo_dump;
+int id_semaforo_banchine;
 
 int indice;
 int fd_fifo;
@@ -23,7 +24,6 @@ int main(int argc, char *argv[]){
 
     int id_semaforo_mercato;
     int id_semaforo_gestione;
-    int id_semaforo_banchine;
 
     int id_shm_dettagli_lotti;
     int id_shm_dump;
@@ -74,20 +74,39 @@ int main(int argc, char *argv[]){
     
     do {
         pause();
+        spawnMerciRand(vptr_shm_mercato, CAST_DETTAGLI_LOTTI(vptr_shm_dettagli_lotti), vptr_shm_dump, id_semaforo_dump, PARAMETRO, indice);
     } while(1);
-    sgancia_risorse(vptr_shm_dettagli_lotti, vptr_shm_dump, vptr_shm_mercato, vptr_shm_posizioni_porti);
 }
 
 void signal_handler(int signo){
     switch(signo){
-        case SIGUSR1:
-            fprintf(stderr,"*** PORTO %d: ricevuto SIGUSR1: data = %d ***\n", indice, CAST_DUMP(vptr_shm_dump)->data);
+        case SIGUSR1:   /* DUMP e fine simulazione */
+            if(CAST_DUMP(vptr_shm_dump)->data < SO_DAYS)
+                fprintf(stderr,"*** PORTO %d: ricevuto SIGUSR1: data = %d ***\n", indice, CAST_DUMP(vptr_shm_dump)->data);
+            else {
+                fprintf(stderr,"\nPORTO %d: ricevuto SIGUSR1 terminazione.\n", indice);
+                close(fd_fifo);
+                sgancia_risorse(vptr_shm_dettagli_lotti, vptr_shm_dump, vptr_shm_mercato, vptr_shm_posizioni_porti);
+                exit(EXIT_SUCCESS);
+            }
             break;
-        case SIGUSR2:
-            fprintf(stderr,"\nPORTO %d: ricevuto SIGUSR2.\n", indice);
-            close(fd_fifo);
-            sgancia_risorse(vptr_shm_dettagli_lotti, vptr_shm_dump, vptr_shm_mercato, vptr_shm_posizioni_porti);
-            exit(EXIT_SUCCESS);
+        case SIGUSR2:   /* spawn merci del porto */
+
+            break;
+        case SIGINT:    /* swell -> mareggiata */
+            {
+                struct timespec time_to_wait, rem;
+                int value;
+                time_to_wait.tv_nsec = 
+                value = sem_get_val(id_semaforo_banchine, indice);
+                sem_set_val(id_semaforo_banchine, indice, 0);   /* porta a zero il semaforo */
+                /* NANOSLEEP DI TOT SECONDI */
+                if(nanosleep(&time_to_wait, &rem) != 0){
+                    while(rem.tv_sec != 0 && rem.tv_nsec != 0)
+                        nanosleep(&rem, &rem);
+                }
+                sem_set_val(id_semaforo_banchine, indice, value); /* riporta il semaforo al valore precedente */
+            }
             break;
         default: 
             perror("PORTO: giunto segnale non contemplato!");

@@ -74,6 +74,9 @@
 #define I_FILL 10
 #define I_LOADSPEED 11
 #define I_DAYS 12
+#define I_STORM_DURATION 13
+#define I_SWELL_DURATION 14
+#define I_MAELSTORM 15
 
 /* MACRO per riferirsi ai parametri */
 #define SO_NAVI PARAMETRO[I_NAVI]
@@ -89,6 +92,9 @@
 #define SO_FILL PARAMETRO[I_FILL]
 #define SO_LOADSPEED PARAMETRO[I_LOADSPEED]
 #define SO_DAYS PARAMETRO[I_DAYS]
+#define SO_STORM_DURATION PARAMETRO[I_STORM_DURATION]
+#define SO_SWELL_DURATION PARAMETRO[I_SWELL_DURATION]
+#define SO_MAELSTORM PARAMETRO[I_MAELSTORM]
 
 /* MACRO per riferimenti agli ID dei semafori*/
 #define ID_SEMAFORO_BANCHINE SEM_ID[0]
@@ -106,7 +112,7 @@
 /* Numero di parametri: 
  * - 13 versione da 24
  * - 16 versione da 30 */
-#define QNT_PARAMETRI 13
+#define QNT_PARAMETRI 16
 
 /* MACRO utilizzate per indicare le chiavi delle shared memory, la loro dimensione,
 	la dimensione dei messaggi e le chiavi dei semafori */
@@ -124,8 +130,14 @@
 
 #define CHIAVE_SEM_MERCATO 11
 #define CHIAVE_SEM_DUMP 41
-#define CHIAVE_SEM_BANCHINE 51
-#define CHIAVE_SEM_GESTIONE 61
+#define CHIAVE_SEM_BANCHINE 61
+#define CHIAVE_SEM_GESTIONE 62
+
+/* Chiave della coda usata dal meteo per reperire i pid dei processi porto*/
+#define CHIAVE_CODA_METEO 51
+
+/* nome della fifo per passare i PID al meteo */
+#define FIFO_PIDS "fifo_pids_so"
 
 /* --- casting delle shm --- */
 /* usate per fare il casting dei void pointer alla shared memory*/
@@ -164,6 +176,10 @@
 /* Massima lunghezza dell'array di carico merci delle navi. */
 #define MAX_CARICO 10
 
+/* size dei vettori argv per le execve */
+#define SIZE_ARGV_FIGLI (QNT_PARAMETRI + 3)
+#define SIZE_ARGV_DEMONE 3
+#define SIZE_ARGV_METEO (QNT_PARAMETRI + 2)
 
 /* Punto generico di posizione con coordinate x e y. */
 typedef struct {
@@ -225,5 +241,15 @@ typedef struct {
 	term_dump term_dump;
     nave_dump nd;
 } dump;
+
+typedef struct{
+	int pid;
+	int indice_porto;
+} posizione_navi;
+
+typedef struct{
+	long mtype;
+	posizione_navi posizione;
+} messaggio_posizioni;
 
 #endif

@@ -96,6 +96,7 @@ void signal_handler(int signo){
             close(fd_fifo);
             sgancia_risorse(vptr_shm_dettagli_lotti, vptr_shm_dump, vptr_shm_mercato, vptr_shm_posizioni_porti);
             exit(EXIT_SUCCESS);
+            /**/
             break;
         default: 
             perror("NAVE: giunto segnale non contemplato!");

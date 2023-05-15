@@ -79,6 +79,6 @@ void distruggi_risorse(int id_mercato, int id_lotti, int id_posizioni, int id_du
 /* Usato dal master alla fine, per distruggere i semafori della simulazione. */
 void distruggi_semafori(int id_sem_mercato, int id_sem_dump, int id_sem_banchine, int id_sem_gestione);
 
-/* Esegue le free() necessarie a fine simulazione; size è la lunghezza di argv_figli. */
-void free_ptr(int *childs, char** argv_figli, int size);
+/* Esegue le free() necessarie a fine simulazione. */
+void free_ptrs(int *childs, char **argv_figli, char **argv_demone, char **argv_meteo);
 #endif

@@ -15,9 +15,11 @@ int id_semaforo_banchine;
 int id_semaforo_dump;
 
 int *child_pids;
-int fd_fifo;
+char **argv_figli, **argv_demone, **argv_meteo;
+int fd_fifo_demone, fd_fifo_pids;
 int demone_pid;
 int PARAMETRO[QNT_PARAMETRI];
+int continua_simulazione;
 
 void signal_handler(int signo);
 
@@ -30,13 +32,13 @@ int main(int argc, char* argv[]){
     int SHM_ID[4];
     int id_semaforo_mercato;
 
-    char **argv_figli, **argv_demone;
-    int continua_simulazione, child_pid, status;
+    int child_pid, meteo_pid, status;
     FILE *file_config;
     richiesta r;
-    struct sigaction sa_alrm;
-    argv_figli = malloc((QNT_PARAMETRI + 3)*sizeof(char*));
-    argv_demone = malloc(sizeof(char*)*3);
+    struct sigaction sa;
+    argv_figli = (char**)malloc(SIZE_ARGV_FIGLI*sizeof(char*));
+    argv_demone = (char**)malloc(sizeof(char*)*SIZE_ARGV_DEMONE);
+    argv_meteo = (char**)malloc(SIZE_ARGV_METEO*sizeof(char*));
 
     #ifdef DUMP_ME
     printf("Programma in avvio con parametro DUMP_ME abilitato!\n\n");
@@ -127,8 +129,11 @@ int main(int argc, char* argv[]){
             CAST_DETTAGLI_LOTTI(vptr_shm_dettagli_lotti)[i].exp);
     }
 
-    if((mkfifo(NOME_FIFO, 0666) == -1))
-        fprintf(stderr, "Master: Errore nella creazione della FIFO!\n");
+    if((fd_fifo_demone = mkfifo(NOME_FIFO, 0666) == -1))
+        fprintf(stderr, "Master: Errore nella creazione della FIFO del demone!\n");
+
+    if((fd_fifo_pids = mkfifo(FIFO_PIDS, 0666) == -1))
+        fprintf(stderr, "Master: Errore nella creazione della FIFO del meteo!\n");
 
     /* ---------------------------------------- */
     /* semaforo numero 1 su 2 che fa 1-0 per far scrivere le navi in m.e.*/
@@ -141,12 +146,29 @@ int main(int argc, char* argv[]){
     #ifdef DUMP_ME/* definito nel caso di dump in mutua esclusione. */
     sem_set_val(id_semaforo_gestione,1,0);  
     #endif
-    /* settaggio di argv_figli e fork dei processi porto e nave */
+    /* settaggio di argv per demone, meteo e "figli" (navi e porti). */
     argv_demone[0] = (char*)malloc(MAX_STR_LEN);
-    argv_demone[0] = "./demone";
+    argv_demone[0] = strcpy(argv_demone[0], "./demone");
     argv_demone[1] = (char*)malloc(3*sizeof(char));
     sprintf(argv_demone[1], "%d", CHIAVE_SEM_GESTIONE);
     argv_demone[2] = NULL;
+    
+    argv_meteo[0] = (char*)malloc(MAX_STR_LEN);
+    argv_meteo[0] = strcpy(argv_meteo[0], "./meteo");
+    argv_meteo[1] = (char*)malloc(MAX_STR_LEN);
+    argv_meteo[QNT_PARAMETRI+1] = NULL;
+
+    argv_figli[0] = (char *)malloc(MAX_STR_LEN);
+	argv_figli[1] = (char *)malloc(MAX_STR_LEN);
+	for (i = 0; i < QNT_PARAMETRI; i++){
+		argv_figli[i+2] = (char *)malloc(MAX_STR_LEN);
+		sprintf(argv_figli[i+2], "%d", PARAMETRO[i]);
+        argv_meteo[i+1] = (char *)malloc(MAX_STR_LEN);
+		sprintf(argv_meteo[i+1], "%d", PARAMETRO[i]);
+	}
+    argv_figli[QNT_PARAMETRI + 2] = NULL;
+
+    /* fork dei processi demone, meteo, porto e nave */
     switch(demone_pid = fork()){
         case -1:
             fprintf(stderr, " Linea %d: errore nella fork del demone.\n", __LINE__);
@@ -159,21 +181,25 @@ int main(int argc, char* argv[]){
             break;
     }
 
-    argv_figli[0] = (char *)malloc(MAX_STR_LEN);
-	argv_figli[1] = (char *)malloc(MAX_STR_LEN);
-	for (i = 0; i < QNT_PARAMETRI; i++){
-		argv_figli[i+2] = (char *)malloc(MAX_STR_LEN);
-		sprintf(argv_figli[i+2], "%d", PARAMETRO[i]);
-	}
-    argv_figli[QNT_PARAMETRI + 2] = NULL;
+    switch(meteo_pid = fork()){
+        case -1:
+            fprintf(stderr, " Linea %d: errore nella fork del meteo.\n", __LINE__);
+            break;
+        case 0:
+            execve("./meteo", argv_meteo, NULL);
+            fprintf(stderr, "Linea %d: execve meteo ha fallito!\n", __LINE__);
+            break;
+        default:
+            break;
+    }
+
     for(i=0;i<SO_PORTI;i++){
-        
         switch(child_pids[i] = fork()){
             case -1:
                 perror("fork porto");
                 break;
             case 0:
-                argv_figli[0] = "./porto";
+                argv_figli[0] = strcpy(argv_figli[0], "./porto");
 				sprintf(argv_figli[1], "%d", i);
 				execve("./porto", argv_figli, NULL);
                 perror("execve porto");
@@ -184,13 +210,12 @@ int main(int argc, char* argv[]){
         }
     }
     for(i=0;i<SO_NAVI;i++){
-        
         switch( child_pids[SO_PORTI + i] =  fork()){
             case -1:
                 perror("fork nave");
                 break;
             case 0:
-                argv_figli[0] = "./nave";
+                argv_figli[0] = strcpy(argv_figli[0], "./nave");
 				sprintf(argv_figli[1], "%d", (i));
 				execve("./nave", argv_figli, NULL);
                 perror("execve nave");
@@ -201,16 +226,22 @@ int main(int argc, char* argv[]){
         }
     }
 
+    /* Passo i PIDS sulla FIFO per il METEO */
+    for(int i = 0; i < SO_PORTI + SO_NAVI; i++){
+        dprintf(fd_fifo_pids, "%6d", child_pids[i]);
+    }
+
+
     /* Fine settaggio argv_figli e creazione dei processi.
      * Inizio attesa di sincronizzazione e partenza del loop di simulazione. */
     sem_wait_zero(id_semaforo_gestione, 0);
 
     stampa_dump(PARAMETRO, vptr_shm_dump, vptr_shm_mercato, id_semaforo_banchine);
-    sa_alrm.sa_handler = signal_handler;
-    sa_alrm.sa_flags = 0;
-    sigemptyset(&(sa_alrm.sa_mask));
-    sigaction(SIGALRM, &sa_alrm, NULL);
-    
+    sa.sa_handler = signal_handler;
+    sa.sa_flags = 0;
+    sigemptyset(&(sa.sa_mask));
+    sigaction(SIGALRM, &sa, NULL);
+    sigaction(SIGINT, &sa, NULL);
     continua_simulazione = 1;
     do{
         alarm(1);
@@ -222,11 +253,15 @@ int main(int argc, char* argv[]){
         pause();
     } while(((int)(CAST_DUMP(vptr_shm_dump)->data) < SO_DAYS) && continua_simulazione);
     
+    close(fd_fifo_demone);
+    close(fd_fifo_pids);
     unlink(NOME_FIFO);
-    kill(demone_pid, SIGUSR2);
+    unlink(FIFO_PIDS);
+    kill(demone_pid, SIGUSR1);
+    kill(meteo_pid, SIGUSR1);
     for(i = 0; i < SO_NAVI+SO_PORTI; i++){
         printf("MASTER: ammazzo il figlio %d\n", child_pids[i]);
-        kill(child_pids[i], SIGUSR2);
+        kill(child_pids[i], SIGUSR1);
     }
     
     i=0;
@@ -250,10 +285,10 @@ int main(int argc, char* argv[]){
     printf("__________________________ \n\n");
     distruggi_risorse(id_shm_mercato, id_shm_dettagli_lotti, id_shm_posizioni_porti, id_shm_dump, id_coda_richieste);
     distruggi_semafori(id_semaforo_mercato, id_semaforo_dump, id_semaforo_banchine, id_semaforo_gestione);
-    close(fd_fifo);
     /* sono da liberare child_pids, ogni argv_figli[i] meno l'ultimo che è null,
      *  e argv_figli stesso => tot=(QNT_PARAMETRI + 2))+1; */
-    free_ptr(child_pids, argv_figli, QNT_PARAMETRI+2);
+    
+    free_ptrs(child_pids, argv_figli, argv_demone, argv_meteo);
     exit(EXIT_SUCCESS);
 }
 
@@ -279,13 +314,19 @@ void signal_handler(int signo){
                 fprintf(stderr, "\x1b[%dF\x1b[0J", 1);
                 fprintf(stderr, "Simulazione completata ^_^\n");
             }
-            break;
             #ifdef DUMP_ME
             sem_reserve(id_semaforo_gestione, 1);
             #endif
+            break;
+        case SIGINT:
+            printf("TERMINAZIONE! Simulazione completata per mancanza di navi.\n");
+            continua_simulazione = 0;
+            stampa_terminazione(PARAMETRO, vptr_shm_dump, vptr_shm_mercato, id_semaforo_banchine);
+            fprintf(stderr, "\x1b[%dF\x1b[0J", 1);
+            fprintf(stderr, "Simulazione completata ^_^\n");
+            break;
         default: 
             perror("MASTER: giunto segnale diverso da SIGALRM!");
-            close(fd_fifo);
-            exit(254);
+            continua_simulazione = 0;
     }
 }

@@ -282,19 +282,39 @@ void distruggi_semafori(int id_sem_mercato, int id_sem_dump, int id_sem_banchine
     printf("__________________________ \n");
 }
 
-void free_ptr(int *childs, char **argv_figli, int size){
+void free_ptrs(int *childs, char **argv_figli, char **argv_demone, char **argv_meteo){
 	if(childs != NULL){
 		free(childs);
 	} else 
-		perror("childs pointer is NULL");
+		printf("ERROR: childs pointer is NULL!\n");
 
 	if(argv_figli != NULL){
 		int i;
-		for(i = 0; i < size; i++){
+		for(i = 0; i < SIZE_ARGV_FIGLI; i++){
 			if(argv_figli[i] != NULL)
-			free(argv_figli[i]);
+				free(argv_figli[i]);
 		}
 		free(argv_figli);
 	} else
-		perror("argv_figli pointer is NULL");
+		printf("ERROR: argv_figli pointer is NULL!\n");
+	
+	if(argv_demone != NULL){
+		int i;
+		for(i = 0; i < SIZE_ARGV_DEMONE; i++){
+			if(argv_demone[i] != NULL)
+				free(argv_demone[i]);
+		}
+		free(argv_demone);
+	} else
+		printf("ERROR: argv_demone pointer is NULL!\n");
+
+	if(argv_meteo != NULL){
+		int i;
+		for(i = 0; i < SIZE_ARGV_METEO; i++){
+			if(argv_meteo[i] != NULL)
+				free(argv_meteo[i]);
+		}
+		free(argv_meteo);
+	} else
+		printf("ERROR: argv_meteo pointer is NULL!\n");
 }
