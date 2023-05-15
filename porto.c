@@ -97,10 +97,11 @@ void signal_handler(int signo){
             {
                 struct timespec time_to_wait, rem;
                 int value;
-                time_to_wait.tv_nsec = 
+                time_to_wait.tv_sec = (int)(SO_SWELL_DURATION / 24);
+                time_to_wait.tv_nsec = (SO_SWELL_DURATION % 24) * ((int)(1000000000/24));
                 value = sem_get_val(id_semaforo_banchine, indice);
                 sem_set_val(id_semaforo_banchine, indice, 0);   /* porta a zero il semaforo */
-                /* NANOSLEEP DI TOT SECONDI */
+                /* NANOSLEEP DI TOT SECONDI */ 
                 if(nanosleep(&time_to_wait, &rem) != 0){
                     while(rem.tv_sec != 0 && rem.tv_nsec != 0)
                         nanosleep(&rem, &rem);
