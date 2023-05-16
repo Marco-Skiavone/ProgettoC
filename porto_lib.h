@@ -19,5 +19,5 @@ void manda_richieste(void* vptr_shm_mercato, int indice, int coda_id, int PARAME
 
 /** Genera merci in porti casuali
 */
-void spawnMerciRand(void *vptr_shm_mercato, merce *vptr_shm_dettagli_lotti, void *vptr_shm_dump, int id_semaforo_dump, int PARAMETRO[], int indice);
+void spawnMerciRand(void* vptr_mercato, merce* ptr_lotti, void *vptr_dump, int id_sem_dump, int PARAMETRO[], int indice, int coda_id, int fd_fifo);
 #endif

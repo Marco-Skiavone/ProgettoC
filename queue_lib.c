@@ -3,7 +3,7 @@
 #endif
 #include "queue_lib.h"
 
-int set_coda_richieste(key_t key) {
+int set_coda(key_t key) {
     int coda_id;
     if ((coda_id = msgget(key, IPC_CREAT | IPC_EXCL | 0666)) == -1) {
         perror("msgget creazione coda");

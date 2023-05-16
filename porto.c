@@ -13,6 +13,7 @@ void* vptr_shm_posizioni_porti;
 int id_semaforo_dump;
 int id_semaforo_banchine;
 
+int id_coda_richieste;
 int indice;
 int fd_fifo;
 int PARAMETRO[QNT_PARAMETRI];
@@ -29,7 +30,6 @@ int main(int argc, char *argv[]){
     int id_shm_dump;
     int id_shm_mercato;
     int id_shm_posizioni_porti;
-    int id_coda_richieste;
     int SHM_ID[4];
     struct sigaction sa;
     sigset_t mask1;
@@ -64,9 +64,10 @@ int main(int argc, char *argv[]){
     aggancia_tutte_shm(&vptr_shm_mercato, &vptr_shm_dettagli_lotti, &vptr_shm_posizioni_porti, &vptr_shm_dump, SHM_ID, PARAMETRO);
     inizializza_semafori(&id_semaforo_mercato, &id_semaforo_gestione, &id_semaforo_banchine, &id_semaforo_dump, SO_PORTI);
     inizializza_banchine(id_semaforo_banchine, indice, vptr_shm_dump, PARAMETRO);
-    
+    /*
     spawnMerciPorti(vptr_shm_mercato, CAST_DETTAGLI_LOTTI(vptr_shm_dettagli_lotti), vptr_shm_dump, id_semaforo_dump, PARAMETRO, indice);
     manda_richieste(vptr_shm_mercato, indice, id_coda_richieste, PARAMETRO, fd_fifo);
+    */
     /* si sgancia dalle memorie condivise. */
     /* si dichiara pronto e aspetta. (wait for zero) */
     sem_reserve(id_semaforo_gestione, 0);
@@ -74,7 +75,7 @@ int main(int argc, char *argv[]){
     
     do {
         pause();
-        spawnMerciRand(vptr_shm_mercato, CAST_DETTAGLI_LOTTI(vptr_shm_dettagli_lotti), vptr_shm_dump, id_semaforo_dump, PARAMETRO, indice);
+        
     } while(1);
 }
 
@@ -91,7 +92,7 @@ void signal_handler(int signo){
             }
             break;
         case SIGUSR2:   /* spawn merci del porto */
-
+            spawnMerciRand(vptr_shm_mercato, vptr_shm_dettagli_lotti, vptr_shm_dump, id_semaforo_dump, PARAMETRO, indice, id_coda_richieste, fd_fifo);
             break;
         case SIGINT:    /* swell -> mareggiata */
             {

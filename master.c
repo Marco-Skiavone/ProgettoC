@@ -28,10 +28,10 @@ int main(int argc, char* argv[]){
     int n_righe_file, file_config_char;
 
     int id_shm_mercato, id_shm_posizioni_porti;
-    int id_shm_dettagli_lotti, id_shm_dump, id_coda_richieste;
+    int id_shm_dettagli_lotti, id_shm_dump, id_coda_richieste, id_coda_meteo;
     int SHM_ID[4];
     int id_semaforo_mercato;
-
+    int *mask_porti_generanti;
     int child_pid, meteo_pid, status;
     FILE *file_config;
     richiesta r;
@@ -39,10 +39,6 @@ int main(int argc, char* argv[]){
     argv_figli = (char**)malloc(SIZE_ARGV_FIGLI*sizeof(char*));
     argv_demone = (char**)malloc(sizeof(char*)*SIZE_ARGV_DEMONE);
     argv_meteo = (char**)malloc(SIZE_ARGV_METEO*sizeof(char*));
-
-    #ifdef DUMP_ME
-    printf("Programma in avvio con parametro DUMP_ME abilitato!\n\n");
-    #endif
     
     setbuf(stdout, NULL); /* unbufferizza stdout */
     clearLog();
@@ -108,9 +104,10 @@ int main(int argc, char* argv[]){
 
     
     child_pids = (int *) malloc((SO_NAVI*SO_PORTI + 1) * sizeof(int));
+    mask_porti_generanti = (int *) malloc(SO_PORTI * sizeof(int));
 
     /* alloca_risorse */
-    alloca_id(&id_shm_mercato, &id_shm_dettagli_lotti, &id_shm_posizioni_porti, &id_shm_dump, &id_coda_richieste, PARAMETRO);
+    alloca_id(&id_shm_mercato, &id_shm_dettagli_lotti, &id_shm_posizioni_porti, &id_shm_dump, &id_coda_richieste, &id_coda_meteo, PARAMETRO);
     SHM_ID[0] = id_shm_mercato;
     SHM_ID[1] = id_shm_dettagli_lotti;
     SHM_ID[2] = id_shm_posizioni_porti;
@@ -141,11 +138,9 @@ int main(int argc, char* argv[]){
     sem_set_val(id_semaforo_dump,0,1); 
     /* ---------------------------------------- */
 
-    sem_set_val(id_semaforo_gestione,0,SO_PORTI+SO_NAVI+1);
-
-    #ifdef DUMP_ME/* definito nel caso di dump in mutua esclusione. */
+    sem_set_val(id_semaforo_gestione,0,SO_PORTI+SO_NAVI+2); /* navi, porti, demone e meteo */
     sem_set_val(id_semaforo_gestione,1,0);  
-    #endif
+
     /* settaggio di argv per demone, meteo e "figli" (navi e porti). */
     argv_demone[0] = (char*)malloc(MAX_STR_LEN);
     argv_demone[0] = strcpy(argv_demone[0], "./demone");
@@ -227,13 +222,24 @@ int main(int argc, char* argv[]){
     }
 
     /* Passo i PIDS sulla FIFO per il METEO */
-    for(int i = 0; i < SO_PORTI + SO_NAVI; i++){
+    for(i = 0; i < SO_PORTI + SO_NAVI; i++){
         dprintf(fd_fifo_pids, "%6d", child_pids[i]);
     }
 
 
     /* Fine settaggio argv_figli e creazione dei processi.
      * Inizio attesa di sincronizzazione e partenza del loop di simulazione. */
+
+    for(i=0;i<SO_PORTI;i++){ mask_porti_generanti[i] = 0; }
+    CAST_DUMP(vptr_shm_dump)->porti_generanti = rand() % SO_PORTI + 1;
+    for(i=0;i<CAST_DUMP(vptr_shm_dump)->porti_generanti;){
+        if(mask_porti_generanti[i]==0){ mask_porti_generanti[i] = 1; i++; }
+    }
+    for(i=0;i<SO_PORTI;i++){
+        if(mask_porti_generanti[i] == 1){
+            kill(child_pids[i], SIGUSR2);
+        }
+    }
     sem_wait_zero(id_semaforo_gestione, 0);
 
     stampa_dump(PARAMETRO, vptr_shm_dump, vptr_shm_mercato, id_semaforo_banchine);
@@ -250,6 +256,8 @@ int main(int argc, char* argv[]){
         if(!(continua_simulazione = controlla_mercato(vptr_shm_mercato, vptr_shm_dump, PARAMETRO))){
             printf("\nMASTER: Termino la simulazione per mancanza di offerte e/o di richieste!\n");
         }
+        CAST_DUMP(vptr_shm_dump)->porti_generanti = rand() % SO_PORTI + 1;
+        /* MANDARE SEGNALI A PORTI CASUALI */
         pause();
     } while(((int)(CAST_DUMP(vptr_shm_dump)->data) < SO_DAYS) && continua_simulazione);
     
@@ -283,7 +291,7 @@ int main(int argc, char* argv[]){
     sgancia_risorse(vptr_shm_dettagli_lotti,vptr_shm_dump, vptr_shm_mercato, vptr_shm_posizioni_porti);
     printf("TUTTE LE SHARED_MEM SONO STATE SGANCIATE DAL MASTER!\n");
     printf("__________________________ \n\n");
-    distruggi_risorse(id_shm_mercato, id_shm_dettagli_lotti, id_shm_posizioni_porti, id_shm_dump, id_coda_richieste);
+    distruggi_risorse(id_shm_mercato, id_shm_dettagli_lotti, id_shm_posizioni_porti, id_shm_dump, id_coda_richieste, id_coda_meteo);
     distruggi_semafori(id_semaforo_mercato, id_semaforo_dump, id_semaforo_banchine, id_semaforo_gestione);
     /* sono da liberare child_pids, ogni argv_figli[i] meno l'ultimo che è null,
      *  e argv_figli stesso => tot=(QNT_PARAMETRI + 2))+1; */
@@ -296,9 +304,6 @@ void signal_handler(int signo){
     int i;
     switch(signo){
         case SIGALRM:
-            #ifdef DUMP_ME
-            sem_release(id_semaforo_gestione, 1);
-            #endif
             controllo_scadenze_porti(CAST_DETTAGLI_LOTTI(vptr_shm_dettagli_lotti), vptr_shm_mercato, vptr_shm_dump, id_semaforo_dump, PARAMETRO);
             if(CAST_DUMP(vptr_shm_dump)->data < SO_DAYS-1){
                 fprintf(stderr, "\x1b[%dF\x1b[0J", 1);
@@ -314,9 +319,8 @@ void signal_handler(int signo){
                 fprintf(stderr, "\x1b[%dF\x1b[0J", 1);
                 fprintf(stderr, "Simulazione completata ^_^\n");
             }
-            #ifdef DUMP_ME
-            sem_reserve(id_semaforo_gestione, 1);
-            #endif
+            sem_release(id_semaforo_gestione, 1);
+            /* il meteo eseguirà la reserve. */
             break;
         case SIGINT:
             printf("TERMINAZIONE! Simulazione completata per mancanza di navi.\n");

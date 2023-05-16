@@ -41,7 +41,7 @@ int calcola_porto_piu_vicino(point p, point* ptr_shm_posizioni_porti, int so_por
     return indicemin;
 }
 
-void codice_simulazione(int indice, int PARAMETRO[], int SEM_ID[], int id_coda_richieste, void* VPTR_ARR[], int fd_fifo){
+void codice_simulazione(int indice, int PARAMETRO[], int SEM_ID[], int id_coda_richieste, void* VPTR_ARR[], int fd_fifo, int id_coda_meteo, int *statoNave){
 
     int i, j, k, indice_destinazione, indice_porto_attraccato, i_carico=0;
     int reqlett=0, spaziolibero = SO_CAPACITY, lotti_scartati = 0, noncaricare = 0;
@@ -57,6 +57,7 @@ void codice_simulazione(int indice, int PARAMETRO[], int SEM_ID[], int id_coda_r
 
          * in base alle risorse del porto di attracco. */
         sem_reserve(ID_SEMAFORO_MERCATO, indice_porto_attraccato);
+        
         r = esamina_porto(indice, PARAMETRO, SEM_ID, id_coda_richieste, VPTR_ARR, &lotti_scartati, &indice_porto_attraccato, &reqlett, posizione, &spaziolibero, &tempo_carico,
         carico, &i_carico, &indice_destinazione, fd_fifo);        
 
@@ -81,6 +82,7 @@ void codice_simulazione(int indice, int PARAMETRO[], int SEM_ID[], int id_coda_r
         attesa((SO_CAPACITY - spaziolibero), SO_LOADSPEED);
         
         sem_release(ID_SEMAFORO_BANCHINE, indice_porto_attraccato);
+        *statoNave = NAVE_IN_MARE;      /* MESSAGGIO NAVE IN MARE*/
 
         if(spaziolibero == SO_CAPACITY){
 			stato_nave(DN_PORTO_MV, ID_SEMAFORO_DUMP, VPTR_SHM_DUMP, indice);
@@ -100,7 +102,7 @@ void codice_simulazione(int indice, int PARAMETRO[], int SEM_ID[], int id_coda_r
 }
 
 
-point avvia_nave(int indice, int PARAMETRO[], int SEM_ID[], void* VPTR_ARR[], int *indice_porto_attraccato){
+point avvia_nave(int indice, int PARAMETRO[], int SEM_ID[], void* VPTR_ARR[], int *indice_porto_attraccato, int *statoNave){
     int indice_destinazione;
     point posizione;
     double distanza;
@@ -114,8 +116,8 @@ point avvia_nave(int indice, int PARAMETRO[], int SEM_ID[], void* VPTR_ARR[], in
     printf("Nave %d inizia il viaggio\n", indice);
     attesa(distanza, SO_SPEED);
     /* richiede la banchina e una volta dentro aggiorna il dump */
-    richiedi_banchina(ID_SEMAFORO_BANCHINE, indice_destinazione);
-    stato_nave(DN_MV_PORTO, ID_SEMAFORO_DUMP, VPTR_SHM_DUMP, indice);
+    richiedi_banchina(ID_SEMAFORO_BANCHINE, indice_destinazione, statoNave);
+    statoNave(DN_MV_PORTO, ID_SEMAFORO_DUMP, VPTR_SHM_DUMP, indice);
     *indice_porto_attraccato = indice_destinazione;
     posizione = CAST_POSIZIONI_PORTI(VPTR_SHM_POSIZIONI_PORTI)[*indice_porto_attraccato];
     printf("Nave %d ha ricevuto una banchina al porto %d\n", indice, indice_destinazione);
@@ -238,9 +240,9 @@ void carica_dal_porto(int indice, int PARAMETRO[], int id_coda_richieste, void* 
     }while(*reqlett < MAX_REQ_LETTE);    
 }
 
-void attracco_e_scarico(int indice, int PARAMETRO[], int SEM_ID[],void* VPTR_ARR[], int *spaziolibero, int *i_carico, double *tempo_carico, int *reqlett, int *indice_porto_attraccato, merce_nave carico[]){
+void attracco_e_scarico(int indice, int PARAMETRO[], int SEM_ID[],void* VPTR_ARR[], int *spaziolibero, int *i_carico, double *tempo_carico, int *reqlett, int *indice_porto_attraccato, merce_nave carico[], int *statoNave){
     int j, datascarico, data1;
-    richiedi_banchina(ID_SEMAFORO_BANCHINE, *indice_porto_attraccato);
+    richiedi_banchina(ID_SEMAFORO_BANCHINE, *indice_porto_attraccato, statoNave);
     printf("Nave %d attraccata al porto %d\n", indice, *indice_porto_attraccato);
     if(*spaziolibero == SO_CAPACITY){
         stato_nave(DN_MV_PORTO, ID_SEMAFORO_DUMP, VPTR_SHM_DUMP, indice);
@@ -271,14 +273,14 @@ void attracco_e_scarico(int indice, int PARAMETRO[], int SEM_ID[],void* VPTR_ARR
     *reqlett = 0;
 }
 
-void richiedi_banchina(int id_semaforo_banchine, int indice_porto){
+void richiedi_banchina(int id_semaforo_banchine, int indice_porto, int *statoNave){
     sigset_t mask, oldmask;
     sigemptyset(&mask);
     sigaddset(&mask, SIGUSR1);
     sigprocmask(SIG_BLOCK, &mask, &oldmask);
 
     sem_reserve(id_semaforo_banchine, indice_porto);
-
+    *statoNave = NAVE_IN_PORTO;
     sigprocmask(SIG_UNBLOCK, &mask, NULL);
     sigprocmask(SIG_SETMASK, &oldmask, NULL);
 }

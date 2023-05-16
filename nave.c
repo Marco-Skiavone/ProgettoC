@@ -13,6 +13,7 @@ void* vptr_shm_posizioni_porti;
 int id_semaforo_gestione; /* può essere chiamato da runME (con definizione di DUMP_ME) */
 
 int indice;
+int stato_nave;
 int fd_fifo;
 int PARAMETRO[QNT_PARAMETRI];
 
@@ -20,15 +21,10 @@ void signal_handler(int signo);
 
 int main(int argc, char *argv[]){
     int i, j, k;
-    int id_semaforo_mercato;
-    int id_semaforo_banchine;
-    int id_semaforo_dump;
+    int id_semaforo_mercato, id_semaforo_banchine, id_semaforo_dump;
 
-    int id_shm_dettagli_lotti;
-    int id_shm_dump;
-    int id_shm_mercato;
-    int id_shm_posizioni_porti;
-    int id_coda_richieste;
+    int id_shm_dettagli_lotti, id_shm_dump, id_shm_mercato, id_shm_posizioni_porti;
+    int id_coda_richieste, id_coda_meteo;
     int SHM_ID[4];
     int SEM_ID[4];
     void* VPTR_ARR[4];
@@ -63,8 +59,9 @@ int main(int argc, char *argv[]){
     SHM_ID[2] = id_shm_posizioni_porti;
     SHM_ID[3] = id_shm_dump;
     aggancia_tutte_shm(&vptr_shm_mercato, &vptr_shm_dettagli_lotti, &vptr_shm_posizioni_porti, &vptr_shm_dump, SHM_ID, PARAMETRO);
+    id_coda_meteo = get_coda_id(CHIAVE_CODA_METEO);
     inizializza_semafori(&id_semaforo_mercato, &id_semaforo_gestione, &id_semaforo_banchine, &id_semaforo_dump, SO_PORTI);
-
+    stato_nave = NAVE_IN_MARE;
     sem_reserve(id_semaforo_gestione, 0);
     sem_wait_zero(id_semaforo_gestione, 0);
     
@@ -77,7 +74,7 @@ int main(int argc, char *argv[]){
     VPTR_ARR[2] = vptr_shm_mercato;
     VPTR_ARR[3] = vptr_shm_posizioni_porti;
 
-    codice_simulazione(indice, PARAMETRO, SEM_ID, id_coda_richieste, VPTR_ARR, fd_fifo);
+    codice_simulazione(indice, PARAMETRO, SEM_ID, id_coda_richieste, VPTR_ARR, fd_fifo, id_coda_meteo, &stato_nave);
 
     sgancia_risorse(vptr_shm_dettagli_lotti, vptr_shm_dump, vptr_shm_mercato, vptr_shm_posizioni_porti);
     exit(EXIT_SUCCESS);
@@ -85,21 +82,24 @@ int main(int argc, char *argv[]){
 
 void signal_handler(int signo){
     switch(signo){
-        case SIGUSR1:
-            printf("*** NAVE %d: ricevuto SIGUSR1: data = %d ***\n", indice, CAST_DUMP(vptr_shm_dump)->data);
-            #ifdef DUMP_ME
-            sem_wait_zero(id_semaforo_gestione, 1);
-            #endif
+        case SIGUSR1:       /* dump e terminazione */
+            if(CAST_DUMP(vptr_shm_dump)->data < SO_DAYS)
+                printf("*** NAVE %d: ricevuto SIGUSR1: data = %d ***\n", indice, CAST_DUMP(vptr_shm_dump)->data);
+            else {
+                printf("NAVE %d: ricevuto SIGUSR2. data: %d\n", indice, CAST_DUMP(vptr_shm_dump)->data);
+                close(fd_fifo);
+                sgancia_risorse(vptr_shm_dettagli_lotti, vptr_shm_dump, vptr_shm_mercato, vptr_shm_posizioni_porti);
+                exit(EXIT_SUCCESS);
+            }
             break;
-        case SIGUSR2:
-            printf("NAVE %d: ricevuto SIGUSR2. data: %d\n", indice, CAST_DUMP(vptr_shm_dump)->data);
-            close(fd_fifo);
-            sgancia_risorse(vptr_shm_dettagli_lotti, vptr_shm_dump, vptr_shm_mercato, vptr_shm_posizioni_porti);
-            exit(EXIT_SUCCESS);
-            /**/
+        case SIGUSR2:       /* nanosleep da mare o porto */
+            if(stato_nave == NAVE_IN_PORTO){
+                attesa(SO_SWELL_DURATION, 1);
+            } else {
+                attesa(SO_STORM_DURATION, 1);
+            }
             break;
         default: 
-            perror("NAVE: giunto segnale non contemplato!");
-            exit(254);
+            printf("NAVE: giunto segnale non contemplato!");
     }
 }

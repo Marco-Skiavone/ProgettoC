@@ -60,6 +60,9 @@
 #define DN_PORTO_MV 2	/* da "in porto" a "in mare vuota" */
 #define DN_PORTO_MC 3	/* da "in porto" a "in mare carica" */
 
+#define NAVE_IN_PORTO 0
+#define NAVE_IN_MARE 1
+
 /* indice dei parametri */
 #define I_NAVI 0
 #define I_PORTI 1
@@ -240,6 +243,7 @@ typedef struct {
     porto_dump *porto_dump_ptr;
 	term_dump term_dump;
     nave_dump nd;
+	int porti_generanti;
 } dump;
 
 typedef struct{

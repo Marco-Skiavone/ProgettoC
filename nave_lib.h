@@ -15,11 +15,11 @@ double calcola_distanza(point p1, point p2);
 int calcola_porto_piu_vicino(point p, point* ptr_shm_posizioni_porti, int so_porti, int so_lato);
 
 /* E' il metodo generale della simulazione, gestisce le operazioni della nave. */
-void codice_simulazione(int indice, int PARAMETRO[], int SEM_ID[], int id_coda_richieste, void* VPTR_ARR[], int fd_fifo);
+void codice_simulazione(int indice, int PARAMETRO[], int SEM_ID[], int id_coda_richieste, void* VPTR_ARR[], int fd_fifo, int id_coda_meteo, int *statoNave);
 
 /* Genera la posizione della nave, trova il porto più vicino e ci va. 
  * Dopo esservi attraccata, aggiorna il dump e ritorna l'attuale posizione della nave. */
-point avvia_nave(int indice, int PARAMETRO[], int SEM_ID[], void* VPTR_ARR[], int *indice_porto_attraccato);
+point avvia_nave(int indice, int PARAMETRO[], int SEM_ID[], void* VPTR_ARR[], int *indice_porto_attraccato, int *statoNave);
 
 /* Ricerca la prima richiesta soddisfabile e la ritorna.
  * Ciò vincolerà successivamente la nave a cercare richieste provenienti dallo stesso porto. 
@@ -33,13 +33,13 @@ void carica_dal_porto(int indice, int PARAMETRO[], int id_coda_richieste, void* 
 
 /* giunge al porto di destinazione, attracca e scarica le merci (coi dovuti controlli). 
  * Richiama scaricamerci(). */
-void attracco_e_scarico(int indice, int PARAMETRO[], int SEM_ID[], void *VPTR_ARR[], int *spaziolibero, int *i_carico, double *tempo_carico, int *reqlett, int *indice_porto_attraccato, merce_nave carico[]);
+void attracco_e_scarico(int indice, int PARAMETRO[], int SEM_ID[], void *VPTR_ARR[], int *spaziolibero, int *i_carico, double *tempo_carico, int *reqlett, int *indice_porto_attraccato, merce_nave carico[], int *statoNave);
 /* Richiede una banchina al semaforo di indice 'indice_porto', effettuando 
  * una maschera dei segnali per evitare spiacevoli 'loop' dello scheduler.
  * 
  * BLOCCA SIGUSR1.
  * Una volta eseguita la semop(), un eventuale segnale pendente viene consegnato. */
-void richiedi_banchina(int id_semaforo_banchine, int indice_porto);
+void richiedi_banchina(int id_semaforo_banchine, int indice_porto, int *statoNave);
 
 /* Modifica lo stato delle navi nel dump in base all'argomento (int) passato. */
 void stato_nave(int stato, int id_semaforo_dump, void *vptr_shm_dump, int indice);

@@ -3,14 +3,14 @@
 #include "sem_lib.h"
 
 void signal_handler(int signo);
-void mareggiata_porto();
-void tempesta_nave();
 
 int PARAMETRO[QNT_PARAMETRI];
-int id_semaforo_dump;
-int id_semaforo_banchine;
+int id_semaforo_gestione;
 int *porti_pids;
 posizione_navi *vettore_pids_navi;
+int *porti_mareggiati;
+int *navi_tempesta;
+int data;
 
 int main(int argc, char *argv[]){
     int id_coda_b;
@@ -35,10 +35,19 @@ int main(int argc, char *argv[]){
     for(i=1;i<argc;i++){
         PARAMETRO[i-1] = atoi(argv[i]);
     }
-    if((fd_fifo_pids = open(FIFO_PIDS, O_RDONLY, 0666))==NULL){
+    
+    if((fd_fifo_pids = open(FIFO_PIDS, O_RDONLY, 0666)) == -1){
         perror("Errore fifo pids");
     }
+
+    if(freeopen("log_dump.txt", "a", stdout) == NULL){
+        perror("freeopen log_dump stampa meteo");
+    }
+
+    porti_mareggiati = (int*) malloc(SO_DAYS * sizeof(int));
+    navi_tempesta = (int) malloc(SO_DAYS * sizeof(int));
     porti_pids = (int *) malloc(SO_PORTI * sizeof(int));
+    data = 0;
     vettore_pids_navi = (posizione_navi*) malloc(SO_NAVI * sizeof(posizione_navi));
     for(i=0;i<SO_PORTI;i++){
         read(fd_fifo_pids, porti_pids[i], sizeof(int));
@@ -50,9 +59,10 @@ int main(int argc, char *argv[]){
     for(i=0;i<SO_NAVI;i++){ vettore_pids_navi[i].indice_porto=-1; }
 
     id_coda_b = get_coda_id(CHIAVE_CODA_METEO);
-    //AGGANCIA SEMAFORI NECESSARI
-    //SEMAFORO PER DIRE CHE È PRONTO
-    //SEMAFORO PER ATTESA PARTENZA SIMULAZIONE
+    /* Aggancia il semaforo */
+    id_semaforo_gestione = sem_find(CHIAVE_SEM_GESTIONE, 2);
+    sem_reserve(id_semaforo_gestione, 0);
+    sem_wait_zero(id_semaforo_gestione, 0);
 
     do{
         msgrcv(id_coda_b, &mes, sizeof(messaggio_posizioni), 0, 0);
@@ -62,42 +72,23 @@ int main(int argc, char *argv[]){
             }
         }
     }while(1);
-    
 }
 
 void signal_handler(int signo){
     switch(signo){
         case SIGUSR1:
-            tempesta_nave();
-            mareggiata_porto();
+            navi_tempesta[data] = tempesta_nave();
+            porti_mareggiati[data] = mareggiata_porto();
+            sem_reserve(id_semaforo_gestione, 1);
+            /* STAMPA DATI METEO */
+            data++;
             break;
         case SIGUSR2:
+            stampa_meteo_fine_simulazione(navi_tempesta, porti_mareggiati, data);
+            /* free delle malloc */
             exit(EXIT_SUCCESS);
             break;
         default:
             break;
     }
-}
-
-void tempesta_nave(){
-    int i;
-    while(1){
-        i = rand() % SO_NAVI + 0;
-        if(vettore_pids_navi[i].indice_porto == -1){
-            kill(vettore_pids_navi[i].pid, SIGUSR2);
-            break;
-        }
-    }
-}
-
-void mareggiata_porto(){
-    int i, porto_mareggiato;
-    porto_mareggiato = rand() % SO_PORTI + 0;
-    kill(porti_pids[porto_mareggiato], SIGINT);
-    for(i=0;i<SO_NAVI;i++){
-        if(vettore_pids_navi[i].indice_porto == porto_mareggiato){
-            kill(vettore_pids_navi[i].pid, SIGUSR2);
-        }
-    }
-
 }

@@ -21,7 +21,7 @@ int controllo_parametri(int PARAMETRO[]);
 
 /* Alloca le risorse IPC di memorie condivise e coda.
  * Vengono passate per referenza le varibili, per impostare gli id nel master. */
-void alloca_id(int *id_shm_mercato, int *id_shm_dettagli_lotti, int *id_shm_posizioni_porti, int *id_shm_dump, int *id_coda_richieste, int PARAMETRO[]);
+void alloca_id(int *id_shm_mercato, int *id_shm_dettagli_lotti, int *id_shm_posizioni_porti, int *id_shm_dump, int *id_coda_richieste, int *id_coda_meteo, int PARAMETRO[]);
 
 /* Genera un punto casuale nella mappa di lato 'lato', senza modificare il seed di rand. */
 point generate_random_point_master(int lato);
@@ -74,7 +74,7 @@ void stampa_terminazione(int PARAMETRO[], void * vptr_shm_dump, void * vptr_shm_
  * ----------------------------------- */
 
 /* Distrugge le risorse di cui sono passati gli id. (shm e coda) */
-void distruggi_risorse(int id_mercato, int id_lotti, int id_posizioni, int id_dump, int id_coda);
+void distruggi_risorse(int id_mercato, int id_lotti, int id_posizioni, int id_dump, int id_coda, int id_coda_meteo);
 
 /* Usato dal master alla fine, per distruggere i semafori della simulazione. */
 void distruggi_semafori(int id_sem_mercato, int id_sem_dump, int id_sem_banchine, int id_sem_gestione);
