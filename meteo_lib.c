@@ -1,6 +1,6 @@
 #include "meteo_lib.h"
 
-int tempesta_nave(int *navi_rallentate, posizione_navi *vettore_pids_navi, int PARAMETRO[]){
+int tempesta_nave(posizione_navi *vettore_pids_navi, int PARAMETRO[]){
     int i, nave_tempesta = -1;
     for(i=0;i<SO_NAVI;i++){
         if(vettore_pids_navi[i].indice_porto == -1){

@@ -6,6 +6,7 @@
     #include "queue_lib.h"
 #endif
 
+
 point generate_random_point_nave(int lato) {
     int mant, p_intera;
     point p;
@@ -347,7 +348,7 @@ void aggiorna_posizione(int id_coda_b, int porto_attraccato){
     mes.mtype = 0;
     mes.posizione.pid = getpid();
     mes.posizione.indice_porto = porto_attraccato;
-    if(msgsend(id_coda_b, &mes, sizeof(messaggio_posizioni), 0) == -1){
+    if(msgsnd(id_coda_b, &mes, sizeof(messaggio_posizioni), 0) == -1){
         TEST_ERROR
     }
 }

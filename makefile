@@ -7,6 +7,7 @@ TARGET_ME = application_ME
 PORTO = porto
 NAVE = nave
 DEMONE = demone
+METEO = meteo
 SOURCES = *.c
 var = 9
 #var = [parametro da inserire su cmd: "make run var=[args]"]
@@ -22,12 +23,14 @@ $(TARGET): compila
 	gcc *lib.o porto.o -o $(PORTO) -lm
 	gcc *lib.o nave.o -o $(NAVE) -lm
 	gcc queue_lib.o sem_lib.o demone.o -o $(DEMONE) -lm
+	gcc *lib.o meteo.o -o $(METEO) -lm
 
 $(TARGET_ME): compila_ME
 	gcc *lib.o master.o -o $(TARGET_ME) -lm
 	gcc *lib.o porto.o -o $(PORTO) -lm
 	gcc *lib.o nave.o -o $(NAVE) -lm
 	gcc queue_lib.o sem_lib.o demone.o -o $(DEMONE) -lm
+	gcc *_lib.o meteo.o -o $(METEO) -lm
 
 all: $(SOURCES)
 	gcc $(CFLAGS) $(SOURCES) -c
@@ -35,6 +38,7 @@ all: $(SOURCES)
 	gcc *lib.o porto.o -o $(PORTO) -lm
 	gcc *lib.o nave.o -o $(NAVE) -lm
 	gcc queue_lib.o sem_lib.o demone.o -o $(DEMONE) -lm
+	gcc *_lib.o meteo.o -o $(METEO) -lm
 
 run: $(TARGET)
 	./$(TARGET) $(var)
@@ -43,8 +47,9 @@ runME: $(TARGET_ME)
 	./$(TARGET_ME) $(var)
 
 clear:
-	rm -f *.o $(TARGET) $(TARGET_ME) $(NAVE) $(PORTO) $(DEMONE) log_*.txt out.txt
+	rm -f *.o $(TARGET) $(TARGET_ME) $(NAVE) $(PORTO) $(DEMONE) $(METEO) log_*.txt out.txt
 
 ipc: clear
 	ipcrm --all
 	rm fifo_coda_messaggi
+	rm fifo_pids_so

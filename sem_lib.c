@@ -6,7 +6,7 @@
 int sem_create(key_t key, int nsems) {
     int semid;
     if ((semid = semget(key, nsems, IPC_CREAT | IPC_EXCL | S_IWUSR | S_IRUSR)) == -1) {
-        fprintf(stderr, "ERROR: %s\n", __FUNC__);
+        fprintf(stderr, "ERROR: semcreate\n");
         exit(255);
     }
     return semid;

@@ -3,7 +3,7 @@
 
 /** Invia il segnale di tempesta (SIGUSR2) a una nave.
   *	@returns l'indice della nave colpita dalla tempesta. */
-int tempesta_nave(int *navi_rallentate, posizione_navi *vettore_pids_navi, int PARAMETRO[]);
+int tempesta_nave(posizione_navi *vettore_pids_navi, int PARAMETRO[]);
 
 /** Invia il segnale di mareggiata al porto (SIGINT) e alle navi(SIGUSR2).
   * @returns l'indice del porto (a)mareggiato.

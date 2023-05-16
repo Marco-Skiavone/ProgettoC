@@ -2,6 +2,7 @@
 #include "queue_lib.h"
 #include "sem_lib.h"
 #include "shm_lib.h"
+#include "meteo_lib.h"
 
 void signal_handler(int signo);
 
@@ -30,7 +31,7 @@ int main(int argc, char *argv[]){
     sigaddset(&mask1, SIGUSR1);
     sigprocmask(SIG_UNBLOCK, &mask1, NULL);
 
-    if(argc != QNT_PARAMETRI){
+    if(argc != (QNT_PARAMETRI+1)){
         perror(("argc meteo"));
     }
     for(i=1;i<argc;i++){
@@ -41,7 +42,7 @@ int main(int argc, char *argv[]){
         perror("Errore fifo pids");
     }
 
-    if(freeopen("log_dump.txt", "a", stdout) == NULL){
+    if(freopen("log_dump.txt", "a", stdout) == NULL){
         perror("freeopen log_dump stampa meteo");
     }
 
@@ -86,8 +87,8 @@ void signal_handler(int signo){
                     }
                 }
             }
-            navi_tempesta[CAST_DUMP(vptr_shm_dump)->data] = tempesta_nave();
-            porti_mareggiati[CAST_DUMP(vptr_shm_dump)->data] = mareggiata_porto();
+            navi_tempesta[CAST_DUMP(vptr_shm_dump)->data] = tempesta_nave(vettore_pids_navi, PARAMETRO);
+            porti_mareggiati[CAST_DUMP(vptr_shm_dump)->data] = mareggiata_porto(porti_pids, vettore_pids_navi, PARAMETRO);
             
             sem_reserve(id_semaforo_gestione, 1);
             stampa_meteo(navi_tempesta[CAST_DUMP(vptr_shm_dump)->data], porti_mareggiati[CAST_DUMP(vptr_shm_dump)->data]);
