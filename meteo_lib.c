@@ -32,9 +32,10 @@ void stampa_meteo(int nave_tempesta, int porto_mareggiato){
     fprintf(stdout, "Mareggiata in porto %d", porto_mareggiato);
 
 }
+
 void stampa_meteo_fine_simulazione(int navi_tempestate[], int porti_mareggiati[], int giorni_simulazione){
     int i;
-    fprintf(stdout, "Resoconto meteo: \n");
+    fprintf(stdout, "Resoconto meteo:\n");
     for(i=0;i<giorni_simulazione;i++){
         fprintf(stdout, "Giorno %d\n", i);
         if(navi_tempestate[i]!=-1){

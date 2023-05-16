@@ -19,7 +19,7 @@ void codice_simulazione(int indice, int PARAMETRO[], int SEM_ID[], int id_coda_r
 
 /* Genera la posizione della nave, trova il porto più vicino e ci va. 
  * Dopo esservi attraccata, aggiorna il dump e ritorna l'attuale posizione della nave. */
-point avvia_nave(int indice, int PARAMETRO[], int SEM_ID[], void* VPTR_ARR[], int *indice_porto_attraccato, int *statoNave);
+point avvia_nave(int indice, int PARAMETRO[], int SEM_ID[], void* VPTR_ARR[], int *indice_porto_attraccato, int *statoNave, int id_coda_meteo);
 
 /* Ricerca la prima richiesta soddisfabile e la ritorna.
  * Ciò vincolerà successivamente la nave a cercare richieste provenienti dallo stesso porto. 
@@ -33,13 +33,13 @@ void carica_dal_porto(int indice, int PARAMETRO[], int id_coda_richieste, void* 
 
 /* giunge al porto di destinazione, attracca e scarica le merci (coi dovuti controlli). 
  * Richiama scaricamerci(). */
-void attracco_e_scarico(int indice, int PARAMETRO[], int SEM_ID[], void *VPTR_ARR[], int *spaziolibero, int *i_carico, double *tempo_carico, int *reqlett, int *indice_porto_attraccato, merce_nave carico[], int *statoNave);
+void attracco_e_scarico(int indice, int PARAMETRO[], int SEM_ID[], void *VPTR_ARR[], int *spaziolibero, int *i_carico, double *tempo_carico, int *reqlett, int *indice_porto_attraccato, merce_nave carico[], int *statoNave, int id_coda_meteo);
 /* Richiede una banchina al semaforo di indice 'indice_porto', effettuando 
  * una maschera dei segnali per evitare spiacevoli 'loop' dello scheduler.
  * 
  * BLOCCA SIGUSR1.
  * Una volta eseguita la semop(), un eventuale segnale pendente viene consegnato. */
-void richiedi_banchina(int id_semaforo_banchine, int indice_porto, int *statoNave);
+void richiedi_banchina(int id_semaforo_banchine, int indice_porto, int *statoNave, int id_coda_meteo);
 
 /* Modifica lo stato delle navi nel dump in base all'argomento (int) passato. */
 void stato_nave(int stato, int id_semaforo_dump, void *vptr_shm_dump, int indice);
@@ -49,6 +49,9 @@ void stato_nave(int stato, int id_semaforo_dump, void *vptr_shm_dump, int indice
  * NOTA: il segnale rimane pendente; in ogni caso la nave aggiorna il proprio stato
  * prima di entrare in attesa, tramite il metodo statoNave(int). */
 void attesa(double val, int divisore);
+
+/** Inserisce in coda_b (per il meteo) un messaggio, per segnalare di aver cambiato stato della nave. */
+void aggiorna_posizione(int id_coda_b, int porto_attraccato);
 
 /* Aggiorna il dump sulle merci caricate in nave, anche in riferimento al porto. */
 void aggiorna_dump_carico(void *vptr_dump, int indiceporto, merce_nave* carico, int caricati, int spazio_libero, int id_sem_dump, int PARAMETRO[]);
