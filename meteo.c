@@ -73,9 +73,9 @@ int main(int argc, char *argv[]){
     id_coda_meteo = get_coda_id(CHIAVE_CODA_METEO);
     /* Aggancia il semaforo */
     id_semaforo_gestione = sem_find(CHIAVE_SEM_GESTIONE, 2);
-    fprintf(stderr, "%s %d\n", __FILE__, __LINE__);
 
     sem_reserve(id_semaforo_gestione, 0);
+    fprintf(stderr, "%s %d\n", __FILE__, __LINE__);
     sem_wait_zero(id_semaforo_gestione, 0);
     
     do{

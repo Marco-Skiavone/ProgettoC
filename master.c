@@ -126,16 +126,20 @@ int main(int argc, char* argv[]){
             CAST_DETTAGLI_LOTTI(vptr_shm_dettagli_lotti)[i].val,
             CAST_DETTAGLI_LOTTI(vptr_shm_dettagli_lotti)[i].exp);
     }
-
+    fprintf(stderr, "%s %d\n", __FILE__, __LINE__);
     if(mkfifo(NOME_FIFO, 0666) == -1)
         fprintf(stderr, "Master: Errore nella creazione della FIFO del demone!\n");
-
+    fprintf(stderr, "%s %d\n", __FILE__, __LINE__);
     if(mkfifo(FIFO_PIDS, 0666) == -1)
         fprintf(stderr, "Master: Errore nella creazione della FIFO del meteo!\n");
+    fprintf(stderr, "%s %d\n", __FILE__, __LINE__);
 
-    if((fd_fifo_pids = open(FIFO_PIDS, O_WRONLY, 0666)) == -1){
+    if((fd_fifo_pids = open(FIFO_PIDS, O_RDWR)) == -1){
         fprintf(stderr, "Master: Errore nella open della FIFO del meteo!\n");
+    }else{
+        fprintf(stderr, "%s %d\n", __FILE__, __LINE__);    
     }
+    fprintf(stderr, "%s %d\n", __FILE__, __LINE__);
     /* ---------------------------------------- */
     /* semaforo numero 1 su 2 che fa 1-0 per far scrivere le navi in m.e.*/
     sem_set_val(id_semaforo_dump,1,1);
