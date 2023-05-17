@@ -42,7 +42,6 @@ int main(int argc, char *argv[]){
     }
     fprintf(stderr, "%s %d\n", __FILE__, __LINE__);
 
-    
     if((fd_fifo_pids = open(FIFO_PIDS, O_RDONLY, 0666)) == -1){
         fprintf(stderr, "%s %d\n", __FILE__, __LINE__);
         perror("Errore fifo pids");

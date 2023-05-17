@@ -127,12 +127,15 @@ int main(int argc, char* argv[]){
             CAST_DETTAGLI_LOTTI(vptr_shm_dettagli_lotti)[i].exp);
     }
 
-    if((fd_fifo_demone = mkfifo(NOME_FIFO, 0666) == -1))
+    if(mkfifo(NOME_FIFO, 0666) == -1)
         fprintf(stderr, "Master: Errore nella creazione della FIFO del demone!\n");
 
-    if((fd_fifo_pids = mkfifo(FIFO_PIDS, 0666) == -1))
+    if(mkfifo(FIFO_PIDS, 0666) == -1)
         fprintf(stderr, "Master: Errore nella creazione della FIFO del meteo!\n");
 
+    if((fd_fifo_pids = open(FIFO_PIDS, O_WRONLY, 0666)) == -1){
+        fprintf(stderr, "Master: Errore nella open della FIFO del meteo!\n");
+    }
     /* ---------------------------------------- */
     /* semaforo numero 1 su 2 che fa 1-0 per far scrivere le navi in m.e.*/
     sem_set_val(id_semaforo_dump,1,1);
@@ -224,14 +227,14 @@ int main(int argc, char* argv[]){
     fprintf(stderr, "%s %d\n", __FILE__, __LINE__);
 
     /* Passo i PIDS sulla FIFO per il METEO */
+    
+    /*write(fd_fifo_pids, child_pids, sizeof(int)*(SO_NAVI+SO_PORTI+1));*/
     for(i = 0; i < SO_PORTI + SO_NAVI; i++){
-        dprintf(fd_fifo_pids, "%6d", child_pids[i]);
+        write(fd_fifo_pids, &(child_pids[i]), sizeof(int));
     }
-
 
     /* Fine settaggio argv_figli e creazione dei processi.
      * Inizio attesa di sincronizzazione e partenza del loop di simulazione. */
-
     for(i=0;i<SO_PORTI;i++){ mask_porti_generanti[i] = 0; }
     CAST_DUMP(vptr_shm_dump)->porti_generanti = rand() % SO_PORTI + 1;
     for(i=0;i<CAST_DUMP(vptr_shm_dump)->porti_generanti;){

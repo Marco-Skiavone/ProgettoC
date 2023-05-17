@@ -3,7 +3,6 @@ CFLAGS = -O2  -std=c89 -pedantic -w
 # Se la si vuole, la definizione di GDBFLAGS serve a permettere l'avvio di gdb
 GDBFLAGS = -std=c89 -pedantic -w -O0 -g
 TARGET = application
-TARGET_ME = application_ME
 PORTO = porto
 NAVE = nave
 DEMONE = demone
@@ -37,7 +36,7 @@ run: $(TARGET)
 	./$(TARGET) $(var)
 
 clear:
-	rm -f *.o $(TARGET) $(TARGET_ME) $(NAVE) $(PORTO) $(DEMONE) $(METEO) log_*.txt out.txt
+	rm -f *.o $(TARGET) $(NAVE) $(PORTO) $(DEMONE) $(METEO) log_*.txt out.txt
 
 ipc: clear
 	ipcrm --all
