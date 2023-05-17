@@ -31,20 +31,29 @@ int main(int argc, char *argv[]){
     sigaddset(&mask1, SIGUSR1);
     sigprocmask(SIG_UNBLOCK, &mask1, NULL);
 
+
     if(argc != (QNT_PARAMETRI+1)){
         perror(("argc meteo"));
     }
+    fprintf(stderr, "%s %d\n", __FILE__, __LINE__);
+
     for(i=1;i<argc;i++){
         PARAMETRO[i-1] = atoi(argv[i]);
     }
+    fprintf(stderr, "%s %d\n", __FILE__, __LINE__);
+
     
     if((fd_fifo_pids = open(FIFO_PIDS, O_RDONLY, 0666)) == -1){
+        fprintf(stderr, "%s %d\n", __FILE__, __LINE__);
         perror("Errore fifo pids");
     }
+    fprintf(stderr, "%s %d\n", __FILE__, __LINE__);
 
     if(freopen("log_dump.txt", "a", stdout) == NULL){
         perror("freeopen log_dump stampa meteo");
     }
+    fprintf(stderr, "%s %d\n", __FILE__, __LINE__);
+
 
     vptr_shm_dump = aggancia_shm(find_shm(CHIAVE_SHAREDM_DUMP, SIZE_SHAREDM_DUMP));
 
@@ -65,11 +74,13 @@ int main(int argc, char *argv[]){
     id_coda_meteo = get_coda_id(CHIAVE_CODA_METEO);
     /* Aggancia il semaforo */
     id_semaforo_gestione = sem_find(CHIAVE_SEM_GESTIONE, 2);
+    fprintf(stderr, "%s %d\n", __FILE__, __LINE__);
+
     sem_reserve(id_semaforo_gestione, 0);
     sem_wait_zero(id_semaforo_gestione, 0);
     
     do{
-       
+       pause();
     /* maelstorm */
     }while(1);
 }

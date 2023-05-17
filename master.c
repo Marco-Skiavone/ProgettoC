@@ -44,7 +44,8 @@ int main(int argc, char* argv[]){
     clearLog();
     srand(time(NULL));
     if(freopen("out.txt", "a", stdout)==NULL)
-        {fprintf(stderr, "freopen ha ritornato NULL");}
+        {fprintf(stdout, "freopen ha ritornato NULL");}
+    printf("%s %d\n", __FILE__, __LINE__);
     if(argc !=2){
         fprintf(stderr, "argc != 2");
         exit(EXIT_FAILURE);
@@ -76,7 +77,7 @@ int main(int argc, char* argv[]){
             fclose(file_config);
             exit(EXIT_FAILURE);
         }
-    }
+    }    
 
     fclose(file_config);
     STAMPA_PARAMETRI
@@ -162,7 +163,6 @@ int main(int argc, char* argv[]){
 		sprintf(argv_meteo[i+1], "%d", PARAMETRO[i]);
 	}
     argv_figli[QNT_PARAMETRI + 2] = NULL;
-
     /* fork dei processi demone, meteo, porto e nave */
     switch(demone_pid = fork()){
         case -1:
@@ -220,6 +220,8 @@ int main(int argc, char* argv[]){
                 break;
         }
     }
+    
+    fprintf(stderr, "%s %d\n", __FILE__, __LINE__);
 
     /* Passo i PIDS sulla FIFO per il METEO */
     for(i = 0; i < SO_PORTI + SO_NAVI; i++){
@@ -240,7 +242,10 @@ int main(int argc, char* argv[]){
             kill(child_pids[i], SIGUSR2);
         }
     }
+    fprintf(stderr, "%s %d\n", __FILE__, __LINE__);
+
     sem_wait_zero(id_semaforo_gestione, 0);
+    fprintf(stderr, "%s %d\n", __FILE__, __LINE__);
 
     stampa_dump(PARAMETRO, vptr_shm_dump, vptr_shm_mercato, id_semaforo_banchine);
     sa.sa_handler = signal_handler;

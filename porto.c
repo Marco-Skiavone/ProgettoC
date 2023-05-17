@@ -71,7 +71,10 @@ int main(int argc, char *argv[]){
     /* si sgancia dalle memorie condivise. */
     /* si dichiara pronto e aspetta. (wait for zero) */
     sem_reserve(id_semaforo_gestione, 0);
+    fprintf(stderr, "%s %d\n", __FILE__, __LINE__);
+
     sem_wait_zero(id_semaforo_gestione, 0);
+    fprintf(stderr, "%s %d\n", __FILE__, __LINE__);
     
     do {
         pause();
@@ -80,6 +83,9 @@ int main(int argc, char *argv[]){
 }
 
 void signal_handler(int signo){
+    fprintf(stderr, "%s %d\n", __FILE__, __LINE__);
+    fprintf(stderr, "%s %d %d \n", __FILE__, __LINE__, signo);
+
     switch(signo){
         case SIGUSR1:   /* DUMP e fine simulazione */
             if(CAST_DUMP(vptr_shm_dump)->data < SO_DAYS)
