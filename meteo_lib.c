@@ -18,7 +18,7 @@ int mareggiata_porto(int *porti_pids, posizione_navi *vettore_pids_navi, int PAR
     kill(porti_pids[porto_mareggiato], SIGINT);
     for(i=0;i<SO_NAVI;i++){
         if(vettore_pids_navi[i].indice_porto == porto_mareggiato){
-            kill(vettore_pids_navi[i].pid, SIGUSR2);
+            kill(vettore_pids_navi[i].pid, SIGINT);
         }
     }
     return porto_mareggiato;

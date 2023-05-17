@@ -244,16 +244,16 @@ int main(int argc, char* argv[]){
     for(i=0;i<CAST_DUMP(vptr_shm_dump)->porti_generanti;){
         if(mask_porti_generanti[i]==0){ mask_porti_generanti[i] = 1; i++; }
     }
-    for(i=0;i<SO_PORTI;i++){
-        if(mask_porti_generanti[i] == 1){
-            kill(child_pids[i], SIGUSR2);
-        }
-    }
     fprintf(stderr, "%s %d\n", __FILE__, __LINE__);
 
     sem_wait_zero(id_semaforo_gestione, 0);
     fprintf(stderr, "%s %d\n", __FILE__, __LINE__);
 
+    for(i=0;i<SO_PORTI;i++){
+        if(mask_porti_generanti[i] == 1){
+            kill(child_pids[i], SIGUSR2);
+        }
+    }
     stampa_dump(PARAMETRO, vptr_shm_dump, vptr_shm_mercato, id_semaforo_banchine);
     sa.sa_handler = signal_handler;
     sa.sa_flags = 0;

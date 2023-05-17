@@ -89,7 +89,7 @@ void signal_handler(int signo){
         case SIGUSR1:
             {
             messaggio_posizioni mes;
-            while(msgrcv(id_coda_meteo, &mes, sizeof(messaggio_posizioni), 0, IPC_NOWAIT)!=-1){
+            while(msgrcv(id_coda_meteo, &mes, sizeof(messaggio_posizioni), 1, IPC_NOWAIT)!=-1){
                 int i;
                 for(i=0;i<SO_NAVI;i++){
                     if(vettore_pids_navi[i].pid == mes.posizione.pid){

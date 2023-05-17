@@ -75,7 +75,6 @@ int main(int argc, char *argv[]){
 
     sem_wait_zero(id_semaforo_gestione, 0);
     fprintf(stderr, "%s %d\n", __FILE__, __LINE__);
-    
     do {
         pause();
         
@@ -98,6 +97,7 @@ void signal_handler(int signo){
             }
             break;
         case SIGUSR2:   /* spawn merci del porto */
+            fprintf(stderr, "%s %d\n", __FILE__, __LINE__);
             spawnMerciRand(vptr_shm_mercato, vptr_shm_dettagli_lotti, vptr_shm_dump, id_semaforo_dump, PARAMETRO, indice, id_coda_richieste, fd_fifo);
             break;
         case SIGINT:    /* swell -> mareggiata */
@@ -116,8 +116,10 @@ void signal_handler(int signo){
                 sem_set_val(id_semaforo_banchine, indice, value); /* riporta il semaforo al valore precedente */
             }
             break;
-        default: 
+        default:/*
             perror("PORTO: giunto segnale non contemplato!");
             exit(254);
+        */ 
+            break;
     }
 }

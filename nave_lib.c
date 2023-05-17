@@ -53,12 +53,13 @@ void codice_simulazione(int indice, int PARAMETRO[], int SEM_ID[], int id_coda_r
     merce_nave carico[MAX_CARICO];
     bzero(carico, MAX_CARICO*sizeof(merce_nave));
     posizione = avvia_nave(indice, PARAMETRO, SEM_ID , VPTR_ARR, &indice_porto_attraccato, statoNave, id_coda_meteo);
+
     while(1){
         /* Il primo do-while esegue la ricerca della prima richiesta da accettare,
 
          * in base alle risorse del porto di attracco. */
         sem_reserve(ID_SEMAFORO_MERCATO, indice_porto_attraccato);
-        
+        fprintf(stderr, "%s %d\n", __FILE__, __LINE__);
         r = esamina_porto(indice, PARAMETRO, SEM_ID, id_coda_richieste, VPTR_ARR, &lotti_scartati, &indice_porto_attraccato, &reqlett, posizione, &spaziolibero, &tempo_carico,
         carico, &i_carico, &indice_destinazione, fd_fifo);        
 
@@ -345,10 +346,10 @@ void attesa(double val, int divisore) {
 
 void aggiorna_posizione(int id_coda_b, int porto_attraccato){
     messaggio_posizioni mes;
-    mes.mtype = 0;
+    mes.mtype = 1;
     mes.posizione.pid = getpid();
     mes.posizione.indice_porto = porto_attraccato;
-    if(msgsnd(id_coda_b, &mes, sizeof(messaggio_posizioni), 0) == -1){
+    if(msgsnd(id_coda_b, &mes, sizeof(posizione_navi), 0) == -1){
         TEST_ERROR
     }
 }
