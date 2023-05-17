@@ -6,7 +6,7 @@
 int sem_create(key_t key, int nsems) {
     int semid;
     if ((semid = semget(key, nsems, IPC_CREAT | IPC_EXCL | S_IWUSR | S_IRUSR)) == -1) {
-        fprintf(stderr, "ERROR: semcreate\n");
+        fprintf(stderr, "ERROR: semget of %s\n", __func__);
         exit(255);
     }
     return semid;
@@ -24,7 +24,7 @@ void alloca_semafori(int *id_semaforo_banchine, int *id_semaforo_dump, int *id_s
 int sem_find(key_t key, int nsems) {
     int semid;
     if ((semid = semget(key, nsems, S_IWUSR | S_IRUSR)) == -1) {
-        perror("semget find");
+        fprintf(stderr, "ERROR: semget of %s\n", __func__);
         exit(255);
     }
     return semid;
@@ -36,8 +36,8 @@ void sem_reserve(int semid, int sem_num) {
     sops.sem_op = -1;
     sops.sem_flg = 0;
     while (semop(semid, &sops, 1) == -1 && errno == EINTR) {
-        printf("reitero su un nuovo sem_reserve\n");
-        perror("semop reserve");
+        printf("reitero su una nuovo sem_reserve\n");
+        fprintf(stderr, "Errno is %d: %s\n", errno, __func__);
     }
 }
 
@@ -47,8 +47,8 @@ void sem_release(int semid, int sem_num) {
     sops.sem_op = 1;
     sops.sem_flg = 0;
     while (semop(semid, &sops, 1) == -1 && errno == EINTR) {
-        printf("reitero su un nuovo sem_release\n");
-        perror("semop release");
+        printf("reitero su una nuovo sem_release\n");
+        fprintf(stderr, "Errno is %d: %s\n", errno, __func__);
     }
 }
 
@@ -59,13 +59,13 @@ void sem_wait_zero(int semid, int sem_num) {
     sops.sem_flg = 0;
     errno = 0;
     while (semop(semid, &sops, 1) == -1 && errno == EINTR) {
-        perror("semop wait for zero");
+        fprintf(stderr, "ERROR: semop of %s\n", __func__);
     }
 }
 
 void sem_set_val(int semid, int sem_num, int val) {
     if (semctl(semid, sem_num, SETVAL, val) == -1) {
-        perror("semctl sem set val");
+        fprintf(stderr, "ERROR: semctl of %s\n", __func__);
         exit(255);
     }
 }
@@ -79,7 +79,7 @@ void sem_set_all(int sem_id, int value, int arr_size){
     }
     semval = semctl(sem_id, 0, SETALL, arg);
     if (semval == -1) {
-        perror("semctl sem set all");
+        fprintf(stderr, "ERROR: semctl of %s\n", __func__);
         exit(255);
     }
 }
@@ -88,7 +88,7 @@ int sem_get_val(int sem_id, int sem_num) {
     int semval;
     semval = semctl(sem_id, sem_num, GETVAL);
     if (semval == -1) {
-        perror("semctl sem get val");
+        fprintf(stderr, "ERROR: semctl of %s\n", __func__);
         exit(255);
     }
     return semval;
@@ -96,18 +96,14 @@ int sem_get_val(int sem_id, int sem_num) {
 
 void sem_destroy(int semid) {
     if (semctl(semid, 0, IPC_RMID) == -1) {
-        perror("semctl sem destroy");
+        fprintf(stderr, "ERROR: semctl of %s\n", __func__);
         exit(255);
     }
 }
 
 void inizializza_semafori(int *id_mercato, int *id_gestione, int *id_banchine, int *id_dump,int PORTI){
     *id_mercato = sem_find(CHIAVE_SEM_MERCATO, PORTI);
-    #ifdef DUMP_ME
     *id_gestione = sem_find(CHIAVE_SEM_GESTIONE, 2);
-    #else
-    *id_gestione = sem_find(CHIAVE_SEM_GESTIONE, 1);
-    #endif
     *id_banchine = sem_find(CHIAVE_SEM_BANCHINE, PORTI);
     *id_dump = sem_find(CHIAVE_SEM_DUMP,2);
 }

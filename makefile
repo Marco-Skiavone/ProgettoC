@@ -15,8 +15,8 @@ var = 9
 compila: $(SOURCES)
 	gcc $(SOURCES) $(CFLAGS) -c
 
-compila_ME: $(SOURCES)
-	gcc $(SOURCES) $(CFLAGS) -D DUMP_ME -c
+#compila_ME: $(SOURCES)
+#gcc $(SOURCES) $(CFLAGS) -D DUMP_ME -c
 
 $(TARGET): compila
 	gcc *lib.o master.o -o $(TARGET) -lm
@@ -24,13 +24,6 @@ $(TARGET): compila
 	gcc *lib.o nave.o -o $(NAVE) -lm
 	gcc queue_lib.o sem_lib.o demone.o -o $(DEMONE) -lm
 	gcc *lib.o meteo.o -o $(METEO) -lm
-
-$(TARGET_ME): compila_ME
-	gcc *lib.o master.o -o $(TARGET_ME) -lm
-	gcc *lib.o porto.o -o $(PORTO) -lm
-	gcc *lib.o nave.o -o $(NAVE) -lm
-	gcc queue_lib.o sem_lib.o demone.o -o $(DEMONE) -lm
-	gcc *_lib.o meteo.o -o $(METEO) -lm
 
 all: $(SOURCES)
 	gcc $(CFLAGS) $(SOURCES) -c
@@ -42,9 +35,6 @@ all: $(SOURCES)
 
 run: $(TARGET)
 	./$(TARGET) $(var)
-
-runME: $(TARGET_ME)
-	./$(TARGET_ME) $(var)
 
 clear:
 	rm -f *.o $(TARGET) $(TARGET_ME) $(NAVE) $(PORTO) $(DEMONE) $(METEO) log_*.txt out.txt
