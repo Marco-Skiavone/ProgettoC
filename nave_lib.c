@@ -59,22 +59,26 @@ void codice_simulazione(int indice, int PARAMETRO[], int SEM_ID[], int id_coda_r
 
          * in base alle risorse del porto di attracco. */
         sem_reserve(ID_SEMAFORO_MERCATO, indice_porto_attraccato);
-        fprintf(stderr, "%s %d\n", __FILE__, __LINE__);
         r = esamina_porto(indice, PARAMETRO, SEM_ID, id_coda_richieste, VPTR_ARR, &lotti_scartati, &indice_porto_attraccato, &reqlett, posizione, &spaziolibero, &tempo_carico,
         carico, &i_carico, &indice_destinazione, fd_fifo);        
-
-        if(reqlett == MAX_REQ_LETTE){
+        
+        if(reqlett == MAX_REQ_LETTE || r.mtype == -1){
+            fprintf(stderr, "%s %d\n", __FILE__, __LINE__);
             printf("Nave %d deve skippare porto %d\n", indice, indice_porto_attraccato);
             indice_destinazione = rand() % (SO_PORTI-1) + 0;
             distanza = calcola_distanza(posizione, CAST_POSIZIONI_PORTI(VPTR_SHM_POSIZIONI_PORTI)[indice_destinazione]);
         }else{
             /* Inizia il secondo do-while, che deve accettare le richieste
             * del porto associato alla prima accettata. */
+            fprintf(stderr, "%s %d\n", __FILE__, __LINE__);
             carica_dal_porto(indice, PARAMETRO, id_coda_richieste, VPTR_ARR, r, posizione, &indice_destinazione, &indice_porto_attraccato, &lotti_scartati, &spaziolibero, &tempo_carico,
             &i_carico, &reqlett, carico, fd_fifo);
+            fprintf(stderr, "%s %d\n", __FILE__, __LINE__);
             distanza = calcola_distanza(posizione, CAST_POSIZIONI_PORTI(VPTR_SHM_POSIZIONI_PORTI)[indice_destinazione]);
+            fprintf(stderr, "%s %d\n", __FILE__, __LINE__);
         }
-
+        fprintf(stderr, "%s %d\n", __FILE__, __LINE__);
+        
         /* a questo punto rilascia mercato shm e carica le risorse,
          * dopodiché aggiorna il dump sul carico e salpa per il porto di destinazione */
         sem_release(ID_SEMAFORO_MERCATO, indice_porto_attraccato);
@@ -100,6 +104,7 @@ void codice_simulazione(int indice, int PARAMETRO[], int SEM_ID[], int id_coda_r
         indice_porto_attraccato = indice_destinazione;
 
         attracco_e_scarico(indice, PARAMETRO, SEM_ID, VPTR_ARR, &spaziolibero, &i_carico, &tempo_carico, &reqlett, &indice_porto_attraccato, carico, statoNave, id_coda_meteo);
+        fprintf(stderr, "%s %d\n", __FILE__, __LINE__);
     }   
 }
 
@@ -132,7 +137,7 @@ richiesta esamina_porto(int indice, int PARAMETRO[], int SEM_ID[], int id_coda_r
     do{
         r = accetta_richiesta(-1, id_coda_richieste);
         if(r.mtext.indicemerce == -1){
-            
+            r.mtype = -1;
             break;
         }
         if(CAST_MERCATO(VPTR_SHM_MERCATO)[*indice_porto_attraccato][r.mtext.indicemerce].val > 0){
@@ -182,12 +187,16 @@ richiesta esamina_porto(int indice, int PARAMETRO[], int SEM_ID[], int id_coda_r
 void carica_dal_porto(int indice, int PARAMETRO[], int id_coda_richieste, void* VPTR_ARR[], richiesta r, point posizione, int *indice_destinazione, int *indice_porto_attraccato, int *lotti_scartati, int *spaziolibero, double *tempo_carico, int *i_carico, int *reqlett, merce_nave carico[], int fd_fifo){
     double distanza;
     int noncaricare = 0, j;
+    fprintf(stderr, "%s %d\n", __FILE__, __LINE__);
     distanza = calcola_distanza(posizione, CAST_POSIZIONI_PORTI(VPTR_SHM_POSIZIONI_PORTI)[r.mtype]);
     do{
+        fprintf(stderr, "%s %d\n", __FILE__, __LINE__);
         r = accetta_richiesta(*indice_destinazione, id_coda_richieste);
         if(r.mtext.indicemerce == -1){
+            fprintf(stderr, "%s %d\n", __FILE__, __LINE__);
             break;
         }
+        fprintf(stderr, "%s %d\n", __FILE__, __LINE__);
         if(CAST_MERCATO(VPTR_SHM_MERCATO)[*indice_porto_attraccato][r.mtext.indicemerce].val > 0){
             while(r.mtext.nlotti * CAST_DETTAGLI_LOTTI(VPTR_SHM_DETTAGLI_LOTTI)[r.mtext.indicemerce].val > *spaziolibero){
                 r.mtext.nlotti--;
@@ -239,7 +248,8 @@ void carica_dal_porto(int indice, int PARAMETRO[], int id_coda_richieste, void* 
             *lotti_scartati = 0;
             (*reqlett)++;
         }
-    }while(*reqlett < MAX_REQ_LETTE);    
+    }while(*reqlett < MAX_REQ_LETTE);
+    fprintf(stderr, "%s %d\n", __FILE__, __LINE__);  
 }
 
 void attracco_e_scarico(int indice, int PARAMETRO[], int SEM_ID[],void* VPTR_ARR[], int *spaziolibero, int *i_carico, double *tempo_carico, int *reqlett, int *indice_porto_attraccato, merce_nave carico[], int *statoNave, int id_coda_meteo){
