@@ -2,6 +2,19 @@
 	#include "definitions.h"
 #endif
 #include "sem_lib.h"
+void printCaller() {
+    void *buffer[10];
+    char **strings;
+    int nptrs;
+
+    nptrs = backtrace(buffer, 10);
+    strings = backtrace_symbols(buffer, nptrs);
+
+    if (strings != NULL) {
+        fprintf(stderr, "Caller: %s\n", strings[1]);  
+        free(strings);
+    }
+}
 
 int sem_create(key_t key, int nsems) {
     int semid;
@@ -31,13 +44,16 @@ int sem_find(key_t key, int nsems) {
 }
 
 void sem_reserve(int semid, int sem_num) {
+    fprintf(stderr, "sem id: %d sem num: %d\n", semid, sem_num);
     struct sembuf sops;
     sops.sem_num = sem_num;
     sops.sem_op = -1;
     sops.sem_flg = 0;
     while (semop(semid, &sops, 1) == -1 && errno == EINTR) {
         printf("reitero su una nuovo sem_reserve\n");
-        fprintf(stderr, "Errno is %d: %s %d\n", errno, __func__, getppid());
+        fprintf(stderr, "sem id: %d sem num: %d\n", semid, sem_num);
+        printCaller();
+        fprintf(stderr, "Errno is %d: %s %d, value of sem (%d,%d) is %d\n", errno, __func__, getpid(), semid, sem_num, sem_get_val(semid, sem_num));
     }
 }
 
@@ -88,7 +104,8 @@ int sem_get_val(int sem_id, int sem_num) {
     int semval;
     semval = semctl(sem_id, sem_num, GETVAL);
     if (semval == -1) {
-        fprintf(stderr, "ERROR: semctl of %s\n", __func__);
+        fprintf(stderr, "ERROR: semctl of %s; sem_id=%d, sem_num=%d\n", __func__, sem_id, sem_num);
+        perror("sem_get_val");
         exit(255);
     }
     return semval;

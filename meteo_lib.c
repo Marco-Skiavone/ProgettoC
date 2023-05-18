@@ -4,6 +4,7 @@ int tempesta_nave(posizione_navi *vettore_pids_navi, int PARAMETRO[]){
     int i, nave_tempesta = -1;
     for(i=0;i<SO_NAVI;i++){
         if(vettore_pids_navi[i].indice_porto == -1){
+            fprintf(stderr, "M: %d, %d\n", getppid(), vettore_pids_navi[i].pid);
             kill(vettore_pids_navi[i].pid, SIGUSR2);
             nave_tempesta = i;
             break;

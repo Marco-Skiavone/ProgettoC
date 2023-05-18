@@ -21,7 +21,7 @@ int demone_pid;
 int PARAMETRO[QNT_PARAMETRI];
 int continua_simulazione;
 
-void signal_handler(int signo);
+void signal_handler(int signo, siginfo_t *info);
 
 int main(int argc, char* argv[]){
     int i, j, k;
@@ -36,6 +36,12 @@ int main(int argc, char* argv[]){
     FILE *file_config;
     richiesta r;
     struct sigaction sa;
+    sa.sa_handler = signal_handler;
+    sa.sa_flags = 0;
+    sigemptyset(&(sa.sa_mask));
+    sigaction(SIGALRM, &sa, NULL);
+    sigaction(SIGINT, &sa, NULL);
+
     argv_figli = (char**)malloc(SIZE_ARGV_FIGLI*sizeof(char*));
     argv_demone = (char**)malloc(sizeof(char*)*SIZE_ARGV_DEMONE);
     argv_meteo = (char**)malloc(SIZE_ARGV_METEO*sizeof(char*));
@@ -143,7 +149,7 @@ int main(int argc, char* argv[]){
     /* ---------------------------------------- */
     /* semaforo numero 1 su 2 che fa 1-0 per far scrivere le navi in m.e.*/
     sem_set_val(id_semaforo_dump,1,1);
-    sem_set_val(id_semaforo_dump,0,1); 
+    sem_set_val(id_semaforo_dump,0,1);
     /* ---------------------------------------- */
 
     sem_set_val(id_semaforo_gestione,0,SO_PORTI+SO_NAVI+2); /* navi, porti, demone e meteo */
@@ -246,6 +252,7 @@ int main(int argc, char* argv[]){
     }
     fprintf(stderr, "%s %d %d\n", __FILE__, __LINE__, getpid());
 
+
     sem_wait_zero(id_semaforo_gestione, 0);
     fprintf(stderr, "%s %d\n", __FILE__, __LINE__);
 
@@ -254,12 +261,9 @@ int main(int argc, char* argv[]){
             kill(child_pids[i], SIGUSR2);
         }
     }
-    stampa_dump(PARAMETRO, vptr_shm_dump, vptr_shm_mercato, id_semaforo_banchine);
-    sa.sa_handler = signal_handler;
-    sa.sa_flags = 0;
-    sigemptyset(&(sa.sa_mask));
-    sigaction(SIGALRM, &sa, NULL);
-    sigaction(SIGINT, &sa, NULL);
+    /*
+        stampa_dump(PARAMETRO, vptr_shm_dump, vptr_shm_mercato, id_semaforo_banchine);
+    */
     continua_simulazione = 1;
     do{
         alarm(1);
@@ -312,8 +316,9 @@ int main(int argc, char* argv[]){
     exit(EXIT_SUCCESS);
 }
 
-void signal_handler(int signo){
+void signal_handler(int signo, siginfo_t *info){
     int i;
+    fprintf(stderr, "Received signal %d from process with PID %d\n", signo, info->si_pid);
     switch(signo){
         case SIGALRM:
             controllo_scadenze_porti(CAST_DETTAGLI_LOTTI(vptr_shm_dettagli_lotti), vptr_shm_mercato, vptr_shm_dump, id_semaforo_dump, PARAMETRO);
@@ -326,6 +331,7 @@ void signal_handler(int signo){
                     { kill(child_pids[i], SIGUSR1);}
                 fprintf(stderr, "La simulazione è in corso :) attendi ancora altri %d secondi...\n", (SO_DAYS - CAST_DUMP(vptr_shm_dump)->data));
             } else {
+                continua_simulazione = 0;
                 CAST_DUMP(vptr_shm_dump)->data++;
                 stampa_terminazione(PARAMETRO, vptr_shm_dump, vptr_shm_mercato, id_semaforo_banchine);
                 fprintf(stderr, "\x1b[%dF\x1b[0J", 1);

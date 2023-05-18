@@ -1,6 +1,7 @@
 #ifndef _SEM_LIB_H
 #define _SEM_LIB_H
 #include "definitions.h"
+void printCaller();
 
 union semun {
 	int val;    /* Value for SETVAL */

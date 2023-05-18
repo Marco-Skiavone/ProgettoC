@@ -62,18 +62,21 @@ int main(int argc, char *argv[]){
     
     vettore_pids_navi = (posizione_navi*) malloc(SO_NAVI * sizeof(posizione_navi));
     for(i=0;i<SO_PORTI;i++){
-        read(fd_fifo_pids, porti_pids[i], sizeof(int));
+        read(fd_fifo_pids, &(porti_pids[i]), sizeof(int));
+        fprintf(stderr, "pid porto %d: %d\n", i, porti_pids[i]);
     }
     for(i=0;i<SO_NAVI;i++){
-        read(fd_fifo_pids, vettore_pids_navi[i].pid, sizeof(int));
+        read(fd_fifo_pids, &(vettore_pids_navi[i].pid), sizeof(int));
+        fprintf(stderr, "pid nave %d: %d\n", i, vettore_pids_navi[i].pid);
     }
     close(fd_fifo_pids);
     for(i=0;i<SO_NAVI;i++){ vettore_pids_navi[i].indice_porto=-1; }
-
+    
     id_coda_meteo = get_coda_id(CHIAVE_CODA_METEO);
     /* Aggancia il semaforo */
     id_semaforo_gestione = sem_find(CHIAVE_SEM_GESTIONE, 2);
 
+    fprintf(stderr, "%s, valore semaforo = %d\n", __FILE__, sem_get_val(id_semaforo_gestione, 0));
     fprintf(stderr, "%s %d %d\n", __FILE__, __LINE__, getpid());
     sem_reserve(id_semaforo_gestione, 0);
     fprintf(stderr, "%s %d %d\n", __FILE__, __LINE__, getpid());
@@ -101,6 +104,8 @@ void signal_handler(int signo){
             navi_tempesta[CAST_DUMP(vptr_shm_dump)->data] = tempesta_nave(vettore_pids_navi, PARAMETRO);
             porti_mareggiati[CAST_DUMP(vptr_shm_dump)->data] = mareggiata_porto(porti_pids, vettore_pids_navi, PARAMETRO);
             
+            /*
+            */
             sem_reserve(id_semaforo_gestione, 1);
             stampa_meteo(navi_tempesta[CAST_DUMP(vptr_shm_dump)->data], porti_mareggiati[CAST_DUMP(vptr_shm_dump)->data]);
             /* STAMPA DATI METEO */

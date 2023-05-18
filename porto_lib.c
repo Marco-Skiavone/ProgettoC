@@ -77,6 +77,7 @@ void spawnMerciRand(void* vptr_mercato, merce* ptr_lotti, void *vptr_dump, int i
     }
 
     r.mtype = indice;
+    fprintf(stderr, "valore sem dump reserve %d\n", sem_get_val(id_sem_dump, 0));
     sem_reserve(id_sem_dump, 0);
     for(i=0;i<SO_MERCI;i++){
         if(stato_mercato[i].val < 0 && stato_mercato[i].val > ptr_shm_mercato_porto[indice][i].val){
@@ -89,7 +90,7 @@ void spawnMerciRand(void* vptr_mercato, merce* ptr_lotti, void *vptr_dump, int i
         }
     }
     sem_release(id_sem_dump, 0);
-
+    fprintf(stderr, "valore sem dump release %d\n", sem_get_val(id_sem_dump, 0));
 }
 
 void spawnMerciPorti(void* vptr_mercato, merce* ptr_lotti, void *vptr_dump, int id_sem_dump, int PARAMETRO[], int indice){

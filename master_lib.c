@@ -160,6 +160,7 @@ void controllo_scadenze_porti(merce *p_lotti, void *p_mercato, void *p_dump, int
 	if(freopen("log_porti.txt", "a", stdout)==NULL)
         {perror("freopen ha ritornato NULL");}
 	int i, j, tmp;
+	fprintf(stderr ,"sem dump, 0 = %d\n", sem_get_val(id_sem_dump, 0));
 	sem_reserve(id_sem_dump, 0);
 	for(i = 0; i < SO_MERCI; i++){
 		if(p_lotti[i].exp < CAST_DUMP(p_dump)->data){	/* la merce di tipo i scade sempre lo stesso giorno, dovunque si trovi. */

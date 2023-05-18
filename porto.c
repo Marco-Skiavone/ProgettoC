@@ -72,9 +72,7 @@ int main(int argc, char *argv[]){
     /* si dichiara pronto e aspetta. (wait for zero) */
     sem_reserve(id_semaforo_gestione, 0);
     fprintf(stderr, "%s %d %d\n", __FILE__, __LINE__, getpid());
-
     sem_wait_zero(id_semaforo_gestione, 0);
-    fprintf(stderr, "%s %d\n", __FILE__, __LINE__);
     do {
         pause();
         
@@ -107,6 +105,7 @@ void signal_handler(int signo){
                 time_to_wait.tv_sec = (int)(SO_SWELL_DURATION / 24);
                 time_to_wait.tv_nsec = (SO_SWELL_DURATION % 24) * ((int)(1000000000/24));
                 value = sem_get_val(id_semaforo_banchine, indice);
+                fprintf(stdout, "value è %d; mo verrà portato a zero. indice= %d\n", value, indice);
                 sem_set_val(id_semaforo_banchine, indice, 0);   /* porta a zero il semaforo */
                 /* NANOSLEEP DI TOT SECONDI */ 
                 if(nanosleep(&time_to_wait, &rem) != 0){
@@ -114,6 +113,7 @@ void signal_handler(int signo){
                         nanosleep(&rem, &rem);
                 }
                 sem_set_val(id_semaforo_banchine, indice, value); /* riporta il semaforo al valore precedente */
+                fprintf(stdout, "value era %d; mo è semaforo banchina %d = %d\n", value, indice, sem_get_val(id_semaforo_banchine, indice));
             }
             break;
         default:/*

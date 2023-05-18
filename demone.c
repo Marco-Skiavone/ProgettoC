@@ -22,6 +22,7 @@ int main(int argc, char *argv[]){
 		fprintf("File %s, %d: Errore nell'apertura della FIFO!\n", __FILE__, __LINE__);
 		exit(EXIT_FAILURE);
 	}
+	
 	sem_reserve(id_semaforo_gestione, 0);
 	sem_wait_zero(id_semaforo_gestione, 0);
 	

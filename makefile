@@ -40,5 +40,9 @@ clear:
 
 ipc: clear
 	ipcrm --all
+	pkill porto
+	pkill nave
+	pkill meteo
+	pkill demone
 	rm fifo_coda_messaggi
 	rm fifo_pids_so

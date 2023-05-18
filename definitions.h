@@ -43,8 +43,8 @@
 
 /* Stampa i parametri */
 #define STAMPA_PARAMETRI 				\
-	printf("Parametri:\nSO_NAVI | SO_PORTI | SO_MERCI | SO_SIZE | SO_MIN_VITA | SO_MAX_VITA | "); 	\
-	printf("SO_LATO | SO_SPEED | SO_CAPACITY | SO_BANCHINE | SO_FILL | SO_LOADSPEED | SO_DAYS\n"); 	\
+	printf("Parametri:\nSO_NAVI | SO_PORTI | SO_MERCI | SO_SIZE | SO_MIN_VITA | SO_MAX_VITA | SO_LATO | SO_SPEED | SO_CAPACITY"); 	\
+	printf(" | SO_BANCHINE | SO_FILL | SO_LOADSPEED | SO_DAYS | SO_STORM_DURATION | SO_SWELL_DURATION | SO_MAELSTORM\n"); 	\
 	for (i = 0; i < QNT_PARAMETRI; i++) {			\
 		printf(" %d ", PARAMETRO[i]);		\
 		if (i != QNT_PARAMETRI - 1)			\
@@ -255,5 +255,8 @@ typedef struct{
 	long mtype;
 	posizione_navi posizione;
 } messaggio_posizioni;
+
+
+
 
 #endif
