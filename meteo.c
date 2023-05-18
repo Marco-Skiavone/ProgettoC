@@ -74,8 +74,9 @@ int main(int argc, char *argv[]){
     /* Aggancia il semaforo */
     id_semaforo_gestione = sem_find(CHIAVE_SEM_GESTIONE, 2);
 
+    fprintf(stderr, "%s %d %d\n", __FILE__, __LINE__, getpid());
     sem_reserve(id_semaforo_gestione, 0);
-    fprintf(stderr, "%s %d\n", __FILE__, __LINE__);
+    fprintf(stderr, "%s %d %d\n", __FILE__, __LINE__, getpid());
     sem_wait_zero(id_semaforo_gestione, 0);
     
     do{

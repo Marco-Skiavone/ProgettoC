@@ -37,7 +37,7 @@ void sem_reserve(int semid, int sem_num) {
     sops.sem_flg = 0;
     while (semop(semid, &sops, 1) == -1 && errno == EINTR) {
         printf("reitero su una nuovo sem_reserve\n");
-        fprintf(stderr, "Errno is %d: %s\n", errno, __func__);
+        fprintf(stderr, "Errno is %d: %s %d\n", errno, __func__, getppid());
     }
 }
 

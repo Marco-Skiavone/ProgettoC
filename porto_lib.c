@@ -77,18 +77,18 @@ void spawnMerciRand(void* vptr_mercato, merce* ptr_lotti, void *vptr_dump, int i
     }
 
     r.mtype = indice;
+    sem_reserve(id_sem_dump, 0);
     for(i=0;i<SO_MERCI;i++){
         if(stato_mercato[i].val < 0 && stato_mercato[i].val > ptr_shm_mercato_porto[indice][i].val){
             r.mtext.indicemerce = i;
             r.mtext.nlotti = ptr_shm_mercato_porto[indice][i].val - stato_mercato[i].val;
             invia_richiesta(r, coda_id, fd_fifo);
         }else if(stato_mercato[i].val > 0 && stato_mercato[i].val < ptr_shm_mercato_porto[indice][i].val){
-            sem_reserve(id_sem_dump, 0);
             CAST_MERCE_DUMP(vptr_dump)[i].presente_in_porto += (ptr_shm_mercato_porto[indice][i].val - stato_mercato[i].val);
             CAST_PORTO_DUMP(vptr_dump)[indice].mercepresente += (ptr_shm_mercato_porto[indice][i].val - stato_mercato[i].val);
-            sem_release(id_sem_dump, 0);
         }
     }
+    sem_release(id_sem_dump, 0);
 
 }
 

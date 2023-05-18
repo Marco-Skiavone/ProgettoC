@@ -63,7 +63,7 @@ int main(int argc, char *argv[]){
     inizializza_semafori(&id_semaforo_mercato, &id_semaforo_gestione, &id_semaforo_banchine, &id_semaforo_dump, SO_PORTI);
     statoNave = NAVE_IN_MARE;
     sem_reserve(id_semaforo_gestione, 0);
-    fprintf(stderr, "%s %d\n", __FILE__, __LINE__);
+    fprintf(stderr, "%s %d %d\n", __FILE__, __LINE__, getpid());
     sem_wait_zero(id_semaforo_gestione, 0);
     
     SEM_ID[0] = id_semaforo_banchine;

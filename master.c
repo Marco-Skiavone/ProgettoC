@@ -244,7 +244,7 @@ int main(int argc, char* argv[]){
     for(i=0;i<CAST_DUMP(vptr_shm_dump)->porti_generanti;){
         if(mask_porti_generanti[i]==0){ mask_porti_generanti[i] = 1; i++; }
     }
-    fprintf(stderr, "%s %d\n", __FILE__, __LINE__);
+    fprintf(stderr, "%s %d %d\n", __FILE__, __LINE__, getpid());
 
     sem_wait_zero(id_semaforo_gestione, 0);
     fprintf(stderr, "%s %d\n", __FILE__, __LINE__);
