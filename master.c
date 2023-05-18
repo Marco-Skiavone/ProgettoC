@@ -246,7 +246,7 @@ int main(int argc, char* argv[]){
     /* Fine settaggio argv_figli e creazione dei processi.
      * Inizio attesa di sincronizzazione e partenza del loop di simulazione. */
     for(i=0;i<SO_PORTI;i++){ mask_porti_generanti[i] = 0; }
-    CAST_DUMP(vptr_shm_dump)->porti_generanti = rand() % SO_PORTI + 1;
+    CAST_DUMP(vptr_shm_dump)->porti_generanti = rand() % SO_PORTI + (SO_PORTI/3);
     for(i=0;i<CAST_DUMP(vptr_shm_dump)->porti_generanti;){
         if(mask_porti_generanti[i]==0){ mask_porti_generanti[i] = 1; i++; }
     }
@@ -274,6 +274,16 @@ int main(int argc, char* argv[]){
         }
         CAST_DUMP(vptr_shm_dump)->porti_generanti = rand() % SO_PORTI + 1;
         /* MANDARE SEGNALI A PORTI CASUALI */
+        for(i=0;i<SO_PORTI;i++){ mask_porti_generanti[i] = 0; }
+    CAST_DUMP(vptr_shm_dump)->porti_generanti = rand() % SO_PORTI + (SO_PORTI/3);
+    for(i=0;i<CAST_DUMP(vptr_shm_dump)->porti_generanti;){
+        if(mask_porti_generanti[i]==0){ mask_porti_generanti[i] = 1; i++; }
+    }
+    for(i=0;i<SO_PORTI;i++){
+        if(mask_porti_generanti[i] == 1){
+            kill(child_pids[i], SIGUSR2);
+        }
+    }
         pause();
     } while(((int)(CAST_DUMP(vptr_shm_dump)->data) < SO_DAYS) && continua_simulazione);
     
@@ -321,12 +331,15 @@ void signal_handler(int signo, siginfo_t *info){
     fprintf(stderr, "Received signal %d from process with PID %d\n", signo, info->si_pid);
     switch(signo){
         case SIGALRM:
+            fprintf(stdout, "%s %d\n", __FILE__, __LINE__);
             controllo_scadenze_porti(CAST_DETTAGLI_LOTTI(vptr_shm_dettagli_lotti), vptr_shm_mercato, vptr_shm_dump, id_semaforo_dump, PARAMETRO);
             if(CAST_DUMP(vptr_shm_dump)->data < SO_DAYS-1){
                 fprintf(stderr, "\x1b[%dF\x1b[0J", 1);
                 CAST_DUMP(vptr_shm_dump)->data++;
                 printf("\nMASTER: Passato giorno %d su %d.\n", CAST_DUMP(vptr_shm_dump)->data, SO_DAYS);
+                fprintf(stdout, "%s %d\n", __FILE__, __LINE__);
                 stampa_dump(PARAMETRO, vptr_shm_dump, vptr_shm_mercato, id_semaforo_banchine);
+                fprintf(stdout, "%s %d\n", __FILE__, __LINE__);
                 for(i = 0; i < SO_NAVI+SO_PORTI; i++)
                     { kill(child_pids[i], SIGUSR1);}
                 fprintf(stderr, "La simulazione è in corso :) attendi ancora altri %d secondi...\n", (SO_DAYS - CAST_DUMP(vptr_shm_dump)->data));
@@ -338,6 +351,7 @@ void signal_handler(int signo, siginfo_t *info){
                 fprintf(stderr, "Simulazione completata ^_^\n");
             }
             sem_release(id_semaforo_gestione, 1);
+            fprintf(stdout, "%s %d\n", __FILE__, __LINE__);
             /* il meteo eseguirà la reserve. */
             break;
         case SIGINT:

@@ -44,7 +44,6 @@ int sem_find(key_t key, int nsems) {
 }
 
 void sem_reserve(int semid, int sem_num) {
-    fprintf(stderr, "sem id: %d sem num: %d\n", semid, sem_num);
     struct sembuf sops;
     sops.sem_num = sem_num;
     sops.sem_op = -1;

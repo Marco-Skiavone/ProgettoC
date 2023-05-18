@@ -82,9 +82,9 @@ void codice_simulazione(int indice, int PARAMETRO[], int SEM_ID[], int id_coda_r
         /* a questo punto rilascia mercato shm e carica le risorse,
          * dopodiché aggiorna il dump sul carico e salpa per il porto di destinazione */
         sem_release(ID_SEMAFORO_MERCATO, indice_porto_attraccato);
-        
+        fprintf(stderr, "%s %d\n", __FILE__, __LINE__);
         aggiorna_dump_carico(VPTR_SHM_DUMP, indice_porto_attraccato, carico, i_carico, spaziolibero, ID_SEMAFORO_DUMP, PARAMETRO);
-        
+        fprintf(stderr, "%s %d\n", __FILE__, __LINE__);
         attesa((SO_CAPACITY - spaziolibero), SO_LOADSPEED);
         
         sem_release(ID_SEMAFORO_BANCHINE, indice_porto_attraccato);
@@ -95,14 +95,14 @@ void codice_simulazione(int indice, int PARAMETRO[], int SEM_ID[], int id_coda_r
         }else{
             stato_nave(DN_PORTO_MC, ID_SEMAFORO_DUMP, VPTR_SHM_DUMP, indice);
         }
-
+        fprintf(stderr, "%s %d\n", __FILE__, __LINE__);
         printf("Nave %d parte\n", indice);
         attesa(distanza,SO_SPEED);
         printf("Nave %d arriva\n", indice);
-        
+        fprintf(stderr, "%s %d\n", __FILE__, __LINE__);
         posizione = CAST_POSIZIONI_PORTI(VPTR_SHM_POSIZIONI_PORTI)[indice_destinazione];
         indice_porto_attraccato = indice_destinazione;
-
+        fprintf(stderr, "%s %d\n", __FILE__, __LINE__);
         attracco_e_scarico(indice, PARAMETRO, SEM_ID, VPTR_ARR, &spaziolibero, &i_carico, &tempo_carico, &reqlett, &indice_porto_attraccato, carico, statoNave, id_coda_meteo);
         fprintf(stderr, "%s %d\n", __FILE__, __LINE__);
     }   
@@ -254,8 +254,10 @@ void carica_dal_porto(int indice, int PARAMETRO[], int id_coda_richieste, void* 
 
 void attracco_e_scarico(int indice, int PARAMETRO[], int SEM_ID[],void* VPTR_ARR[], int *spaziolibero, int *i_carico, double *tempo_carico, int *reqlett, int *indice_porto_attraccato, merce_nave carico[], int *statoNave, int id_coda_meteo){
     int j, datascarico, data1;
+    fprintf(stderr, "%s %d\n", __FILE__, __LINE__);
     richiedi_banchina(ID_SEMAFORO_BANCHINE, *indice_porto_attraccato, statoNave, id_coda_meteo);
     printf("Nave %d attraccata al porto %d\n", indice, *indice_porto_attraccato);
+    fprintf(stderr, "%s %d\n", __FILE__, __LINE__);
     if(*spaziolibero == SO_CAPACITY){
         stato_nave(DN_MV_PORTO, ID_SEMAFORO_DUMP, VPTR_SHM_DUMP, indice);
     }else{
@@ -290,10 +292,12 @@ void richiedi_banchina(int id_semaforo_banchine, int indice_porto, int *statoNav
     sigemptyset(&mask);
     sigaddset(&mask, SIGUSR1);
     sigprocmask(SIG_BLOCK, &mask, &oldmask);
-
+    fprintf(stderr, "%s %d\n", __FILE__, __LINE__);
     sem_reserve(id_semaforo_banchine, indice_porto);
+    fprintf(stderr, "%s %d\n", __FILE__, __LINE__);
     *statoNave = NAVE_IN_PORTO;
     aggiorna_posizione(id_coda_meteo, indice_porto);
+    fprintf(stderr, "%s %d\n", __FILE__, __LINE__);
     sigprocmask(SIG_UNBLOCK, &mask, NULL);
     sigprocmask(SIG_SETMASK, &oldmask, NULL);
 }
@@ -359,9 +363,12 @@ void aggiorna_posizione(int id_coda_b, int porto_attraccato){
     mes.mtype = 1;
     mes.posizione.pid = getpid();
     mes.posizione.indice_porto = porto_attraccato;
+    fprintf(stderr, "%s %d\n", __FILE__, __LINE__);
     if(msgsnd(id_coda_b, &mes, sizeof(posizione_navi), 0) == -1){
         TEST_ERROR
+        perror("Msgsend aggiorna posizione");
     }
+    fprintf(stderr, "%s %d\n", __FILE__, __LINE__);
 }
 
 void aggiorna_dump_carico(void *vptr_dump, int indiceporto, merce_nave* carico, int caricati, int spazio_libero,  int id_sem_dump, int PARAMETRO[]){

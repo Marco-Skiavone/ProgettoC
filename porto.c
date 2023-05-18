@@ -100,6 +100,7 @@ void signal_handler(int signo){
             break;
         case SIGINT:    /* swell -> mareggiata */
             {
+                int i=0;
                 struct timespec time_to_wait, rem;
                 int value;
                 time_to_wait.tv_sec = (int)(SO_SWELL_DURATION / 24);
@@ -112,7 +113,13 @@ void signal_handler(int signo){
                     while(rem.tv_sec != 0 && rem.tv_nsec != 0)
                         nanosleep(&rem, &rem);
                 }
-                sem_set_val(id_semaforo_banchine, indice, value); /* riporta il semaforo al valore precedente */
+                /*
+                sem_set_val(id_semaforo_banchine, indice, value); 
+                */
+                for(i=0;i<value;i++){
+                    sem_release(id_semaforo_banchine, indice);
+                }
+                /* riporta il semaforo al valore precedente */
                 fprintf(stdout, "value era %d; mo è semaforo banchina %d = %d\n", value, indice, sem_get_val(id_semaforo_banchine, indice));
             }
             break;

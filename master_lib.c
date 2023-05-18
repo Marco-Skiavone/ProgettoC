@@ -177,8 +177,11 @@ void controllo_scadenze_porti(merce *p_lotti, void *p_mercato, void *p_dump, int
 		}
 	}
 	sem_release(id_sem_dump, 0);
+	/*
 	if(freopen("out.txt", "a", stdout)==NULL)
         {perror("freopen ha ritornato NULL");}
+	*/
+	
 }
 
 
@@ -220,13 +223,17 @@ void stampa_merci_porti_navi(int PARAMETRO[], void * vptr_shm_dump, void *vptr_s
 }
 
 void stampa_dump(int PARAMETRO[], void * vptr_shm_dump, void *vptr_shm_mercato, int id_semaforo_banchine){
+	fprintf(stdout, "%s %d\n", __FILE__, __LINE__);
 	if(freopen("log_dump.txt", "a", stdout)==NULL)
         {perror("freopen ha ritornato NULL");}
     printf("*** Inizio stampa del dump: giorno %d ***\n", ((dump*)vptr_shm_dump)->data);
 	stampa_merci_porti_navi(PARAMETRO, vptr_shm_dump,vptr_shm_mercato, id_semaforo_banchine);
     printf("\n--- Fine stato dump attuale (giorno %d). ---\n", CAST_DUMP(vptr_shm_dump)->data);
+	/*
 	if(freopen("out.txt", "a", stdout)==NULL)
         {perror("freopen ha ritornato NULL");}
+	*/
+	fprintf(stdout, "%s %d\n", __FILE__, __LINE__);
 }
 
 void calcola_porti_term(int PARAMETRO[], void* vptr_shm_dump){
@@ -258,6 +265,8 @@ void stampa_terminazione(int PARAMETRO[], void * vptr_shm_dump, void * vptr_shm_
 	printf("Porto che ha ricevuto più lotti di merce: %d\n", CAST_TERM_DUMP(vptr_shm_dump).porto_ricevute);
 	printf("Porto che ha spedito più lotti di merce: %d\n", CAST_TERM_DUMP(vptr_shm_dump).porto_spedite);
 	printf("\n----------------------------\n");
+	/*
+	*/
 	if(freopen("out.txt", "a", stdout)==NULL)
         {perror("freopen ha ritornato NULL");}
 }
