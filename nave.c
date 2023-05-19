@@ -12,7 +12,7 @@ void* vptr_shm_posizioni_porti;
 
 int id_semaforo_gestione; /* può essere chiamato da runME (con definizione di DUMP_ME) */
 
-int indice;
+int indice, statoNave;
 int fd_fifo;
 int PARAMETRO[QNT_PARAMETRI];
 
@@ -65,6 +65,8 @@ int main(int argc, char *argv[]){
     aggancia_tutte_shm(&vptr_shm_mercato, &vptr_shm_dettagli_lotti, &vptr_shm_posizioni_porti, &vptr_shm_dump, SHM_ID, PARAMETRO);
     inizializza_semafori(&id_semaforo_mercato, &id_semaforo_gestione, &id_semaforo_banchine, &id_semaforo_dump, SO_PORTI);
 
+    statoNave = NAVE_IN_MARE;
+
     sem_reserve(id_semaforo_gestione, 0);
     sem_wait_zero(id_semaforo_gestione, 0);
     
@@ -87,23 +89,12 @@ void signal_handler(int signo){
     switch(signo){
         case SIGUSR1:
             printf("*** NAVE %d: ricevuto SIGUSR1: data = %d ***\n", indice, CAST_DUMP(vptr_shm_dump)->data);
-            if(CAST_DUMP(vptr_shm_dump)->data == SO_DAYS-1){
-                printf("*** NAVE %d TERMINAZIONE SIMULAZIONE ***\n", indice);
-                close(fd_fifo);
-                sgancia_risorse(vptr_shm_dettagli_lotti, vptr_shm_dump, vptr_shm_mercato, vptr_shm_posizioni_porti);
-                exit(EXIT_SUCCESS);
-            }
-            #ifdef DUMP_ME
-            sem_wait_zero(id_semaforo_gestione, 1);
-            #endif
             break;
         case SIGUSR2:
-        /*
-            printf("NAVE %d: ricevuto SIGUSR2. data: %d\n", indice, CAST_DUMP(vptr_shm_dump)->data);
-            close(fd_fifo);
-            sgancia_risorse(vptr_shm_dettagli_lotti, vptr_shm_dump, vptr_shm_mercato, vptr_shm_posizioni_porti);
-            exit(EXIT_SUCCESS);
-        */
+            if(statoNave == NAVE_IN_MARE)
+                attesa(SO_STORM_DURATION, 1);
+            else 
+                attesa(SO_SWELL_DURATION, 1);
             break;
         case SIGTERM:
             /*
