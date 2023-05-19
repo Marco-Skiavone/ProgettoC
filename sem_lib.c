@@ -12,6 +12,20 @@ int sem_create(key_t key, int nsems) {
     return semid;
 }
 
+void printCaller() {
+    void *buffer[10];
+    char **strings;
+    int nptrs;
+
+    nptrs = backtrace(buffer, 10);
+    strings = backtrace_symbols(buffer, nptrs);
+
+    if (strings != NULL) {
+        perror(strings[1]);  
+        free(strings);
+    }
+}
+
 void alloca_semafori(int *id_semaforo_banchine, int *id_semaforo_dump, int *id_semaforo_gestione, int *id_semaforo_mercato, int PARAMETRO[]){
     #ifdef DUMP_ME
     printf("SEM_CREATE_GESTIONE: %d\n", *id_semaforo_gestione = sem_create(CHIAVE_SEM_GESTIONE, 2));
@@ -43,6 +57,7 @@ void sem_reserve(int semid, int sem_num) {
     while (semop(semid, &sops, 1) == -1 && errno == EINTR) {
         printf("reitero su un nuovo sem_reserve\n");
         perror("semop reserve");
+        printCaller();
     }
 }
 

@@ -59,7 +59,7 @@ void codice_simulazione(int indice, int PARAMETRO[], int SEM_ID[], int id_coda_r
         sem_reserve(ID_SEMAFORO_MERCATO, indice_porto_attraccato);
         r = esamina_porto(indice, PARAMETRO, SEM_ID, id_coda_richieste, VPTR_ARR, &lotti_scartati, &indice_porto_attraccato, &reqlett, posizione, &spaziolibero, &tempo_carico,
         carico, &i_carico, &indice_destinazione, fd_fifo);        
-
+        
         if(reqlett == MAX_REQ_LETTE){
             printf("Nave %d deve skippare porto %d\n", indice, indice_porto_attraccato);
             indice_destinazione = rand() % (SO_PORTI-1) + 0;

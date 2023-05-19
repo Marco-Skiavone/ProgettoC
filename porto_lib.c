@@ -13,13 +13,14 @@ void inizializza_banchine(int sem_id, int indice, void * vptr_shm_dump, int PARA
 }
 
 void spawnMerciPorti(void* vptr_mercato, merce* ptr_lotti, void *vptr_dump, int id_sem_dump, int PARAMETRO[], int indice){
+    /*
     int i, j, nlotti, peso;
     int Fill = SO_FILL/SO_PORTI;
     srand(getpid());
     merce(*ptr_shm_mercato_porto)[SO_MERCI] = CAST_MERCATO(vptr_mercato);
     for(i=0;i<SO_MERCI;i++){    
-        /* PROPOSTA RANDOM: potremmo provare qualcosa di simile a:  */
-        nlotti = rand()% 10 + 1;    /* (ptr_lotti[i].val / so_merci > 1) ? ptr_lotti[i].val / so_merci : 2 */
+        
+        nlotti = rand()% 10 + 1;
         peso = nlotti * ptr_lotti[i].val;
         while(peso > Fill){
             nlotti --;
@@ -60,6 +61,7 @@ void spawnMerciPorti(void* vptr_mercato, merce* ptr_lotti, void *vptr_dump, int 
         }  
     }
     sem_release(id_sem_dump, 0);
+    */
 }
 
 void manda_richieste(void* vptr_shm_mercato, int indice, int coda_id, int PARAMETRO[], int fd_fifo){
