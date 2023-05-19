@@ -213,12 +213,13 @@ int main(int argc, char* argv[]){
     
     continua_simulazione = 1;
     do{
+        if(!(continua_simulazione = controlla_mercato(vptr_shm_mercato, vptr_shm_dump, PARAMETRO))){
+            printf("\nMASTER: Termino la simulazione per mancanza di offerte e/o di richieste!\n");
+            break;
+        }
         alarm(1);
         if(errno && errno != EINTR)
             printf("\nErrno = %d dopo alarm: %s\n", errno, strerror(errno));
-        if(!(continua_simulazione = controlla_mercato(vptr_shm_mercato, vptr_shm_dump, PARAMETRO))){
-            printf("\nMASTER: Termino la simulazione per mancanza di offerte e/o di richieste!\n");
-        }
         pause();
     } while(((int)(CAST_DUMP(vptr_shm_dump)->data) < SO_DAYS) && continua_simulazione);
     
@@ -261,9 +262,6 @@ void signal_handler(int signo){
     int i;
     switch(signo){
         case SIGALRM:
-            #ifdef DUMP_ME
-            sem_release(id_semaforo_gestione, 1);
-            #endif
             controllo_scadenze_porti(CAST_DETTAGLI_LOTTI(vptr_shm_dettagli_lotti), vptr_shm_mercato, vptr_shm_dump, id_semaforo_dump, PARAMETRO);
             if(CAST_DUMP(vptr_shm_dump)->data < SO_DAYS-1){
                 fprintf(stderr, "\x1b[%dF\x1b[0J", 1);
@@ -280,9 +278,6 @@ void signal_handler(int signo){
                 fprintf(stderr, "Simulazione completata ^_^\n");
             }
             break;
-            #ifdef DUMP_ME
-            sem_reserve(id_semaforo_gestione, 1);
-            #endif
         default: 
             perror("MASTER: giunto segnale diverso da SIGALRM!");
             close(fd_fifo);

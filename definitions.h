@@ -43,8 +43,8 @@
 
 /* Stampa i parametri */
 #define STAMPA_PARAMETRI 				\
-	printf("Parametri:\nSO_NAVI | SO_PORTI | SO_MERCI | SO_SIZE | SO_MIN_VITA | SO_MAX_VITA | "); 	\
-	printf("SO_LATO | SO_SPEED | SO_CAPACITY | SO_BANCHINE | SO_FILL | SO_LOADSPEED | SO_DAYS\n"); 	\
+	printf("Parametri:\nSO_NAVI | SO_PORTI | SO_MERCI | SO_SIZE | SO_MIN_VITA | SO_MAX_VITA | SO_LATO | SO_SPEED | SO_CAPACITY"); 	\
+	printf(" | SO_BANCHINE | SO_FILL | SO_LOADSPEED | SO_DAYS | SO_STORM_DURATION | SO_SWELL_DURATION | SO_MAELSTORM\n"); 	\
 	for (i = 0; i < QNT_PARAMETRI; i++) {			\
 		printf(" %d ", PARAMETRO[i]);		\
 		if (i != QNT_PARAMETRI - 1)			\
@@ -52,13 +52,16 @@
 		else								\
 			printf("\n");					\
 	}										
-	
+
 
 /* stati nave */
 #define DN_MV_PORTO 0	/* da "in mare vuota" a "in porto" */
 #define DN_MC_PORTO 1	/* da "in mare carica" a "in porto" */
 #define DN_PORTO_MV 2	/* da "in porto" a "in mare vuota" */
 #define DN_PORTO_MC 3	/* da "in porto" a "in mare carica" */
+
+#define NAVE_IN_PORTO 0
+#define NAVE_IN_MARE 1
 
 /* indice dei parametri */
 #define I_NAVI 0
@@ -74,6 +77,10 @@
 #define I_FILL 10
 #define I_LOADSPEED 11
 #define I_DAYS 12
+#define I_STORM_DURATION 13
+#define I_SWELL_DURATION 14
+#define I_MAELSTORM 15
+
 
 /* MACRO per riferirsi ai parametri */
 #define SO_NAVI PARAMETRO[I_NAVI]
@@ -89,6 +96,9 @@
 #define SO_FILL PARAMETRO[I_FILL]
 #define SO_LOADSPEED PARAMETRO[I_LOADSPEED]
 #define SO_DAYS PARAMETRO[I_DAYS]
+#define SO_STORM_DURATION PARAMETRO[I_STORM_DURATION]
+#define SO_SWELL_DURATION PARAMETRO[I_SWELL_DURATION]
+#define SO_MAELSTORM PARAMETRO[I_MAELSTORM]
 
 /* MACRO per riferimenti agli ID dei semafori*/
 #define ID_SEMAFORO_BANCHINE SEM_ID[0]
@@ -106,7 +116,7 @@
 /* Numero di parametri: 
  * - 13 versione da 24
  * - 16 versione da 30 */
-#define QNT_PARAMETRI 13
+#define QNT_PARAMETRI 16
 
 /* MACRO utilizzate per indicare le chiavi delle shared memory, la loro dimensione,
 	la dimensione dei messaggi e le chiavi dei semafori */
