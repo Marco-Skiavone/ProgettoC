@@ -82,7 +82,10 @@ void signal_handler(int signo){
     switch(signo){
         case SIGUSR1:
             fprintf(stderr,"*** PORTO %d: ricevuto SIGUSR1: data = %d ***\n", indice, CAST_DUMP(vptr_shm_dump)->data);
+            /* SPANWMERCIPORTI */
+            
             break;
+
         case SIGUSR2:
         /*
             fprintf(stderr,"\nPORTO %d: ricevuto SIGUSR2.\n", indice);

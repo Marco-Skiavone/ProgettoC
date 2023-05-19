@@ -14,6 +14,11 @@ void inizializza_banchine(int sem_id, int indice, void * vptr_shm_dump, int PARA
 
 void spawnMerciPorti(void* vptr_mercato, merce* ptr_lotti, void *vptr_dump, int id_sem_dump, int PARAMETRO[], int indice){
     /*
+        PROVARE IL SEMAFORO PER LO SPAWN DELLE MERCI
+        SE LO SI OTTIENE, SPAWNARE MERCI COME IN SPAWNMERCIRAND E CHIAMARE MANDA RICHIESTE
+    */
+    
+    /*
     int i, j, nlotti, peso;
     int Fill = SO_FILL/SO_PORTI;
     srand(getpid());

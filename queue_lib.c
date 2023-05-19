@@ -44,7 +44,7 @@ void invia_richiesta(richiesta r, int coda_id, int fd_fifo){
 richiesta accetta_richiesta(int msgtype, int coda_id){
     richiesta r;
     if(msgrcv(coda_id, &r, MSG_SIZE, msgtype+1, IPC_NOWAIT) == -1){
-        if(errno == 42){
+        if(errno == ENOMSG){
             r.mtext.indicemerce = -1;
             
         }else{

@@ -10,9 +10,8 @@ void* vptr_shm_posizioni_porti;
 void* vptr_shm_dettagli_lotti;
 void* vptr_shm_dump;
 
-int id_semaforo_gestione;
-int id_semaforo_banchine;
-int id_semaforo_dump;
+int id_semaforo_gestione, id_semaforo_banchine, id_semaforo_dump;
+int continua_simulazione;
 
 int *child_pids;
 int fd_fifo;
@@ -31,7 +30,7 @@ int main(int argc, char* argv[]){
     int id_semaforo_mercato;
 
     char **argv_figli, **argv_demone;
-    int continua_simulazione, child_pid, status;
+    int child_pid, status;
     FILE *file_config;
     richiesta r;
     struct sigaction sa_alrm;
@@ -203,6 +202,11 @@ int main(int argc, char* argv[]){
 
     /* Fine settaggio argv_figli e creazione dei processi.
      * Inizio attesa di sincronizzazione e partenza del loop di simulazione. */
+
+    /*
+        
+        IMPOSTARE IL SEMAFORO DELLO SPAWNMERCIPORTI E IL CAMPO NEL DUMP A RAND() SO_PORTI + (SO_PORTI/3)
+    */
     sem_wait_zero(id_semaforo_gestione, 0);
 
     stampa_dump(PARAMETRO, vptr_shm_dump, vptr_shm_mercato, id_semaforo_banchine);
@@ -213,16 +217,27 @@ int main(int argc, char* argv[]){
     
     continua_simulazione = 1;
     do{
-        if(!(continua_simulazione = controlla_mercato(vptr_shm_mercato, vptr_shm_dump, PARAMETRO))){
-            printf("\nMASTER: Termino la simulazione per mancanza di offerte e/o di richieste!\n");
-            break;
-        }
+        
+        /*
+            if(!(continua_simulazione = controlla_mercato(vptr_shm_mercato, vptr_shm_dump, PARAMETRO))){
+                printf("\nMASTER: Termino la simulazione per mancanza di offerte e/o di richieste!\n");
+                break;
+            }
+        */
+        alarm(1);
+        if(errno && errno != EINTR)
+            printf("\nErrno = %d dopo alarm: %s\n", errno, strerror(errno));
+        /* IMPOSTARE IL SEMAFORO DELLO SPAWNMERCIPORTI E IL CAMPO NEL DUMP A RAND() SO_PORTI + (SO_PORTI/3) */
+        pause();
+    } while(((int)(CAST_DUMP(vptr_shm_dump)->data) < SO_DAYS) && continua_simulazione);
+    
+    while(CAST_DUMP(vptr_shm_dump)->nd.navicariche != 0 && ((int)(CAST_DUMP(vptr_shm_dump)->data) < SO_DAYS) ){
         alarm(1);
         if(errno && errno != EINTR)
             printf("\nErrno = %d dopo alarm: %s\n", errno, strerror(errno));
         pause();
-    } while(((int)(CAST_DUMP(vptr_shm_dump)->data) < SO_DAYS) && continua_simulazione);
-    
+    }
+
     unlink(NOME_FIFO);
     kill(demone_pid, SIGUSR2);
     for(i = 0; i < SO_NAVI+SO_PORTI; i++){
@@ -277,6 +292,10 @@ void signal_handler(int signo){
                 fprintf(stderr, "\x1b[%dF\x1b[0J", 1);
                 fprintf(stderr, "Simulazione completata ^_^\n");
             }
+            break;
+        case SIGTERM:
+            continua_simulazione = 0;
+            /* forse manca altro ?*/
             break;
         default: 
             perror("MASTER: giunto segnale diverso da SIGALRM!");

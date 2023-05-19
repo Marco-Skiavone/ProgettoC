@@ -60,7 +60,7 @@ void codice_simulazione(int indice, int PARAMETRO[], int SEM_ID[], int id_coda_r
         r = esamina_porto(indice, PARAMETRO, SEM_ID, id_coda_richieste, VPTR_ARR, &lotti_scartati, &indice_porto_attraccato, &reqlett, posizione, &spaziolibero, &tempo_carico,
         carico, &i_carico, &indice_destinazione, fd_fifo);        
         
-        if(reqlett == MAX_REQ_LETTE){
+        if(reqlett == MAX_REQ_LETTE || r.mtext.indicemerce == -1){
             printf("Nave %d deve skippare porto %d\n", indice, indice_porto_attraccato);
             indice_destinazione = rand() % (SO_PORTI-1) + 0;
             distanza = calcola_distanza(posizione, CAST_POSIZIONI_PORTI(VPTR_SHM_POSIZIONI_PORTI)[indice_destinazione]);
@@ -128,8 +128,7 @@ richiesta esamina_porto(int indice, int PARAMETRO[], int SEM_ID[], int id_coda_r
     do{
         r = accetta_richiesta(-1, id_coda_richieste);
         if(r.mtext.indicemerce == -1){
-            perror("coda vuota");
-            exit(255);
+            return r;
         }
         if(CAST_MERCATO(VPTR_SHM_MERCATO)[*indice_porto_attraccato][r.mtext.indicemerce].val > 0){
             distanza = calcola_distanza(posizione, CAST_POSIZIONI_PORTI(VPTR_SHM_POSIZIONI_PORTI)[r.mtype]);
