@@ -87,12 +87,29 @@ void signal_handler(int signo){
     switch(signo){
         case SIGUSR1:
             printf("*** NAVE %d: ricevuto SIGUSR1: data = %d ***\n", indice, CAST_DUMP(vptr_shm_dump)->data);
+            if(CAST_DUMP(vptr_shm_dump)->data == SO_DAYS-1){
+                printf("*** NAVE %d TERMINAZIONE SIMULAZIONE ***\n", indice);
+                close(fd_fifo);
+                sgancia_risorse(vptr_shm_dettagli_lotti, vptr_shm_dump, vptr_shm_mercato, vptr_shm_posizioni_porti);
+                exit(EXIT_SUCCESS);
+            }
             #ifdef DUMP_ME
             sem_wait_zero(id_semaforo_gestione, 1);
             #endif
             break;
         case SIGUSR2:
+        /*
             printf("NAVE %d: ricevuto SIGUSR2. data: %d\n", indice, CAST_DUMP(vptr_shm_dump)->data);
+            close(fd_fifo);
+            sgancia_risorse(vptr_shm_dettagli_lotti, vptr_shm_dump, vptr_shm_mercato, vptr_shm_posizioni_porti);
+            exit(EXIT_SUCCESS);
+        */
+            break;
+        case SIGTERM:
+            /*
+                AGGIORNARE CARICO COME MERCE DISPERSA
+            */
+            printf("*** NAVE %d TERMINAZIONE SIMULAZIONE ***\n", indice);
             close(fd_fifo);
             sgancia_risorse(vptr_shm_dettagli_lotti, vptr_shm_dump, vptr_shm_mercato, vptr_shm_posizioni_porti);
             exit(EXIT_SUCCESS);

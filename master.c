@@ -226,7 +226,7 @@ int main(int argc, char* argv[]){
     kill(demone_pid, SIGUSR2);
     for(i = 0; i < SO_NAVI+SO_PORTI; i++){
         printf("MASTER: ammazzo il figlio %d\n", child_pids[i]);
-        kill(child_pids[i], SIGUSR2);
+        kill(child_pids[i], SIGTERM);
     }
     
     i=0;

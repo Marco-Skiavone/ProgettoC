@@ -82,9 +82,23 @@ void signal_handler(int signo){
     switch(signo){
         case SIGUSR1:
             fprintf(stderr,"*** PORTO %d: ricevuto SIGUSR1: data = %d ***\n", indice, CAST_DUMP(vptr_shm_dump)->data);
+            if(CAST_DUMP(vptr_shm_dump)->data == SO_DAYS-1){
+                fprintf(stderr, "*** PORTO %d TERMINAZIONE SIMULAZIONE ***\n", indice);
+                close(fd_fifo);
+                sgancia_risorse(vptr_shm_dettagli_lotti, vptr_shm_dump, vptr_shm_mercato, vptr_shm_posizioni_porti);
+                exit(EXIT_SUCCESS);
+            }
             break;
         case SIGUSR2:
+        /*
             fprintf(stderr,"\nPORTO %d: ricevuto SIGUSR2.\n", indice);
+            close(fd_fifo);
+            sgancia_risorse(vptr_shm_dettagli_lotti, vptr_shm_dump, vptr_shm_mercato, vptr_shm_posizioni_porti);
+            exit(EXIT_SUCCESS);
+        */
+            break;
+        case SIGTERM:
+            fprintf(stderr, "*** PORTO %d TERMINAZIONE SIMULAZIONE ***\n", indice);
             close(fd_fifo);
             sgancia_risorse(vptr_shm_dettagli_lotti, vptr_shm_dump, vptr_shm_mercato, vptr_shm_posizioni_porti);
             exit(EXIT_SUCCESS);
