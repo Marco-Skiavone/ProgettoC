@@ -26,7 +26,7 @@ void printCaller() {
     }
 }
 
-void alloca_semafori(int *id_semaforo_banchine, int *id_semaforo_dump, int *id_semaforo_gestione, int *id_semaforo_mercato, int PARAMETRO[]){
+void alloca_semafori(int *id_semaforo_banchine, int *id_semaforo_dump, int *id_semaforo_gestione, int *id_semaforo_mercato, int *id_semaforo_merci, int PARAMETRO[]){
     #ifdef DUMP_ME
     printf("SEM_CREATE_GESTIONE: %d\n", *id_semaforo_gestione = sem_create(CHIAVE_SEM_GESTIONE, 2));
     #else
@@ -36,6 +36,7 @@ void alloca_semafori(int *id_semaforo_banchine, int *id_semaforo_dump, int *id_s
     printf("SEM_CREATE_BANCHINE: %d\n", *id_semaforo_banchine = sem_create(CHIAVE_SEM_BANCHINE, SO_PORTI));
     printf("SEM_CREATE_DUMP: %d\n", *id_semaforo_dump = sem_create(CHIAVE_SEM_DUMP, 2));
     printf("SEM_CREATE_MERCATO: %d\n", *id_semaforo_mercato = sem_create(CHIAVE_SEM_MERCATO, SO_PORTI));
+    printf("SEM_CREATE_MERCI: %d\n", *id_semaforo_merci = sem_create(CHIAVE_SEM_MERCI, 1));
     sem_set_all(*(id_semaforo_mercato), 1, SO_PORTI); /* bisogna farci il SET_ALL!!! (1 sola sys call)*/
     printf("__________________________ \n\n");
 }
@@ -55,9 +56,7 @@ void sem_reserve(int semid, int sem_num) {
     sops.sem_op = -1;
     sops.sem_flg = 0;
     while (semop(semid, &sops, 1) == -1 && errno == EINTR) {
-        printf("reitero su un nuovo sem_reserve\n");
-        perror("semop reserve");
-        printCaller();
+
     }
 }
 
@@ -130,4 +129,16 @@ void inizializza_semafori(int *id_mercato, int *id_gestione, int *id_banchine, i
     #endif
     *id_banchine = sem_find(CHIAVE_SEM_BANCHINE, PORTI);
     *id_dump = sem_find(CHIAVE_SEM_DUMP,2);
+}
+
+void inizializza_semafori_porti(int *id_mercato, int *id_gestione, int *id_banchine, int *id_dump, int *id_merci, int PORTI){
+    *id_mercato = sem_find(CHIAVE_SEM_MERCATO, PORTI);
+    #ifdef DUMP_ME
+    *id_gestione = sem_find(CHIAVE_SEM_GESTIONE, 2);
+    #else
+    *id_gestione = sem_find(CHIAVE_SEM_GESTIONE, 1);
+    #endif
+    *id_banchine = sem_find(CHIAVE_SEM_BANCHINE, PORTI);
+    *id_dump = sem_find(CHIAVE_SEM_DUMP,2);
+    *id_merci = sem_find(CHIAVE_SEM_MERCI, 1);
 }

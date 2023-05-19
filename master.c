@@ -10,7 +10,7 @@ void* vptr_shm_posizioni_porti;
 void* vptr_shm_dettagli_lotti;
 void* vptr_shm_dump;
 
-int id_semaforo_gestione, id_semaforo_banchine, id_semaforo_dump;
+int id_semaforo_gestione, id_semaforo_banchine, id_semaforo_dump, id_semaforo_merci;
 int continua_simulazione;
 
 int *child_pids;
@@ -113,7 +113,7 @@ int main(int argc, char* argv[]){
     SHM_ID[2] = id_shm_posizioni_porti;
     SHM_ID[3] = id_shm_dump;
     aggancia_tutte_shm(&vptr_shm_mercato, &vptr_shm_dettagli_lotti, &vptr_shm_posizioni_porti, &vptr_shm_dump, SHM_ID, PARAMETRO);
-    alloca_semafori(&id_semaforo_banchine, &id_semaforo_dump, &id_semaforo_gestione, &id_semaforo_mercato, PARAMETRO);
+    alloca_semafori(&id_semaforo_banchine, &id_semaforo_dump, &id_semaforo_gestione, &id_semaforo_mercato, &id_semaforo_merci, PARAMETRO);
 
     inizializza_dump(vptr_shm_dump, PARAMETRO);
     generate_positions(SO_LATO, CAST_POSIZIONI_PORTI(vptr_shm_posizioni_porti), SO_PORTI);
@@ -135,7 +135,7 @@ int main(int argc, char* argv[]){
     sem_set_val(id_semaforo_dump,0,1); 
     /* ---------------------------------------- */
 
-    sem_set_val(id_semaforo_gestione,0,SO_PORTI+SO_NAVI+1);
+    sem_set_val(id_semaforo_gestione,0,SO_PORTI+SO_NAVI+2);
 
     #ifdef DUMP_ME/* definito nel caso di dump in mutua esclusione. */
     sem_set_val(id_semaforo_gestione,1,0);  
@@ -207,6 +207,10 @@ int main(int argc, char* argv[]){
         
         IMPOSTARE IL SEMAFORO DELLO SPAWNMERCIPORTI E IL CAMPO NEL DUMP A RAND() SO_PORTI + (SO_PORTI/3)
     */
+    CAST_DUMP(vptr_shm_dump)->porti_generanti = rand() % SO_PORTI + 0;
+    sem_set_val(id_semaforo_merci, 0, CAST_DUMP(vptr_shm_dump)->porti_generanti);
+
+    sem_reserve(id_semaforo_gestione, 0);
     sem_wait_zero(id_semaforo_gestione, 0);
 
     stampa_dump(PARAMETRO, vptr_shm_dump, vptr_shm_mercato, id_semaforo_banchine);
@@ -214,7 +218,11 @@ int main(int argc, char* argv[]){
     sa_alrm.sa_flags = 0;
     sigemptyset(&(sa_alrm.sa_mask));
     sigaction(SIGALRM, &sa_alrm, NULL);
-    
+
+    struct msqid_ds info;
+    if(msgctl(id_coda_richieste, IPC_STAT, &info) == -1){
+        printf("coda sbagliata");
+    }
     continua_simulazione = 1;
     do{
         
@@ -224,10 +232,14 @@ int main(int argc, char* argv[]){
                 break;
             }
         */
+        msgctl(id_coda_richieste, IPC_STAT, &info);
+        printf("Number of messages in the queue: %ld\n", info.msg_qnum);
+
         alarm(1);
         if(errno && errno != EINTR)
             printf("\nErrno = %d dopo alarm: %s\n", errno, strerror(errno));
-        /* IMPOSTARE IL SEMAFORO DELLO SPAWNMERCIPORTI E IL CAMPO NEL DUMP A RAND() SO_PORTI + (SO_PORTI/3) */
+        CAST_DUMP(vptr_shm_dump)->porti_generanti = rand() % SO_PORTI + 0;
+        sem_set_val(id_semaforo_merci, 0, CAST_DUMP(vptr_shm_dump)->porti_generanti);
         pause();
     } while(((int)(CAST_DUMP(vptr_shm_dump)->data) < SO_DAYS) && continua_simulazione);
     
@@ -265,7 +277,7 @@ int main(int argc, char* argv[]){
     printf("TUTTE LE SHARED_MEM SONO STATE SGANCIATE DAL MASTER!\n");
     printf("__________________________ \n\n");
     distruggi_risorse(id_shm_mercato, id_shm_dettagli_lotti, id_shm_posizioni_porti, id_shm_dump, id_coda_richieste);
-    distruggi_semafori(id_semaforo_mercato, id_semaforo_dump, id_semaforo_banchine, id_semaforo_gestione);
+    distruggi_semafori(id_semaforo_mercato, id_semaforo_dump, id_semaforo_banchine, id_semaforo_gestione, id_semaforo_merci);
     close(fd_fifo);
     /* sono da liberare child_pids, ogni argv_figli[i] meno l'ultimo che è null,
      *  e argv_figli stesso => tot=(QNT_PARAMETRI + 2))+1; */

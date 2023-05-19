@@ -130,6 +130,9 @@ richiesta esamina_porto(int indice, int PARAMETRO[], int SEM_ID[], int id_coda_r
         if(r.mtext.indicemerce == -1){
             return r;
         }
+         /*
+         fprintf(stdout, "Porto richiedente: %d\n Indice merce: %d\n", r.mtext, r.mtext.indicemerce );
+        */
         if(CAST_MERCATO(VPTR_SHM_MERCATO)[*indice_porto_attraccato][r.mtext.indicemerce].val > 0){
             distanza = calcola_distanza(posizione, CAST_POSIZIONI_PORTI(VPTR_SHM_POSIZIONI_PORTI)[r.mtype]);
             while(r.mtext.nlotti * CAST_DETTAGLI_LOTTI(VPTR_SHM_DETTAGLI_LOTTI)[r.mtext.indicemerce].val > *spaziolibero){

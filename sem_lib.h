@@ -13,7 +13,7 @@ union semun {
 int sem_create(key_t key, int nsems);
 
 /* Crea i semafori della simulazione, chiamato solo dal master. */
-void alloca_semafori(int *id_semaforo_banchine, int *id_semaforo_dump, int *id_semaforo_gestione, int *id_semaforo_mercato, int PARAMETRO[]);
+void alloca_semafori(int *id_semaforo_banchine, int *id_semaforo_dump, int *id_semaforo_gestione, int *id_semaforo_mercato, int *id_semaforo_merci, int PARAMETRO[]);
 
 /* Si aggancia a un set di semafori già esistente. */
 int sem_find(key_t key, int nsems);
@@ -41,4 +41,7 @@ int sem_get_val(int sem_id, int sem_num);
 
 /* Inizializza gli id dei semafori. */
 void inizializza_semafori(int *id_mercato, int *id_gestione, int *id_banchine, int *id_dump, int PORTI);
+
+void inizializza_semafori_porti(int *id_mercato, int *id_gestione, int *id_banchine, int *id_dump, int *id_merci, int PORTI);
+
 #endif

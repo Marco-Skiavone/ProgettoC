@@ -274,11 +274,12 @@ void distruggi_risorse(int id_mercato, int id_lotti, int id_posizioni, int id_du
 	printf("__________________________ \n\n");
 }
 
-void distruggi_semafori(int id_sem_mercato, int id_sem_dump, int id_sem_banchine, int id_sem_gestione){
+void distruggi_semafori(int id_sem_mercato, int id_sem_dump, int id_sem_banchine, int id_sem_gestione, int id_sem_merci){
     printf("DISTRUGGI_SEM_MERCATO\n");  sem_destroy(id_sem_mercato);
     printf("DISTRUGGI_SEM_DUMP\n");     sem_destroy(id_sem_dump);
     printf("DISTRUGGI_SEM_BANCHINE\n"); sem_destroy(id_sem_banchine);
     printf("DISTRUGGI_SEM_GESTIONE\n"); sem_destroy(id_sem_gestione);
+	printf("DISTRUGGI_SEM_MERCI\n"); sem_destroy(id_sem_merci);
     printf("__________________________ \n");
 }
 

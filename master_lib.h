@@ -77,7 +77,7 @@ void stampa_terminazione(int PARAMETRO[], void * vptr_shm_dump, void * vptr_shm_
 void distruggi_risorse(int id_mercato, int id_lotti, int id_posizioni, int id_dump, int id_coda);
 
 /* Usato dal master alla fine, per distruggere i semafori della simulazione. */
-void distruggi_semafori(int id_sem_mercato, int id_sem_dump, int id_sem_banchine, int id_sem_gestione);
+void distruggi_semafori(int id_sem_mercato, int id_sem_dump, int id_sem_banchine, int id_sem_gestione, int id_sem_merci);
 
 /* Esegue le free() necessarie a fine simulazione; size è la lunghezza di argv_figli. */
 void free_ptr(int *childs, char** argv_figli, int size);

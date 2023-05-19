@@ -105,6 +105,7 @@
 #define ID_SEMAFORO_DUMP SEM_ID[1]
 #define ID_SEMAFORO_GESTIONE SEM_ID[2]
 #define ID_SEMAFORO_MERCATO SEM_ID[3]
+#define ID_SEMAFORO_MERCI SEM_ID[4]
 
 /* MACRO per riferimenti ai puntatori delle shared memory*/
 #define VPTR_SHM_DETTAGLI_LOTTI VPTR_ARR[0]
@@ -136,6 +137,7 @@
 #define CHIAVE_SEM_DUMP 41
 #define CHIAVE_SEM_BANCHINE 51
 #define CHIAVE_SEM_GESTIONE 61
+#define CHIAVE_SEM_MERCI 71
 
 /* --- casting delle shm --- */
 /* usate per fare il casting dei void pointer alla shared memory*/
@@ -170,7 +172,7 @@
 /* Tolleranza della uguaglianza tra punti nella mappa */
 #define TOLLERANZA 0.05
 /* Massimo di richieste da poter leggere. (arbitrario: 20 ?) */
-#define MAX_REQ_LETTE ((SO_PORTI/SO_NAVI) >= 10 ? SO_PORTI/SO_NAVI : 10)
+#define MAX_REQ_LETTE 50/*((SO_PORTI/SO_NAVI) >= 10 ? SO_PORTI/SO_NAVI : 10) */
 /* Massima lunghezza dell'array di carico merci delle navi. */
 #define MAX_CARICO 10
 
@@ -234,6 +236,7 @@ typedef struct {
     porto_dump *porto_dump_ptr;
 	term_dump term_dump;
     nave_dump nd;
+	int porti_generanti;
 } dump;
 
 #endif
