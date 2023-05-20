@@ -1,6 +1,3 @@
-#ifndef _DEFINITIONS_H
-	#include "definitions.h"
-#endif
 #include "porto_lib.h"
 
 void inizializza_banchine(int sem_id, int indice, void * vptr_shm_dump, int PARAMETRO[]){

@@ -60,6 +60,9 @@
 #define DN_PORTO_MV 2	/* da "in porto" a "in mare vuota" */
 #define DN_PORTO_MC 3	/* da "in porto" a "in mare carica" */
 
+#define NAVE_IN_PORTO 0
+#define NAVE_IN_MARE 1
+
 /* indice dei parametri */
 #define I_NAVI 0
 #define I_PORTI 1
@@ -74,6 +77,9 @@
 #define I_FILL 10
 #define I_LOADSPEED 11
 #define I_DAYS 12
+#define I_STORM_DURATION 13
+#define I_SWELL_DURATION 14
+#define I_MAELSTORM 15
 
 /* MACRO per riferirsi ai parametri */
 #define SO_NAVI PARAMETRO[I_NAVI]
@@ -89,6 +95,9 @@
 #define SO_FILL PARAMETRO[I_FILL]
 #define SO_LOADSPEED PARAMETRO[I_LOADSPEED]
 #define SO_DAYS PARAMETRO[I_DAYS]
+#define SO_STORM_DURATION PARAMETRO[I_STORM_DURATION]
+#define SO_SWELL_DURATION PARAMETRO[I_SWELL_DURATION]
+#define SO_MAELSTORM PARAMETRO[I_MAELSTORM]
 
 /* MACRO per riferimenti agli ID dei semafori*/
 #define ID_SEMAFORO_BANCHINE SEM_ID[0]
@@ -106,7 +115,7 @@
 /* Numero di parametri: 
  * - 13 versione da 24
  * - 16 versione da 30 */
-#define QNT_PARAMETRI 13
+#define QNT_PARAMETRI 16
 
 /* MACRO utilizzate per indicare le chiavi delle shared memory, la loro dimensione,
 	la dimensione dei messaggi e le chiavi dei semafori */
@@ -159,11 +168,12 @@
 
 /* Tolleranza della uguaglianza tra punti nella mappa */
 #define TOLLERANZA 0.05
+
 /* Massimo di richieste da poter leggere. (arbitrario: 20 ?) */
 #define MAX_REQ_LETTE ((SO_PORTI/SO_NAVI) >= 10 ? SO_PORTI/SO_NAVI : 10)
+
 /* Massima lunghezza dell'array di carico merci delle navi. */
 #define MAX_CARICO 10
-
 
 /* Punto generico di posizione con coordinate x e y. */
 typedef struct {

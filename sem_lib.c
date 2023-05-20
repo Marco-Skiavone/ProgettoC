@@ -1,6 +1,3 @@
-#ifndef _DEFINITIONS_H
-	#include "definitions.h"
-#endif
 #include "sem_lib.h"
 
 int sem_create(key_t key, int nsems) {

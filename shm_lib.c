@@ -1,6 +1,3 @@
-#ifndef _DEFINITIONS_H
-	#include "definitions.h"
-#endif
 #include "shm_lib.h"
 
 int alloca_shm(key_t key, size_t size) {
