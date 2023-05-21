@@ -13,6 +13,10 @@ void inizializza_banchine(int sem_id, int indice, void * vptr_shm_dump, int PARA
  * NB: 'Fill' corrisponde alla quantità (in ton) di merce da suddividere tra richiesta e offerta per ogni porto. */
 void spawnMerciPorti(void* vptr_mercato, merce* ptr_lotti, void *vptr_dump, int id_sem_dump, int PARAMETRO[], int indice);
 
+
+
+void spawnMerci(void* vptr_mercato, merce* ptr_lotti, void *vptr_dump, int id_sem_dump, int id_coda_richieste, int fd_fifo_coda, int PARAMETRO[], int indice);
+
 /** Invia le richieste alla coda messaggi in base ai valori di mercato_shm.
  * @param fd_fifo è il file descriptor della FIFO in cui mandare le richieste che eccedono il limite della coda. */
 void manda_richieste(void* vptr_shm_mercato, int indice, int coda_id, int PARAMETRO[], int fd_fifo);

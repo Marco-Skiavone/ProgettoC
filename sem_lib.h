@@ -21,6 +21,10 @@ int sem_find(key_t key, int nsems);
 /* Esegue la reserve, ossia si blocca finché non può fare -1 al semaforo. */
 void sem_reserve(int semid, int sem_num);
 
+/** Esegue la reserve in IPC_NOWAIT, stampa un errore se non può fare -1 al semaforo. 
+ * @returns -1 in caso di errore, 0 se fallisce, 1 se esegue la semop. */
+int sem_reserve_NOWAIT(int semid, int sem_num);
+
 /* Esegue la release, ossia fa +1 al semaforo. */
 void sem_release(int semid, int sem_num);
 

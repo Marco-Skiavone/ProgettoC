@@ -22,7 +22,7 @@
 #include "demone.h"
 
 /* define utilizzata per effettuare test di debug*/
-#define STAMPA_DEBUG printf("%s: data = %d, linea %d\n", __FILE__, CAST_DUMP(vptr_shm_dump)->data, __LINE__);
+#define STAMPA_DEBUG printf("%s: data = %d, linea %d\n", __FILE__, CAST_DUMP(VPTR_SHM_DUMP)->data, __LINE__);
 
 /* stampa un messaggio di errore dove str è una stringa personalizzabile */
 #define ERROR(str)											\
@@ -234,6 +234,7 @@ typedef struct {
     porto_dump *porto_dump_ptr;
 	term_dump term_dump;
     nave_dump nd;
+	int rand_porti;
 } dump;
 
 #endif

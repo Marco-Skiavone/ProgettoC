@@ -10,7 +10,10 @@ void* vptr_shm_dump;
 void* vptr_shm_mercato;
 void* vptr_shm_posizioni_porti;
 
+int id_coda_richieste;
+
 int id_semaforo_dump;
+int id_semaforo_gestione;
 
 int indice;
 int fd_fifo;
@@ -22,14 +25,12 @@ int main(int argc, char *argv[]){
     int i, j, k;
 
     int id_semaforo_mercato;
-    int id_semaforo_gestione;
     int id_semaforo_banchine;
 
     int id_shm_dettagli_lotti;
     int id_shm_dump;
     int id_shm_mercato;
     int id_shm_posizioni_porti;
-    int id_coda_richieste;
     int SHM_ID[4];
     struct sigaction sa;
     sigset_t mask1;
@@ -38,6 +39,7 @@ int main(int argc, char *argv[]){
     sigemptyset(&(sa.sa_mask));
     sigaction(SIGUSR1, &sa, NULL);
     sigaction(SIGUSR2, &sa, NULL);
+    sigaction(SIGTERM, &sa, NULL);
     sigemptyset(&mask1);
     sigaddset(&mask1, SIGUSR1);
     sigprocmask(SIG_UNBLOCK, &mask1, NULL);
@@ -64,10 +66,10 @@ int main(int argc, char *argv[]){
     aggancia_tutte_shm(&vptr_shm_mercato, &vptr_shm_dettagli_lotti, &vptr_shm_posizioni_porti, &vptr_shm_dump, SHM_ID, PARAMETRO);
     inizializza_semafori(&id_semaforo_mercato, &id_semaforo_gestione, &id_semaforo_banchine, &id_semaforo_dump, SO_PORTI);
     inizializza_banchine(id_semaforo_banchine, indice, vptr_shm_dump, PARAMETRO);
-    
+    /*
     spawnMerciPorti(vptr_shm_mercato, CAST_DETTAGLI_LOTTI(vptr_shm_dettagli_lotti), vptr_shm_dump, id_semaforo_dump, PARAMETRO, indice);
-    manda_richieste(vptr_shm_mercato, indice, id_coda_richieste, PARAMETRO, fd_fifo);
-    /* si sgancia dalle memorie condivise. */
+    manda_richieste(vptr_shm_mercato, indice, id_coda_richieste, PARAMETRO, fd_fifo);*/
+    raise(SIGUSR2);
     /* si dichiara pronto e aspetta. (wait for zero) */
     sem_reserve(id_semaforo_gestione, 0);
     sem_wait_zero(id_semaforo_gestione, 0);
@@ -75,16 +77,24 @@ int main(int argc, char *argv[]){
     do {
         pause();
     } while(1);
-    sgancia_risorse(vptr_shm_dettagli_lotti, vptr_shm_dump, vptr_shm_mercato, vptr_shm_posizioni_porti);
 }
 
 void signal_handler(int signo){
     switch(signo){
         case SIGUSR1:
             fprintf(stderr,"*** PORTO %d: ricevuto SIGUSR1: data = %d ***\n", indice, CAST_DUMP(vptr_shm_dump)->data);
+            raise(SIGUSR2);
+            sem_reserve(id_semaforo_gestione, 0);
+            sem_wait_zero(id_semaforo_gestione, 0);
             break;
         case SIGUSR2:
-            fprintf(stderr,"\nPORTO %d: ricevuto SIGUSR2.\n", indice);
+            if(sem_reserve_NOWAIT(id_semaforo_gestione, 2) == 1) {  /* il TERZO semaforo prevede la prenotazione della generazione di merci */
+                spawnMerci(vptr_shm_mercato, CAST_DETTAGLI_LOTTI(vptr_shm_dettagli_lotti), vptr_shm_dump, id_semaforo_dump, id_coda_richieste, fd_fifo, PARAMETRO, indice); 
+                fprintf(stderr, "PORTO %d: generata merce nel giorno %d\n", indice, CAST_DUMP(vptr_shm_dump)->data);  
+            }
+            break;
+        case SIGTERM:
+            fprintf(stderr,"\nPORTO %d: ricevuto SIGTERM.\n", indice);
             close(fd_fifo);
             sgancia_risorse(vptr_shm_dettagli_lotti, vptr_shm_dump, vptr_shm_mercato, vptr_shm_posizioni_porti);
             exit(EXIT_SUCCESS);

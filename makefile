@@ -36,6 +36,6 @@ clear:
 
 ipc: clear
 	ipcrm --all
+	rm fifo_coda_messaggi
 	pkill nave
 	pkill porto
-	rm fifo_coda_messaggi

@@ -39,6 +39,7 @@ int main(int argc, char *argv[]){
     sigemptyset(&(sa.sa_mask));
     sigaction(SIGUSR1, &sa, NULL);
     sigaction(SIGUSR2, &sa, NULL);
+    sigaction(SIGTERM, &sa, NULL);
     sigemptyset(&mask1);
     sigaddset(&mask1, SIGUSR1);
     sigprocmask(SIG_UNBLOCK, &mask1, NULL);
@@ -87,12 +88,13 @@ void signal_handler(int signo){
     switch(signo){
         case SIGUSR1:
             printf("*** NAVE %d: ricevuto SIGUSR1: data = %d ***\n", indice, CAST_DUMP(vptr_shm_dump)->data);
-            #ifdef DUMP_ME
-            sem_wait_zero(id_semaforo_gestione, 1);
-            #endif
+            sem_wait_zero(id_semaforo_gestione, 0);
             break;
         case SIGUSR2:
-            printf("NAVE %d: ricevuto SIGUSR2. data: %d\n", indice, CAST_DUMP(vptr_shm_dump)->data);
+            
+            break;
+        case SIGTERM:
+            printf("NAVE %d: ricevuto SIGTERM. data: %d\n", indice, CAST_DUMP(vptr_shm_dump)->data);
             close(fd_fifo);
             sgancia_risorse(vptr_shm_dettagli_lotti, vptr_shm_dump, vptr_shm_mercato, vptr_shm_posizioni_porti);
             exit(EXIT_SUCCESS);

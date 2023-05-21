@@ -184,6 +184,12 @@ void controllo_scadenze_porti(merce *p_lotti, void *p_mercato, void *p_dump, int
 void stampa_merci_porti_navi(int PARAMETRO[], void * vptr_shm_dump, void *vptr_shm_mercato, int id_semaforo_banchine){
 	int i, j;
 	j=0;
+	if(freopen("log_mercato.txt","a", stdout)==NULL)
+        {perror("freopen ha ritornato NULL");}
+	printf("\nGiorno %d\n", CAST_DUMP(vptr_shm_dump)->data);
+	if(freopen("log_dump.txt", "a", stdout)==NULL)
+        {perror("freopen ha ritornato NULL");}
+		
 	for(i = 0; i < (SO_MERCI+SO_PORTI); i++){
 		if(i==SO_MERCI) printf("\n");
 
@@ -204,8 +210,7 @@ void stampa_merci_porti_navi(int PARAMETRO[], void * vptr_shm_dump, void *vptr_s
 
 			if(freopen("log_mercato.txt","a", stdout)==NULL)
         		{perror("freopen ha ritornato NULL");}
-			printf("\nGiorno %d\n", CAST_DUMP(vptr_shm_dump)->data);
-			printf("PORTO %d:\n", j);
+			printf("\nPORTO %d:\n", j);
 			stampa_mercato_dump(vptr_shm_dump, vptr_shm_mercato, PARAMETRO, j);
 			if(freopen("log_dump.txt", "a", stdout)==NULL)
         		{perror("freopen ha ritornato NULL");}

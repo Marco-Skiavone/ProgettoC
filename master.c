@@ -14,9 +14,8 @@ int id_semaforo_gestione;
 int id_semaforo_banchine;
 int id_semaforo_dump;
 
-int *child_pids;
+int *child_pids, demone_pid, continua_simulazione;
 int fd_fifo;
-int demone_pid;
 int PARAMETRO[QNT_PARAMETRI];
 
 void signal_handler(int signo);
@@ -31,17 +30,18 @@ int main(int argc, char* argv[]){
     int id_semaforo_mercato;
 
     char **argv_figli, **argv_demone;
-    int continua_simulazione, child_pid, status;
+    int child_pid, status;
     FILE *file_config;
     richiesta r;
     struct sigaction sa_alrm;
+
+    sa_alrm.sa_handler = signal_handler;
+    sa_alrm.sa_flags = 0;
+    sigemptyset(&(sa_alrm.sa_mask));
+    sigaction(SIGALRM, &sa_alrm, NULL);
     argv_figli = malloc((QNT_PARAMETRI + 3)*sizeof(char*));
     argv_demone = malloc(sizeof(char*)*3);
 
-    #ifdef DUMP_ME
-    printf("Programma in avvio con parametro DUMP_ME abilitato!\n\n");
-    #endif
-    
     setbuf(stdout, NULL); /* unbufferizza stdout */
     clearLog();
     srand(time(NULL));
@@ -119,8 +119,8 @@ int main(int argc, char* argv[]){
     inizializza_dump(vptr_shm_dump, PARAMETRO);
     generate_positions(SO_LATO, CAST_POSIZIONI_PORTI(vptr_shm_posizioni_porti), SO_PORTI);
     
+    bzero(vptr_shm_mercato, (SO_MERCI*sizeof(merce))*SO_PORTI);
     setUpLotto(CAST_DETTAGLI_LOTTI(vptr_shm_dettagli_lotti),PARAMETRO);
-    
     for(i=0;i<SO_MERCI;i++){
         printf("Merce %d val %d exp %d\n", i,
             CAST_DETTAGLI_LOTTI(vptr_shm_dettagli_lotti)[i].val,
@@ -136,11 +136,13 @@ int main(int argc, char* argv[]){
     sem_set_val(id_semaforo_dump,0,1); 
     /* ---------------------------------------- */
 
-    sem_set_val(id_semaforo_gestione,0,SO_PORTI+SO_NAVI+1);
+    CAST_DUMP(vptr_shm_dump)->rand_porti = (rand() % (SO_PORTI - 3)) + 3; /* esegue un random su almeno 3 porti! */
 
-    #ifdef DUMP_ME/* definito nel caso di dump in mutua esclusione. */
-    sem_set_val(id_semaforo_gestione,1,0);  
-    #endif
+    
+    sem_set_val(id_semaforo_gestione, 0, SO_PORTI+SO_NAVI+1);
+    sem_set_val(id_semaforo_gestione, 1, 0);
+    sem_set_val(id_semaforo_gestione, 2, CAST_DUMP(vptr_shm_dump)->rand_porti);
+
     /* settaggio di argv_figli e fork dei processi porto e nave */
     argv_demone[0] = (char*)malloc(MAX_STR_LEN);
     argv_demone[0] = "./demone";
@@ -204,29 +206,23 @@ int main(int argc, char* argv[]){
     /* Fine settaggio argv_figli e creazione dei processi.
      * Inizio attesa di sincronizzazione e partenza del loop di simulazione. */
     sem_wait_zero(id_semaforo_gestione, 0);
-
     stampa_dump(PARAMETRO, vptr_shm_dump, vptr_shm_mercato, id_semaforo_banchine);
-    sa_alrm.sa_handler = signal_handler;
-    sa_alrm.sa_flags = 0;
-    sigemptyset(&(sa_alrm.sa_mask));
-    sigaction(SIGALRM, &sa_alrm, NULL);
     
     continua_simulazione = 1;
     do{
-        alarm(1);
-        if(errno && errno != EINTR)
-            printf("\nErrno = %d dopo alarm: %s\n", errno, strerror(errno));
-        if(!(continua_simulazione = controlla_mercato(vptr_shm_mercato, vptr_shm_dump, PARAMETRO))){
-            printf("\nMASTER: Termino la simulazione per mancanza di offerte e/o di richieste!\n");
+        if(continua_simulazione){
+            alarm(1);
+            if(errno && errno != EINTR)
+                printf("\nErrno = %d dopo alarm: %s\n", errno, strerror(errno));
+            pause();
         }
-        pause();
     } while(((int)(CAST_DUMP(vptr_shm_dump)->data) < SO_DAYS) && continua_simulazione);
     
     unlink(NOME_FIFO);
     kill(demone_pid, SIGUSR2);
     for(i = 0; i < SO_NAVI+SO_PORTI; i++){
         printf("MASTER: ammazzo il figlio %d\n", child_pids[i]);
-        kill(child_pids[i], SIGUSR2);
+        kill(child_pids[i], SIGTERM);
     }
     
     i=0;
@@ -261,28 +257,33 @@ void signal_handler(int signo){
     int i;
     switch(signo){
         case SIGALRM:
-            #ifdef DUMP_ME
-            sem_release(id_semaforo_gestione, 1);
-            #endif
             controllo_scadenze_porti(CAST_DETTAGLI_LOTTI(vptr_shm_dettagli_lotti), vptr_shm_mercato, vptr_shm_dump, id_semaforo_dump, PARAMETRO);
             if(CAST_DUMP(vptr_shm_dump)->data < SO_DAYS-1){
                 fprintf(stderr, "\x1b[%dF\x1b[0J", 1);
                 CAST_DUMP(vptr_shm_dump)->data++;
                 printf("\nMASTER: Passato giorno %d su %d.\n", CAST_DUMP(vptr_shm_dump)->data, SO_DAYS);
                 stampa_dump(PARAMETRO, vptr_shm_dump, vptr_shm_mercato, id_semaforo_banchine);
+                /** elemetni aggiuntivi, il master ssetta il semaforo dei porti (navi aspettano). tutto si ferma mentre si generano le merci */
+                sem_set_val(id_semaforo_gestione, 0, SO_PORTI);
+                sem_set_val(id_semaforo_gestione, 2, CAST_DUMP(vptr_shm_dump)->rand_porti);
                 for(i = 0; i < SO_NAVI+SO_PORTI; i++)
                     { kill(child_pids[i], SIGUSR1);}
                 fprintf(stderr, "La simulazione è in corso :) attendi ancora altri %d secondi...\n", (SO_DAYS - CAST_DUMP(vptr_shm_dump)->data));
+                sem_wait_zero(id_semaforo_gestione, 0);
             } else {
                 CAST_DUMP(vptr_shm_dump)->data++;
                 stampa_terminazione(PARAMETRO, vptr_shm_dump, vptr_shm_mercato, id_semaforo_banchine);
                 fprintf(stderr, "\x1b[%dF\x1b[0J", 1);
                 fprintf(stderr, "Simulazione completata ^_^\n");
             }
+            sem_release(id_semaforo_gestione, 1);
             break;
-            #ifdef DUMP_ME
-            sem_reserve(id_semaforo_gestione, 1);
-            #endif
+        case SIGINT:
+            continua_simulazione = 0;
+            stampa_terminazione(PARAMETRO, vptr_shm_dump, vptr_shm_mercato, id_semaforo_banchine);
+            fprintf(stderr, "\x1b[%dF\x1b[0J", 1);
+            fprintf(stderr, "Simulazione completata ^_^\n");
+            break;
         default: 
             perror("MASTER: giunto segnale diverso da SIGALRM!");
             close(fd_fifo);

@@ -43,7 +43,6 @@ richiesta accetta_richiesta(int msgtype, int coda_id){
     if(msgrcv(coda_id, &r, MSG_SIZE, msgtype+1, IPC_NOWAIT) == -1){
         if(errno == 42){
             r.mtext.indicemerce = -1;
-            
         }else{
             perror("accetta richiesta");
             exit(255);

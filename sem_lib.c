@@ -10,12 +10,7 @@ int sem_create(key_t key, int nsems) {
 }
 
 void alloca_semafori(int *id_semaforo_banchine, int *id_semaforo_dump, int *id_semaforo_gestione, int *id_semaforo_mercato, int PARAMETRO[]){
-    #ifdef DUMP_ME
-    printf("SEM_CREATE_GESTIONE: %d\n", *id_semaforo_gestione = sem_create(CHIAVE_SEM_GESTIONE, 2));
-    #else
-    printf("SEM_CREATE_GESTIONE: %d\n", *id_semaforo_gestione = sem_create(CHIAVE_SEM_GESTIONE, 1));
-    TEST_ERROR
-    #endif
+    printf("SEM_CREATE_GESTIONE: %d\n", *id_semaforo_gestione = sem_create(CHIAVE_SEM_GESTIONE, 3));
     printf("SEM_CREATE_BANCHINE: %d\n", *id_semaforo_banchine = sem_create(CHIAVE_SEM_BANCHINE, SO_PORTI));
     printf("SEM_CREATE_DUMP: %d\n", *id_semaforo_dump = sem_create(CHIAVE_SEM_DUMP, 2));
     printf("SEM_CREATE_MERCATO: %d\n", *id_semaforo_mercato = sem_create(CHIAVE_SEM_MERCATO, SO_PORTI));
@@ -42,6 +37,25 @@ void sem_reserve(int semid, int sem_num) {
         perror("semop reserve");
     }
 }
+
+int sem_reserve_NOWAIT(int semid, int sem_num){
+    struct sembuf buf;
+    /* eseguo la semop per vedere se posso ancora aggiornare il porto */
+    buf.sem_flg = IPC_NOWAIT;
+    buf.sem_num = sem_num;
+    buf.sem_op = -1;
+    if(semop(semid, &buf, 1) == -1){
+        if(errno == EAGAIN){
+            errno = 0;
+            return 0; /* ESCE DAL METODO SE NON TROVA PIU' POSTO! */
+        } else {
+            fprintf(stderr, "*** ERRORE NELLA SEMOP DI SPAWN MERCI! ***\n\n");
+            return -1;
+        }
+    }
+    return 1;
+}
+
 
 void sem_release(int semid, int sem_num) {
     struct sembuf sops;
@@ -105,11 +119,7 @@ void sem_destroy(int semid) {
 
 void inizializza_semafori(int *id_mercato, int *id_gestione, int *id_banchine, int *id_dump,int PORTI){
     *id_mercato = sem_find(CHIAVE_SEM_MERCATO, PORTI);
-    #ifdef DUMP_ME
-    *id_gestione = sem_find(CHIAVE_SEM_GESTIONE, 2);
-    #else
-    *id_gestione = sem_find(CHIAVE_SEM_GESTIONE, 1);
-    #endif
+    *id_gestione = sem_find(CHIAVE_SEM_GESTIONE, 3);
     *id_banchine = sem_find(CHIAVE_SEM_BANCHINE, PORTI);
     *id_dump = sem_find(CHIAVE_SEM_DUMP,2);
 }
