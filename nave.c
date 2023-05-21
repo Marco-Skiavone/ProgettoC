@@ -1,4 +1,4 @@
-#include "definitions.h" /* contiene le altre #include */
+#include "definitions.h"
 #include "queue_lib.h"
 #include "sem_lib.h"
 #include "shm_lib.h"

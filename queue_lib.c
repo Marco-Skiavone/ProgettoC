@@ -1,6 +1,3 @@
-#ifndef _DEFINITIONS_H
-	#include "definitions.h"
-#endif
 #include "queue_lib.h"
 
 int set_coda_richieste(key_t key) {

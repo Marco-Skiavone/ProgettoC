@@ -1,4 +1,4 @@
-#include "definitions.h" /* contiene le altre #include */
+#include "definitions.h"
 #include "queue_lib.h"
 #include "sem_lib.h"
 #include "shm_lib.h"
@@ -14,9 +14,8 @@ int id_semaforo_gestione;
 int id_semaforo_banchine;
 int id_semaforo_dump;
 
-int *child_pids;
+int *child_pids, continua_simulazione, demone_pid;
 int fd_fifo;
-int demone_pid;
 int PARAMETRO[QNT_PARAMETRI];
 
 void signal_handler(int signo);
@@ -31,10 +30,16 @@ int main(int argc, char* argv[]){
     int id_semaforo_mercato;
 
     char **argv_figli, **argv_demone;
-    int continua_simulazione, child_pid, status;
+    int child_pid, status;
     FILE *file_config;
     richiesta r;
-    struct sigaction sa_alrm;
+    struct sigaction sa;
+    sa.sa_handler = signal_handler;
+    sa.sa_flags = 0;
+    sigemptyset(&(sa.sa_mask));
+    sigaction(SIGALRM, &sa, NULL);
+    sigaction(SIGINT, &sa, NULL);
+
     argv_figli = malloc((QNT_PARAMETRI + 3)*sizeof(char*));
     argv_demone = malloc(sizeof(char*)*3);
 
@@ -206,19 +211,16 @@ int main(int argc, char* argv[]){
     sem_wait_zero(id_semaforo_gestione, 0);
 
     stampa_dump(PARAMETRO, vptr_shm_dump, vptr_shm_mercato, id_semaforo_banchine);
-    sa_alrm.sa_handler = signal_handler;
-    sa_alrm.sa_flags = 0;
-    sigemptyset(&(sa_alrm.sa_mask));
-    sigaction(SIGALRM, &sa_alrm, NULL);
     
     continua_simulazione = 1;
     do{
+        if(!(continua_simulazione = controlla_mercato(vptr_shm_mercato, vptr_shm_dump, PARAMETRO))){
+            printf("\nMASTER: Termino la simulazione per mancanza di offerte e/o di richieste!\n");
+            break;
+        }
         alarm(1);
         if(errno && errno != EINTR)
             printf("\nErrno = %d dopo alarm: %s\n", errno, strerror(errno));
-        if(!(continua_simulazione = controlla_mercato(vptr_shm_mercato, vptr_shm_dump, PARAMETRO))){
-            printf("\nMASTER: Termino la simulazione per mancanza di offerte e/o di richieste!\n");
-        }
         pause();
     } while(((int)(CAST_DUMP(vptr_shm_dump)->data) < SO_DAYS) && continua_simulazione);
     
@@ -279,10 +281,13 @@ void signal_handler(int signo){
                 fprintf(stderr, "\x1b[%dF\x1b[0J", 1);
                 fprintf(stderr, "Simulazione completata ^_^\n");
             }
-            break;
             #ifdef DUMP_ME
             sem_reserve(id_semaforo_gestione, 1);
             #endif
+            break;
+        case SIGINT:
+            continua_simulazione = 0;
+            break;
         default: 
             perror("MASTER: giunto segnale diverso da SIGALRM!");
             close(fd_fifo);

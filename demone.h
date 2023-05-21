@@ -28,4 +28,5 @@ typedef struct {
 #define CHIAVE_CODA 50
 /* Pathname della fifo scelta */
 #define NOME_FIFO "fifo_coda_messaggi"
+
 #endif

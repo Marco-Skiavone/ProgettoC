@@ -1,6 +1,3 @@
-#ifndef _DEFINITIONS_H
-	#include "definitions.h"
-#endif
 #include "master_lib.h"
 
 void clearLog(){

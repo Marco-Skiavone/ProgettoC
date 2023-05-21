@@ -48,3 +48,6 @@ clear:
 ipc: clear
 	ipcrm --all
 	rm fifo_coda_messaggi
+	pkill nave
+	pkill porto
+	pkill demone

@@ -1,6 +1,3 @@
-#ifndef _DEFINITIONS_H
-	#include "definitions.h"
-#endif
 #include "common_lib.h"
 
 /** Questo modulo C serve a compilare i metodi comuni a più processi. */

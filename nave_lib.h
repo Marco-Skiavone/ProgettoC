@@ -3,7 +3,6 @@
 #include "definitions.h"
 #include "sem_lib.h"
 
-
 /*  Genera un punto casuale nella mappa di lato 'lato'.
  * ATTENZIONE: modifica il seed di rand. */
 point generate_random_point_nave(int lato);

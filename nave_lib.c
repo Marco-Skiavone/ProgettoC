@@ -1,10 +1,6 @@
-#ifndef _DEFINITIONS_H
-	#include "definitions.h"
-#endif
 #include "nave_lib.h"
-#ifndef _QUEUE_LIB_H
-    #include "queue_lib.h"
-#endif
+#include "queue_lib.h"
+
 
 point generate_random_point_nave(int lato) {
     int mant, p_intera;
