@@ -83,14 +83,15 @@ void signal_handler(int signo){
         case SIGUSR1:
             fprintf(stderr,"*** PORTO %d: ricevuto SIGUSR1: data = %d ***\n", indice, CAST_DUMP(vptr_shm_dump)->data);
             break;
-        case SIGUSR2:
-            fprintf(stderr,"\nPORTO %d: ricevuto SIGUSR2.\n", indice);
+        case SIGTERM:
+            fprintf(stderr,"\nPORTO %d: ricevuto SIGTERM.\n", indice);
             close(fd_fifo);
             sgancia_risorse(vptr_shm_dettagli_lotti, vptr_shm_dump, vptr_shm_mercato, vptr_shm_posizioni_porti);
             exit(EXIT_SUCCESS);
             break;
         default: 
             perror("PORTO: giunto segnale non contemplato!");
-            exit(254);
+            exit(EXIT_FAILURE);
+            break;
     }
 }

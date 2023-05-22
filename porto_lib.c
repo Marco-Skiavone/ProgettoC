@@ -16,7 +16,7 @@ void spawnMerciPorti(void* vptr_mercato, merce* ptr_lotti, void *vptr_dump, int 
     merce(*ptr_shm_mercato_porto)[SO_MERCI] = CAST_MERCATO(vptr_mercato);
     for(i=0;i<SO_MERCI;i++){    
         /* PROPOSTA RANDOM: potremmo provare qualcosa di simile a:  */
-        nlotti = rand()% 10 + 1;    /* (ptr_lotti[i].val / so_merci > 1) ? ptr_lotti[i].val / so_merci : 2 */
+        nlotti = rand()% RANDOM_GEN_LOTTI + 1;    /* (ptr_lotti[i].val / so_merci > 1) ? ptr_lotti[i].val / so_merci : 2 */
         peso = nlotti * ptr_lotti[i].val;
         while(peso > Fill){
             nlotti --;

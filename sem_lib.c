@@ -4,7 +4,7 @@ int sem_create(key_t key, int nsems) {
     int semid;
     if ((semid = semget(key, nsems, IPC_CREAT | IPC_EXCL | S_IWUSR | S_IRUSR)) == -1) {
         fprintf(stderr, "semget creazione");
-        exit(255);
+        exit(EXIT_FAILURE);
     }
     return semid;
 }
@@ -27,7 +27,7 @@ int sem_find(key_t key, int nsems) {
     int semid;
     if ((semid = semget(key, nsems, S_IWUSR | S_IRUSR)) == -1) {
         perror("semget find");
-        exit(255);
+        exit(EXIT_FAILURE);
     }
     return semid;
 }
@@ -68,7 +68,7 @@ void sem_wait_zero(int semid, int sem_num) {
 void sem_set_val(int semid, int sem_num, int val) {
     if (semctl(semid, sem_num, SETVAL, val) == -1) {
         perror("semctl sem set val");
-        exit(255);
+        exit(EXIT_FAILURE);
     }
 }
 
@@ -82,7 +82,7 @@ void sem_set_all(int sem_id, int value, int arr_size){
     semval = semctl(sem_id, 0, SETALL, arg);
     if (semval == -1) {
         perror("semctl sem set all");
-        exit(255);
+        exit(EXIT_FAILURE);
     }
 }
 
@@ -91,7 +91,7 @@ int sem_get_val(int sem_id, int sem_num) {
     semval = semctl(sem_id, sem_num, GETVAL);
     if (semval == -1) {
         perror("semctl sem get val");
-        exit(255);
+        exit(EXIT_FAILURE);
     }
     return semval;
 }
@@ -99,7 +99,7 @@ int sem_get_val(int sem_id, int sem_num) {
 void sem_destroy(int semid) {
     if (semctl(semid, 0, IPC_RMID) == -1) {
         perror("semctl sem destroy");
-        exit(255);
+        exit(EXIT_FAILURE);
     }
 }
 

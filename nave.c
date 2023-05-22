@@ -91,14 +91,15 @@ void signal_handler(int signo){
             sem_wait_zero(id_semaforo_gestione, 1);
             #endif
             break;
-        case SIGUSR2:
-            printf("NAVE %d: ricevuto SIGUSR2. data: %d\n", indice, CAST_DUMP(vptr_shm_dump)->data);
+        case SIGTERM:
+            printf("NAVE %d: ricevuto SIGTERM. data: %d\n", indice, CAST_DUMP(vptr_shm_dump)->data);
             close(fd_fifo);
             sgancia_risorse(vptr_shm_dettagli_lotti, vptr_shm_dump, vptr_shm_mercato, vptr_shm_posizioni_porti);
             exit(EXIT_SUCCESS);
             break;
         default: 
             perror("NAVE: giunto segnale non contemplato!");
-            exit(254);
+            exit(EXIT_FAILURE);
+            break;
     }
 }

@@ -215,7 +215,7 @@ int main(int argc, char* argv[]){
     continua_simulazione = 1;
     do{
         if(!(continua_simulazione = controlla_mercato(vptr_shm_mercato, vptr_shm_dump, PARAMETRO))){
-            printf("\nMASTER: Termino la simulazione per mancanza di offerte e/o di richieste!\n");
+            printf("\nMASTER: La simulazione sta per terminare per mancanza di offerta o richiesta!\n");
             break;
         }
         alarm(1);
@@ -224,11 +224,18 @@ int main(int argc, char* argv[]){
         pause();
     } while(((int)(CAST_DUMP(vptr_shm_dump)->data) < SO_DAYS) && continua_simulazione);
     
+    while(CAST_DUMP(vptr_shm_dump)->nd.navicariche != 0 && ((int)(CAST_DUMP(vptr_shm_dump)->data) < SO_DAYS) ){
+        alarm(1);
+        if(errno && errno != EINTR)
+            printf("\nErrno = %d dopo alarm: %s\n", errno, strerror(errno));
+        pause();
+    }
+
     unlink(NOME_FIFO);
     kill(demone_pid, SIGUSR2);
     for(i = 0; i < SO_NAVI+SO_PORTI; i++){
         printf("MASTER: ammazzo il figlio %d\n", child_pids[i]);
-        kill(child_pids[i], SIGUSR2);
+        kill(child_pids[i], SIGTERM);
     }
     
     i=0;
@@ -291,6 +298,7 @@ void signal_handler(int signo){
         default: 
             perror("MASTER: giunto segnale diverso da SIGALRM!");
             close(fd_fifo);
-            exit(254);
+            exit(EXIT_FAILURE);
+            break;
     }
 }

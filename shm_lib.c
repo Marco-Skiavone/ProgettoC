@@ -4,7 +4,7 @@ int alloca_shm(key_t key, size_t size) {
     int shmid;
     if ((shmid = shmget(key, size, IPC_CREAT | IPC_EXCL | S_IRUSR | S_IWUSR)) == -1) {
         perror("shmget alloca_shm");
-        exit(255);
+        exit(EXIT_FAILURE);
     }
     return shmid;
 }
@@ -13,7 +13,7 @@ int find_shm(key_t key, size_t size) {
     int shmid;
     if ((shmid = shmget(key, size, S_IRUSR | S_IWUSR)) == -1) {
         perror("shmget find_shm");
-        exit(255);
+        exit(EXIT_FAILURE);
     }
     return shmid;
 }
@@ -22,7 +22,7 @@ void *aggancia_shm(int shmid) {
     void *shm_ptr;
     if ((shm_ptr = shmat(shmid, NULL, 0)) == (void *)-1) {
         perror("shmat aggancia_shm");
-        exit(255);
+        exit(EXIT_FAILURE);
     }
     return shm_ptr;
 }
@@ -30,7 +30,7 @@ void *aggancia_shm(int shmid) {
 void sgancia_shm(void *shm_ptr) {
     if (shmdt(shm_ptr) == -1) {
         perror("shmdt sgancia_shm");
-        exit(255);
+        exit(EXIT_FAILURE);
     }
 }
 
@@ -44,6 +44,6 @@ void sgancia_risorse(void *ptr1, void *ptr2, void *ptr3, void *ptr4){
 void distruggi_shm(int shmid) {
     if (shmctl(shmid, IPC_RMID, NULL) == -1) {
         perror("shmctl distruggi_shm");
-        exit(255);
+        exit(EXIT_FAILURE);
     }
 }

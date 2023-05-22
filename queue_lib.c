@@ -4,7 +4,7 @@ int set_coda_richieste(key_t key) {
     int coda_id;
     if ((coda_id = msgget(key, IPC_CREAT | IPC_EXCL | 0666)) == -1) {
         perror("msgget creazione coda");
-        exit(255);
+        exit(EXIT_FAILURE);
     }
     return coda_id;
 }
@@ -13,7 +13,7 @@ int get_coda_id(key_t key) {
     int coda_id;
     if ((coda_id = msgget(key, 0666)) == -1) {
         perror("msgget coda");
-        exit(255);
+        exit(EXIT_FAILURE);
     }
     return coda_id;
 }
@@ -21,7 +21,7 @@ int get_coda_id(key_t key) {
 void distruggi_coda(int coda_id) {
     if (msgctl(coda_id, IPC_RMID, NULL) == -1) {
         perror("msgctl destroy coda");
-        exit(255);
+        exit(EXIT_FAILURE);
     }
 }
 
@@ -46,7 +46,7 @@ richiesta accetta_richiesta(int msgtype, int coda_id){
             
         }else{
             perror("accetta richiesta");
-            exit(255);
+            exit(EXIT_FAILURE);
         }
     }
     r.mtype -=1;
