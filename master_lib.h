@@ -43,9 +43,10 @@ int equals(double x, double y);
  * Usato in fase di debug ora da stampa_dump(). */
 void stampa_mercato_dump(void *vptr_shm_dump, void *vptr_shm_mercato, int PARAMETRO[], int indice_porto);
 
-/* Controlla l'effettiva presenza di altre merci in richiesta o in offerta.
- * Qualora entrambe siano assenti, terminerà la simulazione. */
-int controlla_mercato(void *vptr_shm_mercato, void *vptr_shm_dump, int PARAMETRO[]);
+/** Controlla l'effettiva presenza di altre merci in richiesta o in offerta.
+ * Qualora entrambe siano assenti, terminerà la simulazione. 
+ * @returns 0 se non trova richieste o offerte (o nessuna delle due), 1 altrimenti. */
+int controlla_mercato(void *vptr_shm_mercato, int PARAMETRO[]);
 
 /* Controlla la scadenza delle merci in mercato allo scattare di ogni nuovo giorno. 
  * 

@@ -136,21 +136,25 @@ void stampa_mercato_dump(void *vptr_shm_dump, void *vptr_shm_mercato, int PARAME
 	
 }
 
-int controlla_mercato(void *vptr_shm_mercato, void *vptr_shm_dump, int PARAMETRO[]){
+int controlla_mercato(void *vptr_shm_mercato, int PARAMETRO[]){
 	int i, j;
-	int offerte, richieste;
-	offerte = richieste = 0;
-	for(i = 0; i < SO_PORTI && (!richieste || !offerte); i++){
-		for(j = 0; j < SO_MERCI && (!richieste || !offerte); j++){
-			if(!offerte && CAST_MERCATO(vptr_shm_mercato)[i][j].val > 0 && CAST_MERCATO(vptr_shm_mercato)[i][j].exp > CAST_DUMP(vptr_shm_dump)->data){
+	int offerte = 0, richieste = 0;
+	for(i = 0; i < SO_MERCI && !(richieste && offerte); i++){
+		for(j = 0; j < SO_PORTI && !(richieste && offerte); j++){
+			if(!offerte && CAST_MERCATO(vptr_shm_mercato)[i][j].val > 0){
 				offerte = 1;
+				continue;
 			}
-			if(!richieste && CAST_MERCATO(vptr_shm_mercato)[i][j].val < 0){
+			if((offerte || !richieste) && CAST_MERCATO(vptr_shm_mercato)[i][j].val < 0){
 				richieste = 1;
 			}
 		}
+		if(!(richieste && offerte)){
+			offerte = 0;
+			richieste = 0;
+		}
 	}
-	return offerte || richieste;
+	return offerte && richieste;
 }
 
 void controllo_scadenze_porti(merce *p_lotti, void *p_mercato, void *p_dump, int id_sem_dump, int PARAMETRO[]){

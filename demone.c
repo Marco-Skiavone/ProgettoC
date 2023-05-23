@@ -16,7 +16,7 @@ int main(int argc, char *argv[]){
 	sa.sa_flags = 0;
 	sa.sa_handler = signal_handler;
 	sigemptyset(&(sa.sa_mask));
-	sigaction(SIGUSR2, &sa, NULL);
+	sigaction(SIGTERM, &sa, NULL);
 	id_coda = get_coda_id(CHIAVE_CODA);
 	if((fd_fifo = open(NOME_FIFO, O_RDONLY)) == -1){
 		fprintf("File %s, %d: Errore nell'apertura della FIFO!\n", __FILE__, __LINE__);
@@ -37,7 +37,7 @@ int main(int argc, char *argv[]){
 
 void signal_handler(int signo){
 	switch (signo) {
-		case SIGUSR2:
+		case SIGTERM:
 			close(fd_fifo);
 			exit(EXIT_SUCCESS);
 			break;

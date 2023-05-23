@@ -214,7 +214,7 @@ int main(int argc, char* argv[]){
     
     continua_simulazione = 1;
     do{
-        if(!(continua_simulazione = controlla_mercato(vptr_shm_mercato, vptr_shm_dump, PARAMETRO))){
+        if(!(continua_simulazione = controlla_mercato(vptr_shm_mercato, PARAMETRO))){
             printf("\nMASTER: La simulazione sta per terminare per mancanza di offerta o richiesta!\n");
             break;
         }
@@ -231,8 +231,15 @@ int main(int argc, char* argv[]){
         pause();
     }
 
+    if(!continua_simulazione){
+        stampa_terminazione(PARAMETRO, vptr_shm_dump, vptr_shm_mercato, id_semaforo_banchine);
+        fprintf(stderr, "\x1b[%dF\x1b[0J", 1);
+        fprintf(stderr, "Simulazione completata ^_^\n");
+    }
+
+
     unlink(NOME_FIFO);
-    kill(demone_pid, SIGUSR2);
+    kill(demone_pid, SIGTERM);
     for(i = 0; i < SO_NAVI+SO_PORTI; i++){
         printf("MASTER: ammazzo il figlio %d\n", child_pids[i]);
         kill(child_pids[i], SIGTERM);

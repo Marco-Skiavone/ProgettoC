@@ -39,7 +39,10 @@ void sem_reserve(int semid, int sem_num) {
     sops.sem_flg = 0;
     while (semop(semid, &sops, 1) == -1 && errno == EINTR) {
         printf("reitero su un nuovo sem_reserve\n");
+    }
+    if(errno && errno != EINTR){
         perror("semop reserve");
+        errno = 0;
     }
 }
 
@@ -50,7 +53,10 @@ void sem_release(int semid, int sem_num) {
     sops.sem_flg = 0;
     while (semop(semid, &sops, 1) == -1 && errno == EINTR) {
         printf("reitero su un nuovo sem_release\n");
+    }
+    if(errno && errno != EINTR){
         perror("semop release");
+        errno = 0;
     }
 }
 
@@ -61,7 +67,10 @@ void sem_wait_zero(int semid, int sem_num) {
     sops.sem_flg = 0;
     errno = 0;
     while (semop(semid, &sops, 1) == -1 && errno == EINTR) {
+    }
+    if(errno && errno != EINTR){
         perror("semop wait for zero");
+        errno = 0;
     }
 }
 

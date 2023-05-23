@@ -37,7 +37,7 @@ int main(int argc, char *argv[]){
     sa.sa_handler = signal_handler;
     sigemptyset(&(sa.sa_mask));
     sigaction(SIGUSR1, &sa, NULL);
-    sigaction(SIGUSR2, &sa, NULL);
+    sigaction(SIGTERM, &sa, NULL);
     sigemptyset(&mask1);
     sigaddset(&mask1, SIGUSR1);
     sigprocmask(SIG_UNBLOCK, &mask1, NULL);
