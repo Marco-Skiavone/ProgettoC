@@ -10,13 +10,91 @@ void inizializza_banchine(int sem_id, int indice, void * vptr_shm_dump, int PARA
 }
 
 void spawnMerciPorti(void* vptr_mercato, merce* ptr_lotti, void *vptr_dump, int id_sem_dump, int PARAMETRO[], int indice){
+    srand(getpid());
+    int toFillOff, toFillReq;
+    toFillOff = SO_FILL/SO_PORTI;
+    toFillReq = SO_FILL/SO_PORTI;
+    int maskVet[SO_MERCI];
+    int i,j, nlotti, peso;
+    if(SO_MERCI>1){
+        for(i=0;i<SO_MERCI-2;i++){
+            if(rand()&1) maskVet[i] = 1;
+            else maskVet[i] = -1;
+        }
+        if(maskVet[SO_MERCI-1] == maskVet[SO_MERCI-2]){
+            i = rand() % 2 + 1;
+            maskVet[SO_MERCI-i] = -maskVet[SO_MERCI-i];
+        }
+    }else{
+        if(rand()&1){
+            maskVet[0] = 1;
+            toFillReq = 0;
+        }else{
+            maskVet[0] = -1;
+            toFillOff = 0;
+        }
+    }
+    merce(*ptr_shm_mercato_porto)[SO_MERCI] = CAST_MERCATO(vptr_mercato);
+    for(i=0;i<SO_MERCI;i++){
+        nlotti = (rand() % RANDOM_GEN_LOTTI + 1);
+        peso = nlotti * ptr_lotti[i].val;
+        if(maskVet[i]==1){
+            while(peso > toFillOff){
+                nlotti--;
+                peso = nlotti * ptr_lotti[i].val;
+            }
+            ptr_shm_mercato_porto[indice][i].val = nlotti;
+            ptr_shm_mercato_porto[indice][i].exp = ptr_lotti[i].exp;
+            toFillOff -= peso;
+        }else{
+            while(peso > toFillReq){
+                nlotti--;
+                peso = nlotti * ptr_lotti[i].val;
+            }
+            ptr_shm_mercato_porto[indice][i].val = -nlotti;
+            ptr_shm_mercato_porto[indice][i].exp = SO_DAYS+1;
+            toFillReq -= peso;
+        }
+
+
+    }
+    fprintf(stderr, "%s %d\n", __FILE__, __LINE__);
+    while(toFillOff>0){
+        for(i=0;i<SO_MERCI;i++){
+            if(maskVet[i]==1){
+                nlotti = rand() % RANDOM_INC_LOTTI + 1;
+                peso = nlotti * ptr_lotti[i].val;
+                while(peso > toFillOff){
+                    nlotti--;
+                    peso = nlotti * ptr_lotti[i].val;
+                }
+                ptr_shm_mercato_porto[indice][i].val += nlotti;
+                toFillOff -= peso;
+            }   
+        }
+    }
+    fprintf(stderr, "%s %d\n", __FILE__, __LINE__);
+    while(toFillReq>0){
+        for(i=0;i<SO_MERCI;i++){
+            if(maskVet[i]==-1){
+                nlotti = rand() % RANDOM_INC_LOTTI + 1;
+                peso = nlotti * ptr_lotti[i].val;
+                if(peso<=toFillReq){
+                    ptr_shm_mercato_porto[indice][i].val -= nlotti;
+                    toFillReq -= peso;
+                }
+            }
+        }
+    }
+    fprintf(stderr, "%s %d\n", __FILE__, __LINE__);
+    /*
     int i, j, nlotti, peso;
     int Fill = SO_FILL/SO_PORTI;
     srand(getpid());
     merce(*ptr_shm_mercato_porto)[SO_MERCI] = CAST_MERCATO(vptr_mercato);
     for(i=0;i<SO_MERCI;i++){    
-        /* PROPOSTA RANDOM: potremmo provare qualcosa di simile a:  */
-        nlotti = rand()% RANDOM_GEN_LOTTI + 1;    /* (ptr_lotti[i].val / so_merci > 1) ? ptr_lotti[i].val / so_merci : 2 */
+        
+        nlotti = rand()% RANDOM_GEN_LOTTI + 1;
         peso = nlotti * ptr_lotti[i].val;
         while(peso > Fill){
             nlotti --;
@@ -48,7 +126,7 @@ void spawnMerciPorti(void* vptr_mercato, merce* ptr_lotti, void *vptr_dump, int 
             }
         }
     }
-
+    */
     sem_reserve(id_sem_dump, 0);
     for(j=0;j<SO_MERCI;j++){
         if(ptr_shm_mercato_porto[indice][j].val > 0){
@@ -57,6 +135,7 @@ void spawnMerciPorti(void* vptr_mercato, merce* ptr_lotti, void *vptr_dump, int 
         }  
     }
     sem_release(id_sem_dump, 0);
+    fprintf(stderr, "%s %d\n", __FILE__, __LINE__);
 }
 
 void manda_richieste(void* vptr_shm_mercato, int indice, int coda_id, int PARAMETRO[], int fd_fifo){
