@@ -141,11 +141,11 @@ int controlla_mercato(void *vptr_shm_mercato, int PARAMETRO[]){
 	int offerte = 0, richieste = 0;
 	for(i = 0; i < SO_MERCI && !(richieste && offerte); i++){
 		for(j = 0; j < SO_PORTI && !(richieste && offerte); j++){
-			if(!offerte && CAST_MERCATO(vptr_shm_mercato)[i][j].val > 0){
+			if(!offerte && CAST_MERCATO(vptr_shm_mercato)[j][i].val > 0){
 				offerte = 1;
 				continue;
 			}
-			if((offerte || !richieste) && CAST_MERCATO(vptr_shm_mercato)[i][j].val < 0){
+			if((offerte || !richieste) && CAST_MERCATO(vptr_shm_mercato)[j][i].val < 0){
 				richieste = 1;
 			}
 		}

@@ -124,6 +124,7 @@ richiesta esamina_porto(int indice, int PARAMETRO[], int SEM_ID[], int id_coda_r
     do{
         r = accetta_richiesta(-1, id_coda_richieste);
         if(r.mtext.indicemerce == -1){
+            if(errno == ENOMSG){ errno = 0; }
             kill(getpid(), SIGTERM);
         }
         if(CAST_MERCATO(VPTR_SHM_MERCATO)[*indice_porto_attraccato][r.mtext.indicemerce].val > 0){
@@ -177,6 +178,7 @@ void carica_dal_porto(int indice, int PARAMETRO[], int id_coda_richieste, void* 
     do{
         r = accetta_richiesta(*indice_destinazione, id_coda_richieste);
         if(r.mtext.indicemerce == -1){
+            if(errno == ENOMSG){ errno = 0; }
             break;
         }
         if(CAST_MERCATO(VPTR_SHM_MERCATO)[*indice_porto_attraccato][r.mtext.indicemerce].val > 0){
