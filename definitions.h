@@ -164,7 +164,7 @@
 /* Massima lunghezza dell'array di carico merci delle navi. */
 #define MAX_CARICO 10
 #define RANDOM_GEN_LOTTI 100
-#define RANDOM_INC_LOTTI 10
+#define RANDOM_INC_LOTTI 100
 
 
 /* Punto generico di posizione con coordinate x e y. */

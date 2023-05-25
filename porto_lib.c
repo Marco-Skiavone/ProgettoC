@@ -17,13 +17,12 @@ void spawnMerciPorti(void* vptr_mercato, merce* ptr_lotti, void *vptr_dump, int 
     int maskVet[SO_MERCI];
     int i,j, nlotti, peso;
     if(SO_MERCI>1){
-        for(i=0;i<SO_MERCI-2;i++){
-            if(rand()&1) maskVet[i] = 1;
+        for(i=0;i<SO_MERCI;i++){
+            if(rand()&1)maskVet[i] = 1;
             else maskVet[i] = -1;
         }
         if(maskVet[SO_MERCI-1] == maskVet[SO_MERCI-2]){
-            i = rand() % 2 + 1;
-            maskVet[SO_MERCI-i] = -maskVet[SO_MERCI-i];
+            maskVet[SO_MERCI-1] = -maskVet[SO_MERCI-1];
         }
     }else{
         if(rand()&1){
@@ -34,6 +33,8 @@ void spawnMerciPorti(void* vptr_mercato, merce* ptr_lotti, void *vptr_dump, int 
             toFillOff = 0;
         }
     }
+    
+    
     merce(*ptr_shm_mercato_porto)[SO_MERCI] = CAST_MERCATO(vptr_mercato);
     for(i=0;i<SO_MERCI;i++){
         nlotti = (rand() % RANDOM_GEN_LOTTI + 1);
@@ -58,7 +59,6 @@ void spawnMerciPorti(void* vptr_mercato, merce* ptr_lotti, void *vptr_dump, int 
 
 
     }
-    fprintf(stderr, "%s %d\n", __FILE__, __LINE__);
     while(toFillOff>0){
         for(i=0;i<SO_MERCI;i++){
             if(maskVet[i]==1){
@@ -70,23 +70,29 @@ void spawnMerciPorti(void* vptr_mercato, merce* ptr_lotti, void *vptr_dump, int 
                 }
                 ptr_shm_mercato_porto[indice][i].val += nlotti;
                 toFillOff -= peso;
+                /*fprintf(stderr, "toFillOff: %d\n", toFillOff );*/
             }   
         }
     }
-    fprintf(stderr, "%s %d\n", __FILE__, __LINE__);
+    fprintf(stderr, "%s  %d %d\n", __FILE__,indice, __LINE__);
+    for(i=0;i<SO_MERCI;i++){
+        fprintf(stderr, "%d maskVet[%d] = %d\n", getpid(), i, maskVet[i]);
+    }
     while(toFillReq>0){
         for(i=0;i<SO_MERCI;i++){
             if(maskVet[i]==-1){
                 nlotti = rand() % RANDOM_INC_LOTTI + 1;
                 peso = nlotti * ptr_lotti[i].val;
-                if(peso<=toFillReq){
-                    ptr_shm_mercato_porto[indice][i].val -= nlotti;
-                    toFillReq -= peso;
+                while(peso > toFillReq){
+                    nlotti--;
+                    peso = nlotti * ptr_lotti[i].val;
                 }
+                ptr_shm_mercato_porto[indice][i].val -= nlotti;
+                toFillReq -= peso;
             }
         }
     }
-    fprintf(stderr, "%s %d\n", __FILE__, __LINE__);
+    fprintf(stderr, "%s  %d %d\n", __FILE__,indice, __LINE__);
     /*
     int i, j, nlotti, peso;
     int Fill = SO_FILL/SO_PORTI;
