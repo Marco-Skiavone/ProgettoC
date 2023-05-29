@@ -270,6 +270,7 @@ int main(int argc, char* argv[]){
     /* sono da liberare child_pids, ogni argv_figli[i] meno l'ultimo che è null,
      *  e argv_figli stesso => tot=(QNT_PARAMETRI + 2))+1; */
     free_ptr(child_pids, argv_figli, QNT_PARAMETRI+2);
+    free_ptr(NULL, argv_demone, 2);
     exit(EXIT_SUCCESS);
 }
 

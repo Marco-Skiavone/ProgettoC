@@ -38,8 +38,10 @@ void spawnMerciPorti(void* vptr_mercato, merce* ptr_lotti, void *vptr_dump, int 
     
     if(maxRandGen == 0) maxRandGen = 2;
     if(maxRandInc == 0) maxRandInc = 1;
+    /*
     fprintf(stderr, "Max Random Gen: %d\n", maxRandGen);
     fprintf(stderr, "Max Random Inc: %d\n", maxRandInc);
+    */
     merce(*ptr_shm_mercato_porto)[SO_MERCI] = CAST_MERCATO(vptr_mercato);
     for(i=0;i<SO_MERCI;i++){
         nlotti = (rand() % maxRandGen + 1);
@@ -79,10 +81,13 @@ void spawnMerciPorti(void* vptr_mercato, merce* ptr_lotti, void *vptr_dump, int 
             }   
         }
     }
+   
+   /*
     fprintf(stderr, "%s  %d %d\n", __FILE__,indice, __LINE__);
     for(i=0;i<SO_MERCI;i++){
         fprintf(stderr, "%d maskVet[%d] = %d\n", getpid(), i, maskVet[i]);
     }
+   */
     while(toFillReq>0){
         for(i=0;i<SO_MERCI;i++){
             if(maskVet[i]==-1){
@@ -97,7 +102,6 @@ void spawnMerciPorti(void* vptr_mercato, merce* ptr_lotti, void *vptr_dump, int 
             }
         }
     }
-    fprintf(stderr, "%s  %d %d\n", __FILE__,indice, __LINE__);
     /*
     int i, j, nlotti, peso;
     int Fill = SO_FILL/SO_PORTI;

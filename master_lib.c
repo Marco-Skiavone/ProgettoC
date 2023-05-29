@@ -102,29 +102,41 @@ void inizializza_dump(void *vptr_shm_dump, int PARAMETRO[]){
 void setUpLotto(merce* ptr_dettagli_lotti, int PARAMETRO[]){
     int i;
 	if(SO_MERCI>1){
+		if(SO_MIN_VITA == SO_MAX_VITA){
+			ptr_dettagli_lotti[SO_MERCI-1].exp = SO_MAX_VITA;
+			ptr_dettagli_lotti[SO_MERCI-2].exp = SO_MAX_VITA;
+		} else{
+			ptr_dettagli_lotti[SO_MERCI-2].exp = SO_MIN_VITA + (rand() % (SO_MAX_VITA - SO_MIN_VITA));		
+			ptr_dettagli_lotti[SO_MERCI-1].exp = SO_MIN_VITA + (rand() % (SO_MAX_VITA - SO_MIN_VITA));
+		}
 		ptr_dettagli_lotti[SO_MERCI-2].val = 1;
-		ptr_dettagli_lotti[SO_MERCI-2].exp = SO_MIN_VITA + (rand() % (SO_MAX_VITA - SO_MIN_VITA));		
 		ptr_dettagli_lotti[SO_MERCI-1].val = 1;
-		ptr_dettagli_lotti[SO_MERCI-1].exp = SO_MIN_VITA + (rand() % (SO_MAX_VITA - SO_MIN_VITA));
-		for(i=0;i<SO_MERCI-2;i++){
-       		ptr_dettagli_lotti[i].val = (rand() & SO_SIZE) + 1;
-        	ptr_dettagli_lotti[i].exp = SO_MIN_VITA + (rand() % (SO_MAX_VITA - SO_MIN_VITA));
-    	}
+		if(SO_MIN_VITA == SO_MAX_VITA){
+			for(i=0;i<SO_MERCI-2;i++){
+       			ptr_dettagli_lotti[i].val = (rand() % SO_SIZE) + 1;
+        		ptr_dettagli_lotti[i].exp = SO_MIN_VITA + (rand() % (SO_MAX_VITA));
+    		}
+		}else{
+			for(i=0;i<SO_MERCI-2;i++){
+       			ptr_dettagli_lotti[i].val = (rand() % SO_SIZE) + 1;
+        		ptr_dettagli_lotti[i].exp = SO_MIN_VITA + (rand() % (SO_MAX_VITA - SO_MIN_VITA));
+    		}
+		}
 	}else{
 		ptr_dettagli_lotti[SO_MERCI-1].val = 1;
-		ptr_dettagli_lotti[SO_MERCI-1].exp = SO_MIN_VITA + (rand() % (SO_MAX_VITA - SO_MIN_VITA));
+		if(SO_MAX_VITA == SO_MIN_VITA){
+			ptr_dettagli_lotti[SO_MERCI-1].exp = SO_MAX_VITA;
+		} else{
+			ptr_dettagli_lotti[SO_MERCI-1].exp = SO_MIN_VITA + (rand() % (SO_MAX_VITA - SO_MIN_VITA));
+		} 
     	for(i=0;i<SO_MERCI-1;i++){
-        	ptr_dettagli_lotti[i].val = (rand() & SO_SIZE) + 1;
+        	ptr_dettagli_lotti[i].val = (rand() % SO_SIZE) + 1;
         	ptr_dettagli_lotti[i].exp = SO_MIN_VITA + (rand() % (SO_MAX_VITA - SO_MIN_VITA));
     	}
 	}
 	/*
 	Non ricordo a cosa serve questo
-	if(SO_MIN_VITA == SO_MAX_VITA){
-		ptr_dettagli_lotti[SO_MERCI-1].exp = SO_MAX_VITA;
-		ptr_dettagli_lotti[SO_MERCI-2].exp = SO_MAX_VITA;
-	} else{
-	}
+	
 	*/
 }
 
@@ -302,16 +314,16 @@ void distruggi_semafori(int id_sem_mercato, int id_sem_dump, int id_sem_banchine
 void free_ptr(int *childs, char **argv_figli, int size){
 	if(childs != NULL){
 		free(childs);
-	} else 
-		perror("childs pointer is NULL");
-
+	}
 	if(argv_figli != NULL){
 		int i;
 		for(i = 0; i < size; i++){
 			if(argv_figli[i] != NULL)
 			free(argv_figli[i]);
 		}
+		
 		free(argv_figli);
+		
 	} else
 		perror("argv_figli pointer is NULL");
 }
