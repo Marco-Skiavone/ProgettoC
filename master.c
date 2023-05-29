@@ -147,8 +147,8 @@ int main(int argc, char* argv[]){
     sem_set_val(id_semaforo_gestione,1,0);  
     #endif
     /* settaggio di argv_figli e fork dei processi porto e nave */
-    argv_demone[0] = (char*)malloc(MAX_STR_LEN);
-    argv_demone[0] = "./demone";
+    argv_demone[0] = (char*)calloc(MAX_STR_LEN, sizeof(char));
+    argv_demone[0] = strcat(argv_demone[0], "./demone");
     argv_demone[1] = (char*)malloc(3*sizeof(char));
     sprintf(argv_demone[1], "%d", CHIAVE_SEM_GESTIONE);
     argv_demone[2] = NULL;
@@ -164,7 +164,7 @@ int main(int argc, char* argv[]){
             break;
     }
 
-    argv_figli[0] = (char *)malloc(MAX_STR_LEN);
+    argv_figli[0] = (char *)calloc(MAX_STR_LEN, sizeof(char));
 	argv_figli[1] = (char *)malloc(MAX_STR_LEN);
 	for (i = 0; i < QNT_PARAMETRI; i++){
 		argv_figli[i+2] = (char *)malloc(MAX_STR_LEN);
@@ -178,7 +178,7 @@ int main(int argc, char* argv[]){
                 perror("fork porto");
                 break;
             case 0:
-                argv_figli[0] = "./porto";
+                argv_figli[0] = strcat(argv_figli[0], "./porto");
 				sprintf(argv_figli[1], "%d", i);
 				execve("./porto", argv_figli, NULL);
                 perror("execve porto");
@@ -195,7 +195,7 @@ int main(int argc, char* argv[]){
                 perror("fork nave");
                 break;
             case 0:
-                argv_figli[0] = "./nave";
+                argv_figli[0] = strcpy(argv_figli[0], "./nave");
 				sprintf(argv_figli[1], "%d", (i));
 				execve("./nave", argv_figli, NULL);
                 perror("execve nave");

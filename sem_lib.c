@@ -93,6 +93,7 @@ void sem_set_all(int sem_id, int value, int arr_size){
         perror("semctl sem set all");
         exit(EXIT_FAILURE);
     }
+    free(arg.array);
 }
 
 int sem_get_val(int sem_id, int sem_num) {
