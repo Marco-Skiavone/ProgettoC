@@ -140,7 +140,6 @@ richiesta esamina_porto(int indice, int PARAMETRO[], int SEM_ID[], int id_coda_r
             }
             *tempo_carico += ((r.mtext.nlotti * CAST_DETTAGLI_LOTTI(VPTR_SHM_DETTAGLI_LOTTI)[r.mtext.indicemerce].val) / SO_LOADSPEED) *2;
             if((CAST_DETTAGLI_LOTTI(VPTR_SHM_DETTAGLI_LOTTI)[r.mtext.indicemerce].exp > (CAST_DUMP(VPTR_SHM_DUMP)->data + *tempo_carico + (distanza/SO_SPEED))) && r.mtext.nlotti > 0){
-                /* STAMPA_DEBUG */
                 carico[*i_carico].indice = r.mtext.indicemerce;
                 carico[*i_carico].mer.val = r.mtext.nlotti;
                 carico[*i_carico].mer.exp = CAST_DETTAGLI_LOTTI(VPTR_SHM_DETTAGLI_LOTTI)[r.mtext.indicemerce].exp;
@@ -192,7 +191,6 @@ void carica_dal_porto(int indice, int PARAMETRO[], int id_coda_richieste, void* 
             }
             *tempo_carico += ((r.mtext.nlotti * CAST_DETTAGLI_LOTTI(VPTR_SHM_DETTAGLI_LOTTI)[r.mtext.indicemerce].val) / SO_LOADSPEED) *2;
             if((CAST_DETTAGLI_LOTTI(VPTR_SHM_DETTAGLI_LOTTI)[r.mtext.indicemerce].exp > (*tempo_carico + (distanza/SO_SPEED) + CAST_DUMP(VPTR_SHM_DUMP)->data)) && r.mtext.nlotti > 0){
-                /* STAMPA_DEBUG */
                 noncaricare = 0;
                 for(j=0;j<*i_carico;j++){
                     if(CAST_DETTAGLI_LOTTI(VPTR_SHM_DETTAGLI_LOTTI)[carico[j].indice].exp < ((distanza/SO_SPEED) + *tempo_carico + CAST_DUMP(VPTR_SHM_DUMP)->data)){
@@ -201,7 +199,6 @@ void carica_dal_porto(int indice, int PARAMETRO[], int id_coda_richieste, void* 
                     }
                 }
                 if(noncaricare){
-                    /* STAMPA_DEBUG */
                     *tempo_carico += ((r.mtext.nlotti * CAST_DETTAGLI_LOTTI(VPTR_SHM_DETTAGLI_LOTTI)[r.mtext.indicemerce].val) / SO_LOADSPEED) *2;
                     r.mtext.nlotti += *lotti_scartati;
                     invia_richiesta(r, id_coda_richieste, fd_fifo);
@@ -247,8 +244,7 @@ void attracco_e_scarico(int indice, int PARAMETRO[], int SEM_ID[],void* VPTR_ARR
     attesa((SO_CAPACITY-*spaziolibero), SO_LOADSPEED);
     /* salva la data di scarico della merce */
     datascarico = CAST_DUMP(VPTR_SHM_DUMP)->data;
-    /* invertendo sem_release e sem_reserve del dump, ho forse creato capacità potenziale di deadlock ???? */
-    /* se non l'avessi fatto, avremmo modifiche al dump in zone critiche senza mutua esclusione !!!! */
+
     data1 = CAST_DUMP(VPTR_SHM_DUMP)->data;
     sem_reserve(ID_SEMAFORO_MERCATO,*indice_porto_attraccato);
     printf("nave %d in attesa dal giorno %d: giorno attuale: %d\n", indice, data1, CAST_DUMP(VPTR_SHM_DUMP)->data);

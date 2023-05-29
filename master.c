@@ -256,7 +256,7 @@ int main(int argc, char* argv[]){
     do {    
         r = accetta_richiesta(i, id_coda_richieste);
         if(r.mtext.indicemerce != -1){
-            /*printf("Porto %ld merce %d nlotti %d\n", r.mtype, r.mtext.indicemerce, r.mtext.nlotti);*/
+           
         }else if(i < SO_PORTI)
             i++;
     } while (r.mtext.indicemerce != -1 || i < SO_PORTI);

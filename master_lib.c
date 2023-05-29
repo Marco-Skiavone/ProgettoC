@@ -134,10 +134,6 @@ void setUpLotto(merce* ptr_dettagli_lotti, int PARAMETRO[]){
         	ptr_dettagli_lotti[i].exp = SO_MIN_VITA + (rand() % (SO_MAX_VITA - SO_MIN_VITA));
     	}
 	}
-	/*
-	Non ricordo a cosa serve questo
-	
-	*/
 }
 
 int equals(double x, double y){
@@ -274,13 +270,13 @@ void calcola_porti_term(int PARAMETRO[], void* vptr_shm_dump){
 
 void stampa_terminazione(int PARAMETRO[], void * vptr_shm_dump, void * vptr_shm_mercato, int id_semaforo_banchine){
 	int i, j;
-	/*da togliere in futuro --> vptr_shm_mercato e stampa_mercato_dump()*/
+
 	if(freopen("log_dump.txt", "a", stdout)==NULL)
         {perror("freopen ha ritornato NULL");}
 	printf("\n----------------------------------\n");
 	printf(" *** STAMPA DI TERMINAZIONE DELLA SIMULAZIONE! giorno %d ***\n", CAST_DUMP(vptr_shm_dump)->data);
 	stampa_merci_porti_navi(PARAMETRO, vptr_shm_dump,vptr_shm_mercato, id_semaforo_banchine);
-	/* extra */
+
 	printf("Report speciale di terminazione:\n");
 	calcola_porti_term(PARAMETRO, vptr_shm_dump);
 	printf("Porto che ha ricevuto più lotti di merce: %d\n", CAST_TERM_DUMP(vptr_shm_dump).porto_ricevute);
